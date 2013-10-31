@@ -1,0 +1,1214 @@
+58页
+
+
+One day in April 1986 I was contemplating what it means to  "understand" 
+				沉思
+something. For months I had been struggling with the fundamental question What 
+
+do brains do if  they aren't generating  behavior? W h at  does a br ain do when  it is 
+				产生
+passively listening to speec h? What is yo ur brain doin g  right n o w while it is  
+被动的
+reading? Information goes into the brain but doesn 't come ou t. Wh at h a ppens to 
+
+it? Your be havi ors at th e moment  are probab ly basic—  such as breathing and eye 
+
+movements—  yet, as you are aware, your brain is doing a lot more than that as 
+
+you read and understand these words. Understanding must be the result of neural 
+
+activity. But what? What are the ne urons doing when they understand? 
+
+
+
+As I looke d  around my office that day,  I saw familiar chairs, posters, windows, 
+
+plants , pe ncils, and so  on. T h ere were hundreds of items and features all around 
+
+me. My eyes saw them as I glanced around, yet just seeing them  didn't cause me 
+
+to perform  any action. No behavior  was invoked or required, yet some how I  
+
+"understood" the room and its contents .  I was doing what Searl e's Chinese Room 
+
+couldn't do, and I didn 't h a ve to pass anything back through a slot. I under stood, 
+
+but ha d no  actio n  t o  prove it . What did it mean to "understand"? 
+
+
+
+It was whi l e pondering this dilemma that I had an "aha" insigh t, o n e of  those  
+				困境
+emotionally powerful moments when sudd enly what was a tangle of confusion 
+情感上的						混乱
+becomes clear and understoo d . All I di d was ask what woul d happe n if a new 
+
+object, one I had never seen before, appeared in the room— say, a blue co ffee 
+
+cup. 
+
+
+The answer seemed simple. I  would notice the new object as not belonging. It 
+
+would catch my attention as being new.  I needn't consciously ask myself  if t h e 
+
+coffee cup was new. It would just jump out as not belonging. Underlying that 
+
+seemingly trivial answer is a powerful concept. To notice that something is  
+		不重要
+different , so me neurons in my  brain that weren't active before would have t o 
+
+become active. H o w would thes e neuron s  know that the blue coffee cup w a s new 
+
+and the hundreds of other obj ects in the room were not? The answer to  this 
+
+question still surprises me. Our brains use  stored memories to constantly make 
+
+predictions about everything  we see, feel, and hear. When I look around the room, 
+
+my brain is using memories to form predictions about what it expect s to 
+
+experience before I experience it. The vast majority of predictions occur outside of  
+
+awareness.  It's as if different parts of my  brain were saying, "Is the computer in 
+
+the middle of the desk? Yes. Is it black? Yes. Is the lamp  in the rig h t- h an d co rn er 
+
+of the desk? Yes. Is the dict ionary where I left it? Yes. Is the window rectangular 
+
+and the walls vertical? Yes. Is sunlight  coming from the correct direction for the
+
+time of day? Yes." But when some visual pattern comes in that I had not 
+
+memorized in that context, a prediction is violated. An d m y  attentio n is  drawn to 
+
+the error. 
+
+
+
+59页
+
+
+Of course, the brain doesn't talk to itself  while making predictions, and it doesn't 
+
+make predictions in a serial fashion. It also doesn't just make predictions about 
+
+distinct objects like coffee cups. Your brain constantly  makes predictions about the 
+
+very fabric of the world we live in, and it doe s so in a parallel fashion. It will just as 
+
+readily detect an odd texture, a misshapen nose,  or an unusual motion. It isn't 
+容易的  察觉	  奇怪的 纹理
+immediately apparent how pervasive these  mostly unconscious predictions are, 
+				普遍的		   无意识
+which is perhaps why we missed their importance for so long. They happen so 
+
+automatically, so easily, we fail to fathom  what is ha ppening  inside our skulls. I 
+					看穿					头盖骨
+hope to impress on you the powe r of this idea. Prediction  is so pervasive that what 
+
+we "perceive"— that is, how the world appears to us— does not come solely from 
+
+our senses. What we perceive i s a combination of what we sense and of our 
+
+brains' memory-derived predictions. 
+		推断
+
+M inutes later I conceived a thought experiment to he lp convey what I understood 
+		设想
+at that moment. I call it the altered door experiment. Here is how it goes. 
+				改变
+
+
+When you  come hom e each day ,  yo u usuall y take a few seconds to go thr o ugh 
+
+your front door or whichever do or you use. You reach out, tur n  t h e knob , walk in, 
+									把手
+a n d  s h ut  i t beh i nd  y ou .  I t 's a  firmly established habit, someth ing you  do all the 
+						坚定地	确定的
+time and pay litt l e attention to. Suppose wh ile you are out, I sneak over to your 
+									暗中进行的
+home and change something about yo ur d oor. It coul d be almost  anything. I could 
+
+move the knob over by an inch , change around knob into a thumb latch, or turn it 
+
+from brass to chrome. I could change the door's weight, substituting solid oak for 
+							替代
+a hollow door, or vice versa. I could make the hinges squeaky and stiff,  or make 
+
+them glide frictionlessly. I could widen or narrow the door and its frame. I could 
+
+change its color, add a knocker where the peephole used to be, or add a  window.  I  
+
+can imagine a thousand changes  that could be made to your do or, unbeknownst to 
+									不知的
+you. When you come home t h at day a n d attempt to open the doo r , yo u will  quick l y 
+
+detect that something is wrong. It might take you a few seco n ds' reflection to 
+
+realize exactly what is wrong, but you will notice the change very quickly. As your 
+
+hand reaches for t he moved knob, you will  realize  that it is not in t h e correct 
+
+location. Or when you see the door's new window, something w ill appear odd. Or 
+
+if t h e door's weight has been changed,  you will push with th e w r ong amount of  
+
+force and be surprised. The point  is that  you will notice any of a thousand changes 
+
+in a  very s h ort period of time.
+
+
+
+How do you do that? How  do you notice these changes? The AI or computer 
+
+engineer's approac h  t o  this prob lem would be to cr eate a list of all th e door's 
+
+properties and put them in a database, with fields for every attribute a door can 
+
+have and sp ecific entries for your particular door. When yo u approach t h e do or, 
+
+the computer would query the en tire data base, look ing at width,  color ,  size, kn ob  
+
+position, w eight , sound, a n d  so on. While this may sound superficially similar to 
+
+how I described my brain checking each  of its myriad predictions as I glanced 
+
+around my office, the difference is real  and far-reaching. The AI strategy is 
+
+implausible. First, it is  impossible to sp ecify in advance every attribute a door can 
+
+have. The list is potentially endless. Second, we would need to ha ve similar lists for 
+
+every object we encounter every second of our lives. Third, nothing we know 
+
+about brains and neur ons sugges t s that this is how they work. And finall y, neurons 
+
+are just too slow to implement computer-s tyle databases. It would take you twenty 
+
+minutes instead of two seconds to notice the  change as  you go  throu g h th e door . 
+
+60页
+
+
+There is only one way to interpret your  reaction to the altered door : your  brain 
+
+makes low-level sensory predictions about wh at it expects to see, hear, and feel at 
+
+every given moment , and it does so in parallel. All regions of your neocort ex are 
+
+simultaneously trying to predict  what their next experience will be. Visual areas 
+
+make predictions about edges, shapes, objects, location s, and motions. Auditory 
+
+areas make predictions about tones, dire ct ion to source, and patterns of sound. 
+
+Somatosensory areas make predictions  about t o uch, texture, contour,  and 
+
+temperature. 
+
+
+
+"Prediction" means that the neurons involved in sensing your door become active 
+
+in advance  of t h em actually receiving sensory input. When th e sensory input does 
+
+arrive, it is compared with what was  expected. As you approach the door, your  
+
+cortex is forming a slew of predictions based on past experience. As you reach out, 
+
+it predicts what you will feel on your finge r s, when you will feel the door, and at 
+
+what angle  your joints will be when you  actually touch the door . As you start to 
+
+push t h e door ope n , your cortex predicts how much resistance the door wil l  offer 
+
+and how it  will sound. When your predictions are all  met, you'll walk through the 
+
+door without consciously knowing these predictions  were verified. But if your 
+
+expectations about the door are violated,  th e error will cause you to take notice. 
+
+Correct predictions result in understanding.  The door  is normal. Incorrect 
+
+predictions  result in confusion and prompt  you to  pay  attentio n. The door latch is 
+
+not where it's supposed to  be. The do or i s too li ght. The do or is off center . The 
+
+texture of the knob is wrong. We are making continuous low-level predictions in 
+
+parallel across all our senses. 
+
+
+
+But that's not all. I am  arguing a much stronger proposition. Pre d iction is not just 
+							命题
+one of the things your  brain does . It is th e  primary function  of t h e neocortex, and 
+
+the foundation of intelligence.  The cortex is an organ of prediction. If we want to 
+
+understand what intelligence is, what creativity is, how  your brain works, a nd how  
+
+to build intelligent machines,  we must understand the   nature of these predictions 
+
+and how the cortex makes them. Even behavior is best understood as a by-product 
+
+of p r ediction . 
+
+
+61页
+
+
+I  don't know who was the first person to suggest that prediction is key to 
+
+understanding intelligence. In science and industry  no on e invents anythi ng 
+								创造
+completely new. Rather, people see how existing ideas fit into new frameworks . 
+
+The components of a  new idea are usually floating around in the  milieu of scientific 
+
+discourse prior to its  discovery. What is  usually new is the packaging of these 
+								包装
+components into a cohesive  whole. Similarly, the idea  that a primary function of 
+部件			结合的
+the cortex is to make predictions is not entirely new. It has been floating around i n  
+
+various forms for some time. But it has  not yet assumed its rightful position at the 
+
+center of brain theory and the definition of intelligence.
+
+
+
+Ironically, some of the pioneer s of artificial intelligence  had a notion of co mputers 
+讽刺的
+building a model of the world and using it to make predictions. In 1956, for 
+
+example, D. M. Mackay argued that intelligent machines  should  have a n  "internal 
+
+response mechanism" designed t o  " m a t ch  wh a t  i s r ecei v ed . " He di d n 't  use t h e  
+
+words "memory" and "prediction" but he  wa s thinking along the s a me lines. 
+
+
+Since the mid-1990s, terms such as  inference, generative models, and  predictio n 
+					推理	生殖模型
+have crept into t h e scientific nomenclature. They all refer to related ideas. As an  
+					命名
+example, in his 2001 book,  i of the vortex,  Ro d o lfo Ll in as, at th e New  Yo rk  
+
+University School of Medicine, wrote, "The capacity to predict the outcome of 
+
+future events— critical to successful movement— is, most likely, the ultimate and 
+
+most common of all global  brain functions. " Scientist s such as David Mumf ord at 
+
+Brown University, Rajesh Rao at the University of Washington, Stephen Grossberg 
+
+at Boston University, and many more have written and theorized about th e role of 
+
+feedback and predi ction i n  va rious ways. There is an entire subfield of 
+								分区
+mathematics devoted to Bayesian networks. Named after Thomas Bayes, an 
+数学
+Englis h minister born in 1702 who was a pioneer in statistics, Bayesian networks 
+
+use probability theo ry to make  predictions. 
+
+What has been lacking is putting these disparate bits and pieces into a coherent  
+theoretical framework. This,  I argue, has not been done before,  and it  is t h e goal  
+of this b ook. 
+
+
+
+Before we get into detail about how the co rtex makes predictions, let's consider 
+
+some additional examples. The more you  think about this idea, the more  you'll 
+
+realize that prediction is pervasive an d the basis for how you understand the 
+
+world. 
+
+
+
+This morning I made pancakes. At one point in the process, I reached under the 
+
+counter to open a cabinet door. I intuitively knew, without seeing, what I would  
+
+feel— in this case, the cabinet doorknob—  an d whe n  I would feel it. I twisted the 
+
+top of the milk container with the expect ation that it would  turn and then  come 
+
+free. I turned on the  griddle expecting the  k n ob  t o p ush  i n  a   sl ig ht amount, then 
+
+turn with a certain resistance. I expected to hear the gentle  fwoomp of th e gas 
+
+flame about a second later. Every minute in the kitchen I  made do zens or 
+
+hundreds of motions ,  and each  one involved many predictions. I know this 
+
+because if any of those common motions  had had a different result from the 
+
+expected one, I would have notic ed it. 
+
+62
+
+
+Every time  you put your foot down while  yo u are walking, y o ur brain predicts 
+
+when your foot will stop moving and how much "give" the material  you step on will 
+
+have. If you have ever missed a step on  a flight of stairs,  you know how quickly 
+
+you realize  something is wr ong.  You l o wer your foot and the moment it "passes 
+
+through" the anticipated stair tread you know you are in trouble. The foot doesn't  
+
+feel anyt hi ng, b u t your brain m a de a prediction and the prediction  was no t m et.  A  
+
+computer- driven ro bo t woul d blissfull y  fall over, not realizing that anythi ng was 
+
+amiss, while you would know as soon as your foot continues for even a fraction of 
+
+an i n ch bey o nd the  spot where your brain had expected it to stop. 
+
+
+
+When you listen to a familiar melody, you hear the next note in your head before it 
+
+occurs. When you listen to a favorite album,  you hear the beginni n g of each next 
+
+song a couple of seconds before it starts . What's happe ning? Neurons in yo ur  brain  
+
+that will fire when you hear that next note  fire in advance of your actually hearing 
+
+it, and so you "hear" the song in your head. The neurons fire in response to 
+
+memory. This memory can be surprisingly  long lasting. It is not uncommon to  
+
+listen to an album of music for t h e first time in many years and still hear the next 
+
+song automatically after the  previous s o ng has ended. And  it  creates a pleasant 
+
+sensation of mild uncertainty when yo u listen to y o ur favorit e CD on ra ndom 
+
+shuffle; you kn ow yo ur predictio n of t h e next song is wrong.
+
+
+
+
+When listening to people speak, you often know what they're going to say before 
+
+they've finished speaking—  or at least you think you  know! Sometimes we don't 
+
+even listen to what the speaker actually says and instead hear what we expect to  
+
+hear. (This happe ned to  me so  often when  I was a child that my mother twice  took 
+
+m e t o  a  d o ct o r  t o  h a ve my  h ea r i n g  c h eck ed. )  Y o u  e x per i en ce t h i s i n  p a r t  b eca u se  
+
+people tend to use common phrases or expressions in much of  their conversation. 
+
+If I say, "How now brown…," your brai n will activate neurons that represent the 
+
+word cow  before I say it (though if Engl ish  is not your native language, you may 
+
+have no idea what I a m  talking ab out) . Of  c o urse, we don't k n ow all the time what  
+
+others are going to say. Prediction is no t always exact .  Rather, our minds work by 
+
+making probabilistic predictions  concerning what is about to happen. Sometimes 
+
+we kn o w ex a ct l y  wh a t  i s go ing  t o  happen, other times our  expectations are 
+
+distributed among several possibilities. If we were eating  at a table in a diner and I 
+
+said, " p lease pass me the…," your  brain  would no t  be surprised if  I  next said, 
+
+"salt," or "pepper," or "mustard." In  some sense your brain predicts all these 
+
+possible outcomes at once. However, if I  said, "Please pass me the sidewalk," you 
+
+would know something is wrong. 
+
+63
+
+
+
+Returning to music, we can see probabilistic prediction here as well. If you are 
+
+listening to a song you have ne ver heard  before, you can still have fairly strong 
+
+expectations. In Western music I expect a regular beat, I expect a repeated 
+
+rhythm, I expect phrases to last the same number of measures, and I expect  
+
+songs to end on the tonic pitch. You may not know what these terms mean , but— 
+			主  音
+assuming you have listened to similar music— your brain automatically predicts 
+
+beats, repeated rhythms, completion of phrases, and ends of songs. If a new song 
+
+violates these principles, you know immedi ately that something is wrong. Think 
+
+about this for a second. You hear a song  that you have never heard before, your 
+
+brain experiences a pattern  it has never experienced  befo re, and yet you make 
+
+predictions  and can tell if something is wrong. The basis of these mostly 
+
+unconscious predictions is th e set of memories that are st ored in your cortex. Your 
+
+brain can't say exactly what will happen  next, but it nevertheless predicts which 
+
+note patter n s are l i kely  to ha ppe n and whic h aren't.
+
+
+We have all had th e experience of suddenly noti cing  that a source of constant 
+
+background noise, such as a distant jack-hammer or droning Muzak, has just  
+
+ceased— yet we hadn't noticed the sound while it was ongoin g. Your audit o ry  
+
+areas were predicti ng its continuation, moment after m o ment, and as lo ng a s the 
+
+noise didn't  change you paid  it no  heed. By ceasing, it violated yo u r p r ediction  an d 
+
+attracted your attention. Here's a historical example .  Right after New York City 
+
+stopped running elevated trains, people call ed the police in the middle of the night 
+
+claiming that something woke them up. Th ey tended to call around the time the 
+
+trains used to run pas t  their  apartments. 
+
+
+
+We like to say that seeing is believing. Yet we see what we expect to see as often 
+
+as we see what we really  see. One of the most fascinating examples of this has to 
+
+do with what researchers call filling in. It may have been brough t to your attention 
+
+before that you have a sma ll blind spot in each eye,  where your optic nerve exits 
+
+each retina  through a hole called the optic  disk. You ha ve no phot oreceptors in this  
+
+area, so you are permanently blind in the corresponding spot in your visual field. 
+
+There are two reasons why you don't usually notice this , one mundane, the other 
+
+instructive. The mundane reason is that your two blind spots don't overlap, so  one 
+
+eye compensates  for t h e ot her. 
+
+
+
+But interestingly, you still do n't notice your blind spot  when only one eye is open. 
+
+Your visua l system "fills in" the missing information. When yo u close one eye and 
+
+look at a ri chly woven Turk ish carpet or  t h e wavy co ntours of wood grain in a  
+
+cherry tabletop, you don't see a hole. Entire nodes in the carpet,  whole dark knots 
+
+in the woo d  grain are constantly  winking out of yo ur retina's view as your blind 
+
+spot happens to cover them, but your experience is of a seamless stretch of  
+
+textures and colors. Your visual cortex is drawing on memories of similar patterns 
+
+and is mak ing a  co ntinuous  stream of  predictions  that fill in for  any missing input.
+
+
+
+64
+
+
+Filling in occurs in all parts of the visu al image, not just your  blind spot. For 
+
+example, I show you a pictur e of a shore with a driftwood log lying on some rocks. 
+					海冰			伐木
+The boundary between the rocks and the log  is clear and obvious.  However, if we 
+	边界
+magnify the image, you will  see that the rocks and the  log are similar in texture 
+										纹理
+and color where they meet.  In the enlarged view, th e edge of the log isn't 
+					放大
+distinguishable from the rocks at a l l .  I f  we l ook  a t  t h e entire scene, the edge of the 
+
+log is clear, but in reality we inferred the edge from the rest of  the image. When 
+
+we look at the world, we perceive clean lines and boundaries  separating objects,  
+
+but the raw data entering our ey es are ofte n noisy an d ambiguous. Our cortex fills 
+	未加工的
+in the missing or messy sections with what it thinks s h ould be th ere. We perceive  
+
+an unambiguous image. 
+
+
+
+Prediction in vision is also a function  of the  way your eyes move. In chapter 3, I 
+
+mentioned saccades. About three times every second, your eyes fixate on one 
+
+poin t, t h en suddenly jump to another po in t. Generally you are not aware of these 
+
+movements,  and you don't normally consciously control them. And each time your 
+
+eyes fixate on a new point, the pattern entering your  brain from the eyes changes  
+
+completely from the last fixation. T hus, three times a second your brain sees 
+
+something completely different . Saccades are not entirely random. When you look 
+
+at a face your eyes typically fixate first on  one eye, then  o n  t h e ot her, goin g back 
+
+and forth and occasionally fixating on the nose, mout h, ears, and ot her feat ures. 
+
+You perceive just "face," but the eyes see ey e, eye, nose, mouth, eye, and so on. I 
+
+realize it doesn't feel this way to you. What you're aware of is  a continuous view of 
+
+the world,  but the raw data entering your   head are as jerky as  a badly wielded 
+
+Camcorder. 
+
+
+
+Now imagine that you met someone with an extra nose where an eye should be.  
+
+Your eyes fixate first on  the one eye and then saccade to the second eye, but 
+
+instead of seeing an eye you see a no se. You would definitely know that 
+
+something was wrong .  For this to happen, your bra i n  has to hav e an expectation 
+
+or prediction of what it is about to see. Wh en you predict  eye but see nose, the 
+
+prediction is violated. So  several times a second, concurrent with every saccade, 
+							并发的			眼跳跃
+your brain makes a pr ediction about what it will see next. When that prediction is 
+
+wrong, your attention is immedi ately arous ed. This is why we have difficulty not  
+
+looking at people with deformities. If you saw a person with tw o noses, wouldn't 
+			残缺
+you have trouble not staring? Of course, if y o u li ved  with t h at  p erson ,  then aft er a 
+
+period of time you wo uld get used to  two noses and not noti ce it as unusual 
+
+anymore. 
+
+
+
+Think about yourself right now. What predictions are you ma king? As you tu rn the  
+
+pages of t h is book, yo u have expectations  that the pages bend a certain amount  
+
+and move in pred ictable ways that are di fferent from the way the cover moves. If 
+
+you are sitting, you are predicting that the feelings of pressure on your body will 
+
+persist; but if the se at tur n ed wet, began drifting backward, or underwent any  
+
+other unex p ected change, yo u would stop p a ying attention to th e boo k  and t r y to 
+
+figu re out what is happening. If  you spen d some time observing yourself, you can 
+
+begin to understand that yo ur perception of the world, your understanding of the  
+
+world, is intimately ti ed to prediction.  Your brain has made a m o del of th e world 
+
+and is constantly chec king th at mo del against reality. You know where you are and  
+
+what you ar e doin g by  the validity  o f  t h is m o del.
+				有效性
+
+
+65
+
+
+Prediction is not limited to patterns of lo w-level sensory information like seeing and 
+
+hearing. U p  to now I' ve limited th e discussion to such examples because they are 
+
+the easiest way to introduce this framework for understanding intelligence.  
+
+However, according to Mountcastle's principle, what is true of low-level sensory 
+
+areas must be true for all cortical areas. The human  brain is  more intelligent tha n  
+
+that of other animals because it can make  predictions about more abstract kinds of 
+
+patterns and longer temporal pattern sequences. To predict what my wife will say 
+
+when she sees me, I must know what sh e  has said in the past, that today is 
+
+Friday, tha t  the recycling bin  has to be  put on the curb  on Friday nights,  that I 
+
+d i dn 't  do  i t on  t i m e l a st  week ,  an d  t h a t  her  f a ce ha s a c er t a i n  l o ok .  Wh en  s h e 
+
+opens her mouth, I have a pretty strong pr ediction of what sh e will say. In this 
+
+case, I don't know what the exact words will be, but I do know she will be 
+
+reminding  me to take out the recycling.  The  important  point is that higher 
+
+intelligence  is not a different kind of process from perceptual intelligence. It rests 
+
+fundamentally  on th e same neocortical memory and prediction algorith m. 
+
+
+
+Notice that our intelligence tests are in essence prediction tests. From kindergarten 
+
+through college, I.Q.  tests are based on making pr edictions. Given a sequence of 
+
+numbers, what shoul d  the next number be? Given three different views of a 
+
+complex object, which of the following is al so a view of the object? Word A is to 
+
+word B as word C is to what word? 
+
+
+Science is i t self an exercise in prediction . We advance our k n owledge of th e world 
+
+through a process of hypothesis and testing. This book is in essence a prediction 
+
+about what intelligence is and how br ains work. Even product design is 
+
+fundamentally a predictive  process. Whether designing  clothes or mobi le phones,  
+
+designers and engine ers try to predict what competitors will do, what consumers 
+
+will want , how much a new design will cost, and w h at fashions  will be in dem a nd. 
+
+
+Intelligence is measured by the  capacity  to remember and predict patterns in the  
+world, in cl udin g la nguage, mat h ematics, physical properties of objects, and social 
+situations.  Your brain receives patterns from the outside world, stores them as 
+memories, and makes predictions by combining what it has seen before and what 
+is happening now. 
+
+66
+
+
+A t this point you might be thinking: "I accept that my  brain makes predictions and 
+
+I can be intelligent just lying in the dark. As you point  out ,   I don't need to   act in 
+
+order to understand o r  be in telligent. But ar en't situations like that the exception? 
+
+Are you re ally ar guing that intelligent understanding and behavi or  are completely 
+
+separate? In the end, isn't behavior, no t  prediction, what makes us intelligent? 
+
+After all,  behavior is t h e ul timate  determine r  of survival ." 
+
+
+This is a fa ir question and of course, in th e end, behavior is what matters most to 
+
+the survival of an animal.  Prediction a n d behavior are  not completely separate, but  
+
+their relationship is subtle. First, the neocortex appeared on the evolutionary scene 
+
+after animals already evolved sophisticated  behaviors. Therefore, the survival value 
+
+of the cortex must first be understood in terms of the incremental improvements it 
+
+could bestow upon the animals' existing  behavi ors.  Behavior came first,  then 
+
+intelligence . Second, most of wha t  we s en s e i s h ea v i ly  depende n t on what we do 
+
+and how we move in the world. Therefor e prediction and behavior are closely 
+
+related. Let's look  at these issues. 
+
+
+Mammals evolved a large ne ocortex because it gave them some survival 
+
+advantage, and such an advantage must ultimately be rooted in behavior. Bu t i n 
+
+the beginning, the cortex served to make more efficient use of existing behaviors, 
+
+not to create entirely new behaviors. To  make the case clear, we need to take a 
+
+look at  how our brai ns evolved. 
+
+
+Simple nervous systems emerged not long after multicellular creatures started 
+			出现					生物
+squiggling all over the Earth, hundre ds of millions of years ago, but the s t ory of 
+蠕动
+real intelligence begins more recently wi th our reptilian forebears. The reptiles  
+						爬虫       祖先
+were successful in their conquest of the land. They spread ov er every continent 
+
+and diversified into numerous sp ecies. They had keen senses and well-developed 
+
+brains that endowed them with complex behavior. Their direct descendants,  
+
+today's surviving reptiles, still have them. An alligator, for example, has 
+
+sophisticated senses just like you and me. It has well-developed eyes, ears, nose, 
+
+mouth, and skin. It carries out complex  behaviors including the ability to swim, 
+
+run,  hide,  hunt,  ambush, sun, ne st, and mate. 
+
+
+
+What is the difference between a human  brain and a reptile brain? A lot and a 
+
+little.  I say a little because, to  a rough  approximation, ever yt hing in a reptile's 
+
+brain ex ists in a human brain. I say a  lo t because a human  bra i n has som ething 
+
+really im portant that a reptile does not have: a large cortex. You sometimes hear 
+
+people refer to the "old" brain or the "primitive" brain. Every human has these 
+
+more ancient structures in  the  brain, just  like a reptile. They regulate blood  
+
+pressure, hunger, sex, emotions, and ma ny aspects of movement. When you 
+
+stand, bala nce, and w a lk, f o r example, y o u  are relying heavily on  the old brai n. I f  
+
+you hear a frig htenin g sound, panic, and start  t o  r u n,  t ha t  i s mo st l y y o u r  o l d  b r a i n . 
+
+You d o n't need more  than a re ptile bra i n  to do a  lot of interesting an d useful
+
+things. So what does the neocor tex do if it isn't strictly required to see, hear, and 
+
+move? 
+
+
+
+
+67
+
+
+Mammals are more intelligent tha n  reptiles  because of their neocor tex. (The word 
+
+itself is derived from the Latin words for  "new bark" or "new rind," because the 
+
+cortex literally covers the old bra i n.) The  neocortex first appear ed tens of millions 
+
+of years a g o and onl y  mammals have  one. What makes humans smarter than 
+
+other mammals is primarily the  large area of our neocortex— which expanded 
+
+dramatically only a couple of  million years ago. Remember, the cortex is built using 
+
+a common repeated element. The human cortical sheet is the sa me thickness and 
+
+has very nearly the same structure as th e cortex in our mammal relatives. When 
+
+evolution makes something big very quic kl y, as it did with human cortex, it does so 
+
+by copying an existing structure. We got  smart by adding many more elements of 
+
+a common cortical algorithm. There is a c o mmon misconception that th e human  
+
+brain is the pinnacle of billions of  years of e v ol ution. Th is may be true if we think 
+
+of the entire nervous system. However, the human  ne ocortex its elf is a relatively 
+
+new structure and ha sn't b een around long  enough to undergo much long-term 
+							经历
+evolutionary  refinement. 
+进化
+
+
+H er e t h en  i s t h e c o r e o f  my  a r gu m en t   on how to understand t h e neocortex, and 
+
+why memory and prediction ar e the keys to unlocking th e mystery of intelligence. 
+
+We start with the reptilian brain with no co rt ex. Evolution discovers that if it tacks 
+
+on a memory system (the neocortex) to the sensory path of the primitive brain, 
+
+the anima l  gains a n  a b ility to predict the future. Imag ine th e ol d reptilian brain is 
+
+still doing  its thing,  but now sensory pat erns are simultaneously fed into the 
+
+neocortex.  The neoc ortex stores this senso ry  inf o rmatio n in  its memo ry .  At a 
+
+future time when the anim al encounters the same or  a similar situation, the 
+
+memory recognizes the input as similar and recalls what hap p ene d  i n  the past. The 
+
+recalled memory is compared w i th the sensory input stream. It both " f ills in" the  
+
+current input and pre d icts what will be seen  next. By comparing the actual sensory 
+
+input with recalled memory, the  animal no t only understands where it is but can 
+
+see into the future.
+
+
+
+Now imagine that the cortex not only remembers what the animal has seen but 
+
+also remembers the behaviors the old brai n performed when it was in a similar 
+
+situation. We don't even have to assume the cortex knows the difference between  
+
+sensations  and behavior; to the cortex th ey are both just patterns. When our 
+
+animal finds itself in the same or a similar  situation, it not only  sees into the future 
+
+but recalls which behaviors led to that futu re vision. Thus, memory and prediction 
+
+allow an  a nimal t o  use its existing (old brai n)  beha viors more intelligently. 
+
+
+
+For example, imagine  you're a rat learning to navigate a maze for the first time. 
+						驾驶		迷宫
+Aroused by uncertainty  or hunge r , you wil l   use the skills inherent to your old brain 
+		不确定						固有的
+to explore the new environment— listening,  looking, s n iffing, a nd creeping close to 
+									爬行
+the walls. All this sensory information is used by your  old brain but is also passed
+
+up to your neocortex, where it is stored. At some future time, you fi nd yourself i n 
+
+the same maze. Your neocortex will recognize the current input as  one it has seen 
+
+before and recall the stored patterns representing what happened in the past. In 
+
+essence, it allows you to see a short way into the future. If you were a talking rat, 
+
+you might  say, "Oh, I  recogni z e  this maze,  and  I rememb er this  corner." As your 
+
+neocortex recalls what happened in the past , you will  envision finding the cheese 
+
+you saw last time you were in the maze, and how y o u got to it . "If  I t u rn  rig h t 
+
+here, I know what will happen next. There's a piece of  cheese down at  the end of  
+
+this hallway. I see it in my imagination. " When you scurry through the maze, you 
+
+rely on older, primitive structures to carry  out movem ents like li ftin g  y ou r  feet an d  
+
+sweeping your whiskers. With your (relat ive l y) big neocortex, you can remember 
+
+the places you have been, recognize th em again in the future, and make 
+
+predictions  about what  will happen next. A lizard without a neoc ortex has a much 
+
+poorer ability to remember the past an d may have to search a maze anew every 
+
+time. You (the rat) understand the worl d and th e immediate future because of 
+
+your cortic al memory. You see vivid images of  the rewards and dangers that lie 
+
+ahead of e a ch decision , and so y o u move more effectively through your world. You 
+
+can literally see the future.
+
+
+68
+
+
+But notice  you are  not performing any particularly comp lex or fundamentally new 
+
+behaviors. You are not build ing yourself a hang glider  and flying to the ch eese at 
+
+the end  of  the hal lway. Your neocortex   is forming predicti ons about sensory 
+
+patterns that allow you to see into the  future, but your palette of available 
+
+behaviors is pretty much unaffected. Your  ability to  scurry, clam ber, and explore is 
+
+still a lot like that of a lizard.
+
+
+As the cortex got larger over evolutionary time, it was able to remember mor e and 
+
+more about the world. It could form more  memories, and make more predictions. 
+
+The complexity of those memories and pred ictions als o  increased. But something 
+
+else remarkable happened that led to t he uniquely human ab ilities for intellige n t 
+
+behavi or.
+
+
+
+Human behavior transcends the old basic repertoire of moving around with ratlike 
+		胜过			技能
+skills. We have taken neocortical evolution to a new level. Only humans create 
+
+written and spoken  lang uage.  Only  humans cook their food, sew clothes, fly 
+
+planes, and build skyscrapers. Our motor and planning abilities vastly exceed those 
+
+of our closest animal relatives. How can  the cortex, which was designed to make 
+
+sensory predictions, generate the incredibly sophisticated behavior unique to 
+			发生			复杂的
+human s? A n d how could this superior be havior evolve so suddenly? There are two 
+
+answers to  this question. One is that the neocortical algorithm is so powerful and 
+
+flexible tha t  with a little bit  of rewiring, unique to humans, it can create new, 
+
+sophisticated behaviors. The other answer is that be havior a n d pr edictio n  are two 
+
+sides of the same thing. Although the cortex can envision the future, it can make 
+
+accurate sensory predictions  only  if i t  k n ows what beha viors are being perfor med. 
+
+In the simple example of  the rat looking for the cheese, the rat remembers the 
+
+maze and uses this memory to predict  that it will see the cheese around the 
+
+corner. But the rat could turn left or  turn right; only by simultaneously 
+
+remembering the cheese and the correct behavior, "turn right at the fork," can the 
+
+rat make the prediction of the cheese come true. Although this is  a trivial example, 
+
+it gets to the essence of how sensory prediction and behavior are intimately  
+
+related. All behavior c h anges what we see,  hear, and feel. Most of what we sense 
+
+at any moment is highly dependent on our  own actions. Move your arm in front of 
+
+your face. To predic t seeing your arm,  your cortex has to know that it has 
+
+commanded  the arm to move. If the cortex saw your arm moving without the 
+
+corresponding motor  command,  you woul d be surp rised. The simplest way to 
+
+interpret this would be to assume  your br ain first moves the arm and then predicts 
+
+what it will see. I believe this is wrong. Instead I belie ve the cortex predicts seeing  
+
+the arm, and this  prediction is  what causes the motor commands to make the 
+
+prediction come true. You  think first, wh ich causes you to act to make your 
+
+thoughts come true. 
+
+69
+
+
+Now we want to look at th e changes that led to  human s having a greatly  
+
+expanded behavioral repertoire. Are there  physical differences between a m o nkey's  
+
+cortex and a human's cortex that can ex plain why only humans have lang uage and 
+
+other com p lex beha vi ors? The human  bra i n  is about three times larger than the 
+
+chimpanzee's. But there is more to it than "bi gger is better." A key to 
+
+understand i ng the lea p  in human  behavior is found in the wiring between regions  
+
+of cortex a n d parts of the o l d br ain.  Put most simply, our brains are conne cted up 
+
+different ly. 
+
+
+
+Let's take a closer look. Everyone is familiar with the brain's left and right
+
+hemispheres. But there is another division that is  less well know n, and it is  where
+半球
+we need to look for human differences. All brains, especially large ones, divide the
+
+cortex into a front half and a ba ck half. Scientists use the words anterior for th e
+
+front and  posterior  f o r the bac k . Separating t h e fr on t and t h e back is a  large
+
+fissure called the central sulcus. The back part o f  t h e co rtex contains the sections
+
+where the eyes, ears, and touch inputs arrive. It is where sensory perception
+
+largely occurs. The front part  contains regions of  cortex that are  involved  in high-
+
+level planning and thought. It a l so contains the motor cortex,  the  section of brain
+
+most responsible for moving muscles and therefore creating behavior. 
+
+
+As the primate neocortex became larger over time, the anterior half got 
+
+disproportionately larger, especially so in humans. Compared with  other primates 
+
+and earl y hominids , we have enormous foreheads designed to contain our very 
+
+large anterior cortex. But  this  enlargement alone is  n o t en oug h  to explain  the 
+
+improvement in  our  motor ability as compared with that of other creatures. Our 
+
+ability to make exceptionally complex movements stems from the fact that our 
+
+motor cortex makes many more connectio ns with the muscles  in our bo dies. I n
+
+other mammals, the front cortex plays a le ss direct role in mo to r beh av i o r.  Mo st 
+
+animals rely largely on the older parts of the brain for generating their behavior. In  
+
+contrast, the human cortex usurp ed most of the motor control from the rest of the 
+
+brain. If  yo u damage the motor cortex of a  rat, the rat may not have notic eable  
+
+deficits. If you dam a ge the motor cort ex of a human, he or she becomes 
+
+paralyzed. 
+
+
+70
+
+People often ask me a b out dolphins. Do n't  they have huge brains? The answer is 
+
+yes; a dolphin has a large neoco r tex. Dol phin cortex has a simpler structure (three 
+
+layers versus our six ) than a human neoc ortex, but by any othe r measure it is 
+
+large. It is  likely a dolphin can remember and understand lots  of things. It can 
+
+recognize other individual dolphins. It pr obab ly has an excellent memory of its own 
+
+life, in a n  autobiographical sense. It probably knows every nook a n d cranny of t h e 
+
+ocean it's ever been to. Bu t a l though they  exhibit some sophisticated behavior, 
+
+dolphins don't come close to our own. So  we can surmise their cortex has a less-
+
+dominant  i n fl uence on  their  behavior. Th e po int is tha t  the cortex  evolved primarily 
+
+to provide a memory of the worl d. An animal with a large cortex could perceive the 
+
+world much  as yo u an d I do . B u t humans are uni que in the dominant, ad vanced 
+
+role the cortex plays in our behavior. It  is why we have complex language and 
+
+intricate tools whereas other animals don't.  It is why we can write novels, surf the 
+
+Internet, s end probes to Ma rs, and build cruise ships. 
+
+
+Now we  ca n see the entire picture. Nature first created animals such as reptiles 
+
+with sophisticated senses and sophisticated but relatively rigid behaviors. It then 
+
+discovered that by adding  a memory system and feeding the sensory stream into  
+
+it, the animal could remember past experiences. When the animal found itself in 
+
+the same or a similar situation, the memo ry would be recalled, lea d ing to a 
+
+prediction of what was likely to happen  next. Thus, intelligence and understanding 
+
+started as a memory system that fed predictions into the sen sory stream. These 
+
+predictions  are the es sence of understandin g . T o kn ow so methin g  mean s th at you  
+
+can make predictions a b out it . 
+
+
+
+The cortex  evolved in two directions. First i t  got  large r and mo re sophisticat ed in 
+
+the types  of memories it could store; it  wa s a b l e t o  r em em b er mo r e t h i n g s a nd 
+
+make predictions based on more complex relationships. Second, it started 
+
+interacting with the  motor system of the old brain. To  predict what you will  hear, 
+
+see, and feel next, it needed to know what actions were being taken. With humans  
+
+the cortex has taken over most of our  motor behavior. Instead of just making 
+
+predictions  based on the behavior of the ol d brai n,  the human neocortex directs 
+
+behavior to satisfy its predictions. 
+
+
+
+The huma n cortex is particula r ly lar ge and therefore has a massive memory 
+
+capacity. It is constantly predicting wh at you will see , hear, and feel, mostly in 
+
+ways you are unconscious of. These predictions are our thoughts, and, when 
+
+combined with sensory  input, they are our perceptions .  I call this view of the brain 
+
+the  memory -prediction framework  of intelligence. 
+
+
+
+If Searle's Chinese Room contained a si milar memory system that could make 
+
+predictions  about what Chinese characters  would appear next and what would 
+
+happe n next in the  story,  we could say wi th confidence that the room understood 
+
+Chinese and understood the story. We ca n now see where Alan Turing went 
+
+wrong. Prediction,  not  beha vior ,  is the proof  of i n telli gence. 
+
+
+
+
+We are now ready to  delve into the details of this new idea of the memory-
+
+prediction framework of the brain. To m a ke predict i ons of future events , your 
+
+neocortex has to store sequences of pattern s. To recall the appropriate memories, 
+
+it has to retrieve patterns by their sim ilarity to past patterns (auto-associative 
+
+recall). And, fina lly, memories have to be  stored i n  an invariant form so that th e 
+
+knowledge of past even ts can be applied to  new situatio ns that are similar but not 
+
+identical  to the past.  How the physical cortex accomplishes these tasks, plus a 
+
+fuller exploration of its  hierarchy, is  the s u bject of the next chapter. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,3692 @@
+72
+
+
+Trying to figure out how the brain works is  li ke solvin g a giant jigsaw puzzle. You 
+									拼图
+can approach it i n  one of two ways. Using t h e "top-d own" approa ch, you star t with 
+
+the image of what the solved puzzle should look like, and use this to decide  which 
+
+pieces to ignore and which  piec es to search for. The other approach is "bottom-
+
+up," where you focus  on th e individual pieces themselves. You study them for 
+				个体
+unusual features and  look f o r close matches with other puzzle pieces. If yo u don't 
+
+have a pic t ure of the puzzle's solution, the bottom-up method is sometimes the 
+
+only  way to proceed.
+
+
+
+The "understand-th e-brain" jigsaw puzzle is particularly  daunting. Lacking a good 
+								使人气馁
+framework for understanding intellige n ce, scientists have been forced to stick with 
+
+the bottom-up approach. But the  task is Herculean, if not impossible, with a puzzle 
+					困难的
+as complex as the  brain. To get a sense of   the diffic ulty, imagine a jigsaw puzzle 
+
+with several thousand pieces. Many of the pieces can be  interpreted multiple ways,  
+							解释
+as if each had an image on both sides but  only one of them is the right one. All the 
+
+pieces are poorly shaped so you can't be ce rtain if two pieces fit together or not. 
+
+Many of them will not be used in the ultimate solution , but you don't know which 
+
+ones or how many. Every month new pieces arrive in the mail. Some of these new 
+
+pieces replace older ones, as if the puzzle maker was sayi ng, "I know you've been 
+
+working with these old puzzle pieces for a  few years,  but they turned out to be 
+
+wrong. Sorry. Use these new ones instead unt il future notice." Unfortunately, you 
+
+have no idea what the end result will look  like; worse, you may have some  ideas,  
+
+but they are wrong.
+
+
+
+This puzzle analogy is a pretty  go od descriptio n of th e difficulty  we face in cre a ting  
+
+a new theory of the cortex and intelligence. The puzzle pieces  are the biological  
+
+and behavioral data t h at scientists have collected for well over one hundred years. 
+
+Each month new papers are published, creating additional  puzzle pieces. 
+
+Sometimes the data from one scientist contradict the data from another. Because 
+
+the data can be interpreted in differ ent ways, there is disagreement over 
+		
+practically everything. Without a top-down framework,  there is n o  consensus on 
+
+what  to  l oo k  f o r,  wh a t  i s mo st  i m p o r t ant, or how to interpret the mounta i ns of 
+
+information that have accrued. Our understanding of t h e brain has been stuck in 
+
+the bottom-up approa ch. What we  need is a top-down framework. 
+
+
+
+The memory-prediction model can pla y  t h is  role. It  can show us how t o start 
+
+putting pieces of the puzzle together. To  make predictions, your cortex needs a 
+
+way to memorize and store knowledge  about sequences of events. To make 
+
+predictions  of novel events, the cortex must form invariant representations . Your  
+
+brain needs to create and store a model of  the  world as it is, independe n t from  
+
+how you see it under changing circumstances. Knowing wh at the cortex must do
+
+guides us to understanding its architecture , especially its hierarchical design and 
+
+six-layered form.
+
+
+As we explore this new fram ework, presented here for the first time, I will get into 
+					提出
+a level of detail tha t  may be  challenging for some readers. Many of the concepts 
+
+you are about to encounter are unfamiliar, even to experts in neuroscience. But 
+		遭遇
+with a bit of effort, I believe anyone  can learn the fundamentals of t his new 
+
+framework. Chapters 7 and 8 of this book  are far less technical and explore the 
+
+wider implications of th e theory .
+
+
+
+Our puzzle - solvi n g journey can now turn to looking for biological detail s that 
+
+support the memory-prediction  hypothesis; this is like  being able to set a side a  
+				假设
+large percentage of the puzzle pieces, kn owing that t h e relatively few remaining 
+
+pieces are going to reveal the ultimate solution. Once we know what to look f o r, 
+			现实
+the task becomes manageable. 
+
+
+At the same time, I want to stress that this  new framework is  incomplete. There 
+
+are many things I don't yet understand. But there are many things I do, based on 
+
+deductive reasoning, experiments carried out in many different laboratories, and 
+演绎       推理							实验室
+known anatomy. In the  last  five to  ten years, researche rs from many s u b-
+
+specialties in neuroscience have been exploring ideas similar to mine, al th ough 
+
+they use different terminology and have not, as far as I know, tried to put these 
+
+ideas into  an overarching framework. They do talk about top- down and bott om-up 
+		包罗万象的
+processing, how patterns propagate through sensory regions  of  the brain, and how 
+			传送
+invariant representations might be important. For example, Gabriel Kreiman and 
+
+Christof Koch, neuros cientists at Caltech,  with the neurosurgeon Itzhak Fr ied at 
+
+UCLA, have found cells that fire whenever a person sees a picture of Bill Clinton. 
+
+One of my goals is to explain how those Bill  Cli n to n cells come into being. Of 
+
+course, all theories need to  make predictions that can be tested in the laboratory. 
+
+I've suggested a number of these predictions in the appendix. No w that we know 
+							附录
+what to look fo r,  this  very complex  system won't look so complex  a n ymore. 
+
+
+In the following sections of th is chapter, we will probe deeper and deeper into  how 
+							探查
+the memory -prediction model of the cortex  works. We will start with the large -
+
+scale structure and large-scale function of the neocortex and work toward 
+
+understanding the smaller pieces and  how they fit into  th e big pictu r e.
+
+
+
+74
+
+
+Earlier, I painted a picture of the cortex  a s a sheet of cells the size of a dinner 
+
+napkin, as thick as six business cards,  where the connections between various  
+
+regions give the whole thing a hierarchical structure. Now I want to draw another  
+
+picture of the cortex that highlights its hierarchical connectivity. Imagine we cut up 
+				突出
+the dinner napkin  into separate functional regions—  sections of cortex  that 
+
+specialize in certain tasks— and stack those regions on top of each other like 
+专门从事
+pancakes. If  yo u cut through this  stack and  view it from the side, you get figure 1. 
+饼
+The cortex doesn't actually  look like this, m i nd you,  but the image will help you 
+
+visualize how the information is flowing. I have shown four cortical regions in 
+
+which sensory input en ters at the bottom , the lowest region, and flows upward  
+
+from region to  regi on. Notice information flows both  ways. 
+
+
+
+Figure 1 represents the first four visual regions involved in the recognition of 
+
+objects— how you come to see and recognize a cat, a cathedral, your mother , the 
+
+Great Wall of China, you name it . Biologists label them  V1, V2, V4, and IT . Visual 
+
+input represented by the up arrow at the bottom of  figure 1 originates i n  the 
+		代表		箭头
+retinas in both your eyes and  is relayed to V1. This input can be thought of as the 
+				 传播
+ever-changing  patterns carried on approximately one million axons, bundled 
+					大约			轴突
+together to form your optic nerve .  
+			光学神经
+
+
+We talked earlier about spatial and temporal patterns, but it is worth refreshing 
+
+your memory because we will be referring to them here often. Recall that  your 
+
+cortex is a big sheet of tissue that contains functional areas that specialize in 
+
+certain tasks. These regions are connected  together by large bundles of axons or 
+
+fibers that transfer information from one   region to another, all at once . At any 
+
+point in time, some set of fibers will fire electrical pulses, again called action 
+
+potentials or spikes, while othe rs will remain quiet. The collective activity on a 
+电冲动
+bundle of fibers is what is meant by pattern .  The pattern arriving at V1 ca n be 
+
+spatial, as when your eyes fall for an insta nt on a n  ob ject, and temporal, as when 
+
+your eyes move acros s the object. 
+
+
+
+75
+
+
+As noted earlier, about three times a second your eyes make a quick m o vement, 
+
+called a saccade, and a stop, called a fixation . If a scientist were to fit you with a 
+
+device that  tracks eye movements, you'd  be surprised to discover how jerky your 
+									不平稳的
+saccades are, given that you experience vision as continuous and stable. Figure 2a 
+眼跳跃，眼急动，眼扫视
+shows how one person's eyes moved while looking at a face. Notice how the 
+
+fixations are not random.  Now imagine you co uld see th e pattern of activity 
+
+arriving  a t V1 f r o m  t hi s p er so n 's e y es.   It c h anges completely with each saccade. 
+
+Several times a second the visual cortex sees a completely new pattern. 
+
+
+You might think, "OK, but it's still the same  face, just shifted." There is some truth 
+
+to this, but not as much as you think.  The light receptors in your retina are 
+							受体
+unevenly distributed. They are densely concentrated in the fovea at the center, 
+不均衡    分布			紧密的   集中			凹
+and get gradually sparser out  in the periphery. In contrast, the cells in the cortex 
+		逐步的  稀少的		外围		对比
+are evenly distributed. The result is that the retinal image relayed onto the primary 
+    均匀   分布							传播
+visual area, V1, is highly distorted. When  your eyes fixate on the nose of a face 
+			扭曲的
+versus on an eye of the same face, the visual input is very differe n t, as though it is 
+対
+being viewed through a distorting fisheye lens that is jerking violently to and  fro. 
+
+Yet when you see the face, it doesn't appear distorted, and it doesn't appear to be 
+
+jumping around. Most of the time you aren 't even aware that the retinal pattern 
+
+has changed at all, let alone so dramatically. You just see "face." (Figure 2b shows 
+
+this effect on a view  of a beach landscape.) This is  a restatement of the mystery of 
+
+invariant representation we talked abou t in chapter 4, on  memory. What you 
+
+"perceive" is not what V1 sees. How does your  b r a i n  ever  know it  is l o o k in g  a t  t h e 
+感觉
+same face, and w h y don't you know the inputs are cha n gi ng and distorted? 
+
+
+
+I f  we stick a  probe i n t o  V1 and watch  h ow individual  cells respond,  we f in d  t h a t  
+
+any particular cell fires only in response to  visual input from a tiny part of your 
+				只是回应	 视觉输入	微小的   部分
+retina. This experiment has been  done many times and is a mainstay of vision 
+								支柱
+research. Each V1 neuron has a so-called receptive field that is highly specific to a  
+					  善于接受的领域          	分化的
+minute part of your total field of vision— that is, the whole world out there in front 
+微小的
+of your eyes. V1 cells seem  to have no  knowledge at all about the faces, cars, 
+
+books, or other meaningful objects you see all the time; all they " k now" about is a 
+
+tiny, pinhole-size portion of the visual world.
+	小孔		部分
+
+
+76
+
+Each V1 cell is also  tuned for  specific kinds of input patterns . For instance, a 
+	每一个			专门      种类的   输入
+particular cell might fire vigorously when  it sees a line or an edge slanted at thirty  
+									倾斜
+degrees within its receptive field. That edge has little meaning in and of itself. It 
+			易于接受
+could be part of any object— a floor board,  the trunk of a distant palm tree, the 
+
+side of a letter M, or any of seemingly infinite other possibilities .  With each new 
+
+fixation, the cell's receptive  field comes to rest on a  new and entirely different 
+						安置于
+portion of visual space. On so me fixations the cell wil l  fire strongly , on others it will  
+部分
+fire weakl yor  not  at  a l l .  Thus each  time y ou  ma ke a  saccade,  many  cells in  V1 are  
+
+likely to change their activity. 
+
+
+However, something magical happens if   you stick a probe into the top region 
+
+shown  in  figure 1 , region IT.  Here we find some cells that  become active and  stay 
+
+active when entire objects appear anywhere  in the visual field. For example, we 
+
+might find a cell that fires robustly whenever a face is  visible. This cell stays active 
+			强烈激活的
+as long as  your eyes  are looking at a face anywhere in your field of vision. It  
+
+d o esn 't  s wi t ch  o n  a nd off  wi t h  e a ch  s a ccade as do  the c ells in  V1.  This IT cell 's  
+
+receptive field covers most of the visual  space and is tuned to fire when it sees 
+
+faces. 
+
+
+Let's recast the mystery. In the course of  spanning four  cortical stages from retina 
+
+to IT , cells have changed from  being rapidly changing, spatially specific, tiny-
+	细胞种类变化	从	快速改变	  空间的专门细胞
+feature recognition cells, to  being constantly firing, spatially nonspecific, object 
+小特征识别                 到							对象识别
+recognition cells. The IT cell tells  us we  are seeing a face somewhere in our field 
+
+of view. This cell, com m only called a face  ce ll, will fire no matter whether the face 
+
+is tilted, rotated, or partially occluded. It  is part of an invariant representation for 
+
+"face." 
+
+
+
+Writing these words makes it  seem so simple. Four quick stages and, voila  , we 
+
+recognize a face. No  computer program or mathematical formula has solved this 
+
+problem with anywhere near  the robustness and generality of a human brain. Yet 
+
+we know the brain solves it in a few steps,  so the answer can't be that difficult. 
+
+One of the  primary goals of th is  chapter is to explain how  a face cell, Bill Clinton's 
+
+or otherwise, comes about .  We will get ther e, but we have to cover a lot of other 
+
+ground first.
+
+
+Take another look at figure 1. You can see t h at information als o  flows from higher 
+
+to lower regions via a network of feedback connections. These are bundles of 
+
+axons that go from higher regions like IT to lower regions like V4, V2, and V1. 
+
+Moreover, there are as many （if not more） f eedback connections in visual cortex as 
+而且
+there are feedforward connections. 
+
+77
+
+
+For many years most scientists ignored  these feedback connections. If your 
+
+understanding of the brain focused on how the cortex took input, processed it, and 
+
+then acted on it, you didn't need feed back. All you needed were feedforward 
+
+connections leading from sensory to motor sections of the cortex. But when you 
+
+begin to r ealize that the cortex's core function is to make predictions, then you 
+
+have to put feedback into  the model; the brain has   to send information flowing 
+
+back toward the region that first receives the inputs. Prediction requires a 
+
+comparison between what is happening and what you expect to happen. What is 
+
+actually happening flows up, and  what  you expect to happen flows down. 
+
+
+
+The same feedforward–feedback  process is  occurring in all your cortical areas 
+
+involving all your senses. Figu re 3 shows our visual pancake stack alongside similar 
+				
+stacks for hearing and touch. It also sh ows a few higher cortical regions, the 
+
+association areas, that receive and integrate inputs from a number of different 
+			接受        整合
+senses— such as hearing plus touch plus vision. While figure 1 is  based on known 
+
+connectivity between four  known regions of  cortex, figure 3 is a purely conceptual 
+									纯粹的 概念上
+diagram, with no attempt to capture actual cortical regions. In a real human brain 
+
+dozens of cortical regions are interconnected in all sorts of ways. In fact, the 
+
+majority o f  the human cortex  consists of association areas. The cartoon 
+
+characterization shown here and in subsequent figures is meant to hel p  yo u 
+描述				后来的
+understand what is goi n g on without  misleading you in any significant way. 
+
+
+The transformation— from fast changing  to slow changing an d fr om spatial l y 
+
+specific to spatially invariant— is well documented for vision. And although there is 
+						文档化的
+a smaller body of evidence to prove it, ma ny neuroscientists believ e you'd find the  
+		证据
+same thing happenin g in all the sensory areas of your co rtex, not just in vision. 
+
+
+
+Take hearing. When s o meone speaks to  you, the changes in sound pressure occur 
+
+very rapidly; the patterns entering the  primary auditory area, ca lled A1, c h ange 
+
+just as rapidly.  Yet if  we could poke a probe higher up into yo ur auditory stream, 
+
+we would find invariant cells that respond to words or even, in some cases,  
+
+phrases. Your auditory cortex might have a group of cells  that fire when you hear 
+
+"thank  yo u," and an ot her gr oup  of cells  that fire for the phrase "good morning." 
+
+Such cells would stay active  for the whole length of an utterance, assuming that 
+
+you recognize the phrase. 
+
+
+
+78
+
+
+Patterns received by the first  a u di t o r y  a r ea  c a n  v a r y  wid el y .  A  wo rd  c a n  b e s p o k en 
+
+with different accents, in different pitches,  or at different speeds. But higher up in  
+
+the cortex, those low - level features don't  matter; a word is a word regardless of 
+
+the acoustic details. The same thing goes for music . You can hear "Three Blind  
+	声学
+Mice" played on the piano, on the clarinet, or sung by a child, and your A1 region 
+
+receives a completely different pattern in each case. But a  probe stuck into a 
+
+higher auditory region should find cells that fire steadily every time "Three Blind 
+
+Mice" is being played , without  concern for  the instrument, tempo, or  other details. 
+
+This particular experiment has not been done, of course, since it's too invasive to 
+
+performon  humans,  but, if you accept that there must be a common cortical  
+
+algorithm, you can be sure  such cells exist. We see the same kind of feedback,  
+
+prediction, and invariant recall in auditory  cortex as we saw in the visual system.
+
+
+Finally, touch should  behave the same way. Again, the  definitive experiments have 
+
+not been done, although research is under way using monkeys  in high-resolution 
+
+brain-imaging machines. As I sit  here writing, I ha ve a  pen in  my  hand . I touch the 
+
+pen's cap and my finger caresses its m etal  pocket clip. The patterns entering my 
+
+somatosensory cortex from the touch sensors  in my skin are changing rapidly as 
+
+my fingers move, yet I perceive a constant pen. At one moment I might flex the 
+
+metal clip with my fingers, the next moment I  d o s o  wit h  a  d if f erent set of fingers, 
+
+or even with my lips.  These are  very different inputs, arriving at different location s 
+
+in the primary somatosensory cortex. Howe ver, our probe would once again find 
+
+cells in regions several steps removed  from the primary input that respond 
+
+invaria n tl y  to "pen." Th ey would  stay active while I fondled th e pen and wouldn't  
+
+care exactly which fingers or parts  of  my  body I used to  touch it. 
+
+
+
+Think of t h is. With  hearing and touch  you can't recognize an object with a  
+
+momentary input. The pattern coming from  your ears or the touch sensors in your 
+
+skin does not contain sufficient information at any one po int in time to tell you 
+			足够的
+what you are hearing or feeling. When you perceive a series of a u ditory patterns  
+
+such as a  melody, a spoken word, or a slamming door , and when  y o u perceive a 
+
+tactile object  s u ch  a s a  p en ,  t h e o n ly  wa y  t o  d o s o  i s b y  u si n g t h e f l o w o f  i n pu t  
+
+over time.  You can't  recognize  a melody  by hearing one not e, and y ou can't 
+
+recognize the feel of a pen with one touch. Theref ore the neural activity  
+
+corresponding to the mental perception of objects, such as spoken words, must 
+
+last longer  in time than the in dividual in put patterns. This is just another way of 
+
+reaching the same conclusion that the higher up in the cortex y o u go, the fewer 
+
+changes over time you should see. 
+
+79
+
+
+Vision is also a time-based input stream and work s in  the  same general way as 
+
+hearing and touch, b u t because we have the ability to  recognize individual  objects 
+
+with a single fixation, it confuses the picture. Indeed , this ability to recognize  
+				是困惑
+spatial patterns during a brief fixation has for many years misled researchers who  
+			简短的					带错方向
+work on machine and animal vision. They have generally ignored the critical nature 
+									决定性的
+of time. While humans can, under laboratory conditio ns, be made to recognize  
+				实验室
+objects without  moving their   eye s, this is not the norm.  Normal vision, such as you  
+						
+reading this book, requires constant eye movement. 
+
+Integrating the Senses
+整合
+
+
+
+What about the association areas? So far, we have seen how info rm ation f l ows up 
+
+and  down a particular sensory area of  cortex. The downward  flow fills in t h e 
+							向下
+current input and makes predictions about  wh at we will experience next. The s a me 
+
+process occurs between senses— that is, between sight, sound, and touc h. For 
+
+example, s o mething I hear can lead to a prediction of what I should see or feel. 
+
+Right now I am writing i n  my bedroom.  Our family cat, Keo, has a collar that 
+
+jingles as she walks. I hear her jingle  approaching from the hallway. From this 
+
+auditory input I recognize my cat, turn  my head toward the hallway, and in walks 
+
+Keo. I expected to see her based on her sound. If Keo hadn't walked in, or another 
+
+animal had appeared, I would have been s urprised. In this exam p l e,  an  au d i to ry 
+
+input first created an audito ry r ecognit ion of Keo. The  info rmatio n flowed up th e 
+
+auditory hierarchy to an association area  that connects vision with hearing. The 
+
+representation then flowed ba ck down the auditory and vi su al hierarchies, leading 
+
+to both auditor y  a n d visual pred ictions. Figure 4 illustra t es this. 
+
+
+This kind of multisensory prediction is occurring all th e  time. I bend out the clip on 
+
+my pen, I feel the clip slip from my fingers, and I expect to hear a snapping sound 
+
+as the clip hits the barrel of the pen. If  I didn't hear the snap following the release 
+
+of the clip, I would be surprised. My brain predicts pr ecisely when I will hear the 
+
+sound and what it wil l be like. For this prediction to happen, information flowed up 
+
+the somatosensory c o rtex and flowed ba ck  down bo th the  somatosensory and 
+
+audito ry  co rtex leading to  a  predi ction of  he aring an d feeling a snap. 
+
+
+
+Another example: I ride my bicycle to  work several days a week. On those 
+
+mornin gs I  go in to  my  garage , pick up my bicycle, t urn it around, and roll it out 
+
+into the driveway. In the process of doin g so, I receive many visu al, tactile, and 
+	车道
+audito ry inputs. The bicycle hits the doorjamb, the chain rattles, a pedal hits my 
+
+leg, and the wheel spins as it rubs the floor. In the process of carrying my bicycle 
+
+out of t h e garage, my brai n encounters   a barrage of si ght,  sound, a nd to uch 
+				遭遇
+sensations. Each sensory in put stream makes predictions for the others  in an 
+
+amazingly coordinated way. Things I see lead to precise predictions about things I 
+
+will feel and hear , and the other way arou nd. Seeing th e bicy cle hit the doorjamb 
+
+makes me expect to hear a particular sound and feel the bicycle bounce upward. 
+
+Feeling the pedal hit my leg prompts me to look down and predic t to see the pedal 
+
+right where I felt it. The predictions are so precise that I would notice if any of  
+
+these inputs were even slight ly uncoordinated or unus ual.  The information 
+
+simultaneously flows up an d down the sensory hierarchies to create a unified 
+
+sensory experience involving prediction in all senses. 
+
+
+
+
+
+
+
+80
+
+
+Try this experiment. Get up from reading and do so methin g, any activity that 
+
+involves m o vi ng your bod y  a n d manipulating an  o b ject .  Fo r example, go t o  a sink 
+					操纵						下沉
+a n d  t u r n  on  t h e faucet .  No w,  as y o u  do   this, try to notice  every sound, touch 
+				旋塞
+sensation, and changing visual  input. You will have to concentrate. Each action is 
+
+intimately tied to sights, sounds, and to uch sensations.  Lift  or turn the faucet lever 
+
+and your brain expects to feel  pressure  on your skin and resistance in your 
+
+muscles. You expect to see  and feel the lever move, an d you expect to see and 
+
+hear the w a ter. As the water hits the sink, you expect to hear a different so und 
+
+and to see and feel the splash. 
+
+
+
+Every footstep makes a sound, wh ich you  always anticipate, whether consciously 
+
+or not. Eve n  the simple act of holding this book leads to many sensory predictions. 
+
+Imagine if you felt and heard the book close but visually it stayed open. You would  
+
+be shocked and confused. As we saw with the altered door thought experiment in 
+
+chapter 5, you make  constant predictio ns about the  world that are coordinated 
+
+across all your senses. When  I concentrate on all the little sensations, I am  
+
+amazed at how fully integrated our perceptual predictions are. Although these 
+
+predictions  may seem simple or trivial, bear in mind how pervasive they are and 
+
+how the y  c a n on ly  co me abou t by massive coordination of patterns streaming up 
+
+and down the cortical hierarchy.
+
+
+
+81
+
+
+
+Once you understand how interconnected the senses are, you are drawn to 
+
+con cl ud e that the enti re n eo co r tex,  all  the sensory and association areas, acts as 
+
+one. Yes, we have a visual cortex, but  it is just one component of a single, 
+
+overarching sensory system— sights, s ounds, to uch, and m o re combin ed, a l l 
+
+flowing up and down a single  multibranched  hierarchy . 
+
+
+
+A further point :  All pr edictions are learned by experience. We expect pen clips to 
+
+make snapping sounds in the present and future because they have done so in the 
+
+past. Bicycles banging in garages  look, feel, and sound to us in predictable ways. 
+
+You were not born  with any of this kn owledge; you learned it thanks  to the 
+
+incredibly large capacity of  your cortex for remember ing patterns. If there are 
+
+consistent patterns am ong th e inputs flowin g into your brain, your cortex will use 
+
+them to pr edict future events. 
+
+
+Althou gh figures 3 and 4 do not depict  the  motor cor t ex, you ca n ima g ine it as  
+				描述
+another hier archical stack of pancakes, just like a sens o ry stack, connected to the  
+
+sensory systems via association areas (altho ugh with more intimate connections to 
+
+the somatosensory cortex for car r ying out body movements). In this fashion, the 
+
+motor cortex behaves in almost the same way as a sensory region. An input in any 
+
+sensory area can flow up  to an association area, wh ich can lead t o  a pattern 
+
+flowing do wn the motor cortex , resu ltin g in  beh a v io r . Ju st as a visual input can 
+
+lead to patterns flowin g down th e audito ry  and touch parts of the cortex, it can  
+
+also lead to a pattern flowing down the motor section  of cortex. In the  former 
+
+case, we interpret these downward-flowing patterns as predictions. In the motor 
+
+cortex we interpret them as mo tor comm ands. As Mountcastle pointed out, t h e 
+
+motor cortex looks like the sensory cortex. Therefore, the way the cortex 
+
+processes downward-flowing sensory predic tions is s i milar to  how it processes 
+
+downward-flowing motor comma nds.
+
+
+We will see shortly that there are no pure sensory or pure motor areas in the 
+
+cortex. Sensory patterns simultaneously flow in anyw here and everywhere— and 
+
+then flow back down any area of the hi er archy, leading to  pre d ictions or motor 
+
+behavior. Although the motor co rtex has some special attributes, it is correct to  
+
+t h i nk  of  it as j u st  pa r t  of  one large hierarchical memory-prediction system. It's 
+
+almost like another sense. Seeing, hearing, t o uching, an d acti ng are profoundly  
+
+intertwined. 
+
+A New View of V1
+
+The next step in untangling the  architecture of the co rtex requires looking at the 
+			解开
+cortical regions in a new way. We know  the higher regions of cortical hierarchy 
+
+form invariant representations.  But why s hould this important function only occur 
+
+at the top? With Mountcastle's notion of  symmetry in the back of my mind, I 
+				对称性     见解
+started to explore the different ways  cortical regions might be connected. 
+
+
+
+
+82
+
+
+Figure 1 portrays the  four classic region s of the visual path way, V1, V2, V4, and 
+	描绘
+IT, with V 1 at the bottom of the stack overlain by V2, V4, and, at the to p,  IT. 
+					在。。上面
+Conventionally,  each  is considered  and shown as a single, continuous region .  Thus 
+照惯例								连续的
+all V1 cells supposedly do similar things, although with different parts of the visual 
+
+field. All of V2's cells are  doing the same kind of task . A ll V4 cells are similarly 
+
+specialized. 
+
+
+In this traditional view, when the image of a face enters the V1 region, the cells 
+
+therein create a rough sketch of the face in terms of simple line segments and 
+在其中		粗糙的  描述
+other elementary features. The sketch is handed  up to V2. Then V2 does its own 
+
+thing with the image , making a slightly more sophisticated analysis of the facial 
+
+features, and passes that up to V4, and so  on. Invariance, and the recognition of 
+						不变性
+the object, is only achieved when  the input r each es the top, IT. 
+			取得的
+
+
+Unfortunately, there are some problems with this  view of early cortical regions like  
+
+V1, V2, and V4. Again, why should invariant representations only  show up in IT? If 
+
+all cortical regions perform the same  function, why s h ould IT be  special?
+
+
+
+Seco n d ,  a  face can  appea r  on  t he lef t  sid e o f  your V 1 or  o n  the right side of your  
+
+V1 and yo u would recogniz e it.  But experiments clearly show that nonadjacent 
+									不相邻的
+patches of V1 are not directly connected; th e left side of V1 can't know directly 
+补丁
+what the right side is seeing. Step back and think about  this . Different parts of V1 
+
+are obviousl y doing something similar since they all can participate in recognizing a 
+
+face, but at the same time they are physically independent. Subregions or clusters  
+								子区域
+of V1 are physically  disconnected but do the  same thing.
+		身体上  不相连的
+
+
+Finally, experiments show that all higher regions of cortex receive converging  
+
+inputs from two or more sensory region s below themselves ( f igure 3). In real 
+
+brains,  a dozen region s can converge on  an  association area. B u t in  traditional 
+				聚合
+renderings, lower sensory regions like V1,  V2, and V4 appear to have a different 
+描述
+kind of connectivity.  Each looks as though  it  has but one source of  input —  only 
+							仅仅
+one arrow flowing up from the  bottom— with no  obvious convergence of inp u ts 
+								聚合
+from different regions.  V2 got its input from  V1 and that was it. Why shoul d  some 
+
+cortical regions receive converging inp u t an d others not?  This, too, is inconsistent  
+
+with Mount castle's idea of  a comm on c o rtic al al gorithm. 
+
+
+
+For these and other reasons I ha ve come to believe that  V1, V2, and V4 should not 
+
+be viewed as single cortical regions. Rath er, each is a collection of many smaller 
+
+subregions. Let's go back to  the dinner napkin analogy—  a flattened version of the 
+
+entire cortex. Let's say we were to use a  pen to mark all the functional regions of 
+
+the cortex on our cortical napkin. The largest region by far is V1, the primary visual 
+
+area. Next  would be V2. They are huge compared to most regions. What I am 
+
+suggesting is that V1  should actually be considered as  many very small regions. 
+
+Instead of one big area of the napkin,  we would draw many small areas that 
+
+together would occupy the  area normally  assigned to V1. In  other words,  V1 is 
+
+made up of numerous separate little cortical areas that are only  connected to their 
+
+neighbors indirectly, through  regions higher up in the hi erarchy. V1 would have the 
+
+largest number of small subregions of any visual area. V2 woul d also be composed 
+
+of fewer, slightly larger subregions. The sa me would be true of V4. But by t h e time  
+
+
+you get to the top region, IT, yo u really wo uld have a  single region, which is wh y  
+
+IT cells have a bird's-eye view of the entire visu al world. 
+
+
+
+83
+
+
+There is a pleasing symmetry here. Take a look at figure  5, which shows the same 
+			对称性
+hierarchy as figure 3,  except it shows the sensory hierarchies as I just described. 
+
+Note that now the cortex looks similar everywhere. Pick any region and you will  
+
+find many  lo wer region s prov id ing converging sensory input. The receiving region 
+
+sends projections back to its input region s telling them  what patterns they should 
+
+expect to see next. Higher association areas unite information from multiple senses 
+
+such as vision and touch. A lower region like a subregion of V2 unites the 
+
+information from separate subr egions within V1. A region doesn't  know— indeed it 
+
+can't know — what any of those inputs mean . A V2 subregion doesn't need to know 
+
+that it is handling visual  input  from multiple parts of V1. A n  association area 
+
+d o esn 't  n eed  t o  k no w t h a t  i t  i s h a n d li n g   input from  vision and hear ing. Rathe r , the 
+
+jo b  o f  a n y   co r t i ca l  r eg i o n  i s t o  f ind  o u t   how its inputs are related, to memorize the 
+
+sequence of correlations between them, an d to use this memory to predict how 
+		关连
+the inputs  will behave in th e futu re. C o rtex is cortex. The same process is 
+
+happe ning everywhere: a common cortical algorithm .  
+
+
+
+This new hierarchical depiction helps us understand the process of creating 
+
+invariant representations. Let' s look more closely at how  it works in vi sion. At the 
+
+first level of processing, the left  side of visual space is different from the right side 
+
+of visu al space in the same way that hear ing is di fferent from se eing. Left V1 and 
+
+right V1 form the sa me kind of representations only  because they have been 
+				呈现
+exposed to similar patterns in life. Like  hearing and seeing, they can be viewed as 
+暴露
+separate sensory streams, which get united higher up. 
+
+84
+
+
+Similarly, t h e small regions with in V2  and V4 are association areas of vision.  
+
+(Subregions may overlap, but this would not fundamentally change the way these 
+		重复
+regions work.) Interpreting the visual cortex this   way does not contradict or 
+									否定
+change anything we know about its anatomy. Information flows up and do wn all 
+
+branches of the hierarchical memory tree. A  pattern  in  th e left  visua l  field  can lead  
+
+to a  prediction in the right  visual field in exactly the sa me way that my cat's bell 
+
+can lead to a visual pr ediction  that she is  entering my bedroom. 
+
+
+The most important result of this new depiction of the cortical hierarchy is that 
+
+now we can say each and every region of cortex forms invariant representations. 
+
+In the old way of thinking, we didn't  have complete invariant representations— 
+
+such as faces— until inputs reached the top la yer, IT, which  sees the whole visual 
+
+world. Now we can say that invariant representations are ubiquitous. Invariant 
+
+representations are formed in every cortical  region. Invariance  isn't something that 
+
+only  magica lly a ppears when we get t o  higher regions  of the  cortex, such as IT. 
+
+Every region forms invariant representations drawn from the input areas 
+
+hierarchically below it . Thus the  subregions of V4, V2, and V1 create invariant 
+
+representations based on what  flows into th em. They  may only s ee a tiny part of 
+
+the world, and the vocabulary of sensory objects they deal  with  is more basic,  but 
+
+they are performing the same job as IT.  Also, association regions above IT form  
+
+invariant representations of patterns from  multiple senses. Thus all regions of 
+
+cortex form invariant representations  of the world underneath them in the 
+
+hierarchy. There is beauty in this. 
+
+
+Our puzzle has shifted. We no longer ha ve to ask how invariant representations 
+
+are formed in four steps from bottom to top.  R a t h er we h a v e t o  a sk  h o w i n va r i a nt 
+
+representations are formed in  every single cortical region. This makes perfect  
+
+sense if we take the existence of a comm on cortical algori thm  seriously. If one 
+
+region stores sequences of patterns, every region stores sequences. If one region 
+
+creates invariant representations, all regions create invariant representations .  
+
+Redrawing the cortical hierarchy along  the lines shown in figure 5 makes this 
+
+interpretation possible .  
+
+
+A Model of the World
+
+
+
+You can thin k abou t th e world, move around  in the world, and make predictions of 
+
+the future because your cortex has built a model of the world. One of the most 
+
+importa n t concepts in this book  is that  the cortex's hierarchical structure stores a  
+
+model of the hierarchical structure of the real world. The real world's nested 
+									嵌套
+structure is  mirrored by the nested structure of your cortex. 
+		反射
+
+
+What do I mean by a nested or hierarchical structure?  Think about music .  Notes 
+
+are combined to form intervals. Intervals are combined to form melodic phrases.  
+			间隔					有旋律的     句子
+Phrases are combined to form melodies  or songs. Songs are combined into 
+
+albums. Think about written la nguage. Letters are combined   to form syllables. 
+					字母				音节
+Syllables are combined to fo rm words. Words are combined to form clauses and 
+
+sentences. Looking at it the other way ar ound, th in k about your  neighborhood. It 
+
+probably contains roads, schools,  and houses. Houses have rooms. Each room has 
+
+walls, a ceiling, a floor, a door, and one  or more windows. Each of these is  
+
+composed of smaller object s. Windows are made of gl ass, frames, latches, and 
+
+screens. Latches are made fr om smaller pa rts like  screws. 
+
+
+85
+
+Take a moment to look up at  your surroundings. Patterns from the retina entering  
+
+your primary visual  cortex are being combined to form line segments. Line 
+
+segments combine to form more complex shapes. These complex shapes are 
+
+combining to form objects like noses. Noses are combining wi th eyes and mouths  
+
+to form faces. And faces are combining with other body parts to form the person 
+
+who is  sitti ng in the  room across  from  y o u.  
+
+
+All objects in your world are composed  of subobjects that occur consistently 
+
+together; that is the  very definition of an object. When we assign a name to 
+
+something, we do so because a set of features consistently travels together. A face 
+
+is a face precisely because two eyes, a no se, and a mouth always appear together. 
+
+An eye is an eye precisely because a pupil, an iris, an eyelid, and so  on , always  
+
+appear together. The same can be said  for chairs, cars, trees, parks, and 
+
+countries. And,  fi nall y,  a song is a song beca use a series of intervals always appear 
+
+together in sequence. 
+
+
+In this way the world is like a song. Every object in the world is composed of a
+
+collection of smaller objects, and most objects are part of larger objects. This is
+
+what I mean by nested structure. Once you are awar e of it, you can see nested
+
+structures everywhere. In an exactly analogous way, your memories of things and
+
+the way your brain represents them are stored in the hierarchic al structure of the
+
+cortex. Your memory  of your home does not exist in one region  of cortex. It is
+
+stored over a hierarchy of cortical regions that reflect the hierarchical structure of
+
+the home. Large-scale relationships are stored at the top of the hierarchy and
+
+small-scale relationships are  stored toward the bottom. 
+
+
+The design of the cortex and the method by which it learns naturally discover the 
+
+hierarchical relationships  in the world. You are not  born  wit h  kn owledge of 
+
+language, houses, or music. The cortex  has a clever learning algorithm that 
+
+naturally finds whatever hierarchical  structure exist s and captures it. When 
+
+structure is  absent, w e are throw n  into confusion, even chaos. 
+
+
+
+You can only experience a subset of the world at a n y mome nt in time. You can 
+
+only  be in one room of your home, lo okin g in  one direction.  Because of the  
+
+hierarchy of the cortex, you are able to know that you are at home, in your living 
+
+room, lookin g at a window, e v en though  at  that mo ment your eyes happen to be 
+
+fixated  on a wind ow latch.  High er  re gions of cortex  are maintain in g  a 
+
+representation of your home, while lower  regions are representing rooms, and still 
+
+lower regions are look ing at a window. Simi larly, t h e hi erarchy allows you to know 
+
+you are listening to both a song and an album of music , even though at any point 
+
+in time you are hearing only one note, whic h on its own tells you next to not h ing. 
+
+It allows y o u to k n ow you are with your  best friend, even  though your eyes are 
+
+momentaril y fixated o n  her hand . Higher re gions of your cortex are keeping track 
+
+of the big picture while lower areas are actively dealing with the fast-changing, 
+
+small deta ils. 
+
+
+86
+
+
+Since we can only touch, hear, and see a very small part of the world at any 
+
+moment in time, information flowing into the brain naturally arrives as a sequence 
+
+of patterns. The cortex wants to learn those sequences that occur over and over 
+
+again. In some cases, such as melodies,  a sequence of patterns comes in a rigid 
+
+order, the order of the intervals. Most of  us are familia r with that kind of sequence.  
+
+But I am going to use the word  sequence in a more general way, closer in 
+
+meaning to the mathematical term  set.  A sequence is a set  of patterns that 
+
+generally accompany each other but not always in a  fixed order. What is important 
+         通常一起出现的组合，但不一定以一定的顺序
+is that patterns of a sequence follow one  another  in  time even  i f  not in a  f i x ed  
+
+order. 
+
+
+
+Some examples should make this clear. When I look at your face, the sequence of 
+
+input patterns I see i s not fixed but is determined by my saccades. One time I 
+
+m i g h t fi xate i n  the order "e ye eye nose mouth," and a moment later fixate in the 
+
+order "mouth eye nos e eye." The components of a face  are a sequence. They are 
+
+statistically related and tend to occur together in time, although the order may 
+
+vary. I f  you perceive "face" while fixating on "nose," the likel y next patterns would  
+
+be "eye" or "mouth" but not "pen" or "car." 
+
+
+
+Each region of cortex sees a stream of such  patterns. If the patterns are related in 
+
+such a way that the region  can learn to predict what  pattern will occur next, the 
+
+cortical region forms a persistent representation, or memory, for the sequence. 
+
+Learning sequences is the most basic ingredient for  forming invari ant 
+
+representations of real-world objects. 
+
+
+
+Real-world objects can be concrete, li ke a lizard, a face, or  a door, or  they can be  
+
+abstract, like a word or a theory. The brain treats abstract and concrete objects in 
+									实体
+the same way. They are both just sequences of patterns that oc cur together over  
+
+time in a predictable fashion. The fact th at certain input patterns  repeat time and 
+
+again is what lets a cortic al region know th at those experiences are caused by a 
+
+real object in t h e worl d. 
+
+
+
+Predictability is the very definition of reality. If a region of cortex finds it can 
+
+reliably and predictably move among these input patterns using a series of physical 
+
+motions (such as saccades of the eyes or fondling with the fingers) and can pr edict 
+						爱抚
+them accurately as they unfold in time  (suc h as the sounds c o mprising a song or a  
+			展开
+spoken word), the brain interprets these as having a causal relationship. The odds  
+			解释				因果			几率
+of numerous input patterns occurring in the same relation  over and over again by 
+	许多
+sheer coincidence are vanishingly small.  A predictable sequence of patterns must 
+绝对的  巧合
+be part of a larger object that really exists. So reliable predictabilit y is an ironclad 
+
+wa y  of  kno wi n g  t h a t di f f er en t  ev en t s i n   the world are physically tied together. 
+
+Every face has eyes,  ears, mo uth, and  nose. If the brain sees an eye, then 
+
+saccades an d sees an other eye, then sacc ades and sees a mo uth, it can feel 
+
+certain it is  seeing a face. 
+
+
+If cortical regions could speak they mi ght say, "I experience many different 
+
+patterns. Sometimes I can't predict what pattern I will see next. But these patterns 
+
+are definit ely related to one another.   They always occur together, and I can 
+
+reliably jump between them. So whenever I see any of these events, I will refer to 
+
+them by a common name. It is this gro u p  name, not the individual patterns, that I 
+
+will pass on t o  higher regions of the cortex." 
+
+
+Therefore, the brain c a n be said to store sequences of sequences. Each region of  
+
+the cortex learns sequences, develops  what I call "names" for th e sequences it  
+
+knows, and passes these names to the next regions higher in the co rtical 
+
+hierarchy. 
+
+Sequence s of Sequ ences  
+
+
+As information moves up from primary sensory regions to higher levels, we see 
+
+fewer and fewer changes over time. In primary visual areas like V1, the set of 
+
+active cells is changing rapidly as new patterns fall on the retina s everal times each 
+
+second. In visual area IT, cell firing patterns are more stable. What is happening 
+
+here? Each region of c o rtex has a repertoire of sequences it knows, analogous to a 
+
+repertoire of songs. Regions store these songlike sequences about anything and 
+
+everything: the sound  of surf crashing on   the beach, your mother 's face, the path 
+
+from your home to the corner store, ho w to spell the word  "popcorn," how to 
+
+shuffle a deck of cards. 
+
+
+We have names for songs,  and in a similar  fashion each cortical region has a name 
+
+for each sequence it knows. This "name" is  a group of cells whose collective firing  
+
+represents the set of objects in the sequenc e. (Never mind for now how that group 
+
+of cells is selected to represent the sequence; we will get to this later.) These cells 
+
+remain active as long as the sequence is  playing, and it is this "name" that is 
+
+passed up to the next region in the hierarchy. As long  as the input patterns are 
+
+part of a predictable s equence, the region presents a constant "name" to the next 
+
+higher regi on. 
+
+
+
+88
+
+It's as if the region were saying, "Her e is the name of the sequence that I am 
+
+hearing,  seeing, or touching. You do n't need to know about the individual notes, 
+
+edges, or t exture. I w ill let you know if  something new  or unpredicted happens." 
+
+More specifically, we can imagine region I T  at th e to p  of  the visual hierarchy 
+
+relaying to an association area above it , "I am seeing a fac e. Yes, with each 
+传递
+saccade the eyes are  fixating on different parts of the face; I am seeing different 
+
+parts of the face in succession. But it is still the same face. I will let you know 
+
+when I see something else." In  this fashion, a predictable sequence of events gets 
+
+identified with a "name"— a  constant patt ern of cell fi ring. This happens o v er and  
+
+over again as we go up the hierarchical pyramid. One region  might  recognize a  
+					金字塔
+sequence of sounds that comprise phonemes (the so unds t ha t ma k e up  wo r d s)  
+
+and passes a pattern representing the phoneme up to the next region. The next 
+
+higher region recognizes sequences of phon emes to cr eate words. The next hig h er 
+
+region recognizes sequences of  words to create phras es,  and so on. Bear in mind 
+
+that a "sequence" in the lowest regions of  cortex may be fairly simple, such as a 
+
+visual edge moving through space. 
+
+
+
+By collapsing predictable sequences into "named objects" at ea ch region in our  
+	塌陷
+hierarchy, we achieve more and more stability the higher we go. This creates 
+
+invariant representations. 
+
+
+
+The opposite effect happens as a pattern moves back  down the hierarchy: stable 
+
+patterns get "unfolded" into sequences. Let's assume you memorized the 
+
+Gettysburg Address when you were in th e seventh grade and  now you want to 
+
+recite it .  In a  language region  high  up  in  you r  cortex ,  there is a  s t o r ed  p a t t ern  t h a t  
+背诵
+represents Lincoln's famous speech. First, this pattern is  unfolded into a memory 
+
+of the sequence of phrases. In  the next region down, each  phrase is unfolded into  
+
+a memory of the sequence of words. At this  point ,  the unfolding pattern splits and 
+
+travels down both  the auditory  section of cortex and the motor section of cortex. 
+
+Following the motor path, each word is unfolded into a memorized sequence of 
+
+phonemes. And in the final, bottom region, each phoneme is  unfolded into a  
+
+sequence of muscle commands to make  sounds.  The lower you look in the 
+
+hierarchy, the faster the patterns are changing. A single, co nsta nt pat t ern at the 
+
+top of your motor hierarchy eventually leads to a complex and lengthy seque nce of 
+
+speech sounds. 
+
+
+Invariance also works to our advantage as  this information flows back down the 
+
+hierarchy. If you want to type the Gettysburg Address instead of speak it, you start 
+
+out with the same pattern at the top of  your hierarchy. The pattern is unfolded 
+
+into phrases in the next region down. The phrases are  unfolded into words in the  
+
+region below that. So far there is no di fference between speaking and typing the 
+
+Gettysburg Address. But at the next le vel down, your motor cortex takes a 
+
+different  path. Wor d s are unfolded into  letters, and the letters  are unf olde d into 
+
+muscle commands to your finge r s for typi ng. "Four score and seven years ago our 
+
+fathers brought forth…" The memories of  the words are handled as invariant 
+
+representations; it doesn't matter whether you will speak, type, or handwrite them. 
+
+Notice you don't have  to memorize the speech twice, once for speaking and once 
+
+for writing. A single memory of the speec h can take  vario u s be havi oral fo rm s. In 
+
+any re gion, an invariant pattern can bifurcate and follow a different path down. 
+
+
+89
+
+
+In a complementary bit of efficiency, representations  of simple objects a t  the 
+	补足的			效率
+bottom of the hierarchy can be reused over and over for di fferent high-level 
+				再生的
+sequences. For instance, we don't have to learn one set of words for the 
+
+Gettysburg Address an d a completely different  set for Martin Luther King's "I Have 
+
+a Dream" speech, even though the two orat ions contain some of the same words. 
+
+A hierarchy of nested sequences allows  the sharing and reuse of lower-level 
+
+objects— words, phonemes, an d letters being but a  few examples. It is a 
+
+remarkably efficient way to  store information ab ou t t h e world and  its structure and 
+
+very d i fferent fr om ho w compute r s work. 
+
+
+
+The same unfolding of sequences occurs  in the sensory as  well as the motor 
+
+regions.  The process allows you to perceive and understand objects from different 
+
+views. If you are walking up to your refrigerator to get some ice cream, your visual 
+					冰箱
+cortex is active on mu ltiple levels. At a  higher level,  y o u are perceiving a constant  
+									感知
+"refrigerator." In lower regions, this visual expectation is  broken do wn into a s eries 
+
+of more localized visual inputs. Seeing the refrigerator is composed of fixations on 
+
+the door handle, the ice dispenser, the magnets on th e door, a child's drawing,  
+
+and so forth. In t h e few milliseconds t h at  elapse as you saccade from one feature 
+				毫秒		消逝
+of your refrigerator to  another,  predictions about the result of each saccade are 
+
+cascading  down your visual hierarchy. As  long as these predictions get confirmed 
+
+saccade after saccade, your higher visual  regions remain satisfied that you are in  
+
+fact looking at your r efrigerator. Note that  in th is cas e, unlike th e fixed order of 
+
+words in the Gettysburg Address, the sequence you see when looking at the 
+
+refrigerator is not fixe d; the fl ow of in puts and retrieved memory patterns depend 
+
+on yo ur o wn actions.  So in a case like thi s, the unfoldi ng patte rn is not a  rigid 
+
+sequence, but the end result is the sa me: slow-changin g,  high-l evel p a tterns  
+
+unfoldi ng i n to  faster-chang ing,  low-level pat t erns. 
+
+
+
+The way you memorize sequences and represent them by name as information 
+
+goes up and d o wn yo ur cortical  hierarchy may remind y o u of the hierarchy of 
+
+military command. The top army  general says , "Move  the troops  to Florida for t h e 
+军事的
+winter." This simple high-level c o mmand gets unfolde d in to  ever more deta ile d 
+
+sequences of commands as it percolates  down the hierarchy. The general's 
+
+underlings recognize that  the command requires a seque nce of steps such as 
+党羽
+preparations to leave, transportation to Flor ida, and preparations  for arrival. Each  
+
+of these steps breaks down into further, more specific steps, to  be carried out by 
+
+subordinates. At the bottom  there are thousands of privates  taking te ns of 
+
+thousa nds of actions that r esult in the troops moving. Reports of what happened 
+
+are generated at each level. As  they pe rcolate back up the  hierarchy, they are 
+
+summarized again and again, until at the  very top of the hierarchy, the general 
+
+receives a daily briefing saying, "Move to  Florida goin g ok ay." The gener a l does  
+
+n o t get al l  the details.  
+
+90
+
+
+There is an exception to this rule. If so methin g goes wrong that cannot  be ha ndled 
+
+by subordinates down the ch ain of command, then th e i ssue rises up the hierarchy 
+
+until someone knows what to do next. Th e officer who does know how to handle 
+
+the situation does not see it as an exception. What was an unanticipated problem 
+								意料之外的
+to subordinates is just the expected next task on his list. The  officer then issues 
+	部署
+new commands to subordinates. The neocortex behaves similarly. As we will see in 
+
+a bit, when events (in ot her words, patterns) occur that aren't anticipated, 
+
+information about them progresses up the c o rtical hierarchy until some region can 
+
+handle it. If lower regions of cortex fail to predict what patterns  they are seeing, 
+
+they consider this an erro r and pass the error up the hi erarchy. This is repeated 
+
+until some  region does anticipate the patter n . 
+
+By design, every cortical region attempts  to store and recall sequences. But this is 
+still too simp le a description of the brain.  We need to a dd a few mo re complexities 
+into the  model. 
+
+
+
+The bottom-up inputs to a region of cort ex are input patterns carried on thousands 
+
+or millions of axons. These axons come fr om different regions and contain all sorts 
+
+of patterns .  The number of possible patterns that can exist on even one thousand 
+
+axons is  lar g er tha n  the number of molecules in the universe. A regi on wil l  onl y see 
+					分子
+a tiny fraction of these possi ble patterns in a lifetime. 
+
+
+
+So here's a question: When a single  region stores sequences, what are they  
+
+sequences of? The answer is that a region first classifies its inputs as one of a 
+
+limited number of possibilities, and then looks for sequences. Im agine that you are 
+
+a single c o rtical region. Your  t a sk is  to  sort colored pieces of paper. You are 
+
+supplied ten buckets, each of which is labele d with a sample color swatch. There is 
+		桶
+one bucket for green, one for yellow, another for red,  and so on. You are  then 
+
+given pieces of col o red pa per, o n e by one, a n d  told  t o  s o r t  t h em  b y  c ol o r.  E a ch 
+
+paper you receive is slightly different. Because there are an infinite number of 
+
+colors in the world, you never get two pieces of paper with exactly the same color. 
+
+Sometimes it is easy to say what bucket the  colored pa per should  be placed in , but 
+
+sometimes it is difficult. A paper that is  halfway between red and orange could go 
+
+in either bucket, but  you have to assign it to one  bucket, eithe r  red or orange, 
+
+even if the selection comes down to a random pick. (The point of t h is exercise is to 
+
+show that the brain must classify patterns.  Regions of cortex do this, but there is  
+
+nothing equivalent to  a buck et to put patterns in.)
+
+
+Now you are given the additional task of looking for s equences.  You notice that 
+red-red-green-purp le-o range- green occurs frequently . You call  it th e "r rgpog"
+sequence. Notice that recognizing any seq uence would be impossible if you hadn't  
+first classified each piece of paper. Withou t first classifyi n g each pie ce of paper  into  
+one of ten categories,  you couldn't  say that two sequences are the same. 
+
+
+91
+
+
+So now you are up  a n d runnin g.  Yo u are goi ng  to look at all th e inp u t pa tterns— 
+
+the colored pieces of paper co ming in from lower cortical regions— classify them, 
+
+and then look for sequences. Both steps, classificati on and sequence formation, 
+
+are necessary to create invariant representa tions, and each region of cortex does 
+
+them. 
+
+
+The process of forming sequences pays off  when an input is ambiguous, like a 
+								模糊不清的
+piece of paper that falls somewhere betw een red and orange. Yo u have to pick a 
+
+bucket for the paper even if  you're not sure  if it's more red or mo re orange . If  you 
+
+know the most likely sequence for this series of inputs,  you will  use this knowledge  
+
+to decide how to  cla ssify t h e a m biguou s in put. If yo u believe yo u are in  t h e 
+
+"rrgpog" sequence because you have just  gotten two reds, a green, and a pur p le, 
+
+you're going to expect that the next paper will be orange. But the next piece of 
+
+paper arriv es and it's not oran ge. Rather , it is an odd color somewhere between 
+
+red and orange. It mi ght even  be a li ttle more red than ora n ge. But you are 
+
+familiar wit h  and expe cting t h e "rrgpog"  sequence, and so you pla ce the paper in 
+
+the orange bucket. You use  the co ntext of known sequenc es to resolve ambiguity. 
+
+
+We see this phenomenon happ ening all the time in our everyday experiences. 
+
+When people speak, their individual words very ofte n cannot be understo o d out o f 
+
+context. Yet when y o u hear an am bigu ou s  word in a sentence, yo u  don't get hung 
+
+up on the word's ambig u ity.  Yo u understa nd it. Simi la rly, handwritten wo rds are 
+
+often unintelligible out of context , but very r eadable wit h in a full written sentence. 
+
+Most of the time you aren't aware that  you are filling in ambi guous or incomplete 
+
+information from your  memories of seque nces. You hear what yo u expect to hea r 
+
+and see what you expect to see— at least  when what you hear and see fits into 
+
+past experience. 
+
+
+
+Notice the memory of sequences allows you not only to resolve ambiguity in the 
+
+current input, but als o  to predict which input should  happ en next. While your 
+
+cortical self is sorting colored pa pers, yo u can tell the "input" person passing the 
+
+papers to you, "Hey, in case you are havi ng any troubl e deciding what to pass me 
+
+next, it should , accord ing to my memory, be an ora nge one." B y  recogni z in g a 
+
+sequence of patterns ,  a c o rtical region wi ll predict  its  next in put pattern an d tell 
+
+the regi on below what to expect.  
+
+
+A region of cortex not  only learns familiar sequences, it also learns how to m o dify 
+
+its classifications .  Let's say you start ou t with a set of buc k ets labeled "green," 
+
+"yellow," "red," "purple," and "orange." You are prepared to recognize the "rr gpo g" 
+
+sequence as well as other combinations of these colors. But what if a color makes 
+
+a major shift? What if ever y time you see the "rrgpog" sequence, the purple is way 
+
+off-kilter? The new color is  more like indigo. So you change t h e purp le bucket to 
+	不顺利
+be the "indigo" bucket. No w the bu ckets better fit what you see; you have reduced 
+
+the ambiguity. The  cor t ex is flex ible.
+
+
+92
+In cortical  regions, bottom-up cla ssifica tions and top-down sequences are 
+constantly interacting, changing througho ut your life. This is the essence of 
+learning. In fact, all regions of the cortex  are plastic, thus they ca n be modified by 
+experience. Forming new classifications  an d new sequences is how you rem ember 
+the world. 
+
+
+Last, let's look at how these classification s and predictions inte ract with the next 
+
+higher region. Another part of your cortical job is  to relay t h e name of the 
+
+sequence you are seeing to the next level up , so you pass up a piece of paper with 
+
+the letters "rrgpog" on it.  These letters mean little in themselves to the next higher 
+
+region; the  name is just a pattern to be combined wit h  other inputs, classified, and 
+
+then put into yet a higher-order sequence.  Like yo u, he is keeping track of the 
+
+sequences he is seeing. At some  point he might say to yo u, "Hey, in case you are 
+
+havi ng an y trouble d eciding  what to pa ss  me next, according to  my mem o ry, I 
+
+predict it s h ould be the 'yyrgy'  sequence." This  is  basically a n  instruction  to you  
+
+about what  to look for  in yo ur own input stream. You will  do your best to interpret 
+
+what you s ee as compri sing that sequence.
+
+
+Since many peop le have hear d the term   pattern classification used in AI and 
+
+machine vision research, let' s look at how this process as it is usually understood 
+
+differs f rom  wh a t  the co r t ex  is doin g.  In trying  t o  get  machines to  r eco g ni z e 
+
+objects, researchers typically create a template— say the image  of a cup, or some 
+
+prototypical form  o f  c u p— and then in struct  the machine to match its  inputs with 
+
+the protot ypical cup. If it finds a close  match, the comp uter will say it has found a 
+
+cup.  But our brains don't  ha ve templates like that, and the  patterns tha t  each 
+
+cortical region receives as input aren't like  pictures. Yo u do n' t remember snapshots 
+
+of what your retina sees, or snapshots of  the patterns from your cochlea or your 
+
+skin. The hierarchy of the co rtex ensures that memories  of objects are distributed 
+										分布式的
+over the hierarchy; they aren't located in a single spot. Also, because each region 
+
+of the hierarchy forms invarian t memories, what a typical region of cortex learns is 
+
+sequences of invariant representations,  which are themselves sequences of 
+
+invaria n t m emories. You won't fi nd a pict ur e  of a cup or any other object stored in 
+
+your  brai n.  
+
+
+Unlike a camera's memory, your brain remembers th e world as it is, not as it 
+
+appears. When you think about t h e worl d, you are recalling seque nces of patterns 
+
+that correspond to the way the objects in  the world are and how  they behave, not 
+
+how they a ppear th ro ugh any particular  sense at any point in  time. The sequences 
+
+by which y o u experien ce objects in the world reflect the invariant structure of the 
+
+world itself. The order in which you experien ce parts of the world is determined by 
+
+the world's structure. For example,  you  ca n get onto an airplane directly by 
+
+walking down a jetway,  but not from t h e  ticket counter. The sequences by which 
+
+you experience the world  is  the real structure of the world, and that is what the 
+
+cortex wants to remember. 
+
+
+93
+
+Don't forget, though, an inva riant representation in any re gion of the cortex can be 
+turned into a detailed prediction of  how it will appear on your senses by  
+propagating the pattern down  the hierarchy. Similarly,  an invariant representation 
+in the motor cortex can be  t u rned int o detailed and  situation-specific motor 
+commands by pro p aga t ing the pa ttern down the motor hierarchy. 
+
+What a Region of Cortex Look s Like  
+
+
+
+We are now going to turn our attention to an individual  region of cortex,  one of 
+
+the boxes in figure 5. Figure 6 shows such  a region of cortex in more detail. My 
+
+goal  is to  show you how the cells in a region of  cortex can learn and recall 
+
+sequences of patterns ,  which is the most  essential element for forming invariant 
+						基本的
+representations and making predictions. We will start with a description of wh at a 
+
+cortical region looks like, and how it is put together. Cortical regions vary greatly in 
+
+size, the largest being the primary sensory  areas. V1, for example, is roughly the 
+
+size of a passport in terms of the space it  occupies at the back of the brain. But as 
+
+I argued earlier, it is actually composed  of many smaller regions that might be the 
+
+size of t h e  letters on t h is page. For now, let' s assume that a typica l cortical area is 
+
+the size of a small coin. 
+
+
+Think of the six bus i ness cards I mentio ned in chapter 3, where each card 
+
+represents a different layer of cortical tissue. Why do we say there are layers? If 
+
+you ta ke our coin-siz e region o f  cortex and place it under a microscope, yo u'll see 
+
+that the density and shape  of the cells vary as you  move from top to bottom. 
+
+These differences define the laye rs. The top, called layer 1, is the most distinct of 
+
+the six layers. It has very few cells, consisting primarily of  a mat of axon s running 
+					主要组成    由   一些  无光泽的    轴突
+parallel to the cortical surface. Layers  2 and 3 lo ok similar. Th ey  contain many 
+平行在       皮层表面
+tightly packed pyramidal cells. Layer 4 has  a type of star-shaped  cell. Layer 5 has  
+紧密    包在      角锥型				星型
+regular pyramidal cells as well as a class o f  extra-big pyramid-shaped cells. The 
+有规律的 角锥型
+bottom layer, layer 6, also has several types of unique neurons. 
+					一些形状独特的
+
+
+94
+
+
+Visually we see horizontal layers, but most often scientists talk about columns of 
+
+cells that run perpendicular to the layers. You can th ink of c o lum n s as  being 
+		垂直
+vertical "units" of cells that work together. (The term column invites much debate 
+
+in the neuroscience community. Their size , function, and importance are disputed. 
+
+For our purposes, though, you can thin k in general terms of a columnar 
+
+architecture, which everyone agrees exists .) The layers within  each column are 
+
+connected via axons that run up and down, making synapses along the way. 
+
+Colum n s do not stand out like neat little pillars with clear boundaries— nothing in 
+								边界
+the cortex is that simple— but their exis tence can be inferred from several lines of  
+
+evidence. 
+
+
+One reason is that the vertically aligned cells in each column tend  to beco m e  
+			垂直对齐的	细胞 		每列
+active for the same stimulus. If we looked closely at columns in V1, we'd find some 
+活跃           同样的刺激
+that respond to line segments that tilt in one directio n (/) and some that respond  
+
+to line segments that  tilt in anot her direction (\). The cells within each column are 
+
+strongly  co nnected,  which is why the entire column responds to the same stimulus. 
+
+Specifically, an active cell in layer 4 causes cells above it in layers 3 and 2 to 
+
+become active, which then cause cells below in layers 5 and 6 to  become active. 
+
+Activity spr eads up and down with in a column of cells . 
+
+
+
+Another reason we t a lk of columns stems from how  the cortex forms. In an  
+
+embryo, single precursor cells migrate fr om an inner brain cavity to where the 
+
+cortex takes shape. Each of these cells  divides to create about one hundred 
+
+neuron s, called a microcolumn, which are connected in the vertical fashion I just 
+
+described. The term co l u mn is often used loosely to de scribe different phenomena; 
+
+it can refer to general vertical connectivity  or to specific groups of cells from the 
+
+same progenitor. Using the latter defi nition, we can say that th e human cortex  has  
+
+an estimated several hundred million microcolumns. 
+
+
+To help you vis u alize this colum n ar struct ure, imagine  a single mi crocolumn is the 
+
+width of  a human  hair. Take th ousands of  hairs and cut them into very short 
+
+segments— say, the height of a lowercase i  without the dot. Line up all thes e hairs 
+
+or column s and glue them side by side like a very dense brush. Then create a 
+
+sheet of long, extra-thin hairs— representing your layer 1 axons— and glue them 
+
+horizontally across the top of the mat of short hair s. This br ushlik e mat is a 
+
+simplistic model of your coin-size cortical  region. Information flows mostly in the 
+
+direction of these hairs: horizontally in layer 1 and vertically in layers 2 through 6. 
+
+
+
+
+
+95
+
+
+There's one more detail about co lumns you  need to know, and then we'll move on 
+
+to what they're good for.  On close inspection, we see that at least 90 percent of 
+
+the synaps es on cells within each column come from places outside the column  
+
+itself. Some connectio ns arrive from neighboring columns. Others come from 
+
+halfway across the brain. How, then, can  we speak of columns  as being important 
+
+when so m u ch of our  cortical wiring is spread out laterally over large areas? 
+
+
+
+The answer is in the memory-prediction model. In 1979, when  Vernon Mountcastle 
+
+argued that there is a single  c o rtical algorithm,  he als o proposed that the cortical 
+
+column is th e basic unit of computation in the cortex . However,  he d i d not know  
+
+what funct i on a column performs. I believe that a column is the basic unit of 
+
+prediction. For a column to predict when it should be active, it needs to know what 
+
+is going on elsewhere— hence the synaptic connections from hit her and  yon.  
+
+
+We'll get into more details soon , but here's a preview of  why we need this sort of 
+
+wiring in t h e brain. To pr edict the next note of a song , you need to know the 
+
+song's name, where y o u are in the song, how much time has passed since th e last 
+
+note, and what that last note was. The large number  of synapses connecting cells  
+
+in a colum n  to other parts of the brain  provide each column  with the context it  
+
+needs in order to predic t its activity in ma ny different situations. 
+
+
+The next thing we need to consider is  how these coin-size cortical regions (and  
+
+their columns) send and rece ive information up and down the c o rtical hierarchy. 
+
+We'll look at  the upward flow first,  which takes a relatively direct route, depicted in 
+
+figure 7. Imagine we're looking at a cortic a l  r eg i o n  wi th  i t s t h ousands of columns. 
+
+We zoom in on just one. Conver ging inputs from lower regions always arrive at 
+
+layer 4— the main input layer. In passing , they also f o rm a connection i n  layer 6 
+
+(we'll see later why this is important). Layer 4 cells t h en send  projections  up to 
+									预测
+cells in layers 2 and 3 within their column . When a column projects information up, 
+
+many layer 2 and layer 3 cells send axons to the input layer of that next higher 
+
+region. T h us info rmatio n flows from region to  region up the hierarchy. 
+
+
+
+Information flowing down the cortical hierarchy takes a less direct path, as 
+
+depicted  in figu re 8 .  L a y er  6  cells are the downward-projecting output cells from a  
+描述
+cortical column and project to  layer 1 in  the regions hierarchically below. Here in 
+
+layer 1, the axon spreads over long distances in the lower cortical region. Thus 
+
+information flowing down the hierarchy from one column has the potential to 
+								潜能
+activate many columns in the regions below  it. There are very few cells in layer 1,  
+
+but cells in layers 2, 3, and 5 have dendrites in layer 1, so these cells can be 
+					描述
+excited by the feedback running all across layer 1. The  axons coming from layers 2 
+
+and 3 cells form synapses in layer 5 as they leave the cortex and are believed to  
+
+excite cells in layers 5 and 6. So we can say that as information flows down  the 
+
+hierarchy, it  has a less direct route. It can branch in many different directions via  
+
+the spread on layer 1. Feedback information starts in a layer 6 cell in the higher 
+			说明l6是高级的细胞（区域）
+region; it spreads across layer 1 in the lower region. Some cells in layers 2, 3, and 
+
+5 in the lower region are excited, and some of these excite layer 6 cells, which  
+
+project to layer 1 in regions hierarchically below, and s o  on. (I f you study figure 8, 
+
+the process is much easier to follow.)
+
+96
+
+
+One final bit of anatomy: wh en axons leave layer 6 to travel to other destinations, 
+
+they are encased in a white fatty substance called myelin. This so-called white 
+	包围			脂肪  实质	脊髓质
+matter is like the insulation on an  electrical  wire in your house. It helps prevent 
+		   绝缘
+signals from  getting mixed up a n d makes them travel faster, at speeds up to two 
+
+hundred miles per hour. When axons leave the white matter, they enter a new 
+
+cortical column at layer 6. 
+
+
+Before I describe the details, I want  to remind you of the auto-associative 
+
+memories discussed in chapter 2. As you may recall, auto-associative memories 
+
+can be us ed to store sequences of patterns. When the output of a gr oup of 
+
+artificial neurons is fedback to form the input to a l l t h e neur ons ,  and a delay is  
+
+added to the feedback, then patterns learn to follow  each other in sequence. I 
+
+believe the cortex uses the same basic  mechanism to store sequences, although 
+
+with a few extra twists. Instead of forming an auto-associative memory out o f 
+
+artificial neurons,  it is forming an auto-associative memory out of cortical columns. 
+
+The output of all the  columns  is fedbac k  to layer 1 .   In this  way,  l a yer 1 contains 
+
+information about w h ich columns were ju st active in the region of cortex. 
+
+
+98
+
+
+Let's walk through the elements, as shown in  fi gure 9. It has been known f o r many 
+
+years that  particularly large layer 5 cells within your motor cortex (region M1) 
+
+make direct contact with your muscles and the motor regions of y o u r  spinal cord .  
+									脊髓
+These cells literally drive your muscles and make you move. Whenever you speak, 
+		逐字的
+type, or perform any sophisticated behavior, these cell s are firing on and off in a 
+
+high ly  coordinate d way, maki ng your muscl es contract.
+
+
+
+Recently, researchers have discovered that large layer 5 cells may play a role in 
+
+behavior in other  part s of th e cortex, not   just in motor regions.  F o r example ,  large 
+
+layer 5 cells in visual  cortex proj ect to  the  part of the  brain  that moves the eyes. 
+
+So the sensory visual areas  of cortex, such as V2 and  V4, not only process visual 
+
+input, but they help determine the movement of  the eyes themselves, and 
+
+therefore what you s ee. Large layer 5 cells  are seen throughout  the neocortex, in 
+
+every region, suggesting a  more widespread role in  all kinds of m o vement. 
+
+
+In addition to having  a behavioral role, the axons of these large layer 5 cells split 
+
+in two. One branch goes to  th e part of  the  brain called  the thalamus, shown as the 
+
+round object in fi gure 9. The human thalamus is the shape and size of two small 
+
+bird eggs. It sits in the very center of the brain, o n  top of t h e old brai n, and is 
+
+surrounded by white matter and cortex. Th e thalamus receives many axons from 
+
+every part of the cortex and sends axons back to thos e same areas. Many of the 
+
+details of these connections are known, bu t the thalamus itself is a complicated 
+
+structure and its role is not at all clear. But the thalamus is essential to normal 
+
+livin g; a  da maged th al amus leads  to a persistent ve getative state.
+
+
+
+
+
+99
+
+
+There are a couple of paths from the thalamus to the cortex, but only one is of 
+
+interest to us now. This path starts with  the large layer 5 cells that project to a 
+
+class of thalamic cells considered nonspecific. The nonspecific cells project axons 
+
+back t o  layer 1 over many diff er ent regions of c o rtex. For example, layer 5 cells 
+
+throughout the V2 and V4 regions send axo n s to  the th al amu s, and the thalamus 
+
+sends the information back to layer 1 th roughout V2 and  V4. Other parts of t h e 
+
+cortex do the same; layer 5 cells throughout  multiple c o rtical regions pr oject to the 
+
+thalamus, which sends the information  back to  layer 1 of those same and 
+
+associated regions.  I propose this circuit is exactly like the delayed feedback that 
+
+lets auto-associative memory  models learn sequences. 
+
+
+I have no w mentioned two inpu ts to la yer 1. Higher regions of cortex s p read 
+
+activity acr o ss layer 1 in lower r egions.  Ac tive columns within a  region also spread 
+
+activity across layer 1 in the same region via the thalamus. We can think of these 
+
+inputs to layer 1 as the name of a song (input from above) and where we are in a 
+
+song (delayed activity from active columns in the same region). Thus layer 1 
+
+carries much of the information we need to pred ict wh en a column should be 
+
+
+active— the sequence name and where we  are within the sequence. Using these 
+
+two signals  in layer 1, a region of  cortex can  learn and recall multiple sequences of 
+
+patterns. 
+
+
+How a Region of Cortex Works: The Details 
+
+
+With these three circuits in  mind— converging patterns going up the cortical 
+hierarchy, diverging pattern s going down the cortical hierarchy, and a delayed 
+feedback through the thalamus — we can start to see how a region of cortex  
+performs the functions it needs. What we want to know is:
+
+
+1.  
+How does a regio n  of co rtex classify its inpu ts (like the buckets)? 
+2.  
+How does it learn sequences of patterns (such as intervals of a melody, or  
+the "eye nose eye" of a face)? 
+3.  
+How does i t  form  a constant pattern or "name" for a sequence? 
+4.  
+How does it make specific predictions ( meeting the train at the  right time, 
+or predicting the specific note in a melody)? 
+
+
+100
+
+
+Let's start by assuming that the  columns in a region of  cortex are like the buckets 
+
+we used in classifying our colored paper inputs. Each column represents the label  
+
+of a bucket. The layer 4 cells in every column receive input fibers from several 
+
+regions below it and will fire if they have  t h e right combination of inputs. When a 
+
+layer 4 cell fires, it is "voting" that the input fits its label. As in t h e paper-so rting 
+
+analogy, inputs can be ambiguous, so several columns might be possible matches 
+
+for the input. We want our  regi on of cortex to decide  on one interpretation; the 
+
+paper is either red or  orange, but not both .  A co lu mn with stron g  input sh o uld 
+
+prevent other columns from firing. 
+
+
+
+Brains have inhibitory cells that do just  this . They  strongly  inhibit other neurons in 
+		抑制
+a neighborhood of cortex, effectively allowing one winner. These inhibitory cells 
+
+only affect the area surrounding a column. So even  though there is a lot of 
+
+inhibit i on, many columns in a region can  still be active at once.(In real brains, 
+
+nothing is ever represented by a single neuron or a single column.) To make it 
+
+easier to follow, you can pretend that a region picks one  and  only one winner 
+
+column. But in th e ba ck of your mind, re member that many columns will be active  
+
+at once. The actual process used  by a region of cortex to classify inputs and how it 
+
+learns to do this is complicated, and not we ll understood.  I will not attempt to dra g  
+
+you through the issues. Instead I want to  assume that our region of cortex has 
+
+classified its input as  activity in a set  of columns. We ca n then focus on the 
+
+forming of sequences an d names for sequences. 
+
+
+
+How does our cortical region store the sequence of these classified patterns? I 
+
+have already suggested an answer to this question, but now I'll delve into more  
+
+details. Imagine you are a column of cells , and input from a lower region causes 
+
+one of your layer 4 cells to fire. You are  happy, and your layer 4 cell causes cells in 
+
+layers 2 and 3, then 5, and  then 6 also to fire. The entire column becomes active 
+
+wh en  d r i v en  f r o m  b elo w.  Y o u r  c el l s i n  l a y er s 2 ,  3 ,  a n d  5  e a ch  h a v e t h o u san d s o f  
+
+synapses in layer 1. If some of these synapses are active when your layer 2, 3,  
+
+and 5 cells fire, the synapses are strengthened. If this occurs often enough, these 
+
+layer 1 synapses become strong  enough to make the c ells in layers 2, 3, and 5 fire 
+
+even when a layer 4 cell hasn't fired—  meaning parts of the column can become  
+
+active without receiving input from a lower r eg i o n  o f  t h e c o r t ex .  I n  t hi s wa y ,  c el l s 
+
+in layers 2, 3, and 5 learn to "anticipate" when they should  fire based on the 
+				预期
+p a ttern in lay er 1.  Bef o re learn i ng,  the co lumn can  o nly  b ecome active if  d r iv en b y 
+
+a layer 4 cell. After learning, t h e column can become partially active via memory. 
+
+When a column becomes active via layer 1 synapses, it is  anticipating being driven 
+
+from below.  This is pr ediction. If the column could speak, it would say, "When I 
+
+have been active in the past, this particular set of my layer 1 synapses has been 
+
+active. So when I see this partic ular set  again, I will fire in anticipation." 
+
+
+
+101
+
+
+Recall that  half of the input to  layer 1  comes from layer 5 cells in neighboring 
+
+columns and regions of the cortex. This information represents what was 
+
+happening moments before. It  represents columns that were active prior to your 
+									优先
+column  becoming active. It represents the  previous interval in the melody, or the 
+
+last thing I saw, or the last thing I felt ,  or the previous phoneme in the speech I 
+
+am listening to. If the order in which these patterns oc cur  over time is consistent, 
+
+then the c o lum n s will learn the order. They will fire one after an other in  proper 
+
+sequence. 
+
+
+The other half of the  input to layer 1 comes from layer 6 cells in hierarchically 
+
+higher regions. This information is more stationary. It represents the name of the 
+
+sequence you are currently experiencing. If  your  column s are musi c interva l s, it is  
+
+the name of the melody. If your column s are phonemes, then it is the spoken 
+
+word you are hearing. If  yo ur columns are spoken word s, then the signal from  
+
+above is the speech yo u are reciting. Thus  the information in layer 1 represents 
+
+both the name of a sequence and the last  item in the sequence. In this way, a 
+
+particular c o lum n  can be shared among ma ny different sequences without g etting 
+
+confused. Columns learn to fire in the right context  and in the correct order. 
+
+
+
+Before moving on, I need to  point out that the synapse s in layer 1 are not the only 
+
+synapses that participate in learning when a column  should bec o me active. As I 
+
+mentioned earlier, cells receive input from, and send in pu t to , m a ny surroundin g 
+
+columns .  Recall that more than 90 percent of all syna pses are from cells outside 
+
+the column, and most of th ese synapses are not in layer 1. For example, cells in 
+
+layers 2,3, and 5 have thousands of syna pses in layer 1, but also thousands of 
+
+synapses in their own layers. The overall id ea is that cells want any information 
+
+that will he lp them pr edict wh en they will be driven fr om below .  Usually, act i vity in 
+
+nearby columns has a strong correlation,  and so we see many direct connections  
+
+to nearby co lumns. For example, if a li ne is moving t h ro ugh  your  visual field, it will 
+
+activate successive co lumns. Often, thou gh, the information needed to predict a 
+
+column's activity is more global, which is where the laye r 1 synapses play a role. If 
+
+you were a cell or a  column, you woul dn't  know what any of these synapses 
+
+meant, all you would know is that they help you predict when you should become 
+
+active. 
+
+102
+
+
+
+N ow let us consider the issue of how a  region of cortex forms a name for a 
+
+learned sequence. Again, imagine you are a  region of cortex. Your active c o lum n s 
+
+are changing with each ne w input. You have successfully learned the order in 
+
+which your  columns become active, meani ng some of the cells in your columns  
+
+become active prior to the arrival of inpu ts  from lowe r regions. What infor m ation 
+
+are you sending to the hierarchically higher regions of  the cortex? We saw earlier 
+
+that your l a yer 2 and layer 3 cells send their axons to the next higher regions. The 
+
+activity of these cells is the  input to the higher regions.  But that's a problem. In 
+
+order for the hierarchy to work, you have to relay a constant pattern during 
+
+learned sequences; y o u have t o pass on the name of a sequence, not the details. 
+
+Before you learn a se quence, yo u can pass on the details, but a f ter you le arn a 
+
+sequence, and are able to s u ccessfully pr ed ict whic h columns  will be active, you 
+
+should  rela y only  a constant patt ern. However, I have not yet shown you a method 
+
+for doing th is. As it currently st ands,  you will pass on every c h anging pattern 
+
+regardless of whether you can  predict it. As each column  becomes active, its layer 
+
+2 and layer 3 cells will send a ne w signal  up the hierarchy. The cortex needs so me 
+
+way to keep the input to the next  region constant d u ri ng learned  sequences. We 
+
+need some way to turn o ff the output of th e layer 2 and layer 3 cells wh en a 
+
+column predicts its activity, or, alternately, to make these cells active when the 
+					交替的
+column ca n't predict its activity. This is the only way to make a constant name 
+
+pattern.
+
+
+
+There is not enough known  about the cortex to state exactly how it does th is. I 
+
+can imagine several methods. I will describe  my current favorite , but keep  in mind 
+
+that the concept is more important than  the specific method.  The creation of a 
+
+constant "name" pattern is a requirement of  this theory . All I can sh ow at this time 
+
+is that plausible mechanisms  exis t for the naming process. 
+
+
+
+Again imagine you are a column, as shown i n  f i gu r e 1 0.  We wa n t  t o  u n d er st a n d  
+
+how y o u learn to present a co nsta nt pattern to th e next  higher region when you
+
+can predict your activity, and a changing pattern when you can't predict your 
+
+activity. Let's start by assuming that within layers 2 an d 3 there a r e several classes 
+
+of cells. (In addition to several types of  inhibitor y  cells, many anat omists make th e 
+
+distinction between cell type s in what  they call layers 3a and 3b, so this 
+
+assumption is not unreasonable.) 
+
+103
+
+
+Let's also assume that one class of cells , called layer 2 cells, learns to stay on 
+
+during learned seque nces. These cells, as a group, represent the name of the 
+
+sequence. They will present a co nstant pattern to higher co rtical regions as long as 
+
+our region can predict  what columns will be   active next. If our region of cortex had 
+
+a learned sequence of three different patt erns, then the layer 2 cells of all the 
+
+columns representing those th ree patterns would stay active as l o ng as we were 
+
+within that sequence. They are the name of the sequenc e. 
+
+
+Next, let's  assume there is another class  o f  cells, layer 3b cells, which don't fire 
+
+when our co lumn successfully predicts its input but do fi re when it doesn't predict 
+
+its activity. A layer 3b cell represents  an unexpected pattern. It fires when a 
+
+column be comes active unexpectedly. It   will fire every time a  column   becomes 
+
+active prior  to an y learning. But as a column learns to pr edict its activity, the layer 
+
+3b cell becomes quiet. Together, the  la yer 2 and layer 3b cells meet our 
+
+requirement. Before learning bot h  cells fire o n  an d off with  the co l u mn, but af te r  
+
+training the  layer 2  cell  is constant ly active and the layer  3b cell is quiet. 
+
+
+
+How do these cells learn to do this? First,  let' s consider how to shut down the layer 
+
+3b cell when its column succ essfully predicts its activity . Say that there is another  
+
+cell positioned just above the layer 3b cell, in layer 3a. This cell also has dendrites  
+
+in layer 1.  Its only job is  to prevent the layer 3b cell from firing when it sees the 
+
+appropriate pattern in layer  1. When the layer 3a cell sees the learned pattern in 
+
+layer 1, it quickly activates an inhibitory  cell that prevents the layer 3b cell from 
+
+firing. This is all it would take to stop the la yer 3b cell fr om firing w h en the column 
+
+correctly predicts its a ctivity. 
+
+
+
+Now consider the more diffic ult task of keeping t h e layer 2 cell active throughout a  
+
+known sequence of patterns. This is more difficult because a diverse set of layer 2 
+								不同的
+cells in many different column s would  need  to stay active together, even when 
+
+their individual columns are not active. Here is how I believe t h is could occur.  
+
+Layer 2 cells could learn to be driven purely from the hierarchically higher regions 
+
+of cortex. They could form synapses preferentially wit h  the axons fr om layer 6 cells 
+
+in the regions above. The layer 2 cells  would therefore represent the constant 
+
+name pattern from the higher  region. When a higher  region of  cortex sends a 
+
+pattern down to layer 1 of the region below, a set of layer 2 cells in the lower 
+
+region would become active , representing all the column s that are members of the 
+
+sequence. Since these layer 2 cells also project back to the higher region, they 
+
+would form a semistable group of cells.  (It is unlikely that these cells stay 
+
+constantly  active. They  proba b ly fire synchronously in something like a rhythm.) It 
+					同步的
+is as if the higher region sends the name  of a melody t o  layer 1 below. This event 
+
+causes a set of layer 2 cells to fire, one for each of the  columns that will be active 
+
+as the melody is heard. 
+
+
+
+104
+
+
+H ow do we make predictions about events we have never seen before? How do 
+
+we decide among mu lt iple in terpretations  of  an input?  How does a region of  the 
+
+cortex make specific predictions from in variant memories? I gave several examples 
+
+of this earlier, such as predicting the  exact next note in a melody when your  
+
+memory only recalls th e interva l between  the notes, the parabl e of  the tr a in ,  an d  
+
+reciting the Gettysburg Addr ess. In these cases, th e only way to solve this problem 
+
+is to use the last specific  infor m ation to convert an  invari ant prediction into a 
+
+specific prediction. Another way to phrase  this, in terms of the cortex, is to say 
+
+that we have to combine feedforward in formation (actual input) with feedback 
+
+information (a prediction  in an invariant  form). 
+
+
+
+Here is a simple example of how I believe  t h i s i s do n e.  Sa y  y o u r  r eg i on of  t h e 
+
+cortex has been told to expe ct the musical interval of a fifth. The  column s of your 
+
+region represent all possible spec ific intervals such as C-E, C-G, D-A, etc. You need 
+
+to deci de which of yo ur colum n s sh ould be active. When the region above tells you 
+
+to expect a fifth, it c a uses layer 2 cells to fire in all the columns that are fifths, 
+
+such as C-G, D-A, and E-B. Cells  in layer 2 of columns  representing other intervals  
+
+are not acti ve. Now you ha ve t o  s elect one  co lum n  from all the possible fift hs. Th e 
+
+inputs to your region are specific notes.  If the last note you heard was a  D, then 
+
+all the columns representing intervals involving a D, s u ch as D-E and D-B, have 
+
+partial input. So now in layer 2 we have activity in all c o lumns tha t  are fifths, and 
+
+in layer 4 we have partial  input to all column s representing intervals involving a D. 
+
+The intersection of these two sets represents our answer, the column representing 
+
+the interval D-A (see figure 11).
+
+
+
+How does the cortex find this intersection? R ecall that ea rlier I mentioned th e fact 
+				交叉点
+that axons from layer 2 and layer 3 cells generally form synapses in layer 5 as they 
+
+leave the cortex, and similarly axons appr oaching la yer 4 from lower regions of  
+
+cortex make a synapse in  layer 6. The intersection  of these two synapses (top 
+
+down an d  bottom up) pro v ides us with what   is neede d. A  layer 6  cell that  receives 
+
+these two active inputs will fire. A layer 6  cell represents what a region of cortex 
+
+believes is happe ning, a specific prediction.  If a layer 6  cell could ta lk, it might say, 
+
+"I am part of a column re presenting something. In my particular case my column 
+
+represents the musical interval D-A. Othe r columns mean other things. I s p eak for 
+
+m y  r eg i o n of  co r t ex .  Wh en  I  beco m e ac tive it means we believe the musical 
+
+interval D-A either is occu rring or will occu r. I might become active because the 
+
+bottom-up input from the ears caused the layer 4 cell in my column to excite the 
+
+entire column. Or my activity might mean that we recogni z ed a melody a n d are 
+
+predicting th is specific  next interval. Ei ther  way, my j ob is to  tell the lower r egions 
+
+of cortex wh at we think is happening. I represent our interpretation of the world, 
+
+regardless of whether it is  true or just imagined." 
+
+
+
+Let me de scribe this usin g another mental  picture. Imagine two pieces of paper 
+
+with lots of little holes punched in them. The holes on on e paper represent the 
+			
+columns that have act i ve layer 2 or layer 3 cells, our invariant pre d iction. The holes 
+
+on the other paper represent columns with partial input fr om below. If you put one 
+
+piece of paper on top of t h e ot her, some  of the holes will line up, others won't. 
+
+The holes that line up  represent the columns  we th ink should be active. 
+
+
+
+This mechanism not only makes specific pr edictions, it also resolves ambiguities 
+
+from the sensory inputs. Very often th e  input to a region of cortex will be  
+
+ambiguous, as we saw with the colored papers, or when you  h ear a semi-garbled 
+
+word. T h is  bottom- up/top- dow n  matching mechanism enables you to decide 
+
+between two or more interpretations .   And o n ce yo u decide, you relay your 
+
+interpretation to  the region below. 
+
+
+Every moment in your waking lif e, each  region of your neocortex is comparing a  
+
+set of expected columns driven from  above with the set of observed columns 
+
+driven from below. Where the two sets intersect is what we perceive. If we had  
+
+perfect input from  below and  perfect pr edictions,  then the set of perceived 
+
+columns w o ul d alway s be conta i ned in  the  set of pr edicted col u mns. We often 
+
+don't have such agreement. The method of combining partial prediction with 
+
+partial input resolves ambiguous input, it fills in missing  pieces of information, and 
+
+it decides  between alternative views. It is how we combine an expected pitch-
+
+invaria n t interval with the last heard note  to predict the next  specific note in a 
+
+melody. It is how we decide whe t her a picture is of a vase or of two faces. It is 
+
+how we split our motor stream either to  write or to speak the Gettysburg Address. 
+
+
+
+
+106
+
+
+Finally, in addition to projecting to lower cortical regions, layer 6 cells can send 
+
+their output back into layer 4 cells of their own column.  When they do, our 
+
+predictions become the input. This is what we do when daydreamin g or thin king. It 
+
+allows us to see the consequences of our own predictions. We do this many hours  
+
+a day as we plan the future, rehearse sp eeches, and worry abou t events to come.  
+
+Longtime cortical modeler Stephen Grossberg calls this "folded feedback." I  prefer 
+
+"imagining." 
+
+
+O ne last topic before we leave this section. I  have pointed  out several times that 
+
+most often what we see, hear, or feel is  highly dependent on  our own actions. 
+
+What we see is dependent on where our eyes saccade and  how we turn our 
+
+heads. What we feel is depende n t on ho w we move our limbs and fingers. What 
+
+we hear is sometimes dependen t on wha t  we say and do. 
+
+
+Therefore, to predict what we will sense ne xt, we have to know what actions we 
+
+are undertaking. Motor behavior and sensory  perception are highly interdependent. 
+
+How can we make predictions if what we  sense next is largely  a result of our own 
+
+actions? F o rtunately, there is a surprising and elegant solution to this problem, 
+
+although ma ny of the details are not understood. 
+
+
+The first s u rprising discovery is that perception  and be havior are almost one and 
+
+the same. As I mentioned earlier, most if  not all regions of the co rtex, even visual 
+
+areas, participate in the crea tion of mo vement. The lay er  5 cells that project to the 
+
+thalamus and then to layer 1 also seem  to have a motor function because they 
+
+simultaneously project to motor areas of  the old brai n. Thus, t h e knowledge of  
+
+"what just happened" — both sensory and m o tor— is a vailable  in layer 1. 
+
+
+The second surprising thing,  and a consequence of the first, is tha t motor  be havior  
+
+must also be represented in a hierarchy of invariant representations. You generate 
+
+the movements necessary to carry out a par t ic ular action by thinking of doing it in 
+
+a detail-invariant form. As the motor command travels down the  hierarchy, i t  gets 
+
+translated into the c o mplex and detail ed sequences required to perform the 
+
+activity you expected to  do. This is ha ppening in  both  "m otor" cortex  and 
+
+"sensory" cortex, whic h blurs the distinction  between the two. If region IT of visual 
+
+cortex is perceiving "nose," the mere ac t  of switching to the representation for  
+
+"eye" will generate the saccade necessary to  make this pre d iction a reality. The 
+
+particular s a ccade necessary to move from seeing a nose to seeing an eye varies 
+
+depending on where the face is. A close  fa ce requires a larger saccade; a more 
+
+distant fac e requires a smaller saccade. A t ilted face requires saccading at an angle 
+
+different fr om the one for a level face.  The details of the needed saccade are 
+
+determined as the prediction of seeing the " eye" moves toward V1. The saccade 
+
+becomes increasingly specific the farther do wn it goes, resulting in a saccade that 
+
+lands  yo ur foveas right on  target, or pretty close. 
+
+
+
+
+
+107
+
+
+L et 's l o ok   a t  a n o th er   ex a m p l e.  F o r me t o p h y si ca l ly  mo v e f ro m  my  l iv in g  r o o m  t o  
+
+my kitchen, all my brain ha s to do i s mentally switch from the invariant 
+
+representation of my living  room to the invariant representation of my kitchen. 
+
+This switch causes a complex unfolding of sequences. The process of generating  
+
+the sequence of predictions of w h at I will  see, feel, a n d hear while walking from  
+
+the living r oom to the kitchen also generates the sequence of motor commands 
+
+t h a t  ma k es me wa l k  f r o m  my  l iv in g  r oo m  t o my  k i t ch en  a n d  mo ve my  e y es a s I  d o  
+
+so. Prediction and motor behavior work han d  i n  h a nd  a s p a t t er n s f l o w d o wn a n d  
+
+up the cor t ical hierar chy. As strange as it  sounds ,  when your own behavior is  
+
+involved, your predict i ons not only precede sensation, they determine sensation. 
+
+Thinking of going to the next pattern in  a sequence causes a cascading prediction 
+
+of what you should experience next. As the cascading prediction unfolds, it 
+
+generates the motor commands necessar y   to fulfill the prediction. Thinking, 
+
+predicting,  and doi n g are all part  of t h e  same unfolding of sequences moving down 
+
+the cortical hierarchy. 
+
+
+
+
+"Doing" by thinking, the para llel unfolding of perception and motor behavi or, is the  
+
+essence of what is called goal-oriented beha vior. Goal-oriented behavior is the holy 
+
+grail  of robotics. It is buil t  into the fabric of the cortex. 
+
+
+
+We can turn off our motor behavior, of course. I can think of seeing something 
+
+without actually seeing it an d I can think of going to my kitchen without ac tually 
+
+doin g so. B u t t h inki ng of doi n g so mething  is  literally the start of how we do it. 
+
+
+Flowing up and Flowing Down 
+
+
+Let's step back a bit and think some more about how inform ation moves up and 
+
+d o wn  the cortical  hierarchy .  A s y o u  mov e  about th e world, ch anging  inputs stream 
+
+into lower regions of the cortex. Each region tries to interpret its  stream of inputs 
+
+as  part of  a  kn own sequence of patterns.  The columns try to anticipate their 
+								预期
+activity. If they can, they  will pass on a stable pattern, the name of the sequence,  
+
+t o  t h e nex t  hi g h er  r eg i on .  Again i t  i s a s i f  t h e r eg i o n s a y s,  " I  a m  l i st en i ng t o  a  
+
+song, here is the nam e. I  can ha ndle the details."
+
+
+B u t  wh a t i f a n  u n ex p ect ed  p a t t ern  a r r i v es, a n  u n ex p ected  n ot e?  Or wh a t  i f we s ee  
+
+something that doe s not belong on a face? The unexpected pattern is 
+
+automatically passed to the next higher cortical region.  This happens naturally as  
+
+layer 3b cells that were not part of the  expected sequence fire. The higher region 
+
+may be ab le to understand this new pattern  a s t h e n ex t  p a r t   of its own sequence. 
+
+It might say, "Oh, I see a new note arrived.  Maybe this is the first note of the next 
+
+song on the album. It looks like it, so I  pred ict we have gone on t o  the next song . 
+
+Lower regi on, here is the name of the next  song I th in k yo u shou ld be hea r ing . " 
+
+But if such  recognition  does not occur, an unexpe cted pattern will keep 
+
+propagating up the cortical hierarchy until  some higher region can interpret it as 
+
+part of its normal sequence of events. The higher the unexpected pattern needs to 
+
+go, the more regions of the cortex get involved in resolving  the unexpected input. 
+
+Finally, when a region somewhere up the hierarchy thinks it ca n understa nd t h e 
+
+unexpected event, it generates a  new pred iction. This new prediction pr opa g ates 
+
+d o wn  t h e h i er a r ch y  a s f a r  a s i t  c a n  g o .  I f  t h e n ew p r e d i ct i on  i s n o t  r i g h t,  a n e r r o r  
+
+will be det ected, and again  it  will climb up t h e hierar chy until some region can 
+
+interpret it as part of its currently acti ve sequence. Thus we can see that observed 
+
+patterns flow up the hierarchy and predictions flow down the hierarchy. Ideally, in 
+
+a world that is k n own and predictable, most of t h e up-and-d own flow of patterns 
+
+happe ns rapidly and occurs in the lower  regions of the cortex . The brain quickly 
+
+tries to find a part of   its world m o del that is consistent with any unexpected input.  
+
+Only th en will it  unde rstand its input an d know what  t o  expect next.
+
+
+
+If I am walking in a familiar room in m y   house, few errors will propa g ate high up 
+
+my cortex. The highly learned sequences of  my house ca n be handled in the lower 
+
+sections of the visual, somatosensory, an d motor  hie r archy. I know the r oom so 
+
+well I can even walk around in the dark. My familiarity with the surroundings  
+
+effectively frees up most of my cortex for  other tasks such as thinking about brains  
+
+and writing books .  However, if I was in  an unknown room, especially one that was 
+
+different from any I had seen before, not only would I n eed to look to see where I 
+
+was going, but unexp ected patterns would  constantly  be rising fa r up the cortical 
+
+hierarchy. The more my sensory experience doesn't match learne d sequences, the 
+
+more the errors rise u p . In this novel situation, I can no longer think about brains 
+
+because most of my cortex is attending to the proble ms of navigating the room. 
+
+This is a c o mmon experience for people wh o step off an airplane into a foreign 
+
+countr y . W h ile t h e road s may look like thos e you're accu stomed to, cars may whiz  
+
+down the wrong side, the money is strange, the language is incomprehensible, and 
+
+learning how to find  a bathroo m  can take all your cortical powers. Don't try to 
+
+rehearse a speech while walk in g in  a f o reig n land.  
+
+
+The sensation of su dden comprehension, the "aha!" mome nt, can be underst ood in 
+				理解
+this model. Imagine you are looking at an  ambiguous picture. Filled with blobs of 
+
+ink and scattered lines, it doe sn't look  like anything. It doesn't make sense. 
+
+Confusio n occurs when the cortex  can't  find any me mory that matches with the
+
+input. Your eyes scan  everywhere on the picture. New inputs race all the way up 
+
+the cortical hierarchy. High -level cortex tries lots of different hypotheses but, as 
+
+these predictions race down the hierarchy, each and every one co nflicts with the 
+
+input and the cortex is forced to try again. Duri ng t h is  time of  co nfusio n yo ur brai n 
+
+is totall y occupied with  understandi n g th e picture. Finally, yo u m a ke a hig h-level 
+
+prediction that is the right  one. When this happens, the prediction starts at the top 
+
+of the cortical hierarchy and succeeds in  propagating all the way to the bottom, 
+
+chunk, chunk, chunk, chunk, chunk. In less than a second, each  region is given a 
+
+sequence that fits the data.  No more errors rise to the top. You understand the 
+
+picture, you see a dalmatian dog amid the dots and scribbles (see figure 12). 
+
+109
+
+Can Feedback Really do That?
+
+
+We've known for decades that connectio ns in the cortical hierarchy are reciprocal. 
+										相互作用的
+If regi on A projects to region B, th en B projects to region A. There are often more 
+
+axon fibers going backward than forward.  But even though this description is 
+
+widely accepted, the  prevailing paradigm  is that feedback plays a minor or 
+
+"modulatory" role in t h e brain. The idea  tha t  a feedback signal  could instantly and 
+调制的
+accurately cause a diverse set of cells in la yer 2 to fire is not the prevailing view 
+
+among neuroscientists. 
+
+
+
+Wh y  wo u ld t h i s b e s o? P a r t  o f  t h e r ea so n ,   as  I mentioned before, is that there's no  
+
+real need to  be concerned with f eedback if  yo u d o n't accept the central r o le o f 
+
+prediction. If you think that  the information flows straight t h ro ugh to the mo tor 
+
+system, then why do you need feedback?  Another reason to ig nore feedback is 
+
+that the feedback signal is  spread over large areas of la yer 1. Intuitively,  we would
+
+expect a signal dispersed over a large area would ha ve only a minor effe ct on 
+
+many neurons,  and i ndeed the  brain has sev eral such modulatory signals that don't 
+
+act on specific neurons but change  global attributes suc h  as alertness. 
+
+
+110
+
+
+The final reason to ignore feedback is due to how many scientists believe 
+
+individual neurons wor k . Typical neurons have thousands or tens of thousands of 
+
+synapses. Some are located far from the ce ll body, others are right up close to it. 
+
+Synapses close to the cell body have a strong influence on cell firing. A dozen or so  
+
+active synapses near the cell body can cau se it to generate a spike or pulse of 
+
+electrical discharge. This is known. However, the vast majority  of synapses are not 
+
+close to the body of the cell.  They are spread far and wi de out over the branchlike 
+
+structure of a cell's dendrites. Since th ese  synapses are far awa y  from the cell's 
+			树突
+bod y , scie ntists have tended  to believe th at a spike arriving at one of thos e 
+
+synapses would have a weak or almost imperceptible effe ct on wh ether the neuron 
+
+generates a spike. The effect of a distan t synapse would dissipate by the time it 
+
+reaches the cell body. 
+
+
+
+As a gener a l rule , information flowing up  the cortical hierarchy is transferred via 
+
+synapses close to cell bodies. Information going up the hierarchy is therefore more 
+
+certain to pass from region to r egion. Also , as a general rule, feedback fl owing 
+
+down the cortical hierarchy  does so via synapses far from the cell body. Cells in 
+
+layers 2, 3, and 5 send dendrites  into layer 1 and form many synapses there. Layer 
+
+1 is a mass of synapses, but  they are all far from the cell  bodies in layers 2, 3, and 
+
+5. Further m ore, any particular cell in laye r 2, say, will only fo rm a few, if a n y, 
+
+synapses with any  particular feedback fiber.  Therefore,  some scientists may object  
+
+to the idea that a brief pattern in layer 1 could accurately cause a set of cells to 
+
+f i r e i n  l ay er s 2,  3,  an d  5.  Bu t  t h a t  i s precisely  what  the theory I  have laid  out 
+
+requires. 
+
+
+
+The resolution to this dilemma is that  neurons behave differently from the way 
+			困境
+they do in the classic model. In fact,  in recent years there has been a growing 
+
+group of scientists who have proposed that synapses on distant,  thin dendrites can 
+
+play an active and highly sp ecific role in cell firing . In these models, these distant 
+
+synapses behave differently from synapses on thicker dendrites near the cell body. 
+
+For example, if there were two  synapses  very close to each other on a thin 
+
+dendrite , they would act as a "coincidence  detector." That is, if both synapses 
+
+received an input spike with in a small window of time, they could exert a large 
+									发挥
+effect on the cell even though they are far from the  cell body. Th ey could cau se  
+
+the cell body t o  gene rate a spike. How the dendr i tes of a neuron beha ve is still a  
+
+m y st er y ,  s o  I  c a n no t s a y  mu ch mo r e a bou t  t h em  h er e.  Wh a t  i s i m po r t a n t i s t h a t  
+
+the memory-prediction model of cortex re quires that synapses far from the cell 
+
+body be able to  detect specific patterns. 
+
+
+In hindsight, it seems almost  foolish to say that most of the thousands of synapses 
+	事后认识
+o n  a  n eu r on  p l ay  o n ly a  modulatory  r ole. Massive feedback and massive numbers 
+
+of synapse s exist for a reason. Using t h is  in sight, we can say t hat a ty pical neuro n  
+
+has the ab ility  to learn hundreds of precise coincidences on  feedba ck fi bers as they 
+
+make synapses on thin dendrites .  It mean s that each column  in our neocortex is 
+
+highly flexible in terms of which feedback patterns cause it to become active. It 
+
+means that any particular featur e can be precisely associated with thousands of 
+
+different objects and sequences. My mo del requires feedback to be fast and 
+
+precise. Cells need to fire  when they see any number of precise coincidences on 
+
+their distant dendrites. These new  neuron models allow for this. 
+
+
+
+111
+How the Cortex Learns 
+
+
+All the cells in all the layers of the cortex have synapses, and most of these 
+synapses can be modified via experience. It is safe to say that learning and 
+memory oc cur in all la yers, in all  columns ,  i n all regions  of cortex. 
+
+
+
+Earlier in the book I me ntio ned Hebbian learni ng,  named aft er the Canadia n 
+
+neuropsy chologist Donald O. Hebb. Its essence is very simple: When two neurons 
+
+fire at the same time, the synapses between  them get strengthened. (It is easily 
+
+summarized in the phrase "Fire together, wi re together .") We now know Hebb was 
+
+basically  right.  Of co urse, nothing in nature is ever quite so  simple, and in real 
+
+brains the details are more complicated. Our nervous systems run many variations 
+
+of Hebb's learning rule; for instance, some synapses change their strength in 
+
+response to small variations in the timing  of neural signals, some synaptic changes 
+
+are short-lived, and s o me changes are long-li v ed. But Hebb wa s erecting only a 
+
+framework for the study of learning, not a final theor y , and that framework has 
+
+been incredibly useful. 
+
+
+
+Hebbian learning pri n ciples can explain most of the cortical behavior I have 
+
+mentioned in this chapter. Remember, it was shown back in the 1970s tha t  auto-
+
+associative memories using the classical Hebbian le arning algorithm can learn 
+
+spatial patterns and sequences of patterns. The main problem was that the 
+
+memories couldn 't handle variation well . According to the theo ry  proposed in  t h is  
+
+book, the  cortex has gotten around this  limitation partly by stacking auto-
+
+associative memories in a hierarchy and partly by using a sophisticated columnar  
+
+architecture. This chapter  has been almost all about  the hierarchy and how it 
+
+works, because the hierarchy is what makes the cortex powerful. So instead of  
+
+g o in g through in  painf ul d etail h o w each cell coul d learn this or  that, I want to 
+
+cover a few broad principles of  l earning  i n  a hierarchy.  
+
+
+
+When you are born your cortex essentially doesn't know anything. It doesn't  know 
+
+about y o ur  language, yo ur culture, your home, your t o wn, so ngs,  the  peop le you 
+
+will grow up with, not h ing. All this inform at ion, t h e structure of t h e world,  has to  
+
+be learned. The two basic components of learning are forming the classifications of 
+
+patterns and building sequences. These two complementary memory components 
+
+interact. As one region learns sequences, th e inputs it sends to the layer 4 cells in
+
+higher cortical regions change. These layer 4 cells th erefore learn to form new 
+
+classifications, which  changes the pattern  projected back to lay er 1 in the lower 
+
+region, which affects the sequenc es. 
+
+
+
+
+
+112
+
+
+The basics of forming sequences is to group patterns together that are part of the 
+
+sa m e o b ject .  On e wa y  t o  d o  t h i s is by  grouping  patterns that  occur contiguously  i n  
+
+time. If a child holds a toy in her hand and slowly moves it, her brain can safely 
+
+assume that the image on her retina is of the same object moment to moment, 
+
+and therefore the changing set of patterns can be grouped t ogether. At  other 
+
+times you need outside instruction to  help you decide which patterns belong 
+
+together. To  learn tha t  apples and bana nas are fruits, but carrots  and celery are 
+
+not, requires a teach er to guide you to  group these items as fruits. Either way, 
+
+your brain slowly builds sequences of patterns that belong together. But as a 
+
+region of c o rtex builds sequences, the inpu t to the next  region c hanges. The input 
+
+changes from representing mostly individual patterns  to representing groups of 
+
+patterns. The input to a region changes from notes to melodies , from letters to 
+							旋律
+words, from noses to faces,  and so on. Because the bottom-up inputs to a region 
+
+become more "object-oriente d ,"  the higher region of cortex can now learn 
+
+sequences of these higher-order objects. Where before a  region built sequences of 
+
+letters, it now builds sequences of words .   The unexpected result of this learning 
+
+process is that, during repetitive learning, representations of obj ects move down 
+			重复的
+the cortical hierarchy. During the early years of your life, your memories of the 
+
+world first form in higher regions  of cortex, but as you learn they are re-formed in 
+
+lower and lower parts of the cortical hierarchy. It isn' t that the brain moves them; 
+
+it has  to relearn them over and over. (I am not suggesting that all memories start 
+
+at the top of the cortex. The actual formation of memories is more complex. I 
+
+believe layer 4 pattern classification starts   at the bottom and moves up. But as it 
+
+does, we start forming sequences tha t  t h en  mov e do wn . I t  i s t h e  memory of 
+
+sequences  I am suggesting re- f orm lower and lower in the cortex.) As simple 
+
+representations move down, the regions at  the top are able to learn more complex 
+
+and su bt le patterns.
+
+
+You can  observe the creation and downward movement of  hierarchical memory by 
+
+observing how a child learns. C o nsider how we learn to read. The first thing we  
+
+learn is to recognize  individual  printed letters. This  is a slow and diffic ult task 
+
+requiring conscious effort. Then we move on  to recognizing simple words. Again, it 
+
+i s d i ff i cu l t and  s l o w a t  f i r st ,  e v en  f o r   three-letter words. The  child can read each 
+
+letter in se quence and sound out the letter s one after  another,  but it takes a fair 
+
+amount of practice before the word itself is recognize d  as a word. After learning 
+
+simple words, we struggle with c o mplex, multisyllable words. At  fi rst, we sound out 
+
+each syllable, concatenating them as we did with letters when learning simple 
+
+words. After years of practice, a person  ca n read quickly. We get to the point 
+
+where we don't actually see all the individual letters bu t instead recognize entire 
+
+words and often entire phrases at a glance. It isn't just that we are faster; we are
+
+actually recognizing w o rds and  phrases as entities. When we read  an entire word 
+
+at one time, do we still see the letters? Yes and no. Obviously, the retina sees the 
+
+letters and therefore so do  regions of V1. But the reco gnit ion of t h e letters is 
+
+occurring fairly low in  the cortical hierarchy, say in V2  or V4. By the time the signal 
+
+gets to IT, the individual letters are no longer represente d. What at first took the 
+
+effort of your entire visual cortex— reco gniz ing individual letters— is now occurrin g 
+
+closer to the sensory input. As memory of simple objects like letters moves down 
+
+the hierarchy, th e higher regions have  the ability to learn complex objects like 
+
+words and phrases.
+
+
+113
+
+
+
+Learning to read music is another example. At first you have to concentrate on 
+
+every note . With practice, you start to  recognize common note sequences, then 
+
+entire phrases. After much practice, it is  as if you don't see most of the notes at 
+
+all.  The sheet music  is there only to re mind you of the major  structure of the 
+
+piece; the  detailed sequences have been memorize d lo wer down. Th is t y pe of 
+
+learning occurs in bot h  motor and sensory areas. 
+
+
+
+A young brain is slow er to recognize inputs  and slower  to make motor commands 
+
+because the memories used in these tasks are higher up the co rtical hierarchy. 
+
+Information has to flow all the way up  and down, maybe with  multiple passes, to 
+
+resolve conflicts. It takes ti me for the neural signals to  travel up and down the 
+
+cortical hie r archy. A young brain also has not yet for m ed  complex sequences at 
+
+the top and therefore cannot reco gnize an d  play back comple x patterns. A young 
+
+brain ca nnot underst a nd t h e hi gher-ord er structure of the world. Compared to an 
+
+adult's, a c h ild's language is simple, his mu sic is simple, and his social interactions  
+
+are simple. 
+
+
+If you study a particular set of objects over and over, your cortex r e-forms  
+
+memory representations for those objects down the hierarchy. This frees up the 
+
+top for learning more subtle, mor e comple x relations h ips. According to the theory, 
+
+this is  what makes an expert. 
+
+
+
+
+
+In  my work design in g computers, some people are surp rised by how quickly I can 
+
+look at a product and see the problems inherent in its design. After twenty-five 
+
+years of designing computers, I have a  better-than-average mo del of the issues 
+
+associated with mobile computing devices.  Similarly,  an  experienced parent can 
+
+easily recognize why his child is  upset, wh ereas a first-time parent may struggle 
+
+with how to handle a situation. An experienced business manager can rea d ily see 
+
+the flaws and advantages of the structure  of an organization whereas the novice 
+
+manager just can't understand these things . They have the sa me input, but the 
+
+novice's m o del is not as sophisticated. In all such cases and a thousand more, we 
+
+start by learning the basics, the simplest structure. Over time we move our 
+
+knowledge down the cortical hierarchy and, therefore, we  have the opportunity at  
+
+the top for learning higher-order structure. It is this higher-order structure that 
+
+makes us experienced. Experts and geni uses have brains that see structure of 
+
+structure and patterns of patterns beyond  wh at others do. You can become expert 
+
+by practice, but t h ere certainly is a genetic  component t o  tale nt a nd ge nius  too. 
+
+
+
+114
+
+The Hippocampus: on Top of it All  
+	海马
+
+
+Three large brain structures lie under the neocortical sheet and communicate with 
+
+it. They are the basal   ganglia, the cerebellum, and th e hippocampus. All three 
+		基本的  神经中枢	小脑
+existed prior to the neocortex. With a very  broad brush, we can say that the basal 
+
+ganglia were the primitive motor system , the cerebellum learned precise timing 
+
+relations hips of events, and the hippocampus stored memories of specific events 
+
+and places. To some extent, the neocortex  has subsumed their original functions. 
+						归入
+For example, a human born  with out much of a cerebellum will have deficits in 
+									不足
+timing and will have to apply mo re conscious effort when mo ving but otherwise 
+
+will be  pretty normal. 
+
+
+
+We know that the neocortex is responsible for all complex motor sequences and 
+
+can directly control yo ur lim bs. It isn't that the basal ganglia are unimporta nt, jus t 
+
+that the ne ocortex ha s taken  over a large part of motor control. Because of this, I 
+
+have described the overall function of  the neocortex independently of the basal 
+
+ganglia and the cerebellum.  Some scientis ts may disagree with this assumption, 
+
+but it is one I have used in  t h is book and i n  my work.
+
+
+
+The hippocampus, however, is a different beast. It is  one of the most heavily 
+
+studied areas in the brain because it  is essential to the formation of new 
+
+memories. If you lose both halves of the  hippocampus (like many parts of the 
+
+nervous system, it exists in  both the left  and the right sides of the brain), you  lose 
+
+the ability t o  form  most  new memories. Wi thout the hippocampus  you can still talk, 
+
+walk, see, and hear, and for brief periods of  time appear almost normal. But in fact 
+
+you are profoundly impaired: you can't remember anything new. You can 
+
+remember a friend you knew be fore you lo st the hip po campus, but y o u cannot  
+
+remember  a new person. Even  if you met wi th your doctor fi ve times a day for a 
+
+y ea r ,  e a ch  t i m e wo u ld b e l ik e t h e f i r st  t i m e.  Y o u  wo ul d h a v e n o  mem o r y  o f  e v en t s 
+
+that occurred after the loss of your hippocampus. 
+
+
+
+
+For many years I hated to think about the hippocam pus because it di dn't make 
+
+sense to me. It clearly is essential for learni ng, yet it isn't the ultimate repository 
+
+for most of  what we know. Th e neocortex  is. The classic view of the hippocampus  
+
+is that new memories are formed  there, and later, over a  period of days, weeks, or 
+
+months, these new memories are transferred to the neocortex. This made no 
+
+sense to m e. We know that sights, sound,  touch— our sensory data stream — flow 
+
+directly into the sensory areas of the  cortex without first passing thr o ugh the 
+
+hippocampus. It seemed to me that this  sensory information should automatically 
+
+form new memories in the cortex. Why do  we need a hippocampus to learn? How 
+
+could a separate structure such as the hi ppocampus interfere and prevent learning 
+
+in t h e cortex , only later  to transfer  the inform at ion back  to the cortex? 
+
+
+115
+
+
+I decided  to put t h e hippocampus aside,  figur i ng t h at some day its rol e would 
+
+become clear. That day happen ed in late 2002, right around  the time I began  
+
+writing t h is  book. One of my colleagues  at the Redwood Neuroscience Institute, 
+
+Bruno Olshausen, pointed out that the connections between th e hi ppocampu s an d 
+
+the neoc ortex sugges t  that the hippocampus is the top  region o f  the neocortex,  
+
+not a separate structure. In this view, the hippocampus occupies the peak of the 
+
+neocortical pyramid, the top block in figure 5. The  neocortex appeared on th e 
+
+evolutionary scene sandwiched between  the hippocampus and the rest of the 
+
+b r a i n.  Apparently  t h i s v i ew o f  t he h i pp o cam pus as being at t h e top of t h e cortical 
+
+hierarchy was known for some time; I was  just not aware of it. I had spoken to 
+
+several hippocampus experts and asked them to explain how this seahorse-shaped 
+
+structure could transfer memories to th e cortex. No one co uld. A n d no one 
+
+mentioned that th e hi ppocamp us was at the  top of the cortical  pyramid, probably 
+
+because the hippocampus not only sits at th e top of the cortical pyramid, but  it still 
+
+connects di rectly to m a ny older parts of the brain. 
+
+
+Yet I instantly saw this new perspective as the solution to my confusion. 
+				观点
+
+Think about information flowing from your eyes, ears, and  skin into the ne ocortex. 
+
+Each region of the neocortex tries to  understand what this information means. 
+
+Each region tries to understa nd the input in terms of the sequences it knows. If it 
+
+does understand the input, it says, "I understand this, it is just part of the object I 
+
+am already seeing. I won't pass on the details ." If a region doesn't understand the 
+
+current input, it passes it up the hierarchy  until some higher region does. However, 
+
+a pattern t h at is truly novel will escalate  further and further up the  hierarchy. Each 
+
+successively higher region says, "I don't know what this  is, I didn't anticipate it, 
+
+why don't you hig h er -ups l ook at  it?" The net effect is that when you get to the 
+
+top of t h e cortical pyramid, what you have left is information that can't be 
+
+understood by previous experience. You are left with the part of the input that is  
+
+truly  new and unexpected. 
+
+
+
+In a t y pica l day  we encounter many new  things that make it to the top— for 
+
+example, a story in the newspaper, the na me of th e person y o u met this morning, 
+
+and the car accident you saw on the way home. It is these unexplained and 
+
+unanticipat ed remainders, the new stuff, that ente r the hippocampus a n d are 
+
+stored ther e. This information won't be stor ed forever. Either it  will be transferred 
+
+down int o  t h e cortex below or  it will eventually be lost. 
+
+
+
+I ha ve noticed that , as I get  older, I  h a ve trouble remembering n ew thin gs. For 
+
+example, my children remember the details of most of the theatrical play s they  
+
+have seen in the last year. I can't. Perhaps it is because I have seen so many plays 
+
+in my life that rarely do I see a n ything tr uly new. New plays fit into memories of 
+
+past plays, and the information just doesn't ma k e i t  t o  my  h i p po ca m p u s.  F o r my  
+
+children, each play is more novel and does reach the hippocampus. If this  is true, 
+
+we could say the more you know, the less you remember. 
+
+116
+
+
+Unlike the neocortex, the hippocampus has a heterogeneous structure with several
+						混杂的
+specialized regions. It's good at the unique task of quickly storing w h atever
+
+patterns it sees. The hippocampus is in th e perfect position, at the top of the
+
+cortical pyramid, to remember what is novel. It is  also in th e perfect position to
+
+recall these novel memories, allowing them to  be stored in the cortical hierarchy,
+
+which is a somewhat slow process. You can instantly remember a novel event in
+
+the hippoc ampus, but you will permanently remember something in t h e cortex
+
+only  i f  you experience it over and over, either in realit y or by thinking of it. 
+
+
+An Alternate Path up the Hierarchy
+	交替的
+
+
+Your cortex has a second major  pathway for passing information from region to 
+
+region, up the hierar chy. This alternate path starts with cells in layer 5, which 
+
+project to the thalamus (a different part  of the thalamus from the one we 
+
+discussed earlier) and then  from the thalamus up to the next higher region of  
+
+cortex. Whenever two regions of cortex  directly connect to each other in a 
+
+hierarchical fashion, they also connect indirectly through the thalamus. This second  
+
+pathway passes information only  up the hierarchy, not do wn. So as we move u p  
+
+the cortical hierarchy, there is a direct  path  between two regio n s and an indirect 
+
+path thro ugh the thalamus. 
+
+
+
+The second path has two modes of operation determined by cells in the t h alam us. 
+
+In one mode, the path is mostly shut down so informat ion d o es not flow thr o ugh.  
+
+In the other mode, information flows accurately between regions. Two scientists,  
+
+Murray Sherman of the State University  of  New York at Stony Brook and Ray 
+
+Guillery of the Univer sity of Wisconsin School of Medicine, have described this 
+
+alternate pathway and postulated that it  mi ght be as  important as the direct one  
+
+(perhaps more so), which has been the subject of this chapter so far. I have a 
+
+speculation of what this  second path way is doing. 
+
+
+Read this word:  imagination.  Most people can recognize the word in a single 
+
+glance, one fixation. Now look at the letter i  in the middle of the word. Now look at  
+
+the dot over  that  i.  Your eyes can be fixated on the  exact same location, but in one  
+
+case you see the wor d , in the next case y o u see the letter, and in the final case 
+
+you see the dot. Stare at the  i and try to alternate your  perception between the 
+
+word, the letter, and t h e do t.  I f  you  have t r o u b l e,  t r y  sa y i ng " d o t , " " i , " an d 
+
+"imagination" while you stare at the dot. In all cases the exact  sa me information is 
+
+entering V 1, yet by the time it gets to  so me higher region like IT yo u perceive 
+
+different things, dif f erent levels of detail . Region IT knows how  to recogniz e all 
+
+three objects. It can recognize  the dot in isolation, the letter i , and the entire word 
+						隔离
+at a glanc e. But w h en you perceive the  entire word, V4, V2, and V1 handle the 
+
+details, and all IT gets to know about  is  the word. You normally  don't perceive  the  
+
+individual letters while reading; you perceive words or phrases. But you can 
+
+perceive the letters if you choose to. We are doing this sort of attentional shift a ll 
+
+the time, but we aren't generally  aware of it. I can be listening t o  music playing in  
+
+the background and barely be aware of th e melody, but if I try, I can isolate the 
+									使隔离
+singer or the bass guitar. The same sound is entering my head, bu t I can foc u s my 
+
+perceptions.  Every time you scratch your  head, the movement makes a loud 
+				抓伤
+internal sound , b u t usually you are unaware of the noise. If you fo cus on it,  
+
+though, yo u can hear  the sound  clearly.  Th is is another example of sensory input  
+
+that norma lly is handled low in the cortic al hierarchy but can be brought t o  higher 
+
+levels if you attend to it. 
+
+
+I speculate  that the alternate pathway through the thalamus is the mechanism by  
+	推测
+which we attend to details that  normally we wouldn't notice. It bypass es the 
+
+grouping of  sequence s in layer 2, sending th e raw data  to the  next hig h er r egion 
+
+of cortex. Biologists have shown that t h e alternate pathway can be tur n ed on in  
+
+one of two ways. One is by a signal from the higher region of the c o rtex itself.  This 
+
+is the method you us ed when  I asked you to attend to details that normally you 
+
+wouldn't notice, such as the dot on the  i  or the sound of a head scratch. The 
+
+second method that can activate  this pathwa y is a large, unexpected signal from 
+
+below. If the input to the alternate pathway is strong enough, it sends a wake-up 
+
+signal to the higher region, which again ca n turn on the pathway. For example, if I 
+
+showed you a face an d asked you what it was, you would say "Face." If I showed  
+
+you  the s a me face but it  ha d a strange mark o n the nose, you woul d first 
+
+recognize the face, but then immediately your lo wer levels of vi sion wo uld notice 
+
+that something is wrong. This error forces the opening of the  atte ntio nal path way. 
+
+The details  will now take the alternate path , bypassing the grouping that normally  
+
+occurs, and your atte ntion will be drawn to the mark. You now see the mark and 
+
+not ju st the face. If it was sufficiently  odd, the mark could  occupy yo ur e n tire  
+
+attention. In  this way , unus ual ev ents quickl y rise to your attention. T h is is w h y we 
+
+can't avoid focusing on deformities and other unusual patterns. Your brain does 
+
+this automatically. Often, however, errors aren't strong enough to open the 
+
+alternate pathway. This is why we sometimes don't notice if a word is misspelled 
+
+as we read it. 
+
+
+Closing Thoughts 
+
+
+To find and establish a new scientific fram ework, it is necessary to look for the 
+
+simplest concepts capable of uniting and  explaining what were large quantities of 
+
+disparate facts. It is an unavoidable consequence of this process that the 
+
+pendulum  swings too far towar d  simplification. Important deta ils  are likely  to be 
+
+ignored, and facts will be misinterpreted. If th e framework takes hold, refinements 
+
+and fixes will inevitably be found showing  where the initial proposal went too far, 
+
+didn't go far enough, or was in e rror. 
+
+
+
+I n  t h i s c h ap t er ,  I  h ave i n t r od u ced  many speculative ideas on how the neocortex 
+
+works. I expect that several of these ideas will prove to be wrong, and probably all  
+
+of these ideas will be revised. There are also many details  I haven't even 
+
+mentioned.  The brain is very complex; neuroscientists reading t his book will know 
+
+that I have presented a crude characterization  of the complexities of the real brain. 
+			粗糙    描述
+Yet I believe the framework as  a whole to be sound. All I  can hope is that t he core 
+
+ideas will be preserved as the details change in the face of new data and 
+
+understanding. 
+
+
+
+118
+
+Finally, you may be struggling with the idea that a simple but large memory 
+
+system could actually  result in all that  humans do . Co ul d yo u an d  I really be  just a 
+
+hierarchical memory system? Could our lives, beliefs, and ambitions be stored in 
+
+trillions of tiny synapses?  In 1984, I started writing computer pr ograms 
+
+professionally. I had written  small programs before but  this was my first time 
+
+programm in g a comp uter with a graphical user interface, and my first time 
+
+working on  large and sophisticated appl ic ations . I was writing software for an 
+
+operating system created by Grid Systems. With windows, m ultiple fonts ,  and 
+
+menus, the  Grid opera t in g system was quite advanced for its  time. 
+
+
+
+One day I was struck by the near impossibility of  what I  was doing.  As a 
+
+programmer, I wrote one line of code at a ti me. I grouped lines of  code i n to blocks  
+
+called subroutines. Subroutines were  grouped i n to  modules.  Modules were 
+
+combine d  t o  form an  application. The  spreadsheet program I was working on had 
+
+so many subroutines and modules that no one person co uld understand the entire  
+
+thing. It was complex. Yet a single line of  c o d e wo u l d d o  v er y  l i tt l e.  T o  p l a ce o n e 
+
+pixel on the display took several lines of  co de. To draw an entire screen for the 
+
+spreadsheet required the computer to execute millions of instructions th at  were 
+
+spread over hundreds of subroutines.  Subrouti nes invoked other subroutines in 
+
+repetitive and recursive ways. It was so  complicated that it w a sn't possible to 
+
+know everything that would  happen when the program ran.  I t struck  me a s h i gh ly 
+
+improbable  that when the program did run it would draw its image in what seemed  
+
+like an instant. Its outward appearance was tables o f  numbers,  l a bels, text, and 
+
+graphs. It behaved like a spreadsheet. But  I knew what was going on inside the 
+
+computer with the processor  executing one simple instruction at a time. It was  
+
+hard to believe that the co mputer could find its way through the maze of modules 
+
+and s u broutines and execute all those instructions  so quickl y. If  I hadn't known 
+
+better, I would have been certain the whole thing couldn't work. I realized that if 
+
+someone had invented the c o ncept of a computer with a graphical user interface 
+
+and a s preadsheet application, and presented it to me  on paper, I would have 
+
+rejected it as impractical. I would have said it would take forever to do anything. It 
+
+was a humbling thought because it did work. It w a s then that I realized my 
+
+intuitive sense for the speed of the microprocessor and my intuitive sense for the 
+
+power of hierarchical design were inadequate. 
+
+
+There is a lesson here about the neocortex. It isn't made of superfast components 
+
+and the rules under which it operates are no t  t h a t  c o m p l ex .  Ho wev er ,  i t  d o es h a v e 
+
+a hierarchical structure that contains billions of neurons and trillio ns of synapses. If 
+
+we find it hard to imagine how such a logically simple but numerically vast m emory 
+
+system can create our consciousness, our languages, our cultures, our art, this 
+
+boo k , an d our science and technolo gy, I suggest it is because our intuitive sense of 
+
+the capacity of the cortex and the power of  its hierarchical structure is inadequate. 
+
+The neocortex does work. It isn't magi c. We can understand  it. A n d li ke a 
+
+computer,  ultimately  we can build  intellige n t machines that  work on the same 
+
+principles
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

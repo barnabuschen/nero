@@ -1,0 +1,645 @@
+19页
+
+The third criterion was that  any theory or model of the brain should account for
+		标准							承认
+the physical architecture of the brain. Th e neocortex is not a simple structure. As 
+	
+we will see later, it is organized as a repeating hierarchy. Any neural network that 
+							等级
+didn't acknowledge this structure was certainly not going to  work like a brain. 
+	承认
+
+But as the  neural network phenomenon  exploded on the scene, it mostly settled 
+				现象	爆炸				稳定的
+on a class of ultrasimple models that didn't meet any of these criteria. Most neural 
+		ultra：极端					标准
+networks consisted of a small number of  neurons connected in three rows. A 
+  		组成
+pattern (the input) is presented to  the first row. These input neurons are 
+模式			呈现
+connected to the next  row of ne urons,  the so-called hidden units. The hidden units  
+				  质子
+then connect to the final row of neurons, the output units. The connections 
+
+between neurons have variable strengths,  meaning the activity in one neuron 
+
+might increase the activity in another and decrease the activity in a third neuron 
+
+depending on the connection strengths. By changing  these strengths, the network 
+
+learns to map input patterns to output patterns. 
+	匹配
+
+
+
+These simple neural networks only processed static patterns, did not use feedback, 
+
+and didn't look  anything like brains. The most common type of neural network, 
+
+called a "back propagation" network, learned by broadcasting an  error from  the 
+		反向传播
+output units back toward the input units. You might think this is a form  of 
+
+feedback, but it isn't really. The backward propagation of errors only occurred  
+
+during the learning phase.  When the neural  network was working normally, after 
+
+being  trained, the information flowed only one way. There was no feedback from 
+
+outputs to inputs. And the models had no  sense of time. A static input pattern  got 
+
+converted into a static output pattern.  Then  another input pattern was presented. 
+
+
+20页
+There was no history or record in  the network of what   happened even a short time
+
+earlier. And finally the architecture of these neural  networks was trivial compared 
+									不重要的，琐碎的
+to the complicated and hierarchical structure of the brain. 
+
+
+I thought the field would quickly move on to  more realistic networks, but it didn't.  
+							现实
+Because these simple neural networks were  able to do interesting things, research 
+
+seemed to stop right there, for years. They had found a new and interesting tool, 
+
+and overnight thousands of scientists,  engineers, and students were getting  
+	通宵
+grants, earning PhDs,  and writing book s  about neural networks. Companies were 
+补助金
+formed to use neural networks to  predict the stock market, process loan 
+
+applications, verify signatures, and perform hundreds of other pattern classification 
+		核实  签名							
+applications. Although the intent of the founders of the field might have been more 
+
+general, the field became dominated by  people who weren't interested in 
+				控制
+understanding how the brain works, or understanding what intelligence is. 
+
+
+The popular press didn't understand this  distinction well. Newspapers, magazines, 
+
+and TV science programs presented neural networks as being "brainlike" or 
+
+working on the "same principles as the brain." Unlike AI, where everything had to 
+
+be programmed, neural nets learned by example,  which seemed, well, somehow 
+
+more intelligent. One prominent demonstration was NetTalk. This  neural network 
+			突出的		例子
+learned to map sequences of letters onto  spoken sounds. As the network was  
+		序列
+trained on printed text, it started sounding like a computer voice reading the 
+
+words. It was easy to imagine that, with a little more time, neural  networks would 
+
+be conversing with humans. NetTalk was in correctly heralded on  national news as 
+							通报
+a machine  learning to read. NetTalk was a great exhibition, but what  it was 
+
+actually doing bordered  on the trivial. It  didn't read, it didn't understand, and was 
+		临近		
+of little practical value. It just matched letter combinations to predefined sound 
+		实用
+patterns. 
+
+
+Let me give you an  analogy to show how far neural networks were from real 
+			类比
+brains. Imagine that instead of trying to figure out how a brain worked we were 
+
+trying to figure out how  a digital computer worked.  After years of study, we 
+
+discover that everything in the computer is made of transistors. There are 
+							晶体管
+hundreds of millions of transistors in a computer and they are connected together 
+
+in precise and complex  ways. But we don' t understand how the computer works or 
+    精确的
+why the transistors are connected the way they are. So one day we decide to 
+
+connect just a few transistors together  to see what happens.  Lo and behold we 
+								瞧      看
+find that as few as three transistors, when connected together in a certain way,
+ 
+become an amplifier. A small signal put  into  one end is magnified on the other 
+	   放大器						可放大的
+end. (Amplifiers in radios and televisions are made using transistors in this  
+
+fashion.) This is an  important discovery,  and overnight an  industry springs up
+ 
+making transistor radios, televisions, and other electronic appliances using 
+
+transistor amplifiers. This is all well and good, but it doesn't tell us anything about 
+
+how the computer works. Even  though an  amplifier and a computer are both made
+
+of transistors, they have almost nothing else in common. In the same way, a real 
+
+brain and a three-row neural network are  built with neurons,  but have almost 
+
+nothing else in common. 
+
+21页
+
+During the  summer of 1987, I had an experience that threw more cold water on
+ 
+my already low enthusiasm for neural nets. I went to a neural net work conference 
+		热情							联盟
+where I saw a presentation by a company called Nestor. Nestor was trying to sell a 
+		陈诉
+neural network application for recognizing  handwriting on a tablet . It was offering 
+
+to license the program for one million dollars. That got  my  attention. Although 
+
+Nestor was promoting the sophistication of its neural network algorithm and 
+		促进		复杂
+touting it as yet another major breakthrough, I felt the problem of handwriting 
+兜售
+recognition could be solved in  a simpler, more traditional way. I went home that 
+ 
+night, thought about the problem, and in  two days had designed a handwriting 
+
+recognizer that was fast, small, and flexible. My  solution didn't use a neural 
+
+network and it didn't work at all like a brain. Although that conference sparked my 
+								联盟
+interest in designing computers with a stylus interface  (eventually leading to  the  
+					笔
+PalmPilot ten years later), it also convinced me that neural networks were not 
+
+much of an  improvement over traditional methods. The handwriting recognizer I  
+
+created ultimately beca me the basis for the text entry system, called Graffiti, used 
+		最终
+in the first series of Palm products. I think Nestor  went out of business. 
+
+
+
+So much for simple neural networks. Most of their capabilities were easily handled 
+							能力
+by other methods and eventually the media hoopla subsided. At least neural  
+			最终			喧闹平息
+network researchers did not claim their models were intelligent.  After all, they 
+									毕竟
+were extremely simple networks and did  less than AI programs. I don't want to  
+	极其   
+leave you with the impression that all neural  networks are of the simple three-layer 
+
+variety. Some researchers have continued  to study neural networks of different 
+
+designs. Today the term  neural  network is used to describe a diverse set of 
+								多种
+models, some of which are more biologically accurate and some of which are not. 
+				生物学		精准
+But almost none of them attempt to capture the overall function  or architecture of 
+					捕获				结构
+the neocortex. 
+	皮质
+
+
+In my opinion, the most fundamental problem with most neural networks is a trait 
+										特点
+they share with AI programs. Both are fatally burdened by their focus on behavior. 
+			程序		致命的   把重担加于
+Whether they are calling these behaviors "answers," "patterns," or "outputs,"  both 
+
+AI and neural networks assume intelligence lies in the behavior that a program or 
+
+a neural network produces after processing a given input. The most important 
+
+attribute of  a computer program  or a neura l network is  whether it gives the correct 
+ 
+or desired output . As in spired  by  Alan Turing, intelligence equals behavior. 
+
+
+
+But intelligence is not just a matter of acting or behaving intelligently . Behavioris a  
+
+manifestation of  intelligence, but not the central characteristic or primary definition 
+表现
+of being intelligent. A  moment's reflection proves this: You can be intelligent  just 
+					反射
+lying in the dark, thinking and understanding.  Ignoring what goes on  in  your head
+
+and focusing instead on behavior has been a large impediment to understanding 
+							阻碍
+intelligence  and building  intelligent machines. 
+
+
+
+22页
+
+
+Before we explore a  new definition of intelligence, I want to tell you about one 
+
+other connectionist approach that came much  closer to describing how real brains 
+	联系论者
+work. Trouble is, few people seem to have realized the importance of this 
+
+research. 
+
+
+
+While neural nets grabbed the limelight , a  small splinter group o f  neural network 
+		抓住      了   目光			碎片
+theorists built networks that didn't focus on behavior. Called auto-associative 
+									联想
+memories, they were also built  out of simple "neurons" that connected to each 
+
+other and fired when they reached a  certain threshold.  But they were 
+						临界值
+interconnected differently , using lots  of feedback. Instead of only passing 
+相互联系
+information forward, as in a back propagation network, auto-associative memories 
+				后向  传播   网络			自动联想  记忆
+fed the output of each neuron back into  the input— sort of like calling yourself on 
+反馈给每个输出       神经		    输入       有点	类似  
+the phone. This feedback loop led to some interesting features. When a pattern of 
+			  环
+activity was imposed on the artificial neurons,  they formed a memory of  this 
+		影响		人造
+pattern. The auto-associative network associated patterns  with themselves, hence 
+
+the term auto-associative memory. 						因此
+
+
+The result of this wiring may at first seem ridiculous . To retrieve a pattern stored 
+			线路			可笑的		检索
+in such  a memory, you must provide the pattern you want to retrieve. It would be  
+				
+like going to  the grocer and asking to  buy a bunch of  bananas.  When the grocer 
+		    杂货店
+asks you how you will  pay,  you offer to pay with bananas.  What  good is  that?  you 
+
+might ask. But an auto-associative memory has a few important properties that are 
+
+found in real brains. 
+
+The most important property is that you don't have to have the entire pattern you 
+
+want to retrieve in order to retrieve it. You might have  only part of the pattern, or 
+	 检索
+you might have a somewhat messed-up pattern. The auto-associative memory can 
+
+retrieve the correct pattern, as it was originally stored, even though you start with 
+
+a messy version of it. It would be like going to the grocer with half eaten brown 
+   凌乱
+bananas  and  getting whole green bananas   in return .  Or going  to  the  bank with a 
+
+ripped and unreadable bill and the banker says, "I think this is a messed-up $100 
+
+bill. Give me that one, and I will  give you this new, crisp $100 bill.
+
+
+
+Second, unlike most other neural networks, an auto-associative memory can be 
+
+designed to store sequences of patterns,  or temporal patterns .  This feature is 
+						暂时的
+accomplished by adding a time delay to   the feedback . With this  delay, you can 
+
+present an auto-associative memory with  a sequence of patterns, similar to a 
+
+melody, and it can remember  the sequence. I might feed  in the first few notes of  
+旋律
+"Twinkle Twinkle Little Star" and the  memory returns the whole song. When  
+
+presented with part of the sequence, the memory can recall the rest. As we will  
+
+see later, this is how people learn practically everything, as a sequence of 
+
+patterns. And I propose the brain uses  circuits similar to an auto-ass ociative 
+
+memory to  do so . 
+
+
+
+22页
+Auto-associative memories hinted at the potential importance of  feedback and
+ 			    暗示	潜在的		重要性
+time-changing inputs. But the vast majority  of AI, neural network, and cognitive 
+				巨大的  数量				认知的
+scientists ignored time and feedback. 
+
+
+
+Neuroscientists as a whole have not do ne much better. They too kn ow about 
+
+feedback— they are  the people who  disc overed it— but most have no  theory 
+
+(beyond vague talk of "phases" and "modulation") to account for why the brain 
+	模糊的		阶段    	调整
+needs to have so much of it. And time has  little or no central role in most of their 
+
+ideas on overall brain function. They tend to chart the brain in terms of where 
+	 全部的					绘制
+things happen, not when or how neural firing patterns interact over time . Part of 
+
+this bias comes from the limits of our current experimental techniques. One of the 
+	偏见
+favorite technologies of the 1990s, aka the  Decade of the Brain, was functional  
+					又叫做
+imaging. Functional imaging machines can take pictures of brain activity  in 
+	功能       成像
+humans. However, they cannot see rapid changes. So scientists  ask subjects to 
+
+concentrate on a single task over and over  again as if they  were being asked to  
+集中
+stand still for an optical photograph, except this is a  mental photograph. The result 
+		   光学的
+is we have lots of  data on   where in the brain certain tasks occur, but little data on 
+
+how realistic, time-varying inputs  flow through the brain. Functional imaging lends 
+
+insight into  where things are happening at a given moment  but cannot  easily 
+
+capture how brain activity  changes over time. Scientists would like to collect this  
+
+data, but there are few good techniques for doing so. Thus many mainstream 
+									主流
+cognitive neuroscientists continue to buy  into the input-output fallacy. You present 
+认知								谬论
+a fixed input and see what output you get.  Wiring diagrams of the cortex tend to 
+						连线
+show flowcharts that start in the primary sensory areas where sights, sounds,  and 
+	流程图					感觉
+touch come in, flow up through higher analytical, planning, and motor are a s, and 
+
+then feed instructions  down to the muscles. You sense, then you act. 
+
+
+I do n't want to  imply that every one has ignored time  and feedback. This is such a 
+			暗示
+big field that virtually  every idea has its adherents. In recent years, belief in the 
+		事实上				信徒
+importance of feedbac k , time, and prediction has been on the  rise. But the thunder 
+
+of AI and classical neural networks kept other approaches subdued and 
+						分支    	减弱
+underappreciated for many years. 
+未被欣赏
+
+
+
+I t's not difficult to understand why people— laymen and experts alike— have 
+						外行
+thought that behavior  defines intelligence. For at least a couple of centuries people 
+ 
+have likened  the brain' s abilities to clockworks, then pumps and pipes, then steam 
+	比拟				发条装置				蒸汽
+engines and, later, to computers. Decades of science fiction have  been awash in  A I 
+									被浪冲打的；与水面齐平的
+idea s,  from  IsaacAsimov 's laws of  robotics to   Star Wars ' C3PO. The idea of 
+
+intelligent  machines  doin g   things is engrained  in  our imagination. All machines, 
+···············			根深蒂固的
+whether made by humans or imagined by humans, are designed to do something. 
+
+We don't have machines that think, we  have machines that  do. Even as we 
+
+observe our fellow humans, we focus on their behavi or and not  on their hidden 
+		同事
+thoughts. Therefore, it seems  intuitively obvious that intelligent behavior should be 
+
+the metric of an  intelligent system . 
+	标准
+
+
+24
+
+However, looking across the history of science, we see our intuition is often the 
+								只觉
+biggest obstacle to discovering the truth. Scientific frameworks are often difficult to 
+	障碍
+discover, not because they  are complex, but because intuitive but incorrect  
+
+assumptions keep us from seeing the  correct answer. Astronomers before 
+假想·							天文学家
+Copernicus  (1473–1543) wrongly assumed that the earth was stationary at the 
+								固定的
+center of the universe because it feels stationary  and  appears to  beat  the center 
+
+of the universe. It was intuitively obvious that the stars were all  part of a  giant 
+
+spinning sphere, with  us at its center.  To suggest the Earth was spinning like a 
+	球形
+top, the surface moving at  nearly a thousand miles an  hour, and that the entire 
+
+Earth was hurtling through space —  not  to  mention that stars are trillions of miles 
+	猛冲
+away— would have marked you as a lunatic.  But that turned out to  be the correct 
+					疯子
+framework. Simple to understand, but  intuitively incorrect. 
+
+
+Before Darwin (1809–1882), it seemed obvious that species are fixed in their 、
+
+forms. Crocodiles don't mate  with hummingbirds; they are distinct and 
+	鳄鱼		配对
+irreconcilable. The idea that species evolve went against not only religious 
+
+teachings but also  common sense. Evolution implies that you have a common 
+					演变
+ancestor with every living  thing on  this planet, including worms and the flowering 
+
+plant in  your kitchen. We now know this to be true, but intuition says otherwise. 
+
+							直觉
+
+I mention these famous examples because I  believe that the quest for intelligen t 
+								追寻
+machines has also been burdened by an intuitive assumption that's hampering our 
+						假定			束缚
+progress. When you ask yourself, What does an intelligent system do?, it is 
+
+intuitively obvious to think in terms of behavior . We demonstrate human 
+							证明
+intelligence through our speech, writing, and actions,  right? Yes, but only to a 
+
+point. Intelligence is something that is happening in  your head . Behavior is an 
+
+optional ingredient. This is not intuitively  obvious, but it's not hard to understand  
+	组成部分
+either. ]
+
+25
+I n the spring of 1986, as I sat at my desk day after day reading scientific articles, 
+
+building my  history of intelligence, and watching  the evolving worl s of AI  and 
+
+neuralnet works, I fund  myself drowning in details. There was an unending 
+				沉浸
+supply of things to study and read about, but I was not gaining any clear 
+
+understanding of  how the whole brain actually worked  or even what it did. This  
+
+was because the field of neuroscience itself was awash in details. It still is. 
+
+Thousands  of research reports are published every year, but they tend to add to 
+
+the heap rather than organize it. There' s still no  overall theory , no  framework, 
+
+explaining what your brain does and how it does it. 
+
+
+I started imagining what the solution to this problem would be like. Is it going to  
+
+be extremely complex because the brain is so  complex? Would it take one hundred 
+
+pages of dense mathematics to describe how the brain works? Would we need to 
+
+map out hundreds or thousands of separate  circuits before anything useful  could 
+ 
+be understood? I didn't think so. History shows that the best solutions to scientific  
+
+problems are simple and elegant. While the details may  be forbidding and the  road 
+			优雅的					险峻的
+to a final theory may be arduous, the ultimate conceptual framework is generally 
+···			险峻的			概念上的
+simple. 
+、
+
+Without a core explanation to guide inquiry, neuroscientists don't have much to go 、
+
+on as they try to assemble all the details  they've collected into  a coherent picture. 
+			集合						连贯的
+The brain is incredibly complex, a vast and daunting tangle of cells. At first glance 
+
+it looks like a stadium full of cooked spaghetti. It's also been described as an 
+		体育馆
+electrician's nightmare. But with close and careful inspection we see that the brain 
+ 		噩梦
+isn't a random heap . I t  has lots of organization and structure— but much too much 
+		堆
+of  it for  us to  hope we'l l  be able to  just  intuit  the workings of the whole,  the way  
+
+we're able to see how the shards of a broken vase fitback  together. The failing 
+
+isn't one of  not having enough data or even the right pieces of  data; what we need 
+
+is a shift in perspective. With th e proper  framework, the details will become 
+
+meaningful and manageable. Consider the  following fanciful  analogy  to get  the  
+						想象的		类比	
+flavor  of what I mean. 
+
+
+
+Imagine that millennia  from  now humans have gone extinct, and explorers from an 
+		一千年后				灭绝
+advanced  alien civilization land  on Earth.   They want  to  figure out  how we lived .
+ 
+They are especially puzzled by our network of roadways. What were these bizarre 
+									奇异的
+elaborate structures for? They begin by  cataloging everything, both via satellites 
+精心制作					目录			通过	卫星
+and from the ground. They are meticulous archaeologists. They record the location 
+
+of every stray fragment of asphalt, every signpost that has fallen over and been 
+
+carried downhill by erosion, eve y detail  they can find. They note that some road 
+
+networks are different  from others; in  some places they are  windy and narrow and 
+ 
+almost random-looking, in some places they form a nice regular grid, and over 
+
+some stretches they become thick and  run for hundreds of miles through the 
+
+desert. They collect a mountain of details, but these details don't mean anything to 
+
+them. They continue to collect more detail in hopes of  finding so menew data that  
+
+explain it all. They remain stumped for a  long time . 
+				笨重的行走
+
+That is, until one of them says, "Eureka!  I think I see… these creatures couldn't 
+								创造物
+teleport themselves like we  can. They had  to travel around from place to place,  
+
+perhaps on mobile platforms of  a  cunning design." From this basic insight, many 
+
+details begin to fall into place. The small twisty street networks are from  early 
+
+times when the means of conveyance were slow. The thick long road ways were for 
+				运输
+traveling long distances at high speeds,  suggesting at last an explanation for why
+
+the signs on those roads had different numbers painted on them. The scientists 
+
+start to deduce residential versus in dustrial zoning, the way the needs of  
+	推断	住宅的		相对的	工业
+commerce and transportation infrastructure might have interacted, and so  on.  
+
+Many of  the details they had cataloged turn out to be not  very relevant, just 
+
+accidents of history or the requirements of lo cal  geography .  T h e same  amount of 
+
+raw data exists, but it  no longer is puzzlin g . 
+
+25
+
+Consider: Would a game of chess be any less real if it was played with a salt  
+
+shaker standing in for a lost knight piece? Clearly  not. The salt shaker is 
+				骑士	位置
+functionally  equivalent  to a "real" knight by virtue o f  how it moves on the  board  
+功能上						功效
+and interacts with the other pieces, so your game is truly a game of chess and not 
+	相互影响
+just a simulation of one. Or consider, wouldn't this sentence be the same if I were  
+
+to go through it with my cursor deleting  each character, then retyping it? Or to 
+
+take an example closer to home, consider the fact that  every few years your body 
+
+replaces most of the atoms that comprise you. In spite of this , you remain yourself 
+
+in all the ways that matter to you. One atom is as good as any other if it's playing 
+
+the same functional role in your molecular makeup. The same story should  hold  for 
+
+the brain:  if a mad  scientist were to replace each of your  neurons with a 
+
+functiona lly  equivalent micromachine replica, you should come out of  the 
+
+procedure feeling no less your  own true self than you had at  the outset. 
+									开始
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

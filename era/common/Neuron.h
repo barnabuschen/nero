@@ -1,4 +1,8 @@
 //#define DeBugForaddNeoByLineMan
+
+#ifndef Neuron_H
+#define Neuron_H
+
 #define NoMSG		0	//没有数据
 #define NeuronNumFirst  50000 //wen新文件创建是初始Neuron个数---全部未使用
 #define FirstNoUseNeuWhenCreate  20//前面二十个node不使用
@@ -156,7 +160,7 @@ int findImageNode(NeuronMan * nm,int *index);
 
 
 
-
+#endif //Neuron_H
 
 
 

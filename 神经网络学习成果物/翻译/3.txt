@@ -1,0 +1,1395 @@
+29页
+
+So what makes the brain so unlike the programming  that  goes into  AI  and  neural 
+ 
+networks? What is so unusual about the brain's design,  and  why does it matter? As 
+
+we'll see in the next few chapters, the brain's architecture has a great deal to tell 
+						结构
+us about how the brain really works and why it is fundamentally different from a 
+							根本上的
+computer
+
+
+
+Let's begin our introduction with the whole organ. Imagine there is a brain sitting 
+
+on a table and we are dissecting it together. The first thing you'll notice is that the 
+			仔细分析
+outer surface of the brain seems highly  uniform. A pinkish gray, it resembles a 
+						   略带桃色的 灰色   类似
+smooth cauliflower with numerous ridges and valleys called gyri  and sulci. It is soft 
+	花菜			  皱纹			   脑回		脑沟
+and squishy to the touch. This is the neocortex, a thin sheet of neural tissue that 
+	粘糊糊的
+envelops most of the  older  parts of the brain. We are  going to  focus most of our 
+
+attention on the neocortex.  Almost everything we think  of as intelligence—  
+
+perception, language, imagination, mathematics, art, music, and planning— occurs 
+知觉
+here. Your  neocortex is reading this book. 
+
+
+
+
+Now, here I have to  admit I am  a neocortical chauvinist. I know I'm going to  meet  
+
+some resistance on  this point,  s o  let  me take a minute to  defend  my  approach 
+
+before we get too far in. Every part o f  the brain has its own community of  
+
+scientists who study it, and the suggestion that  we can get to the bottom of 
+
+intelligence  by understanding just the neocortex is sure to raise a few howls of 
+				只有						怒号
+objection from communities of offended  researchers.  They will say things like, 
+反对				不服气的
+"You cannot possibly understand the neocortex without understanding brain region  
+
+blah, because the two are highly interconnected like so, and you need brain region 
+废话					相互联系的
+blah  to do such and such." I   don't disagree. Granted, the brain consists of  many 
+ 						但是
+parts and most of them are critical to  being human . (Oddly , an exception is the 
+				决定性的			古怪的
+part of the brain with the largest number  of cells, the cerebellum. If you are  born
+ 								小脑
+without a cerebellum or it is damaged, you can lead a pretty normal life. However,
+  
+this is not true for most other brain regions; most are required for basic living, or 
+
+sentience.)
+知觉
+
+
+
+My counterargument is that I am not interested in building humans. I want to 
+
+understand intelligence and build  intelligent machines . Being human and being 
+
+intelligent are separate matters. An intelligent machine need not have sexual 
+
+urges, hunger, a pulse, muscles, emotions, or a human like  body. A human is much 
+
+more than an intelligent machine. We are biological creatures with all the 
+
+necessary and sometimes unwanted baggage that comes from eons of evolution. 
+
+If you want to build intelligent machines that behave just like humans— that is, to 
+
+pass the Turing Test in all ways— then you probably would have to re-create much 
+
+of the other stuff that makes humans what  we are. But as we will see later, to
+
+build machines that are undoubtedly intelligent but not exactly like humans, we
+
+can focus on the part  of the brain strictly related to  int elligence. 
+					紧密相关的
+
+30页
+
+
+Stretched flat, the human neocortical sheet  is roughly the size of  a large dinner 
+拉平后
+napkin. The cortical sheets of other mammals  are smaller: the rat's is the size of a  
+；餐巾纸	皮质层
+postage stamp; the monkey's  is about the size of a business-letter envelope. But 
+
+regardless of size, most of them contain six layers similar to what you see in your 
+						图层
+stack of business cards. Humans are smarter because our cortex, relative to body 
+
+size, covers a larger area, not because  our layers are thicker or contain some 
+
+special class of "smart" cells. Its size  is quite impressive as it surrounds and 
+
+envelops most of the rest of the brain.  To accommodate our large brain, nature  
+						容纳
+had to modify our general anatomy. Human females developed a wide pelvis to 
+			  骨骼
+give birth to  big-headed children, a feature that some paleoanthropologists believe 
+								人类学家
+coevolved with the ability to walk on two legs. But that still wasn't enough, so 
+共同进化
+evolution folded up the neocortex, stuffing it into our  skulls like a sheet of paper 
+					填料
+crumpled into  a brandy snifter. 
+弄皱
+
+
+Your neocortex is loaded with nerve cells,  or neurons .   They are so tightly  packed 
+
+that no one knows precisely how many cells it contains. If  you draw a tiny square, 
+
+one millimeter on a side (about half the size of this letter  o ), on the top of your 
+
+stack of business cards, you are marking the position of an estimated one hundred 
+								估计的
+thousand (100,000) neurons.  Imagine trying to count the exact number in such a 
+
+tiny space; it is virtually impossible. Nevertheless, some anatomists have estimated 
+								解刨学家
+that the typical human neocortex contains around thirty billion neurons 
+
+(30,000,000,000),  but  no one would be surprised if the figure  was significantly 
+
+higher or lower. 
+
+31页
+
+Those thirty billions  cells  are you. They  contain almost all your memories, 
+
+knowledge, skills , and accumulated life  experience. After twenty-five years of  
+
+thinking about brains,  I still find this  fact astounding. That a thin sheet of cells 
+ 
+sees, feels, and creates our worldview is just short of incredible. The warmth of a  
+				世界观					
+summer day and the dreams we have for  a better world are somehow the creation 
+
+of these cells. Many years after he wrote his article in  Scientific American,  Francis 
+
+Crick wrote a book  about brains called  The Astonishing Hypothesis. The 
+
+astonishing hypothesis was simply that the  mind is the creation of the cells in the 
+
+brain. There is nothing else, no magic, no  special sauce, only  neurons and a dance 
+
+of information. I hope you  can get a sense of how incredible this realization is. 
+									实现的
+There appears to be a large philosophical  gulf between a collection of cells and our 
+				哲学		分歧
+conscious experience, yet mind  and brain  are one and the same. In calling this a  
+
+hypothesis, Crick was being politically correct. That the cells in our brains create 
+假设
+the mind is a fact, not a  hypothesis. We need to understand what these thirty 
+
+billion cells do and how they do it. Fortunately, the cortex is not just an amorphous 
+										无组织的
+blob  of  cells.  We can  take a  deeper  look at its structure for ideas about how it 
+一团
+gives rise to the human mind. 
+
+
+Let's go back to our dissection table and look at the brain some more. To the 
+			解剖
+naked eye, the neocortex presents almost  no landmarks. There are a few, to be  
+裸体的						地标
+sure, such as the giant fissures eparating the two cerebral hemispheres and the 
+			裂痕	分离			
+prominent sulcus that divides the back  and fron t regions.  But just abou t 
+
+ev er y wh er e y o u  l oo k, f r o m  l ef t  t o  r i g ht ,  f rom back to front, the convoluted surface 
+
+looks pretty much the same. There are no  visible boundary lines or color codes 
+
+demarcating areas that specialize  in different sensory information or different types 
+	区别					感觉
+of thought.  
+
+
+People have long known there are boundaries in there somewhere, though. Even 
+					分界线
+before neuroscientists were able to discern anything helpful about the circuitry of 
+
+the cortex, they knew that some mental functions were localized to certain regions 
+
+of it.  If a stroke knocks out Joe's right  parietal lobe, he can  lose his ability to 
+
+perceive— or even conceive of — a n y th in g o n  t h e l ef t s id e o f h i s b o d y o r i n t h e l ef t 
+ 
+half of space around himself. A stroke in the left frontal region known as Broca's 
+
+area, by contrast, compromises his ability to use the rules of  grammar, although 
+
+his vocabulary and his  ability  to understand the meanings of words are unchanged.
+ 
+A stroke in an area called the fusiformgyrus can knock out the ability to  recognize 
+ 
+faces— Joe can't recognize his mother, his children, or even his own face in a 
+
+photograph. Deeply fascinating disorders like these gave  early neuroscientists the 
+				混乱
+notion that the cortex consists of many functional  regions or functional areas.  The 
+
+terms are equivalent. 
+
+We have learned a lot about functional  areas in the past century,  but much
+
+remains to be discovered. Each of these regions is semi-independent and seems to
+							半独立的
+be specialized for certain aspects of perception or thought .  Physically they  are 
+
+arranged in an irregular patchwork quilt, which varies only a little from person to 
+						不同的
+person. Rarely are the functions cleanly delineated. Functionally they are arranged 
+						描画的
+in  a branching hierarchy .  
+	分支的		层级
+
+
+32页
+
+
+The notion of a hierarchy is critical, so I want to take a moment to carefully define 
+	概念			被批评的
+it. I'll be referring to it throughout t he book. In a hierarchical system, some 
+
+elements are in an abstract sense "above" and "below" others. In a business 
+
+hierarchy, for example,  a mid-level manager is above a mail clerk and below the  
+
+vice president. This has nothing  to do with physical aboveness or belowness; even 
+
+if she works on a lower floor than  the mail clerk, the manager is still "above" him 
+
+hierarchically. I emphasize this point  to  make clear what I mean whenever I talk 
+
+about one functional  region being higher or lower than  another .It has nothing to 
+
+do with their physical arrangement in the brain. All the functional areas of the  
+
+cortex reside in the same convoluted cortical sheet. What makes one region 
+	属于			复杂的  皮质
+"higher" or "lower" than another is how they are connected to one another. In the 
+
+cortex, lower areas feed information up to  higher areas by way of  a certain neural 
+
+pattern of connectivity, while higher areas send feedback down to lower areas 
+
+using a different connection pattern. There are also lateral connections between  
+							侧面的
+areas that are in separate branches of the hierarchy, like one mid-level manager 
+
+communicating with  her counterpart in a sister office in another state. A detailed 
+				副本
+map of the  monkey  cortex has been worked out by two scientists, Daniel Felleman 
+
+and David van Essen. The map shows dozens  of regions connected together in a 
+
+complex hierarchy. We can assume the  human cortex has a  similar hierarchy. 
+
+
+The lowest of the functional regions, the primary sensory  areas, are where sensory 
+							感觉
+information first arrives in  the cortex. These regions process the information at its 
+
+rawest, most basic level. For example, visual information enters the cortex through 
+未加工
+the primary visual area, called V1 for short. V1 is concerned with low-level visual 
+							有关的
+features such as tiny edge-segments, small-scale components of  motion, binocular 
+·····		边缘分割	小比例    部件		动作		双眼
+disparity (for stereo-vision), and basic color and contrast information. V1 feeds 
+不一致		立体视觉				对比
+information up to other areas,  s u ch  as V2,  V4,  and  I T  ( we'l l  have more to  say 
+
+about them later), and to a bunch of other areas besides. Each of these areas is 
+
+concerned with more specialized or abstract aspects of the information .  For  
+
+example, cells in V4 respond to objects of  medium complexity such as star shapes 
+
+in different colors like red or blue. A nother area called MT specializes in the 
+								专门从事
+motions of objects. In the  higher echelons of the visual cortex are areas that 
+动作					层次
+represent your visual memories of all sorts of objects like faces, animals, tools, 
+描绘，回忆
+body parts,  and so on . 
+
+Your other senses have similar hierarchies. Your cortex has a primary auditory area 
+
+called A1 and a hierarchy of auditory  regions above  it, and it has a primary 
+
+somatosensory (body sense)  area called  S1 and a  hierarchy  of somatosensory 
+
+regions above that. Eventually, sensory information passes into "association 
+									相连
+areas," which is the name sometimes used  for the regions of the cortex that 
+
+receive inputs from more than one sense. For example, your cortex has areas that
+ 
+receive input from both vision and touch. It is thanks to association regions that 
+
+you are able to be aware that the sight of a fly crawling  up  your arm and the 
+
+		tickling sensation you feel  there share the same cause.  Most of these areas receive
+ 自旋挠痒法；反馈		感觉
+highly processed input from several senses, and their functions  remain unclear. I 
+ 
+will have much to  say about  the cortical hierarchy later  in the book.
+
+
+33页
+
+There is yet another set of areas in the frontal lobes of the brain that creates 
+					前额叶
+motor output. The motor system of the cortex is also hierarchically organized. The 
+			运动系统
+lowest area, M1, sends connections to the  spinal cord and directly drives muscles.
+ 					   脊椎    线				
+Higher areas feed sophisticated motor commands to  M1. The hierarchy  of the  
+
+motor area and the hierarchies of sensory areas look  remarkably similar. They 
+
+seem to be put together in the same way. In the motor region we think of 
+
+information flowing down the hierarchy toward M1 to drive the muscles and in the 
+
+sensory regions we think of  information flowing up the hierarchy away from the 
+
+senses. But in reality information flows both  ways. What is referred to as feedback 
+
+in sensory regions is the output of the motor region, and vice versa.
+							   
+
+Most descriptions of brains are based on  flowcharts that reflect an  oversimplified  
+						l流程图			使简单化
+view of hierarchies. That is, input (sights, sounds, to uch) flows  into the primary 
+ 
+sensory areas and gets processed as it moves up the hierarchy, then gets passed  
+
+through the association areas, then gets  passed to the frontal lobes of the cortex, 
+
+and finally gets passed back down to the motor areas. I'm not saying this view is 
+
+co m p l et el y wr o n g .  Wh en  y ou  r ea d  a l ou d,   visual infor m ation does indeed enter at 
+
+V1, flows up to association areas ,  makes  its way over to the frontal motor cortex, 
+
+and winds up making the muscles in your mouth and  throat form  the sounds of  
+
+speech. However, that isn't all there is to  i t .  I t 's j u st  no t  t ha t  si m p l e.   I n  t h e 
+
+oversimplified view I am cautioning against, the process is generally treated as 
+
+though information flows in a  single direction, like widgets being built on  a factory 
+
+assembly line. But information in the cortex  always flows in the opposite direction 
+
+as well ,  and  with  many  more projections  feeding back down the hierarchy than up. 
+
+As you read aloud, higher regions of your cortex send more signal s "d o wn " to your 
+
+primary visual cortex than your eye receives from the printed page! We'll get to  
+
+what those feedback projections are doing in later chapters. For now, I want to 
+
+impress upon you one fact: although the up hierarchy is real, we have to be 
+
+careful  not to  think  that the information flow is all  one way. 
+
+
+
+Back at the dissection table, let's assume we set up a powerful microscope, cut a 
+
+thin slice from the cortical  sheet, stain some of the cells, and take a look at our  
+					给着色
+handiwork through the eyepiece. If we stained all the cells in our slice, we'd see a 
+
+solid black mass because the cells are so tightly packed and intermingled. But if we 
+
+use a stain that marks a smaller fraction of cells, we can see the six layers I  
+
+mentioned. These layers are formed by variations in the  density of cell bodies, cell 
+					变种			密度
+types, and their connections. 
+
+
+34页
+
+All neurons have features in common.  Apart from a cell body, which is the 
+
+roundish part you imagine when  you think  of a cell, they  also have branching,
+ 圆的
+wirelike structures called axons and dendrites. When the axon from one neuron 
+
+touches the dendrite of an other, they form small connections called synapses. 
+
+Synapses are where the nerve impulse from  one cell influences the behavior of 
+
+another cell. A neural signal,  or spike, arriving at a synapse can make it more likely 
+
+for the recipient cell to spike. Some synapses have the opposite effect, making it 
+	接受者		兴奋
+less likely the recipient cell will spike.  Thus synapses can be inhibitory or 
+
+excitatory. The strength of a  synapse can change depending on the behavior of 
+
+the two cells. The simplest form of this  synaptic change is that when two neurons 
+
+generate a  spike  at nearly the same time, the connection strength between the 
+
+two neurons will be increased. I will say more about this process, called Hebbian 
+
+learning, a  bit later.  In addition to changing the strength of  a synapse, there is
+ 
+evidence that entirely new synapses can be formed between two neurons. This 
+
+may be happening all the time, although  the scientific evidence is controversial.
+ 
+Regardless of the details of how synapses change their strength, what is certain is 
+
+that the formation and strengthening of  synapses is what causes memories to be 
+
+stored.
+
+While there are many types of neurons in the neocortex, one broad class of them 
+
+comprises eight out of every ten cells. These are the pyramidal neurons, so called 
+							角锥状
+because their cell bodies are shaped roughly like pyramids. Except for the top layer 
+
+of the six-layered cortex, which has miles of axons but very few cells, every layer 
+
+contains pyramidal cells. Each pyramidal neuron connects to many  other neurons 
+
+in its immediate neighborhood, and each  sends a lengthy axon laterally out to 
+				每一个	发出	 漫长的  轴突	旁边的
+more distant regions  of cortex or down to  lower brain structures like the thalamus.
+向更远的区域
+
+
+
+A typical pyramidal cell has several thousand synapses. Again, it is very difficult to 
+
+know exactly how many because of their extreme density and small size. The 
+
+number of synapses varies from cell to cell, layer to layer, and region to region. If 
+
+we were to take the conservative position that the average pyramidal cell has one 
+
+thousand synapses (the actual number is probably close to five or ten thousand), 
+
+then our neocortex would have roughly thirty trillion synapses altogether. That is  
+
+an astronomically large number, well beyond our intuitive grasp. It is apparently 
+
+sufficient to store all the things  you can learn in  a  lifetime. 
+
+
+35页
+
+A cco r d i ng  t o  rumor,  Albert  Einstein  once said that  conceiving  the theory  o f  special  
+								构想
+relativity was straightforward, almost easy. It followed naturally from a single 
+
+observation: that the speed of light is  constant to all observers even if the 
+
+observers are moving at different speeds. This is counterintuitive. It is like saying 
+							反只觉得
+the speed of a thrown ball is  always the same regardless of how hard it is  thrown 
+
+or how fast the individuals throwing and observing the ball are moving. Everybody 
+
+sees the ball moving at the same speed relative to them under all circumstances. 
+
+It doesn't seem like it could be true. But it  was proven to be true for light, and 
+
+Einstein cleverly asked what the consequences of this bizarre fact were. He 
+
+methodically thought about all the implications of  a  c o n st a n t  s p eed  o f  l ig h t,  a nd  h e 
+
+was led to the even more bizarre predictions of special relativity, such as time 
+
+slowing down as you move faster, and  energy and mass being fundamentally the 
+
+same thing. Books on relativity walk through his line of reasoning with everyday  
+
+examples of trains, bullets, flash-lights, and  so forth. The theory isn't hard, but it is 
+
+definitely counterintuitive.  
+
+
+
+There is an analogous discovery in neuroscience— a fact about the cortex that is 
+		类似的
+so surprising that some neuroscientists refuse to believe it and most of the rest  
+
+ignore it  because they  don 't  know wh a t  t o  make of it .  But  it  is a f a ct  of  such  
+
+importance that if you carefully and methodically explore its implications, it  will 
+
+unravel the secrets of what the neocortex  does and how it works. In  this case,  the 
+解决
+surprising discovery came from the basic anatomy of the  cortex itself, but it took 
+
+an unusually  insightful  mind to  recognize it. That person was Vernon Mountcastle, 
+
+a neuroscientist at Johns Hopkins University in Baltimore. In 1978 he published a 
+
+paper titled  "An Organizing Principle for Cerebral Function ." In this paper, 
+
+Mountcastle points out that the neocortex is remarkably uniform in appearance  
+
+and structure. The regions of co r t ex  t h a t handle auditory input look like the 
+
+regions that  handle touch, which look  like the regions that control muscles, which 
+
+look like Broca's language area, which look like practically every other region of the  
+		
+cortex. Mountcastle suggests that since these regions all look the same, perhaps 
+
+they are actually performing the same basic operation! He proposes that the cortex  
+
+uses the same computational tool to accomplish  everything it does. 
+
+
+
+All anatomists at that time, and for decades prior to Mountcastle , recognized  that 
+	解剖学家
+the cortex looks similar everywhere; this is undeniable. But instead of asking what 
+
+that could mean, they  spent their time looking for the differences between one 
+
+area of cortex and another. And they did find  differences. They assumed that if 
+
+one region is used for language  and another for vision, then there ought to be 
+
+differences between those regions. If you look closely enough you find them. 
+
+Regions of cortex vary in thickness, cell density, relative  proportion of cell types, 
+
+length  of horizontal connections, synapse density, and  many other ways that can 
+
+be tricky to discover. One of the most-studied regions, the primary visual area V1, 
+
+actually has a few extra divisions in one of its layers. The situation is analogous to 
+			分割
+the work of biologists in the 1800s. They  spent their time discovering the minute 
+
+differences between species. Success for them was finding that two mice that 
+
+looked nearly identical were actually  separate species. For many years Darwin 
+
+followed the same course, often studying  mollusks. Bu t Darwin eventually had the 
+
+big insight to ask how  all these species could be  so similar. It is their similarity that 
+
+is surprising and interesting, much more so than their differences. 
+
+	
+36页
+Mountcastle makes a similar observation.  In a field of anatomists looking for 
+
+minute differences in cortical regions, he shows that despite the differences, the 
+
+neocortex is remarkably uniform. The same layers, cell types, and connections  
+
+exist throughout. It looks like the six business cards everywhere. The differences 
+
+are often so subtle that  trained anatomists can't agree on them. Therefore, 
+
+Mountcastle argues, all regions of the cortex are performing the same operation. 
+
+The thing that makes the vision area visual and the  motor  area motoric is how the  
+
+regions of cortex are connected to each other and to other parts of the central 
+
+nervous system. 
+
+
+In fact, Mountcastle argues that the reason  one region of cortex looks slightly
+
+different  from another is because of what it is connected to, and not because its
+
+basic function is different. He concludes that there  is a common function, a
+
+commonal gorithm, t h at is performed by all the cortical regions. Vision is no
+
+different  from hearing, which is no different  from m o tor out p ut . He  allows t h at  our
+
+genes specify how the regions of cortex are connected, which is very specific to
+
+function and species, but the cortical tissue itself is doing the same thing
+
+everywhere. 
+
+
+Let's think about this for  a m o ment. To  me , sig h t, hearing,  and touch seem very 
+
+different . They have fundame n ta lly different   qualities. Sight involves color, texture,  
+
+shape, depth, and form. Hearing has pitch, rhythm, and timbre. They feel very 
+
+different . H o w can they  be the sa me? Mountcastle says they aren't  the same, but  
+
+the way the cortex processes  signals from the ear is the same as the way it 
+
+processes signals from the eyes. He goes on to say that motor control works on 
+
+the same principle, too. 
+
+
+
+Scientists and engineers have for the most  part beenig norant of, or have chosen 
+
+to ignore, Mountcastl e's proposal. When they try to understand vision or make a 
+			
+computer that can "see," they devise vocabulary and techniques specific to vision. 
+
+They talk about edges, textures, and three-dimensional representations . If they 
+
+want to understand spoken language, they build algorithms based on rules of 
+
+grammar, syntax, and semantics. But if  Mountcastle is correct, these approaches 
+
+are not how the brain solves these problems , and are therefore likely to fail. If 
+
+Mountcastle is correct, the  algorithm of the cortex must  be expressed 
+
+independently of any particular function or sense. The brain uses the same process 
+
+to see as to  hear. The cortex does something universal that can be applied to any 
+
+type of sensory or motor system. 
+
+
+
+When I first read Mountcastle's paper I nea rl y  fell out  o f  my c h a ir .  Here was the 
+
+Rosetta stone of neuroscience— a single paper and a single  idea t h at united all the 
+
+diverse and wondrous capabilities of the human  mind. It united them under a
+
+single algorithm. In one step it exposed the fallacy of all previous attempts to
+
+understand  and en gi neer human behavior as diverse capabilities. I hope yo u can
+
+appreciate how radical and wonderfully elegant Mountc astle's proposal is. The best
+
+ideas in science are always simple, elegant,  and unexpected, and this is one of the
+
+best. In m y  opinion it  was, is, and will li kely remain the most important dis covery
+
+in neuroscience. Incredibly,  though, most s cientists and engineers either refuse to
+
+believe it, choose to  ignore  it, or aren't aware of it. 
+
+37页
+
+
+Part of this neglect stems from a poverty of tools for studying how information 
+		忽略  起源于		缺少
+flows within the six-layered cortex. The  tools we do have operate on a grosser 
+						已经拥有的工具
+level and are generally aimed at locating where in the cortex, as opposed to when 
+								   相反的
+and how, various capabilities arise. Fo r example, much of  the neuroscience  
+
+reported in the popular press these days implicitly favors the idea of the brain as a 
+
+collection of highly specialized modules. Functional  imaging techniques like 
+一个高度分化的集合				功能成像技术
+functional  MRI and PET scanning focusal most exclusively on brain maps and the 
+						惟一的，专有的
+functional regions I mentioned earlier. Typically in these experiments, a volunteer 
+					代表性的
+subject lies down with his or her head inside the scanner and performs some kind 
+							扫描仪
+of mental  or motor task. It m ight be  playing a video game , generating verb 
+								生成
+conjugations, reading sentences, looking  at faces, naming pictures, imagining 
+结合
+something, memorizing lists, making financial decisions, and so on. The scanner 
+
+detects which brain regions are more acti ve than usual during these tasks and 
+探测
+draws colored splotches over an image of the subject's brain to pinpoint them. 
+		污点
+These regions are presumably central to the  task. Thousands of functional imaging 
+
+experiments have been done and thousands more will follow. Through the course 
+
+of it all, we are gradually  building up a picture of w h ere certain functi ons happen 
+
+in the typical adult brain. It is easy  to say, "this is the face recognition area , t h is is 
+
+the math area, this is  the music area," and so on. Since we don't know how the 
+
+brain accomplishes these tasks,  it is natural to assume  that the brain carries out 
+
+the various activit i es in  different ways. 
+
+
+
+But does it? A growing and fascinating body  of evidence supports Mountcastle's 
+
+proposal. Some of the best examples demonstrate the extreme flexibility of the 
+
+neocortex. Any human brain, if nourished properly and put in  the right 
+				滋养		适当的
+environment, can learn any of thousands  of spoken languages. That same brain 
+
+can also learn sign language, written language, m u si cal lang uage, mathe matical 
+
+lang uage, computer languages, and body language. It can learn to live in frigid 
+
+northern climes or in a scorching desert. It can become an  expert in chess, fishing, 
+
+farming, or theoretical physics. Consider  th e fact that you have a special visual 
+
+area that seems to be specifically devoted to representing  written letters and 
+					献身于
+digits. Does this mean you were born with  a language area ready to process letters 
+
+and digits? Unlikely . Written  la nguage is far too recent  an invention for our  genes 
+
+to have evolved a specific mechanism for it.  So the cortex is still dividing itself into 
+				机制
+task-specific functional areas long into childhood, based purely on experience. The 
+							仅仅
+human  brain has an incredible capacity  to learn and adapt to thousands of 
+			
+environments that didn't exist until very  recently. This argues for an extremely 
+
+flexible sys t em, not one with a thousand solutions  for a thousand problems.  
+
+
+38页
+
+Neuroscientists have also found that the wiring of the neocortex is amazingly 
+
+"plastic," meaning it can change and rewire  itself dependin g on  t h e type of inputs 
+可塑的
+flowing into  it. For ex ample, new born ferret brains can be surgically rewired so 
+
+that the animals' eyes send their signals to the areas of cortex where hearing 
+
+normally develops. The surprising result  is that the ferrets develop functioning 
+								形成视觉功能的路线
+visual pathways in the auditory  portions of their brains. In other words, they see 
+	路线			部分
+with brain tissue that normally hears sounds. Similar experiments  have been done 
+
+with other senses and brain regions. For instance, pieces of rat visual cortex can 
+								视觉
+be transplanted around the time of birth to regions where the sense of touch is 
+			在刚出生的时间					触觉
+usually represented. As the rat matures, the transplanted tissue processes touch 
+		表示		成熟
+rather than vision. Cells were  not born to specialize in vision or touch or  hearing. 
+
+
+
+
+Human neocortex is every bit as plastic. Adults who are born deaf process visual 
+
+information in areas that normally become  auditory regions. And congenitally  bli n d 
+									天生的
+adults  use the rearmost portion of  their  cortex, which ordinarily  be omes dedicated 
+		后面的	  部分
+to vision, to  read braille.  Since braille involves touch,  you might think it would 
+
+primarily activate touch regions— but apparently no  area of cortex is content to 
+
+represent nothing. The visual cortex, not receiving information from the eyes like it 
+
+is "supposed" to,  casts around  for other  input patterns to sift through— in this 
+								删选
+case, from other cortical regions.
+
+
+
+All this goes to show that brain regions  develop specialized functions based largely 
+
+on the kind of information th at flows into  them during development. The cortex is 
+
+not rigidly designed to  perform different   functions using diff erent algorithms any 
+
+more than the earth's surface was predestined to end up  with its modern  
+
+arrangement of nations. The organization of your cortex, like the political 
+
+geography  of the globe, could have turned out differently given  a different set of 
+
+early circumstances. 
+
+
+Mountcastle was right. There is a single powerful algorithm implemented by  every 
+
+region of cortex. I f  y ou connect  regions  of  cortex toge ther in  a suitable hierarchy 
+
+and provide a stream of inpu t,  it  will learn about its enviro nment .  Therefore, there 
+
+is no reason for  intelligent machines of  the future to have  the same senses or  
+
+capabili ties as we humans. T h e cortical algorith m can be deployed i n  novel ways, 
+								展开，部署
+with novel senses, in a machined cortical sheet so  that genuine, flexible 
+
+intelligence emerges outside of  biological brains.
+		摆脱
+
+39页
+
+
+Let 's mo v e o n  t o  a  t o p i c t h a t  i s r el a t ed  t o Mo u n t ca stl e's p r o p o sa l  a n d  i s e q u a ll y  
+
+surprising. The inputs  to yo ur c o rtex are all basically alike. Again, you pr obably 
+			所有输入都是相似的
+think of your senses as bein g completely separate entities. After all, sound is 
+					    不同	实体
+carried as compression waves through air,  vision is carried as light, and touch is 
+
+carried as pressure on your skin. Sound seems temporal, vision seems mainly 
+
+pictorial, and touch s eems essentially spatial. What c o ul d be more different than  
+
+the sound of a bleating goat  versus the sight of an  apple versus the feel of a 
+		叫着的山羊	対				対
+baseball? 
+
+
+
+But let's take a closer look. Visual information from the outside world is sent to 
+
+your brain via a million fibers in your optic nerve.  Afte r a brief transit thr o ugh the 
+				纤维	视觉
+thalamus, they arrive  at the primary visual cortex. Sounds are carried in  via the 
+
+thirty thousand fibers of your  auditory  nerve. They  pass through some older parts  
+
+of y o ur brain and then arrive at  your primary auditory cortex . Your  spinal cord  
+										脊髓
+carries information about touch and internal sensations to your brain via another 
+
+million fibers. They are received by your primary somatosensory cortex. Thes e are 
+							躯体感觉皮质
+th e main  inp u ts to  y our b r ain.  They are how you sense the world. 
+
+
+You can visualize these inputs as  a bundle of  electrical wires or a bundle of optical 
+
+fibers. You might have seen lamps made with optical fibers where pinpoints of 
+						光学
+colored light appear at the end of each fiber. The inputs to the brain are like this, 
+
+but the fi bers are called axons, and they carry neural signals called "action 
+									
+potentials" or "spikes," which ar e partly  chemical and partly electrical. The sense 
+电
+organs supplying these signals are differen t, but once they ar e turned into brain-
+
+bound acti on potentials, t h ey are all the same— just patterns.
+
+
+
+If you look at a dog, for example, a set of patterns will flow through th e fibers of 
+
+your optic nerve int o   the visual part of your cortex.  If you listen t o  the d o g bark, a 
+
+different  set of pa tterns will flow along your auditory nerve and int o  the hearing 
+
+parts of yo ur brai n. If  you pet t he dog, a set of touch-sensation patterns will flow 
+
+from y o ur hand, t h ro ugh fi bers in your spine, and into the parts  of y o ur brain that  
+						脊椎
+deal with touch. Each pattern— see the do g, hear the dog, feel the dog— is 
+
+experienced differently  because each gets  channeled through a different path in 
+
+the cortical hierarchy. It matters where the  cables go to inside the brain. But at the 
+
+abstract level of sensory inputs, these  are all essentially the same, and are all  
+
+handled in similar ways by the six-layered cortex. You hear sound, see light, and 
+
+feel pressure, but inside your brain there isn't any fundamental difference between 
+
+these types of information.  An action potential is an action potential. These 
+
+momentary spikes are identical regardless of what originally caused them. All your 
+瞬间    		相同的
+brain knows is patterns. 
+
+
+Your perceptions and knowledge about the world are built from these patterns. 
+
+There's no light inside  your head . It's dark i n  there.  There's no soun d entering your
+
+brain eithe r . It's quiet  inside. In  fact, the br ain is the onl y  part of  your body that 
+
+has no senses itself. A surgeon could stick a finger into your brain and you  
+			外科医生
+wouldn't feel it. All the information that e n ters your mi nd comes in as s p atial and 
+
+temporal patterns on the axons. 
+
+
+40页
+
+What exactly do I mean by spatial and temporal patterns ?  Let's look  at each of our 
+			 空间的		暂时的
+main senses in turn. Vision carries both spatial and temporal information.  Spatial 
+
+patterns  are coincident patterns in time; they  are created when multiple receptors 
+		同时发生的							受体
+in the same sense organ are stimulated simultaneously. In vision, the sense organ 
+				受刺激	同时的
+is your retina. An  image enters your pupil , gets inverted  by your  lens,  hits y ou r 
+	视网膜				瞳孔		相反的		晶状体
+retina, and creates a spatial pattern. This  pattern gets relayed to your brain. 
+							   传播	
+People tend to think that  there's a little upside-down  picture of the world going 
+
+into your visual areas, but that's not how it works. There  is no picture. It's not an 
+
+image anymore. Fundamentally,  it is j u st electrical activity firing in patterns. Its 
+
+imagelike qualities get lost very rapidly  as your cortex handles  the inf o rm ation, 
+
+passing components of the pattern up and down between different areas, sifting 
+	组件								
+them, filtering them. 
+
+
+
+Vision also relies on  temporal patterns,  which means the patterns entering your 
+		依靠
+eyes are constantly changing over time. Bu t while the spatial aspect of vision is  
+
+intuitively  obvious,  its temporal aspect is less apparent. About three times every 
+					不怎么显著
+second, your eyes make a sudden movement called a saccade. Th ey fixate on one 
+						眼跳跃，眼急动，眼扫视	
+poin t, and then suddenly jump to another point.  Every time your eyes move, the 
+
+image on your retina changes. This means that the patterns carried into your brain 
+
+are also changing completely with each saccade. And that's in the simplest  possible 
+
+case of you just sitting still looking at  an unchanging scene. In  real life, you 
+
+constantly  move your  head and body  and walk through continuously  shifting 
+
+environments. Your conscious impression is  of a stable world  full of objects and 
+
+people that are easy t o  keep track of. Bu t this impression is only made possible by 
+
+your brain' s ability to deal with a torrent of retinal images that never repeat a 
+
+pattern exactly. Natural vision, experienced as patterns entering the brain, flows 
+
+like a  river.  Vision is more li ke a song than  a  painting. 
+
+
+
+Many vision researchers ignore saccades and the rapidly changing patterns of 
+
+vision. Working with anesthetized animals,  they study how vision occurs when an 
+			被麻醉
+unconscious animal fixates on a point. In  doing so, they're taking away the time 
+
+dimension. There's nothing wrong with that  in principle; eliminating variables is a 
+								消除
+core element of the scientific  method. But they're throwing away a central 
+
+component of vision, what it  actually consists of. Time  needs a central place in a 
+
+neuroscientific account  of vision.
+
+
+
+With hearing, we're used to thinking about sound's temporal aspect. It is intuitively  
+
+obvious to us that sounds, spoken language, and m u sic change over time. You 
+
+can't listen to a song all at once  any more than you can hear  a spoken sentence 
+
+instantaneously. A song only exists over  time. Therefore we don't usually think of 
+
+sound as a spatial pattern. In a way, it's  the inverse of the case with vision: the
+
+temporal aspect is immediately apparent, but its  spatia l aspect is  less obvious.
+
+
+41页
+
+Hearing has a spatial component as well. You convert sounds into action potentials 
+									潜能
+through a  coiled-up organ  in each ear called the cochlea.  Tiny, opaque, spiral-
+		成圈					耳蜗
+shaped, and embedded in the hardest bone in the bo dy, th e temporal bone, the 
+		嵌入式的
+cochlea was deciphered more than half a  century ago by a Hungarian physicist,  
+		解释
+Georg von Beksey. Building models of the  inner ear, von Beksey discovered tha t  
+
+each component of sound you hear causes a different portion of the cochlea to 
+
+vibrate. High-frequency tones cause vibrations in the cochlea's stiff base. Low-
+震动					震动			
+frequency tones cause vibrations in the cochlea's floppier  and wider outer portion. 
+							松散的
+Mid-frequency tones vibrate intermediate segments. Each site on the cochlea is 
+
+studded with neurons that fire as they are shaken. In daily life your cochleas are  
+散布
+being vibrated by large numbers of simultaneous frequencies all the time. So each 
+
+moment there is a new spatial pattern of stimulation along the length of each 
+
+cochlea. Each moment a new spatial pattern  streams up the auditory nerve .  Again 
+
+we see that this sensory in formation boils down to spatial-temporal patterns. 
+
+
+
+People don't usually t h ink of touch as a  temporal phenomenon, but it is every bit 
+
+as time-based as it is spatial. You can carry out an experiment to see for yourself. 
+
+Ask a friend to cup his hand, palm face  up, and close his eyes. Place a small 
+
+ordinary o bject in his  palm— a ring,  an eraser, anything will do— and ask him to 
+
+identify it without  moving  any part of  his hand. He  won't have a clue other than 
+
+weight and maybe gross size. Then tell him to keep hi s eyes closed and move his 
+
+fingers over the object. He'll most  likely identify it at once. By  allowing the f i ngers 
+
+to mo ve, yo u've added time to the sensory perception of  touch. There's a direct 
+
+analogy between the fovea at the  center of  your retina and your fingertips , both o f 
+
+which have high  acuity . So touch, too, is like a song. Your a b ili ty t o  make complex 
+
+use of touc h, such as buttoning your shirt or  unlocking your front door in  the  dark,  
+
+depends  o n  continuous time- varying patterns of  touch sensation . 
+
+
+
+We teach our children that humans have five senses: sight, hearing, touch, smell, 
+
+and taste. We really have more. Vision  is more like three senses— motion, color, 
+
+and luminance (black-and-white contrast). Touch has pressure, temperature, pain, 
+
+and vibration. We also have an entire system of sensors that tell us about our joint  
+
+angles and bodily position . It is  called the proprioceptive system (poprio-  has the 
+						立体感受的
+same Latin root as  proprietary  an d   property ). You couldn't move without it. We  
+			所有权	
+also have the vestibular system in the inner ear, which gives us our sense of 
+		前庭系统
+balance. Some of these senses  are richer  and more apparent to  us than others, 
+
+but they all enter our brain as streams of spatial patterns flowing through time on 
+
+axons. 
+
+
+
+Yo u r  c o r t ex  do esn 't  r ea l l y  k n o w or  s en se the world directly. The o n ly  thin g  the  
+
+cortex knows is the pattern streaming in  on the input axons. Your perceived view 
+
+of the world is created from these patterns, including your sense of self. In fact,
+
+your  brain can't directly kn ow where  your bo dy ends and t he world begins. 
+
+Neuroscientists studying body image have found that our sense of self is a lot 
+
+more flexible than it feels. For example, if I  give you a little rake and have you use 
+
+it for reaching and grasping instead of using your hand, yo u will  soon feel th at it 
+
+has become a part of your body . Your  brain wil l change its expectations to 
+
+accommodate the new patterns of tactile input. The rake is literally incorporated 
+									合并
+in to you r body map. 
+
+42页
+
+The idea that patterns from different senses are equivalent inside your brain is 
+						等价的
+quite surprising, and although well understood, it still isn't widely appreciated. 
+
+More examples are in order. The first  one  you can reproduce a t  home. All yo u  
+							复制
+need is a friend, a freestanding cardboard screen, and a fake hand. For your first 
+
+time running this experiment , i t  would be ideal if y o u had a rubber hand, su ch a s 
+
+you might  buy at a Halloween  store, but  it will also work  if you just trace your 
+										描绘
+hand on a  sheet of blank paper. Lay your  real hand on a tabletop a few inches 
+
+away from the fake one and align them the same (fingertips pointed in the same 
+		假的
+direction, palms either both u p  o r b o th  d o wn) .  T h en   place the screen between the 
+
+two hands  so that all you can s ee is the false one. While you stare at the fake 
+
+hand, yo ur  friend's job is to simultaneously  stroke both  hands at corresponding 
+						抚摸
+points. For  example, your friend  could  stroke bot h  pinkies from  knuckle to nail at 
+									关节		指甲
+the same speed, then issue  three quick taps to the second joint of both index 
+
+fingers with the same timing, then stroke a few light circles on the back of each  
+
+hand, and so on. After a short time, areas in your brain where visual and 
+
+somatosensory patterns come together — one of those association areas I 
+
+mentioned earlier in this chapter— become confused. You will actually feel the 
+
+sensations being applied to the  dummy hand as if it were your own. 
+
+
+
+Another fascinating example of this "pattern equivalency" is called sensory 
+
+substitution. It may revolutionize life for people who  lose their  sight in  childhood,  
+置换			使革命化
+and might someday be a boon to people who are born blin d. I t  also might spawn 
+
+new machine interface technologies for the rest of us. 
+
+
+
+Realizing that the brain is all about patterns, Paul Bach y Rita, a professor of 
+
+biomedical engineering at the University of Wisconsin, has developed a method for 
+
+displaying visual patterns on  t h e human  tongue. Wearing  this display device, blind 
+
+persons are learning to "see" via sensations on the tongue. 
+
+
+Here is how it works. The subject wears a  small camera on his forehead and a chip 
+
+on his tongue. Visual  images are translated pixel for  pixel into points of pressure 
+
+on the tongue. A visual scene th at can be displayed as hundred s of pixels on a 
+
+crude television screen can  be turned into a  pattern of hundreds  of tiny pressure 
+
+points on the tongue. The brain quickly learns to interpret the patterns correctly. 
+
+
+
+One of the first people to wear the tongue -mounted device is Erik Weihenm a yer, a 
+
+world-class  athlete who went blind at age thirteen and who lectures widely about 
+
+not letting blindness stop his ambitions. In 2002, Weih enmayer summited Mount 
+
+Everest, becoming the first blind person ever to undertake, much  less accomplish, 
+
+such a goal. 
+
+43页
+
+
+In 2003, Weihenmaye r tried on the tongue  unit and saw images for the first time 
+
+since his childhood. He was  able to discern a ball rolling on the floor toward him , 
+
+reach for a soft drink on a table, and play  the game Rock, Paper, Scissors. Later he 
+
+walked down a hallway, saw the door openings, exam ined a door and its  frame, 
+
+and noted that there was a sign on it.  Images initially experienced as sensations  
+
+on the tongue were soon experienced as images in space. 
+
+
+
+These examples show once again that the cort ex is extremely flexible and that the 
+
+inputs to the brain are just patterns.  It doesn't matter where the patterns come 
+
+from; as long as they correlate over time  in consistent ways, the brain can make 
+
+sense of them. 
+
+
+A ll of t h is shoul d n't be too surprising if we take the view that patterns are all the  
+
+brain knows about. Brains are pattern machines. It's not incorrect to express the 
+
+brain's functions in terms of  hearing or vision, but at  the most fundamental level, 
+
+patterns are the name of the game. No  matter how different the activities of 
+
+various cortical areas may seem from each other, the same basic cortical algorithm 
+
+is at work. The cortex doesn't  care if the patterns originated in vision, hearing, or 
+
+another sense. It doesn't care if its inputs  are from a single sensory organ or  from 
+
+four . Nor woul d it care  if y o u happ ened t o   perceive the world with sonar, radar, or 
+
+magnetic fields, or if you had tentacles rather than hands, or even if you lived in a 
+
+world of fo ur dimensions rath er than three. 
+
+
+This means you don't need  any one of your senses or any particular combination 
+
+of senses to be intelligent. Helen Keller had no sight and no hearing, yet she 
+
+learned language and became  a  more skillful writer than most sighted and hearing 
+
+people. Here was a very inte lligent person without two  of our main senses, yet the 
+
+
+incredible flexibility of the brain allowed he r to perceive and understand the  world 
+
+as individuals with all five senses do. 
+
+
+
+This kind of remarkable flexibilit y in the human mind  gives me high hopes for the 
+
+brain-inspired technology we will create. When I think a b out  building inte llige n t 
+
+machines, I wonder, Why stick to our familiar senses? As long as we can decipher 
+
+the neocortical algorith m and come up with a science of patterns ,  we can apply it 
+
+to any system that we want to make intelligent. And one of  the great features of 
+
+neocortically inspired circuitry is that we won't need to  be especially clever in  
+
+programming it . Just  as auditory  cortex  can become  "visual" cortex in a rewired  
+
+ferret, just as visual cortex finds alternative usage in blind people, a system 
+
+running the neocortical algorithm will be intelligent based on whatever kinds of 
+
+patterns we choose to give it.  We will still need to be smart about setting up the  
+
+broad parameters of t h e system, and we will need to train and educate it. But the 
+
+billions of neural details involved in th e  br ain's ability to have complex, creative 
+
+thoughts will take care of  themselves, as naturally as  they do in our children. 
+
+
+
+Finally, the  idea that patterns are the fundamental currency of intelligence leads to  
+
+some interesting philosophical questions. When I sit in a room with my friends, 
+
+how do I know they are there or  even if  they are real ? My brain receives a set of  
+
+patterns that are consistent with patterns I have experienced in the past. These 
+
+patterns correspond to people I know, their faces, their voices, how they usually 
+
+behave, and all kinds of facts about them . I have learned to expect these patterns  
+
+to occur together in predictable ways. But when you come down to it, it's all just a 
+
+model. All our knowledge of the world is a model based on patterns. Are we 
+
+certain the  world is r eal? It's fun and odd to think ab out.  Several science-fiction 
+
+books and movies explore this  theme. This is not to say tha t  t h e people  or objects 
+
+aren't really there. They are really there. But our certainty of the world's existence 
+
+is based on the consistency of patterns  and how we interpret them. There is no 
+
+such thi n g as direct perception. We don't have a "people" sensor. Remember, the 
+
+brain is in a dark qui et box with  no  kn owledge of a nythi ng other than the time-
+
+flowing patt erns on its input fibers. Your perception of the world is created from 
+
+these patterns, nothing else. Existence may  be objective, but the spatial-temporal  
+
+patterns fl owing int o  t h e axon  bundles in our brai ns are all we hav e to go on. 
+
+
+
+
+This discussion highlights the sometimes-questioned relationship between  
+
+hallucination and reality. If you can hallucinate sensations coming from a rubber  
+幻觉
+hand and you can " see" via touch stimulation of your tongue, are you being 
+					刺激
+equally "fooled" when you sense touch on your own hand or see with your eyes?  
+
+Can we trust that the world is as it seems? Yes. The world really does exist in an 
+
+absolute form very close to how  we perceive it. However, our brains can't know  
+
+abo u t th e absolute world  directly. 
+
+
+The brain knows about the wo rld through a set of senses,  which can only detect 
+
+parts of the absolute world. The senses create patterns th at are sent to the cortex, 
+
+and processed by the same cortical algorith m to create a model of the world. In 
+
+this way,  spoken l a nguage an d written language are perceived remarkably 
+
+similarly, despite being complete ly different at the sensory level. Likewise, Helen 
+
+Keller's model of the world was very close to  yo urs and mine , de spite the fact that 
+
+she had a greatly reduced set of senses. Through these patterns the cortex  
+
+constructs a model of the world that is  close to the real thing, an d then, 
+
+remarkably, holds it in memory. It is memo ry— what  happen s to those patterns  
+
+after they enter the co rtex— that  we 'll discuss in the next chapter. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

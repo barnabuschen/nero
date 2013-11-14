@@ -1,3 +1,11 @@
+
+#ifndef LISH_H
+#define LISH_H
+
+
+
+
+
 #include <stdio.h>
 
 
@@ -105,7 +113,7 @@ static inline struct list_head * list_GetNUMn(struct list_head * head,int n)
 }
 
 
-
+#endif
 
 
 

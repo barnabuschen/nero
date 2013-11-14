@@ -11,15 +11,53 @@
 
 神经网络模块：分为俩部分；
 1:网络结构---就是数据保存方式
-
+	这里提出一个神经节的概念：神经节是功能相同的神经元细胞体在中枢以外的周围部位集合而成的结节状构造。
+	这里忽略“中枢以外的周围部位”，专指具有相似功能的神经细胞的集合
 	
-
+	之前给出的
+	
+typedef struct Neuron
+{
+int x;
+int y;
+int z;
+int next;
+}Neo;
+	只是数据在文件中的结构，这里必须给出在内存中的结构：就是Neuron Objects。它可以是一个神经元，也可以是一组
+	神经元的集合，他们共同实现一组功能或者表达一个概念。显然他们会有大量的连接，来表示他与其他概念的关系
+	就是说这里弱化神经元(在内存中为ActivationNeuron)的概念，就强调一个存储在网络中的一个个对象
+	
+	但是如何区别神经对象和神经元他们各自的连接的含义呢
+	
+	：神经对象的连接是不同对象的存在的一种相互关系，或者说逻辑上的联系，而神经元之间的连接表示了数据之间的连接关系
+	
+	但实际上他们是同一个东西啊啊，因为一个对象也应该是用一个神经元来表示的，不然说不过去啊。
 
 2:操作------对数据的操作方式
 
 
 
 */
+#define NeroOK   1
+#define NeroError   -1
+typedef int  nero_s32int;
+//typedef int  nero_s32int;
+typedef unsigned int  nero_us32int;
+
+ struct ActivationNeuron;
+typedef struct ActivationNeuron  NeuronObject;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -31,7 +31,7 @@
 
 
 
-extern nero_s32int readUTF8FileData(nero_us8int * FileName);
+extern nero_s32int readUTF8FileData(nero_8int * FileName);
 
 
 
@@ -213,17 +213,18 @@ void myMainWindow(GtkWidget *window)
 
 void readUTF8File( GtkWidget *widget, gpointer data )
 {
-/*	GtkWidget * dialog= dialog = gtk_message_dialog_new (Mainwindow,*/
-/*                                 GTK_DIALOG_DESTROY_WITH_PARENT,*/
-/*                                 GTK_MESSAGE_INFO,*/
-/*                                 GTK_BUTTONS_CLOSE,*/
-/*                                 "tell sth");*/
-/*	gtk_dialog_run (GTK_DIALOG (dialog));*/
-/*	gtk_widget_destroy (dialog);*/
+	GtkWidget * dialog= dialog = gtk_message_dialog_new (Mainwindow,
+                                 GTK_DIALOG_DESTROY_WITH_PARENT,
+                                 GTK_MESSAGE_INFO,
+                                 GTK_BUTTONS_CLOSE,
+                                 "done");
+
 
 	
 	readUTF8FileData("data/ChUnicode");
-
+	
+	gtk_dialog_run (GTK_DIALOG (dialog));
+	gtk_widget_destroy (dialog);
 
 }
 void createToolsTab(GtkWidget *fixedInside)
@@ -260,7 +261,16 @@ void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook)
 	gtk_widget_set_size_request (fixedInside, x/3, y/2);
 
 
+	#ifdef Nero_DeBuging1
+	switch(counts)
+	{
+	case 3:;
+	case 2:text = g_strdup_printf("Page %d", count);;break;
+	case 1:text = g_strdup_printf("tools");createToolsTab(fixedInside);break;
+	default:break;
 	
+	}
+	#else
 	switch(counts)
 	{
 	case 1:;
@@ -269,7 +279,7 @@ void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook)
 	default:break;
 	
 	}
-
+	#endif	
 	GtkWidget *label = gtk_label_new(text);/*tab的名字*/
 
 

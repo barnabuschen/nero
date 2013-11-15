@@ -15,23 +15,38 @@
 
 
 #define ChineseCharNum  8000
-/**/
+/*2013年11月15日 星期五 20时22分16秒 */
 
 
 static int nero_error_Id=0;
 
-// b readUTF8FileData
-//b 55
-nero_s32int readUTF8FileData(nero_us8int * FileName)//
+struct charshuzhu6
 {
-	DigitalUnicode16 unicodeInDigtial;
+nero_us8int tmp[6];
+
+};
+
+ struct adkfjao
+{
+ChUTF8 tmp;
+nero_s32int end;
+
+};
+
+
+nero_s32int readUTF8FileData(nero_8int * FileName)//
+{
+	struct adkfjao  testsadkfjao;
+	struct charshuzhu6 trunshuzi;
+	struct charshuzhu6 *trunshuziPoint;
+	DigitalUnicode16 unicodeInDigtial,unicodeInDigtial2;
 	DigitalUnicode16 *unicodePont;
 	nero_s32int fd;
 	nero_s8int *mapped_mem, * p;
 	nero_s32int flength = 1024;
 	nero_us8int tmp;
 	nero_s32int i,j,k;
-	nero_s32int charLength;//该字节所占位数
+	nero_s32int charLength=0;//该字节所占位数
 	//存储utf编码，chChar中是以utf8编码的汉字，chCharUnicode16Code中则是对应的UnicodeCode
 	nero_s32int charCounts=0;
 	ChUTF8 chChar[ChineseCharNum];
@@ -49,8 +64,14 @@ nero_s32int readUTF8FileData(nero_us8int * FileName)//
 	fd, 0);
 	
 	
-	
+
 	/* 使用映射区域. 现在开始解析UTF8File*/	
+	#ifdef Nero_DeBuging10
+	printf("flength=%d.\n",flength);
+	printf("FileName=%s.\n",FileName);
+	printf("mapped_mem=%x.\n",mapped_mem);
+	printf("start  \n");
+	#endif
 	p=mapped_mem;
 	while(1)
 	{
@@ -64,21 +85,23 @@ nero_s32int readUTF8FileData(nero_us8int * FileName)//
 		一个数与   0010 0000做与运算,等于0说明第3位为0
 		
 		*/
-		#ifdef Nero_DeBuging
-		nero_error_Id++;
-		if(charCounts >200)
+		#ifdef Nero_DeBuging1
+		if(charCounts >55500)
 			break;
 		#endif
 		if( *p ==13  && *(p+1) ==10)
 		{
-			NerOkMsg;
+/*			NerReportMsgError(nero_error_Id);*/
 			break;
 		}
-		
-		if( (tmp & 0xa000 ) ==0)
+		nero_error_Id++;
+		if( (tmp & 0x80 ) ==0)
+		{
+/*			printf("xx.\n");*/
 			charLength=1;
+		}
 		else 
-		{	if((tmp & 0x0a00 ) ==0)
+		{	if((tmp & 0x20 ) ==0)
 			{
 				charLength=2;
 			
@@ -89,6 +112,11 @@ nero_s32int readUTF8FileData(nero_us8int * FileName)//
 			}
 		}
 		//
+		nero_error_Id++;
+		#ifdef Nero_DeBuging20
+		printf("charLength=%d.\n",charLength);
+		printf("tmp=%d.\n",tmp);
+		#endif		
 		
 		if(charLength !=3)
 		{
@@ -109,6 +137,7 @@ nero_s32int readUTF8FileData(nero_us8int * FileName)//
 			}
 		}
 		//下一个字符应该是冒号
+		nero_error_Id++;
 		if(*p != 0x3a)
 		{
 			NeroErrorMsg;
@@ -116,24 +145,28 @@ nero_s32int readUTF8FileData(nero_us8int * FileName)//
 		
 		}
 		p++;		
-/*		unicodeInDigtial.first=*p;p++;*/
-/*		unicodeInDigtial.second=*p;p++;*/
-/*		unicodeInDigtial.third=*p;p++;*/
-/*		unicodeInDigtial.fourth=*p;p++;*/
-/*		unicodeInDigtial.fifth=*p;p++;*/
-/*		*/
+		//现在开始 将Unicode编码存于unicodeInDigtial中
+/*		unicodePont=(DigitalUnicode16 *)p;*/
+/*		unicodeInDigtial=*unicodePont;	*/
 
-/*		等价于*/
-		unicodePont=(DigitalUnicode16 *)p;
-		unicodeInDigtial=*unicodePont;
-		//检测unicodeInDigtial合法性
+/*		trunshuziPoint=(struct charshuzhu6 *)&unicodeInDigtial;		*/
+/*		trunshuzi=*trunshuziPoint;*/
+/*		trunshuzi.tmp[5]=0;*/
+/*		nero_s32int res=atoi(trunshuzi.tmp);				*/
 		
-		
-		//打印数据：
-		printf("%d::%d %d %d %d %d",charCounts,
-			unicodeInDigtial.first,unicodeInDigtial.second,unicodeInDigtial.third,
-			unicodeInDigtial.fourth,unicodeInDigtial.fifth);
-		
+		//打印utf8编码数据：
+		#ifdef Nero_DeBuging10
+		if(charCounts >5000)
+		{
+			testsadkfjao.tmp=chChar[charCounts];
+			testsadkfjao.end=0;
+			printf("%s\n",(nero_s8int *)&testsadkfjao);
+		}
+		#endif
+
+/* */
+/*		printf("%d:%d \n",charCounts,res);*/
+
 		p+=6;
 		charCounts++;
 	}
@@ -171,9 +204,6 @@ nero_s32int readUTF8FileData_old(char * FileName)//
 	return NeroOK;
 
 }
-
-
-
 
 
 

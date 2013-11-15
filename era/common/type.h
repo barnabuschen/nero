@@ -19,11 +19,12 @@ typedef int  nero_s32int;
 typedef unsigned int  nero_us32int;
 typedef unsigned char  nero_us8int;
 typedef signed char  nero_s8int;
+typedef  char  nero_8int;
 
 
 
-
-#define Nero_DeBuging
+#define Nero_DeBuging1
+#define Nero_DeBuging2
 #define NowIdDeBug
 #define NoIncludeG_return_if_fail 
 
@@ -44,7 +45,7 @@ typedef struct ChineseUnicode16Code   //16位的Unicode编码
 //	}
 }Unicode16;
 
-typedef struct ChineseUnicode16DigitalCode
+typedef struct ChineseUnicode16DigitalCode//五位拼起来就是Unicode16码
 {
 nero_us8int first;
 nero_us8int second;

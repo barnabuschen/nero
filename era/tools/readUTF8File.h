@@ -9,11 +9,7 @@
 
 
 
-nero_s32int readUTF8FileData(nero_us8int * FileName);
-
-
-
-
+nero_s32int readUTF8FileData(nero_8int * FileName);
 
 
 

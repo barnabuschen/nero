@@ -6,6 +6,9 @@
 #define buttomNum  40
 #define textNum  4
 
+
+
+void createToolsTab();
 void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook);
 void myMainWindow(GtkWidget *window);
 void printPos();

@@ -7,6 +7,8 @@ gtkVer=`pkg-config --cflags --libs gtk+-3.0`
 subCommon=./common
 subGraph=./graph
 subCandy=./opcv
+subtools=./tools
+subNeuralNetwork=./NeuralNetwork
 MAKE=make
 RUN=make r
 DEBUG=make d
@@ -22,9 +24,10 @@ bmpRead=graph/bmpRead.o
 searchLine=graph/searchLine.o
 candy=opcv/candy.o
 nero=common/Neuron.o
-
-$(obj) :gtkMain.o MainWindow.o
-	$(cc)   gtkMain.o  MainWindow.o  -o $(obj)  $(gtkVer) 
+tools=tools/readUTF8File.o
+NeuNetwork=NeuralNetwork/NeuralNetwork.o
+$(obj) :gtkMain.o MainWindow.o $(tools) $(NeuNetwork) 
+	$(cc)   gtkMain.o  MainWindow.o  $(NeuNetwork) $(tools) -o $(obj)  $(gtkVer) 
 	./gtkMain
 #$(obj) :gtkMain.o MainWindow.o  sub1 $(type) sub2 
 #	$(cc)   gtkMain.o  MainWindow.o $(bmpRead) $(fileOperating) $(nero) $(searchLine) -o $(obj)  $(gtkVer) 
@@ -50,7 +53,9 @@ MainWindow.o : MainWindow.c MainWindow.h
 
 c :
 	rm gtkMain *.o
-#	cd $(subGraph) && $(CLEAN)
+	cd $(subtools) && $(CLEAN)
+	cd $(subNeuralNetwork) && $(CLEAN)
+	cd $(subCommon) && $(CLEAN)
 r :
 	./gtkMain
 d :

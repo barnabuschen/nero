@@ -1,9 +1,60 @@
-#ifndef  LIST_INCLUDE
-#include "list.h"
-#endif
 
+#ifndef MYTYPE_H
+#define MYTYPE_H
+
+
+#include "list.h"
+
+
+
+
+#define NeroOK   1
+#define NeroError   -1
+#define NeroErrorMsg   printf("something wrong!\n")
+#define NerOkMsg   	printf("exit right way!\n")
+#define NerReportMsgError(id)   	printf("something wrong with ID:%d!\n",id)
+
+typedef int  nero_s32int;
+//typedef int  nero_s32int;
+typedef unsigned int  nero_us32int;
+typedef unsigned char  nero_us8int;
+typedef signed char  nero_s8int;
+
+
+
+
+#define Nero_DeBuging
 #define NowIdDeBug
 #define NoIncludeG_return_if_fail 
+
+
+typedef struct ChineseUtf8Code
+{
+nero_us8int first;
+nero_us8int second;
+nero_us8int third;
+nero_us8int fourth;//下面是高位
+
+}ChUTF8;
+typedef struct ChineseUnicode16Code   //16位的Unicode编码
+{
+//	union{
+	nero_us8int first;
+	nero_us8int second;
+//	}
+}Unicode16;
+
+typedef struct ChineseUnicode16DigitalCode
+{
+nero_us8int first;
+nero_us8int second;
+nero_us8int third;
+nero_us8int fourth;//下面是高位
+nero_us8int fifth;
+
+}DigitalUnicode16;
+
+
 typedef struct POSITIOM
 {
 int x;
@@ -71,10 +122,20 @@ int count;//如果是表头：记录多少条线
 							(((type)(unsigned char)low2) << (sizeof(high1)*8))+\
 										(unsigned char)low1 )	\
 
-#define BYTEOS32 11
-#ifdef BYTEOS32
-#endif
+//#define BYTEOS32 11
+//#ifdef BYTEOS32
+//#endif
 
 
-#ifdef BYTEOS64
+//#ifdef BYTEOS64
+//#endif
+
+
+
+
+
+
+
+
+
 #endif

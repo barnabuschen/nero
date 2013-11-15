@@ -10,7 +10,7 @@ type=../common/type.h
 list=../common/list.h
 
 nero=NeuralNetwork
-
+obj=readUTF8File
 ifeq ($(DeBug),1)
 cc = gcc -Wall -g
 else
@@ -18,11 +18,11 @@ cc = gcc
 endif
 #Main: $(search).o $(bmp).c  $(search).h $(bmp).h 
 #	$(cc)  -c $(bmp).c  $(gtkVer)
-$(nero):   $(nero).c  $(nero).h 
-	$(cc)  -c  $(nero).c
+$(nero):   $(obj).c  $(obj).h 
+	$(cc)  -c  $(obj).c
 c :
 	rm *.o 
 r :
-	./$(nero)
+	./$(obj)
 d :
-	gdb $(bmp)
+	gdb $(obj)

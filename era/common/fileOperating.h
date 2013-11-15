@@ -1,4 +1,8 @@
 //编程记录：3月17：findAllLine函数无法获取正确的行数，请调试找出问题所在
+#ifndef FILEOPERATING_H
+#define FILEOPERATING_H
+
+
 
 //文件清空
 void emptyFile(char * fileName);
@@ -47,4 +51,17 @@ char * getStrInFile2(char * FileName,int len,int point);
  int    putStrInFile(char * FileName,char * str,int len,int point);//在文件特定位置插入一个字符串,point is the  									//location of the str,if 
 					// it is zero ,that means put the str at the start of file
 void otput();
+
+
+
+
+
+
+
+
+
+
+
+
+#endif
 

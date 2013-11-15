@@ -38,14 +38,56 @@ int next;
 
 
 */
-#define NeroOK   1
-#define NeroError   -1
-typedef int  nero_s32int;
-//typedef int  nero_s32int;
-typedef unsigned int  nero_us32int;
+
 
  struct ActivationNeuron;
 typedef struct ActivationNeuron  NeuronObject;
+
+
+
+
+
+
+#define NeuronNode_ForNone   0    //当一个概念节点的类型为此时表示一个未知对象
+#define NeuronNode_ForConnect   10    //当一个概念节点的类型为此时表示一个链接节点
+#define NeuronNode_ForImage   50    //当一个概念节点的类型为此时表示一个图像对象
+#define NeuronNode_ForLine   51    //当一个概念节点的类型为此时表示一个线条对象
+
+
+#define NeuronNode_ForChCharacter   61    //当一个概念节点的类型为此时表示一个汉字
+#define NeuronNode_ForChWord   62    //当一个概念节点的类型为此时表示一个中文词语
+#define NeuronNode_ForChSentence   63    //当一个概念节点的类型为此时表示一个中文句子
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

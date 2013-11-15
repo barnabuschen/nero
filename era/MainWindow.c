@@ -20,11 +20,20 @@
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
+
+#include "NeuralNetwork/NeuralNetwork.h"
 #include "common/Neuron.h"
 #include "MainWindow.h"
 #include "common/fileOperating.h"
 #include "graph/bmpRead.h"
+#include "tools/readUTF8File.h"
 #include <cairo.h>
+
+
+
+extern nero_s32int readUTF8FileData(nero_us8int * FileName);
+
+
 
 gint x=50;
 gint y=50;
@@ -33,6 +42,7 @@ GtkWidget * buttoms[buttomNum];
 GtkWidget * srollWindows[textNum];
 GdkWindow *paintwindow;
 GtkWidget *darea;
+GtkWidget *Mainwindow;
 GtkWidget *dareaForComper[15];
 cairo_t  *currentCair ;
 int recoverPic=0;
@@ -105,7 +115,7 @@ gint delete_eventInMainWin( GtkWidget *widget, GdkEvent *event, gpointer data )
 void myMainWindow(GtkWidget *window)
 {
 	recoverPic=0;
-
+	Mainwindow=window;
 
 	g_signal_connect (window,"delete-event",G_CALLBACK (delete_eventInMainWin),NULL);
 	g_signal_connect(G_OBJECT(window), "configure-event",G_CALLBACK(frame_callback), NULL);
@@ -146,7 +156,7 @@ void myMainWindow(GtkWidget *window)
 
 
 	buttomID++;
-	buttoms[buttomID]=gtk_button_new_with_label("clear neo");
+	buttoms[buttomID]=gtk_button_new_with_label("tools sample");
 	g_signal_connect (buttoms[buttomID], "clicked",G_CALLBACK(drow2), NULL);
 	//gtk_table_attach_defaults(GTK_TABLE(table),buttoms[0],0,1,0,1);
 	//gtk_widget_set_usize(buttoms[buttomID],40,40);
@@ -201,32 +211,69 @@ void myMainWindow(GtkWidget *window)
 	ProInitialization();
 }
 
+void readUTF8File( GtkWidget *widget, gpointer data )
+{
+/*	GtkWidget * dialog= dialog = gtk_message_dialog_new (Mainwindow,*/
+/*                                 GTK_DIALOG_DESTROY_WITH_PARENT,*/
+/*                                 GTK_MESSAGE_INFO,*/
+/*                                 GTK_BUTTONS_CLOSE,*/
+/*                                 "tell sth");*/
+/*	gtk_dialog_run (GTK_DIALOG (dialog));*/
+/*	gtk_widget_destroy (dialog);*/
+
+	
+	readUTF8FileData("data/ChUnicode");
 
 
+}
+void createToolsTab(GtkWidget *fixedInside)
+{
+	gchar *text;
+	gint buttomID=1;	
+	GtkWidget * buttoms[buttomNum];
+	GtkWidget *vbox = gtk_box_new(FALSE, 5);/*存放其他功能构建的容器*/;
+	
+	
+	/*读取utf8编码的文件的按钮*/
+	text = g_strdup_printf("读取utf8编码的文件");
+	buttoms[buttomID]=gtk_button_new_with_label(text);
+	g_signal_connect (buttoms[buttomID], "clicked",G_CALLBACK(readUTF8File), NULL);
+	gtk_container_add(GTK_CONTAINER(vbox), buttoms[buttomID]);
+	
+	
+	gtk_widget_set_size_request (vbox, 15, 15);
+	gtk_fixed_put (GTK_FIXED (fixedInside), vbox, 0, 0);
+	
+	    
+}
 void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook)
 {
 	gint x=50;
 	gint y=50; 
-	 gint buttomID=count;
+
+	static gint counts=0;
 	gchar *text;
-	GtkWidget * buttoms[buttomNum];
+	counts++;
+
 	gtk_window_get_size(GTK_WINDOW(window),&x,&y);
-	GtkWidget *fixedInside = gtk_fixed_new();
+	GtkWidget *fixedInside = gtk_fixed_new();/*tab里面的容器*/
 	gtk_widget_set_size_request (fixedInside, x/3, y/2);
 
 
-	GtkWidget *vbox = gtk_box_new(FALSE, 5);
-	gtk_widget_set_size_request (vbox, 15, 15);
-	text = g_strdup_printf("Page %d", count);
+	
+	switch(counts)
+	{
+	case 1:;
+	case 2:text = g_strdup_printf("Page %d", count);;break;
+	case 3:text = g_strdup_printf("tools");createToolsTab(fixedInside);break;
+	default:break;
+	
+	}
 
-	buttoms[buttomID]=gtk_button_new_with_label(text);
-	gtk_container_add(GTK_CONTAINER(vbox), buttoms[buttomID]);
-	/*	    g_signal_connect (buttoms[buttomID], "clicked",G_CALLBACK(drow1), NULL);	    */
-		    
-	GtkWidget *label = gtk_label_new(text);
+	GtkWidget *label = gtk_label_new(text);/*tab的名字*/
 
 
-	gtk_fixed_put (GTK_FIXED (fixedInside), vbox, 0, 0);
+	
 	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), fixedInside, label);
 
 

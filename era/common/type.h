@@ -6,14 +6,35 @@
 #include "list.h"
 
 
+/*一些常量*/
+#define ChineseCharNum  8000
+/*2的32次=4294967295*/
+#define MaxNeroNum  1000000/*百万*/
 
 
+
+
+/*俩个神经元相互联系的关系，父亲概念的定义指的是上层概念，孩子是下层概念*/
+#define Relationship_FatherToChild  1  /*单向联系：父亲概念连向孩子*/
+#define Relationship_ChildToFather 2 /*单向联系：孩子概念连向父亲*/
+#define Relationship_bothTother  3/*双向联系：孩子概念连向父亲，同时，父亲概念连向孩子*/
+
+
+
+/*传导纤维种类*/
+#define NerveFiber_Input 1 
+#define NerveFiber_Output  2
+
+
+/*一些提示信息*/
 #define NeroOK   1
 #define NeroError   -1
 #define NeroErrorMsg   printf("something wrong!\n")
 #define NerOkMsg   	printf("exit right way!\n")
 #define NerReportMsgError(id)   	printf("something wrong with ID:%d!\n",id)
 
+
+/*变量类型重定义*/
 typedef int  nero_s32int;
 //typedef int  nero_s32int;
 typedef unsigned int  nero_us32int;
@@ -22,7 +43,7 @@ typedef signed char  nero_s8int;
 typedef  char  nero_8int;
 
 
-
+/*调试开关*/
 #define Nero_DeBuging1
 #define Nero_DeBuging2
 #define NowIdDeBug

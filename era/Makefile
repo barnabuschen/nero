@@ -25,13 +25,15 @@ searchLine=graph/searchLine.o
 candy=opcv/candy.o
 nero=common/Neuron.o
 tools=tools/readUTF8File.o
+dot=tools/createDot.o
+
 NeuNetwork=NeuralNetwork/NeuralNetwork.o
 $(obj) :gtkMain.o MainWindow.o $(tools) $(NeuNetwork) 
-	$(cc)   gtkMain.o  MainWindow.o  $(NeuNetwork) $(tools) -o $(obj)  $(gtkVer) 
+	cd $(subtools) && $(MAKE)
+	cd $(subNeuralNetwork) && $(MAKE)
+	cd $(subCommon) && $(MAKE)
+	$(cc)   gtkMain.o  MainWindow.o  $(NeuNetwork) $(tools) $(dot)  $(fileOperating) -o $(obj)  $(gtkVer) 
 	./gtkMain
-#$(obj) :gtkMain.o MainWindow.o  sub1 $(type) sub2 
-#	$(cc)   gtkMain.o  MainWindow.o $(bmpRead) $(fileOperating) $(nero) $(searchLine) -o $(obj)  $(gtkVer) 
-#	sudo ./gtkMain
 gtkMain.o : gtkMain.c  	
 	$(cc)  -c gtkMain.c $(gtkVer)
 MainWindow.o : MainWindow.c MainWindow.h 

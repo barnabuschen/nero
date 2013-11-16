@@ -14,7 +14,7 @@
 #include "readUTF8File.h"
 
 
-#define ChineseCharNum  8000
+
 /*2013年11月15日 星期五 20时22分16秒 */
 
 
@@ -34,24 +34,29 @@ nero_s32int end;
 };
 
 
+ChUTF8 chChar[ChineseCharNum];
+nero_s32int charCounts;
+
+
+
 nero_s32int readUTF8FileData(nero_8int * FileName)//
 {
-	struct adkfjao  testsadkfjao;
-	struct charshuzhu6 trunshuzi;
-	struct charshuzhu6 *trunshuziPoint;
-	DigitalUnicode16 unicodeInDigtial,unicodeInDigtial2;
-	DigitalUnicode16 *unicodePont;
+/*	struct adkfjao  testsadkfjao;*/
+/*	struct charshuzhu6 trunshuzi;*/
+/*	struct charshuzhu6 *trunshuziPoint;*/
+/*	DigitalUnicode16 unicodeInDigtial;*/
+/*	DigitalUnicode16 *unicodePont;*/
 	nero_s32int fd;
 	nero_s8int *mapped_mem, * p;
 	nero_s32int flength = 1024;
 	nero_us8int tmp;
-	nero_s32int i,j,k;
+	nero_s32int i;
 	nero_s32int charLength=0;//该字节所占位数
 	//存储utf编码，chChar中是以utf8编码的汉字，chCharUnicode16Code中则是对应的UnicodeCode
-	nero_s32int charCounts=0;
-	ChUTF8 chChar[ChineseCharNum];
+	charCounts=0;
+	
 /*	nero_us32int chCharUnicodeCode[ChineseCharNum];*/
-	Unicode16 chCharUnicode16Code[ChineseCharNum];
+/*	Unicode16 chCharUnicode16Code[ChineseCharNum];*/
 	
 	void * start_addr = 0;
 	fd = open(FileName, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
@@ -180,32 +185,6 @@ nero_s32int readUTF8FileData(nero_8int * FileName)//
 	return NeroOK;
 
 }
-
-
-nero_s32int readUTF8FileData_old(char * FileName)//
-{
-	int fd;
-	char *mapped_mem, * p;
-	int flength = 1024;
-	void * start_addr = 0;
-	fd = open(FileName, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
-	flength = lseek(fd, 1, SEEK_END);
-//	write(fd, "7", 1); /* 在文件最后添加一个空字符，以便下面printf正常工作 */
-	lseek(fd, 0, SEEK_SET);
-/*	write(fd, "7", 1);*/
-	mapped_mem = mmap(start_addr, flength, PROT_READ,        //允许读
-	MAP_PRIVATE,       //不允许其它进程访问此内存区域
-	fd, 0);
-	/* 使用映射区域. */
-	printf("%s\n", mapped_mem); /* 为了保证这里工作正常，参数传递的文件名最好是一个文本文件 */
-	close(fd);
-	munmap(mapped_mem, flength);
-
-	return NeroOK;
-
-}
-
-
 
 
 

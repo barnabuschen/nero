@@ -1,16 +1,16 @@
 #graph
 DeBug = 1
-
-bmp = bmpRead
-search=searchLine
 gtkVer=`pkg-config --cflags --libs gtk+-3.0`
-
-fileOperating=../common/fileOperating.o
+fileOperating=../common/fileOperating
 type=../common/type.h
 list=../common/list.h
 
-nero=NeuralNetwork
+#subNeuralNetwork=../NeuralNetwork
+
+nero=../NeuralNetwork/NeuralNetwork.h
+
 obj=readUTF8File
+dot=createDot
 ifeq ($(DeBug),1)
 cc = gcc -Wall -g
 else
@@ -18,8 +18,9 @@ cc = gcc
 endif
 #Main: $(search).o $(bmp).c  $(search).h $(bmp).h 
 #	$(cc)  -c $(bmp).c  $(gtkVer)
-$(nero):   $(obj).c  $(obj).h 
+$(nero):   $(obj).c  $(obj).h $(dot).c  $(dot).h  
 	$(cc)  -c  $(obj).c
+	$(cc)   -c  $(dot).c
 c :
 	rm *.o 
 r :

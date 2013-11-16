@@ -9,6 +9,7 @@
 
 
 void createToolsTab();
+void createCreateNeroTab(GtkWidget *fixedInside);
 void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook);
 void myMainWindow(GtkWidget *window);
 void printPos();

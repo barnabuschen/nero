@@ -20,20 +20,20 @@
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
-
+#include <cairo.h>
 #include "NeuralNetwork/NeuralNetwork.h"
-#include "common/Neuron.h"
+/*#include "common/Neuron.h"*/
 #include "MainWindow.h"
 #include "common/fileOperating.h"
-#include "graph/bmpRead.h"
+/*#include "graph/bmpRead.h"*/
 #include "tools/readUTF8File.h"
-#include <cairo.h>
+#include "tools/createDot.h"
 
 
 
 extern nero_s32int readUTF8FileData(nero_8int * FileName);
-
-
+extern nero_s32int CreateActNeroNet();
+extern void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName);
 
 gint x=50;
 gint y=50;
@@ -247,6 +247,47 @@ void createToolsTab(GtkWidget *fixedInside)
 	
 	    
 }
+void CreateNeroNetWork( GtkWidget *widget, gpointer data )
+{
+	GtkWidget * dialog= dialog = gtk_message_dialog_new (Mainwindow,
+                                 GTK_DIALOG_DESTROY_WITH_PARENT,
+                                 GTK_MESSAGE_INFO,
+                                 GTK_BUTTONS_CLOSE,
+                                 "done");
+
+
+	
+/*	readUTF8FileData("data/ChUnicode");*/
+	nero_s32int res=CreateActNeroNet();
+	
+	/*show  neroNet*/
+	createNeroNetDotGraph(GodNero, "data/pic");
+	
+	
+/*	gtk_dialog_run (GTK_DIALOG (dialog));*/
+/*	gtk_widget_destroy (dialog);*/
+
+}
+void createCreateNeroTab(GtkWidget *fixedInside)
+{
+	gchar *text;
+	gint buttomID=1;	
+	GtkWidget * buttoms[buttomNum];
+	GtkWidget *vbox = gtk_box_new(FALSE, 5);/*存放其他功能构建的容器*/;
+	
+	
+	
+	text = g_strdup_printf("ToCreateNero");
+	buttoms[buttomID]=gtk_button_new_with_label(text);
+	g_signal_connect (buttoms[buttomID], "clicked",G_CALLBACK(CreateNeroNetWork), NULL);
+	gtk_container_add(GTK_CONTAINER(vbox), buttoms[buttomID]);
+	
+	
+	gtk_widget_set_size_request (vbox, 15, 15);
+	gtk_fixed_put (GTK_FIXED (fixedInside), vbox, 0, 0);
+	
+	    
+}
 void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook)
 {
 	gint x=50;
@@ -261,7 +302,7 @@ void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook)
 	gtk_widget_set_size_request (fixedInside, x/3, y/2);
 
 
-	#ifdef Nero_DeBuging1
+	#ifdef Nero_DeBuging1_cacel
 	switch(counts)
 	{
 	case 3:;
@@ -273,8 +314,8 @@ void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook)
 	#else
 	switch(counts)
 	{
-	case 1:;
-	case 2:text = g_strdup_printf("Page %d", count);;break;
+	case 1:text = g_strdup_printf("createNero");createCreateNeroTab( fixedInside);break;
+	case 2:text = g_strdup_printf("Page %d", count);break;
 	case 3:text = g_strdup_printf("tools");createToolsTab(fixedInside);break;
 	default:break;
 	

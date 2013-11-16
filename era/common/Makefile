@@ -1,5 +1,5 @@
 #common
-DeBug = 1
+DeBug = 0
 
 
 
@@ -11,12 +11,12 @@ gtkVer=`pkg-config --cflags --libs gtk+-3.0`
 ifeq ($(DeBug),1)
 cc = gcc -Wall -g
 else
-cc = gcc -Wall
+cc = gcc 
 endif
 
 
-Main: $(obj).h $(obj).c  $(neroF).h $(neroF).c
-	$(cc)  -c $(neroF).c  $(gtkVer)
+Main: $(obj).h $(obj).c
+#	$(cc)  -c $(neroF).c  $(gtkVer)
 	$(cc)  -c $(obj).c   $(gtkVer)
 c :
 	rm *.o

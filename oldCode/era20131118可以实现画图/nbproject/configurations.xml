@@ -32,8 +32,6 @@
         <in>contourFind.c</in>
       </df>
       <df name="tools">
-        <in>createDot.c</in>
-        <in>createDot.h</in>
         <in>readUTF8File.c</in>
         <in>readUTF8File.h</in>
       </df>

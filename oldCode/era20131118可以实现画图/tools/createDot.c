@@ -40,9 +40,8 @@ void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName)
 /*	nero_us32int i,j;*/
 	nero_s32int ObjectKind;
 	NeuronObject * BaseObi;
-	NeuronObject * tmpObi;
 	NerveFiber  *  curFiber;
-	NerveFiber  *  outputFiberOfbaseObj;
+	
 		
 	void * start_addr = 0;
 	
@@ -74,7 +73,7 @@ void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName)
 		
 		
 		
-		#ifdef   Nero_DeBuging18_11_13 
+		#ifdef   Nero_DeBuging17/11/13
 		
 		printf("%s.\n",str);
 /*		printf("%d.\n",ObjectKind);*/
@@ -85,26 +84,6 @@ void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName)
 		
 		sprintf(str,"	%d -> %d;\n",nero_GetNeroKind(GodNero),ObjectKind);
 		write(fd, str, strlen(str));
-		
-		
-		
-		/*现在遍历每个基类下面的数据：*/
-		
-		outputFiberOfbaseObj=BaseObi->outputListHead;
-		while(outputFiberOfbaseObj)
-		{
-			tmpObi=outputFiberOfbaseObj->obj;
-			ObjectKind=nero_GetNeroKind(tmpObi);	
-					
-			NeuronObject * tmp=tmpObi->inputListHead->obj;
-			
-			sprintf(str,"	%d -> %c%c%c;\n",nero_GetNeroKind(BaseObi),tmp->x,tmp->y,tmp->z);
-			write(fd, str, strlen(str));	
-				
-			outputFiberOfbaseObj=outputFiberOfbaseObj->next;
-		}
-		
-		
 		
 	}
 

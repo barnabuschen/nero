@@ -62,10 +62,8 @@ NeuronObject *GodNero;/*所有神经元理论上都最终与这个相通*/
  {
  	if(n)
  	{
- 	
-/* 		printf("xyz=%d%d%d,\n",x,y,z   );*/
  		n->x=x;n->y=y;n->z=z;
-/* 		nero_printNeroMsg(n) ;*/
+ 	
  	
  	}
  
@@ -415,7 +413,7 @@ nero_s32int nero_addZhCharIntoNet(NeuronObject *GodNero,ChUTF8 chChar[],nero_s32
 
 	for (i=0;i<charCounts;i++)
 	{
-		#ifdef  Nero_DeBuging18_11_13 
+		#ifdef  Nero_DeBuging18/11/13 
 		if (i>20)
 		{
 			break;
@@ -427,13 +425,7 @@ nero_s32int nero_addZhCharIntoNet(NeuronObject *GodNero,ChUTF8 chChar[],nero_s32
 		{
 			/*往概念填数据*/
 			nero_addDataToZhNeroObj(newObj,&chChar[i]);
-			
-			#ifdef  Nero_DeBuging18_11_13_0
-			printf("new nero:   kind=%d.\n",nero_GetNeroKind(newObj));
-			#endif			
-			
 			/*最后加入网络*/
-/*			nero_printNeroMsg(newObj) ;*/
 			nero_addNeroIntoNet( GodNero,newObj);
 		}
 	}
@@ -460,30 +452,25 @@ nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj)
 	NeuronObject * BaseObi;
 	NerveFiber  *  curFiber;	
 	/*要遍历整个以GodNero为起点(遍历它下层的对象）的网络*/
-			#ifdef  Nero_DeBuging18_11_130
-			printf("newObj Kind=%d.\n",nero_GetNeroKind(newObj));
-			#endif	
+
 
 
 	/*首先你需要清楚这个网络的特点：*/
 	/*GodNero：指向所有的基类，且是单向联系*/
 	curFiber=GodNero->outputListHead;
-	newObjKind=nero_GetNeroKind(newObj);
+	newObjKind==nero_GetNeroKind(BaseObi);
 	for (;curFiber !=NULL;curFiber=curFiber->next)
 	{
 		//首先遍历GodNero指向的基类
 		
 		BaseObi=curFiber->obj;
 		BaseObjectKind=nero_GetNeroKind(BaseObi);
-	
-			#ifdef  Nero_DeBuging18_11_13_0
-			printf("newObjKind=%d.BaseObjectKind=%d\n",newObjKind,BaseObjectKind);
-			#endif			
+		
 		if(newObjKind == BaseObjectKind)
 		{
 			/*加入该区域*/
 			
-			 nero_addNeroIntoBaseObj(BaseObi,newObj);
+			 nero_addNeroIntoBaseObj(BaseObjectKind,newObjKind);
 			
 		}		
 		

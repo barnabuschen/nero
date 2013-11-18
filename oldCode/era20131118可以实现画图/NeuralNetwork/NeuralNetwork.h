@@ -147,7 +147,7 @@ nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj);
 
  inline  nero_us32int nero_GetNeroKind(ActNero * nero);
  inline  void  nero_putDataIntoNero(ActNero *n,nero_us32int x,nero_us32int y,nero_us32int z);
-#define  nero_printNeroMsg(n)   (printf("kind=%d,xyz=%d%d%d,\n",nero_GetNeroKind(n),n->x,n->y,n->z   )  )
+
 
 
 

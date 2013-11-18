@@ -30,7 +30,7 @@ dot=tools/createDot.o
 NeuNetwork=NeuralNetwork/NeuralNetwork.o
 
 #$(tools) $(NeuNetwork)  $(dot) $(fileOperating)
-$(obj) :gtkMain.o MainWindow.o  
+$(obj) :gtkMain.o MainWindow.o 
 	cd $(subtools) && $(MAKE)
 	cd $(subNeuralNetwork) && $(MAKE)
 	cd $(subCommon) && $(MAKE)
@@ -38,7 +38,7 @@ $(obj) :gtkMain.o MainWindow.o
 	./gtkMain
 gtkMain.o : gtkMain.c  	
 	$(cc)  -c gtkMain.c $(gtkVer)
-MainWindow.o : MainWindow.c MainWindow.h $(NeuNetwork) $(tools) $(dot)  $(fileOperating) 
+MainWindow.o : MainWindow.c MainWindow.h 
 		$(cc)  -c MainWindow.c   $(gtkVer)
 #sub2:
 #	cd $(subGraph) && $(MAKE)

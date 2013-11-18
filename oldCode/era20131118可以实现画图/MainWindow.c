@@ -258,29 +258,13 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 
 	
 	readUTF8FileData("data/ChUnicode");
-	
-	
-		#ifdef  Nero_DeBuging0
-		printf("FileData   done.\n");	
-		#endif	
-	
 	nero_s32int res=CreateActNeroNet();
-
-		#ifdef  Nero_DeBuging0
-		printf("CreateActNeroNet   done.\n");	
-		#endif		
-	/*一下步就是将字符信息加入网络*/
-	nero_addZhCharIntoNet( GodNero,chChar, charCounts);
-		#ifdef  Nero_DeBuging0
-		printf("addZhCharIntoNet   done.\n");	
-		#endif	
 	
+	/*一下步就是将字符信息加入网络*/
 	
 	/*show  neroNet*/
-	createNeroNetDotGraph(GodNero, "data/pic.dot");
-		#ifdef  Nero_DeBuging0
-		printf("createNeroNetDotGraph   done.\n");	
-		#endif		
+/*	createNeroNetDotGraph(GodNero, "data/pic.dot");*/
+	
 	
 	#ifdef  Nero_DeBuging11
 		gtk_dialog_run (GTK_DIALOG (dialog));

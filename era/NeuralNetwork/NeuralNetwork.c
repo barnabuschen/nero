@@ -38,26 +38,12 @@ msg：
 
 
 
-
+32位：区别一般的概念和基类，1表示基类，0表示衍生类(网络中真正的数据)
 */
 
 
 
- struct ActivationNeuron
-{
-nero_us32int msg;/*记录该nero的种类，性质等信息*/
-nero_s32int x;/*取值范围-2147483648 ~ 2147483647*/
-nero_s32int y;
-nero_s32int z;
-struct NerveFiber_  * inputListHead;
-struct NerveFiber_   * outputListHead;
-};
-/*神经纤维---用来连接各个神经元*/
-  struct NerveFiber_
- {
-struct ActivationNeuron   *obj;
-struct NerveFiber_ * next;
- };
+
  
  
  
@@ -70,7 +56,14 @@ ActNero NeroPool[MaxNeroNum];
 nero_us32int nextAvailableNeroInPool;//它指向NeroPool中当前可用的（即使未加入网络的nero）
 NeuronObject *GodNero;/*所有神经元理论上都最终与这个相通*/
 
-
+/*下面是几个简单的判断函数*/
+ inline  nero_us32int nero_GetNeroKind(ActNero * nero)
+{
+	if(nero ==NULL)
+		return  NeuronNode_ForNone;
+		/*取出低8位*/
+	return  (nero->msg  &  0x000000ff);
+}
 static inline void setActNeroKind(ActNero *nero,nero_us32int kind)
 {
 	
@@ -79,12 +72,28 @@ static inline void setActNeroKind(ActNero *nero,nero_us32int kind)
 	nero->msg =nero->msg & 0xffffff00;//低8位清零
 	nero->msg =nero->msg | kind;//低8位清零
 }
+/*区别一般的概念和基类*/
+static inline void setActNeroAsBaseObject(ActNero *nero,nero_us32int kind)
+{
+	
+	if(nero ==NULL || kind <NeuronNode_DerivativeObject || kind >NeuronNode_BaseObject)
+		return ;
+		
+		
+	if (kind == 1)
+	{	/*把末k位变成1          | (101001->101111,k=4)      | x | (1 < < k-1) */
+		nero->msg =nero->msg | (1<<(32-1));
+	}
+	else	
+		nero->msg =nero->msg & 0x7fffffff;//第32位清零
+
+}
 static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type)
 {
 /*
 #define NerveFiber_Input 1 
 #define Relationship_Output  2
-*/	NerveFiber  *tmp,*p;
+*/	NerveFiber  *tmp,**p;
 	if(n ==NULL ||  type <NerveFiber_Input || type >NerveFiber_Output)
 	{
 		NeroErrorMsg;
@@ -93,11 +102,11 @@ static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type)
 	
 	if (type == NerveFiber_Input)
 	{
-		p= n->inputListHead;
+		p=& (n->inputListHead);
 	}
 	else if(type == NerveFiber_Output)
 	{
-		p= n->outputListHead;
+		p= & (n->outputListHead);
 	}
 	else
 	{
@@ -105,19 +114,19 @@ static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type)
 		return NULL;
 	}	
 
-	while(p != NULL  && p->next != NULL)
+	while(*p != NULL  && (*p)->next != NULL)
 	{
-		p=p->next;
+		p=&((*p)->next);
 		
 	}
 	tmp=(NerveFiber *)malloc(sizeof(NerveFiber));
 	tmp->next=NULL;
-	if (p == NULL)
+	if (*p == NULL)
 	{
-		p=tmp;
+		*p=tmp;
 	}
 	else	
-		p->next=tmp;
+		(*p)->next=tmp;
 	return  tmp;
 
 }
@@ -145,10 +154,11 @@ nero_s32int CreateActNeroNet()
 		NeroErrorMsg;
 		return res;
 	}
+	setActNeroAsBaseObject(GodNero,NeuronNode_BaseObject);
 		/*现在生成其他基类*/
 	for(i=0;i<sizeof(neroKind)/sizeof(nero_us32int);i++)	
 	{
-		
+	
 		BaseNeuronObject=(NeuronObject *)getNeuronObject();
 		res=initActNero(BaseNeuronObject,neroKind[i],NULL,NULL);
 		if(res == NeroError)
@@ -157,10 +167,15 @@ nero_s32int CreateActNeroNet()
 			return res;
 		}	
 		/*将其他基类加入网络，他们与GodNero是相互联系的关系*/	
-		addNeuronChild(GodNero,BaseNeuronObject,Relationship_bothTother);
+		setActNeroAsBaseObject(BaseNeuronObject,NeuronNode_BaseObject);
+		addNeuronChild(GodNero,BaseNeuronObject,Relationship_FatherToChild);
+		
+		
+
+	
 	}
 
-		
+		printf("CreateActNeroNet   ok.\n");
 
 	return NeroOK;
 }
@@ -265,13 +280,45 @@ NeuronObject * getNeuronObject()
 }
 
 
-/*NeuronObject * getNeuronObject(nero_us32int kind,NeuronObject *inputListHead,NeuronObject *inputListHead)*/
-/*{*/
-
-/*	*/
 
 
+nero_s32int nero_addZhCharIntoNet(ChUTF8 chChar[],nero_s32int charCounts)
+{
 
-/*}*/
+	/*2013-11-18dot文件输出完成*/
+
+
+
+	return NeroOK;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

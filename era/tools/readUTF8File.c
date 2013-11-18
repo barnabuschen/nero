@@ -39,6 +39,17 @@ nero_s32int charCounts;
 
 
 
+/*将ChUTF8 chChar[ChineseCharNum];数据进行排序*/
+nero_s32int sortChar()
+{
+
+
+
+
+
+	return NeroOK;
+}
+
 nero_s32int readUTF8FileData(nero_8int * FileName)//
 {
 /*	struct adkfjao  testsadkfjao;*/

@@ -18,7 +18,7 @@ cc = gcc
 endif
 #Main: $(search).o $(bmp).c  $(search).h $(bmp).h 
 #	$(cc)  -c $(bmp).c  $(gtkVer)
-$(nero):   $(obj).c  $(obj).h $(dot).c  $(dot).h  
+$(nero):   $(obj).c  $(obj).h $(dot).c  $(dot).h   $(nero) 
 	$(cc)  -c  $(obj).c
 	$(cc)   -c  $(dot).c
 c :

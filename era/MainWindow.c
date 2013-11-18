@@ -253,19 +253,24 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
                                  GTK_DIALOG_DESTROY_WITH_PARENT,
                                  GTK_MESSAGE_INFO,
                                  GTK_BUTTONS_CLOSE,
-                                 "done");
+                                 "done here");
 
 
 	
-/*	readUTF8FileData("data/ChUnicode");*/
+	readUTF8FileData("data/ChUnicode");
 	nero_s32int res=CreateActNeroNet();
 	
+	/*一下步就是将字符信息加入网络*/
+	
 	/*show  neroNet*/
-	createNeroNetDotGraph(GodNero, "data/pic");
+/*	createNeroNetDotGraph(GodNero, "data/pic.dot");*/
 	
 	
-/*	gtk_dialog_run (GTK_DIALOG (dialog));*/
-/*	gtk_widget_destroy (dialog);*/
+	#ifdef  Nero_DeBuging11
+		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_widget_destroy (dialog);	
+	#endif
+
 
 }
 void createCreateNeroTab(GtkWidget *fixedInside)

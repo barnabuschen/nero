@@ -17,6 +17,8 @@
 /*俩个神经元相互联系的关系，父亲概念的定义指的是上层概念，孩子是下层概念*/
 #define Relationship_FatherToChild  1  /*单向联系：父亲概念连向孩子*/
 #define Relationship_ChildToFather 2 /*单向联系：孩子概念连向父亲*/
+
+/*废弃*/
 #define Relationship_bothTother  3/*双向联系：孩子概念连向父亲，同时，父亲概念连向孩子*/
 
 
@@ -44,10 +46,11 @@ typedef  char  nero_8int;
 
 
 /*调试开关*/
-#define Nero_DeBuging1
-#define Nero_DeBuging2
-#define NowIdDeBug
-#define NoIncludeG_return_if_fail 
+#define Nero_DeBuging1 
+#define Nero_DeBuging2 
+#define Nero_DeBuging17/11/13   
+#define NowIdDeBug 
+#define NoIncludeG_return_if_fail  
 
 
 typedef struct ChineseUtf8Code

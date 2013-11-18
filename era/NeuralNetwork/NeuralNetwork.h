@@ -50,10 +50,40 @@ typedef struct ActivationNeuron ActNero;
  typedef struct NerveFiber_ NerveFiber;
 
 
+ struct ActivationNeuron
+{
+nero_us32int msg;/*记录该nero的种类，性质等信息*/
+nero_s32int x;/*取值范围-2147483648 ~ 2147483647*/
+nero_s32int y;
+nero_s32int z;
+struct NerveFiber_  * inputListHead;/*其实究竟对于一个神经元来说是不是需要这个输入神经元的链表，*/
+					/*好像其实不是那么必要的是吧，因为，这实际上会造成冗余数据*/
+					/*那么如果该神经元是一个NeuronObject，那么inputListHead指向该*/
+					/*对象的数据，如果该神经元表示一个存抽象概念，则没有数据*/
+					/*如果是一个ActNero，则该神经元的功能是保存数据*/
+					/*但是如果是一个NeuronObject，是指向第一个数据呢，还是*/
+					/*说inputListHead指向一个数据的链表，显然指向第一个数据跟*/
+					/*合理，因为这样可以充分利用已经有的内存*/
+					
+					/*特别的，对于一个基类来说，它的inputListHead为NULL*/
+					/*而他的outputListHead链表，则指向所有该类下的所以神经元*/
+					
+struct NerveFiber_   * outputListHead; 
+};
+/*神经纤维---用来连接各个神经元*/
+  struct NerveFiber_
+ {
+struct ActivationNeuron   *obj;
+struct NerveFiber_ * next;
+ };
+
+
+
 extern NeuronObject *GodNero;
 
 #define NeuronNode_ForNone   0    //当一个概念节点的类型为此时表示一个未知对象
 #define NeuronNode_ForGodNero   1    //GodNero
+#define NeuronNode_ForData   2    //表示是一个数据存储的神经元，不是一个概念
 /*强调一点，人的大脑所以的输入信息都是通过各种感觉器官输入的，也就是说
 任何信息在输入大脑之前一定是通过一定加工和处理的
 
@@ -71,8 +101,9 @@ extern NeuronObject *GodNero;
 #define NeuronNode_Max   250
 
 
-
-
+/*区别一般的概念和基类*/
+#define NeuronNode_BaseObject   1  /*就是一般的概念和基类进行区别*/
+#define NeuronNode_DerivativeObject   0  /*就是一般的概念（从基类衍生的概念）和基类进行区别*/
 
 
 /*你需要定义个内存池，来管理使用和未使用的神经元*/
@@ -104,6 +135,15 @@ nero_s32int addNeuronChild(NeuronObject *father,NeuronObject *child,nero_s32int 
 /*给一个神经元添加一条神经纤维,type指出添加的是输出，输出纤维*/
 /*返回添加的那个纤维的指针，它已经被添加到ActNero *  n中了，你需要自己继续往里面添加具体的连接对象，就是NerveFiber-》obj*/
 //static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type);
+
+
+
+
+
+
+
+ inline  nero_us32int nero_GetNeroKind(ActNero * nero);
+
 
 
 

@@ -28,7 +28,7 @@ tools=tools/readUTF8File.o
 dot=tools/createDot.o
 
 NeuNetwork=NeuralNetwork/NeuralNetwork.o
-$(obj) :gtkMain.o MainWindow.o $(tools) $(NeuNetwork) 
+$(obj) :gtkMain.o MainWindow.o $(tools) $(NeuNetwork)  $(dot) $(fileOperating)
 	cd $(subtools) && $(MAKE)
 	cd $(subNeuralNetwork) && $(MAKE)
 	cd $(subCommon) && $(MAKE)

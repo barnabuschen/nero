@@ -62,8 +62,8 @@ struct NerveFiber_  * inputListHead;/*其实究竟对于一个神经元来说是
 					/*对象的数据，如果该神经元表示一个存抽象概念，则没有数据*/
 					/*如果是一个ActNero，则该神经元的功能是保存数据*/
 					/*但是如果是一个NeuronObject，是指向第一个数据呢，还是*/
-					/*说inputListHead指向一个数据的链表，显然指向第一个数据跟*/
-					/*合理，因为这样可以充分利用已经有的内存*/
+					/*说inputListHead指向一个数据的链表，显然指向一个数据的神经元*/
+					/*然后让这个神经元指向后续的数据*/
 					
 					/*特别的，对于一个基类来说，它的inputListHead为NULL*/
 					/*而他的outputListHead链表，则指向所有该类下的所以神经元*/
@@ -118,9 +118,12 @@ void donother();
 
 nero_s32int initActNero(ActNero * nero,nero_us32int kind,NerveFiber *inputListHead,NerveFiber *outputListHead);
 nero_s32int initNeroPool();
+/*从神经元库存中获取一个空闲的神经元*/
 NeuronObject * getNeuronObject();
-
-
+/*创建一个指定类型的神经概念*/
+NeuronObject *  nero_createNeroObj(nero_s32int kind);
+/*创建一个数据存储 神经元,并初始化*/
+ActNero * nero_createDataNero();
 
 
 /*下面是几个处理神经元链表的函数，，，必须快速和方便使用*/
@@ -136,15 +139,14 @@ nero_s32int addNeuronChild(NeuronObject *father,NeuronObject *child,nero_s32int 
 /*返回添加的那个纤维的指针，它已经被添加到ActNero *  n中了，你需要自己继续往里面添加具体的连接对象，就是NerveFiber-》obj*/
 //static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type);
 
-
-
+/*将新概念加入网络*/
+nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj);
 
 
 
 
  inline  nero_us32int nero_GetNeroKind(ActNero * nero);
-
-
+ inline  void  nero_putDataIntoNero(ActNero *n,nero_us32int x,nero_us32int y,nero_us32int z);
 
 
 

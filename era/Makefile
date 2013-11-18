@@ -28,7 +28,9 @@ tools=tools/readUTF8File.o
 dot=tools/createDot.o
 
 NeuNetwork=NeuralNetwork/NeuralNetwork.o
-$(obj) :gtkMain.o MainWindow.o $(tools) $(NeuNetwork)  $(dot) $(fileOperating)
+
+#$(tools) $(NeuNetwork)  $(dot) $(fileOperating)
+$(obj) :gtkMain.o MainWindow.o 
 	cd $(subtools) && $(MAKE)
 	cd $(subNeuralNetwork) && $(MAKE)
 	cd $(subCommon) && $(MAKE)
@@ -54,10 +56,11 @@ MainWindow.o : MainWindow.c MainWindow.h
 #	cd $(subGraph) && $(DEBUG)
 
 c :
-	rm gtkMain *.o
+	
 	cd $(subtools) && $(CLEAN)
 	cd $(subNeuralNetwork) && $(CLEAN)
 	cd $(subCommon) && $(CLEAN)
+	rm gtkMain *.o
 r :
 	./gtkMain
 d :

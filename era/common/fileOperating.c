@@ -6,9 +6,8 @@
 #include <unistd.h>
 #include <string.h>
 
-#include <gtk/gtk.h>
-
 #include <malloc.h>
+#include <gtk/gtk.h>
 
 #include "fileOperating.h"
 #include <errno.h>

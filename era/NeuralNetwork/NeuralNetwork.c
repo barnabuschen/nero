@@ -1,6 +1,7 @@
 
+#include <stdlib.h>
 #include <malloc.h>
-
+#include <stdio.h>
 #include "NeuralNetwork.h"
 /*#include "Neuron.h"*/
 
@@ -57,6 +58,16 @@ nero_us32int nextAvailableNeroInPool;//它指向NeroPool中当前可用的（即
 NeuronObject *GodNero;/*所有神经元理论上都最终与这个相通*/
 
 /*下面是几个简单的判断函数*/
+ inline  void  nero_putDataIntoNero(ActNero *n,nero_us32int x,nero_us32int y,nero_us32int z)
+ {
+ 	if(n)
+ 	{
+ 		n->x=x;n->y=y;n->z=z;
+ 	
+ 	
+ 	}
+ 
+ }
  inline  nero_us32int nero_GetNeroKind(ActNero * nero)
 {
 	if(nero ==NULL)
@@ -272,29 +283,223 @@ NeuronObject * getNeuronObject()
 /*	nero_us32int nextAvailableNeroInPool,cur ;*/
 
 	if(nextAvailableNeroInPool <0 || nextAvailableNeroInPool >=MaxNeroNum)
+	{
+	
+		printf("nero  pools  erro\n");;
+		exit(0);
 		return NULL;
+		
+		
+	}
 /*	cur=nextAvailableNeroInPool;*/
 /*	nextAvailableNeroInPool++;*/
 	return (&(NeroPool[nextAvailableNeroInPool++]));
 
 }
-
-
-
-
-nero_s32int nero_addZhCharIntoNet(ChUTF8 chChar[],nero_s32int charCounts)
+/*创建一个衍生神经概念,并初始化*/
+NeuronObject * nero_createNeroObj(nero_s32int kind)
 {
 
-	/*2013-11-18dot文件输出完成*/
+	nero_s32int res;
+	NeuronObject * newObj=(NeuronObject *)getNeuronObject();
+	res=initActNero(newObj,kind,NULL,NULL);
+	if(res == NeroOK)
+	{
+		
+		setActNeroAsBaseObject(newObj,NeuronNode_DerivativeObject);
+	}	
+	else
+		NeroErrorMsg;
+
+	
+	return newObj;
+
+}
+/*创建一个数据存储 神经元,并初始化*/
+ActNero * nero_createDataNero()
+{
+
+	nero_s32int res;
+	ActNero * newObj=(NeuronObject *)getNeuronObject();
+	res=initActNero(newObj,NeuronNode_ForData,NULL,NULL);
+	if(res == NeroOK)
+	{
+		
+/*		setActNeroAsBaseObject(newObj,NeuronNode_DerivativeObject);*/
+	}	
+	else
+		NeroErrorMsg;
+
+	
+	return newObj;
+
+}
+/*ActNero * nero_createNeroForData(nero_s32int  num)*/
+/*{*/
+
+
+
+
+
+/*}*/
+/* 首先申请足够多的神经元，来保存数据，这些神经元成单向连接起来，返回头节点*/
+ActNero * nero_GetSomeNeroForData(nero_s32int  num)
+{
+	ActNero * head;
+	ActNero * tail;
+	ActNero * lasttail;
+	nero_s32int i,res;
+	NerveFiber * fiber;
+	if (num<1)
+	{
+		return NULL;
+	}
+	for (i=1;i<=num;i++)
+	{
+		
+		tail=nero_createDataNero();
+		
+		
+		
+		if (i==1)
+		{
+			head=tail;
+		}
+		
+		else
+		{
+			/*将上一个tail指向这个新的tail*/
+			fiber=addNerveFiber(lasttail,NerveFiber_Output);
+			fiber->next=NULL;
+			fiber->obj=tail;
+		
+		
+		}
+		lasttail=tail;
+	}
+
+	return head;
+
+}
+
+nero_s32int nero_addDataToZhNeroObj(NeuronObject * n,ChUTF8 *chChar)
+{
+
+
+	/* 首先申请足够多的神经元，来保存数据，这些神经元成单向连接起来，返回头节点*/
+	ActNero * dataNero=nero_GetSomeNeroForData(1);//只要一个神经元就好了，因为，这里只需要chChar的前3个数据
+	/*将将概念神经元的inputListHead指向这个数据链表*/
+	if(dataNero)
+	{
+		NerveFiber * fiber=addNerveFiber(n,NerveFiber_Input);
+		fiber->obj=dataNero;
+	
+		/*现在开始数据填充*/
+		nero_putDataIntoNero(dataNero,chChar->first,chChar->second,chChar->third);
+	}
+	else
+		return NeroError;
+	return NeroOK;
+}
+nero_s32int nero_addZhCharIntoNet(NeuronObject *GodNero,ChUTF8 chChar[],nero_s32int charCounts)
+{
+
+	nero_s32int i,res;
+	NeuronObject *newObj;
+	/**/
+
+	
+	/*首先生成一个神经概念*/
+
+	for (i=0;i<charCounts;i++)
+	{
+		#ifdef  Nero_DeBuging18/11/13 
+		if (i>20)
+		{
+			break;
+		}
+		#endif
+		
+		 newObj= nero_createNeroObj(NeuronNode_ForChCharacter);
+		if(newObj)
+		{
+			/*往概念填数据*/
+			nero_addDataToZhNeroObj(newObj,&chChar[i]);
+			/*最后加入网络*/
+			nero_addNeroIntoNet( GodNero,newObj);
+		}
+	}
+
 
 
 
 	return NeroOK;
 }
 
+nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj)
+{
+	if(GodNero ==NULL || newObj ==NULL)
+	{
+		return NeroError;
+		
+		
+	}
+	nero_us8int tmp;
+	nero_s32int i;
+	nero_8int str[400];
+
+	nero_s32int BaseObjectKind,newObjKind;
+	NeuronObject * BaseObi;
+	NerveFiber  *  curFiber;	
+	/*要遍历整个以GodNero为起点(遍历它下层的对象）的网络*/
 
 
 
+	/*首先你需要清楚这个网络的特点：*/
+	/*GodNero：指向所有的基类，且是单向联系*/
+	curFiber=GodNero->outputListHead;
+	newObjKind==nero_GetNeroKind(BaseObi);
+	for (;curFiber !=NULL;curFiber=curFiber->next)
+	{
+		//首先遍历GodNero指向的基类
+		
+		BaseObi=curFiber->obj;
+		BaseObjectKind=nero_GetNeroKind(BaseObi);
+		
+		if(newObjKind == BaseObjectKind)
+		{
+			/*加入该区域*/
+			
+			 nero_addNeroIntoBaseObj(BaseObjectKind,newObjKind);
+			
+		}		
+		
+/*		sprintf(str,"	%d -> %d;\n",nero_GetNeroKind(GodNero),ObjectKind);*/
+/*		write(fd, str, strlen(str));*/
+		
+	}
+
+	
+	return NeroOK;
+}
+/*将一个已知类型的对象加入到该基类类型下面*/
+/*将数据加入网络是一个核心的操作*/
+/*其实这个BaseObi并不一定要是基类*/
+
+
+nero_s32int nero_addNeroIntoBaseObj(NeuronObject *BaseObi,NeuronObject *newObj)
+{
+	nero_s32int res;
+	if(BaseObi ==NULL || newObj ==NULL)
+	{
+		return NeroError;
+		
+		
+	}
+
+	res=addNeuronChild(BaseObi,newObj,Relationship_bothTother);
+	return NeroOK;
+}
 
 
 

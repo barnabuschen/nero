@@ -73,7 +73,7 @@ void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName)
 		
 		
 		
-		#ifdef   Nero_DeBuging17/11/13 
+		#ifdef   Nero_DeBuging17/11/13
 		
 		printf("%s.\n",str);
 /*		printf("%d.\n",ObjectKind);*/

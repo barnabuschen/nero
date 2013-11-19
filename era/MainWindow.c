@@ -269,7 +269,7 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 		#ifdef  Nero_DeBuging0
 		printf("CreateActNeroNet   done.\n");	
 		#endif		
-	/*一下步就是将字符信息加入网络*/
+	/*一下步就是将字符信息加入网络 */
 	nero_addZhCharIntoNet( GodNero,chChar, charCounts);
 		#ifdef  Nero_DeBuging0
 		printf("addZhCharIntoNet   done.\n");	
@@ -286,7 +286,7 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);	
 	#endif
-
+	printf("CreateNeroNetWork   done.\n");	
 
 }
 void createCreateNeroTab(GtkWidget *fixedInside)

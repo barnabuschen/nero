@@ -75,6 +75,8 @@ struct NerveFiber_   * outputListHead;
  {
 struct ActivationNeuron   *obj;
 struct NerveFiber_ * next;
+nero_us32int msg1;/*存储额外的信息*/
+//nero_us32int msg2;
  };
 
 

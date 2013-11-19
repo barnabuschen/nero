@@ -415,7 +415,7 @@ nero_s32int nero_addZhCharIntoNet(NeuronObject *GodNero,ChUTF8 chChar[],nero_s32
 
 	for (i=0;i<charCounts;i++)
 	{
-		#ifdef  Nero_DeBuging18_11_13 
+		#ifdef  Nero_DeBuging18_11_13_ 
 		if (i>20)
 		{
 			break;

@@ -20,27 +20,7 @@ NeuronNode_ForChWord ,    //当一个概念节点的类型为此时表示一个�
 
 
 
-/*ActNero只是用来保存基础数据，它对应于一个单纯的神经元*/
 
-
-/*
-将指定位置的位设置为特定的值：
-1111
-	&
-0101
-
-
-
-msg：
-低位			高位
-1-------8  9-----16 17-----24  25----32
-1111 1111 1111 1111 1111 1111 1111 1111 
-1-8位表示该节点种类
-
-
-
-32位：区别一般的概念和基类，1表示基类，0表示衍生类(网络中真正的数据)
-*/
 
 
 
@@ -134,6 +114,7 @@ static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type)
 	}
 	tmp=(NerveFiber *)malloc(sizeof(NerveFiber));
 	tmp->next=NULL;
+	tmp->msg1=0;
 	if (*p == NULL)
 	{
 		*p=tmp;
@@ -206,6 +187,14 @@ nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher)
 		NeroErrorMsg;
 		return NeroError;
 	}	
+	
+	
+	
+	/*需要判断是不是已经有联系了*/
+	
+	
+	
+	
 	NerveFiber * newfiber=addNerveFiber(lower,NerveFiber_Output);
 	if (newfiber ==NULL)
 	{
@@ -350,7 +339,7 @@ ActNero * nero_GetSomeNeroForData(nero_s32int  num)
 	ActNero * head;
 	ActNero * tail;
 	ActNero * lasttail;
-	nero_s32int i,res;
+	nero_s32int i;
 	NerveFiber * fiber;
 	if (num<1)
 	{
@@ -406,7 +395,7 @@ nero_s32int nero_addDataToZhNeroObj(NeuronObject * n,ChUTF8 *chChar)
 nero_s32int nero_addZhCharIntoNet(NeuronObject *GodNero,ChUTF8 chChar[],nero_s32int charCounts)
 {
 
-	nero_s32int i,res;
+	nero_s32int i;
 	NeuronObject *newObj;
 	/**/
 
@@ -452,9 +441,9 @@ nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj)
 		
 		
 	}
-	nero_us8int tmp;
-	nero_s32int i;
-	nero_8int str[400];
+/*	nero_us8int tmp;*/
+/*	nero_s32int i;*/
+/*	nero_8int str[400];*/
 
 	nero_s32int BaseObjectKind,newObjKind;
 	NeuronObject * BaseObi;
@@ -502,7 +491,7 @@ nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj)
 
 nero_s32int nero_addNeroIntoBaseObj(NeuronObject *BaseObi,NeuronObject *newObj)
 {
-	nero_s32int res;
+/*	nero_s32int res;*/
 	if(BaseObi ==NULL || newObj ==NULL)
 	{
 		return NeroError;
@@ -510,12 +499,203 @@ nero_s32int nero_addNeroIntoBaseObj(NeuronObject *BaseObi,NeuronObject *newObj)
 		
 	}
 
-	res=addNeuronChild(BaseObi,newObj,Relationship_bothTother);
+/*	res=*/addNeuronChild(BaseObi,newObj,Relationship_bothTother);
 	return NeroOK;
 }
+/*判断是不是基类,是返回1*/
+nero_s32int  nero_isBaseObj(NeuronObject *Obi)
+{
+	nero_s32int IsBase=0,kind;
+	nero_us32int i;
+	if(Obi ==NULL)
+	{
+		return IsBase;
+		
+	}
+	kind=nero_GetNeroKind(Obi);
+	if(kind  != NeuronNode_ForNone  && kind !=NeuronNode_ForData)
+	{
+		/*最后看最高位是不是1*/
+		i=Obi->msg   & 0x80000000;//
+		if(i != 0)
+			return 1;
+		 
+	
+	}
+	return 0;
 
+}
+/*判断这俩个概念是不是在网络中存在，如果不存在，0，在返回1*/
+nero_s32int nero_isInNet(NeuronObject *Obi)
+{
+	NerveFiber tmpFiber;
+	NeuronObject *tmpObi;
+	nero_s32int IsInNet=0,isbase,isSame;
+	/*首先你要判断这俩个概念是不是在网络中存在，如果不存在，则报错返回*/
+	/*对于一个已经在网络中的数据一定满足系列条件*/
+	if(Obi ==NULL)
+	{
+		return IsInNet;
+		
+	}
+		/*1:它指向一个基类*/
+	isbase=0;
+	tmpFiber=Obi->outputListHead;
+	while (tmpFiber)
+	{
+		tmpObi=tmpFiber->obj;
+		/*判断是不是基类*/
+		isbase=nero_isBaseObj(tmpObi)
+		if(isbase ==1)
+			break;
+		tmpFiber=tmpFiber->next;
+	}
+		/*2:基类也指向它:这个条件现在成立，那以后呢 我觉得还是应该确保这一点，否则你要查询一个概念*/
+		/*是否在网络中就没法查了*/
+	isSame =0;
+	if(isbase ==1)
+	{
+		/*tmpObi现在应该指向一个基类*/
+		tmpFiber=tmpObi->outputListHead;
+		while (tmpFiber)
+		{
+			tmpObi=tmpFiber->obj;
+			/*判断是不是就是Obi*/
+/*			isSame=nero_isBaseObj(NeuronObject *Obi)*/
+			if(tmpObi == Obi)
+			{
+				isSame =1;
+				break;
+			}
+			tmpFiber=tmpFiber->next;
+		}	
+		if(isSame == 1)	
+			IsInNet=1;
+	
+	
+	}
+	
+	return IsInNet;
 
+}
+/*判断是否已经从俩个已知道俩个概念中生成一个了新的概念*/
+/*判断方法是寻找俩个对象是否指向一个共同的衍生对象*/
+nero_s32int  nero_IfHasObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
+{
+	NerveFiber *tmpFiber1, *tmpFiber2;
+	nero_s32int has,res;
+	if(Obi1 ==NULL  || Obj2 ==NULL)
+	{
+		return NeroError;
+		
+	}
+	
+	/**/
+	tmpFiber1=Obi1->outputListHead;
+	has=0;
+	while(tmpFiber1 && has !=0)
+	{
+	
+		tmpFiber2=Obi2->outputListHead;
+		while(tmpFiber2)
+		{		
+	
+			if(tmpFiber1->obj  ==  tmpFiber2->obj)
+			{
+			
+				if(nero_isBaseObj(tmpFiber1->obj)   !=1)
+				{
+					has=1;
+					break;
+				}
+	
+			}
+			tmpFiber2=tmpFiber2->next;
+		}
+	
+		tmpFiber1=tmpFiber1->next;
+	}
+	
+	
+	return has;
 
+}
+
+/*从俩个已知道俩个概念中生成一个新的概念，新概念的种类在函数内部自动判断，最后返回新对象指针*/
+/**/
+NeuronObject * nero_createObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
+{
+	NeuronObject *newObi;
+	NerveFiber *tmpFiber;
+	nero_s32int newObiKind,res;
+	/*首先你要判断这俩个概念是不是在网络中存在，如果不存在，则报错返回*/
+	if ( nero_isInNet(Obi1) !=1  ||  nero_isInNet(Obj2) !=1)
+		return NULL;
+	
+	
+	
+	/*判断这俩个对象是不是已经有生成过新概念了*/
+	
+	res=nero_IfHasObjFromPair( Obi1, Obj2);
+	if(res == 1)
+		return NULL;
+
+	/*判断新概念的种类*/
+	if (nero_GetNeroKind(Obi1)   ==  nero_GetNeroKind(Obj2) )
+	{
+		newObiKind=nero_GetNeroKind(Obi1) ;
+		switch(newObiKind)
+		{
+		
+			NeuronNode_ForChCharacter: 
+				newObiKind=NeuronNode_ForChWord;
+				break;
+				
+			default:
+				newObiKind=NeuronNode_ForNone;
+				break;
+		
+		
+		}
+		
+		
+	}
+	else/*暂时只处理类型相同的情况*/
+		return NULL;
+	
+	if (newObiKind == NeuronNode_ForNone)
+	{
+		return NULL;
+	}
+	/*生成新概念，并加入网络*/
+	newObi= nero_createNeroObj(newObiKind);
+	res= nero_addNeroIntoNet( GodNero,newObi);
+	if(NeroOK != res)
+		return NULL;
+	
+	
+	
+	
+	/*将新概念与旧概念生成联系,此外俩个旧概念，这里仅仅第一个指向第二个*/
+	
+	/*将新概念的数据指向这俩个对象*/
+	
+	tmpFiber= addNerveFiber(newObi,NerveFiber_Input);
+	tmpFiber->obj=Obi1;
+	tmpFiber= addNerveFiber(newObi,NerveFiber_Input);
+	tmpFiber->obj=Obi2;	
+	
+	
+	
+	
+	
+	addNeuronChild(newObi,Obi1,Relationship_ChildToFather);
+	addNeuronChild(newObi,Obi2,Relationship_ChildToFather);
+	addNeuronChild(Obj2,Obi1,Relationship_ChildToFather);
+	
+	
+	return newObi;
+}
 
 
 

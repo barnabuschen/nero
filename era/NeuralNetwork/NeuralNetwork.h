@@ -42,7 +42,27 @@ int next;
 
 
 
+/*ActNero只是用来保存基础数据，它对应于一个单纯的神经元*/
 
+
+/*
+将指定位置的位设置为特定的值：
+1111
+	&
+0101
+
+
+
+msg：
+低位			高位
+1-------8  9-----16 17-----24  25----32
+1111 1111 1111 1111 1111 1111 1111 1111 
+1-8位表示该节点种类
+
+
+
+32位：区别一般的概念和基类，1表示基类，0表示衍生类(网络中真正的数据)
+*/
 
  struct ActivationNeuron;
 typedef struct ActivationNeuron  NeuronObject;
@@ -70,7 +90,21 @@ struct NerveFiber_  * inputListHead;/*其实究竟对于一个神经元来说是
 					
 struct NerveFiber_   * outputListHead; 
 };
+
+
+
+
+
 /*神经纤维---用来连接各个神经元*/
+/*
+msg1：
+低位			高位
+1-------8  9-----16 17-----24  25----32
+1111 1111 1111 1111 1111 1111 1111 1111 
+1-8位表示该链接的强度，就是没被搜索并匹配成功到一次，加1,暂时100最大
+
+*/
+
   struct NerveFiber_
  {
 struct ActivationNeuron   *obj;
@@ -144,15 +178,25 @@ nero_s32int addNeuronChild(NeuronObject *father,NeuronObject *child,nero_s32int 
 /*将新概念加入网络*/
 nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj);
 
+nero_s32int nero_addNeroIntoBaseObj(NeuronObject *BaseObi,NeuronObject *newObj);
+/*从俩个已知道俩个概念中生成一个新的概念，新概念的种类在函数内部自动判断，最后返回新对象指针*/
+NeuronObject * nero_createObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2);
+
+
+
+
+
+
 
 
 
  inline  nero_us32int nero_GetNeroKind(ActNero * nero);
  inline  void  nero_putDataIntoNero(ActNero *n,nero_us32int x,nero_us32int y,nero_us32int z);
 #define  nero_printNeroMsg(n)   (printf("kind=%d,xyz=%d%d%d,\n",nero_GetNeroKind(n),n->x,n->y,n->z   )  )
-
-
-
+/*判断这俩个概念是不是在网络中存在，如果不存在，0，在返回1*/
+nero_s32int nero_isInNet(NeuronObject *Obi);
+/*判断是不是基类*/
+nero_s32int  nero_isBaseObj(NeuronObject *Obi);
 
 
 

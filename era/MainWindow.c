@@ -274,13 +274,30 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 		#ifdef  Nero_DeBuging0
 		printf("addZhCharIntoNet   done.\n");	
 		#endif	
+		
+		
+	/*将一些词加入网络*/
+	Utf8Word  wordsHead;
+	readUTF8FileForWords("data/ciku1" ,& wordsHead);
+/*	printWords(&wordsHead);		*/
+	
+	
+	
+	
 	
 	
 	/*show  neroNet*/
-	createNeroNetDotGraph(GodNero, "data/pic.dot");
+/*	createNeroNetDotGraph(GodNero, "data/pic.dot");*/
 		#ifdef  Nero_DeBuging0
 		printf("createNeroNetDotGraph   done.\n");	
 		#endif		
+	
+	
+	
+	
+	
+	
+	
 	
 	#ifdef  Nero_DeBuging11
 		gtk_dialog_run (GTK_DIALOG (dialog));

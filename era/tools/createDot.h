@@ -7,10 +7,7 @@
 
 
 
-
 void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName);
-
-
 
 
 

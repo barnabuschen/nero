@@ -38,6 +38,22 @@ nero_us32int nextAvailableNeroInPool;//它指向NeroPool中当前可用的（即
 NeuronObject *GodNero;/*所有神经元理论上都最终与这个相通*/
 
 /*下面是几个简单的判断函数*/
+inline nero_s32int  nero_ifHasThisData(ActNero * n,nero_s32int x,nero_s32int y,nero_s32int z)
+{
+ 	if(n)
+ 	{
+
+ 		
+ 		if(n->x == x  &&  n->y ==y  && n->z==z )
+ 		return  1; 
+
+ 	}
+ 	
+		return  0; 
+		
+		
+
+}
  inline  void  nero_putDataIntoNero(ActNero *n,nero_us32int x,nero_us32int y,nero_us32int z)
  {
  	if(n)
@@ -124,11 +140,7 @@ static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type)
 	return  tmp;
 
 }
-void donother()
-{
 
-
-}
 nero_s32int CreateActNeroNet()
 {
 	
@@ -528,7 +540,7 @@ nero_s32int  nero_isBaseObj(NeuronObject *Obi)
 /*判断这俩个概念是不是在网络中存在，如果不存在，0，在返回1*/
 nero_s32int nero_isInNet(NeuronObject *Obi)
 {
-	NerveFiber tmpFiber;
+	NerveFiber *tmpFiber;
 	NeuronObject *tmpObi;
 	nero_s32int IsInNet=0,isbase,isSame;
 	/*首先你要判断这俩个概念是不是在网络中存在，如果不存在，则报错返回*/
@@ -545,7 +557,7 @@ nero_s32int nero_isInNet(NeuronObject *Obi)
 	{
 		tmpObi=tmpFiber->obj;
 		/*判断是不是基类*/
-		isbase=nero_isBaseObj(tmpObi)
+		isbase=nero_isBaseObj(tmpObi);
 		if(isbase ==1)
 			break;
 		tmpFiber=tmpFiber->next;
@@ -583,7 +595,7 @@ nero_s32int nero_isInNet(NeuronObject *Obi)
 nero_s32int  nero_IfHasObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
 {
 	NerveFiber *tmpFiber1, *tmpFiber2;
-	nero_s32int has,res;
+	nero_s32int has;
 	if(Obi1 ==NULL  || Obj2 ==NULL)
 	{
 		return NeroError;
@@ -596,7 +608,7 @@ nero_s32int  nero_IfHasObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
 	while(tmpFiber1 && has !=0)
 	{
 	
-		tmpFiber2=Obi2->outputListHead;
+		tmpFiber2=Obj2->outputListHead;
 		while(tmpFiber2)
 		{		
 	
@@ -643,11 +655,10 @@ NeuronObject * nero_createObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
 	/*判断新概念的种类*/
 	if (nero_GetNeroKind(Obi1)   ==  nero_GetNeroKind(Obj2) )
 	{
-		newObiKind=nero_GetNeroKind(Obi1) ;
+		newObiKind=nero_GetNeroKind(Obi1);
 		switch(newObiKind)
 		{
-		
-			NeuronNode_ForChCharacter: 
+			case NeuronNode_ForChCharacter: 
 				newObiKind=NeuronNode_ForChWord;
 				break;
 				
@@ -683,29 +694,125 @@ NeuronObject * nero_createObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
 	tmpFiber= addNerveFiber(newObi,NerveFiber_Input);
 	tmpFiber->obj=Obi1;
 	tmpFiber= addNerveFiber(newObi,NerveFiber_Input);
-	tmpFiber->obj=Obi2;	
+	tmpFiber->obj=Obj2;	
 	
 	
 	
 	
 	
 	addNeuronChild(newObi,Obi1,Relationship_ChildToFather);
-	addNeuronChild(newObi,Obi2,Relationship_ChildToFather);
+	addNeuronChild(newObi,Obj2,Relationship_ChildToFather);
 	addNeuronChild(Obj2,Obi1,Relationship_ChildToFather);
 	
 	
 	return newObi;
 }
+/*将词的链表中的每个词加入网络*/
+nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead)
+{
+	
+/*	NeuronObject *  newWords;*/
+	Utf8Word   *last;
+	NeuronObject  *word[25];/*定义一个指针数组，该数组保存一个词中每个字的概念的指针*/
+	last=wordsHead->next;
+	nero_s32int i,res;	
+	
+	
+	while(last)
+	{
+		
+	
+		res=0;
+		if(last->num == 2)
+		{
+		
+			
+			for (i=0;i<last->num;i++)
+			{	
+			
+				/*搜索是不是已经有该字存在在网络中*/
+				word[i]=nero_IfHasZhWord( GodNero,&(last->words[i]),NeuronNode_ForChCharacter);
+				/*如果找不到这个字，就结束此次循环，表示该词不适合这时候加入网络*/
+				if (word[i] == NULL)
+				{
+					res=0;
+					break;
+				}
+				res=1;
+	
+				#ifdef Nero_DeBuging1
+				#endif	
+	
+			}
+			/*如果组成该词的几个字都能在网络里面找到,则尝试生成新概念，就是把该词就加入网络*/
+			if (res == 1)
+			{
+					
+				/*newWords= */nero_createObjFromPair(word[0],word[1]);	
+					
+			}			
+			
+		}
+		last=last->next;
+	}
 
 
+	return NeroOK;
+}
 
 
+/*根据给定数据寻找是否网络中已经有该   字   概念了，这里只搜索一个字,找到则返回该概念的指针*/
+/*kind  控制搜索的领域*/
+NeuronObject * nero_IfHasZhWord(NeuronObject *GodNero,ChUTF8 * word,nero_s32int kind)
+{
+	nero_s32int res;
+/*	nero_us8int tmp;*/
+	nero_s32int ObjectKind;
+	NeuronObject * BaseObi;
+	NeuronObject * tmpObi;
+	NerveFiber  *  curFiber;
+	NerveFiber  *  outputFiberOfbaseObj;
+	
+
+	curFiber=GodNero->outputListHead;
+	for (;curFiber !=NULL;curFiber=curFiber->next)
+	{
+		//首先遍历GodNero指向的基类
+		
+		BaseObi=curFiber->obj;
+		ObjectKind=nero_GetNeroKind(BaseObi);
+			
+		/*现在遍历基类下面的数据：*/
+		
+		
+		if(kind != ObjectKind)
+			continue;
+			
+		outputFiberOfbaseObj=BaseObi->outputListHead;
+		while(outputFiberOfbaseObj)
+		{
+			tmpObi=outputFiberOfbaseObj->obj;/*基类链表中的每一个衍生对象*/
+			ObjectKind=nero_GetNeroKind(tmpObi);	
+				
+			/*比对该对象的数据是否是要找的数据*/	
+			NeuronObject * tmp=tmpObi->inputListHead->obj;/*衍生对象的第一个数据*/
+			
+			res=nero_ifHasThisData(tmp,word->first,word->second,word->third);
+			if(res == 1)
+				return tmp;
+			
+/*			sprintf(str,"	%d -> %c%c%c;\n",nero_GetNeroKind(BaseObi),tmp->x,tmp->y,tmp->z);*/
+/*			write(fd, str, strlen(str));	*/
+			outputFiberOfbaseObj=outputFiberOfbaseObj->next;
+		}
+		
+		
+		
+	}
 
 
-
-
-
-
+	return NULL;
+}
 
 
 

@@ -38,7 +38,7 @@ $(obj) :gtkMain.o MainWindow.o
 	./gtkMain
 gtkMain.o : gtkMain.c  	
 	$(cc)  -c gtkMain.c $(gtkVer)
-MainWindow.o : MainWindow.c MainWindow.h $(NeuNetwork) $(tools) $(dot)  $(fileOperating) 
+MainWindow.o : MainWindow.c MainWindow.h $(NeuNetwork) $(tools) $(dot) 
 		$(cc)  -c MainWindow.c   $(gtkVer)
 #sub2:
 #	cd $(subGraph) && $(MAKE)

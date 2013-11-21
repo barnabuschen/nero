@@ -5,6 +5,7 @@
 #ifndef NeuralNetwork_H
 #define NeuralNetwork_H
 #include "../common/type.h"
+#include "../tools/readUTF8File.h"
 /*
 在这个部分中，主要集中了有关神经网络部分的代码，包括网络在内存中的存放方式，
 网络节点常用操作，还有网络和数据输入模块和数据输出模块的交互代码
@@ -183,10 +184,13 @@ nero_s32int nero_addNeroIntoBaseObj(NeuronObject *BaseObi,NeuronObject *newObj);
 NeuronObject * nero_createObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2);
 
 
+/*将词的链表中的每个词加入网络*/
+nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead);
+/*根据给定数据寻找是否网络中已经有该   字   概念了，这里只搜索一个字,找到则返回该概念的指针*/
+/*kind  控制搜索的领域*/
+NeuronObject * nero_IfHasZhWord(NeuronObject *GodNero,ChUTF8 * word,nero_s32int kind);
 
-
-
-
+nero_s32int nero_addZhCharIntoNet(NeuronObject *GodNero,ChUTF8 chChar[],nero_s32int charCounts);
 
 
 
@@ -197,6 +201,57 @@ NeuronObject * nero_createObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2);
 nero_s32int nero_isInNet(NeuronObject *Obi);
 /*判断是不是基类*/
 nero_s32int  nero_isBaseObj(NeuronObject *Obi);
+/*判断该神经中的数据是否是指定的数据*/
+inline nero_s32int  nero_ifHasThisData(ActNero * nero,nero_s32int x,nero_s32int y,nero_s32int z);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*遍历网络的代码：*/
+
+
+/*	nero_us8int tmp;*/
+/*	nero_s32int ObjectKind;*/
+/*	NeuronObject * BaseObi;*/
+/*	NeuronObject * tmpObi;*/
+/*	NerveFiber  *  curFiber;*/
+/*	NerveFiber  *  outputFiberOfbaseObj;*/
+/*	*/
+/*	curFiber=GodNero->outputListHead;*/
+/*	for (;curFiber !=NULL;curFiber=curFiber->next)*/
+/*	{*/
+/*		//首先遍历GodNero指向的基类*/
+/*		*/
+/*		BaseObi=curFiber->obj;*/
+/*		ObjectKind=nero_GetNeroKind(BaseObi);*/
+/*			*/
+/*		//现在遍历每个基类下面的数据：*/
+/*		*/
+/*		outputFiberOfbaseObj=BaseObi->outputListHead;*/
+/*		while(outputFiberOfbaseObj)*/
+/*		{*/
+/*			tmpObi=outputFiberOfbaseObj->obj;*/
+/*			ObjectKind=nero_GetNeroKind(tmpObi);	*/
+/*					*/
+/*			NeuronObject * tmp=tmpObi->inputListHead->obj;*/
+
+/*			outputFiberOfbaseObj=outputFiberOfbaseObj->next;*/
+/*		}*/
+/*		*/
+/*		*/
+/*		*/
+/*	}*/
+
 
 
 

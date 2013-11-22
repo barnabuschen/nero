@@ -196,7 +196,7 @@ nero_s32int nero_addZhCharIntoNet(NeuronObject *GodNero,ChUTF8 chChar[],nero_s32
 
  inline  nero_us32int nero_GetNeroKind(ActNero * nero);
  inline  void  nero_putDataIntoNero(ActNero *n,nero_us32int x,nero_us32int y,nero_us32int z);
-#define  nero_printNeroMsg(n)   (printf("kind=%d,xyz=%d%d%d,\n",nero_GetNeroKind(n),n->x,n->y,n->z   )  )
+#define  nero_printNeroMsg(n)   (printf("kind=%d,xyz=%x %x %x,\n",nero_GetNeroKind(n),n->x,n->y,n->z   )  )
 /*判断这俩个概念是不是在网络中存在，如果不存在，0，在返回1*/
 nero_s32int nero_isInNet(NeuronObject *Obi);
 /*判断是不是基类*/

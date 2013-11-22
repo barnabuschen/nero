@@ -26,12 +26,6 @@ nero_us8int tmp[6];
 
 };
 
- struct adkfjao
-{
-ChUTF8 tmp;
-nero_s32int end;
-
-};
 
 
 ChUTF8 chChar[ChineseCharNum];

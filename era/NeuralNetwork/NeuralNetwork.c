@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "NeuralNetwork.h"
 /*#include "Neuron.h"*/
-
+#include "../tools/readUTF8File.h"
 
 
 
@@ -711,12 +711,13 @@ NeuronObject * nero_createObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
 nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead)
 {
 	
-/*	NeuronObject *  newWords;*/
+	NeuronObject *  newWords;
 	Utf8Word   *last;
 	NeuronObject  *word[25];/*定义一个指针数组，该数组保存一个词中每个字的概念的指针*/
 	last=wordsHead->next;
 	nero_s32int i,res;	
-	
+	PrintUtf8 ttt;
+	ttt.end=0;	
 	
 	while(last)
 	{
@@ -731,24 +732,68 @@ nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead)
 			{	
 			
 				/*搜索是不是已经有该字存在在网络中*/
+				#ifdef   Nero_DeBuging22_11_13_
+				ttt.tmp=last->words[i];
+				printf("%s",(nero_s8int *)&ttt);				
+				#endif
+				
 				word[i]=nero_IfHasZhWord( GodNero,&(last->words[i]),NeuronNode_ForChCharacter);
 				/*如果找不到这个字，就结束此次循环，表示该词不适合这时候加入网络*/
 				if (word[i] == NULL)
 				{
+				
+					#ifdef   Nero_DeBuging22_11_13
+
+					printf("找不到啊  \n");				
+					#endif				
 					res=0;
 					break;
 				}
+				
+				#ifdef   Nero_DeBuging22_11_13_
+				else
+				{
+/*					printf("找到两人  \n");	*/
+					ttt.tmp.first=word[i]->x;
+					ttt.tmp.second=word[i]->y;
+					ttt.tmp.third=word[i]->z;
+					printf("%s",(nero_s8int *)&ttt);
+				
+				}				
+				#endif					
 				res=1;
-	
-				#ifdef Nero_DeBuging1
-				#endif	
+
+
 	
 			}
 			/*如果组成该词的几个字都能在网络里面找到,则尝试生成新概念，就是把该词就加入网络*/
 			if (res == 1)
 			{
+				newWords= nero_createObjFromPair(word[0],word[1]);
+				
+
+				
+								
+				#ifdef   Nero_DeBuging22_11_13_
+
+				if (newWords )
+				{	
 					
-				/*newWords= */nero_createObjFromPair(word[0],word[1]);	
+					ttt.tmp=last->words[0];
+					printf("%s",(nero_s8int *)&ttt);
+					ttt.tmp=last->words[1];
+					printf("%s \n",(nero_s8int *)&ttt);					
+					
+				}
+				else
+					printf("创建失败  \n");
+				nero_printNeroMsg(word[0]);
+				nero_printNeroMsg(word[1]);				
+				#endif
+					
+				
+
+				
 					
 			}			
 			
@@ -799,7 +844,7 @@ NeuronObject * nero_IfHasZhWord(NeuronObject *GodNero,ChUTF8 * word,nero_s32int 
 			
 			res=nero_ifHasThisData(tmp,word->first,word->second,word->third);
 			if(res == 1)
-				return tmp;
+				return tmpObi;
 			
 /*			sprintf(str,"	%d -> %c%c%c;\n",nero_GetNeroKind(BaseObi),tmp->x,tmp->y,tmp->z);*/
 /*			write(fd, str, strlen(str));	*/

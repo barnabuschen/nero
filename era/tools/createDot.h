@@ -10,7 +10,7 @@
 void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName);
 
 
-
+void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName);
 
 
 

@@ -282,12 +282,13 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 /*	printWords(&wordsHead);		*/
 	
 	
-	
+	nero_AddWordsIntoNet( GodNero,& wordsHead);
 	
 	
 	
 	/*show  neroNet*/
 /*	createNeroNetDotGraph(GodNero, "data/pic.dot");*/
+	 createNeroNetDotGraphForWords(GodNero, "data/wordspic.dot");
 		#ifdef  Nero_DeBuging0
 		printf("createNeroNetDotGraph   done.\n");	
 		#endif		

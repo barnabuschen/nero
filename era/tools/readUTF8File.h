@@ -10,6 +10,13 @@
 extern ChUTF8 chChar[ChineseCharNum];
 extern nero_s32int charCounts;
 
+
+ typedef struct adkfjao
+{
+ChUTF8 tmp;
+nero_s32int end;
+
+}PrintUtf8;
 /*存储一个词的结构体*/
 typedef struct Utf8Word_
 {

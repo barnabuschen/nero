@@ -117,7 +117,7 @@ nero_s32int readUTF8FileForWords(nero_8int * FileName ,Utf8Word * wordsHead)
 	{
 	
 	
-		if( p >= end /*|| *(p) ==0x0a*/)
+		if( p >= end || *(p) ==0x0a)
 		{
 /*			NerReportMsgError(nero_error_Id);*/
 			break;
@@ -125,7 +125,7 @@ nero_s32int readUTF8FileForWords(nero_8int * FileName ,Utf8Word * wordsHead)
 
 		/*搜索下一个  0x0a 就是换行符的位置*/
 		q=p+1;
-		while(*(q) !=0x0a /*&& *(q) !=0x09*/)/*换行符或者tab*/
+		while(*(q) !=0x0a )
 			q=q+1;
 		/*判断有几个字符*/
 		wordsLen=(q-p)/3;
@@ -135,8 +135,8 @@ nero_s32int readUTF8FileForWords(nero_8int * FileName ,Utf8Word * wordsHead)
 			memcpy(&words[i],p, 3);/*malloc分配的是连续内存*/	
 			
 					//打印utf8编码数据：
-			#ifdef Nero_DeBuging1
-/*				printf("%d.\n",i);*/
+			#ifdef Nero_DeBuging10
+
 				testsadkfjao.tmp=words[i];
 				testsadkfjao.end=0;
 				printf("%s",(nero_s8int *)&testsadkfjao);
@@ -146,7 +146,7 @@ nero_s32int readUTF8FileForWords(nero_8int * FileName ,Utf8Word * wordsHead)
 			
 					
 		}
-		#ifdef Nero_DeBuging1
+		#ifdef Nero_DeBuging10
 		printf("\n");
 		#endif
 		/*将获取的词加入链表*/
@@ -167,8 +167,6 @@ nero_s32int readUTF8FileForWords(nero_8int * FileName ,Utf8Word * wordsHead)
 /*			last=tmp;*/
 		}
 		last=tmp;
-		/*搜索下一个  词的开始位置*/
-
 		p++;
 		
 		

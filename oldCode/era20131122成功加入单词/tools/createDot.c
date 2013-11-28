@@ -96,7 +96,7 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 				ObjectKind2=nero_GetNeroKind(tmpObi2);	
 				isbase_=nero_isBaseObj(tmpObi2);
 
-				if(isbase_ != 1  || ObjectKind ==NeuronNode_ForChWord )
+				if(isbase_ != 1)
 				{
 				#ifdef   Nero_DeBuging22_11_13_
 
@@ -106,7 +106,9 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 				switch(ObjectKind)
 				{
 					case NeuronNode_ForChCharacter:
-
+						#ifdef   Nero_DeBuging22_11_13_
+						printf("paint  words   \n");				
+						#endif
 						tmp=tmpObi->inputListHead->obj;
 						if (ObjectKind2 == NeuronNode_ForChCharacter)
 						{
@@ -117,21 +119,7 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 							sprintf(str,"	%c%c%c -> %d;\n",tmp->x,tmp->y,tmp->z,tmpObi2);
 						write(fd, str, strlen(str));			
 							break;
-					case NeuronNode_ForChWord:
-						#ifdef   Nero_DeBuging22_11_13
-						printf("paint  words   \n");				
-						#endif					
-						/*只是输出这个词汇有那几个字*/
-						tmp=tmpObi->inputListHead->obj->inputListHead->obj;
-						sprintf(str,"	%d -> %c%c%c",tmpObi,tmp->x,tmp->y,tmp->z);
-						write(fd, str, strlen(str));		
-						tmp2=tmpObi->inputListHead->next->obj->inputListHead->obj;
-						sprintf(str,"%c%c%c;\n",tmp2->x,tmp2->y,tmp2->z);
-						write(fd, str, strlen(str));		
-						break;
-					
-					
-					
+			
 					default:break;
 				}
 				

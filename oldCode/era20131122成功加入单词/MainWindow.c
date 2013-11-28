@@ -278,9 +278,7 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 		
 	/*将一些词加入网络*/
 	Utf8Word  wordsHead;
-	Utf8Word  MultiBytewordsHead;
-	readUTF8FileForWords("data/字库" ,& wordsHead);
-	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& MultiBytewordsHead);
+	readUTF8FileForWords("data/ciku1" ,& wordsHead);
 /*	printWords(&wordsHead);		*/
 	
 	

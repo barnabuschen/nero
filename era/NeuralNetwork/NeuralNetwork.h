@@ -182,6 +182,22 @@ nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj);
 nero_s32int nero_addNeroIntoBaseObj(NeuronObject *BaseObi,NeuronObject *newObj);
 /*从俩个已知道俩个概念中生成一个新的概念，新概念的种类在函数内部自动判断，最后返回新对象指针*/
 NeuronObject * nero_createObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2);
+/*从多个>=3已知道俩个概念中生成一个新的概念，新概念的种类在函数内部自动判断，最后返回新对象指针*/
+/**/
+NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum);
+/*判断是否已经从俩个已知道俩个概念中生成一个了新的概念,有则返回这个对象*/
+NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2);
+
+
+
+
+
+
+
+
+/*判断tmpFiber2指向的对象是否一个词的概念，并且这个词由Obis里面的字，依次组成*/
+/*返回1表示是*/
+nero_s32int  nero_ifHasThisData_word(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum);
 
 
 /*将词的链表中的每个词加入网络*/
@@ -205,7 +221,7 @@ nero_s32int  nero_isBaseObj(NeuronObject *Obi);
 inline nero_s32int  nero_ifHasThisData(ActNero * nero,nero_s32int x,nero_s32int y,nero_s32int z);
 
 
-
+nero_s32int   nero_IfHasObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum);
 
 
 

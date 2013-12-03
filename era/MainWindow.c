@@ -278,14 +278,18 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 		
 	/*将一些词加入网络*/
 	Utf8Word  wordsHead;
-	Utf8Word  MultiBytewordsHead;
-	readUTF8FileForWords("data/字库" ,& wordsHead);
-	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& MultiBytewordsHead);
+	Utf8Word  MultiBytewordsHead;	
+	#ifdef  Nero_DeBuging03_12_13
+	readUTF8FileForWords("data/词库" ,& MultiBytewordsHead);
+/*	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& MultiBytewordsHead);*/
+	nero_AddWordsIntoNet( GodNero,& MultiBytewordsHead);
+	#endif	
 /*	printWords(&wordsHead);		*/
 	
-	
+	#ifdef  Nero_DeBuging03_12_13_
+	readUTF8FileForWords("data/字库" ,& wordsHead);
 	nero_AddWordsIntoNet( GodNero,& wordsHead);
-	
+	#endif	
 	
 	
 	/*show  neroNet*/

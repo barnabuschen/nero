@@ -135,7 +135,7 @@ nero_s32int readUTF8FileForWords(nero_8int * FileName ,Utf8Word * wordsHead)
 			memcpy(&words[i],p, 3);/*malloc分配的是连续内存*/	
 			
 					//打印utf8编码数据：
-			#ifdef Nero_DeBuging1
+			#ifdef Nero_DeBuging1_
 /*				printf("%d.\n",i);*/
 				testsadkfjao.tmp=words[i];
 				testsadkfjao.end=0;
@@ -146,7 +146,7 @@ nero_s32int readUTF8FileForWords(nero_8int * FileName ,Utf8Word * wordsHead)
 			
 					
 		}
-		#ifdef Nero_DeBuging1
+		#ifdef Nero_DeBuging1_
 		printf("\n");
 		#endif
 		/*将获取的词加入链表*/

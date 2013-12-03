@@ -118,7 +118,7 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 						write(fd, str, strlen(str));			
 							break;
 					case NeuronNode_ForChWord:
-						#ifdef   Nero_DeBuging22_11_13
+						#ifdef   Nero_DeBuging22_11_13_
 						printf("paint  words   \n");				
 						#endif					
 						/*只是输出这个词汇有那几个字*/

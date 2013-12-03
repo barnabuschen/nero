@@ -293,11 +293,11 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 	
 	
 	/*show  neroNet*/
+	#ifdef  Nero_DeBuging03_12_13_
 /*	createNeroNetDotGraph(GodNero, "data/pic.dot");*/
 	 createNeroNetDotGraphForWords(GodNero, "data/wordspic.dot");
-		#ifdef  Nero_DeBuging0
-		printf("createNeroNetDotGraph   done.\n");	
-		#endif		
+	printf("createNeroNetDotGraph   done.\n");	
+	#endif		
 	
 	
 	

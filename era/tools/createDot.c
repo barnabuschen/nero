@@ -43,7 +43,8 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 	NeuronObject * tmpObi,*tmpObi2;
 	NerveFiber  *  curFiber;
 	NerveFiber  *  outputFiberOfbaseObj,*outputFiberOfDerivativeObj;
-		
+						NerveFiber *tmpFiber1;
+						nero_us32int c=1;		
 	void * start_addr = 0;
 	
 	emptyFile( fileName);
@@ -122,12 +123,30 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 						printf("paint  words   \n");				
 						#endif					
 						/*只是输出这个词汇有那几个字*/
-						tmp=tmpObi->inputListHead->obj->inputListHead->obj;
-						sprintf(str,"	%d -> %c%c%c",tmpObi,tmp->x,tmp->y,tmp->z);
-						write(fd, str, strlen(str));		
-						tmp2=tmpObi->inputListHead->next->obj->inputListHead->obj;
-						sprintf(str,"%c%c%c;\n",tmp2->x,tmp2->y,tmp2->z);
-						write(fd, str, strlen(str));		
+						tmpFiber1=tmpObi->inputListHead;
+						 c=1;
+						while(tmpFiber1)
+						{
+							if (c ==1)
+							{
+							tmp=tmpFiber1->obj->inputListHead->obj;
+							sprintf(str,"	%d -> %c%c%c",tmpObi,tmp->x,tmp->y,tmp->z);
+							write(fd, str, strlen(str));								
+							}
+							else
+							{
+							
+							
+							tmp2=tmpFiber1->obj->inputListHead->obj;
+							sprintf(str,"%c%c%c",tmp2->x,tmp2->y,tmp2->z);
+							write(fd, str, strlen(str));							}
+							
+							tmpFiber1=tmpFiber1->next;
+							c++;
+						}
+						
+						sprintf(str,";\n");
+						write(fd, str, strlen(str));	
 						break;
 					
 					

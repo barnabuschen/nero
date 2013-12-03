@@ -783,7 +783,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 		return NULL;
 		
 	/*首先你要判断这些个概念是不是在网络中存在，如果不存在，则报错返回*/
-	for (i=1;i<=objNum;i++)
+	for (i=0;i<objNum;i++)
 	{
 		
 		if ( nero_isInNet(Obis[i]) !=1  )
@@ -997,7 +997,7 @@ nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead)
 /*					{*/
 /*						tmpObiForTemporary[j]=*(word[0]);*/
 /*					}*/
-					newWords=nero_createObjFromMultiples(word,(i+1));
+					newWords=nero_createObjFromMultiples(word,(i));
 				
 				}
 				

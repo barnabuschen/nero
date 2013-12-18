@@ -51,15 +51,17 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	{
 		/*先不管有句子的情况*/
 		/*通过objs[j]里面的值就可以知道有没有在网络中找到这个对象*/
+
 		objs[i] =nero_IfHasNeuronObject(DataFlow[i],dataKind[i], GodNero);
-/*		if (tmpObi != NULl)*/
-/*		{*/
-/*			objs[j]=tmpObi;*/
-/*			j++;*/
-/*		}*/
+		
+		/*如果不存在则尝试将该对象加入网络*/
+		if (objs[i] != NULl)
+		{
+
+		}
 	}
-
-
+	/*将这几个对象形成层次结构*/
+	
 
 	return nero_msg_ok;
 

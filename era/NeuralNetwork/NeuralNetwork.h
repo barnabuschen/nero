@@ -84,7 +84,7 @@ struct NerveFiber_  * inputListHead;/*其实究竟对于一个神经元来说是
 					/*如果是一个ActNero，则该神经元的功能是保存数据*/
 					/*但是如果是一个NeuronObject，是指向第一个数据呢，还是*/
 					/*说inputListHead指向一个数据的链表，显然指向一个数据的神经元*/
-					/*然后让这个神经元指向后续的数据*/
+					/*然后让这个神经元(纤维)指向后续的数据*/
 					
 					/*特别的，对于一个基类来说，它的inputListHead为NULL*/
 					/*而他的outputListHead链表，则指向所有该类下的所以神经元*/
@@ -130,7 +130,7 @@ extern NeuronObject *GodNero;
 #define NeuronNode_ForLine   51    //当一个概念节点的类型为此时表示一个线条对象
 
 
-#define NeuronNode_ForChCharacter   61    //当一个概念节点的类型为此时表示一个汉字
+#define NeuronNode_ForChCharacter   61    //当一个概念节点的类型为此时表示一个汉字，包括中文标点符号
 #define NeuronNode_ForChWord   62    //当一个概念节点的类型为此时表示一个中文词语
 #define NeuronNode_ForChSentence   63    //当一个概念节点的类型为此时表示一个中文句子
 
@@ -207,7 +207,8 @@ nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead);
 NeuronObject * nero_IfHasZhWord(NeuronObject *GodNero,ChUTF8 * word,nero_s32int kind);
 
 nero_s32int nero_addZhCharIntoNet(NeuronObject *GodNero,ChUTF8 chChar[],nero_s32int charCounts);
-
+/*判断是否有这个数据相应类型的概念*/
+NeuronObject *nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObject *GodNero);
 
 
  inline  nero_us32int nero_GetNeroKind(ActNero * nero);
@@ -222,7 +223,7 @@ inline nero_s32int  nero_ifHasThisData(ActNero * nero,nero_s32int x,nero_s32int 
 
 
 nero_s32int   nero_IfHasObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum);
-
+NeuronObject *   nero_IfHasObjFromMultiples2(NeuronObject *Obis[],nero_s32int objNum);
 
 
 

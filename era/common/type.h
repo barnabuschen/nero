@@ -7,10 +7,13 @@
 
 
 /*一些常量*/
+/*8192kb  =1032KB*/
 #define ChineseCharNum  8000
-/*2的32次=4294967295*/
-#define MaxNeroNum  1000000/*百万*/
-
+/*2的32次=	     4294967295   42亿*/
+//#define MaxNeroNum  1000000/*百万*/
+#define MaxNeroNum  89000000/*千万*/
+//#define MaxNeroNum 100000000/*1亿*/
+/*		     123456789	*/
 
 
 

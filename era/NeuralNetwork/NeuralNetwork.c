@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <stdio.h>
+#include <string.h>
 #include "NeuralNetwork.h"
 /*#include "Neuron.h"*/
 #include "../tools/readUTF8File.h"
@@ -34,6 +35,8 @@ NeuronNode_ForChWord ,    //当一个概念节点的类型为此时表示一个�
 
 
 ActNero NeroPool[MaxNeroNum];
+/*ActNero NeroPool2[MaxNeroNum];*/
+/*ActNero NeroPool3[MaxNeroNum];*/
 nero_us32int nextAvailableNeroInPool;//它指向NeroPool中当前可用的（即使未加入网络的nero）
 NeuronObject *GodNero;/*所有神经元理论上都最终与这个相通*/
 
@@ -682,6 +685,45 @@ nero_s32int   nero_IfHasObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum
 
 
 }
+NeuronObject *   nero_IfHasObjFromMultiples2(NeuronObject *Obis[],nero_s32int objNum)
+{
+	nero_s32int i;
+	NerveFiber *tmpFiber1;
+	NeuronObject *obj;
+	nero_s32int flag;	
+	if (Obis == NULL  || objNum <3)
+		return NULL;
+	
+	flag=0;
+	for (i=0;i<objNum;i++)
+	{
+		/*基本思路可以是这样，首先判断指向的概念中是否有objNum个字符的词的概念，有则判断是不是
+		所要查找的，只要第一个字的概念，没有指向这个词应该有的概念的数据，就说明没有*/
+		tmpFiber1=Obis[i]->outputListHead;
+
+		while(tmpFiber1 )
+		{
+			
+			obj=tmpFiber1->obj;
+			/*判断obj指向的对象是否一个词的概念，并且这个词由Obis里面的字，依次组成*/
+			flag=  nero_ifHasThisData_word( obj,Obis, objNum);
+			
+			/*只要找到一个符合，就说明已经存在想要添加的新概念了，但是为了万一*/
+			/*你也可以每个都检查一遍*/
+			if (flag == 1)
+			{
+				return obj;
+			}
+			tmpFiber1=tmpFiber1->next;
+		}			
+	}	
+
+
+	return NULL;
+
+
+
+}
 /*判断是否已经从俩个已知道俩个概念中生成一个了新的概念,有则返回这个对象*/
 /*问题是万一不止一个共同的对象怎么办*/
 NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
@@ -1004,7 +1046,7 @@ nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead)
 
 				
 								
-				#ifdef   Nero_DeBuging22_11_13
+				#ifdef   Nero_DeBuging22_11_13_
 
 				if (newWords )
 				{	
@@ -1034,7 +1076,64 @@ nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead)
 
 	return NeroOK;
 }
+/*判断是否有这个数据相应类型的概念*/
+NeuronObject *nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObject *GodNero)
+{
+	NeuronObject  *str[400];
+	ChUTF8  words[400];
+	NeuronObject *tmp;
+	nero_s32int strlenInData,i,res;
+/*	ChUTF8  word;*/
+	ChUTF8  *wordP;
+	if (Data == NULL  || dataKind<NeuronNode_ForNone  || dataKind>NeuronNode_Max  || GodNero == NULL )
+	{
+		return NULL;
+	}
 
+	tmp=NULL;
+	switch(dataKind)
+	{
+	case NeuronNode_ForChCharacter:
+		wordP=(ChUTF8  *)Data;
+/*		word.first=Data*/
+/*		word.second,word.third;*/
+		tmp=nero_IfHasZhWord( GodNero,wordP, dataKind);
+		break;
+	
+	case NeuronNode_ForChWord:
+	
+		/*这个时候Data就是一个由中文汉字组成的字符串*/
+		/*首先找到这个字符串每个字的概念*/
+		wordP=(ChUTF8  *)Data;
+		strlenInData=strlen((char *)Data);
+		strlenInData=strlenInData/3;
+		if (strlenInData >=400)
+		{
+			break;
+		}
+		for (i=0;i<strlenInData;i++)
+		{
+			
+			words[i].first=wordP[i].first;
+			words[i].second=wordP[i].second;
+			words[i].third=wordP[i].third;
+			str[i]=nero_IfHasZhWord( GodNero,&(words[i]),NeuronNode_ForChCharacter);
+			
+		}
+		tmp= nero_IfHasObjFromMultiples2(str,i);
+		
+		break;
+	case NeuronNode_ForChSentence:
+		/*先不处理*/
+		break;
+
+	default:break;	
+	
+	
+	}
+
+	return tmp;
+}
 
 /*根据给定数据寻找是否网络中已经有该   字   概念了，这里只搜索一个字,找到则返回该概念的指针*/
 /*kind  控制搜索的领域*/

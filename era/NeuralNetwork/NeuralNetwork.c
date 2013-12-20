@@ -33,7 +33,7 @@ NeuronNode_ForChWord ,    //当一个概念节点的类型为此时表示一个�
 
 
 
-
+NeroConf neroConf;
 ActNero NeroPool[MaxNeroNum];
 /*ActNero NeroPool2[MaxNeroNum];*/
 /*ActNero NeroPool3[MaxNeroNum];*/
@@ -154,6 +154,9 @@ nero_s32int CreateActNeroNet()
 	NeuronObject *BaseNeuronObject;
 	/*do some init*/
 	initNeroPool();
+	/*设置neroConf全局配置*/
+	neroConf.addNewObj=1;
+	neroConf.addLevelObj=1;
 	
 	/*首先一个网络你是否导入了数据必须有一些基本的构建*/
 
@@ -389,7 +392,7 @@ ActNero * nero_GetSomeNeroForData(nero_s32int  num)
 	return head;
 
 }
-
+/*往NeuronObject添加数据，使这个细胞存储一个字的数据，这个字保存在chChar中*/
 nero_s32int nero_addDataToZhNeroObj(NeuronObject * n,ChUTF8 *chChar)
 {
 
@@ -724,6 +727,13 @@ NeuronObject *   nero_IfHasObjFromMultiples2(NeuronObject *Obis[],nero_s32int ob
 
 
 }
+/*NeuronObject *   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNum)*/
+/*{*/
+
+
+
+
+/*}*/
 /*判断是否已经从俩个已知道俩个概念中生成一个了新的概念,有则返回这个对象*/
 /*问题是万一不止一个共同的对象怎么办*/
 NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
@@ -965,7 +975,8 @@ NeuronObject * nero_createObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
 	
 	return newObi;
 }
-/*将词的链表中的每个词加入网络*/
+
+/*将词的链表中的每个词加入网络(包含许多词)*/
 nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead)
 {
 	
@@ -1075,6 +1086,94 @@ nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead)
 
 
 	return NeroOK;
+}
+/*根据dataKind概念的种类，在增加一个特定种类的数据，在这个函数里面不需要判断是否已经存在这个概念*/
+NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
+{
+	NeuronObject  *str[400];
+	ChUTF8  words[400];
+	NeuronObject *tmp;
+	nero_s32int strlenInData,i,res;
+	ChUTF8  *wordP;	
+	if (Data == NULL  || dataKind<NeuronNode_ForNone  || dataKind>NeuronNode_Max   )
+	{
+		return NULL;
+	}
+	tmp=NULL;
+	switch(dataKind)
+	{
+	case NeuronNode_ForChCharacter:
+		wordP=(ChUTF8  *)Data;
+
+		tmp=nero_IfHasZhWord( GodNero,wordP, dataKind);/*多余的*/
+		
+		if (tmp  == NULL)
+		{
+			 tmp= nero_createNeroObj(NeuronNode_ForChCharacter);
+			if(tmp)
+			{
+				/*往概念填数据*/
+				nero_addDataToZhNeroObj(tmp,wordP);
+			
+				#ifdef  Nero_DeBuging18_11_13_0_
+				printf("new nero:   kind=%d.\n",nero_GetNeroKind(newObj));
+				#endif			
+
+			}			
+		}
+		break;
+	
+	case NeuronNode_ForChWord:
+	
+		/*这个时候Data就是一个由中文汉字组成的字符串*/
+		/*首先找到这个字符串每个字的概念*/
+		wordP=(ChUTF8  *)Data;
+		strlenInData=strlen((char *)Data);
+		strlenInData=strlenInData/3;
+		if (strlenInData >=400)
+		{
+			break;
+		}
+		for (i=0;i<strlenInData;i++)
+		{
+			
+			words[i].first=wordP[i].first;
+			words[i].second=wordP[i].second;
+			words[i].third=wordP[i].third;
+			str[i]=nero_IfHasZhWord( GodNero,&(words[i]),NeuronNode_ForChCharacter);
+			
+		}
+		tmp= nero_IfHasObjFromMultiples2(str,i);
+		if (tmp  == NULL)
+		{
+			 tmp= nero_createNeroObj(NeuronNode_ForChWord);
+			if(tmp)
+			{
+				/*往概念填数据*/
+/*				nero_addDataToZhNeroObj(tmp,wordP);*/
+				tmp= nero_createObjFromMultiples(str,nero_s32int strlenInData);
+				
+			}
+		}		
+		break;
+	case NeuronNode_ForChSentence:
+		/*先不处理*/
+		break;
+
+	default:break;	
+	
+	
+	}
+	/*最后加入网络*/
+	if (tmp != NULL)
+	{
+		nero_addNeroIntoNet( GodNero,tmp);
+	}
+	
+	return tmp;
+
+
+
 }
 /*判断是否有这个数据相应类型的概念*/
 NeuronObject *nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObject *GodNero)

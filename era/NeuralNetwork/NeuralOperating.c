@@ -34,9 +34,9 @@ dataNum	   数据的指针数组数据的个数，就是数组的长度
 
 	
 */
-nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject *GodNero)
+nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf)
 {
-	nero_s32int i,j;
+	nero_s32int i,j,hasAddObj,hasNewObj;
 	NeuronObject * objs, * tmpObi;
 	/*参数检查*/
 	if (DataFlow == NULL  || dataKind ==NULL  ||  dataNum <1)
@@ -47,21 +47,48 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	objs=(NeuronObject *)malloc(sizeof(NeuronObject *)*dataNum);
 	/*先不比对DataFlow  dataKind  dataNum*/
 	/*断DataFlow中的数据是否在系统中已经存在该数据*/
-	for (i=0,j=0;i<dataNum;i++)
+	for (i=0,j=0,hasAddObj=0;i<dataNum;i++)
 	{
 		/*先不管有句子的情况*/
 		/*通过objs[j]里面的值就可以知道有没有在网络中找到这个对象*/
 
-		objs[i] =nero_IfHasNeuronObject(DataFlow[i],dataKind[i], GodNero);
+/*		objs[i]*/
+		tmpObi =nero_IfHasNeuronObject(DataFlow[i],dataKind[i], GodNero);
 		
 		/*如果不存在则尝试将该对象加入网络*/
-		if (objs[i] != NULl)
+		if (tmpObi == NULL  && conf->addNewObj == 1)
 		{
-
+			tmpObi=  nero_addNeroByData(DataFlow[i],dataKind[i]);
+			if (tmpObi != NULL)
+			{
+				hasAddObj=1;/*只要添加过新概念就设置为1*/
+				objs[j]=tmpObi;
+				j++;				
+			}
+			
+		}
+		else if (tmpObi != NULL )
+		{
+			objs[j]=tmpObi;
+			j++;
 		}
 	}
 	/*将这几个对象形成层次结构*/
 	
+
+
+	/*首先判断这几个对象是否已经形成了新的概念*/
+	/*hasAddObj=1直接认为没有形成了新的概念*/
+	/*多余的，因为createObjFromMultiples已经有这个操作了*/
+
+	/*形成层次结构*/
+	/*其实就是将这几个对象形成一个新的对象*/
+	if (hasNewObj == 0 && conf->addLevelObj == 1)
+	{
+		/*这里必须说明的是，这个新生成的概念究竟是什么类型的，createObjFromMultiples内部会根据子类型自动指定*/
+		NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum)
+	}
+
 
 	return nero_msg_ok;
 

@@ -41,8 +41,16 @@ int next;
 */
 
 
+/*系统配置结构
+对一些全局配置进行统一管理
 
-
+*/
+ typedef struct NeroConfiguration
+ {
+	nero_us32int  addNewObj; /*是否在DataFlowProcess中添加在网络中的没有的数据为一个新概念，为1添加否则不添加*/
+	nero_us32int  addLevelObj; /*是否在DataFlowProcess中形成层次结构，为1添加否则不添加*/
+	
+ }NeroConf;
 /*ActNero只是用来保存基础数据，它对应于一个单纯的神经元*/
 
 
@@ -117,7 +125,7 @@ nero_us32int msg1;/*存储额外的信息*/
 
 
 extern NeuronObject *GodNero;
-
+extern NeroConf neroConf;
 #define NeuronNode_ForNone   0    //当一个概念节点的类型为此时表示一个未知对象
 #define NeuronNode_ForGodNero   1    //GodNero
 #define NeuronNode_ForData   2    //表示是一个数据存储的神经元，不是一个概念
@@ -188,8 +196,8 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 /*判断是否已经从俩个已知道俩个概念中生成一个了新的概念,有则返回这个对象*/
 NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2);
 
-
-
+/*根据dataKind概念的种类，在增加一个特定种类的数据，在这个函数里面不需要判断是否已经存在这个概念*/
+NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind);
 
 
 
@@ -198,8 +206,8 @@ NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2);
 /*判断tmpFiber2指向的对象是否一个词的概念，并且这个词由Obis里面的字，依次组成*/
 /*返回1表示是*/
 nero_s32int  nero_ifHasThisData_word(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum);
-
-
+/*将词的链表中的每个词加入网络*/
+NeuronObject *  nero_AddWordsIntoNet2(NeuronObject *GodNero,NeuronObject  *str[400],nero_s32int strLen);
 /*将词的链表中的每个词加入网络*/
 nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead);
 /*根据给定数据寻找是否网络中已经有该   字   概念了，这里只搜索一个字,找到则返回该概念的指针*/

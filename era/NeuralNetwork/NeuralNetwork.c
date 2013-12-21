@@ -847,6 +847,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	if(res == 1)
 		return NULL;		
 	/*判断新概念的种类*/
+	/*这里有一个问题，这个子概念的类型可能是不同的，所以这样会有bug*/
 	newObiKind=nero_GetNeroKind(Obis[0]);
 	switch(newObiKind)
 	{
@@ -1093,8 +1094,8 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 	NeuronObject  *str[400];
 	ChUTF8  words[400];
 	NeuronObject *tmp;
-	nero_s32int strlenInData,i,res;
-	ChUTF8  *wordP;	
+	nero_s32int strlenInData,i;
+	ChUTF8_  *wordP;	
 	if (Data == NULL  || dataKind<NeuronNode_ForNone  || dataKind>NeuronNode_Max   )
 	{
 		return NULL;
@@ -1127,7 +1128,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 	
 		/*这个时候Data就是一个由中文汉字组成的字符串*/
 		/*首先找到这个字符串每个字的概念*/
-		wordP=(ChUTF8  *)Data;
+		wordP=(ChUTF8_  *)Data;
 		strlenInData=strlen((char *)Data);
 		strlenInData=strlenInData/3;
 		if (strlenInData >=400)
@@ -1151,7 +1152,12 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 			{
 				/*往概念填数据*/
 /*				nero_addDataToZhNeroObj(tmp,wordP);*/
-				tmp= nero_createObjFromMultiples(str,nero_s32int strlenInData);
+				if (strlenInData >=3)
+				{
+					tmp= nero_createObjFromMultiples(str, strlenInData);
+				}
+				else
+					tmp=nero_createObjFromPair(str[0],str[1]);
 				
 			}
 		}		
@@ -1165,10 +1171,10 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 	
 	}
 	/*最后加入网络*/
-	if (tmp != NULL)
-	{
-		nero_addNeroIntoNet( GodNero,tmp);
-	}
+/*	if (tmp != NULL)*/
+/*	{*/
+/*		nero_addNeroIntoNet( GodNero,tmp);*/
+/*	}*/
 	
 	return tmp;
 
@@ -1181,9 +1187,9 @@ NeuronObject *nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObjec
 	NeuronObject  *str[400];
 	ChUTF8  words[400];
 	NeuronObject *tmp;
-	nero_s32int strlenInData,i,res;
+	nero_s32int strlenInData,i;
 /*	ChUTF8  word;*/
-	ChUTF8  *wordP;
+	ChUTF8_  *wordP;
 	if (Data == NULL  || dataKind<NeuronNode_ForNone  || dataKind>NeuronNode_Max  || GodNero == NULL )
 	{
 		return NULL;
@@ -1203,7 +1209,7 @@ NeuronObject *nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObjec
 	
 		/*这个时候Data就是一个由中文汉字组成的字符串*/
 		/*首先找到这个字符串每个字的概念*/
-		wordP=(ChUTF8  *)Data;
+		wordP=(ChUTF8_  *)Data;
 		strlenInData=strlen((char *)Data);
 		strlenInData=strlenInData/3;
 		if (strlenInData >=400)

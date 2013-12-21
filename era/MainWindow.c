@@ -279,17 +279,59 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 	/*将一些词加入网络 */
 	Utf8Word  wordsHead;
 	Utf8Word  MultiBytewordsHead;	
-	#ifdef  Nero_DeBuging03_12_131
+	#ifdef  Nero_DeBuging03_12_131_
 /*	readUTF8FileForWords("data/词库" ,& MultiBytewordsHead);*/
 	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& MultiBytewordsHead);
 	nero_AddWordsIntoNet( GodNero,& MultiBytewordsHead);
 	#endif	
 /*	printWords(&wordsHead);		*/
-	
-	#ifdef  Nero_DeBuging03_12_13
-	readUTF8FileForWords("data/字库" ,& wordsHead);
+	/*字库*/
+	#ifdef  Nero_DeBuging03_12_13_
+	readUTF8FileForWords("data/ceshi2" ,& wordsHead);
 	nero_AddWordsIntoNet( GodNero,& wordsHead);
 	#endif	
+	
+	#ifdef  Nero_DeBuging20_12_13
+	void **DataFlow;
+	nero_s32int *dataKind;
+	Utf8Word  *wP;
+	char *linc;
+	nero_s32int dataNum,k,countOfWord,m;
+	readUTF8FileForWords("data/ceshi2" ,& wordsHead);
+	/*将Utf8Word转化为一个数组，每个单位是一个词*/
+		wP=wordsHead.next;
+		countOfWord=0;
+		while (wP)
+		{
+/*		printf("wP->num=%d.\n",wP->num);*/
+			countOfWord++;
+			wP=wP->next;
+			
+		}
+		(DataFlow)=(void **)malloc(sizeof(void *)*countOfWord);
+		(dataKind)=(nero_s32int *)malloc(sizeof(nero_s32int *)*countOfWord);
+		for (k=0,wP=wordsHead.next;k<countOfWord  &&  (wP != NULL);k++)
+		{
+			DataFlow[k]=(void *)malloc((sizeof( char)*(wP->num * 3+1)));
+			linc=(char *)DataFlow[k];
+			
+			for (m=0;m<wP->num;m++)
+			{
+				memcpy(&(linc[m*3]), &((wP->words)[m]), (3));
+			}
+			
+			linc[wP->num * 3]=0;
+			dataKind[k]=NeuronNode_ForChWord;
+			#ifdef  Nero_DeBuging20_12_13_
+			printf("wP->num=%d.\n",wP->num);
+			printf("len=%d,%s.\n\n",sizeof(linc),linc);
+			#endif
+			wP=wP->next;
+		}
+		dataNum=countOfWord;
+	DataFlowProcess(DataFlow,dataKind,dataNum,  GodNero,  &neroConf);
+	#endif		
+	
 	
 	
 	/*show  neroNet*/
@@ -310,8 +352,12 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);	
 	#endif
-	printf("CreateNeroNetWork   done.\n");	
-
+	printf("everything   done.\n");	
+	
+	#ifdef  Nero_DeBuging03_12_13
+	system("xdot data/wordspic.dot");
+	#endif
+	
 }
 void createCreateNeroTab(GtkWidget *fixedInside)
 {

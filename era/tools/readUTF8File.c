@@ -84,6 +84,7 @@ nero_s32int printWords(Utf8Word * wordsHead)
 }
 
 /*文件格式为一行一个词*/
+/*注意wordsHead是头指针，所以第一个数据就wordsHead-》next*/
 nero_s32int readUTF8FileForWords(nero_8int * FileName ,Utf8Word * wordsHead)
 {
 	nero_s32int fd;

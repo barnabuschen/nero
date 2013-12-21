@@ -124,13 +124,15 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 						#endif					
 						/*只是输出这个词汇有那几个字*/
 						tmpFiber1=tmpObi->inputListHead;
+						static nero_s32int counttt=0;
 						 c=1;
 						while(tmpFiber1)
 						{
+							counttt++;
 							if (c ==1)
 							{
 							tmp=tmpFiber1->obj->inputListHead->obj;
-							sprintf(str,"	%d -> %c%c%c",tmpObi,tmp->x,tmp->y,tmp->z);
+							sprintf(str,"	%d ->  %c%c%c",tmpObi,/*counttt,*/tmp->x,tmp->y,tmp->z);
 							write(fd, str, strlen(str));								
 							}
 							else

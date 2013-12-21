@@ -17,7 +17,7 @@
 DataFlow  数据的指针数组，该数据的解析方式需要依据dataKind来指定,一些特殊的数据，其长度该数据本身指定
 dataKind   数据的类型,指出每个数据的类型
 		dataKind=NeuronNode_ForChCharacter  则DataFlow就是一个汉字的utf8码
-		dataKind=NeuronNode_ForChWord   则DataFlow就是一个中文词组的utf8码，不能有符号
+		dataKind=NeuronNode_ForChWord  则DataFlow就是一个中文词组的utf8码，不能有符号,必须保证最后一个字节为0
 		dataKind=NeuronNode_ForChSentence 则DataFlow就是一个中文句子的utf8码
 
 2013年12月18日newStart
@@ -36,15 +36,16 @@ dataNum	   数据的指针数组数据的个数，就是数组的长度
 */
 nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf)
 {
-	nero_s32int i,j,hasAddObj,hasNewObj;
-	NeuronObject * objs, * tmpObi;
+	nero_s32int i,j,hasAddObj/*,hasNewObj*/;
+	NeuronObject * tmpObi;
+	NeuronObject ** objs=NULL;
 	/*参数检查*/
 	if (DataFlow == NULL  || dataKind ==NULL  ||  dataNum <1)
 	{
 		return nero_msg_ParameterError;
 	}
-
-	objs=(NeuronObject *)malloc(sizeof(NeuronObject *)*dataNum);
+/*	system("xdot data/wordspic.dot");*/
+	(objs)=(NeuronObject **)malloc(sizeof(NeuronObject *)*dataNum);
 	/*先不比对DataFlow  dataKind  dataNum*/
 	/*断DataFlow中的数据是否在系统中已经存在该数据*/
 	for (i=0,j=0,hasAddObj=0;i<dataNum;i++)
@@ -55,10 +56,32 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*		objs[i]*/
 		tmpObi =nero_IfHasNeuronObject(DataFlow[i],dataKind[i], GodNero);
 		
+		#ifdef Nero_DeBuging21_12_13 
+		if (tmpObi == NULL  )
+		{
+			printf("找不到子概念\n",i);
+		}
+		else 
+		{
+			printf("找到子概念\n",i);
+		}			
+		#endif
 		/*如果不存在则尝试将该对象加入网络*/
 		if (tmpObi == NULL  && conf->addNewObj == 1)
 		{
 			tmpObi=  nero_addNeroByData(DataFlow[i],dataKind[i]);
+			#ifdef Nero_DeBuging21_12_13 
+			if (tmpObi != NULL  )
+			{
+				printf("添加子概念成功\n\n",i);
+			}
+			else 
+			{
+				printf("添加子概念失败\n\n",i);
+			}			
+			#endif	
+/*			createNeroNetDotGraphForWords(GodNero, "data/wordspic.dot");		*/
+/*			system("xdot data/wordspic.dot");*/
 			if (tmpObi != NULL)
 			{
 				hasAddObj=1;/*只要添加过新概念就设置为1*/
@@ -82,11 +105,11 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	/*多余的，因为createObjFromMultiples已经有这个操作了*/
 
 	/*形成层次结构*/
-	/*其实就是将这几个对象形成一个新的对象*/
-	if (hasNewObj == 0 && conf->addLevelObj == 1)
+	/*其实就是将这几个对象形成一个新的对象，见神经网络记录 sheet   5系统概略图*/
+	if (/*hasNewObj == 0 && */conf->addLevelObj == 1)
 	{
 		/*这里必须说明的是，这个新生成的概念究竟是什么类型的，createObjFromMultiples内部会根据子类型自动指定*/
-		NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum)
+/*		nero_createObjFromMultiples( objs, j);*/
 	}
 
 

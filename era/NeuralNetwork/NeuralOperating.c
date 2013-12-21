@@ -56,7 +56,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*		objs[i]*/
 		tmpObi =nero_IfHasNeuronObject(DataFlow[i],dataKind[i], GodNero);
 		
-		#ifdef Nero_DeBuging21_12_13 
+		#ifdef Nero_DeBuging21_12_13_ 
 		if (tmpObi == NULL  )
 		{
 			printf("找不到子概念\n",i);
@@ -70,7 +70,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		if (tmpObi == NULL  && conf->addNewObj == 1)
 		{
 			tmpObi=  nero_addNeroByData(DataFlow[i],dataKind[i]);
-			#ifdef Nero_DeBuging21_12_13 
+			#ifdef Nero_DeBuging21_12_13_
 			if (tmpObi != NULL  )
 			{
 				printf("添加子概念成功\n\n",i);
@@ -109,9 +109,18 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	if (/*hasNewObj == 0 && */conf->addLevelObj == 1)
 	{
 		/*这里必须说明的是，这个新生成的概念究竟是什么类型的，createObjFromMultiples内部会根据子类型自动指定*/
-/*		nero_createObjFromMultiples( objs, j);*/
+		/*但是这里不能用createObjFromMultiples，因为它里面有太多字符的东西，不够泛化*/
+		nero_createObjFromMultiples( objs, j);
 	}
-
+	else
+	{
+	
+		/*如果不把这些概念形成一个新的概念，就把他们联系起来，就是用输出链表连接起来
+		
+		
+		*/
+	
+	}
 
 	return nero_msg_ok;
 

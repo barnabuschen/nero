@@ -727,13 +727,63 @@ NeuronObject *   nero_IfHasObjFromMultiples2(NeuronObject *Obis[],nero_s32int ob
 
 
 }
-/*NeuronObject *   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNum)*/
-/*{*/
+/* 这个函数与前面俩个相比，它无关乎概念的类型，Obis里面可以是任何类型，只关乎层次上是否有共同的上层  */
+		/*基本思路可以是这样，就是判断*Obis里面是否有一个共同的上层概念，这个概念恰好包含了所有Obis
+		里面的子概念，但是不一定集合记录的等价于的关系，而是这个上层概念包含了Obis里面的概念，还可能、
+		有别的概念，
+		但是需要保证顺序么，我觉得可以不保证顺序
+		*/
+		/*如果是词组的话只要，判断obj指向的对象是否一个词的概念，并且这个词由Obis里面的字，依次组成
+		但是这里不一定是词组，所以，你不清楚数据的存储格式，这里只能采用笨办法了：
+		首先判断是否有共同的概念
+		再次判断这些共同概念是否有一个切好包括所有Obis里面的概念
+		*/
+		
+		/*因为根据系统的设计，所有的概念的outputListHead指向所有  相关的  其他概念  或者  上层基类
+		即:一个概念并不一定知道他的下层是哪些
+		
+		
+		这样就有一个问题了，就是说一个概念的必要组成是什么，是数据还是他的关系，因为有些抽象的概念是
+		没有数据的，这样的概念就只剩下关系了
+		
+		那到底在该怎么判断Obis里面是否有一个共同的上层概念，这个概念恰好包含了所有Obis
+		里面的子概念，可以存在这样的概念，它与obis里面所以的概念都相关，但是却并不是他们的上层概念
+		
+		这里需要区分由基类直接指向的衍生类和那些没有明确类型的抽象类
+		这里必须说明的是，那些新生成的概念究竟是什么类型的  见神经网络记录 sheet   5系统概略图
+		*/
+nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNum)
+{
+	nero_s32int i;
+	NerveFiber *tmpFiber1;
+	NeuronObject *obj;
+	nero_s32int flag;	
+	if (Obis == NULL  || objNum <2)
+		return NeroError;
+	
+	flag=0;
+	/*循环首先找到所以Obis概念都指向的概念*/
+
+	for (i=0;i<objNum;i++)
+	{
+
+		tmpFiber1=Obis[i]->outputListHead;
+
+		while(tmpFiber1 )
+		{			
+			obj=tmpFiber1->obj;
+			/*判断这个对象是否*/
+			tmpFiber1=tmpFiber1->next;
+		}			
+	}	
+
+
+	return 0;
 
 
 
+}
 
-/*}*/
 /*判断是否已经从俩个已知道俩个概念中生成一个了新的概念,有则返回这个对象*/
 /*问题是万一不止一个共同的对象怎么办*/
 NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
@@ -823,7 +873,7 @@ nero_s32int  nero_IfHasObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
 	return has;
 
 }
-/*从多个>=3已知道俩个概念中生成一个新的概念，新概念的种类在函数内部自动判断，最后返回新对象指针*/
+/*从多个>=2已知道俩个概念中生成一个新的概念，新概念的种类在函数内部自动判断，最后返回新对象指针*/
 /**/
 NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum)
 {
@@ -831,7 +881,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	NerveFiber *tmpFiber;
 	nero_s32int newObiKind,res,i;
 
-	if (Obis == NULL  || objNum <3)
+	if (Obis == NULL  || objNum <2)
 		return NULL;
 		
 	/*首先你要判断这些个概念是不是在网络中存在，如果不存在，则报错返回*/
@@ -843,11 +893,14 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	}
 	/*判断这些个对象是不是已经有生成过新概念了*/
 	
-	res=nero_IfHasObjFromMultiples(Obis, objNum);
+	res=nero_IfHasObjFromMultiples3(Obis, objNum);
 	if(res == 1)
 		return NULL;		
-	/*判断新概念的种类*/
-	/*这里有一个问题，这个子概念的类型可能是不同的，所以这样会有bug*/
+	/*判断新概念的种类 */
+	/*这里有一个问题，这个子概念的类型可能是不同的，所以这样会有bug
+	这里需要进行变更
+	见神经网络记录 sheet   5系统概略图
+	*/
 	newObiKind=nero_GetNeroKind(Obis[0]);
 	switch(newObiKind)
 	{

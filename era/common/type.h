@@ -37,6 +37,9 @@
 #define NerReportMsgError(id)   	printf("something wrong with ID:%d!\n",id)
 
 
+#define NeroYES   100
+#define NeroNO    101
+
 /*变量类型重定义*/
 typedef int  nero_s32int;
 //typedef int  nero_s32int;

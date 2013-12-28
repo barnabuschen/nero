@@ -142,8 +142,8 @@ extern NeroConf neroConf;
 #define NeuronNode_ForChWord   62    //当一个概念节点的类型为此时表示一个中文词语
 #define NeuronNode_ForChSentence   63    //当一个概念节点的类型为此时表示一个中文句子
 
-
-#define NeuronNode_Max   250
+#define NeuronNode_ForComplexDerivative  2000    //高级衍生类
+#define NeuronNode_Max   2500
 
 
 /*区别一般的概念和基类*/

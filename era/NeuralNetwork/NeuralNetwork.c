@@ -598,6 +598,59 @@ nero_s32int nero_isInNet(NeuronObject *Obi)
 	return IsInNet;
 
 }
+
+/*判断该复杂对象是否由数组内的对象组成或者部分组成，不考虑顺序*/
+nero_s32int  nero_ifMakeUpWithTheseObjs(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum)
+{
+	nero_us32int kind;
+	nero_s32int flag,i;	
+	NerveFiber *tmpFiber1;
+	NeuronObject  *tmpObi;
+	
+	if (childred == NULL  || objNum <2  || obj==NULL) 
+		return NeroNO;
+				
+	
+	/**/
+	flag=1;
+	kind =nero_GetNeroKind(obj);
+/*	if (kind != NeuronNode_ForChWord)*/
+/*	{*/
+/*		return NeroNO;*/
+/*	}*/
+	
+	
+	
+	
+	/*遍历子概念数组，判断是不是构成了obj，只要一个不是，就判断不是*/
+	for (i=0;i<objNum ;i++)
+	{
+	
+		tmpFiber1=obj->outputListHead;
+		flag=0;
+		for (tmpObi=tmpFiber1->obj;tmpObi != NULL ;tmpFiber1=tmpFiber1->next)
+		{
+			tmpObi=tmpFiber1->obj;
+			if (tmpObi   ==  childred[i])/*看能不能咋obj中找到子概念*/
+			{
+				flag=1;
+				break;
+			}
+		
+		
+			
+		}		
+		/*如果flag为0就说明不能在obj中找到子概念*/
+		if (flag == 0)
+		{
+			return NeroNO;
+		}
+	
+	}
+	
+	/*运行到这里说明都找到了*/
+	return NeroYES;
+}
 /*判断tmpFiber2指向的对象是否一个词的概念，并且这个词由Obis里面的字，依次组成*/
 /*返回1表示是*/
 nero_s32int  nero_ifHasThisData_word(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum)
@@ -751,34 +804,68 @@ NeuronObject *   nero_IfHasObjFromMultiples2(NeuronObject *Obis[],nero_s32int ob
 		
 		这里需要区分由基类直接指向的衍生类和那些没有明确类型的抽象类
 		这里必须说明的是，那些新生成的概念究竟是什么类型的  见神经网络记录 sheet   5系统概略图
+		
+		
+		
 		*/
 nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNum)
 {
+
+	/*根据类（对象）的定义：这个函数的目的是判断是否有一个类恰好或部分由这些子类构成*/
 	nero_s32int i;
 	NerveFiber *tmpFiber1;
 	NeuronObject *obj;
-	nero_s32int flag;	
+	nero_s32int flag,kind;	
 	if (Obis == NULL  || objNum <2)
 		return NeroError;
 	
 	flag=0;
 	/*循环首先找到所以Obis概念都指向的概念*/
-
+	/*考虑到数组一般不会太过庞大，所以使用最简单的暴力遍历就好了*/
 	for (i=0;i<objNum;i++)
 	{
 
-		tmpFiber1=Obis[i]->outputListHead;
-
+		tmpFiber1=Obis[i]->outputListHead;/*数据的神经链表，任何概念都会指向所有他的上层概念*/
+						/*你只需要在这些上层概念中找有没有需要的概念*/
 		while(tmpFiber1 )
 		{			
 			obj=tmpFiber1->obj;
-			/*判断这个对象是否*/
+			/*首先判断这个概念的类型是不是可能是要找的，有些基类类型不可能是要找的*/
+			kind=nero_GetNeroKind(obj);
+			switch(kind)
+			{
+				case NeuronNode_ForChCharacter: 
+				case NeuronNode_ForNone: 
+				case NeuronNode_ForGodNero: 
+				case NeuronNode_ForData: 
+				case NeuronNode_ForConnect: 
+
+					flag=0;/*直接排除*/
+					break;				
+				default:
+					flag=1;
+					break;
+		
+			}			
+			
+			/*判断这个对象是否包含所以子类型*/
+			if (flag == 1)
+			{
+				makeup=nero_ifMakeUpWithTheseObjs(obj, Obis,objNum);
+				
+				if (makeup == NeroYES)/*找到了要找的对象*/
+				{
+					return NeroYES;
+				}
+			}
+			
+			
 			tmpFiber1=tmpFiber1->next;
 		}			
 	}	
 
 
-	return 0;
+	return NeroNO;
 
 
 
@@ -789,7 +876,7 @@ nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNu
 NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
 {
 	NerveFiber *tmpFiber1, *tmpFiber2;
-	nero_s32int has;
+	nero_s32int has,makeup;
 	if(Obi1 ==NULL  || Obj2 ==NULL)
 	{
 		return NULL;
@@ -873,6 +960,63 @@ nero_s32int  nero_IfHasObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
 	return has;
 
 }
+/*判断新概念的种类 	见神经网络记录 sheet   5系统概略图
+	*/
+nero_s32int nero_judgeNewObjKind(NeuronObject *Obis[],nero_s32int objNum)
+{
+	nero_s32int kind=NeuronNode_ForNone;
+	nero_s32int i,sameKind;
+	/*首先判断参数合法性*/
+	if (Obis ==NULL || objNum <2)
+	{
+		return kind;
+	}
+	for (i=0;i<objNum;i++)
+	{
+		if (Obis[0] == NULL)
+		{
+			return kind;
+		}
+	}
+	
+	/*首先判断是不是特殊情况
+	1:是不是都是同一个类
+	*/
+	
+	for (sameKind=1,i=1;i<objNum;i++)
+	{
+		if (nero_GetNeroKind(Obis[i])  != nero_GetNeroKind(Obis[i-1]))
+		{
+			sameKind=0;
+			break;
+		}
+	}	
+	if (sameKind == 1)
+	{
+		kind=nnero_GetNeroKind(Obis[0];
+		switch(kind)
+		{
+			case NeuronNode_ForChCharacter: 
+				kind=NeuronNode_ForChWord;
+				break;
+			case NeuronNode_ForNone: 
+			case NeuronNode_ForGodNero: 
+			case NeuronNode_ForData: 
+				kind=NeuronNode_ForNone;
+				break;				
+			default:
+				kind=NeuronNode_ForComplexDerivative;
+				break;
+		
+		}			
+		return kind;
+	}
+	
+	
+	/*其他情况*/
+	kind=NeuronNode_ForComplexDerivative;
+	return kind;
+}
 /*从多个>=2已知道俩个概念中生成一个新的概念，新概念的种类在函数内部自动判断，最后返回新对象指针*/
 /**/
 NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum)
@@ -895,30 +1039,22 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	
 	res=nero_IfHasObjFromMultiples3(Obis, objNum);
 	if(res == 1)
-		return NULL;		
-	/*判断新概念的种类 */
-	/*这里有一个问题，这个子概念的类型可能是不同的，所以这样会有bug
-	这里需要进行变更
+		return NULL;	
+		
+		
+			
+	/*判断新概念的种类 
 	见神经网络记录 sheet   5系统概略图
 	*/
-	newObiKind=nero_GetNeroKind(Obis[0]);
-	switch(newObiKind)
-	{
-		case NeuronNode_ForChCharacter: 
-			newObiKind=NeuronNode_ForChWord;
-			break;
-			
-		default:
-			newObiKind=NeuronNode_ForNone;
-			break;
-	
-	
-	}
+	newObiKind= nero_judgeNewObjKind(Obis, objNum)
 	if (newObiKind == NeuronNode_ForNone)
 	{
 		return NULL;
 	}	
 		
+	
+	
+	
 	
 	
 

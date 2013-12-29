@@ -29,7 +29,7 @@
 #include "tools/readUTF8File.h"
 #include "tools/createDot.h"
 
-
+#include "NeuralNetwork/NeuralOperating.h"
 
 extern nero_s32int readUTF8FileData(nero_8int * FileName);
 extern nero_s32int CreateActNeroNet();

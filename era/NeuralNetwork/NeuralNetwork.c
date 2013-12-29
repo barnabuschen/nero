@@ -602,7 +602,7 @@ nero_s32int nero_isInNet(NeuronObject *Obi)
 /*判断该复杂对象是否由数组内的对象组成或者部分组成，不考虑顺序*/
 nero_s32int  nero_ifMakeUpWithTheseObjs(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum)
 {
-	nero_us32int kind;
+/*	nero_us32int kind;*/
 	nero_s32int flag,i;	
 	NerveFiber *tmpFiber1;
 	NeuronObject  *tmpObi;
@@ -613,7 +613,7 @@ nero_s32int  nero_ifMakeUpWithTheseObjs(NeuronObject *obj,NeuronObject *childred
 	
 	/**/
 	flag=1;
-	kind =nero_GetNeroKind(obj);
+/*	kind =nero_GetNeroKind(obj);*/
 /*	if (kind != NeuronNode_ForChWord)*/
 /*	{*/
 /*		return NeroNO;*/
@@ -628,7 +628,7 @@ nero_s32int  nero_ifMakeUpWithTheseObjs(NeuronObject *obj,NeuronObject *childred
 	
 		tmpFiber1=obj->outputListHead;
 		flag=0;
-		for (tmpObi=tmpFiber1->obj;tmpObi != NULL ;tmpFiber1=tmpFiber1->next)
+		for (tmpObi=tmpFiber1->obj;tmpObi != NULL &&  tmpFiber1 != NULL;tmpFiber1=tmpFiber1->next)
 		{
 			tmpObi=tmpFiber1->obj;
 			if (tmpObi   ==  childred[i])/*看能不能咋obj中找到子概念*/
@@ -815,7 +815,7 @@ nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNu
 	nero_s32int i;
 	NerveFiber *tmpFiber1;
 	NeuronObject *obj;
-	nero_s32int flag,kind;	
+	nero_s32int flag,kind,makeup;	
 	if (Obis == NULL  || objNum <2)
 		return NeroError;
 	
@@ -876,7 +876,7 @@ nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNu
 NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
 {
 	NerveFiber *tmpFiber1, *tmpFiber2;
-	nero_s32int has,makeup;
+	nero_s32int has;
 	if(Obi1 ==NULL  || Obj2 ==NULL)
 	{
 		return NULL;
@@ -993,7 +993,7 @@ nero_s32int nero_judgeNewObjKind(NeuronObject *Obis[],nero_s32int objNum)
 	}	
 	if (sameKind == 1)
 	{
-		kind=nnero_GetNeroKind(Obis[0];
+		kind=nero_GetNeroKind(Obis[0]);
 		switch(kind)
 		{
 			case NeuronNode_ForChCharacter: 
@@ -1046,7 +1046,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	/*判断新概念的种类 
 	见神经网络记录 sheet   5系统概略图
 	*/
-	newObiKind= nero_judgeNewObjKind(Obis, objNum)
+	newObiKind= nero_judgeNewObjKind(Obis, objNum);
 	if (newObiKind == NeuronNode_ForNone)
 	{
 		return NULL;
@@ -1175,8 +1175,8 @@ nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead)
 	NeuronObject  *word[25];/*定义一个指针数组，该数组保存一个词中每个字的概念的指针*/
 	last=wordsHead->next;
 	nero_s32int i,res;	
-	PrintUtf8 ttt;
-	ttt.end=0;	
+/*	PrintUtf8 ttt;*/
+/*	ttt.end=0;	*/
 	
 	while(last)
 	{
@@ -1284,7 +1284,8 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 	ChUTF8  words[400];
 	NeuronObject *tmp;
 	nero_s32int strlenInData,i;
-	ChUTF8_  *wordP;	
+	ChUTF8_  *wordP;
+	ChUTF8 * wordP2;	
 	if (Data == NULL  || dataKind<NeuronNode_ForNone  || dataKind>NeuronNode_Max   )
 	{
 		return NULL;
@@ -1293,9 +1294,9 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 	switch(dataKind)
 	{
 	case NeuronNode_ForChCharacter:
-		wordP=(ChUTF8  *)Data;
+		wordP2=(ChUTF8  *)Data;/*实际上只是一个ChUTF8而非ChUTF8_结构的数据，但是不影响结果*/
 
-		tmp=nero_IfHasZhWord( GodNero,wordP, dataKind);/*多余的*/
+		tmp=nero_IfHasZhWord( GodNero,wordP2, dataKind);/*多余的*/
 		
 		if (tmp  == NULL)
 		{
@@ -1303,7 +1304,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 			if(tmp)
 			{
 				/*往概念填数据*/
-				nero_addDataToZhNeroObj(tmp,wordP);
+				nero_addDataToZhNeroObj(tmp,wordP2);
 			
 				#ifdef  Nero_DeBuging18_11_13_0_
 				printf("new nero:   kind=%d.\n",nero_GetNeroKind(newObj));
@@ -1377,7 +1378,7 @@ NeuronObject *nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObjec
 	ChUTF8  words[400];
 	NeuronObject *tmp;
 	nero_s32int strlenInData,i;
-/*	ChUTF8  word;*/
+	ChUTF8 * wordP2;
 	ChUTF8_  *wordP;
 	if (Data == NULL  || dataKind<NeuronNode_ForNone  || dataKind>NeuronNode_Max  || GodNero == NULL )
 	{
@@ -1388,10 +1389,10 @@ NeuronObject *nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObjec
 	switch(dataKind)
 	{
 	case NeuronNode_ForChCharacter:
-		wordP=(ChUTF8  *)Data;
+		wordP2=(ChUTF8  *)Data;
 /*		word.first=Data*/
 /*		word.second,word.third;*/
-		tmp=nero_IfHasZhWord( GodNero,wordP, dataKind);
+		tmp=nero_IfHasZhWord( GodNero,wordP2, dataKind);
 		break;
 	
 	case NeuronNode_ForChWord:

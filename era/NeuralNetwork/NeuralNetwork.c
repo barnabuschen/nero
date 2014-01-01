@@ -997,7 +997,7 @@ nero_s32int nero_judgeNewObjKind(NeuronObject *Obis[],nero_s32int objNum)
 		switch(kind)
 		{
 			case NeuronNode_ForChCharacter: 
-				kind=NeuronNode_ForChWord;
+				kind=NeuronNode_ForChWord;/*难道就不是句子么*/
 				break;
 			case NeuronNode_ForNone: 
 			case NeuronNode_ForGodNero: 

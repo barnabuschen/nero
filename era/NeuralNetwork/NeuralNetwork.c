@@ -75,17 +75,103 @@ inline nero_s32int  nero_ifHasThisData(ActNero * n,nero_s32int x,nero_s32int y,n
 {
 	if(nero ==NULL)
 		return  NeuronNode_ForNone;
-		/*取出低8位*/
-	return  (nero->msg  &  0x000000ff);
+		/*取出低16位*/
+	return  (nero->msg  &  0x0000ffff);
 }
 static inline void setActNeroKind(ActNero *nero,nero_us32int kind)
 {
 	
 	if(nero ==NULL || kind <NeuronNode_ForNone || kind >=NeuronNode_Max)
 		return ;
-	nero->msg =nero->msg & 0xffffff00;//低8位清零
-	nero->msg =nero->msg | kind;//低8位清零
+	nero->msg =nero->msg & 0xffff0000;//低16位清零
+	nero->msg =nero->msg | kind;//低16位清零
 }
+/*设置纤维的更新时间*/
+static inline void setFiberUpdataTime(NerveFiber * fiber,nero_us32int time)
+{
+	
+	if(fiber ==NULL )
+		return ;
+	/*只修改低20位*/
+	/*1111 1111 1111 1111 1111 0000 0000 0000 */
+	time=time & 0x000fffff;//高12位清零,必须保证time不超最大值
+	fiber->time =fiber->time & 0xfff00000;//低20位清零
+	fiber->time =fiber->time | time;
+
+}
+/*加强连接强度*/
+static inline nero_s32int getFiberType(NerveFiber * fiber)
+{
+	nero_s32int kind;
+	
+	if(fiber ==NULL )
+		return nero_msg_unknowError;
+		
+	kind=fiber->msg1  & 0x00000300;/*提取对应的俩位*/
+	kind=kind  >>  8;
+	
+	
+	if (kind >=Fiber_PointToData  && kind <=Fiber_PointToSameLayer)
+	{
+		return kind;
+	}
+	return nero_msg_unknowError;
+
+}
+/*加强连接强度*/
+static inline nero_s32int gainFiberStrengthen(NerveFiber * fiber,nero_us32int time)
+{
+	nero_us32int Strengthen;
+	if(fiber ==NULL )
+		return 0;
+	setFiberUpdataTime(  fiber,time);
+
+	/*1111 1111 1111 1111 1111 0000 0000 0000 */
+	
+	Strengthen =fiber->msg1 & 0x000000ff;//获取低8位
+	if (Fiber_StrengthenMax   > Strengthen)
+	{
+		fiber->msg1=fiber->msg1+1;
+	}
+	
+	return (Strengthen+1);
+}
+/*设置纤维指向的神经元与该纤维所属概念的关系*/
+static inline void setFiberPointToKind(NerveFiber * fiber,nero_us32int kind)
+{
+	
+	if(fiber ==NULL || kind <Fiber_PointToData || kind >Fiber_PointToSameLayer)
+		return ;
+	
+	switch(kind)
+	{
+	
+		case Fiber_PointToData	:
+				/*将第9  10位设置为00*/
+				/*1-------8  9-----16 17-----24  25----32
+				  1111 1111 0011 1111 1111 1111 1111 1111 
+				  
+				  */
+				fiber->msg1 =fiber->msg1  & 0xfffffcff;
+				break;
+		case Fiber_PointToUpperLayer	:
+				/*1111 1111 1011 1111 1111 1111 1111 1111 */
+				fiber->msg1 =fiber->msg1  & 0xfffffdff;
+				break;
+		case Fiber_PointToLowerLayer	:
+				/*1111 1111 0111 1111 1111 1111 1111 1111 */
+				fiber->msg1 =fiber->msg1  & 0xfffffeff;		
+				break;
+		case Fiber_PointToSameLayer	:
+				/*1111 1111 1111 1111 1111 1111 1111 1111 */
+				fiber->msg1 =fiber->msg1  & 0xfffffeff;	
+				break;
+		default:break;	
+		
+	}
+}
+
+
 /*区别一般的概念和基类*/
 static inline void setActNeroAsBaseObject(ActNero *nero,nero_us32int kind)
 {
@@ -102,7 +188,9 @@ static inline void setActNeroAsBaseObject(ActNero *nero,nero_us32int kind)
 		nero->msg =nero->msg & 0x7fffffff;//第32位清零
 
 }
-static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type)
+
+/*pointTotype指的是该纤维指向的概念与原来的概念的关系*/
+static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type,nero_s32int pointTotype)
 {
 /*
 #define NerveFiber_Input 1 
@@ -136,9 +224,15 @@ static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type)
 	tmp=(NerveFiber *)malloc(sizeof(NerveFiber));
 	tmp->next=NULL;
 	tmp->msg1=0;
+	tmp->time=0;/*neroConf.neroTime;*/
+	setFiberPointToKind(tmp,pointTotype);
+	setFiberUpdataTime(tmp,neroConf.neroTime);
 	if (*p == NULL)
 	{
 		*p=tmp;
+		
+		
+		
 	}
 	else	
 		(*p)->next=tmp;
@@ -157,6 +251,9 @@ nero_s32int CreateActNeroNet()
 	/*设置neroConf全局配置*/
 	neroConf.addNewObj=1;
 	neroConf.addLevelObj=1;
+	neroConf.neroTime=0;
+	
+	neroConf.addLevelObjAlways=0;
 	
 	/*首先一个网络你是否导入了数据必须有一些基本的构建*/
 
@@ -195,13 +292,19 @@ nero_s32int CreateActNeroNet()
 }
 
 
-nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher)
+nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher,nero_s32int pointTotype)
 {
 	/*很明显各个对象之间的连接关系需要额外的空间来存储
 	你有俩种选择：使用神经元来保存，---浪费空间
 		：    使用额外的结构，----似乎会麻烦
 	这里还是觉得该用第二种方案
 	*/
+	nero_s32int BaseObjectKind,newObjKind;
+	NeuronObject * BaseObi;
+	NerveFiber  *  curFiber;	
+	
+	
+	
 	if(lower ==NULL || higher ==NULL )
 	{
 		NeroErrorMsg;
@@ -211,11 +314,19 @@ nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher)
 	
 	
 	/*需要判断是不是已经有联系了*/
+
+	curFiber=lower->outputListHead;
+	for (;curFiber !=NULL;curFiber=curFiber->next)
+	{
+		if (curFiber->obj  == higher  ||   getFiberType(curFiber)  == pointTotype)
+		{
+			return NeroOK;
+		}
 	
 	
-	
-	
-	NerveFiber * newfiber=addNerveFiber(lower,NerveFiber_Output);
+	}
+		
+	NerveFiber * newfiber=addNerveFiber(lower,NerveFiber_Output,pointTotype);
 	if (newfiber ==NULL)
 	{
 		NeroErrorMsg;
@@ -236,17 +347,23 @@ nero_s32int addNeuronChild(NeuronObject *father,NeuronObject *child,nero_s32int 
 	}
 	switch(Relationship)
 	{
+	/*
+#define	Fiber_PointToData	0
+#define	Fiber_PointToUpperLayer	1
+#define	Fiber_PointToLowerLayer	2
+#define	Fiber_PointToSameLayer	3
+	*/
 	case Relationship_FatherToChild:
-		PointingToObject(father,child);
+		PointingToObject(father,child,Fiber_PointToLowerLayer);
 		break;
 		
 	case Relationship_ChildToFather:
-		PointingToObject(child,father);
+		PointingToObject(child,father,Fiber_PointToUpperLayer);
 		break;
 		
 	case Relationship_bothTother:
-		PointingToObject(father,child);
-		PointingToObject(child,father);
+		PointingToObject(father,child,Fiber_PointToLowerLayer);
+		PointingToObject(child,father,Fiber_PointToUpperLayer);
 		break;
 	default:break;
 
@@ -321,7 +438,18 @@ NeuronObject * nero_createNeroObj(nero_s32int kind)
 	}	
 	else
 		NeroErrorMsg;
-
+	#ifdef   Nero_DeBuging04_01_14
+/*	if (kind != NeuronNode_ForChCharacter)*/
+	{
+/*		printf("新建概念id=%d ，kind=%d \n",newObj,kind);*/
+		char str[500];
+		sprintf(str,"新建概念id=%d ，kind=%d \n",newObj,kind);		
+		nero_log("log/createNewObj.log",str);
+	}
+	
+	
+		
+	#endif	
 	
 	return newObj;
 
@@ -353,7 +481,11 @@ ActNero * nero_createDataNero()
 
 
 /*}*/
-/* 首先申请足够多的神经元，来保存数据，这些神经元成单向连接起来，返回头节点*/
+/* 首先申请足够多的神经元，来保存数据，这些神经元成单向连接起来，返回头节点
+注意这行中的fiber指向类型
+
+fiber=addNerveFiber(lasttail,NerveFiber_Output,Fiber_PointToSameLayer);
+*/
 ActNero * nero_GetSomeNeroForData(nero_s32int  num)
 {
 	ActNero * head;
@@ -380,7 +512,7 @@ ActNero * nero_GetSomeNeroForData(nero_s32int  num)
 		else
 		{
 			/*将上一个tail指向这个新的tail*/
-			fiber=addNerveFiber(lasttail,NerveFiber_Output);
+			fiber=addNerveFiber(lasttail,NerveFiber_Output,Fiber_PointToData);
 			fiber->next=NULL;
 			fiber->obj=tail;
 		
@@ -402,7 +534,7 @@ nero_s32int nero_addDataToZhNeroObj(NeuronObject * n,ChUTF8 *chChar)
 	/*将将概念神经元的inputListHead指向这个数据链表*/
 	if(dataNero)
 	{
-		NerveFiber * fiber=addNerveFiber(n,NerveFiber_Input);
+		NerveFiber * fiber=addNerveFiber(n,NerveFiber_Input,Fiber_PointToData);
 		fiber->obj=dataNero;
 	
 		/*现在开始数据填充*/
@@ -457,7 +589,7 @@ nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj)
 {
 	if(GodNero ==NULL || newObj ==NULL)
 	{
-		return NeroError;
+		return nero_msg_ParameterError;
 		
 		
 	}
@@ -493,6 +625,7 @@ nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj)
 			/*加入该区域*/
 			
 			 nero_addNeroIntoBaseObj(BaseObi,newObj);
+			 return  nero_msg_ok;
 			
 		}		
 		
@@ -502,7 +635,7 @@ nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj)
 	}
 
 	
-	return NeroOK;
+	return nero_msg_fail;
 }
 /*将一个已知类型的对象加入到该基类类型下面*/
 /*将数据加入网络是一个核心的操作*/
@@ -1061,8 +1194,13 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	/*生成新概念，并加入网络*/
 	newObi= nero_createNeroObj(newObiKind);
 	res= nero_addNeroIntoNet( GodNero,newObi);
-	if(NeroOK != res)
-		return NULL;
+	if(nero_msg_ok != res)
+	{
+		printf("概念加入网络失败id=%d Kind %d \n",newObi,newObiKind);
+/*		return NULL;*/
+	
+	}
+		
 	
 	
 	
@@ -1070,22 +1208,41 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	/*将新概念与旧概念生成联系,此外俩个旧概念，这里仅仅第一个指向第二个*/
 	
 	/*将新概念的数据指向这俩个对象*/
-	
+	#ifdef   Nero_DeBuging04_01_14_
+	if (NeuronNode_ForComplexDerivative  == newObiKind)
+	{
+				char str[500];
+				char str2[500];
+				sprintf(str,"data/wordspic%d.dot",5);
+				sprintf(str2,"xdot data/wordspic%d.dot",5);
+				createNeroNetDotGraphForWords(GodNero, str);
+				system(str2);
+	}
+	#endif	
 	for (i=0;i<objNum;i++)
 	{
 		/*生成新概念的数据链表*/
-		tmpFiber= addNerveFiber(newObi,NerveFiber_Input);
+		tmpFiber= addNerveFiber(newObi,NerveFiber_Input,Fiber_PointToData);
 		tmpFiber->obj=Obis[i];	
 		
 		/*建立新概念已经子对象之间的关系*/
-		addNeuronChild(newObi,Obis[i],Relationship_ChildToFather);
+/*		addNeuronChild(newObi,Obis[i],Relationship_ChildToFather);*/
+		PointingToObject(Obis[i],newObi,Fiber_PointToUpperLayer);
 		if (i>0)
 		{
-			addNeuronChild(Obis[i],Obis[i-1],Relationship_ChildToFather);	
+/*			addNeuronChild(Obis[i],Obis[i-1],Relationship_ChildToFather);	*/
+			PointingToObject(Obis[i-1],Obis[i],Fiber_PointToSameLayer);
 		}
-			
+		#ifdef   Nero_DeBuging04_01_14
+/*		if (kind != NeuronNode_ForChCharacter)*/
+		{
+			printf("子概念id=%d linkto %d \n",Obis[i],newObi);
+			printf("子概念id=%d linkto %d \n\n",Obis[i-1],Obis[i]);
+		}
+		nero_printNeroLink("log/ObjLink.log",(void *)Obis[i]);
+		#endif				
 	}
-	
+	nero_printNeroLink("log/ObjLink.log",(void *)newObi);
 	
 	return newObi;
 
@@ -1149,9 +1306,9 @@ NeuronObject * nero_createObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
 	
 	/*将新概念的数据指向这俩个对象*/
 	
-	tmpFiber= addNerveFiber(newObi,NerveFiber_Input);
+	tmpFiber= addNerveFiber(newObi,NerveFiber_Input,Fiber_PointToData);
 	tmpFiber->obj=Obi1;
-	tmpFiber= addNerveFiber(newObi,NerveFiber_Input);
+	tmpFiber= addNerveFiber(newObi,NerveFiber_Input,Fiber_PointToData);
 	tmpFiber->obj=Obj2;	
 	
 	
@@ -1484,7 +1641,49 @@ NeuronObject * nero_IfHasZhWord(NeuronObject *GodNero,ChUTF8 * word,nero_s32int 
 }
 
 
+/*增强俩个对象的链接强度(a-》b单向的连接)，如果没有连接就添加一个*/
 
+nero_s32int nero_StrengthenLink(NeuronObject * a,NeuronObject * b)
+{
+	nero_s32int res,iffind;
+	NeuronObject * findObi;
+	NerveFiber  *  curFiber;
+
+	if (a == NULL  || b== NULL)
+	{
+		return nero_msg_ParameterError;
+	}
+
+
+
+
+	curFiber=a->outputListHead;
+	for (iffind=0;curFiber !=NULL;curFiber=curFiber->next)
+	{
+
+		findObi=curFiber->obj;
+			
+		if (findObi == b)
+		{
+			/*找到了*/
+			iffind=1;
+			res=gainFiberStrengthen(curFiber,neroConf.neroTime);
+
+		}
+		
+	}
+
+	if (iffind == 0)
+	{
+		/*没有找到的话，就加一个连接*/
+		PointingToObject(a ,b,Fiber_PointToSameLayer);
+		res=0;
+	}
+	return res;	
+
+
+
+}
 
 
 

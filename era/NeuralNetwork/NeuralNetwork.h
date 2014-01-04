@@ -49,7 +49,9 @@ int next;
  {
 	nero_us32int  addNewObj; /*是否在DataFlowProcess中添加在网络中的没有的数据为一个新概念，为1添加否则不添加*/
 	nero_us32int  addLevelObj; /*是否在DataFlowProcess中形成层次结构，为1添加否则不添加*/
-	
+	nero_us32int  addLevelObjAlways; /*在DataFlowProcess中总是形成层次结构，为1添加否则不添加*/
+	nero_us32int  neroTime;     /*系统运行时间单位，初始化为0，隔一个小时增加1*/
+	  
  }NeroConf;
 /*ActNero只是用来保存基础数据，它对应于一个单纯的神经元*/
 
@@ -66,7 +68,7 @@ msg：
 低位			高位
 1-------8  9-----16 17-----24  25----32
 1111 1111 1111 1111 1111 1111 1111 1111 
-1-8位表示该节点种类
+1-16位表示该节点种类
 
 
 
@@ -110,8 +112,20 @@ msg1：
 低位			高位
 1-------8  9-----16 17-----24  25----32
 1111 1111 1111 1111 1111 1111 1111 1111 
-1-8位表示该链接的强度，就是没被搜索并匹配成功到一次，加1,暂时100最大
-
+1-8位表示该链接的强度，就是没被搜索并匹配成功到一次，加1,暂时100最大，初始化为0
+9-10位表示该神经纤维的类型：
+	指向该纤维所属神经元存储数据的神经元      #define	Fiber_PointToData	00
+	指向该纤维所属神经元的上层概念的神经元	#define	Fiber_PointToUpperLayer	01
+	指向该纤维所属神经元的下层概念的神经元 	#define	Fiber_PointToLowerLayer	10
+	指向该纤维所属神经元的同层次概念的神经元	#define	Fiber_PointToSameLayer	11
+	就是说如果为Fiber_PointToUpperLayer	01，那么第9位为1，第10位为0
+	
+	
+time：
+低位			高位
+1-------8  9-----16 17-----24  25----32
+1111 1111 1111 1111 1111 1111 1111 1111 	
+1-20位存储上次被访问的时间（包括修改，被成功匹配的情况），初始化为当前系统时间	
 */
 
   struct NerveFiber_
@@ -119,7 +133,7 @@ msg1：
 struct ActivationNeuron   *obj;
 struct NerveFiber_ * next;
 nero_us32int msg1;/*存储额外的信息*/
-//nero_us32int msg2;
+nero_us32int time;/*有关修改时间的信息*/
  };
 
 
@@ -151,6 +165,16 @@ extern NeroConf neroConf;
 #define NeuronNode_DerivativeObject   0  /*就是一般的概念（从基类衍生的概念）和基类进行区别*/
 
 
+/*神经纤维类型*/
+/*有一种特殊的情况，就是一些类的数据就是一些保存数据的神经元，这些神经元用纤维连接起来
+组成了一个链表，这么纤维的指向类型是Fiber_PointToData*/
+#define	Fiber_PointToData	0
+#define	Fiber_PointToUpperLayer	1
+#define	Fiber_PointToLowerLayer	2
+#define	Fiber_PointToSameLayer	3
+
+/*神经纤维链接强度的最大值*/
+#define	Fiber_StrengthenMax	200
 /*你需要定义个内存池，来管理使用和未使用的神经元*/
 
 
@@ -175,7 +199,7 @@ ActNero * nero_createDataNero();
 
 
 	/*在higher下面增加一个下层概念，仅仅lower指向higher*/
-nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher);
+nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher,nero_s32int pointTotype);
 
 	/*根据Relationship来增加一个下层概念*/
 nero_s32int addNeuronChild(NeuronObject *father,NeuronObject *child,nero_s32int Relationship);
@@ -199,9 +223,8 @@ NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2);
 /*根据dataKind概念的种类，在增加一个特定种类的数据，在这个函数里面不需要判断是否已经存在这个概念*/
 NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind);
 
-
-
-
+/*增强俩个对象的链接强度，如果没有连接就添加一个*/
+nero_s32int nero_StrengthenLink(NeuronObject * a,NeuronObject * b);
 
 /*判断tmpFiber2指向的对象是否一个词的概念，并且这个词由Obis里面的字，依次组成*/
 /*返回1表示是*/

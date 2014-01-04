@@ -8,7 +8,7 @@
 #include "NeuralOperating.h"
 #include "../tools/readUTF8File.h"
 
-#include "../common/error.h"
+/*#include "../common/error.h"*/
 
 
 
@@ -36,7 +36,7 @@ dataNum	   数据的指针数组数据的个数，就是数组的长度
 */
 nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf)
 {
-	nero_s32int i,j,hasAddObj/*,hasNewObj*/;
+	nero_s32int i,j,hasAddObj/*,hasNewObj*/,res1;
 	NeuronObject * tmpObi;
 	NeuronObject ** objs=NULL;
 	/*参数检查*/
@@ -50,20 +50,37 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	/*断DataFlow中的数据是否在系统中已经存在该数据*/
 	for (i=0,j=0,hasAddObj=0;i<dataNum;i++)
 	{
+	
+				#ifdef   Nero_DeBuging04_01_14_
+				char str[500];
+				char str2[500];
+/*				PrintUtf8 ttt;*/
+/*				printf("\n");		*/
+/*				ttt.tmp=*((ChUTF8 *)DataFlow);*/
+/*				ttt.end=0;	*/
+/*				printf("%s",(nero_s8int *)DataFlow[i]);	*/
+				sprintf(str,"data/wordspic%d.dot",i);
+				sprintf(str2,"xdot data/wordspic%d.dot",i);
+				createNeroNetDotGraphForWords(GodNero, str);
+				system(str2);
+		
+				#endif	
+	
+	
 		/*先不管有句子的情况*/
 		/*通过objs[j]里面的值就可以知道有没有在网络中找到这个对象*/
 
 /*		objs[i]*/
 		tmpObi =nero_IfHasNeuronObject(DataFlow[i],dataKind[i], GodNero);
 		
-		#ifdef Nero_DeBuging21_12_13_ 
+		#ifdef Nero_DeBuging21_12_13_
 		if (tmpObi == NULL  )
 		{
-			printf("找不到子概念\n",i);
+			printf("找不到子概念\n");
 		}
 		else 
 		{
-			printf("找到子概念\n",i);
+			printf("找到子概念\n");
 		}			
 		#endif
 		/*如果不存在则尝试将该对象加入网络*/
@@ -73,16 +90,17 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 			#ifdef Nero_DeBuging21_12_13_
 			if (tmpObi != NULL  )
 			{
-				printf("添加子概念成功\n\n",i);
+				printf("添加子概念成功\n\n");
+				nero_printNeroLink("log/ObjLink.log",(void *)tmpObi);
 			}
 			else 
 			{
-				printf("添加子概念失败\n\n",i);
+				printf("添加子概念失败\n\n");
 			}			
 			#endif	
 /*			createNeroNetDotGraphForWords(GodNero, "data/wordspic.dot");		*/
 /*			system("xdot data/wordspic.dot");*/
-			if (tmpObi != NULL)
+			if (tmpObi != NULL  && conf->addNewObj ==1)
 			{
 				hasAddObj=1;/*只要添加过新概念就设置为1*/
 				objs[j]=tmpObi;
@@ -95,33 +113,84 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 			objs[j]=tmpObi;
 			j++;
 		}
+		
+		
+		
+		
 	}
 	/*将这几个对象形成层次结构*/
-	
-
-
-	/*首先判断这几个对象是否已经形成了新的概念*/
-	/*hasAddObj=1直接认为没有形成了新的概念*/
-	/*多余的，因为createObjFromMultiples已经有这个操作了*/
-
-	/*形成层次结构*/
 	/*其实就是将这几个对象形成一个新的对象，见神经网络记录 sheet   5系统概略图*/
-	if (/*hasNewObj == 0 && */conf->addLevelObj == 1)
+	/*
+		你要做两件事情，1:看看子概念的子集有没有组成概念----------------这个是非常麻烦的，
+					也是整个系统中最关键的机制，比如你输入一个句子
+					怎么在大量句子中生成新词呢
+				2:整个数组形成新概念
+	
+	
+	
+	
+	*/
+
+	if (conf->addLevelObjAlways == 1   ||  (hasAddObj !=1 && conf->addLevelObj == 1))
 	{
 		/*这里必须说明的是，这个新生成的概念究竟是什么类型的，createObjFromMultiples内部会根据子类型自动指定*/
 		/*但是这里不能用createObjFromMultiples，因为它里面有太多字符的东西，不够泛化*/
+		
+		
+				#ifdef   Nero_DeBuging04_01_14_
+				char str[500];
+				char str2[500];
+				sprintf(str,"data/wordspic%d.dot",3);
+				sprintf(str2,"xdot data/wordspic%d.dot",3);
+				createNeroNetDotGraphForWords(GodNero, str);
+				system(str2);
+		
+				#endif			
+		
 		nero_createObjFromMultiples( objs, j);
+				#ifdef   Nero_DeBuging04_01_14_
+				char str[500];
+				char str2[500];
+				sprintf(str,"data/wordspic%d.dot",3);
+				sprintf(str2,"xdot data/wordspic%d.dot",3);
+				createNeroNetDotGraphForWords(GodNero, str);
+				system(str2);
+		
+				#endif			
+		
 	}
 	else
 	{
 	
 		/*如果不把这些概念形成一个新的概念，就把他们联系起来，就是用输出链表连接起来
-		
-		
+		对于已经连接的对象则加强连接强度
 		*/
+		
+		res1=Process_StrengthenLink(objs,j,GodNero, conf);
+		
+		
+		/*如果发现强度足够高时则生成新概念*/
+		/*如果子概念分别为a b c,而 b c  已经组成了概念，那么这个由a b c  组成的概念和b c
+		组成的概念是什么关系呢
+		*/
+		
+		/*一旦形成新的概念，就需要对相应的连接的连接强度做一些修改，怎么样的修改呢？？*/
+		if (res1  ==  Process_msg_CreateNewObj)
+		{
+			/*首先创建一个新概念，然后把这些子概念之间的链接强度归零*/
+			nero_createObjFromMultiples( objs, j);
+			/*强度暂时先不归0，因为这样的结果还不清楚*/
+		}
+		
+		
+		
 	
 	}
-
+	if (objs)
+	{
+		free(objs);
+	}
+	
 	return nero_msg_ok;
 
 }
@@ -133,8 +202,43 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 
 
+/*对数组中的概念进行增强连接（有序的）操作，如果没有连接的添加一个连接，*/
+/*如果返回1 ,则表面所有连接的强度都已经达到最大值*/
+nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
+{
 
+	nero_s32int Strengthen,i,j,flag;
+	/*参数检查*/
+	if (objs == NULL  || godNero ==NULL  ||  objNum <2 || conf ==NULL)
+	{
+		return nero_msg_ParameterError;
+	}
 
+	flag=1;
+	for (i=0;i<objNum;i++)
+	{
+	
+	
+		for (j=i+1;j<objNum;j++)
+		{
+
+			Strengthen= nero_StrengthenLink(objs[i],objs[j]);
+			if (Strengthen != Fiber_StrengthenMax)
+			{
+				flag=0;
+			}
+			
+		}
+		
+		
+	}
+	if (flag  ==  1)
+	{
+		return  Process_msg_CreateNewObj;
+	}
+
+	return   nero_msg_ok;
+}
 
 
 

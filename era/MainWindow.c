@@ -329,6 +329,7 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 			wP=wP->next;
 		}
 		dataNum=countOfWord;
+		neroConf.addLevelObjAlways = 1 ;
 	DataFlowProcess(DataFlow,dataKind,dataNum,  GodNero,  &neroConf);
 	#endif		
 	

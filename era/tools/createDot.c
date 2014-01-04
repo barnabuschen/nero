@@ -107,23 +107,36 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 				switch(ObjectKind)
 				{
 					case NeuronNode_ForChCharacter:
-
+						#ifdef   Nero_DeBuging22_11_13_
+						
+						printf("paint  Character   \n");	
+						printf("概念id=%d ，输出对象id=%d \n",tmpObi,tmpObi2);
+						#endif	
 						tmp=tmpObi->inputListHead->obj;
+						tmp2=tmpObi2->inputListHead->obj;
 						if (ObjectKind2 == NeuronNode_ForChCharacter)
 						{
-							tmp2=tmpObi2->inputListHead->obj;
+							
 							sprintf(str,"	%c%c%c -> %c%c%c;\n",tmp->x,tmp->y,tmp->z,tmp2->x,tmp2->y,tmp2->z);
 						}
 						else if(ObjectKind2 == NeuronNode_ForChWord )
 							sprintf(str,"	%c%c%c -> %d;\n",tmp->x,tmp->y,tmp->z,tmpObi2);
+							
+/*						sprintf(str,"	%d -> %d;\n",tmp,tmp2);*/
 						write(fd, str, strlen(str));			
 							break;
 					case NeuronNode_ForChWord:
-						#ifdef   Nero_DeBuging22_11_13_
-						printf("paint  words   \n");				
+						#ifdef   Nero_DeBuging22_11_13
+						
+						printf("paint  words   \n");	
+						printf("概念id=%d ，输出对象id=%d \n",tmpObi,tmpObi2);
 						#endif					
 						/*只是输出这个词汇有那几个字*/
-						tmpFiber1=tmpObi->inputListHead;
+						if (ObjectKind2 == NeuronNode_ForChWord ){
+						
+							
+						
+						tmpFiber1=tmpObi2->inputListHead;
 						static nero_s32int counttt=0;
 						 c=1;
 						while(tmpFiber1)
@@ -146,9 +159,22 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 							tmpFiber1=tmpFiber1->next;
 							c++;
 						}
-						
-						sprintf(str,";\n");
-						write(fd, str, strlen(str));	
+						if (c != 1)
+						{
+							sprintf(str,";\n");
+							write(fd, str, strlen(str));							
+						}
+						else
+						{
+							printf("没有数据%d \n",tmpObi2);	
+						}
+	
+						}
+						else
+						{
+							sprintf(str,"	%d -> %d;\n",tmpObi,tmpObi2);
+							write(fd, str, strlen(str));						
+						}
 						break;
 					
 					

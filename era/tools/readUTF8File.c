@@ -10,10 +10,10 @@
 #include <fcntl.h>     /* for open */
 #include <unistd.h>    /* for lseek and write */
 #include <stdio.h>
-
+#include "../NeuralNetwork/NeuralNetwork.h"
 #include "readUTF8File.h"
 
-
+#include "../common/fileOperating.h"
 
 /*2013年11月15日 星期五 20时22分16秒 */
 
@@ -324,6 +324,81 @@ nero_s32int readUTF8FileData(nero_8int * FileName)//
 	return NeroOK;
 
 }
+
+nero_s32int nero_log(nero_8int * FileName,nero_8int * msg)
+{
+
+
+	 addLineToFile(FileName,msg);
+
+
+	return 0;
+
+}
+nero_s32int nero_printNeroLink(nero_8int * FileName,void *n)
+{
+	nero_8int  msg[5000];
+	nero_8int  str[500];
+	nero_s32int p=0;
+
+	NeuronObject * tmpObi;
+	NeuronObject * nero;
+	NerveFiber  *  curFiber;
+	
+	nero=(NeuronObject * )n;
+	sprintf(str,"\n\n\n概念id=%d ，kind=%d \n",nero,nero_GetNeroKind(nero));
+	memcpy(msg+p, str, sizeof(str)+1);
+	p=sizeof(str)+1;
+	
+	sprintf(str,"	其数据链表中的obj id：\n");
+	memcpy(msg+p, str, sizeof(str)+1);
+	p=sizeof(str)+1;
+	
+	curFiber=nero->inputListHead;
+	while(curFiber)
+	{
+		tmpObi=curFiber->obj;
+		
+		sprintf(str,"		数据概念id=%d ，kind=%d \n",tmpObi,nero_GetNeroKind(tmpObi));
+		memcpy(msg+p, str, sizeof(str)+1);
+		p=sizeof(str)+1;		
+		
+		curFiber=curFiber->next;
+	}
+		
+	sprintf(str,"	其输出链表中的obj id：\n");
+	memcpy(msg+p, str, sizeof(str)+1);
+	p=sizeof(str)+1;
+	
+	curFiber=nero->outputListHead;
+	while(curFiber)
+	{
+		tmpObi=curFiber->obj;
+		
+		sprintf(str,"		输出概念id=%d ，kind=%d \n",tmpObi,nero_GetNeroKind(tmpObi));
+		memcpy(msg+p, str, sizeof(str)+1);
+		p=sizeof(str)+1;		
+		
+		curFiber=curFiber->next;
+	}
+	
+		
+	
+	 addLineToFile(FileName,msg);
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

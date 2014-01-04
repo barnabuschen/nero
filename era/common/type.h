@@ -4,7 +4,7 @@
 
 
 #include "list.h"
-
+#include "NeroError.h"
 
 /*一些常量*/
 /*8192kb  =1032KB*/
@@ -37,8 +37,7 @@
 #define NerReportMsgError(id)   	printf("something wrong with ID:%d!\n",id)
 
 
-#define NeroYES   100
-#define NeroNO    101
+
 
 /*变量类型重定义*/
 typedef int  nero_s32int;
@@ -59,6 +58,7 @@ typedef  char  nero_8int;
 #define Nero_DeBuging03_12_13 
 #define Nero_DeBuging20_12_13 
 #define Nero_DeBuging21_12_13 
+#define Nero_DeBuging04_01_14
 #define NowIdDeBug 
 #define NoIncludeG_return_if_fail  
 

@@ -2,7 +2,9 @@
 #define   FILENAME
 #include "common/type.h"
 #endif
-
+#include <sys/ipc.h>
+#include <sys/msg.h>
+#include <errno.h>
 #include <sys/msg.h>
 #include <sys/ipc.h>
 #include<pthread.h>
@@ -56,7 +58,25 @@ LineMan *manAllLineFromNeo;
 
 void ProInitialization()
 {
+	int res;
+	pthread_t a_thread;
+	Operating_ipckey="/tmp/Operating_ipckey"; 
+	createFile(Operating_ipckey);
+	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+	#define IPCKEY 0x111
+	key_t ipckey = ftok(Operating_ipckey, IPCKEY);
 
+/*	 Set up the message queue */
+	Operating_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
+	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+	printf("ProInitialization Message identifier is %d\n", Operating_mq_id);	
+	
+	
+	res = pthread_create(&a_thread, NULL,thread_for_Operating_Pic, NULL);
+	
+	
+/*	sleep(1);*/
+	
 
 }
 void frame_callback(GtkWindow *window, GdkEvent *event, gpointer data)
@@ -74,14 +94,23 @@ void hello( GtkWidget *widget, gpointer data )
 
 /*	char * sevean=getLineInFile("Data/config",1);*/
 /*	 SubP(sevean);*/
-/*	int res;*/
-/*	pthread_t a_thread;*/
-
-/*	res = pthread_create(&a_thread, NULL,thread_for_paint_Pic, NULL);*/
+	int res;
+	pthread_t a_thread;
+	res = pthread_create(&a_thread, NULL,thread_for_Operating_Pic, NULL);
+	
+	
+	
+	
 
 }
 void drow1( GtkWidget *widget, gpointer data )
 {
+struct { long type; char text[100]; } mymsg;
+		memset(mymsg.text, 0, 100);  //Clear out the space 
+		strcpy(mymsg.text,"测试" );//newfilename就是发送的字符串
+		mymsg.type = 1;
+/*		printf("mymsg.text is :%s\n", mymsg.text);*/
+		int res=msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
 }
 void drow2( GtkWidget *widget, gpointer data )
 {
@@ -247,15 +276,14 @@ void createToolsTab(GtkWidget *fixedInside)
 	
 	    
 }
-void CreateNeroNetWork( GtkWidget *widget, gpointer data )
+void CreateNeroNetWork_old( GtkWidget *widget, gpointer data )
 {
 	GtkWidget * dialog= dialog = gtk_message_dialog_new (Mainwindow,
                                  GTK_DIALOG_DESTROY_WITH_PARENT,
                                  GTK_MESSAGE_INFO,
                                  GTK_BUTTONS_CLOSE,
                                  "done here");
-
-
+struct { long type; char text[100]; } mymsg;
 	
 	readUTF8FileData("data/ChUnicode");
 	
@@ -334,7 +362,6 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 	#endif		
 	
 	
-	
 	/*show  neroNet*/
 	#ifdef  Nero_DeBuging03_12_13
 /*	createNeroNetDotGraph(GodNero, "data/pic.dot");*/
@@ -344,7 +371,139 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 	
 	
 	
+	printf("everything   done.\n");	
 	
+	#ifdef  Nero_DeBuging03_12_13
+	system("xdot data/wordspic.dot");
+	#endif	
+	
+	
+	
+
+	#ifdef  Nero_DeBuging11
+		gtk_dialog_run (GTK_DIALOG (dialog));
+		gtk_widget_destroy (dialog);	
+	#endif
+	printf("everything   done.\n");	
+	
+
+	
+}
+void CreateNeroNetWork( GtkWidget *widget, gpointer data )
+{
+
+	int res;
+	struct ZhCharArg arg1;
+	struct DataFlowProcessArg arg2;
+	GtkWidget * dialog= dialog = gtk_message_dialog_new (Mainwindow,
+                                 GTK_DIALOG_DESTROY_WITH_PARENT,
+                                 GTK_MESSAGE_INFO,
+                                 GTK_BUTTONS_CLOSE,
+                                 "done here");
+
+
+	struct { long type; char text[100]; } mymsg;
+
+	
+	
+		
+	readUTF8FileData("data/ChUnicode");
+	
+	
+		#ifdef  Nero_DeBuging0
+		printf("FileData   done.\n");	
+		#endif	
+	
+	mymsg.type =MsgId_Nero_CreateNetNet;
+	memset(mymsg.text, 0, 100);
+	strcpy(mymsg.text,"测试" );
+	res=msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+	printf("msgsnd strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+	printf("msgsnd chars-%d.\n",res);
+		#ifdef  Nero_DeBuging0
+		printf("CreateActNeroNet   done.\n");	
+		#endif		
+	/*一下步就是将字符信息加入网络 */
+	arg1.chChar=chChar;
+	arg1.charCounts=charCounts;
+/*	memset(mymsg.text, 0, 100);  */
+	memcpy(&(mymsg.text),&arg1,sizeof(struct ZhCharArg));
+	mymsg.type =MsgId_Nero_addZhCharIntoNet;
+	res=msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+	printf("msgsnd strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+	printf("msgsnd chars-%d.\n",res);
+		#ifdef  Nero_DeBuging0
+		printf("addZhCharIntoNet   done.\n");	
+		#endif	
+		
+		
+	/*将一些词加入网络 */
+	Utf8Word  wordsHead;
+	Utf8Word  MultiBytewordsHead;	
+	#ifdef  Nero_DeBuging03_12_131_
+/*	readUTF8FileForWords("data/词库" ,& MultiBytewordsHead);*/
+	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& MultiBytewordsHead);
+	nero_AddWordsIntoNet( GodNero,& MultiBytewordsHead);
+	#endif	
+/*	printWords(&wordsHead);		*/
+	/*字库*/
+	#ifdef  Nero_DeBuging03_12_13_
+	readUTF8FileForWords("data/ceshi2" ,& wordsHead);
+	nero_AddWordsIntoNet( GodNero,& wordsHead);
+	#endif	
+	
+	#ifdef  Nero_DeBuging20_12_13
+	void **DataFlow;
+	nero_s32int *dataKind;
+	Utf8Word  *wP;
+	char *linc;
+	nero_s32int dataNum,k,countOfWord,m;
+	readUTF8FileForWords("data/ceshi2" ,& wordsHead);
+	/*将Utf8Word转化为一个数组，每个单位是一个词*/
+		wP=wordsHead.next;
+		countOfWord=0;
+		while (wP)
+		{
+/*		printf("wP->num=%d.\n",wP->num);*/
+			countOfWord++;
+			wP=wP->next;
+			
+		}
+		(DataFlow)=(void **)malloc(sizeof(void *)*countOfWord);
+		(dataKind)=(nero_s32int *)malloc(sizeof(nero_s32int *)*countOfWord);
+		for (k=0,wP=wordsHead.next;k<countOfWord  &&  (wP != NULL);k++)
+		{
+			DataFlow[k]=(void *)malloc((sizeof( char)*(wP->num * 3+1)));
+			linc=(char *)DataFlow[k];
+			
+			for (m=0;m<wP->num;m++)
+			{
+				memcpy(&(linc[m*3]), &((wP->words)[m]), (3));
+			}
+			
+			linc[wP->num * 3]=0;
+			dataKind[k]=NeuronNode_ForChWord;
+			#ifdef  Nero_DeBuging20_12_13_
+			printf("wP->num=%d.\n",wP->num);
+			printf("len=%d,%s.\n\n",sizeof(linc),linc);
+			#endif
+			wP=wP->next;
+		}
+		dataNum=countOfWord;
+		neroConf.addLevelObjAlways = 1 ;
+		
+		
+	arg2.dataNum=dataNum;
+	arg2.dataKind=dataKind;
+	arg2.conf=&neroConf;
+	arg2.DataFlow=DataFlow;
+/*	memset(mymsg.text, 0, 100);  */
+	memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
+	mymsg.type =MsgId_Nero_DataFlowProcess ;
+	msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+			
+/*	DataFlowProcess(DataFlow,dataKind,dataNum,  GodNero,  &neroConf);*/
+	#endif		
 	
 	
 	
@@ -352,12 +511,7 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 	#ifdef  Nero_DeBuging11
 		gtk_dialog_run (GTK_DIALOG (dialog));
 		gtk_widget_destroy (dialog);	
-	#endif
-	printf("everything   done.\n");	
-	
-	#ifdef  Nero_DeBuging03_12_13
-	system("xdot data/wordspic.dot");
-	#endif
+	#endif	
 	
 }
 void createCreateNeroTab(GtkWidget *fixedInside)

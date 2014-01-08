@@ -35,7 +35,7 @@ $(obj) :gtkMain.o MainWindow.o
 	cd $(subNeuralNetwork) && $(MAKE)
 	cd $(subCommon) && $(MAKE)
 	$(cc)   gtkMain.o  MainWindow.o  $(NeuNetwork) $(tools) $(dot)  $(fileOperating) $(neroOperating) -o $(obj)  $(gtkVer) 
-	./gtkMain
+	sudo ./gtkMain
 gtkMain.o : gtkMain.c  	
 	$(cc)  -c gtkMain.c $(gtkVer)
 MainWindow.o : MainWindow.c MainWindow.h $(NeuNetwork) $(tools) $(dot) $(neroOperating)

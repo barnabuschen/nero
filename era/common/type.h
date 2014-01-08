@@ -5,6 +5,7 @@
 
 #include "list.h"
 #include "NeroError.h"
+#include "NeroMsgId.h"
 
 /*一些常量*/
 /*8192kb  =1032KB*/
@@ -49,7 +50,7 @@ typedef  char  nero_8int;
 
 
 /*调试开关*/
-#define Nero_DeBuging00
+#define Nero_DeBuging0
 #define Nero_DeBuging1 
 #define Nero_DeBuging2 
 //#define Nero_DeBuging17/11/13
@@ -59,7 +60,9 @@ typedef  char  nero_8int;
 #define Nero_DeBuging20_12_13 
 #define Nero_DeBuging21_12_13 
 #define Nero_DeBuging04_01_14
+#define Nero_DeBuging08_01_14
 #define NowIdDeBug 
+//#define Nero_DeBugInOperating_Pic
 #define NoIncludeG_return_if_fail  
 
 
@@ -170,6 +173,24 @@ int count;//如果是表头：记录多少条线
 
 //#ifdef BYTEOS64
 //#endif
+//struct { long type; char text[100]; } mymsg;
+
+char * Operating_ipckey; 
+
+char * IO_ipckey ;
+char * Log_ipckey ;
+
+
+int Operating_mq_id;
+int IO_mq_id;
+int Log_mq_id;
+
+
+
+
+
+
+
 
 
 

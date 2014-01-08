@@ -3,8 +3,22 @@
 #include "../common/type.h"
 //#include "../tools/readUTF8File.h"
 
+struct ZhCharArg
+{
+	ChUTF8 *chChar;
+	nero_s32int charCounts;
 
+};
+struct DataFlowProcessArg
+{
+void **DataFlow;
+nero_s32int *dataKind;
+nero_s32int dataNum;
+//NeuronObject  *GodNero;
+NeroConf * conf;
 
+};
+void *thread_for_Operating_Pic(void *arg);
 
 
 

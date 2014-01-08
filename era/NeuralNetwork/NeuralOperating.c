@@ -1,6 +1,7 @@
 
-
-
+#include <sys/ipc.h>
+#include <sys/msg.h>
+#include <errno.h>
 #include <stdlib.h>
 #include <malloc.h>
 #include <stdio.h>
@@ -10,6 +11,109 @@
 
 /*#include "../common/error.h"*/
 
+
+void *thread_for_Operating_Pic(void *arg)
+{
+	int x=0;
+	int timeToWaitCandy=0;
+	char *fileName=NULL;
+	long MsgId;
+	struct { long MsgId; char text[100]; } OperatingMsg;
+	struct ZhCharArg * arg1;
+	struct DataFlowProcessArg * arg2;
+	key_t ipckey;
+	int Operating_mq_id;
+
+	int received;
+
+	/* Generate the ipc key */
+/*	Operating_ipckey="/home/ub/shareSpace/Operating_ipckey";*/
+	
+	 
+/*	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
+	#define IPCKEY 0x111
+	ipckey = ftok(Operating_ipckey, IPCKEY);
+/*	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
+/*	printf("Operating_ipckey key is %d\n", ipckey);*/
+/*	*/
+	/* Set up the message queue */
+	Operating_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
+	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+	printf("Operating_ipckey Message identifier is %d\n", Operating_mq_id);
+	while(x == 0)
+	{
+		sleep(1);
+/*		printf("wait for Operating msg......\n");*/
+		received = msgrcv(Operating_mq_id, &OperatingMsg, sizeof(OperatingMsg), 0, MSG_NOERROR);
+		printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+		if (received<1)
+		{
+			#ifdef Nero_DeBugInOperating_Pic
+			 printf("received fail\n");
+			#endif
+			continue;
+		}
+		else
+			#ifdef Nero_DeBugInOperating_Pic
+			 printf("received  ok:\n");
+			#endif
+		MsgId=OperatingMsg.MsgId;
+		
+		switch(MsgId)
+		{
+		case MsgId_Nero_CreateNetNet:
+			CreateActNeroNet();
+			
+			#ifdef Nero_DeBugInOperating_Pic
+			 printf("MsgId_Nero_CreateNetNet:\n");
+			#endif
+			break;
+		case MsgId_Nero_addZhCharIntoNet:
+			arg1=(struct ZhCharArg *)OperatingMsg.text;
+			nero_addZhCharIntoNet( GodNero,arg1->chChar, arg1->charCounts);
+			#ifdef Nero_DeBugInOperating_Pic
+			 printf("MsgId_Nero_addZhCharIntoNet:\n");
+			#endif			
+			
+			
+			break;	
+		case MsgId_Nero_DataFlowProcess :
+			arg2=(struct DataFlowProcessArg *)OperatingMsg.text;
+			DataFlowProcess(arg2->DataFlow,arg2->dataKind,arg2->dataNum,  GodNero, arg2->conf);
+			#ifdef Nero_DeBugInOperating_Pic
+			 printf("MsgId_Nero_DataFlowProcess:\n");
+			#endif			
+			
+			/*show  neroNet*/
+			#ifdef  Nero_DeBuging03_12_13
+			 createNeroNetDotGraphForWords(GodNero, "data/wordspic.dot");
+			printf("createNeroNetDotGraph   done.\n");	
+			#endif				
+
+			#ifdef  Nero_DeBuging03_12_13
+			system("xdot data/wordspic.dot");
+			#endif
+				
+			break;				
+			
+	
+		default:			
+			#ifdef Nero_DeBugInOperating_Pic
+			 printf("MsgId_Nero_NONE:  \n");
+			 printf("mymsg=%s (%d)\n", OperatingMsg.text, received);	
+			#endif	
+			break;
+		}
+		
+		
+		
+			
+
+	
+
+	}
+	printf("end to wait Operating msg................................\n");
+}
 
 
 

@@ -43,10 +43,14 @@ nero_s32int Log_printNeroObjMsg(void * arg)
 	time(&now);//time函数读取现在的时间(国际标准时间非北京时间)，然后传值给now
 	timenow   =   localtime(&now);//localtime函数把从time取得的时间now换算成你电脑中的时间(就是你设置的地区)
 /*		printf("Local   time   is   %s/n",asctime(timenow));*/
-	sprintf(str,"Log:%s   something\n",asctime(timenow));		
-	printf("str %s  and logFile=%s",str,logFile);
+	sprintf(str,"Log:%s		something\n",asctime(timenow));		
+/*	printf("str %s  and logFile=%s",str,logFile);*/
 
-
+	
+	
+	
+	
+	
 
 	addLineToFile(logFile,str);
 	return nero_msg_ok;

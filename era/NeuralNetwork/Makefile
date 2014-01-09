@@ -23,6 +23,7 @@ endif
 $(nero) :$(nero).c  $(nero).h $(neroOperating).c  $(neroOperating).h 
 	$(cc)  -c  $(nero).c $(gtkVer)
 	$(cc)  -c  $(neroOperating).c $(gtkVer)
+
 c :
 	rm *.o 
 r :

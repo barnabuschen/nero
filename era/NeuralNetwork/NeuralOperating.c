@@ -37,7 +37,7 @@ void *thread_for_Operating_Pic(void *arg)
 /*	printf("Operating_ipckey key is %d\n", ipckey);*/
 /*	*/
 	/* Set up the message queue */
-	Operating_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
+	Operating_mq_id = msgget(ipckey,0);// IPC_CREAT
 	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 	printf("Operating_ipckey Message identifier is %d\n", Operating_mq_id);
 	while(x == 0)
@@ -45,6 +45,7 @@ void *thread_for_Operating_Pic(void *arg)
 		sleep(1);
 /*		printf("wait for Operating msg......\n");*/
 		received = msgrcv(Operating_mq_id, &OperatingMsg, sizeof(OperatingMsg), 0, MSG_NOERROR);
+		if (errno != 0)
 		printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 		if (received<1)
 		{
@@ -64,14 +65,14 @@ void *thread_for_Operating_Pic(void *arg)
 		case MsgId_Nero_CreateNetNet:
 			CreateActNeroNet();
 			
-			#ifdef Nero_DeBugInOperating_Pic
+			#ifdef Nero_DeBuging09_01_14
 			 printf("MsgId_Nero_CreateNetNet:\n");
 			#endif
 			break;
 		case MsgId_Nero_addZhCharIntoNet:
 			arg1=(struct ZhCharArg *)OperatingMsg.text;
 			nero_addZhCharIntoNet( GodNero,arg1->chChar, arg1->charCounts);
-			#ifdef Nero_DeBugInOperating_Pic
+			#ifdef Nero_DeBuging09_01_14
 			 printf("MsgId_Nero_addZhCharIntoNet:\n");
 			#endif			
 			
@@ -80,7 +81,7 @@ void *thread_for_Operating_Pic(void *arg)
 		case MsgId_Nero_DataFlowProcess :
 			arg2=(struct DataFlowProcessArg *)OperatingMsg.text;
 			DataFlowProcess(arg2->DataFlow,arg2->dataKind,arg2->dataNum,  GodNero, arg2->conf);
-			#ifdef Nero_DeBugInOperating_Pic
+			#ifdef Nero_DeBuging09_01_14
 			 printf("MsgId_Nero_DataFlowProcess:\n");
 			#endif			
 			
@@ -100,7 +101,7 @@ void *thread_for_Operating_Pic(void *arg)
 		default:			
 			#ifdef Nero_DeBugInOperating_Pic
 			 printf("MsgId_Nero_NONE:  \n");
-			 printf("mymsg=%s (%d)\n", OperatingMsg.text, received);	
+			 printf("Operating msg=%s (%d)\n", OperatingMsg.text, received);	
 			#endif	
 			break;
 		}
@@ -177,7 +178,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*		objs[i]*/
 		tmpObi =nero_IfHasNeuronObject(DataFlow[i],dataKind[i], GodNero);
 		
-		#ifdef Nero_DeBuging21_12_13_
+		#ifdef Nero_DeBuging21_12_13
 		if (tmpObi == NULL  )
 		{
 			printf("找不到子概念\n");

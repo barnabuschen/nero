@@ -8,6 +8,9 @@
 #include "NeroMsgId.h"
 
 /*一些常量*/
+
+
+#define FILEPATH_MAX (180)
 /*8192kb  =1032KB*/
 #define ChineseCharNum  8000
 /*2的32次=	     4294967295   42亿*/
@@ -61,6 +64,7 @@ typedef  char  nero_8int;
 #define Nero_DeBuging21_12_13 
 #define Nero_DeBuging04_01_14
 #define Nero_DeBuging08_01_14
+#define Nero_DeBuging09_01_14
 #define NowIdDeBug 
 //#define Nero_DeBugInOperating_Pic
 #define NoIncludeG_return_if_fail  

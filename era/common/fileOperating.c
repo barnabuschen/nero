@@ -1,23 +1,29 @@
 
+#include <sys/ipc.h>
+/*#include <syswait.h>*/
+#include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
-
+#include <sys/msg.h>
 #include <malloc.h>
-#include <gtk/gtk.h>
-
-#include "fileOperating.h"
 #include <errno.h>
+
+#include <gtk/gtk.h>
+#include "fileOperating.h"
+
 
 
 void createFile(char * fileName)
 {
 
 	FILE * myfile=fopen(fileName, "w+");
+/*	usleep(2000);*/
 	fclose(myfile);
+/*	printf("strerror: %s\n", strerror(errno));*/
 }
 void emptyFile(char * fileName)
 {

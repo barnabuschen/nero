@@ -30,9 +30,9 @@
 /*#include "graph/bmpRead.h"*/
 #include "tools/readUTF8File.h"
 #include "tools/createDot.h"
-
+#include "tools/Nero_IO.h"
 #include "NeuralNetwork/NeuralOperating.h"
-
+#include "tools/Nero_IO.h"
 extern nero_s32int readUTF8FileData(nero_8int * FileName);
 extern nero_s32int CreateActNeroNet();
 extern void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName);
@@ -62,18 +62,38 @@ void ProInitialization()
 	pthread_t a_thread;
 	Operating_ipckey="/tmp/Operating_ipckey"; 
 	createFile(Operating_ipckey);
-	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
-	#define IPCKEY 0x111
+/*	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
 	key_t ipckey = ftok(Operating_ipckey, IPCKEY);
-
 /*	 Set up the message queue */
 	Operating_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
-	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
-	printf("ProInitialization Message identifier is %d\n", Operating_mq_id);	
-	
-	
+	printf("ProInitialization Operating strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+	printf("ProInitialization Operating identifier is %d\n", Operating_mq_id);	
 	res = pthread_create(&a_thread, NULL,thread_for_Operating_Pic, NULL);
 	
+
+	IO_ipckey="/tmp/IO_ipckey"; 
+	createFile(IO_ipckey);
+/*	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
+	ipckey = ftok(IO_ipckey, IPCKEY);
+/*	 Set up the message queue */
+	IO_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
+	printf("ProInitialization IO strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+	printf("ProInitialization IO identifier is %d\n", IO_mq_id);	
+	res = pthread_create(&a_thread, NULL,thread_for_IO_Pic, NULL);
+
+
+	Log_ipckey="/tmp/Log_ipckey"; 
+	createFile(Log_ipckey);
+/*	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
+	ipckey = ftok(Log_ipckey, IPCKEY);
+/*	 Set up the message queue */
+	Log_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
+	printf("ProInitialization Log strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+	printf("ProInitialization Log identifier is %d\n", Log_mq_id);	
+	res = pthread_create(&a_thread, NULL,thread_for_Log_Pic, NULL);
+
+
+
 	
 /*	sleep(1);*/
 	
@@ -111,9 +131,26 @@ struct { long type; char text[100]; } mymsg;
 		mymsg.type = 1;
 /*		printf("mymsg.text is :%s\n", mymsg.text);*/
 		int res=msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+		
+		 res=msgsnd( IO_mq_id, &mymsg, sizeof(mymsg), 0);
+		 res=msgsnd( Log_mq_id, &mymsg, sizeof(mymsg), 0);
+		
+		
+		
 }
 void drow2( GtkWidget *widget, gpointer data )
 {
+struct  NeuronObjectMsg_   mymsg;
+
+/*		memset(mymsg.text, 0, 100);  //Clear out the space */
+/*		strcpy(mymsg.text,"测试" );//newfilename就是发送的字符串*/
+		mymsg.MsgId = MsgId_Log_PrintObjMsg;
+		mymsg.fucId = 1;
+
+/*		printf("mymsg.text is :%s\n", mymsg.text);*/
+		int res=msgsnd( Log_mq_id, &mymsg, sizeof(mymsg), 0);
+		
+
 }
 gboolean draw_callback (GtkWidget *widget, cairo_t *cr, gpointer data)
 {
@@ -415,23 +452,22 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 		#endif	
 	
 	mymsg.type =MsgId_Nero_CreateNetNet;
-	memset(mymsg.text, 0, 100);
-	strcpy(mymsg.text,"测试" );
+/*	memset(mymsg.text, 0, 100);*/
+/*	strcpy(mymsg.text,"测试" );*/
 	res=msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
-	printf("msgsnd strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
-	printf("msgsnd chars-%d.\n",res);
+/*	printf("msgsnd strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
+/*	printf("msgsnd chars-%d.\n",res);*/
 		#ifdef  Nero_DeBuging0
 		printf("CreateActNeroNet   done.\n");	
 		#endif		
 	/*一下步就是将字符信息加入网络 */
 	arg1.chChar=chChar;
 	arg1.charCounts=charCounts;
-/*	memset(mymsg.text, 0, 100);  */
 	memcpy(&(mymsg.text),&arg1,sizeof(struct ZhCharArg));
 	mymsg.type =MsgId_Nero_addZhCharIntoNet;
 	res=msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
-	printf("msgsnd strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
-	printf("msgsnd chars-%d.\n",res);
+/*	printf("msgsnd strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
+/*	printf("msgsnd chars-%d.\n",res);*/
 		#ifdef  Nero_DeBuging0
 		printf("addZhCharIntoNet   done.\n");	
 		#endif	

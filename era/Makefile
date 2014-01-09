@@ -26,7 +26,7 @@ candy=opcv/candy.o
 nero=common/Neuron.o
 tools=tools/readUTF8File.o
 dot=tools/createDot.o
-
+io=tools/Nero_IO.o
 NeuNetwork=NeuralNetwork/NeuralNetwork.o
 neroOperating=NeuralNetwork/NeuralOperating.o
 #$(tools) $(NeuNetwork)  $(dot) $(fileOperating)
@@ -34,11 +34,11 @@ $(obj) :gtkMain.o MainWindow.o
 	cd $(subtools) && $(MAKE)
 	cd $(subNeuralNetwork) && $(MAKE)
 	cd $(subCommon) && $(MAKE)
-	$(cc)   gtkMain.o  MainWindow.o  $(NeuNetwork) $(tools) $(dot)  $(fileOperating) $(neroOperating) -o $(obj)  $(gtkVer) 
-	sudo ./gtkMain
+	$(cc)   gtkMain.o  MainWindow.o  $(NeuNetwork) $(tools) $(dot) $(io)  $(fileOperating) $(neroOperating) -o $(obj)  $(gtkVer) 
+	 ./gtkMain
 gtkMain.o : gtkMain.c  	
 	$(cc)  -c gtkMain.c $(gtkVer)
-MainWindow.o : MainWindow.c MainWindow.h $(NeuNetwork) $(tools) $(dot) $(neroOperating)
+MainWindow.o : MainWindow.c MainWindow.h $(NeuNetwork) $(tools) $(dot) $(neroOperating) $(io)  $(fileOperating)
 		$(cc)  -c MainWindow.c   $(gtkVer)
 #sub2:
 #	cd $(subGraph) && $(MAKE)

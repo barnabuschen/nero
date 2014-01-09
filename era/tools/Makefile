@@ -8,7 +8,7 @@ list=../common/list.h
 #subNeuralNetwork=../NeuralNetwork
 
 nero=../NeuralNetwork/NeuralNetwork.h
-
+io=Nero_IO
 obj=readUTF8File
 dot=createDot
 ifeq ($(DeBug),1)
@@ -18,9 +18,10 @@ cc = gcc
 endif
 #Main: $(search).o $(bmp).c  $(search).h $(bmp).h 
 #	$(cc)  -c $(bmp).c  $(gtkVer)
-$(nero):   $(obj).c  $(obj).h $(dot).c  $(dot).h   $(nero) 
+$(nero):   $(obj).c  $(obj).h $(dot).c  $(dot).h   $(nero)   $(io).h  $(io).c 
 	$(cc)  -c  $(obj).c
 	$(cc)   -c  $(dot).c
+	$(cc)  -c  $(io).c 
 c :
 	rm *.o 
 r :

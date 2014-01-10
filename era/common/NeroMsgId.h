@@ -24,7 +24,7 @@
 
 /**********************log  ID*************************/
 #define  MsgId_Log_PrintObjMsg    2000 
-
+#define  MsgId_Log_PrintObjMsgWithStr    2001 
 
 /*****************************************************/
 

@@ -7,7 +7,7 @@
 #define textNum  4
 
 
-
+void createMsgSearchTab(GtkWidget *fixedInside);
 void createToolsTab();
 void createCreateNeroTab(GtkWidget *fixedInside);
 void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook);

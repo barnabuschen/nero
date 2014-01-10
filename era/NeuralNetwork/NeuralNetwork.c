@@ -6,7 +6,7 @@
 #include "NeuralNetwork.h"
 /*#include "Neuron.h"*/
 #include "../tools/readUTF8File.h"
-
+#include "../tools/Nero_IO.h"
 
 
 nero_us32int neroKind[]=
@@ -20,6 +20,8 @@ NeuronNode_ForChWord ,    //当一个概念节点的类型为此时表示一个�
 };
 
 
+static struct  NeuronObjectMsg_    neroObjMsg_st;
+static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
 
 
 
@@ -252,7 +254,7 @@ nero_s32int CreateActNeroNet()
 	neroConf.addNewObj=1;
 	neroConf.addLevelObj=1;
 	neroConf.neroTime=0;
-	
+	neroConf.ifReCreateLogFile=1;
 	neroConf.addLevelObjAlways=0;
 	
 	/*首先一个网络你是否导入了数据必须有一些基本的构建*/
@@ -806,7 +808,7 @@ nero_s32int  nero_ifHasThisData_word(NeuronObject *obj,NeuronObject *childred[],
 	}
 	
 	
-	tmpFiber1=obj->outputListHead;
+	tmpFiber1=obj->inputListHead;
 	/*如果循环是因为if语句退出的，说明该对象是要找的概念*/
 	for (i=0;i<objNum && tmpFiber1 !=NULL;i++)
 	{
@@ -880,7 +882,7 @@ NeuronObject *   nero_IfHasObjFromMultiples2(NeuronObject *Obis[],nero_s32int ob
 	NerveFiber *tmpFiber1;
 	NeuronObject *obj;
 	nero_s32int flag;	
-	if (Obis == NULL  || objNum <3)
+	if (Obis == NULL  || objNum <2)
 		return NULL;
 	
 	flag=0;
@@ -895,6 +897,21 @@ NeuronObject *   nero_IfHasObjFromMultiples2(NeuronObject *Obis[],nero_s32int ob
 			
 			obj=tmpFiber1->obj;
 			/*判断obj指向的对象是否一个词的概念，并且这个词由Obis里面的字，依次组成*/
+			#ifdef Nero_DeBuging09_01_14_
+				neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
+				neroObjMsg_st.fucId = 2;
+				neroObjMsg_st.Obi = obj;
+				printf("nero_IfHasObjFromMultiples2 msg%x.\n",obj);
+				msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			
+			#endif	
+			#ifdef Nero_DeBuging09_01_14
+			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+			neroObjMsgWithStr_st.fucId = 1;
+			neroObjMsgWithStr_st.Obi =obj;
+			sprintf(neroObjMsgWithStr_st.str,"在nero_IfHasObjFromMultiples2中等待查找高层概念");
+			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+			#endif	
+			/*你需要在这里判断输入的概念他们的连接是否是对的*/
 			flag=  nero_ifHasThisData_word( obj,Obis, objNum);
 			
 			/*只要找到一个符合，就说明已经存在想要添加的新概念了，但是为了万一*/
@@ -1529,7 +1546,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 
 }
 /*判断是否有这个数据相应类型的概念*/
-NeuronObject *nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObject *GodNero)
+NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObject *GodNero)
 {
 	NeuronObject  *str[400];
 	ChUTF8  words[400];
@@ -1570,6 +1587,14 @@ NeuronObject *nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObjec
 			words[i].second=wordP[i].second;
 			words[i].third=wordP[i].third;
 			str[i]=nero_IfHasZhWord( GodNero,&(words[i]),NeuronNode_ForChCharacter);
+			
+			#ifdef Nero_DeBuging09_01_14
+			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+			neroObjMsgWithStr_st.fucId = 1;
+			neroObjMsgWithStr_st.Obi = str[i];
+			sprintf(neroObjMsgWithStr_st.str,"在nero_IfHasNeuronObject中找到该对象");
+			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+			#endif				
 			
 		}
 		tmp= nero_IfHasObjFromMultiples2(str,i);

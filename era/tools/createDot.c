@@ -74,9 +74,9 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 		ObjectKind=nero_GetNeroKind(BaseObi);
 		
 			
-		#ifdef   Nero_DeBuging18_11_13_	
+		#ifdef   Nero_DeBuging0_1
 		printf("%s\n",str);
-/*		printf("%d.\n",ObjectKind);*/			
+		printf("BaseObi地址%d   ObjectKind=%d.\n",BaseObi,ObjectKind);			
 		#endif	
 		
 		

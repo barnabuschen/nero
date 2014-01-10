@@ -550,6 +550,30 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 	#endif	
 	
 }
+
+void createMsgSearchTab(GtkWidget *fixedInside)
+{
+	gchar *text;
+	gint buttomID=1;	
+	GtkWidget * buttoms[buttomNum];
+	GtkWidget *vbox = gtk_box_new(FALSE, 5);/*存放其他功能构建的容器*/;
+	
+	
+	
+	text = g_strdup_printf("search nero");
+	buttoms[buttomID]=gtk_button_new_with_label(text);
+	g_signal_connect (buttoms[buttomID], "clicked",G_CALLBACK(CreateNeroNetWork), NULL);
+	gtk_container_add(GTK_CONTAINER(vbox), buttoms[buttomID]);
+	buttomID++;
+	
+	
+	
+	
+	gtk_widget_set_size_request (vbox, 15, 15);
+	gtk_fixed_put (GTK_FIXED (fixedInside), vbox, 0, 0);
+	
+	    
+}
 void createCreateNeroTab(GtkWidget *fixedInside)
 {
 	gchar *text;
@@ -588,7 +612,7 @@ void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook)
 	switch(counts)
 	{
 	case 3:;
-	case 2:text = g_strdup_printf("Page %d", count);;break;
+	case 2:text =g_strdup_printf("信息查询");break;
 	case 1:text = g_strdup_printf("tools");createToolsTab(fixedInside);break;
 	default:break;
 	
@@ -597,7 +621,7 @@ void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook)
 	switch(counts)
 	{
 	case 1:text = g_strdup_printf("createNero");createCreateNeroTab( fixedInside);break;
-	case 2:text = g_strdup_printf("Page %d", count);break;
+	case 2:text = g_strdup_printf("信息查询");createMsgSearchTab( fixedInside);break;
 	case 3:text = g_strdup_printf("tools");createToolsTab(fixedInside);break;
 	default:break;
 	

@@ -8,9 +8,13 @@
 #include "NeuralNetwork.h"
 #include "NeuralOperating.h"
 #include "../tools/readUTF8File.h"
-
+#include "../tools/Nero_IO.h"
 /*#include "../common/error.h"*/
+static struct  NeuronObjectMsg_    neroObjMsg_st;
+static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
 
+
+			
 
 void *thread_for_Operating_Pic(void *arg)
 {
@@ -95,6 +99,18 @@ void *thread_for_Operating_Pic(void *arg)
 			system("xdot data/wordspic.dot");
 			#endif
 				
+				
+			#ifdef Nero_DeBuging10_01_14_
+			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+			neroObjMsgWithStr_st.fucId =2;
+			neroObjMsgWithStr_st.Obi =NULL;
+			nero_s32int xxxxxx=NeuronNode_ForChCharacter;
+			memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
+
+
+			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+			#endif					
+				
 			break;				
 			
 	
@@ -177,11 +193,21 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 /*		objs[i]*/
 		tmpObi =nero_IfHasNeuronObject(DataFlow[i],dataKind[i], GodNero);
-		
+
 		#ifdef Nero_DeBuging21_12_13
 		if (tmpObi == NULL  )
 		{
-			printf("找不到子概念\n");
+				printf("找不到子概念\n");
+				#ifdef Nero_DeBuging09_01_14
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;
+				neroObjMsgWithStr_st.Obi = tmpObi;
+				sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中找不到该概念");
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+				#endif						
+				
+						
+			
 		}
 		else 
 		{
@@ -192,11 +218,31 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		if (tmpObi == NULL  && conf->addNewObj == 1)
 		{
 			tmpObi=  nero_addNeroByData(DataFlow[i],dataKind[i]);
-			#ifdef Nero_DeBuging21_12_13_
+	
+			#ifdef Nero_DeBuging21_12_13
 			if (tmpObi != NULL  )
 			{
 				printf("添加子概念成功\n\n");
-				nero_printNeroLink("log/ObjLink.log",(void *)tmpObi);
+/*				nero_printNeroLink("log/ObjLink.log",(void *)tmpObi);*/
+/*				*/
+/*				 neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;*/
+/*				 neroObjMsg_st.fucId = 1;*/
+/*				 neroObjMsg_st.Obi = tmpObi;*/
+/*				 msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);*/
+/*				*/
+				#ifdef Nero_DeBuging09_01_14
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;
+				neroObjMsgWithStr_st.Obi = tmpObi;
+				sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中创建对象成功");
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+				#endif	
+				#ifdef Nero_DeBuging09_01_14_
+				neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
+				neroObjMsg_st.fucId = 2;
+				neroObjMsg_st.Obi = tmpObi;
+				msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			
+				#endif				
 			}
 			else 
 			{

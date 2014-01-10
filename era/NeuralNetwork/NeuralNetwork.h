@@ -51,7 +51,8 @@ int next;
 	nero_us32int  addLevelObj; /*是否在DataFlowProcess中形成层次结构，为1添加否则不添加*/
 	nero_us32int  addLevelObjAlways; /*在DataFlowProcess中总是形成层次结构，为1添加否则不添加*/
 	nero_us32int  neroTime;     /*系统运行时间单位，初始化为0，隔一个小时增加1*/
-	  
+	nero_us32int  ifReCreateLogFile;     /*系统运行时是否重新生成log文件*/
+		  
  }NeroConf;
 /*ActNero只是用来保存基础数据，它对应于一个单纯的神经元*/
 

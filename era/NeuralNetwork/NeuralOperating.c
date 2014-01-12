@@ -95,7 +95,7 @@ void *thread_for_Operating_Pic(void *arg)
 			printf("createNeroNetDotGraph   done.\n");	
 			#endif				
 
-			#ifdef  Nero_DeBuging03_12_13
+			#ifdef  Nero_DeBuging03_12_13_
 			system("xdot data/wordspic.dot");
 			#endif
 				

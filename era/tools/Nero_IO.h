@@ -78,7 +78,7 @@ nero_s32int IO_getZhInNero(nero_8int str[],NeuronObject * obj);
 
 nero_s32int Log_printAllKindOf(void * obj_,void *str_);
 
-
+nero_s32int IO_GetNeroObjMsg(void * arg);
 
 
 

@@ -2,6 +2,14 @@
 #define   FILENAME
 #include "common/type.h"
 #endif
+
+#include <arpa/inet.h>
+#include <netinet/in.h> 
+
+
+
+#include <stdlib.h>
+#include <math.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
 #include <errno.h>
@@ -19,10 +27,12 @@
 #include <dirent.h>
 #include <stdio.h>
 #include <string.h>
+
+
 #include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
-#include <cairo.h>
+
 #include "NeuralNetwork/NeuralNetwork.h"
 /*#include "common/Neuron.h"*/
 #include "MainWindow.h"
@@ -33,6 +43,8 @@
 #include "tools/Nero_IO.h"
 #include "NeuralNetwork/NeuralOperating.h"
 #include "tools/Nero_IO.h"
+#include <cairo.h>
+
 extern nero_s32int readUTF8FileData(nero_8int * FileName);
 extern nero_s32int CreateActNeroNet();
 extern void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName);
@@ -52,13 +64,22 @@ cairo_t  *SavecurrentCair ;
 
 GtkWidget *fixed;
 cairo_surface_t *image;
+GtkWidget *notebook;
+
+/*搜索面板中的text控件*/
+GtkWidget *textViewForSearch;
+GtkTextBuffer *textViewForSearchBuff;
+GtkWidget *textViewForSearchFixedInsideBox;
+GtkWidget * ceshibuttoms;
+
+
 
 
 LineMan *manAllLineFromNeo;
 
 void ProInitialization()
 {
-	int res;
+/*	int res;*/
 	pthread_t a_thread;
 	Operating_ipckey="/tmp/Operating_ipckey"; 
 	createFile(Operating_ipckey);
@@ -68,7 +89,7 @@ void ProInitialization()
 	Operating_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
 	printf("ProInitialization Operating strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 	printf("ProInitialization Operating identifier is %d\n", Operating_mq_id);	
-	res = pthread_create(&a_thread, NULL,thread_for_Operating_Pic, NULL);
+	/*res =*/ pthread_create(&a_thread, NULL,thread_for_Operating_Pic, NULL);
 	
 
 	IO_ipckey="/tmp/IO_ipckey"; 
@@ -79,7 +100,7 @@ void ProInitialization()
 	IO_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
 	printf("ProInitialization IO strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 	printf("ProInitialization IO identifier is %d\n", IO_mq_id);	
-	res = pthread_create(&a_thread, NULL,thread_for_IO_Pic, NULL);
+	/*res =*/ pthread_create(&a_thread, NULL,thread_for_IO_Pic, NULL);
 
 
 	Log_ipckey="/tmp/Log_ipckey"; 
@@ -90,7 +111,7 @@ void ProInitialization()
 	Log_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
 	printf("ProInitialization Log strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 	printf("ProInitialization Log identifier is %d\n", Log_mq_id);	
-	res = pthread_create(&a_thread, NULL,thread_for_Log_Pic, NULL);
+	/*res =*/ pthread_create(&a_thread, NULL,thread_for_Log_Pic, NULL);
 
 
 
@@ -111,14 +132,27 @@ gint mouseEnter( GtkWidget *widget, GdkEvent *event, gpointer data )
 }
 void hello( GtkWidget *widget, gpointer data )
 {
+/*
 
-/*	char * sevean=getLineInFile("Data/config",1);*/
-/*	 SubP(sevean);*/
-	int res;
-	pthread_t a_thread;
-	res = pthread_create(&a_thread, NULL,thread_for_Operating_Pic, NULL);
-	
-	
+GtkWidget *Mainwindow;
+GtkWidget *dareaForComper[15];
+cairo_t  *currentCair ;
+int recoverPic=0;
+cairo_t  *SavecurrentCair ;
+
+GtkWidget *fixed;
+cairo_surface_t *image;
+ceshibuttoms
+textViewForSearchFixedInsideBox
+GtkWidget *textViewForSearch;
+*/
+
+
+
+	GtkWidget *mywidget=textViewForSearchFixedInsideBox;
+
+	cairo_t *cr = gdk_cairo_create (gtk_widget_get_window(mywidget));
+	spin_myWidget_draw (mywidget, &cr);
 	
 	
 
@@ -130,13 +164,62 @@ struct { long type; char text[100]; } mymsg;
 		strcpy(mymsg.text,"测试" );//newfilename就是发送的字符串
 		mymsg.type = 1;
 /*		printf("mymsg.text is :%s\n", mymsg.text);*/
-		int res=msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+		msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
 		
-		 res=msgsnd( IO_mq_id, &mymsg, sizeof(mymsg), 0);
-		 res=msgsnd( Log_mq_id, &mymsg, sizeof(mymsg), 0);
+		msgsnd( IO_mq_id, &mymsg, sizeof(mymsg), 0);
+		msgsnd( Log_mq_id, &mymsg, sizeof(mymsg), 0);
 		
 		
 		
+}
+void tab_textViewForSearchChanged( GtkWidget *widget, gpointer data )
+{
+ 	 GtkTextIter /*iter,*/start,end;
+	 gtk_text_buffer_get_start_iter (textViewForSearchBuff,&start);
+	 gtk_text_buffer_get_end_iter (textViewForSearchBuff,&end);
+	 gtk_text_buffer_apply_tag_by_name(textViewForSearchBuff,"深粉红",&start,&end);
+	 
+
+}
+void tab_SetSearchNeroMsgViewText(gchar *  str)
+{
+
+	gtk_text_buffer_set_text (textViewForSearchBuff, str, -1);
+
+
+
+
+}
+void tab_searchNeroMsg( GtkWidget *widget, gpointer data )
+{
+	NeuronObject *obj;
+	struct  NeuronObjectMsgWithStr_   mymsg;
+/*	 gtk_text_buffer_get_iter_at_offset(textViewForSearchBuff, &iter, 0);*/
+/*	 gtk_text_buffer_insert_with_tags_by_name(textViewForSearchBuff, &iter, "Colored Text\n", -1, "blue_fg", "lmarg",  NULL);*/
+ 	 GtkTextIter /*iter,*/start,end;
+	 gtk_text_buffer_get_start_iter (textViewForSearchBuff,&start);
+	 gtk_text_buffer_get_end_iter (textViewForSearchBuff,&end);
+	 
+	gchar *  str=gtk_text_buffer_get_text(textViewForSearchBuff,&start,&end,TRUE);
+	printf("%s.\n",str);
+
+	
+	obj=   (NeuronObject *)strtol(str,NULL,16);
+	printf("obj=:%x\n",obj);
+	
+	if (str)
+	{
+		g_free (str);
+	}
+
+		
+	mymsg.MsgId = MsgId_Log_PrintObjMsgWithStr;
+	mymsg.fucId = 1;
+	mymsg.Obi =obj;
+	sprintf(mymsg.str,"查询对象信息\n");
+	msgsnd( Log_mq_id, &mymsg, sizeof(mymsg), 0);
+		
+
 }
 void drow2( GtkWidget *widget, gpointer data )
 {
@@ -148,7 +231,7 @@ struct  NeuronObjectMsg_   mymsg;
 		mymsg.fucId = 1;
 
 /*		printf("mymsg.text is :%s\n", mymsg.text);*/
-		int res=msgsnd( Log_mq_id, &mymsg, sizeof(mymsg), 0);
+		/*int res=*/msgsnd( Log_mq_id, &mymsg, sizeof(mymsg), 0);
 		
 
 }
@@ -248,7 +331,7 @@ void myMainWindow(GtkWidget *window)
 
 
 
-	GtkWidget *notebook = gtk_notebook_new();
+	/*GtkWidget **/notebook = gtk_notebook_new();
 	gtk_notebook_set_scrollable (GTK_NOTEBOOK(notebook),TRUE);
 	gtk_fixed_put (GTK_FIXED (fixed),notebook, 0, 30);
 /*	gtk_container_add(GTK_CONTAINER(window), notebook);*/
@@ -320,7 +403,7 @@ void CreateNeroNetWork_old( GtkWidget *widget, gpointer data )
                                  GTK_MESSAGE_INFO,
                                  GTK_BUTTONS_CLOSE,
                                  "done here");
-struct { long type; char text[100]; } mymsg;
+/*struct { long type; char text[100]; } mymsg;*/
 	
 	readUTF8FileData("data/ChUnicode");
 	
@@ -329,7 +412,7 @@ struct { long type; char text[100]; } mymsg;
 		printf("FileData   done.\n");	
 		#endif	
 	
-	nero_s32int res=CreateActNeroNet();
+	CreateActNeroNet();
 
 		#ifdef  Nero_DeBuging0
 		printf("CreateActNeroNet   done.\n");	
@@ -343,7 +426,7 @@ struct { long type; char text[100]; } mymsg;
 		
 	/*将一些词加入网络 */
 	Utf8Word  wordsHead;
-	Utf8Word  MultiBytewordsHead;	
+/*	Utf8Word  MultiBytewordsHead;	*/
 	#ifdef  Nero_DeBuging03_12_131_
 /*	readUTF8FileForWords("data/词库" ,& MultiBytewordsHead);*/
 	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& MultiBytewordsHead);
@@ -429,7 +512,7 @@ struct { long type; char text[100]; } mymsg;
 void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 {
 
-	int res;
+/*	int res;*/
 	struct ZhCharArg arg1;
 	struct DataFlowProcessArg arg2;
 	GtkWidget * dialog= dialog = gtk_message_dialog_new (Mainwindow,
@@ -454,7 +537,7 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 	mymsg.type =MsgId_Nero_CreateNetNet;
 /*	memset(mymsg.text, 0, 100);*/
 /*	strcpy(mymsg.text,"测试" );*/
-	res=msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+	/*res=*/msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
 /*	printf("msgsnd strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
 /*	printf("msgsnd chars-%d.\n",res);*/
 		#ifdef  Nero_DeBuging0
@@ -465,7 +548,7 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 	arg1.charCounts=charCounts;
 	memcpy(&(mymsg.text),&arg1,sizeof(struct ZhCharArg));
 	mymsg.type =MsgId_Nero_addZhCharIntoNet;
-	res=msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+	/*res=*/msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
 /*	printf("msgsnd strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
 /*	printf("msgsnd chars-%d.\n",res);*/
 		#ifdef  Nero_DeBuging0
@@ -475,7 +558,7 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 		
 	/*将一些词加入网络 */
 	Utf8Word  wordsHead;
-	Utf8Word  MultiBytewordsHead;	
+/*	Utf8Word  MultiBytewordsHead;	*/
 	#ifdef  Nero_DeBuging03_12_131_
 /*	readUTF8FileForWords("data/词库" ,& MultiBytewordsHead);*/
 	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& MultiBytewordsHead);
@@ -553,26 +636,73 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 
 void createMsgSearchTab(GtkWidget *fixedInside)
 {
+/*GtkWidget *textViewForSearch;*/
+/*GtkTextBuffer *textViewForSearchBuff;*/
+	 GtkTextIter /*iter,*/start,end;
+	 GdkRGBA  rgba;
+	 #define TabSize  150
+	gint x=TabSize;
+	gint y=TabSize; 
+	
+	
+/*	gtk_window_get_size(GTK_WINDOW(fixedInside),&x,&y);*/
+/*	GtkWidget *fixedInside = gtk_fixed_new();*/
+/*	gtk_widget_set_size_request (fixedInside, x/3, y/2);*/
+
+
 	gchar *text;
 	gint buttomID=1;	
 	GtkWidget * buttoms[buttomNum];
-	GtkWidget *vbox = gtk_box_new(FALSE, 5);/*存放其他功能构建的容器*/;
+/*	GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 10);;*/
 	
+
+
 	
 	
 	text = g_strdup_printf("search nero");
 	buttoms[buttomID]=gtk_button_new_with_label(text);
-	g_signal_connect (buttoms[buttomID], "clicked",G_CALLBACK(CreateNeroNetWork), NULL);
-	gtk_container_add(GTK_CONTAINER(vbox), buttoms[buttomID]);
+	ceshibuttoms=buttoms[buttomID];
+	
+	g_signal_connect (buttoms[buttomID], "clicked",G_CALLBACK(tab_searchNeroMsg), NULL);
+/*	gtk_container_add(GTK_CONTAINER(vbox), buttoms[buttomID]);*/
+/*	gtk_box_pack_start(GTK_BOX(vbox), buttoms[buttomID], TRUE, TRUE, 0);*/
+	gtk_fixed_put (GTK_FIXED (fixedInside), buttoms[buttomID], 0, 0);
 	buttomID++;
+	/*view*/
+	textViewForSearch = gtk_text_view_new ();
+	textViewForSearchBuff = gtk_text_view_get_buffer (GTK_TEXT_VIEW (textViewForSearch));
+	gtk_text_buffer_set_text (textViewForSearchBuff, "Hello, this is some text", -1);
+	g_signal_connect (textViewForSearchBuff, "changed",G_CALLBACK(tab_textViewForSearchChanged), NULL);	
+/*	gtk_container_add(GTK_CONTAINER(vbox), textViewForSearch);*/
+	
+	/*tag  add*/
+	 rgba.red=(gdouble)0xFF/(gdouble)255;
+	 rgba.green=(gdouble)0x14/(gdouble)255;
+	 rgba.blue=(gdouble)0x93/(gdouble)255;
+	 
+/*	 rgba.red=(gdouble)0x0/(gdouble)255;*/
+/*	 rgba.green=(gdouble)0x0/(gdouble)255;*/
+/*	 rgba.blue=(gdouble)0x0/(gdouble)255;	 */
+	 rgba.alpha=1;
+	 gtk_text_buffer_create_tag(textViewForSearchBuff, "blue_fg", "foreground", "blue", NULL); 
+	 gtk_text_buffer_create_tag(textViewForSearchBuff, "lmarg", "left_margin", 5, NULL);
+	 gtk_text_buffer_create_tag(textViewForSearchBuff, "深粉红", "foreground-rgba", &rgba, NULL); 
+	 
+	 gtk_text_buffer_get_start_iter (textViewForSearchBuff,&start);
+	 gtk_text_buffer_get_end_iter (textViewForSearchBuff,&end);
+	 gtk_text_buffer_apply_tag_by_name(textViewForSearchBuff,"深粉红",&start,&end);
+	 
+		
+	
+	
+	
+/*	gtk_widget_set_size_request (vbox, 15, 15);*/
+/*	gtk_fixed_put (GTK_FIXED (fixedInside), vbox, 0, 0);*/
+	gtk_fixed_put (GTK_FIXED (fixedInside), textViewForSearch, 0, 30);
 	
 	
 	
 	
-	gtk_widget_set_size_request (vbox, 15, 15);
-	gtk_fixed_put (GTK_FIXED (fixedInside), vbox, 0, 0);
-	
-	    
 }
 void createCreateNeroTab(GtkWidget *fixedInside)
 {
@@ -611,9 +741,13 @@ void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook)
 	#ifdef Nero_DeBuging1_cacel
 	switch(counts)
 	{
-	case 3:;
-	case 2:text =g_strdup_printf("信息查询");break;
-	case 1:text = g_strdup_printf("tools");createToolsTab(fixedInside);break;
+	case 2:text = g_strdup_printf("createNero");createCreateNeroTab( fixedInside);break;
+	case 1:
+		text = g_strdup_printf("信息查询");
+		createMsgSearchTab( fixedInside);
+		textViewForSearchFixedInsideBox=fixedInside;
+		break;
+	case 3:text = g_strdup_printf("tools");createToolsTab(fixedInside);break;
 	default:break;
 	
 	}
@@ -621,7 +755,8 @@ void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook)
 	switch(counts)
 	{
 	case 1:text = g_strdup_printf("createNero");createCreateNeroTab( fixedInside);break;
-	case 2:text = g_strdup_printf("信息查询");createMsgSearchTab( fixedInside);break;
+	case 2:text = g_strdup_printf("信息查询");createMsgSearchTab( fixedInside);
+	textViewForSearchFixedInsideBox=fixedInside;break;
 	case 3:text = g_strdup_printf("tools");createToolsTab(fixedInside);break;
 	default:break;
 	
@@ -641,10 +776,73 @@ void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook)
 
 
 
+void app_set_theme(const gchar *theme_path)
+{
+    static GtkCssProvider *provider = NULL;
+    GFile *file;
+    GdkScreen *screen;
+    screen = gdk_screen_get_default();
+    if(theme_path!=NULL)
+    {
+        file = g_file_new_for_path(theme_path);
+        g_printf("Loading GTK3 CSS File: %s\n", theme_path);
+        if(file!=NULL)
+        {
+            if(provider==NULL)
+                provider = gtk_css_provider_new();
+            gtk_css_provider_load_from_file(provider, file, NULL);
+            gtk_style_context_add_provider_for_screen(screen,
+                GTK_STYLE_PROVIDER(provider),
+                GTK_STYLE_PROVIDER_PRIORITY_USER);
+            gtk_style_context_reset_widgets(screen);
+            g_printf("Loaded GTK3 CSS File Successfully!\n");
+        }
+    }
+    else
+    {
+        if(provider!=NULL)
+        {
+            gtk_style_context_remove_provider_for_screen(screen,
+                GTK_STYLE_PROVIDER(provider));
+            g_object_unref(provider);
+            provider = NULL;
+        }
+        gtk_style_context_reset_widgets(screen);
+    }
+}
 
 
+enum {
+  REGION_ENTRY,
+  REGION_BUTTON_UP,
+  REGION_BUTTON_DOWN
+};
 
 
+gboolean spin_myWidget_draw (GtkWidget *widget, cairo_t   *cr)
+{
+  GtkStyleContext *context;
+	GdkRGBA  rgba;
+	
+	 rgba.red=(gdouble)0xFF/(gdouble)255;/*FF69B4*/
+	 rgba.green=(gdouble)0x14/(gdouble)255;/*DeepPink FF93*/
+	 rgba.blue=(gdouble)0x93/(gdouble)255;
+	 rgba.alpha=1;	
+	
+	
+/*  context = gtk_widget_get_style_context (widget);*/
+
+/*  gtk_style_context_push_animatable_region (context, GUINT_TO_POINTER (REGION_ENTRY));*/
+
+/*  gtk_render_background (context,cr, 0, 0, 100, 30);*/
+/*  gtk_render_frame (context,cr, 0, 0, 100, 30);*/
+
+/*  gtk_style_context_pop_animatable_region (context);*/
+
+
+gtk_widget_override_background_color(widget,GTK_STATE_FLAG_NORMAL,&rgba);
+
+}
 
 
 

@@ -53,6 +53,7 @@ typedef  char  nero_8int;
 
 
 /*调试开关*/
+#define  Nero_DeBuging1_cacel
 #define Nero_DeBuging0
 #define Nero_DeBuging1 
 #define Nero_DeBuging2 

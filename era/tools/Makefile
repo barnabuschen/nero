@@ -21,7 +21,7 @@ endif
 $(nero):   $(obj).c  $(obj).h $(dot).c  $(dot).h   $(nero)   $(io).h  $(io).c 
 	$(cc)  -c  $(obj).c
 	$(cc)   -c  $(dot).c
-	$(cc)  -c  $(io).c 
+	$(cc)  -c  $(io).c  
 c :
 	rm *.o 
 r :

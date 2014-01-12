@@ -13,15 +13,17 @@
 #include "Nero_IO.h"
 /*#include "../common/error.h"*/
 #include "../common/fileOperating.h"
+#include <gtk/gtk.h>
+#include "../MainWindow.h"
 
-
-/*用来打印对象信息的函数族*/
+/**************Log函数族**************/
 BEGIN_ONE_ARG_MESSAGE_MAP(nero_msg_print_map)
     MSG_NAME(1, Log_printNeroObjMsg)
     MSG_NAME(2, Log_printNeroObjLink)
-/*    MSG_NAME(3, Log_printAllKindOf)*/
+    MSG_NAME(3, Log_GetNeroObjMsg)
 /*    MSG_NAME(4, sort_data)*/
 END_ONE_ARG_MESSAGE_MAP
+
 
 BEGIN_TWO_ARG_MESSAGE_MAP(nero_msg_WithStr_map)
     MSG_NAME(1, Log_printSomeMsgForObj)
@@ -29,6 +31,21 @@ BEGIN_TWO_ARG_MESSAGE_MAP(nero_msg_WithStr_map)
 /*    MSG_NAME(3, del_data)*/
 /*    MSG_NAME(4, sort_data)*/
 END_TWO_ARG_MESSAGE_MAP
+
+
+
+/*************IO函数族/**************/
+BEGIN_ONE_ARG_MESSAGE_MAP(IO_msg_print_map)
+    MSG_NAME(1, IO_GetNeroObjMsg)
+/*    MSG_NAME(2, Log_printNeroObjLink)*/
+/*    MSG_NAME(3, Log_GetNeroObjMsg)*/
+/*    MSG_NAME(4, sort_data)*/
+END_ONE_ARG_MESSAGE_MAP
+
+
+
+
+
 
 
 
@@ -278,6 +295,57 @@ nero_s32int Log_printSomeMsgForObj(void * obj_,void *str_)
 	addLineToFile(logFile,str);
 	return nero_msg_ok;
 }
+/*想窗口发送信息*/
+nero_s32int IO_GetNeroObjMsg(void * arg)
+{
+	nero_8int  *str=strTmp;
+	nero_s32int ObjectKind;
+	nero_8int  strLinshi[500];
+	NeuronObject * obj=(NeuronObject *)arg;
+	NeuronObject * tmp;
+	
+	time(&now);//time函数读取现在的时间(国际标准时间非北京时间)，然后传值给now
+	timenow   =   localtime(&now);//localtime函数把从time取得的时间now换算成你电脑中的时间(就是你设置的地区)
+/*		printf("Local   time   is   %s/n",asctime(timenow));*/
+
+	if (obj)
+	{
+		ObjectKind=nero_GetNeroKind(obj);
+			
+	/*	printf("str %s  and logFile=%s",str,logFile);*/
+		switch(ObjectKind)
+		{
+		case NeuronNode_ForNone:
+		case NeuronNode_ForGodNero:
+		case NeuronNode_ForData:
+		case NeuronNode_ForConnect:
+		case NeuronNode_ForLine:
+		case NeuronNode_ForImage:
+		case NeuronNode_ForComplexDerivative:
+		case NeuronNode_ForChSentence:	
+			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),obj,ObjectKind);	
+			break;	
+		case NeuronNode_ForChCharacter:
+			tmp=obj->inputListHead->obj;/*衍生对象的第一个数据*/
+			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印字符对象《%c%c%c》\n",asctime(timenow),obj,tmp->x,tmp->y,tmp->z);	
+			break;
+		case NeuronNode_ForChWord :
+			IO_getWordsInNero(strLinshi,obj);
+			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印词组对象《%s》\n",asctime(timenow),obj,strLinshi);	
+			break;
+		default:break;
+
+		
+		}
+
+			
+	}
+	else
+		sprintf(str,"Log_printNeroObjMsg:%s		空对象\n",asctime(timenow));	
+
+/*	addLineToFile(logFile,str);*/
+	return nero_msg_ok;
+}
 
 nero_s32int Log_printNeroObjMsg(void * arg)
 {
@@ -334,14 +402,20 @@ nero_s32int Log_printNeroObjMsg(void * arg)
 void *thread_for_IO_Pic(void *arg)
 {
 	int x=0;
+	nero_s32int i = 0;
 	long MsgId;
 	struct { long MsgId; char text[100]; } IOMsg;
-
+	struct  NeuronObjectMsg_  * NeroArgMsg_st;
+	struct  NeuronObjectMsgWithStr_  * NeroWithStrArgMsg_st;
 	key_t ipckey;
 	int IO_mq_id;
 
 	int received;
 
+
+
+	const nero_s32int size_message_map = 
+	      sizeof(IO_msg_print_map) / sizeof(struct one_arg_message_entry );   //求得表长
 	/* Generate the ipc key */
 
 	ipckey = ftok(IO_ipckey , IPCKEY);
@@ -374,11 +448,20 @@ void *thread_for_IO_Pic(void *arg)
 		
 		switch(MsgId)
 		{
-		case MsgId_Nero_CreateNetNet:
+		case MsgId_IO_GetObjMsg:
 
+			NeroArgMsg_st=(struct  NeuronObjectMsg_  * )&IOMsg;
+			
+			for( i = 0; i < size_message_map; i++)
+			{
+			    if( IO_msg_print_map[i].id == NeroArgMsg_st->fucId )
+				 (*(IO_msg_print_map[i].operate) )(NeroArgMsg_st->Obi);
+			}				
+			
+			
 			
 			#ifdef Nero_DeBugInOperating_Pic
-			 printf("MsgId_Nero_CreateNetNet:\n");
+			 printf("MsgId_IO_CreateNetNet:\n");
 			#endif
 			break;
 			
@@ -386,7 +469,7 @@ void *thread_for_IO_Pic(void *arg)
 	
 		default:			
 			#ifdef Nero_DeBugInOperating_Pic
-			 printf("MsgId_Nero_NONE:  \n");
+			 printf("MsgId_IO_NONE:  \n");
 			 printf("IO msg=%s (%d)\n", IOMsg.text, received);	
 			#endif	
 			break;

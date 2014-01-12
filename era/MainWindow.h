@@ -1,4 +1,4 @@
-//#include <gtk/gtk.h>
+
 //   
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
@@ -31,9 +31,9 @@ void paintInSurfaceRGB24(cairo_surface_t *image,int LineWeight,int Line,unsigned
 void printDAta(unsigned char * bmpdata,int w,int h);
 
 void SendMsgToCandy(char * fileName);
-
-
-
+void app_set_theme(const gchar *theme_path);
+gboolean spin_myWidget_draw (GtkWidget *widget, cairo_t   *cr);
+void tab_SetSearchNeroMsgViewText(gchar *  str);
 #ifndef ShmmaxCheck
 #define ShmmaxCheck  33554432    //查看得知系统共享内存最大的就是32M
 #define tryShm		(ShmmaxCheck)

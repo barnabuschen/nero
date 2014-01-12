@@ -1,0 +1,219 @@
+120
+Everythi ng I have written so far about  the neocortex and how it works depends on  
+
+a very basic premise！ that the world has structure and is therefore predictable. 
+		念戻
+There are patterns in the world: faces have  eyes, eyes have pupils, fires are hot, 
+
+gravity makes objects fall, doors open and shut, and  so forth. The world is not 
+
+random, nor is it homogeneous. Memory, prediction, and behavior  woul d be 
+
+meaningless if the wo rld was  without structure. All behavior, whether it is the 
+
+behavior of a human, a snail, a single-c ell organism, or a tree, is a mea n s of 
+
+exploiting the structure  of the world for th e benefit  of reproduction. 
+
+
+
+Imagine a one-cell animal living in a pond . The cell has a flagellum that le ts it 
+
+swim. On the surfac e of the cell are molecules that detect the presence of 
+
+nutrients. Si nce not all areas of the pond have the same concentration of nutr ients, 
+
+there is a gradual change in value, or gradient, of nutrients from one side of the 
+
+cell to the other. As it  swim s acro ss the pond, the cell can detect the shift .  This is a 
+
+simple form of structure in the world of the one-cell animal. The cell exploits its  
+
+chemical awareness by swimming toward places with higher concentrations of 
+
+nutrie n ts. We could say that th is simple  organism is making a prediction. It is 
+
+predicting th at by swimming in a certain way it will find more nutrients. Is there 
+
+memory involved  in t h is prediction? Yes,  there is. The memory is in the DNA of the 
+
+organism. The one-cell animal did not lea r n,  in its lifetime, how to exploit this 
+
+gradient . Rather, the learning occurred over  evolutionary time and is stored in the 
+
+animal's DNA. If the structure of the worl d changed sudde nly,  this particul ar  one-
+
+cell animal could not learn to adapt. It  could not alt er its DNA or the resulti n g 
+
+behavi or. For this spe cies, learni ng can occ u r on ly  thr o ugh ev olutionar y  processes 
+
+over ma ny generations. 
+
+121
+
+Is this one-cell organism intelligent?  Using the everyday notion of human 
+
+intelligence, the answer is no. But the  animal does lie at t h e far edge of a 
+
+continuum of species that use memory and predictio n  to reproduce more 
+
+successfully, and by that more academic measure the answer is yes. The point is 
+
+not to labe l some spe cies as inte llige n t an d others as not intellige nt. Mem o ry and 
+
+prediction are used by all  living things. The r e is just  a con t in uum of  meth ods and  
+
+sophisti cation in how t h ey do it.
+
+
+Plants also use memory and  prediction to exploit the st ructure of  the world. A tree 
+
+makes a prediction when it sends  its root s down into the soil and its branches and 
+
+leaves up toward the sky. The tree is predicting where it will find water and 
+
+minerals based on the experience of its ancestors. Of course a t r ee doesn't think; 
+
+its behavior is automatic. But the species is  exploiting the structure of the world in 
+
+the same way as the one-cell  organism. Every plant spec ies has a distinct set of 
+
+behavi ors th at exploit slig htly different parts of th e structure of the world. 
+
+
+
+
+Eventually, plants evolved communication systems, based mostly on the slow 
+
+release of chemical signals.  If an insect damages part of a tree, the tree sends 
+
+chemicals through its vascular system to  other parts of the tree,  which triggers a 
+
+defense system, such as making toxins . T hrough such a communicatio n sy stem, 
+
+the tree can exhibit slightly more complex  behavi or. Neurons proba b ly e v ol ved as a 
+
+way to communicate inf o rmation more qui ckly t h an a  plant's vascular system. You 
+
+could th ink  of a neuron as just a cell with its own vascular appendages. At some 
+
+point, instead of slowly moving chemicals along these appendages, the neuron 
+
+started using electroc hemical spikes, which travel much faster. In the beginning, 
+
+fast synaptic transmis sion and simple  nervous systems probably  did not in volve 
+
+much if any learning. The  name of the game was simply faster signaling. 
+
+
+But then, in the march of evolutionary  time, something really interesting 
+happe ned.   Connecti o ns between neuron s be came modi fiable . A  neuron could  send 
+a signal or  not send a signal , depending  on  what had happened re cently. Behavior 
+could now be modi fied  withi n  the life of  an organism. The nervous system became  
+plastic, and so  did behavior. Because  memories could be rapidly formed, the 
+animal could learn the structure of its wo rld during its own li fetime. If the world 
+suddenly c h anged！ say, a new predator arrived on the scene！  t h e animal didn't 
+have to stick with its  genetically determ ined behav i or , which migh t no longer be 
+appropriate. Plastic nervous  systems  became a tremendous evolutionary 
+advantage and led to a burst of new species from fish  to snails t o humans. 
+
+
+A s we s a w  i n c h a p t er 3 ,  a ll  mammals h a ve a n  o l d b ra i n , o n  t o p o f wh i ch s i t s t he 
+neocortex. The neocortex is just the most recent neural tissue to evolve. But with 
+its hierarchical structure, invariant represen tations ,  and prediction by analogy, the 
+cortex allows mammals to exploit much more of the structure of the world than an 
+animal without a neocortex  can. Our  cortic ally en dowed ancestors could envision 
+how to ma ke a net and catch fish. The fish  are not able to learn that nets mean
+death or t o  fi gure o ut how to  build to ols  to cut nets. All mammals, from ra ts to 
+cats to humans, have  a neocorte x. They are all intelligent, but t o  differing degrees. 
+122
+
+Wh at's Different about Human Intelligence?
+
+The memory-prediction framework offers two  answers to this question. The first is 
+pretty straightforward: our neocortex is larger than, say, a monkey's or a dog's. By 
+enlarging the cortical sheet  to the size of a large dinner napkin, our brains can 
+learn a more complex  model of the world an d make mo re comple x prediction s. We 
+see deeper analogies, more structure on st ructure, than other mammals. If we 
+want to find a mate we don't just look  at simple attributes such as health, we 
+interview t h eir friends and parents, we  observe how they drive and speak, and 
+judge how honest they are. We look at these secondary and tertiary attributes to 
+try to pre d ict how our potentia l mate w ill behave  in the futu re. Stock marke t 
+traders look for structure in trading pattern s. Mathematicians look for structure in 
+numbers and equations. Astronomers look  for structure in  the motions of the 
+planets and the stars. Our  larger neocortex  allows us to see our home as part of a 
+town, which is part  of a region, which is part of a planet, which is part of a large 
+universe！ structure within structure.  No other mammal can ruminate to th is 
+depth. I am  pretty  certain m y  cat has no  concept of a world  outside our house.
+
+
+The second difference between  the intelligence of humans and  other mammals is 
+that we have languag e. Entire books ha ve been written on th e supposedly unique 
+properties  of language and how it developed. However, lang uage fits nicely into  
+the memor y -prediction framework without a ny special language sauce or dedicated  
+lang uage machinery. Spoken and written wo rds are  just patterns in the world, as 
+are melodies, cars, a n d houses. The synt ax and semantics of language are not 
+different from the hierarchical structure of  other everyday objects. And in the same 
+way that we associate the sound of a train with the  visual memory image of a 
+train, we associate spoken words with our memo ry of their  physical and semantic 
+counterparts. Through lang uage one human can invoke memories and create new 
+juxtaposit io ns of ment al objects in anot her human . La nguage is pure anal og y, a n d 
+through it  we can cause other human s to   experience and learn about things they 
+may never actually see. The development of language required a large neocortex 
+capable of handling the nested st ructure of  syntax and semantics. It also require d 
+a more fully developed motor cortex and musculature to enable us to make 
+sophisticated, highly articulate sounds  or gestures. W i th language, we can take 
+patterns that we learn in a lifetime and transm it them t o  our childr en and our tribe. 
+Language, whether it be writt en, spoke n , or embodied in cultura l  tra d itions, 
+became the means by which we pass on  what we k n ow about the world from  
+generation to generation. Today,  printe d and electronic communications allow us 
+to share our knowledge with millions  of  people around the world. A n imals without  
+lang uage do n't trans m it nearly as much informati o n to  their offs pring. A rat can 
+learn many patterns in its lifetime, but  it doesn't pass on detailed new
+info rmatio n！ "Hey junior, here's how my father ta ught me to avoi d el ectric 
+shocks." 
+
+
+Thus, intelligence could be traced over three epochs, each using memory and 
+prediction. The first would be when species  used DNA  as the med i um for memory. 
+In dividuals coul d not learn  and adapt within their lifetimes. They could only pass 
+on the DNA-based me mory of the world to their offspr ing through their  gene s. 
+
+The second epoch began when nature invented modifiable nervous systems that 
+cou l d quickly form memories. An individu al  could  now learn about the stru cture of  
+its world and ada p t its behavior accordingly  within its lifetime. But  an individual still 
+could not communicate this knowledge to its o ffspring other  than by direct 
+observation. The creation and expansion of the neocortex occurred within this 
+second epoch, but  did not defi ne i t .
+
+The thir d and fi nal epoch is unique t o  humans. It begins with the invention of  
+lang uage an d the expa nsion of  o u r large neocortex. We humans can learn a lot of 
+the structure of the world wi th in  o u r lif etimes,  an d we can effectively communicate 
+this to many other humans via language. You and I are participating in this 
+process right now. I have spen t a large part of my life  searching for the structure 
+in brains  a n d how t hat structur e leads to  thought a nd intelligence. Through th is 
+boo k  I am  spreading  what I hav e learned to yo u. Of c o urse I couldn 't have done  
+this if I ha dn't had access to the knowle dge gathered by hundreds of scientists, 
+who learned from others, and so on down through the ages. I was able to 
+assimilate and add to what others have  written about their  own thinking an d 
+observation. 
+
+We have become the most adaptable creatures on the planet  and the only ones 
+with the ability to transfer our knowledge of the world broadly within our populace . 
+The human popu lati on has under gone explosive growth  because we can learn and 
+exploit so much of the stru cture of th e worl d and com m unicate it to other humans. 
+We can thrive anywhere, be it a rain forest, a desert, the fr ozen tundra, or the 
+concrete jungle. The c o mbin atio n of a larg e neocortex and language has led to the 
+spiraling success of our species. 
+
+What is Cr eativity?
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+autoscan
+mv configure.scan configure.ac
+
+
+/*     gtkMain     */
+
+
+#aclocal -I /usr/share/aclocal
+#autoheader
+#autoconf
+#automake --add-missing
+#./configure
+
+
+autoreconf -i
+
+./configure

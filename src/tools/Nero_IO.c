@@ -20,7 +20,7 @@
 BEGIN_ONE_ARG_MESSAGE_MAP(nero_msg_print_map)
     MSG_NAME(1, Log_printNeroObjMsg)
     MSG_NAME(2, Log_printNeroObjLink)
-    MSG_NAME(3, Log_GetNeroObjMsg)
+/*    MSG_NAME(3, Log_GetNeroObjMsg)*/
 /*    MSG_NAME(4, sort_data)*/
 END_ONE_ARG_MESSAGE_MAP
 

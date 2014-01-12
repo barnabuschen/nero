@@ -1,15 +1,16 @@
 /*#ifndef ColourSimilar*/
-/*#include "MainWindow.h"*/
+
+#include "MainWindow.h"
 /*#endif*/
 //#include <sys/types.h>
 //#include <sys/stat.h>
 //#include <fcntl.h>
 //#include <unistd.h>
-
-
-
-/*示例开始 h e l l o w o r l d h e l l o w o r l d . c */
 #include <gtk/gtk.h>
+
+extern void myMainWindow(GtkWidget *window);
+/*示例开始 h e l l o w o r l d h e l l o w o r l d . c */
+
 /*回调函数在本例中忽略了传递给程序的所有参数。下面是回调函数 */
 /*extern struct shareData;*/
 /*extern	int shmIdWithCandy;*/

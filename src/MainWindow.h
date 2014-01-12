@@ -5,7 +5,7 @@
 
 #define buttomNum  40
 #define textNum  4
-
+#include <gtk/gtk.h>
 
 void createMsgSearchTab(GtkWidget *fixedInside);
 void createToolsTab();
@@ -14,11 +14,11 @@ void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook);
 void myMainWindow(GtkWidget *window);
 void printPos();
 void DrawPictureWithPoints();
-void DrawPictureWithLineMan(GtkWidget *darea,LineMan *manAllLine);
-void DrawPictureWithLineManInVector(GtkWidget *darea,LineMan *manAllLine);
+//void DrawPictureWithLineMan(GtkWidget *darea,LineMan *manAllLine);
+//void DrawPictureWithLineManInVector(GtkWidget *darea,LineMan *manAllLine);
 
 //显示前面n条线
-void DrawPictureWithLineManInVectorN(GtkWidget *darea,LineMan *manAllLine,int showLine);
+//void DrawPictureWithLineManInVectorN(GtkWidget *darea,LineMan *manAllLine,int showLine);
 
 void hello( GtkWidget *widget, gpointer data );
 void drow1( GtkWidget *widget, gpointer data );

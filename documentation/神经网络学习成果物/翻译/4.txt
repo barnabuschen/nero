@@ -1,0 +1,1140 @@
+
+
+
+As y o u  r ead  t h i s b o ok,  wa l k  d o wn  a  c r o wded street, hear a symphony, or comfort 
+
+a crying child, yo ur brain is being floo ded with the spatial a n d temporal patterns  
+
+from all of your senses. The world is an ocean of constantly changing patterns that  
+
+come lapping and crashing into  your brain. How do you manage to make sense of 
+
+the onslaught? Patterns stream in, pass through various parts of the old brain, and 
+	袭击
+eventually arrive at the ne ocortex. But  what  happens t o  them when they enter the 
+
+cortex? 
+
+
+
+From the dawn of the industrial revolution, people have viewed th e brain as some 
+
+sort of machine. They knew  the r e weren't gears and cogs in the  head, but it was 
+						齿轮	钝齿
+the best metaphor they had. Somehow  information entered th e brain and the 
+
+brain-machine determined how the body should  react.  During t he computer  age, 
+		决定
+the brain has been viewed as a particul ar  type of machine, th e programmable 
+
+computer.  And as we saw in chapter 1, AI researchers have stuck with this view, 
+
+arguing that their lack  of progress is only due to how small and slow computers 
+
+remain compared to the human brain. Today's computers may be equivalent only 
+
+to a cockroach brain, they say, but when we make bigger and faster computers 
+
+they wil l  be as intelligent as humans. 
+
+
+
+There is a largely ignored problem with this brain-as -computer analogy. Neurons 
+
+are quite slow compared to the transistors in  a computer. A neuron  collects inputs 
+
+from its synapses, and combines  these inputs  together to  decide when to  output a 
+
+spike to other neurons. A typical neuron ca n do this and reset itself in about five 
+
+milliseconds (5 ms), or around two hundre d times per second. This may seem fast, 
+
+but a modern silicon-based computer can do one billion operations in a second. 
+
+This means a basic computer operation is   five  million times faster than the basic  
+
+operatio n in  your bra in! That is a very, very big difference. So how is it possible 
+
+that a brain coul d be faster and more powerful than our fastest  digital computers? 
+
+"No proble m," say the brain-as-computer people. "The brain is a parallel computer. 
+
+It has billions of cells all computing at  the same time. This parallelism vastly 
+
+multiplies the processing power of the biological brain."
+
+
+
+I always felt this argument was a fallacy, and a simple thought experiment shows 
+					谬论
+why. It is called the "one hundred–step rule." A hu man  can perform significant 
+									有意义
+tasks in much less time than a second. For  example, I could show you a 
+
+photograph and ask you to determine if there is cat in the image. Your job would 
+
+be to push a button if there is a cat, but not if you see a bear or a warthog or a 
+
+turnip . This task is difficult  or impossible for a computer to perform today,  yet a 
+
+human can do it reliably in half a second or  less. But neurons are slow, so in that  
+
+half a  second,  the information entering  y our brain can only  traverse a chain o n e 
+
+hundred neurons long. That is, the brain "computes" solutions to  problems l i ke this  
+
+in one hundred steps or fewer, regardless of how many total neurons might be 
+
+involved. From the time light enters your eye to the time you press the button, a 
+
+chain no longer than  one hundred neurons could be involved. A digital computer 
+
+attempting to solve the same problem would take billions of steps. One hundred 
+
+computer instructions  are barely enough to move a single character on the 
+
+computer's display, let alone do something interesting. 
+
+
+
+But if I ha ve many millions of neurons wo rking together, isn't  that like a parallel 
+
+computer? Not  really. Brains operate in  parallel and parallel computers operate in 
+
+parallel, but that's the only thing they have in common. Parallel computers 
+
+combine  many fast computers to  work on large problems such as co m p u t in g  
+
+tomorrow's weather. To predict the weather you have to compute the physical 
+
+conditions at many points on the planet. Each computer can  work on a different 
+
+location at the same time. But even  though there may be hundreds or even 
+
+thousands of computers working in parallel,  the individual computers still need to 
+
+perform billions or trillions of steps  to  accomplish their task. The largest 
+
+conceivable parallel computer can't do anything useful in one hundred steps, no 
+
+matter how large or how fast. 
+
+
+
+Here is an analogy. Suppose I ask you to c a rry one hundred stone blocks across a 
+
+desert. You can carry one stone at a time a n d it takes a million steps to cross the  
+
+desert. You figure this  will take a long time   to complete by yours elf, so you recruit 
+
+a hundred  workers to do it  in parallel. The task now  goes a hundred times faster,  
+
+but it still requires a minimum of a million  steps to cross the desert. Hiring more 
+
+workers— even a thousand  workers— wouldn't provi e any additional gain . No 
+
+matter how many workers you hire, the proble m cannot be solved in less time than 
+
+it takes to walk a million steps. The same  is true for parallel computers. After a 
+
+point, adding more processors doesn't make a difference. A computer, no matter 
+
+how many processors it might have and no matter how fast it runs, ca nnot 
+
+"compute" the answer to difficult  problems in one hundred steps. 
+
+
+
+So how can a brain perform di ff icult tasks in one hundred steps that the largest 
+
+parallel computer imaginable can't solve in a million or a billion steps? The answer 
+
+is the brain doesn't " compute" the answers to problems; it retrieves the answers 
+
+from memory.  In essence, the answers were stored in memory a long time ago. It 
+		本质
+only takes a few steps to  retrieve something from  memory. Slow neurons a r e not 
+
+only  fast e n ough t o  do this, but they constitute the memory themselves. The entire 
+
+cortex is a memory system. It isn't a computer at all. 
+
+
+
+Let me show, through an example, the difference between computing  a solution to 
+
+a problem and using memory to solve the same problem. Consider the task of 
+
+catching a ball. Someone throws a ball to  you, you see it traveling toward you, and 
+
+in less than a second you snatch  it out of the air. This  doesn't seem too difficult—
+			抓取
+until you try to program a robot arm to do the same. As many a graduate student 
+
+has found out the hard way, it seems nearly impossible. When engineers or 
+
+computer scientists tackle this pr oblem, they first try to calculate the flight  of the 
+
+ball to   determine where it will be when  it reache s the arm. This calculation 
+
+requires solving a set of equations of the  type you learn in high school physics. 
+
+Next, all the joints of a robotic arm have to be adjusted in concert to move the 
+
+hand into the proper position. This involves solving another set of mathematical 
+
+equations more diffic u lt than the first.  Finally, this whole operation has to be 
+
+repeated multiple times, for as the ball approaches, the robot gets better 
+
+information about the ball's location and  trajectory. If the robot waits to start 
+
+moving until it  knows exactly where the ball will arrive it w ill be too late t o  catch it.  
+
+It has to start moving to catch the ball when  it has only  a poor sense of its location 
+
+and it continually adj u sts as the ball gets closer. A computer requires millions of  
+
+steps to solve the numerous mathematical equations to catch the ball. And 
+
+although a computer might be  programmed to successfully  solve this problem, the 
+
+one hundred–step rule tells us that a brain solves it in a different way. It uses 
+
+memory. 
+
+
+
+How do yo u catch the ball usi n g memory? Your brain has a stored memory of the 
+
+muscle commands required to catch a  ball (along with many other learned 
+
+behaviors). When a ball is thrown, three  things happen. First, the appropriate 
+
+memory is automatically recalled by the sight  of the  ball. Second, th e memory 
+		自动
+actually recalls a temporal sequence of muscle commands. And third, the retrieved 
+
+memory is  adjusted as it is recalled  to accommodate the particulars of the 
+						适应		细节
+moment, such as the ball's actual  path and the position  of your body. The memory 
+
+of how to catch a ball was not programmed  into your brain; it was learned over 
+
+years of repetitive  practice, and it is stored , not  calculated, i n  yo ur neurons. 
+
+
+
+You might be thin ki ng, "Wait a minute .  Ea ch catch is  slightly different. You just 
+
+said the recalled memory gets continually  adjusted to accommodate the variations 
+
+of where the ball is on any particular throw… Doesn't that require solving the same 
+
+equations we were trying to avoid?"  It may seem so, but  nature solved the 
+
+problem of variation in a different and very  clever way. As we'll see later in this  
+
+chapter, the cortex creates what  are called  invariant representations,  which handle 
+						不变的  代表；表现；表示法；陈述
+variations in the world automatically. A helpful analogy might  be to imagine what 
+
+happens when you sit down on  a water bed: t h e pillows and any other people on 
+						枕头
+the bed are all spontaneously pushed into a new configuration.  The bed doesn't  
+		自发的					配置
+compute how high each object  should be elevated; the  physical properties of the 
+
+water and the mattress's plastic skin take care of the adjustment automatically. As  
+
+we'll see in the next chapter, the design of the six-la yered cortex does something 
+
+similar, loosely speaking, with the information that  flows through it. 
+
+
+
+
+48页
+Computers ha v e mem o r y  t o o,  i n  t h e f o rm  o f h a r d  
+drives and memory chips;  however, there are four attributes of neocortical 
+memory that are fundamentally different  fr om com p ut er memory: 
+
+
+下面四句话应该是理解本书的关键了吧
+The neocortex stores sequences of patterns. 
+
+The neocortex recalls patterns auto-associatively.  
+
+The neocortex stores patterns in an invariant form.  
+
+The neocortex stores patterns in a hierarchy. 
+
+
+
+The next time you tell a story, step back and consider how you ca n only  relate one 
+									  叙述
+aspect of the tale at a time. You cannot  tell me everything that  happened all at 
+		故事
+once, no ma tter how quickly you talk or I listen. You need to finis h  one part of the 
+
+story before you can move on to the next.  This isn't only because spoken language 
+
+is serial; written, or al, and visual storytelling all convey a narrative in a serial 
+							传达	故事
+fashion. It is because the story is stored in your  head  in a  sequential  fashion and 
+								连续的
+can only be recalled in the same sequence. You can't remember the entire story at 
+
+once. In fact, it's almost impossible to think of anything  complex that is n't a  series 
+
+of events or thoughts. 
+
+
+
+You may have noticed, too, that  in telling a story some pe ople can't get to the crux 
+											关键
+of it right away. They  seem to ramble on  with irrelevant details and tangents. This 
+				漫谈		不相干
+can be irritating . Yo u want to scream, "Get to the point!" But  they are chronicling  
+	气人的									记录
+the story as it happened to  them, through time, and cannot tell it  any other  way.
+
+
+
+Another example: I'd  like you to imagine  yo ur home right now. Close your eyes 
+
+and visualize it. In your imagination, go t o the front  door. Ima gine what it  looks 
+
+like. Open your front door .  M o v e i n si d e.  Now l o o k  t o  y o u r  l ef t.  Wh a t  d o  y ou s ee ?  
+
+
+Look to the right. Wha t  is there? Go to your bathroom. What's on the right? What's 
+
+o n  t h e l ef t?  Wh a t 's i n  t h e top right draw er? What i t ems do you keep in your 
+
+shower? You know all these things plus  thousands more and  can recall them in 
+
+great detail. These memories are stored in your cortex. You migh t say these things  
+
+are all part of the memory of your home. Bu t yo u can't think of t h em all at once.  
+
+They are obviously related memories but there is no wa y yo u can bring to  mind a l l 
+
+of t h is detail at once. You  ha v e a  t h o ro ug h  mem o r y  o f y ou r  h o me;  b u t t o r eca l l  i t  
+
+you have to go thro ugh it in sequential  segments, in much the same way as you 
+
+experience it. 
+
+
+49页
+
+
+All memories are like this. Yo u have to wa lk through the temporal sequence of  how 
+
+you do thi n gs. One pattern (a pproach  the door) evokes the next pattern (go 
+							唤起
+through the door ), w h ich evoke s the next pattern ( either go down t h e hall or 
+
+ascend the stairs), and so on. Each is a sequence you've fo llo wed bef ore. Of 
+
+course, with a conscious effort I  can change the order of how I describe my home 
+
+to you. I c a n jump from basement to the second floor if I decide to focus on items 
+
+in a nonsequential wa y. Yet once I start to describe any room or item I've chosen, 
+
+I'm back t o  fol l owing  a sequence. Truly random thoughts don't exist. Memory 
+
+recall almost always follows a pathway of as sociation. 
+
+
+
+You know the alphabet. Try saying it backward. You can't b ecause you don't 
+		字母表
+u su a l ly  e x per i en ce i t  ba ck wa r d .  I f  y o u  wa nt  t o  k no w wh a t  i t 's l ik e t o  be a  c h i l d 
+
+learning the alphabet, try saying it in  reverse. That's exactly what they're 
+
+confronted  with. It's really hard . Your memory of t he alphabet  is a sequence of 
+
+patterns. It isn't something stored or recalle d in an instant or in  an arbitrary order. 
+
+The same thing goes for the da ys  of the week, the months of the y ear, your phone 
+
+number,  a nd countless other things. 
+
+
+Your memory for s ongs is  a great exam ple of temporal sequences in memory. 
+
+Think of a tune you know. I like to use  "Somewhere over the Rainbow," but any 
+		曲调
+melody will suffice. You cannot imagine the entire song at once, only in sequence. 
+旋律		足够
+You can start at the beginnin g or maybe with the chorus, and then you play 
+
+through it, filling in the  notes one after another. You can't recall the song 
+
+backward, just as you can't recall it al l at once. You were first exposed to 
+
+"Somewhere over the Rainbow" as it played  through t ime, and you can on ly recall 
+
+it in the same wa y you learne d it. 
+
+
+
+This applies to very low level sensory memories too. Consider your tactile  memory 
+	适用								·触觉
+for textures. Your cortex has memories of  what it feels like to hold a fistful of 
+	纹理								一把
+gravel, slide your fingers over  velvet , and press down on a  piano key. These 
+碎石					天鹅绒
+memories are based on sequences every bit as much as the alphabet and songs 
+
+are; it's just that the  sequences are shor ter, spanning mere fractions of a second 
+
+rather than many seconds or  minutes. If I buried your hand i n  a  bucket of gravel 
+
+while yo u slept, when  you woke up you  wouldn 't k n ow what you were touching 
+
+until  you moved yo ur fingers. Your memory for the  tactile texture of gravel is  
+							触觉  质地       碎石
+based on pattern sequences across the pressure-and vibration-sensing neurons in 
+							震动
+your s k in. These sequences are different from those you'd receive if your hand was 
+
+buried in  s a nd or Styrofoam pellets or dry leaves. As soon as y o u flexed your hand,  
+									弯曲
+the scraping and rolling of the pebbles wo uld create the telltale pattern sequences 
+
+of gravel  a n d trigger th e appropriate  memory  in your  s o matosensory cortex. 
+
+
+
+
+The next time you get out of the shower,  pay attention to how you dry yourself off 
+
+with a towel. I discovered that I dry  my self off with nearly the exact same 
+
+sequence of rubs, pats, and body positions each time. And via a pleasant 
+
+experiment I discovered that my wife also follows a semirigid  pattern when she 
+							半硬式的
+steps out of the shower. Yo u proba b ly  do too.  If  you follow  a sequence, try 
+
+changing it . You can will yourself to do it , but you ne ed to stay focused. If your 
+
+attention w a nders, you'll fall  bac k i n to y o ur accustomed pa ttern.
+
+50页
+
+
+All memories are stored in the synaptic connections between neurons. Given the 
+
+very large number of things  we have stored  in our cortex, and that at any moment 
+
+in time we can recall only a tiny fraction  of these stored memories, it stands to 
+				微笑的 部分
+reason that only a limited number of  synapses and neurons in your brain are 
+
+playing an active role in memory  recall at any one time. As  you sta r t to recall what 
+
+is in your home, one  set of  neurons becomes active, which t h en  leads to another 
+
+set of neurons being active, and so  on . An adult human  neocortex has an 
+
+incredibly large memory capacity . But ,   even though we have stored so many 
+
+things, we can only remember a few at an y time and can only do so in a sequence 
+
+of associations. 
+
+
+
+Here is a f un exercise. Try to recall details from your past, details of where you 
+
+lived, places you visited, and people you knew. I  find I ca n always uncover 
+
+memories of things I haven't thought of  in many years. There a r e thousands of 
+
+detailed memories stored in the synapses of our brains  that are rarely used. At any 
+
+p o in t  i n  time we re ca l l  only  a tiny  f r a cti o n  of  wha t  we kn o w.  Mo st  of  t h e 
+
+information is sitting there idly waitin g for t h e appropriate  cues to invoke it . 
+
+
+
+Computer memory does not normally store sequences of patter ns. It can be made 
+
+to do so using various software tricks  (such as when you store  a song o n  yo ur  
+
+computer), but c o mputer memory does not do  this automatically. In contrast, the 
+
+cortex does store sequences automatically.  Doing  so is an inherent aspect of th e 
+
+neocortical memory system. 
+
+
+Now let's consider the second key featur e of our memory, its auto-associative 
+
+nature. As  we saw in chapter 2, the  term simply means that patterns are 
+
+associated with themselves. An auto-associative memory system is one that can 
+
+recall complete patterns when given only partial or distorted inputs. This can work 
+
+for both spatial and temporal patterns. If  you see your child's  shoes sticking out 
+
+from behind the draperies, you  automatica lly envision his or her entire form. You  
+						想象
+complete the spatial pattern  from a partial version of  it. Or imagine you see a 
+
+person waiting for a bus but can only see part of her because she is standing 
+
+partially behind a bus h . Your  brain is  not confused. Your eyes only see parts of a 
+
+body, but yo ur brai n fills in  the rest, creating a perception  of a whole person that's 
+
+so strong you may not even realize you're only inferring. 
+						推断
+
+
+You also complete temporal patterns. If  you recall a small detail about something 
+
+that happe ned lo ng a g o,  the ent i re memory  sequence can come f l ooding back into 
+
+your mind. Marcel Proust's famous series of novels, Remembrance of Things Past, 
+
+opened with the memory of how a madeleine cookie smelled— a n d he was off and 
+
+running for  a thousand-plus pages. During conversation  we of ten can't hear all th e 
+
+words if we are in a noisy enviro nment .  No  problem. Our brains fill in what they 
+
+miss with what they expect to hear. It's well established that we don't a ctually 
+
+hear all the words we perceive. Some people complete others' sentences aloud, 
+
+b u t in  ou r min d s all of  us are do in g  this constantly. And not just the ends of  
+
+sentences, but the mi ddles and beginni n gs as wel l .  F o r  t h e mo st  p a r t  we a r e n o t 
+
+aware that we're constantly completing patterns, but it's a ubiquitous and  
+
+fundamental feature of how memories are  stored in the cortex. At any time, a 
+
+piece can activate the whole. This is the essence of auto-associative memories. 
+
+
+51页
+
+
+Your neoc ortex is a complex biological auto-associative memory. During each 
+
+waking moment, each function al region is essentially waiting vigilantly for familiar  
+						本质上		戒备的
+patterns or pattern fragments to come  in. You can be in deep thought ab out 
+			片段
+something, but the instant your friend appears your thoughts switch to her. This 
+
+switch isn't something you chose to do. The mere appearance of your friend forces 
+						仅仅
+your brain to start recalling patterns associated with her. It's unavoidable. A f ter an 
+
+interruption we frequently  have to ask,  "What was I thinking about?" A dinner 
+
+conversation with friends follows a circuitous route of associations. The talk may 
+
+start with t h e food in front of you, but  the salad evokes an associated memory o f 
+
+y o u r mo t her 's s a l a d  a t  y o u r wedding ,  which leads to a memory  of someone else's 
+
+wedding, which leads to a memory of where  they went on t h eir honeymoon,  t o  the  
+								蜜月
+political problems in that part of t h e world, an d so on. Thoughts and memorie s are 
+
+associatively linked, and again, random thoughts never really occur. Inputs to the  
+
+brain auto-associatively link to themselves, filling in the  present, and auto-associatively link to wh at normally follows next. We ca ll t h is cha i n of mem o ries 
+
+thought,  a nd although its path  is not deterministic, we are not fully in control of it 
+
+either.
+
+
+N ow we can consi d er  the third  major attribute of neocortical memory: how it 
+
+forms what are called invariant representations.  I will cover the basic ideas of 
+			不变的	表现
+invariant representations in this chapter an d, in chapter 6, the details of how the 
+
+cortex creates them. 
+
+
+A computer's memory is designed to store information exactly as it is presented. If  
+
+you copy a program from a CD to a hard  disk, every byte is copied with 100 
+
+percent fidelity. A single error or discrepancy between the two copies might cause 
+					不符
+the program to crash. The memo ry i n  our neocortex is different. Our bra i n does 
+
+not remember exactly what it sees, hears,  or feels. We don't remember or recall 
+
+things with complete fidelity— not because  the cortex and its neurons are sloppy 
+
+or error-prone but because the  brain remembers the important relationships in th e 
+
+world, in dependent of  the details. Let's lo ok at several examples to illustrate this 
+
+poin t.
+
+
+
+52页
+
+
+As we saw in chapter 2, simple auto-associative memory models have been around 
+
+for decades and, a s I described above,  the brain recalls memories auto-
+
+associatively. But there is a big difference between the auto-associative memories 
+
+built by neural network researchers and  those in the cortex. Artificial auto-
+
+associative memories do not use invariant representations and therefore they fail 
+
+in some very basic ways. Imagine I have a picture of a face formed by a large 
+
+collection of black-and-white dots. This  picture is a pattern, and if  I  have an 
+
+artificial auto-associative memory I can store many pictures of faces in the 
+
+memory. Our artificial auto-associative memory is robust in that  if I  give it  h a lf  a  
+						 强壮的
+face or  j u st  a  p a i r  of eyes,  i t  will  recognize that part of the image and fill in th e 
+
+missing parts correctly . This exact experiment has been done several times. 
+
+However, if I move each dot in the picture five pixels to the left, the memory 
+
+completely fails to  recognize the face. To  the artificial auto-a ssociative memory, it 
+
+is a completely novel pattern, because none of the pixels between the previously 
+
+stored pattern and the new pattern are aligned .  You and I, of  course, would have 
+					对齐的
+no difficulty seeing the shifted pattern as  the same face. We probably wouldn't 
+
+even notice the change. Artificial auto-associative  memories fail to recognize 
+
+patterns if they are moved, rotated, rescaled, or transformed in any of a thousand 
+
+other ways, whereas our brains handle these variations with ease. How can we 
+
+perceive something as being the same  or constant when the input patterns 
+
+representing it are novel and changing? Let's look  at another example. 
+
+
+
+You are probably holding a book in your hands righ t now. As you move the book , 
+
+or change the lighting, or reposition yourself in your c h ai r, or fixate your eyes on 
+
+different parts of the page, the  pattern of light falling on your  retina changes 
+
+completely. The visual  input  you receive is different moment by moment and never 
+
+repeats. In fact, you could hold  this book for a hundred years and not once would 
+
+the pattern  on your retina, and therefore the pattern entering your  brai n,  be  
+
+exactly the same. Yet not for an  instant do you have any doubt th at y o u are 
+
+holding a book, indeed the  same book. Your brain' s internal pattern representing 
+
+"this book"  does not c h ange ev en  though the stimuli informing you it's there are i n  
+
+constant flux. Hence we use the term  invariant representation  to refer t o  the  
+
+brain's internal representation. 
+
+
+
+For another example, think of a friend's face. You recognize her every time you 
+
+see her. It happens automatically in less than a second. It doesn't matter if she is 
+
+two feet away, three feet away, or across  the room. When she is close, her image 
+
+occupies most of your retina. When she  is far away, her image occupies a small 
+
+portion of your retina. She can be facing  you, turne d  a little  to the side, or in 
+
+profile. She might be smiling, squinting,  or yawning. You might see her in bright 
+
+light, in shade, or under strangely angled disco lights. Her visage can  appear in 
+								容貌
+countless positions and variations. For each one, the pattern of light falling on your 
+
+retina is  unique, yet in every case you know  instantly that you  are looking at her. 
+
+
+
+53页
+
+
+Let's pop the hood  and look at what's going on  in your bra i n to perform this 
+
+amazing feat. We know from experiments  that if we monitor the activity of 
+
+neurons in the visual input area of your cortex, called V1, the pattern of activity is  
+
+different for each different view of her  face. Every time the face moves or your 
+
+eyes make a new fixation, the pattern of activity in V1 changes, much like the 
+		固定
+changing pattern on the retina . However, if we monitor the activit y  of cells in your  
+
+face recognition area — a functional region that's several steps higher than V1 in 
+
+the cortical hierarchy— we find stability. That is, some set  of the cells in the face 
+				稳定的			一些细胞集合在人脸识别中
+recognition area remain active as long as your friend 's face is anywhere in your 
+		一直保持活跃，只要人脸进入视觉区域		无论从任何情况
+field of vision (or even bein g conjured in your mind's  eye), regardless of its size, 
+				变魔术的
+position, orientation, scale, and expression. This stability of cell firing is an 
+								细胞  激活
+invariant representation.
+
+
+
+Introspectively, this task seems so easy as  to be hardly worth calling it a problem. 
+反省的							几乎不
+It's as automatic as breathing. It seem s trivial because we aren't consciously 
+						不重要的
+aware it is happening. And in some sense, it is  trivial because our brains can solve 
+
+it so quick l y (remember the one hundred– step rule). However, the problem of 
+
+understanding  how your cortex forms invariant representations remains one of the 
+
+biggest mysteries in all of science. How difficult ,  y o u  a sk ?  S o  much  s o  t h a t  n o  o n e, 
+	迷
+not even using the most powerful computers in the world,  has been able to solve 
+
+it. And it isn't for a lack  of trying.
+
+
+Speculation on this problem has an ancient pedigree. It traces back to Plato,  
+推测
+twenty-three centuries ago. Plato wondered how people are able to think and 
+
+know about the world. He pointed out that  real-world instances of things and ideas 
+
+are always imperfect and are always different. For example, you have a concept of 
+
+a perfect circle, yet you have never actually seen one. All drawings of circles are 
+
+imperfect.  Even if drafted with a geometer's compass a so-called circle is 
+			设计
+represented by a dark line, whereas the circumference of a true circle has no  
+
+thickness at all. How then did you ever acquire the concept of a perfect circle? Or 
+
+to take a more worldly case, think a b out  yo ur concept of dogs.  Every dog you've  
+
+ever seen is different from every other,  and every time you see  the same individual 
+
+dog you see a different view  of  it . All dogs are different and you can never see any 
+
+particular dog exactly the same way twice. Yet all of your various experiences with 
+
+dogs get funneled into  a mental concept of "d og" that is stable across all of them. 
+		漏斗
+Plato was perplexed. How is  it possible that we learn and apply concepts in this 
+
+world of infinitely various forms and ever-shifting sensations? 
+
+
+
+Plato's solution was his famous Theory of Forms. He concluded that our higher 
+
+minds mus t  be tethered to some transcendent plane of superreality, where fixed, 
+		用绳联系	卓越的		程度   超现实
+stable ideas (Forms with a capital F) exist in timeless perfection. Our souls come 
+						永恒的  完美
+from this mystical place before birth, he decided, w h ich is where they learned 
+
+about the Forms in the first place. After we 're born we retain latent knowledge of 
+
+them. Learning a n d understanding hap p en because real-world forms remind us of 
+
+the Forms to which they correspond. You are able to know about circles and dogs 
+
+because they respectively trigger your  soul memories of Circle and Dog.
+
+54页
+
+It's all quite loopy fro m  a modern perspective. But if you strip away the high-flown 
+		呆头呆脑的					夺去
+metaphysics, you can see that he was really talking about invariance. His system 
+形而上学						不变性
+of explanation was wildly off the  mark, but his intuition that this was one of the  
+
+most important questions we can ask about our own nature was a bull 's-eye. 
+
+
+
+Lest you get the impression that invariance  is all about vision, let's look at s o me 
+
+examples in other senses. Consider your tactile sense. When you reach into your 
+
+car's glove compartment to find your sunglasses, your fingers only have to brush 
+
+against t h em  for y o u to know you've found them. It doesn't matter which part of 
+
+your hand makes the contact; it can be your  thumb,  a n y part of  any fi nger, or your  
+
+palm. And the contact can be with any pa rt of the glasses, whether it's a lens, 
+
+temple, hinge, or part of the frame. Just a second of moving any p a rt of your hand 
+
+over any portion of the glasses is sufficient for your brain to identify them. In each  
+
+case, the stream of spatial and temporal patterns coming from your touch 
+
+receptors is entirely different— different areas of your skin, different parts of the 
+
+object— yet you snap up your sunglasses without a thought. 
+
+
+
+Or conside r  the sensorimotor task  of putting  the key in  your car's ignition switch. 
+
+The position  of  your seat, body,  arm, and hand are slightly different each time. To 
+
+you it feels like the same simple repetitive action day in, day out, but that's  
+
+because you have an invariant representation of it in your brain. If you tried to 
+
+make a robot that could enter the car and put in  the key, you would quickly see 
+
+how nearly  impossibl e it is unless  you made sure the robot was in the exact same 
+
+position, and held t he key in e x actly the same way every time. And even if you 
+
+could manage to do t h is, t h e ro bot would  need to be  reprogrammed for different 
+
+cars. Robots and computer programs, like artificial auto-associ ative memories, are 
+
+terrible at handling variation.
+
+
+
+Another interesting example is your signature. Somewhere in your motor cortex, in 
+
+your frontal lobe, you have an invariant representati on of your autograph. Every 
+								亲笔
+time yo u si gn yo ur name, yo u use the  same sequence of strokes, angles, and 
+
+rhythms .  This is true whether you sign  it m i nutely with a  fine-tipped pen, 
+
+flamboyantly like John Hancock, in the air with your elbow, or clumsily with a 
+
+pencil held  between y o ur t o es. It comes out looking somewhat different each time, 
+
+of course, especially under some of the awkward conditions I just named. 
+
+Nevertheless, regardless of scale, writing implement, or combination of body parts, 
+
+you always  run the  same abstract "motor  program" t o  produce it . 
+
+
+
+
+From the signature example you can see that invariant representation in motor 
+
+cortex is, in some ways, the mirror image of invariant representation in sensory 
+
+cortex. On the sensory side,  a wide variety of input  patterns can activate a stable 
+
+cell assembly that represents some abstract pattern (your friend's face, your 
+					代表抽象的模式
+sunglasses). On the motor side, a stable  cell assembly representing some abstract 
+					
+motor command (catch ing a ball, signing your name) is able to express itself using 
+
+a wide variety of  muscle groups and respecting  a wide variety of other constraints. 
+
+This symmetry between perception and action is what  we should expect if, as 
+	对称性
+Mountcastle proposed, the cortex runs a single basic algorit h m in all areas. 
+		提议的
+
+
+55页
+
+
+For a final example, let's return to sensory cortex and look at music again. (I like 
+
+using memory of music as an example beca use it is easy to see all the issues the 
+
+neocortex must solve . ) Invariant representation in music is illustrated by your  
+								阐明
+ability to recognize a melody in  any key. The key a tune is played in refers to the 
+			旋律
+musical scale the melody is  built on. The same melody  played in different keys 
+	铺子		旋律
+starts on different notes. Once you  choose the key for a rendition, you've 
+								演奏
+determined the rest of the notes in the tune . Any melody can be played i n  any key. 
+
+This means that each rendition of the "sam e" melody in a new key is actually an 
+
+entirely different sequence of notes! Each rendition stimulates an entirely different 
+
+set of l o ca tions on your  cochlea, causing an entirely different set of spatial-
+				耳蜗
+temporal patterns to stream up into your  auditory cortex… and yet you perceive 
+
+the same melody in each case. Unless you have perfect pitch you cannot even 
+
+distinguish the same song played in two different keys without hearing them back 
+
+to back. 
+
+
+
+Think of the song "Somewhere over the Rain bow." You probably first learne d it by 
+
+hearing Judy Garland sing it in the movie  The Wizard  o f   O z ,  but unless  you  have 
+
+perfect pitch you probably can't recall the key  she sang it in (A flat). If I sit down 
+
+at a piano and start to play the song in  a key in which you've never heard it— say, 
+
+in D— it will sound like the same song.  You won't notice that  all the notes are 
+
+different from those in the version you' re  familiar with. This means that your 
+
+memory of the song must be  in a form  that ignores pitch. The memory must store 
+
+the important relationships in  the song, not the actual notes. In this case, the 
+
+importa n t relations h ips are the relative  pitch of t h e notes, or "intervals." 
+
+"Somewhere over  the Rainbow" begins with  an octave up, foll wed by a halft o ne 
+
+down,  followed by a  major third down, and so on. The interval  structure of the 
+
+melody is th e same for any rendition in any key. Your ability to easily recognize the 
+
+song in any key indicates that your brain has stored it in  this pitch-invariant form. 
+		表明
+
+
+Sim i l a r l y,  t h e mem o r y o f  y ou r  f r ien d 's f a ce mu st  a l so  b e s t o r ed  i n  a  f o rm  t h a t  i s  
+
+independent of any particular  view. What makes her face recognizable are its 
+
+relative dimensions, relative  colors, and relative proportions, not how it appeared 
+
+one instant last Tuesday at lunch. There are "spatial  intervals" between the 
+
+features of her face ju st as there are "pitch intervals" between the notes of a song. 
+
+Her face is wide relative to her eyes. Her  nose is short relative to the width of her 
+
+eyes. The color of her hair and the color of her eyes have a similar relative 
+
+relations h ip that stays  constant even though in different lighting conditio ns their 
+
+absolute colors change significantl y.  When you memorized her face, you 
+
+memorized these relative attributes. 
+
+
+I believe a similar abstraction of form is occurring throughout  the cortex, in every 
+
+region. Th is is a general property  o f  the   neocortex. Memories are stored in a form 
+
+that captures the essence of relationships, not the details of the moment. When  
+
+you see, feel, or hear something, the cort ex takes the detailed, highly specific 
+
+input and converts it to an invariant form. It is the invariant form  that is stored in 
+
+memory, an d it  is the invaria n t form of each new input pa ttern that it gets 
+
+compared to. Memor y  storage ,  memory recall, a n d memory re cognit ion occur at 
+
+the level of invariant forms. There is  no equi valent  conc ept i n  comp uters. 
+
+56页
+
+
+Imagine it is 1890, and you are in a frontier town in the American West. Your 
+
+sweetheart  is taking the train from the East  to join you in your new frontier home.  
+
+You of c o urse want to meet her at the station when s h e arrives. For a few weeks 
+
+prior to  her  arrival day you keep track of  when the trains come and go. There is no 
+
+set schedule and as far as you can tell  the train never arrives or leaves at the 
+	安排
+same time during the day. It is beginning to look as if  you won't be able t o  predict  
+
+when her train will arrive. But t h en you notice there is some structure to the trains' 
+
+comings and goings. The train coming from the East arrives four hours after one 
+
+leaves heading east. This four-hour gap is  consistent day to day although the 
+						始终如一的
+specific times vary greatly. On the day of  her arrival, you keep  an eye out for the 
+
+eastbound train, and when  you see it, you set your clock. After four hours you 
+
+head for the station and meet her train just as it arrives. This parable illustrates 
+
+both the problem the neocortex faces and the solution it uses to solve it. 
+
+
+
+The world as seen by your senses is never the same; like the arrival and departure 
+
+time of the train, it is  always different. The way you understand the world is by 
+
+finding invariant structure in the constantly  changing stream of  input.  Ho wever, 
+
+this invariant structure alone is not sufficient to use as a basis for making specific 
+					足够的
+predictions. Just knowing that the train arrives four hours after it departs doesn't 
+
+allow you to  show up on the  platform exactly in time to greet your sweetheart. To 
+
+make a specific prediction, the brain mu st combine knowledg e of the invariant 
+
+structure with the most recent details. Predicting the arrival time of the train 
+
+requires recognizing th e four-hour structure in the train schedule , and combining it 
+
+with the detailed knowledge of w h at time the last eastbound train left. 
+
+
+57页
+
+When listening to a familiar song pla y ed on  a piano, your cort ex predicts the next 
+
+note before it is played. But the memory of the song, as we've seen, is in a pitch-
+
+invariant form. Your memory tells you what  interval is next, but says nothing, in 
+
+and of itself, a b out the actual note. To predict the exact next note requires  
+
+combining the next interval with the last specific note. If t h e next interval is a 
+
+major third and the last note you heard wa s C, then you can predict the specific 
+
+next note,  E. You hear in your mind E, not "major third . " And unless you've  
+
+misidentified the song or the  pianist slips up, your  prediction is correct. 
+
+
+
+When you see your friend's face, your cort ex fills in and predicts  the myriad details 
+
+of her unique image at that instant. It checks that her eyes are just right, that her  
+
+nose, lips, and hair are exactly as they should be. Your  cortex makes these 
+
+predictions  with great specificity. It ca n predict low-level details about her face 
+
+even though  you have  never seen her in th is particular orientation or environment 
+
+before. If you know exactly where your friend's eyes and nose are, and you know 
+
+the structure of her face, then you can pr edict exactly where her lips should be. If 
+
+you know her skin is being tinged orange by the light of sunset, then you know  
+
+what color her hair  shoul d  a ppear . Once  again, your brain does t h is by com b ining 
+
+a memory of the invariant   structure of her face with the particulars of your  
+
+immediate experience. 
+
+
+The train schedule example is just an analogy of what is going on in your cortex, 
+
+but the melody and face examples are not. The combining  of  invariant 
+
+representations and current input to make  detailed predictions is exactly what is 
+
+happening. It is a ubiquitous process that happens in every region of cortex. It is 
+			普遍存在的
+how you make specific predictions about the  room you are sitting in right now. It is 
+
+how you are able to predict not  only the  words others will say, but also in what  
+
+tone of voice they will say them, the accent they will use, and where in the room 
+
+you expect  to hear the voice come from. It is how you know precisely when your 
+
+foot will hit the floor, and what it  will feel  like when you climb a set of stairs. It is 
+
+how y o u can sign  yo ur  name with your foot , or catch a thrown ball. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+阿
+
+
+
+
+
+阿

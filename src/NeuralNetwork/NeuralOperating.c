@@ -50,7 +50,7 @@ void *thread_for_Operating_Pic(void *arg)
 /*		printf("wait for Operating msg......\n");*/
 		received = msgrcv(Operating_mq_id, &OperatingMsg, sizeof(OperatingMsg), 0, MSG_NOERROR);
 		if (errno != 0)
-		printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+		printf("Operating strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 		if (received<1)
 		{
 			#ifdef Nero_DeBugInOperating_Pic
@@ -95,7 +95,7 @@ void *thread_for_Operating_Pic(void *arg)
 			printf("createNeroNetDotGraph   done.\n");	
 			#endif				
 
-			#ifdef  Nero_DeBuging03_12_13_
+			#ifdef  Nero_DeBuging03_12_13
 			system("xdot data/wordspic.dot");
 			#endif
 				

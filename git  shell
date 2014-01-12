@@ -23,7 +23,7 @@ push本地分支代码到远端服务器,如果没有就创建该分支
 提交分支数据到远程服务器
 	git push origin <local_branch_name>:<remote_branch_name>
 	git push origin  ver0.13:ver0.13
-
+	git push origin master
 
 
 

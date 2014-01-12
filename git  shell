@@ -5,6 +5,8 @@
 	git branch testing
 要切换到其他分支
 	git checkout testing
+要新建并切换到该分支
+	git checkout -b iss53
 将分支testing合并到master
 	git checkout master
 	git merge testing
@@ -16,15 +18,21 @@ push本地分支代码到远端服务器,如果没有就创建该分支
 	git branch  
 查看远程分支	
 	git branch --remote  
+获取远程分支	
+	git pull origin master:ver0.14
 查看远程和本地所有分支，用-a参数
 	git branch -a  
 删除远程分支
 	git push origin --delete testing
 提交分支数据到远程服务器
 	git push origin <local_branch_name>:<remote_branch_name>
+	git push origin ver0.12:ver0.12
+
+	git push origin <local_branch_name>:<remote_branch_name>
 	git push origin  ver0.13:ver0.13
 	git push origin master
-
+列出版本库中所有已删除的文件
+	git log --diff-filter=D --summary 
 
 
 

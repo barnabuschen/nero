@@ -32,7 +32,7 @@
 /**********************io  ID*************************/
 #define  MsgId_IO_GetObjMsg    3000 
 #define  MsgId_IO_PrintObjMsgWithStr    3001 
-
+#define  MsgId_IO_dataIO    3002 
 /*****************************************************/
 
 

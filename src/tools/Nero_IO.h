@@ -16,7 +16,13 @@ nero_8int fucId;
 NeuronObject * Obi; 
 nero_8int str[100];
 } ;
-
+struct  IODataMsg_
+{ 
+long MsgId; 
+nero_8int fucId;
+nero_s32int operateKind; 
+nero_8int str[100];
+} ;
 
 
 
@@ -80,10 +86,11 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_);
 
 nero_s32int IO_GetNeroObjMsg(void * arg);
 
+nero_s32int IO_InputDataToSys(void * operateKind,void *str);
 
 
-
-
+int UTF8ToGBK(char src[],char res[]);
+int  GetToken( char * str);
 
 
 

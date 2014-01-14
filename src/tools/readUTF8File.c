@@ -346,7 +346,7 @@ nero_s32int nero_printNeroLink(nero_8int * FileName,void *n)
 	NerveFiber  *  curFiber;
 	
 	nero=(NeuronObject * )n;
-	sprintf(str,"\n\n\n概念id=%d ，kind=%d \n",nero,nero_GetNeroKind(nero));
+	sprintf(str,"\n\n\n概念id=%d ，kind=%d \n",(int)nero,nero_GetNeroKind(nero));
 	memcpy(msg+p, str, sizeof(str)+1);
 	p=sizeof(str)+1;
 	
@@ -359,7 +359,7 @@ nero_s32int nero_printNeroLink(nero_8int * FileName,void *n)
 	{
 		tmpObi=curFiber->obj;
 		
-		sprintf(str,"		数据概念id=%d ，kind=%d \n",tmpObi,nero_GetNeroKind(tmpObi));
+		sprintf(str,"		数据概念id=%d ，kind=%d \n",(int)tmpObi,(int)nero_GetNeroKind(tmpObi));
 		memcpy(msg+p, str, sizeof(str)+1);
 		p=sizeof(str)+1;		
 		
@@ -375,7 +375,7 @@ nero_s32int nero_printNeroLink(nero_8int * FileName,void *n)
 	{
 		tmpObi=curFiber->obj;
 		
-		sprintf(str,"		输出概念id=%d ，kind=%d \n",tmpObi,nero_GetNeroKind(tmpObi));
+		sprintf(str,"		输出概念id=%d ，kind=%d \n",(int)tmpObi,(int)nero_GetNeroKind(tmpObi));
 		memcpy(msg+p, str, sizeof(str)+1);
 		p=sizeof(str)+1;		
 		

@@ -28,7 +28,7 @@ void *thread_for_Operating_Pic(void *arg)
 	key_t ipckey;
 	int Operating_mq_id;
 
-	int received;
+	int received,hasSetUpNeroSys;
 
 	/* Generate the ipc key */
 /*	Operating_ipckey="/home/ub/shareSpace/Operating_ipckey";*/
@@ -44,6 +44,7 @@ void *thread_for_Operating_Pic(void *arg)
 	Operating_mq_id = msgget(ipckey,0);// IPC_CREAT
 	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 	printf("Operating_ipckey Message identifier is %d\n", Operating_mq_id);
+	hasSetUpNeroSys=0;
 	while(x == 0)
 	{
 		sleep(1);
@@ -68,7 +69,7 @@ void *thread_for_Operating_Pic(void *arg)
 		{
 		case MsgId_Nero_CreateNetNet:
 			CreateActNeroNet();
-			
+			hasSetUpNeroSys=1;
 			#ifdef Nero_DeBuging09_01_14
 			 printf("MsgId_Nero_CreateNetNet:\n");
 			#endif
@@ -84,33 +85,40 @@ void *thread_for_Operating_Pic(void *arg)
 			break;	
 		case MsgId_Nero_DataFlowProcess :
 			arg2=(struct DataFlowProcessArg *)OperatingMsg.text;
-			DataFlowProcess(arg2->DataFlow,arg2->dataKind,arg2->dataNum,  GodNero, arg2->conf);
-			#ifdef Nero_DeBuging09_01_14
-			 printf("MsgId_Nero_DataFlowProcess:\n");
-			#endif			
+			/*判断系统到底初始化没有*/
+			if (hasSetUpNeroSys == 1)
+			{
+					
+				
+				DataFlowProcess(arg2->DataFlow,arg2->dataKind,arg2->dataNum,  GodNero, arg2->conf);
+				#ifdef Nero_DeBuging09_01_14
+				 printf("MsgId_Nero_DataFlowProcess:\n");
+				#endif			
 			
-			/*show  neroNet*/
-			#ifdef  Nero_DeBuging03_12_13
-			 createNeroNetDotGraphForWords(GodNero, "data/wordspic.dot");
-			printf("createNeroNetDotGraph   done.\n");	
-			#endif				
+				/*show  neroNet*/
+				#ifdef  Nero_DeBuging03_12_13
+				 createNeroNetDotGraphForWords(GodNero, "data/wordspic.dot");
+				printf("createNeroNetDotGraph   done.\n");	
+				#endif				
 
-			#ifdef  Nero_DeBuging03_12_13
-			system("xdot data/wordspic.dot");
-			#endif
+				#ifdef  Nero_DeBuging03_12_13
+				system("xdot data/wordspic.dot");
+				#endif
 				
 				
-			#ifdef Nero_DeBuging10_01_14_
-			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-			neroObjMsgWithStr_st.fucId =2;
-			neroObjMsgWithStr_st.Obi =NULL;
-			nero_s32int xxxxxx=NeuronNode_ForChCharacter;
-			memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
+				#ifdef Nero_DeBuging10_01_14_
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId =2;
+				neroObjMsgWithStr_st.Obi =NULL;
+				nero_s32int xxxxxx=NeuronNode_ForChCharacter;
+				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
 
 
-			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
-			#endif					
-				
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+				#endif					
+			}
+			else
+				printf("系统未初始化\n");
 			break;				
 			
 	
@@ -192,6 +200,10 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		/*通过objs[j]里面的值就可以知道有没有在网络中找到这个对象*/
 
 /*		objs[i]*/
+		#ifdef Nero_DeBuging14_01_14
+		nero_us8int * tttttm=(char *)DataFlow[i];
+		printf("寻找字符1：%x %x %x .\n",(int)tttttm[0],(int)tttttm[1],(int)tttttm[2]);
+		#endif	
 		tmpObi =nero_IfHasNeuronObject(DataFlow[i],dataKind[i], GodNero);
 
 		#ifdef Nero_DeBuging21_12_13
@@ -237,7 +249,8 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中创建对象成功");
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif	
-				#ifdef Nero_DeBuging09_01_14_
+
+				#ifdef Nero_DeBuging09_01_14
 				neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
 				neroObjMsg_st.fucId = 2;
 				neroObjMsg_st.Obi = tmpObi;
@@ -282,7 +295,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	
 	*/
 
-	if (conf->addLevelObjAlways == 1   ||  (hasAddObj !=1 && conf->addLevelObj == 1))
+	if (conf->addLevelObjAlways == 1   )
 	{
 		/*这里必须说明的是，这个新生成的概念究竟是什么类型的，createObjFromMultiples内部会根据子类型自动指定*/
 		/*但是这里不能用createObjFromMultiples，因为它里面有太多字符的东西，不够泛化*/
@@ -326,7 +339,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		*/
 		
 		/*一旦形成新的概念，就需要对相应的连接的连接强度做一些修改，怎么样的修改呢？？*/
-		if (res1  ==  Process_msg_CreateNewObj)
+		if (res1  ==  Process_msg_CreateNewObj  && conf->addLevelObj == 1)
 		{
 			/*首先创建一个新概念，然后把这些子概念之间的链接强度归零*/
 			nero_createObjFromMultiples( objs, j);
@@ -366,21 +379,29 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 	}
 
 	flag=1;
-	for (i=0;i<objNum;i++)
+	for (i=0;i<objNum-1;i++)
 	{
 	
 	
-		for (j=i+1;j<objNum;j++)
-		{
+/*		for (j=i+1;j<objNum;j++)*/
+/*		{*/
 
-			Strengthen= nero_StrengthenLink(objs[i],objs[j]);
+/*			Strengthen= nero_StrengthenLink(objs[i],objs[j]);*/
+/*			if (Strengthen != Fiber_StrengthenMax)*/
+/*			{*/
+/*				flag=0;*/
+/*			}*/
+/*			*/
+/*		}*/
+
+
+			Strengthen= nero_StrengthenLink(objs[i],objs[i+1]);
 			if (Strengthen != Fiber_StrengthenMax)
 			{
 				flag=0;
 			}
 			
-		}
-		
+	
 		
 	}
 	if (flag  ==  1)

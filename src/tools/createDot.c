@@ -120,7 +120,7 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 							sprintf(str,"	%c%c%c -> %c%c%c;\n",tmp->x,tmp->y,tmp->z,tmp2->x,tmp2->y,tmp2->z);
 						}
 						else if(ObjectKind2 == NeuronNode_ForChWord )
-							sprintf(str,"	%c%c%c -> %d;\n",tmp->x,tmp->y,tmp->z,tmpObi2);
+							sprintf(str,"	%c%c%c -> %d;\n",(int)tmp->x,(int)tmp->y,(int)tmp->z,(int)tmpObi2);
 							
 /*						sprintf(str,"	%d -> %d;\n",tmp,tmp2);*/
 						write(fd, str, strlen(str));			
@@ -129,7 +129,7 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 						#ifdef   Nero_DeBuging22_11_13
 						
 						printf("paint  words   \n");	
-						printf("概念id=%d ，输出对象id=%d \n",tmpObi,tmpObi2);
+						printf("概念id=%d ，输出对象id=%d \n",(int)tmpObi,(int)tmpObi2);
 						#endif					
 						/*只是输出这个词汇有那几个字*/
 						if (ObjectKind2 == NeuronNode_ForChWord ){
@@ -145,7 +145,7 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 							if (c ==1)
 							{
 							tmp=tmpFiber1->obj->inputListHead->obj;
-							sprintf(str,"	%d ->  %c%c%c",tmpObi,/*counttt,*/tmp->x,tmp->y,tmp->z);
+							sprintf(str,"	%d ->  %c%c%c",(int)tmpObi,/*counttt,*/(int)tmp->x,(int)tmp->y,(int)tmp->z);
 							write(fd, str, strlen(str));								
 							}
 							else
@@ -153,7 +153,7 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 							
 							
 							tmp2=tmpFiber1->obj->inputListHead->obj;
-							sprintf(str,"%c%c%c",tmp2->x,tmp2->y,tmp2->z);
+							sprintf(str,"%c%c%c",(int)tmp2->x,(int)tmp2->y,(int)tmp2->z);
 							write(fd, str, strlen(str));							}
 							
 							tmpFiber1=tmpFiber1->next;
@@ -172,7 +172,7 @@ void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)
 						}
 						else
 						{
-							sprintf(str,"	%d -> %d;\n",tmpObi,tmpObi2);
+							sprintf(str,"	%d -> %d;\n",(int)tmpObi,(int)tmpObi2);
 							write(fd, str, strlen(str));						
 						}
 						break;
@@ -270,7 +270,7 @@ void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName)
 					
 			NeuronObject * tmp=tmpObi->inputListHead->obj;
 			
-			sprintf(str,"	%d -> %c%c%c;\n",nero_GetNeroKind(BaseObi),tmp->x,tmp->y,tmp->z);
+			sprintf(str,"	%d -> %c%c%c;\n",(int)nero_GetNeroKind(BaseObi),(int)tmp->x,(int)tmp->y,(int)tmp->z);
 			write(fd, str, strlen(str));	
 				
 			outputFiberOfbaseObj=outputFiberOfbaseObj->next;

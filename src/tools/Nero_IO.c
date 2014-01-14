@@ -6,6 +6,15 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+#include <iconv.h>
+
+#include <sys/mman.h> /* for mmap and munmap */
+#include <sys/types.h> /* for open */
+#include <sys/stat.h> /* for open */
+#include <fcntl.h>     /* for open */
+#include <unistd.h>    /* for lseek and write */
+
+
 #include<time.h>
 #include "../NeuralNetwork/NeuralNetwork.h"
 #include "../NeuralNetwork/NeuralOperating.h"
@@ -43,7 +52,12 @@ BEGIN_ONE_ARG_MESSAGE_MAP(IO_msg_print_map)
 END_ONE_ARG_MESSAGE_MAP
 
 
-
+BEGIN_TWO_ARG_MESSAGE_MAP(IO_msg_dataIO_map)
+    MSG_NAME(1, IO_InputDataToSys)
+/*    MSG_NAME(2, Log_printAllKindOf)*/
+/*    MSG_NAME(3, del_data)*/
+/*    MSG_NAME(4, sort_data)*/
+END_TWO_ARG_MESSAGE_MAP
 
 
 
@@ -58,9 +72,185 @@ struct  tm  *timenow;         //实例化tm结构指针
 /*nero_8int  logFile[500]="../log/log.txt";*/
 nero_8int  logFile[FILEPATH_MAX]="/tmp/log.txt";
 nero_8int  AllKindOfFile[FILEPATH_MAX]="/tmp/AllKindOfFile.txt";
-nero_8int  file_path_getcwd[FILEPATH_MAX]="/tmp";/*保存当前目录*/
+static nero_8int  file_path_getcwd[FILEPATH_MAX]="/tmp";/*保存当前目录*/
 nero_8int  strTmp[1500];
 
+
+
+
+/**/
+nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
+{
+	nero_s32int operate,isZh;
+	nero_8int zhWord[20];
+
+	nero_s32int fd;
+	nero_s8int *mapped_mem, * p,* strBegin,*strEnd;
+	nero_s32int flength = 1024;
+	nero_us8int tmpChar;
+	nero_s32int i,charNum/*strBegin*/,over;
+	nero_s32int charLength=0;//该字节所占位数
+	
+	nero_s32int ObjRecognizeLen[DataFlowProcessObjNum_MAX];//记录识别出的字符长度
+	nero_s32int ObjRecognizeCount=0;//记录已经识别出的字符数量
+
+
+			int sum;
+			
+			void **DataFlow;
+			nero_s32int *dataKind;
+/*			Utf8Word  *wP;*/
+			char *linc;
+			nero_s32int dataNum,k,countOfWord,m;	
+			struct DataFlowProcessArg arg2;			
+			struct { long type; char text[100]; } mymsg;
+
+
+	
+	if (operateKind==NULL || dataFilePath==NULL)
+	{
+		return nero_msg_ParameterError;
+	}
+/*	printf("%s\n",dataFilePath);*/
+	operate=*((nero_s32int *)operateKind);
+	void * start_addr = 0;
+	fd = open((char *)dataFilePath, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+	flength = lseek(fd, 1, SEEK_END);/*flength不包括文件的结尾符*/
+//	write(fd, "7", 1); /* 在文件最后添加一个空字符，以便下面printf正常工作 */
+	lseek(fd, 0, SEEK_SET);
+/*	write(fd, "7", 1);*/
+	mapped_mem = mmap(start_addr, flength, PROT_READ,        //允许读
+	MAP_PRIVATE,       //不允许其它进程访问此内存区域
+	fd, 0);
+	p=mapped_mem;	
+	strEnd=mapped_mem+flength-2;/*指向最后一个字节的位置，正常就是ox0A*/
+	/*这里想系统输入信息的方式是按信息的最小单位进行，即为一个字符*/
+	/*然后吧这些信息的地址以消息的形式发送给thread_for_Operating_Pic*/
+	
+	
+	/*从文件中依次获取一个UTF8的字符，然后判断是不是汉字，是则可以传送给系统*/
+	/*DataFlowProcessObjNum_MAX*/
+	over=1;
+	while(over != 0)
+	{
+		tmpChar=*p;
+		charNum=0;
+		
+		if (p <  strEnd) 	
+		{
+			/*因为可能有逗号，所以可能只有1个或者俩个字节组成一个字符*/
+			if (tmpChar < 128)
+			{
+				charNum=1;/*charNum记录utf8编码的字符数*/
+			
+			}else
+			if (tmpChar < 194)
+			{
+				printf("未知的数据1  tmpChar=%d\n",(int)tmpChar);
+				break;
+			}else if (tmpChar < 224)
+			{
+				charNum=2;
+			}else if (tmpChar < 240)
+			{
+				charNum=3;
+			}else
+			{
+				printf("未知的数据2  tmpChar=%d\n",(int)tmpChar);
+				break;
+			}
+/*			printf("find char %x  charNum=%d\n",tmpChar,charNum);*/
+		}
+		else
+			over=0;
+		/*将长度信息保存*/
+		if (ObjRecognizeCount  < DataFlowProcessObjNum_MAX   && over !=0)
+		{
+			if (ObjRecognizeCount == 0)
+			{
+				strBegin=p;
+			}		
+		
+			ObjRecognizeLen[ObjRecognizeCount]=charNum;//记录识别出的字符长度
+			ObjRecognizeCount++;
+			p=p+charNum;
+		}
+
+		if (ObjRecognizeCount == (DataFlowProcessObjNum_MAX )  ||  over == 0)
+		{
+
+			countOfWord=ObjRecognizeCount;
+			
+			(DataFlow)=(void **)malloc(sizeof(void *)*countOfWord);
+			(dataKind)=(nero_s32int *)malloc(sizeof(nero_s32int 			   					*)*countOfWord);	
+					
+			for (k=0;k<countOfWord;k++)
+			{
+				DataFlow[k]=(void *)malloc((sizeof( char)*3));
+				linc=(char *)DataFlow[k];
+			
+				memset(linc,0,3);
+				memcpy(linc,strBegin,ObjRecognizeLen[k]);
+
+				dataKind[k]=NeuronNode_ForChCharacter;
+				strBegin+=ObjRecognizeLen[k];
+				printf("%s",linc);
+				
+				#ifdef  Nero_DeBuging14_01_14_
+				char * ttmp[10];
+				memset(ttmp,0,10);
+				memcpy(ttmp,DataFlow[k],3);
+				printf("字符是：%s   len=%d\n",ttmp,ObjRecognizeLen[k]);
+				#endif				
+				
+			}			
+			printf("\n");
+			/*现在开始准备发送消息了*/
+			dataNum=countOfWord;	
+			arg2.dataNum=dataNum;
+			arg2.dataKind=dataKind;
+			arg2.conf=&neroConf;
+			arg2.DataFlow=DataFlow;
+/*			printf("dataNum=%d.\n",dataNum);*/
+			memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
+			mymsg.type =MsgId_Nero_DataFlowProcess ;
+			msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+
+			/*现在*/
+			
+			/*测试*/
+			#ifdef  Nero_DeBuging14_01_14_
+			char * str=malloc(sizeof(char)*ObjRecognizeCount*4);
+			sum=0;		
+			for (i=0;i<ObjRecognizeCount;i++)
+			{
+				sum+=ObjRecognizeLen[i];
+			}
+			memcpy(str,strBegin,sum);
+			str[sum]=0;
+/*			printf("sum=%d  ObjRecognizeCount=%d over=%d\n",sum,ObjRecognizeCount,over);*/
+			printf("%s\n",str);
+			free(str);
+			#endif
+			/*结束*/
+			ObjRecognizeCount=0;
+		}		
+		
+		
+/*		p++;*/
+	}
+	
+	
+	
+	
+	
+/*			isZh=IO_IfIsChineseChar(zhWord)*/
+	close(fd);
+	munmap(mapped_mem, flength);
+	
+	return nero_msg_ok;	
+	
+}
 /*打印某个类别下面的所有的衍生类*/
 nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 {
@@ -126,7 +316,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 							break;
 					
 					}
-					sprintf(strLinshi,"		地址 %x  <%s>\n",tmp,str);
+					sprintf(strLinshi,"		地址 %x  <%s>\n",(int)tmp,str);
 					addLineToFile(AllKindOfFile,strLinshi);
 
 				curFiber=curFiber->next;
@@ -147,7 +337,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 nero_s32int Log_printNeroObjLink(void * arg)
 {
 	nero_8int  *str=strTmp;
-	nero_s32int ObjectKind,ObjectKind2;
+	nero_s32int ObjectKind,ObjectKind2,ObjectKind3;
 	nero_8int  strLinshi[500];
 	NeuronObject * obj=(NeuronObject *)arg;
 	NeuronObject * tmp;
@@ -171,14 +361,20 @@ nero_s32int Log_printNeroObjLink(void * arg)
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:
 		case NeuronNode_ForChSentence:	
-			sprintf(str,"Log_printNeroObjLink:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),obj,ObjectKind);
+			sprintf(str,"Log_printNeroObjLink:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),(int)obj,(int)ObjectKind);
 			addLineToFile(logFile,str);	
 			break;	
 		case NeuronNode_ForChCharacter:
 		case NeuronNode_ForChWord :
 			curFiber=obj->outputListHead;
-			sprintf(str,"Log_printNeroObjLink:%s		地址：%x的link对象,ObjectKind=%d\n",asctime(timenow),obj,ObjectKind);
+			sprintf(str,"Log_printNeroObjLink:%s		地址：%x的link对象,ObjectKind=%d\n",asctime(timenow),(int)obj,(int)ObjectKind);
 			addLineToFile(logFile,str);
+			
+			if (curFiber == NULL)
+			{
+			sprintf(strLinshi,"		没有链接对象，结束link寻找\n");
+			addLineToFile(logFile,strLinshi);				
+			}
 			while(curFiber)
 			{
 				tmp=curFiber->obj;
@@ -197,13 +393,17 @@ nero_s32int Log_printNeroObjLink(void * arg)
 						case NeuronNode_ForChWord:
 							IO_getWordsInNero(str,tmp);
 							break;
+							
 						default:
-					
-					
+							ObjectKind3=nero_isBaseObj(tmp);
+							if (ObjectKind3 ==1)
+							{
+								sprintf(str,"链接对象为基类");
+							}
 							break;
 					
 					}
-					sprintf(strLinshi,"		-->%x  <%s>\n",tmp,str);
+					sprintf(strLinshi,"		-->%x  <%s>\n",(int)tmp,str);
 					addLineToFile(logFile,strLinshi);
 				}	
 				else
@@ -264,23 +464,23 @@ nero_s32int Log_printSomeMsgForObj(void * obj_,void *str_)
 		case NeuronNode_ForComplexDerivative:
 		case NeuronNode_ForChSentence:	
 			if (strlen(str_) <400)
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,ObjectKind=%d,%s\n",asctime(timenow),obj,ObjectKind,str_);	
+				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,ObjectKind=%d,%s\n",asctime(timenow),(int)obj,(int)ObjectKind,(char *)str_);	
 			else
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,ObjectKind=%d,非法的打印信息\n",asctime(timenow),obj,ObjectKind);	
+				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,ObjectKind=%d,非法的打印信息\n",asctime(timenow),(int)obj,(int)ObjectKind);	
 			break;	
 		case NeuronNode_ForChCharacter:
 			tmp=obj->inputListHead->obj;/*衍生对象的第一个数据*/
 			if (strlen(str_) <400)
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象《%c%c%c》,%s\n",asctime(timenow),obj,tmp->x,tmp->y,tmp->z,str_);	
+				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象《%c%c%c》,%s,数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(char *)str_,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
 			else
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象《%c%c%c》,非法的打印信息\n",asctime(timenow),obj,tmp->x,tmp->y,tmp->z);	
+				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象《%c%c%c》,非法的打印信息\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
 			break;
 		case NeuronNode_ForChWord :
 			IO_getWordsInNero(strLinshi,obj);
 			if (strlen(str_) <400)
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印词组对象《%s》,%s\n",asctime(timenow),obj,strLinshi,str_);	
+				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印词组对象《%s》,%s\n",asctime(timenow),(int)obj,strLinshi,(char *)str_);	
 			else
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印词组对象《%s》,非法的打印信息\n",asctime(timenow),obj,strLinshi);	
+				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印词组对象《%s》,非法的打印信息\n",asctime(timenow),(int)obj,strLinshi);	
 			break;
 		default:break;
 
@@ -290,7 +490,7 @@ nero_s32int Log_printSomeMsgForObj(void * obj_,void *str_)
 			
 	}
 	else
-		sprintf(str,"Log_printSomeMsgForObj:%s		空对象或者为基类对象,%s\n",asctime(timenow),str_);	
+		sprintf(str,"Log_printSomeMsgForObj:%s		空对象或者为基类对象,%s\n",asctime(timenow),(char *)str_);	
 
 	addLineToFile(logFile,str);
 	return nero_msg_ok;
@@ -323,15 +523,15 @@ nero_s32int IO_GetNeroObjMsg(void * arg)
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:
 		case NeuronNode_ForChSentence:	
-			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),obj,ObjectKind);	
+			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),(int)obj,(int)ObjectKind);	
 			break;	
 		case NeuronNode_ForChCharacter:
 			tmp=obj->inputListHead->obj;/*衍生对象的第一个数据*/
-			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印字符对象《%c%c%c》\n",asctime(timenow),obj,tmp->x,tmp->y,tmp->z);	
+			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印字符对象《%c%c%c》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
 			break;
 		case NeuronNode_ForChWord :
 			IO_getWordsInNero(strLinshi,obj);
-			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印词组对象《%s》\n",asctime(timenow),obj,strLinshi);	
+			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印词组对象《%s》\n",asctime(timenow),(int)obj,strLinshi);	
 			break;
 		default:break;
 
@@ -374,15 +574,15 @@ nero_s32int Log_printNeroObjMsg(void * arg)
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:
 		case NeuronNode_ForChSentence:	
-			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),obj,ObjectKind);	
+			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),(int)obj,(int)ObjectKind);	
 			break;	
 		case NeuronNode_ForChCharacter:
 			tmp=obj->inputListHead->obj;/*衍生对象的第一个数据*/
-			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印字符对象《%c%c%c》\n",asctime(timenow),obj,tmp->x,tmp->y,tmp->z);	
+			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印字符对象《%c%c%c》数据：《%x %x %x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
 			break;
 		case NeuronNode_ForChWord :
 			IO_getWordsInNero(strLinshi,obj);
-			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印词组对象《%s》\n",asctime(timenow),obj,strLinshi);	
+			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印词组对象《%s》\n",asctime(timenow),(int)obj,strLinshi);	
 			break;
 		default:break;
 
@@ -407,6 +607,7 @@ void *thread_for_IO_Pic(void *arg)
 	struct { long MsgId; char text[100]; } IOMsg;
 	struct  NeuronObjectMsg_  * NeroArgMsg_st;
 	struct  NeuronObjectMsgWithStr_  * NeroWithStrArgMsg_st;
+	struct  IODataMsg_ * DataIO_st;
 	key_t ipckey;
 	int IO_mq_id;
 
@@ -465,7 +666,22 @@ void *thread_for_IO_Pic(void *arg)
 			#endif
 			break;
 			
+		case MsgId_IO_dataIO:
+
+			DataIO_st=(struct  IODataMsg_  * )&IOMsg;
 			
+			for( i = 0; i < size_message_map; i++)
+			{
+			    if( IO_msg_dataIO_map[i].id == DataIO_st->fucId )
+				 (*(IO_msg_dataIO_map[i].operate) )(&(DataIO_st->operateKind),DataIO_st->str);
+			}				
+			
+			
+			
+			#ifdef Nero_DeBugInOperating_Pic
+			 printf("MsgId_IO_CreateNetNet:\n");
+			#endif
+			break;			
 	
 		default:			
 			#ifdef Nero_DeBugInOperating_Pic
@@ -674,7 +890,114 @@ nero_s32int IO_getZhInNero(nero_8int str[],NeuronObject * obj)
 
 return nero_msg_ok;
 }
+/*判断该字是不是一个汉字，而不是其他字符如标点，字母等*/
+int IO_IfIsChineseChar(char src[])
+{
+	if(src == NULL)
+	{
+		return 0;
+	}
+	char res[8];
+	int is;
+	int ok=UTF8ToGBK(src,res);
 
+	if(strlen(res) >0 && ok== 1)
+	{
+/*		printf("%s\n", dst.c_str());*/
+		is=GetToken(res);
+	}	
+	else
+		is=0;
+		
+	return is;
+}
+//编码转换，从UTF8转换为GBK。如果原串不空，返回空，则为转换失败
+int UTF8ToGBK(char src[],char res[])
+{
+/*	string ans;*/
+	int len = strlen(src)*2+1;
+	char *dst = res;
+	if(dst == NULL || res == NULL)
+	{
+		return 0;
+	}
+	memset(dst, 0, len);
+	char *in = src;
+	char *out = dst;
+	size_t len_in = strlen(src);
+	size_t len_out = len;
+	
+	iconv_t cd = iconv_open("GBK", "UTF-8");
+	if ((iconv_t)-1 == cd)
+	{
+/*		printf("init iconv_t failed\n"); free(dst);*/
+		return ;
+	}
+	int n = iconv(cd, &in, &len_in, &out, &len_out);
+	if(n<0)
+	{
+/*		printf("iconv failed\n");*/
+	}
+	else
+	{
+/*		ans = dst;*/
+	}
+/*      free(dst);*/
+	iconv_close(cd);
+	return 1;
+}
+
+//将str分隔成一个一个的字符，并判断是否是汉字，并输出编码，包括简体和繁体
+
+/*但是这里修改成只判断str中的第一个字符，哪怕后面还有字符也不管了*/
+/*返回1就表面是汉字*/
+int  GetToken( char * str)
+{
+	
+	short high, low;
+	unsigned int code;
+	 char   s[4];
+	 int i=0;
+	 if (str == NULL)
+	 {
+	 	return 0;
+	 }
+	 int len = strlen(str);
+	for(; i<len; i++)
+	{
+		if(str[i]>=0 || i==len-1)
+		{
+/*			printf("%c >> no\n", str[i]);   //ASCii字符*/
+			return 0;
+		}
+		else
+		{
+			//计算编码
+			high = (short)(str[i] + 256);
+			low = (short)(str[i+1]+256);
+			code = high*256 + low;
+			
+			//获取字符
+			s[2] = '0';
+			s[0] = str[i];
+			s[1] = str[i+1];
+			i++;
+		
+/*			printf("%s >> 0x%x", s, code);*/
+			if(code>=0xB0A1 && code<=0xF7FE || code>=0x8140 && code<=0xA0FE || code>=0xAA40 && code<=0xFEA0)
+			{
+/*				printf(" yes\n");*/
+				return 	1;
+			}
+			else
+			{
+/*				printf(" no\n");*/
+				return 0;
+			}
+		}
+	}
+	return 0;
+}
 
 
 

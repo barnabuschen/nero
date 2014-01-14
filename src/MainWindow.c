@@ -73,7 +73,7 @@ GtkWidget *textViewForSearchFixedInsideBox;
 GtkWidget * ceshibuttoms;
 
 
-
+static nero_8int  file_path_getcwd[FILEPATH_MAX];/*保存当前目录*/
 
 LineMan *manAllLineFromNeo;
 
@@ -117,7 +117,8 @@ void ProInitialization()
 
 	
 /*	sleep(1);*/
-	
+	/*建立网络*/
+	initNeroNetWork( );
 
 }
 void frame_callback(GtkWindow *window, GdkEvent *event, gpointer data)
@@ -205,7 +206,7 @@ void tab_searchNeroMsg( GtkWidget *widget, gpointer data )
 
 	
 	obj=   (NeuronObject *)strtol(str,NULL,16);
-	printf("obj=:%x\n",obj);
+	printf("obj=:%x\n",(unsigned int )obj);
 	
 	if (str)
 	{
@@ -359,7 +360,49 @@ void myMainWindow(GtkWidget *window)
 	//工程信息初始化
 	ProInitialization();
 }
-
+/*给系统发送数据，*/
+void GetDataForNeroSys( GtkWidget *widget, gpointer data )
+{
+	/*从默认的配置文件中读取数据所在的文件，向void *thread_for_IO_Pic(void *arg)发送消息*/
+	struct  IODataMsg_  DataIO_st;
+	gchar * fileName="./NeroConfig/wordsFileName";
+	int  countline,i;
+	char * datafile;
+	nero_8int  dataFilePath[FILEPATH_MAX];
+	int * line=findAllLine(fileName,&countline);
+	if (line)
+	{
+			free(line);
+	}
+	getcwd(file_path_getcwd,FILEPATH_MAX);
+	 
+	for (i=0;i<countline;i++)
+	{
+		 datafile=getLineInFile(fileName,i+1);
+		 
+		 if (strlen(datafile) >0  && strlen(datafile) <  FILEPATH_MAX)
+		 {
+		 	sprintf(dataFilePath,"%s/%s",file_path_getcwd,datafile);
+		
+		
+			/*现在可以想系统发送消息了*/
+			DataIO_st.MsgId = MsgId_IO_dataIO;
+			DataIO_st.fucId = 1;
+			DataIO_st.operateKind = 1;
+			strcpy(DataIO_st.str,dataFilePath);//newfilename就是发送的字符串
+			msgsnd(IO_mq_id, &DataIO_st, sizeof(DataIO_st), 0);
+		 }		
+		
+/*		printf("get file  %s\n",dataFilePath);*/
+		if (datafile)
+		{
+			free(datafile);
+		}		 
+		 
+	}
+	
+	
+}
 void readUTF8File( GtkWidget *widget, gpointer data )
 {
 	GtkWidget * dialog= dialog = gtk_message_dialog_new (Mainwindow,
@@ -388,11 +431,17 @@ void createToolsTab(GtkWidget *fixedInside)
 	text = g_strdup_printf("读取utf8编码的文件");
 	buttoms[buttomID]=gtk_button_new_with_label(text);
 	g_signal_connect (buttoms[buttomID], "clicked",G_CALLBACK(readUTF8File), NULL);
-	gtk_container_add(GTK_CONTAINER(vbox), buttoms[buttomID]);
+	gtk_fixed_put (GTK_FIXED (fixedInside), buttoms[buttomID], 0, 0);
+	buttomID++;
+	/*输入词汇概念的按钮*/
+	text = g_strdup_printf("输入词汇概念的按钮");
+	buttoms[buttomID]=gtk_button_new_with_label(text);
+	g_signal_connect (buttoms[buttomID], "clicked",G_CALLBACK(GetDataForNeroSys), NULL);
+	gtk_fixed_put (GTK_FIXED (fixedInside), buttoms[buttomID], 0, 30);
+	buttomID++;
 	
+/*	gtk_widget_set_size_request (vbox, 15, 15);*/
 	
-	gtk_widget_set_size_request (vbox, 15, 15);
-	gtk_fixed_put (GTK_FIXED (fixedInside), vbox, 0, 0);
 	
 	    
 }
@@ -571,7 +620,7 @@ void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 	nero_AddWordsIntoNet( GodNero,& wordsHead);
 	#endif	
 	
-	#ifdef  Nero_DeBuging20_12_13
+	#ifdef  Nero_DeBuging20_12_13_
 	void **DataFlow;
 	nero_s32int *dataKind;
 	Utf8Word  *wP;
@@ -742,12 +791,12 @@ void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook)
 	switch(counts)
 	{
 	case 2:text = g_strdup_printf("createNero");createCreateNeroTab( fixedInside);break;
-	case 1:
+	case 3:
 		text = g_strdup_printf("信息查询");
 		createMsgSearchTab( fixedInside);
 		textViewForSearchFixedInsideBox=fixedInside;
 		break;
-	case 3:text = g_strdup_printf("tools");createToolsTab(fixedInside);break;
+	case 1:text = g_strdup_printf("tools");createToolsTab(fixedInside);break;
 	default:break;
 	
 	}
@@ -843,8 +892,111 @@ gboolean spin_myWidget_draw (GtkWidget *widget, cairo_t   *cr)
 gtk_widget_override_background_color(widget,GTK_STATE_FLAG_NORMAL,&rgba);
 
 }
+/*建立nero系统*/
+void initNeroNetWork( )
+{
+
+/*	int res;*/
+	struct ZhCharArg arg1;
+	struct DataFlowProcessArg arg2;
 
 
+	struct { long type; char text[100]; } mymsg;	
+	readUTF8FileData("data/ChUnicode");
+	
+	mymsg.type =MsgId_Nero_CreateNetNet;
+	/*res=*/msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+/*	printf("msgsnd strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
+/*	printf("msgsnd chars-%d.\n",res);*/
+	
+	/*一下步就是将字符信息加入网络 */
+	arg1.chChar=chChar;
+	arg1.charCounts=charCounts;
+	memcpy(&(mymsg.text),&arg1,sizeof(struct ZhCharArg));
+	mymsg.type =MsgId_Nero_addZhCharIntoNet;
+	/*res=*/msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+
+		
+		
+	/*将一些词加入网络 */
+	Utf8Word  wordsHead;
+/*	Utf8Word  MultiBytewordsHead;	*/
+	#ifdef  Nero_DeBuging03_12_131_
+/*	readUTF8FileForWords("data/词库" ,& MultiBytewordsHead);*/
+	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& MultiBytewordsHead);
+	nero_AddWordsIntoNet( GodNero,& MultiBytewordsHead);
+	#endif	
+/*	printWords(&wordsHead);		*/
+	/*字库*/
+	#ifdef  Nero_DeBuging03_12_13_
+	readUTF8FileForWords("data/ceshi2" ,& wordsHead);
+	nero_AddWordsIntoNet( GodNero,& wordsHead);
+	#endif	
+	
+	
+	
+	
+	
+	
+	#ifdef  Nero_DeBuging20_12_13_
+	void **DataFlow;
+	nero_s32int *dataKind;
+	Utf8Word  *wP;
+	char *linc;
+	nero_s32int dataNum,k,countOfWord,m;
+	readUTF8FileForWords("data/ceshi2" ,& wordsHead);
+	/*将Utf8Word转化为一个数组，每个单位是一个词*/
+		wP=wordsHead.next;
+		countOfWord=0;
+		while (wP)
+		{
+/*		printf("wP->num=%d.\n",wP->num);*/
+			countOfWord++;
+			wP=wP->next;
+			
+		}
+		(DataFlow)=(void **)malloc(sizeof(void *)*countOfWord);
+		(dataKind)=(nero_s32int *)malloc(sizeof(nero_s32int *)*countOfWord);
+		for (k=0,wP=wordsHead.next;k<countOfWord  &&  (wP != NULL);k++)
+		{
+			DataFlow[k]=(void *)malloc((sizeof( char)*(wP->num * 3+1)));
+			linc=(char *)DataFlow[k];
+			
+			for (m=0;m<wP->num;m++)
+			{
+				memcpy(&(linc[m*3]), &((wP->words)[m]), (3));
+			}
+			
+			linc[wP->num * 3]=0;
+			dataKind[k]=NeuronNode_ForChWord;
+			#ifdef  Nero_DeBuging20_12_13_
+			printf("wP->num=%d.\n",wP->num);
+			printf("len=%d,%s.\n\n",sizeof(linc),linc);
+			#endif
+			wP=wP->next;
+		}
+		dataNum=countOfWord;
+		neroConf.addLevelObjAlways = 1 ;
+		
+		
+	arg2.dataNum=dataNum;
+	arg2.dataKind=dataKind;
+	arg2.conf=&neroConf;
+	arg2.DataFlow=DataFlow;
+/*	memset(mymsg.text, 0, 100);  */
+	memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
+	mymsg.type =MsgId_Nero_DataFlowProcess ;
+	msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+			
+
+	#endif		
+	
+	
+	
+	
+
+	
+}
 
 
 

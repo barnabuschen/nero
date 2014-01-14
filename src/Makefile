@@ -286,7 +286,7 @@ gtkMain_LDADD = $(gtkMain_LIBS)
 AM_LDFLAGS = $(gtkMain_CFLAGS)
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
-
+	./$(bin_PROGRAMS)
 .SUFFIXES:
 .SUFFIXES: .c .o .obj
 am--refresh: Makefile
@@ -390,7 +390,8 @@ mostlyclean-compile:
 
 distclean-compile:
 	-rm -f *.tab.c
-
+d: 
+	gdb $(bin_PROGRAMS)
 include ./$(DEPDIR)/gtkMain-MainWindow.Po
 include ./$(DEPDIR)/gtkMain-Nero_IO.Po
 include ./$(DEPDIR)/gtkMain-NeuralNetwork.Po

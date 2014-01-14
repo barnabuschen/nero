@@ -47,9 +47,21 @@ int next;
 */
  typedef struct NeroConfiguration
  {
-	nero_us32int  addNewObj; /*是否在DataFlowProcess中添加在网络中的没有的数据为一个新概念，为1添加否则不添加*/
-	nero_us32int  addLevelObj; /*是否在DataFlowProcess中形成层次结构，为1添加否则不添加*/
-	nero_us32int  addLevelObjAlways; /*在DataFlowProcess中总是形成层次结构，为1添加否则不添加*/
+	nero_us32int  addNewObj; /*是否在DataFlowProcess中添加在网络中的没有的数据为一个新概念，
+					为1添加否则不添加,这个变量针对，做为整体输入的数据流（如一个词组），
+					在网络中的不存在相应概念时是否添加概念
+					*/
+	nero_us32int  addLevelObj; /*是否在DataFlowProcess中形成层次结构，为1添加否则不添加
+					这个变量针对，某次依次输入的的数据流（如一个句子，被分割为词组或单个
+					字符时），
+					在网络中的不存在由这些子概念组成的相应 高层概念 时是否添加概念
+					这个选项激活时会根据当前链接的活跃情况创建新概念，否则不会添加新概念
+					*/
+	nero_us32int  addLevelObjAlways; /*在DataFlowProcess中总是形成层次结构，为1添加否则不添加
+	
+					这个选项激活时会不管当前链接的活跃情况和addLevelObj的值
+					，总是会创建新  高层概念
+					*/
 	nero_us32int  neroTime;     /*系统运行时间单位，初始化为0，隔一个小时增加1*/
 	nero_us32int  ifReCreateLogFile;     /*系统运行时是否重新生成log文件*/
 		  

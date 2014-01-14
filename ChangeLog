@@ -8,3 +8,4 @@ ver0.14版本：
 更新说明：
 	1:文件层次结构整理
 	2:makefile重写
+	3:处理数据流水,DataFlowProcess()函数的细化

@@ -1,24 +1,7 @@
-Log_printSomeMsgForObj:Mon Jan 13 01:55:13 2014
-		地址：805be20,打印字符对象《安》,在nero_IfHasNeuronObject中找到该对象
-Log_printSomeMsgForObj:Mon Jan 13 01:55:13 2014
-		地址：805eaf0,打印字符对象《插》,在nero_IfHasNeuronObject中找到该对象
-Log_printSomeMsgForObj:Mon Jan 13 01:55:13 2014
-		空对象或者为基类对象,在nero_IfHasObjFromMultiples2中等待查找高层概念
-Log_printSomeMsgForObj:Mon Jan 13 01:55:13 2014
-		空对象或者为基类对象,在nero_IfHasObjFromMultiples2中等待查找高层概念
-Log_printSomeMsgForObj:Mon Jan 13 01:55:13 2014
+Log_printSomeMsgForObj:Wed Jan 15 00:54:53 2014
 		空对象或者为基类对象,在DataFlowProcess中找不到该概念
-Log_printSomeMsgForObj:Mon Jan 13 01:55:13 2014
-		空对象或者为基类对象,在nero_IfHasObjFromMultiples2中等待查找高层概念
-Log_printSomeMsgForObj:Mon Jan 13 01:55:13 2014
-		空对象或者为基类对象,在nero_IfHasObjFromMultiples2中等待查找高层概念
-Log_printSomeMsgForObj:Mon Jan 13 01:55:13 2014
-		地址：80aaf18,打印词组对象《安插》,在DataFlowProcess中创建对象成功
-Log_printSomeMsgForObj:Mon Jan 13 01:55:13 2014
-		地址：805be20,打印字符对象《安》,在nero_IfHasNeuronObject中找到该对象
-Log_printSomeMsgForObj:Mon Jan 13 01:55:13 2014
-		地址：805eaf0,打印字符对象《插》,在nero_IfHasNeuronObject中找到该对象
-Log_printSomeMsgForObj:Mon Jan 13 01:55:13 2014
-		空对象或者为基类对象,在nero_IfHasObjFromMultiples2中等待查找高层概念
-Log_printSomeMsgForObj:Mon Jan 13 01:55:13 2014
-		地址：80aaf18,打印词组对象《安插》,在nero_IfHasObjFromMultiples2中等待查找高层概念
+Log_printSomeMsgForObj:Wed Jan 15 00:54:53 2014
+		地址：80ac020,打印字符对象《　》,在DataFlowProcess中创建对象成功,数据是：《e38080》
+Log_printNeroObjLink:Wed Jan 15 00:54:53 2014
+		地址：80ac020的link对象,ObjectKind=61
+		该对象为基类，无需link

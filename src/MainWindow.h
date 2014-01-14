@@ -6,7 +6,9 @@
 #define buttomNum  40
 #define textNum  4
 #include <gtk/gtk.h>
-
+void initNeroNetWork( );
+void GetDataForNeroSys( GtkWidget *widget, gpointer data );
+void CreateNeroNetWork( GtkWidget *widget, gpointer data );
 void createMsgSearchTab(GtkWidget *fixedInside);
 void createToolsTab();
 void createCreateNeroTab(GtkWidget *fixedInside);

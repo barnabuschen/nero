@@ -1480,8 +1480,8 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 				/*往概念填数据*/
 				nero_addDataToZhNeroObj(tmp,wordP2);
 			
-				#ifdef  Nero_DeBuging18_11_13_0_
-				printf("new nero:   kind=%d.\n",nero_GetNeroKind(newObj));
+				#ifdef  Nero_DeBuging18_11_13
+				printf("new nero:   kind=%d.data:%x %x %x \n",nero_GetNeroKind(tmp),wordP2->first,wordP2->second,wordP2->third);
 				#endif			
 
 			}			
@@ -1535,10 +1535,10 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 	
 	}
 	/*最后加入网络*/
-/*	if (tmp != NULL)*/
-/*	{*/
-/*		nero_addNeroIntoNet( GodNero,tmp);*/
-/*	}*/
+	if (tmp != NULL)
+	{
+		nero_addNeroIntoNet( GodNero,tmp);
+	}
 	
 	return tmp;
 
@@ -1552,8 +1552,9 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 	ChUTF8  words[400];
 	NeuronObject *tmp;
 	nero_s32int strlenInData,i;
-	ChUTF8 * wordP2;
+	ChUTF8  wordP2;
 	ChUTF8_  *wordP;
+	nero_us8int  * ttt22;
 	if (Data == NULL  || dataKind<NeuronNode_ForNone  || dataKind>NeuronNode_Max  || GodNero == NULL )
 	{
 		return NULL;
@@ -1563,10 +1564,17 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 	switch(dataKind)
 	{
 	case NeuronNode_ForChCharacter:
-		wordP2=(ChUTF8  *)Data;
-/*		word.first=Data*/
-/*		word.second,word.third;*/
-		tmp=nero_IfHasZhWord( GodNero,wordP2, dataKind);
+		ttt22=Data;
+/*		wordP2=(ChUTF8  *)Data;*/
+		wordP2.first=ttt22[0];
+		wordP2.second=ttt22[1];
+		wordP2.third=ttt22[2];
+		#ifdef Nero_DeBuging14_01_14
+		
+/*			printf("寻找字符2：%x %x %x.\n",wordP2[i].first,words[i].second,words[i].third);*/
+			printf("寻找字符2：%x %x %x.\n",ttt22[0],ttt22[1],ttt22[2]);
+		#endif	
+		tmp=nero_IfHasZhWord( GodNero,&wordP2, dataKind);
 		break;
 	
 	case NeuronNode_ForChWord:
@@ -1578,6 +1586,7 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 		strlenInData=strlenInData/3;
 		if (strlenInData >=400)
 		{
+			printf("nero_IfHasNeuronObject strlenInData >=400  fail \n");
 			break;
 		}
 		for (i=0;i<strlenInData;i++)
@@ -1586,9 +1595,11 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 			words[i].first=wordP[i].first;
 			words[i].second=wordP[i].second;
 			words[i].third=wordP[i].third;
+			
+			
 			str[i]=nero_IfHasZhWord( GodNero,&(words[i]),NeuronNode_ForChCharacter);
 			
-			#ifdef Nero_DeBuging09_01_14
+			#ifdef Nero_DeBuging14_01_14_
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 			neroObjMsgWithStr_st.fucId = 1;
 			neroObjMsgWithStr_st.Obi = str[i];
@@ -1624,7 +1635,11 @@ NeuronObject * nero_IfHasZhWord(NeuronObject *GodNero,ChUTF8 * word,nero_s32int 
 	NerveFiber  *  curFiber;
 	NerveFiber  *  outputFiberOfbaseObj;
 	
-
+		#ifdef Nero_DeBuging14_01_14
+		
+			printf("寻找字符3：%x %x %x.\n",word->first,word->second,word->third);
+/*			printf("寻找字符3：%x %x %x.\n",ttt22[0],ttt22[1],ttt22[2]);*/
+		#endif	
 	curFiber=GodNero->outputListHead;
 	for (;curFiber !=NULL;curFiber=curFiber->next)
 	{

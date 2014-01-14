@@ -81,7 +81,7 @@ window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 * 要求调用上面定义的 d e l e t e _ e v e n t ( )函数传递给这个回调函数
 * 的数据是NULL,回调函数会忽略这个参数 */
 
-gtk_window_set_title(GTK_WINDOW(window),"this is my window");
+gtk_window_set_title(GTK_WINDOW(window),"Nero  Sys");
 
 
 /*g_signal_connect (window,"delete-event",G_CALLBACK (delete_event),NULL);*/

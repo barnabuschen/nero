@@ -9,7 +9,7 @@
 
 /*一些常量*/
 
-
+#define DataFlowProcessObjNum_MAX (7)
 #define FILEPATH_MAX (180)
 /*8192kb  =1032KB*/
 #define ChineseCharNum  8000
@@ -68,6 +68,7 @@ typedef  char  nero_8int;
 #define Nero_DeBuging09_01_14
 #define Nero_DeBuging10_01_14
 #define Nero_DeBuging09_01_14
+#define Nero_DeBuging14_01_14
 #define NowIdDeBug 
 //#define Nero_DeBugInOperating_Pic
 #define NoIncludeG_return_if_fail  
@@ -181,16 +182,16 @@ int count;//如果是表头：记录多少条线
 //#ifdef BYTEOS64
 //#endif
 //struct { long type; char text[100]; } mymsg;
+//nero_8int  file_path_getcwd[FILEPATH_MAX];/*保存当前目录*/
+nero_8int * Operating_ipckey; 
 
-char * Operating_ipckey; 
-
-char * IO_ipckey ;
-char * Log_ipckey ;
+nero_8int * IO_ipckey ;
+nero_8int * Log_ipckey ;
 
 
-int Operating_mq_id;
-int IO_mq_id;
-int Log_mq_id;
+nero_s32int Operating_mq_id;
+nero_s32int IO_mq_id;
+nero_s32int Log_mq_id;
 
 
 

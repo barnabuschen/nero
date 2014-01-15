@@ -194,7 +194,7 @@ nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 
 				dataKind[k]=NeuronNode_ForChCharacter;
 				strBegin+=ObjRecognizeLen[k];
-				printf("%s",linc);
+/*				printf("%s",linc);*/
 				
 				#ifdef  Nero_DeBuging14_01_14_
 				char * ttmp[10];
@@ -204,7 +204,7 @@ nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 				#endif				
 				
 			}			
-			printf("\n");
+/*			printf("\n");*/
 			/*现在开始准备发送消息了*/
 			dataNum=countOfWord;	
 			arg2.dataNum=dataNum;
@@ -439,7 +439,7 @@ nero_s32int Log_printNeroObjLink(void * arg)
 nero_s32int Log_printSomeMsgForObj(void * obj_,void *str_)
 {
 	nero_8int  *str=strTmp;
-	nero_s32int ObjectKind;
+	nero_s32int ObjectKind,linshi;
 	nero_8int  strLinshi[500];
 	NeuronObject * obj=(NeuronObject *)obj_;
 	NeuronObject * tmp;
@@ -470,15 +470,19 @@ nero_s32int Log_printSomeMsgForObj(void * obj_,void *str_)
 			break;	
 		case NeuronNode_ForChCharacter:
 			tmp=obj->inputListHead->obj;/*衍生对象的第一个数据*/
-			if (strlen(str_) <400)
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象《%c%c%c》,%s,数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(char *)str_,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+			if (strlen(str_) <400  && tmp->x !=0 && tmp->y !=0 && tmp->z !=0)
+			{
+				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象(%c%c%c),%s,数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(char *)str_,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+			}
+			else if (strlen(str_) <400)
+				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象(特殊符号)《***》,%s,数据是：《%x%x%x》\n",asctime(timenow),(int)obj/*,(int)tmp->x,(int)tmp->y,(int)tmp->z*/,(char *)str_,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
 			else
 				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象《%c%c%c》,非法的打印信息\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
 			break;
 		case NeuronNode_ForChWord :
-			IO_getWordsInNero(strLinshi,obj);
+			linshi=IO_getWordsInNero(strLinshi,obj);
 			if (strlen(str_) <400)
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印词组对象《%s》,%s\n",asctime(timenow),(int)obj,strLinshi,(char *)str_);	
+				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印词组对象《%s》,句子长度为：%d,%s\n",asctime(timenow),(int)obj,strLinshi,linshi,(char *)str_);	
 			else
 				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印词组对象《%s》,非法的打印信息\n",asctime(timenow),(int)obj,strLinshi);	
 			break;
@@ -627,6 +631,7 @@ void *thread_for_IO_Pic(void *arg)
 	IO_mq_id = msgget(ipckey,0);// IPC_CREAT
 	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 	printf("IO_ipckey Message identifier is %d\n", IO_mq_id);
+
 	while(x == 0)
 	{
 /*		sleep(1);*/
@@ -737,6 +742,7 @@ void *thread_for_Log_Pic(void *arg)
 	Log_mq_id = msgget(ipckey,0);// IPC_CREAT
 	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 	printf("Log_ipckey Message identifier is %d\n", Log_mq_id);
+/*	while( msgrcv(Log_mq_id, &LogMsg, sizeof(LogMsg), 0, MSG_NOERROR) >1 );*/
 	while(x == 0)
 	{
 /*		sleep(1);*/
@@ -806,7 +812,7 @@ void *thread_for_Log_Pic(void *arg)
 /*从一个数组对象中提前词组，存与str中*/
 nero_s32int IO_getWordsInNero(nero_8int str[],NeuronObject * obj)
 {
-	nero_s32int i,p;
+	nero_s32int i,p,count;
 	nero_us32int c=1;	
 	nero_s32int ObjectKind;
 	NeuronObject * tmp;
@@ -818,7 +824,7 @@ nero_s32int IO_getWordsInNero(nero_8int str[],NeuronObject * obj)
 		return nero_msg_ParameterError;
 	}
 
-
+	count=0;
 	tmpObi=obj;/*每一个衍生类*/
 	ObjectKind=nero_GetNeroKind(tmpObi);	
 
@@ -832,9 +838,19 @@ nero_s32int IO_getWordsInNero(nero_8int str[],NeuronObject * obj)
 		c=1;
 		while(tmpFiber1)
 		{
-
+				count++;
 				tmp=tmpFiber1->obj->inputListHead->obj;
-				sprintf(str+p,"%c%c%c",tmp->x,tmp->y,tmp->z);
+				if (tmp->x == 0  ||  tmp->y == 0  || tmp->z == 0)
+				{
+/*					if (tmp->x == 0)*/
+/*					{*/
+/*						sprintf(str+p,"<0>");*/
+/*					}*/
+/*					else*/
+/*						sprintf(str+p,"<%d>",tmp->x);*/
+				}
+				else
+					sprintf(str+p,"%c%c%c",tmp->x,tmp->y,tmp->z);
 				p+=3;
 				
 				tmpFiber1=tmpFiber1->next;
@@ -855,7 +871,7 @@ nero_s32int IO_getWordsInNero(nero_8int str[],NeuronObject * obj)
 		sprintf(str,"错误的词组对象");						
 	}
 
-return nero_msg_ok;
+return count;
 }
 
 /*从一个字符对象中提取，存与str中*/

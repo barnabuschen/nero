@@ -1,7 +1,44 @@
-Log_printSomeMsgForObj:Wed Jan 15 00:54:53 2014
-		空对象或者为基类对象,在DataFlowProcess中找不到该概念
-Log_printSomeMsgForObj:Wed Jan 15 00:54:53 2014
-		地址：80ac020,打印字符对象《　》,在DataFlowProcess中创建对象成功,数据是：《e38080》
-Log_printNeroObjLink:Wed Jan 15 00:54:53 2014
-		地址：80ac020的link对象,ObjectKind=61
-		该对象为基类，无需link
+Log_printSomeMsgForObj:Thu Jan 16 02:02:01 2014
+		地址：80ac410,打印词组对象《。》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:01 2014
+		地址：80ac428,打印词组对象《。》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:01 2014
+		地址：80ac470,打印词组对象《。》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:01 2014
+		地址：80ac4e8,打印词组对象《。》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac500,打印词组对象《。》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac518,打印词组对象《。》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac530,打印词组对象《说：》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac548,打印词组对象《说：》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac560,打印词组对象《说：》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac578,打印词组对象《说：》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac590,打印词组对象《？》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac5a8,打印词组对象《观说：》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac5c0,打印词组对象《了。》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac5d8,打印词组对象《：》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac5f0,打印词组对象《：　　许三观说》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac608,打印词组对象《许三观说：》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac620,打印词组对象《　许三观说：》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac638,打印词组对象《？》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac650,打印词组对象《许三观说：》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac668,打印词组对象《。》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac680,打印词组对象《三观说：》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Thu Jan 16 02:02:02 2014
+		地址：80ac698,打印词组对象《。》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功

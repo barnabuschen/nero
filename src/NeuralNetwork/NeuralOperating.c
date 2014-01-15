@@ -18,7 +18,7 @@ static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
 
 void *thread_for_Operating_Pic(void *arg)
 {
-	int x=0;
+	int x=0,countRunTimes=0;
 	int timeToWaitCandy=0;
 	char *fileName=NULL;
 	long MsgId;
@@ -45,9 +45,10 @@ void *thread_for_Operating_Pic(void *arg)
 	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 	printf("Operating_ipckey Message identifier is %d\n", Operating_mq_id);
 	hasSetUpNeroSys=0;
+/*	while( msgrcv(Operating_mq_id, &OperatingMsg, sizeof(OperatingMsg), 0, MSG_NOERROR) >1 );*/
 	while(x == 0)
 	{
-		sleep(1);
+/*		sleep(1);*/
 /*		printf("wait for Operating msg......\n");*/
 		received = msgrcv(Operating_mq_id, &OperatingMsg, sizeof(OperatingMsg), 0, MSG_NOERROR);
 		if (errno != 0)
@@ -85,23 +86,24 @@ void *thread_for_Operating_Pic(void *arg)
 			break;	
 		case MsgId_Nero_DataFlowProcess :
 			arg2=(struct DataFlowProcessArg *)OperatingMsg.text;
+			countRunTimes++;
 			/*判断系统到底初始化没有*/
 			if (hasSetUpNeroSys == 1)
 			{
 					
 				
 				DataFlowProcess(arg2->DataFlow,arg2->dataKind,arg2->dataNum,  GodNero, arg2->conf);
-				#ifdef Nero_DeBuging09_01_14
-				 printf("MsgId_Nero_DataFlowProcess:\n");
+				#ifdef Nero_DeBuging09_01_14_
+				 printf("MsgId_Nero_DataFlowProcess{%d}:\n",countRunTimes);
 				#endif			
 			
 				/*show  neroNet*/
-				#ifdef  Nero_DeBuging03_12_13
+				#ifdef  Nero_DeBuging03_12_13_
 				 createNeroNetDotGraphForWords(GodNero, "data/wordspic.dot");
 				printf("createNeroNetDotGraph   done.\n");	
 				#endif				
 
-				#ifdef  Nero_DeBuging03_12_13
+				#ifdef  Nero_DeBuging03_12_13_
 				system("xdot data/wordspic.dot");
 				#endif
 				
@@ -117,8 +119,11 @@ void *thread_for_Operating_Pic(void *arg)
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif					
 			}
-			else
-				printf("系统未初始化\n");
+			else{
+				printf("系统未初始化\n");			
+			
+			}
+
 			break;				
 			
 	
@@ -200,7 +205,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		/*通过objs[j]里面的值就可以知道有没有在网络中找到这个对象*/
 
 /*		objs[i]*/
-		#ifdef Nero_DeBuging14_01_14
+		#ifdef Nero_DeBuging14_01_14_
 		nero_us8int * tttttm=(char *)DataFlow[i];
 		printf("寻找字符1：%x %x %x .\n",(int)tttttm[0],(int)tttttm[1],(int)tttttm[2]);
 		#endif	
@@ -209,8 +214,9 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		#ifdef Nero_DeBuging21_12_13
 		if (tmpObi == NULL  )
 		{
+				
+				#ifdef Nero_DeBuging09_01_14_
 				printf("找不到子概念\n");
-				#ifdef Nero_DeBuging09_01_14
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = tmpObi;
@@ -223,7 +229,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		}
 		else 
 		{
-			printf("找到子概念\n");
+/*			printf("找到子概念\n");*/
 		}			
 		#endif
 		/*如果不存在则尝试将该对象加入网络*/
@@ -234,7 +240,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 			#ifdef Nero_DeBuging21_12_13
 			if (tmpObi != NULL  )
 			{
-				printf("添加子概念成功\n\n");
+				
 /*				nero_printNeroLink("log/ObjLink.log",(void *)tmpObi);*/
 /*				*/
 /*				 neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;*/
@@ -242,7 +248,8 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*				 neroObjMsg_st.Obi = tmpObi;*/
 /*				 msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);*/
 /*				*/
-				#ifdef Nero_DeBuging09_01_14
+				#ifdef Nero_DeBuging09_01_14_
+				printf("添加子概念成功\n\n");
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = tmpObi;
@@ -250,7 +257,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif	
 
-				#ifdef Nero_DeBuging09_01_14
+				#ifdef Nero_DeBuging09_01_14_
 				neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
 				neroObjMsg_st.fucId = 2;
 				neroObjMsg_st.Obi = tmpObi;
@@ -329,9 +336,9 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		/*如果不把这些概念形成一个新的概念，就把他们联系起来，就是用输出链表连接起来
 		对于已经连接的对象则加强连接强度
 		*/
-		
+/*		printf("已经连接的对象则加强连接强度\n");*/
 		res1=Process_StrengthenLink(objs,j,GodNero, conf);
-		
+/*		printf("res1=%d.\n",res1);*/
 		
 		/*如果发现强度足够高时则生成新概念*/
 		/*如果子概念分别为a b c,而 b c  已经组成了概念，那么这个由a b c  组成的概念和b c
@@ -342,8 +349,21 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		if (res1  ==  Process_msg_CreateNewObj  && conf->addLevelObj == 1)
 		{
 			/*首先创建一个新概念，然后把这些子概念之间的链接强度归零*/
-			nero_createObjFromMultiples( objs, j);
+			tmpObi =nero_createObjFromMultiples( objs, j);
 			/*强度暂时先不归0，因为这样的结果还不清楚*/
+				#ifdef Nero_DeBuging09_01_14
+				if (tmpObi)
+				{
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;
+				neroObjMsgWithStr_st.Obi = tmpObi;
+				sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中创建高级衍生对象成功");
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
+				}
+
+				#endif			
+			
+			
 		}
 		
 		
@@ -394,16 +414,19 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 /*			*/
 /*		}*/
 
-
+/*			printf("change Strengthen obj  %x  ->>%x.\n",objs[i],objs[i+1]);*/
 			Strengthen= nero_StrengthenLink(objs[i],objs[i+1]);
+			
 			if (Strengthen != Fiber_StrengthenMax)
 			{
 				flag=0;
+/*				printf("flag  change\n");*/
 			}
 			
 	
 		
 	}
+	
 	if (flag  ==  1)
 	{
 		return  Process_msg_CreateNewObj;
@@ -414,7 +437,32 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 
 
 
+void * thread_for_Sys_Pic(void *arg)
+{
+/*
+ActNero NeroPool[MaxNeroNum];
 
+nero_us32int nextAvailableNeroInPool;*/
+
+/*usleep(n) //n微秒*/
+/*Sleep（n）//n毫秒*/
+/*sleep（n）//n秒*/
+	nero_us32int flag=0;
+	neroConf.neroTime=1;
+	while(1)
+	{
+		/*死循环*/
+		sleep(1);
+		(neroConf.neroTime)++;
+		flag++;
+		if (flag==10)
+		{
+			printf("已经使用的nero数量:%d,剩余:%d\n",neroConf.UsedNeroNum,MaxNeroNum-neroConf.UsedNeroNum);
+			flag=0;
+		}
+/*		printf("neroTime:%d.\n",neroConf.neroTime);*/
+	}
+}
 
 
 

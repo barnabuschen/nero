@@ -113,6 +113,15 @@ void ProInitialization()
 	printf("ProInitialization Log identifier is %d\n", Log_mq_id);	
 	/*res =*/ pthread_create(&a_thread, NULL,thread_for_Log_Pic, NULL);
 
+	Sys_ipckey="/tmp/Sys_ipckey"; 
+	createFile(Sys_ipckey);
+/*	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
+	ipckey = ftok(Sys_ipckey, IPCKEY);
+/*	 Set up the message queue */
+	Sys_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
+	printf("ProInitialization Sys strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+	printf("ProInitialization Sys identifier is %d\n", Sys_mq_id);	
+	/*res =*/ pthread_create(&a_thread, NULL,thread_for_Sys_Pic, NULL);
 
 
 	

@@ -19,7 +19,7 @@ NeroConf * conf;
 
 };
 void *thread_for_Operating_Pic(void *arg);
-
+void * thread_for_Sys_Pic(void *arg);
 
 
 /*这里的所有函数定位为神经系统与外界的数据沟通接口*/

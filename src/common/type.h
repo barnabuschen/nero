@@ -8,7 +8,12 @@
 #include "NeroMsgId.h"
 
 /*一些常量*/
+#define NeroForgetCycle    10  /*10秒 超过这个时间不被更新，下次被识别时就不更新神经纤维的链接强度
+				对于一个无符号int来说，如果1表示1秒，那么一个int可以表示136年
+				
 
+
+				*/
 #define DataFlowProcessObjNum_MAX (7)
 #define FILEPATH_MAX (180)
 /*8192kb  =1032KB*/
@@ -187,12 +192,12 @@ nero_8int * Operating_ipckey;
 
 nero_8int * IO_ipckey ;
 nero_8int * Log_ipckey ;
-
+nero_8int * Sys_ipckey ;
 
 nero_s32int Operating_mq_id;
 nero_s32int IO_mq_id;
 nero_s32int Log_mq_id;
-
+nero_s32int Sys_mq_id;
 
 
 

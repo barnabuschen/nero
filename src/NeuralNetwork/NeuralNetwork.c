@@ -101,6 +101,19 @@ static inline void setFiberUpdataTime(NerveFiber * fiber,nero_us32int time)
 	fiber->time =fiber->time | time;
 
 }
+/*获取纤维的更新时间*/
+static inline nero_us32int getFiberUpdataTime(NerveFiber * fiber)
+{
+	nero_us32int time;
+	if(fiber ==NULL )
+		return  0;
+	/*只修改低20位*/
+	/*1111 1111 1111 1111 1111 0000 0000 0000 */
+	time=fiber->time & 0x000fffff;//高12位清零,必须保证time不超最大值
+/*	fiber->time =fiber->time & 0xfff00000;//低20位清零*/
+/*	fiber->time =fiber->time | time;*/
+	return time;
+}
 /*加强连接强度*/
 static inline nero_s32int getFiberType(NerveFiber * fiber)
 {
@@ -123,20 +136,54 @@ static inline nero_s32int getFiberType(NerveFiber * fiber)
 /*加强连接强度*/
 static inline nero_s32int gainFiberStrengthen(NerveFiber * fiber,nero_us32int time)
 {
-	nero_us32int Strengthen;
+	nero_us32int Strengthen,oldStrengthen;
+	nero_us32int lasttime;
+	nero_s32int chang=0;
 	if(fiber ==NULL )
 		return 0;
+		
+	/*此次和上次的更新时间会影响到底要不要增强这个链接*/
+	lasttime=getFiberUpdataTime(fiber);
 	setFiberUpdataTime(  fiber,time);
-
+/*	chang=time-lasttime;*/
+/*	chang=chang >>  ;*/
+	if ((time-lasttime)  >  NeroForgetCycle)
+	{
+		chang=0;
+	}
+	else
+		chang=1;
 	/*1111 1111 1111 1111 1111 0000 0000 0000 */
 	
-	Strengthen =fiber->msg1 & 0x000000ff;//获取低8位
-	if (Fiber_StrengthenMax   > Strengthen)
+	oldStrengthen =fiber->msg1 & 0x000000ff;//获取低8位
+/*	Strengthen=Strengthen+chang;*/
+/*printf("Strengthen=%d.  chang=%d\n",Strengthen,chang);*/
+	if (oldStrengthen  == 1 && chang<0)
 	{
-		fiber->msg1=fiber->msg1+1;
+		Strengthen=0;
+		fiber->msg1=fiber->msg1   |  0x00000000;
 	}
-	
-	return (Strengthen+1);
+	else if (oldStrengthen < Fiber_StrengthenMax   )
+	{
+		Strengthen=oldStrengthen+chang;
+		fiber->msg1=fiber->msg1  +chang;
+	}
+	else
+	{
+		/*如果原来链接强度离最大值已经非常近了，这次及直接设置为最大值*/
+		Strengthen=Fiber_StrengthenMax;
+		fiber->msg1=fiber->msg1   & 0xffffff00;
+		fiber->msg1=fiber->msg1   | Strengthen ;
+/*		printf("这次及直接设置为最大值\n");*/
+/*		return (Fiber_StrengthenMax);*/
+	}
+	#ifdef Nero_DeBuging09_01_14_
+/*	if ((fiber->msg1 & 0x000000ff)   >=Fiber_StrengthenMax)*/
+	{
+		printf("%d  chang=%d  to   %d\n",oldStrengthen,chang,Strengthen);
+	}		
+	#endif		
+	return (Strengthen);
 }
 /*设置纤维指向的神经元与该纤维所属概念的关系*/
 static inline void setFiberPointToKind(NerveFiber * fiber,nero_us32int kind)
@@ -423,6 +470,7 @@ NeuronObject * getNeuronObject()
 	}
 /*	cur=nextAvailableNeroInPool;*/
 /*	nextAvailableNeroInPool++;*/
+	neroConf.UsedNeroNum=nextAvailableNeroInPool;
 	return (&(NeroPool[nextAvailableNeroInPool++]));
 
 }
@@ -743,7 +791,7 @@ nero_s32int  nero_ifMakeUpWithTheseObjs(NeuronObject *obj,NeuronObject *childred
 	NeuronObject  *tmpObi;
 	
 	if (childred == NULL  || objNum <2  || obj==NULL) 
-		return NeroNO;
+		return nero_msg_ParameterError	;
 				
 	
 	/**/
@@ -757,16 +805,16 @@ nero_s32int  nero_ifMakeUpWithTheseObjs(NeuronObject *obj,NeuronObject *childred
 	
 	
 	
-	/*遍历子概念数组，判断是不是构成了obj，只要一个不是，就判断不是*/
+	/*遍历子概念数组，判断是不是构成了obj(看他有没有指向obj)，只要一个不是，就判断不是*/
 	for (i=0;i<objNum ;i++)
 	{
 	
-		tmpFiber1=obj->outputListHead;
+		tmpFiber1=childred[i]->outputListHead;
 		flag=0;
 		for (tmpObi=tmpFiber1->obj;tmpObi != NULL &&  tmpFiber1 != NULL;tmpFiber1=tmpFiber1->next)
 		{
 			tmpObi=tmpFiber1->obj;
-			if (tmpObi   ==  childred[i])/*看能不能咋obj中找到子概念*/
+			if (obj   ==  tmpObi)/*看能不能咋obj中找到子概念*/
 			{
 				flag=1;
 				break;
@@ -997,12 +1045,12 @@ nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNu
 					break;
 		
 			}			
-			
+/*			printf("flag=%d.  obj=%x\n",flag,obj);*/
 			/*判断这个对象是否包含所以子类型*/
 			if (flag == 1)
 			{
 				makeup=nero_ifMakeUpWithTheseObjs(obj, Obis,objNum);
-				
+/*				printf("makeup=%d\n",makeup);*/
 				if (makeup == NeroYES)/*找到了要找的对象*/
 				{
 					return NeroYES;
@@ -1188,7 +1236,8 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	/*判断这些个对象是不是已经有生成过新概念了*/
 	
 	res=nero_IfHasObjFromMultiples3(Obis, objNum);
-	if(res == 1)
+/*	printf("判断这些个对象是不是已经有生成过新概念了=%d.\n",res);*/
+	if(res == NeroYES)
 		return NULL;	
 		
 		
@@ -1250,7 +1299,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 /*			addNeuronChild(Obis[i],Obis[i-1],Relationship_ChildToFather);	*/
 			PointingToObject(Obis[i-1],Obis[i],Fiber_PointToSameLayer);
 		}
-		#ifdef   Nero_DeBuging04_01_14
+		#ifdef   Nero_DeBuging04_01_14_
 /*		if (kind != NeuronNode_ForChCharacter)*/
 		{
 			printf("子概念id=%d linkto %d \n",Obis[i],newObi);
@@ -1259,7 +1308,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 		nero_printNeroLink("log/ObjLink.log",(void *)Obis[i]);
 		#endif				
 	}
-	nero_printNeroLink("log/ObjLink.log",(void *)newObi);
+/*	nero_printNeroLink("log/ObjLink.log",(void *)newObi);*/
 	
 	return newObi;
 
@@ -1480,7 +1529,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 				/*往概念填数据*/
 				nero_addDataToZhNeroObj(tmp,wordP2);
 			
-				#ifdef  Nero_DeBuging18_11_13
+				#ifdef  Nero_DeBuging18_11_13_
 				printf("new nero:   kind=%d.data:%x %x %x \n",nero_GetNeroKind(tmp),wordP2->first,wordP2->second,wordP2->third);
 				#endif			
 
@@ -1569,7 +1618,7 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 		wordP2.first=ttt22[0];
 		wordP2.second=ttt22[1];
 		wordP2.third=ttt22[2];
-		#ifdef Nero_DeBuging14_01_14
+		#ifdef Nero_DeBuging14_01_14_
 		
 /*			printf("寻找字符2：%x %x %x.\n",wordP2[i].first,words[i].second,words[i].third);*/
 			printf("寻找字符2：%x %x %x.\n",ttt22[0],ttt22[1],ttt22[2]);
@@ -1635,7 +1684,7 @@ NeuronObject * nero_IfHasZhWord(NeuronObject *GodNero,ChUTF8 * word,nero_s32int 
 	NerveFiber  *  curFiber;
 	NerveFiber  *  outputFiberOfbaseObj;
 	
-		#ifdef Nero_DeBuging14_01_14
+		#ifdef Nero_DeBuging14_01_14_
 		
 			printf("寻找字符3：%x %x %x.\n",word->first,word->second,word->third);
 /*			printf("寻找字符3：%x %x %x.\n",ttt22[0],ttt22[1],ttt22[2]);*/
@@ -1717,6 +1766,7 @@ nero_s32int nero_StrengthenLink(NeuronObject * a,NeuronObject * b)
 	{
 		/*没有找到的话，就加一个连接*/
 		PointingToObject(a ,b,Fiber_PointToSameLayer);
+/*		res=gainFiberStrengthen(curFiber,neroConf.neroTime);*/
 		res=0;
 	}
 	return res;	

@@ -62,9 +62,9 @@ int next;
 					这个选项激活时会不管当前链接的活跃情况和addLevelObj的值
 					，总是会创建新  高层概念
 					*/
-	nero_us32int  neroTime;     /*系统运行时间单位，初始化为0，隔一个小时增加1*/
+	nero_us32int  neroTime;     /*系统运行时间单位，初始化为0，隔1秒钟增加1*/
 	nero_us32int  ifReCreateLogFile;     /*系统运行时是否重新生成log文件*/
-		  
+	nero_us32int	  UsedNeroNum;
  }NeroConf;
 /*ActNero只是用来保存基础数据，它对应于一个单纯的神经元*/
 
@@ -139,6 +139,13 @@ time：
 1-------8  9-----16 17-----24  25----32
 1111 1111 1111 1111 1111 1111 1111 1111 	
 1-20位存储上次被访问的时间（包括修改，被成功匹配的情况），初始化为当前系统时间	
+		该信息会被修改的时间包括：
+			1:创建时候
+			2:被成功匹配的时候，相应链接被修改  Process_StrengthenLink=》gainFiberStrengthen
+
+
+
+
 */
 
   struct NerveFiber_

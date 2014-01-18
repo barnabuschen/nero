@@ -14,6 +14,27 @@ static struct  NeuronObjectMsg_    neroObjMsg_st;
 static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
 
 
+struct NeroObjForecastList
+{
+	struct list_head p;
+	NeuronObject * obj;
+	nero_s32int Strengthen;/*在一次预测过程中可能一个对象被多次预测*/
+};
+
+struct DataFlowForecastInfo
+{
+	NeuronObject ** objs;/*实际对象指针*/
+	nero_s32int objNum;/*实际对象个数，也是objs这个数组的有效长度，数组长度必须大于objNum，不然越界*/
+	struct NeroObjForecastList   *head;/*指向第一个预测对象*/	
+	nero_s32int objPoint;/*指向一个objs中可以读取的位置*/
+
+	struct NeroObjForecastList   *headOfUpperLayer;/*指向第一个预测对象*/	
+	struct NeroObjForecastList   *headOfLowerLayer;/*指向第一个预测对象*/
+	struct NeroObjForecastList   *headOfSameLayer;/*指向第一个预测对象*/		
+};
+	struct DataFlowForecastInfo  forecastInfo_st;	
+	
+	
 			
 
 void *thread_for_Operating_Pic(void *arg)
@@ -168,11 +189,15 @@ dataNum	   数据的指针数组数据的个数，就是数组的长度
 
 	
 */
+
+
 nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf)
 {
-	nero_s32int i,j,hasAddObj/*,hasNewObj*/,res1;
+	nero_s32int i,j,hasAddObj/*,hasNewObj*/,res1,objNum;
 	NeuronObject * tmpObi;
 	NeuronObject ** objs=NULL;
+	
+
 	/*参数检查*/
 	if (DataFlow == NULL  || dataKind ==NULL  ||  dataNum <1)
 	{
@@ -289,6 +314,66 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		
 		
 	}
+	
+	/*现在首先尝试判断子概念子集是否有衍生概念*/
+	/*但是是一旦找到子集的衍生概念是重新运行整个程序呢，还是修改后继续呢*/
+	/*还是继续吧*/
+	/*因为后面只是需要objs, j这俩个变量，而objs不需要重新申请也可以使用，只需要修改j就好了 
+	但是子概念和高层概念预测链表还是作为全局的好，这样的话当前的预测链表还能影响下次的东东
+	
+	
+	 */
+/*struct NeroObjForecastList*/
+/*{*/
+/*	struct list_head p;*/
+/*	NeuronObject * obj;*/
+/*	nero_s32int Strengthen;/*在一次预测过程中可能一个对象被多次预测*/
+/*};*/
+
+/*struct DataFlowForecastInfo*/
+/*{*/
+/*	NeuronObject ** objs;/*实际对象指针*/
+/*	nero_s32int objNum;/*实际对象个数，也是objs这个数组的有效长度，数组长度必须大于objNum，不然越界*/
+/*	nero_s32int objPoint;/*指向一个objs中可以读取的位置*/
+/*	struct NeroObjForecastList   *head;/*指向第一个预测对象	
+	struct NeroObjForecastList   *headOfUpperLayer;
+	struct NeroObjForecastList   *headOfLowerLayer;
+	struct NeroObjForecastList   *headOfSameLayer;	
+};
+	*/
+	/*初始化*/
+	forecastInfo_st.objs=objs;
+	forecastInfo_st.objNum=j;
+	forecastInfo_st.objPoint=0;
+	forecastInfo_st.head=NULL;
+	
+	while( (tmpObi=Process_IfHasNextObjToread)  !=   NULL)
+	{
+		
+		/*与预测链表进行比较，看能不能找到tmpObi*/	
+		res1=Process_CompareWithForecastList();
+		
+	
+		/*如果找到tmpObi。则判断是否能够找到子集的衍生概念		
+		   找不到则直接在原来基础上更新列表，进行下次循环*/
+		if (res1 == NeroYES)
+		{
+			
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*将这几个对象形成层次结构*/
 	/*其实就是将这几个对象形成一个新的对象，见神经网络记录 sheet   5系统概略图*/
 	/*
@@ -318,7 +403,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		
 				#endif			
 		
-		nero_createObjFromMultiples( objs, j);
+		nero_createObjFromMultiples( objs, objNum);
 				#ifdef   Nero_DeBuging04_01_14_
 				char str[500];
 				char str2[500];
@@ -337,7 +422,10 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		对于已经连接的对象则加强连接强度
 		*/
 /*		printf("已经连接的对象则加强连接强度\n");*/
-		res1=Process_StrengthenLink(objs,j,GodNero, conf);
+
+		/*这里面有一个问题，*/
+
+		res1=Process_StrengthenLink(objs,objNum,GodNero, conf);
 /*		printf("res1=%d.\n",res1);*/
 		
 		/*如果发现强度足够高时则生成新概念*/
@@ -349,7 +437,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		if (res1  ==  Process_msg_CreateNewObj  && conf->addLevelObj == 1)
 		{
 			/*首先创建一个新概念，然后把这些子概念之间的链接强度归零*/
-			tmpObi =nero_createObjFromMultiples( objs, j);
+			tmpObi =nero_createObjFromMultiples( objs, objNum);
 			/*强度暂时先不归0，因为这样的结果还不清楚*/
 				#ifdef Nero_DeBuging09_01_14
 				if (tmpObi)
@@ -374,7 +462,22 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	{
 		free(objs);
 	}
-	
+/*void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf*/	
+	for (j=0;j<dataNum;j++)
+	{
+		if (DataFlow[j])
+		{
+			free(DataFlow[j]);
+		}
+	}
+	if (dataKind)
+	{
+		free(dataKind);
+	}
+	if (DataFlow)
+	{
+		free(DataFlow);
+	}
 	return nero_msg_ok;
 
 }

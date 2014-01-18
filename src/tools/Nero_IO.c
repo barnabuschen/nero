@@ -812,7 +812,7 @@ void *thread_for_Log_Pic(void *arg)
 /*从一个数组对象中提前词组，存与str中*/
 nero_s32int IO_getWordsInNero(nero_8int str[],NeuronObject * obj)
 {
-	nero_s32int i,p,count;
+	nero_s32int i,p,count,charLen;
 	nero_us32int c=1;	
 	nero_s32int ObjectKind;
 	NeuronObject * tmp;
@@ -840,18 +840,29 @@ nero_s32int IO_getWordsInNero(nero_8int str[],NeuronObject * obj)
 		{
 				count++;
 				tmp=tmpFiber1->obj->inputListHead->obj;
-				if (tmp->x == 0  ||  tmp->y == 0  || tmp->z == 0)
+				if ( tmp->y == 0  && tmp->z == 0)
 				{
 /*					if (tmp->x == 0)*/
 /*					{*/
 /*						sprintf(str+p,"<0>");*/
 /*					}*/
 /*					else*/
-/*						sprintf(str+p,"<%d>",tmp->x);*/
+						sprintf(str+p,"%c",tmp->x);
+						charLen=1;
+				}
+				else if(tmp->y != 0  && tmp->z == 0)
+				{
+						sprintf(str+p,"%c%c",tmp->x,tmp->y);
+						charLen=2;				
+				
 				}
 				else
-					sprintf(str+p,"%c%c%c",tmp->x,tmp->y,tmp->z);
-				p+=3;
+				{
+				sprintf(str+p,"%c%c%c",tmp->x,tmp->y,tmp->z);
+				charLen=3;
+				}
+					
+				p+=charLen;
 				
 				tmpFiber1=tmpFiber1->next;
 				c++;

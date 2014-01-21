@@ -19,7 +19,9 @@ push本地分支代码到远端服务器,如果没有就创建该分支
 查看远程分支	
 	git branch --remote  
 获取远程分支	
-	git pull origin master:ver0.14
+	/////git pull origin master:ver0.14
+	已经克隆下来整个项目后你本地其实已经有所有分支的数据了，只是没有本地分支而已
+	git checkout -t origin/ver0.15
 查看远程和本地所有分支，用-a参数
 	git branch -a  
 删除远程分支
@@ -68,7 +70,7 @@ git fetch nginx-1.0.14_comment
 https://github.com/piaoyaosuifengji/mytest.git
 
 
-git clone git@github.com:piaoyaosuifengji/mytest.git
+git clone git@github.com:piaoyaosuifengji/nero.git
 
 
 #添加文件脚本：

@@ -347,11 +347,11 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	forecastInfo_st.objPoint=0;
 	forecastInfo_st.head=NULL;
 	
-	while( (tmpObi=Process_IfHasNextObjToread)  !=   NULL)
+	while( (tmpObi/*=Process_IfHasNextObjToread*/)  !=   NULL)
 	{
 		
 		/*与预测链表进行比较，看能不能找到tmpObi*/	
-		res1=Process_CompareWithForecastList();
+/*		res1=Process_CompareWithForecastList();*/
 		
 	
 		/*如果找到tmpObi。则判断是否能够找到子集的衍生概念		

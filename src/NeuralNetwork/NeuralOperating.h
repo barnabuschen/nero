@@ -42,4 +42,34 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf);
 
 
+NeuronObject * Process_IfHasNextObjToread(struct DataFlowForecastInfo  * forecastInfo);
+
+
+struct NeroObjForecastList   * Process_CompareWithForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * findObi);
+
+
+struct NeroObjForecastList   *  FindObjInForecastList(struct NeroObjForecastList   *head,NeuronObject * findObi);
+
+NeuronObject * Process_IfFindDerivativeObj(struct DataFlowForecastInfo  * forecastInfo);
+
+nero_s32int Process_UpdataForecastList(struct DataFlowForecastInfo  * forecastInfo);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #endif

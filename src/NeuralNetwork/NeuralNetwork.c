@@ -114,7 +114,7 @@ static inline nero_us32int getFiberUpdataTime(NerveFiber * fiber)
 /*	fiber->time =fiber->time | time;*/
 	return time;
 }
-/*加强连接强度*/
+/**/
 static inline nero_s32int getFiberType(NerveFiber * fiber)
 {
 	nero_s32int kind;

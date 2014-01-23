@@ -10,10 +10,10 @@
 /*一些常量*/
 #define NeroForgetCycle    10  /*10秒 超过这个时间不被更新，下次被识别时就不更新神经纤维的链接强度
 				对于一个无符号int来说，如果1表示1秒，那么一个int可以表示136年
-				
-
 
 				*/
+#define NeroActivateMaxTimes   200
+#define NeroMaxLastTimeINForecastList    20  /*对象在预测列表中最长等待时间，超时则被去除列表*/
 #define DataFlowProcessObjNum_MAX (7)
 #define FILEPATH_MAX (180)
 /*8192kb  =1032KB*/

@@ -14,27 +14,7 @@ static struct  NeuronObjectMsg_    neroObjMsg_st;
 static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
 
 
-struct NeroObjForecastList
-{
-	struct list_head p;
-	NeuronObject * obj;
-	nero_s32int Strengthen;//在一次预测过程中可能一个对象被多次预测
-	nero_s32int times;//在整个预测成功中，该节点存在的时间长度
-};
 
-struct DataFlowForecastInfo
-{
-	NeuronObject ** objs;//实际对象指针
-	nero_s32int objNum;//实际对象个数，也是objs这个数组的有效长度，数组长度必须大于objNum，不然越界	
-	nero_s32int objPoint;//指向一个objs中可以读取的位置,初始为0，最大值为objNum
-        struct NeroObjForecastList   *headOfUpperLayer;//指向第一个预测对象	
-	struct NeroObjForecastList   *headOfLowerLayer;//指向第一个预测对象
-	struct NeroObjForecastList   *headOfSameLayer;//指向第一个预测对象
-	
-	nero_s32int start;//start end 是objs中某个子集的起始位置，用来指示该位置有衍生概念
-	nero_s32int end;
-			
-};
 	struct DataFlowForecastInfo  forecastInfo_st;	
 	
 	
@@ -378,9 +358,9 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		                forecastInfo_st.objPoint=0; 
 		                j=forecastInfo_st.objNum;
 		                forecastInfo_st.objNum=j-(forecastInfo_st.end-forecastInfo_st.start);    
-		               for (j=start,i=0;j<forecastInfo_st.objNum;j++,i++)
+		               for (j=forecastInfo_st.start,i=0;j<forecastInfo_st.objNum;j++,i++)
 		               {
-		                       if (j == start )
+		                       if (j == forecastInfo_st.start )
 		                       {
 		                               (forecastInfo_st.objs)[j]=findForecastObj;
 		                               
@@ -596,9 +576,16 @@ nero_us32int nextAvailableNeroInPool;*/
 	
 	
 	/*做额外的初始化*/
-	forecastInfo_st.headOfUpperLayer=NULL;
-	forecastInfo_st.headOfLowerLayer=NULL;
-	forecastInfo_st.headOfSameLayer=NULL;
+	forecastInfo_st.headOfUpperLayer.obj=NULL;
+	INIT_LIST_HEAD(&(forecastInfo_st.headOfUpperLayer.p));
+
+	forecastInfo_st.headOfSameLayer.obj=NULL;
+	INIT_LIST_HEAD(&(forecastInfo_st.headOfSameLayer.p));
+	
+	forecastInfo_st.headOfLowerLayer.obj=NULL;
+	INIT_LIST_HEAD(&(forecastInfo_st.headOfLowerLayer.p));
+	
+		
 	/*struct NeroObjForecastList   *headOfUpperLayer;指向第一个预测对象	
 	struct NeroObjForecastList   *headOfLowerLayer;指向第一个预测对象
 	struct NeroObjForecastList   *headOfSameLayer;指向第一个预测对象*/	
@@ -646,7 +633,7 @@ nero_us32int nextAvailableNeroInPool;*/
 				2：寻找一个条件，达到条件就清空
 				这里用第一种方法，NeroObjForecastList结构里面的time变量来表示
 				*/
-nero_s32int Process_UpdataForecastList(struct DataFlowForecastInfo  * forecastInfo)
+nero_s32int Process_UpdataForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * newObj)
 {
         if (forecastInfo  || forecastInfo->objPoint > forecastInfo->objNum  ||  forecastInfo->objs == NULL)
         {
@@ -669,11 +656,119 @@ nero_s32int Process_UpdataForecastList(struct DataFlowForecastInfo  * forecastIn
         
         
         */
+        UpdataLastTimeINForecastList(forecastInfo);
+       AddNewObjToForecastList( forecastInfo, newObj);
+       CleanForecastList( forecastInfo);
 
+}
+void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
+{
 
 
 }
+void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * newObj)
+{
+ 
+        struct NeroObjForecastList   * findObiPoint;
+        NerveFiber   * p; 
+        NeuronObject * Obj;
+	nero_s32int i,FiberType;
+	NerveFiber * tmpFiber1;
+	struct list_head  * listHead; 
+        if (forecastInfo  || forecastInfo->objPoint > forecastInfo->objNum  ||  forecastInfo->objs == NULL ||  newObj == NULL)
+        {
+        
+        
+ 		#ifdef Nero_ProcessERROR_Msg
+/*		printf("找不到子概念\n");*/
+		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+		neroObjMsgWithStr_st.fucId = 1;
+		neroObjMsgWithStr_st.Obi = NULL;
+		sprintf(neroObjMsgWithStr_st.str,"AddNewObjToForecastList参数错误");
+		msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+		#endif
+		return NULL; 
+        }	
+	
+	
 
+        p=newObj->outputListHead;
+        while(p != NULL) 
+        {
+                Obj=p->obj;
+                
+                if (Obj != NULL  &&  nero_isBaseObj(Obj) != 1)
+                {
+                        FiberType=getFiberType(p);
+                        /*加入列表*/
+/* #define	Fiber_PointToUpperLayer	1*/
+/*#define	Fiber_PointToLowerLayer	2*/
+/*#define	Fiber_PointToSameLayer	3  */
+                        
+                        if (FiberType == Fiber_PointToUpperLayer)
+                        {
+                             listHead=(struct list_head  *)&(forecastInfo->headOfUpperLayer);
+                        }
+                        else if(FiberType == Fiber_PointToLowerLayer)
+                        {
+                                listHead=(struct list_head  *)&(forecastInfo->headOfSameLayer);
+                        }
+                        else
+                                listHead=NULL;
+                        
+                        AddNodeIntoForecastList(listHead,Obj);
+                }
+                
+                
+                p=p->next;
+        
+        }
+ 
+ 
+}
+void AddNodeIntoForecastList(struct list_head  * listHead,NeuronObject * Obj)
+{
+
+        /*直接插入列表头部*/
+        struct NeroObjForecastList *newListNode=(struct NeroObjForecastList *)malloc(sizeof(struct NeroObjForecastList));
+        newListNode->obj=Obj;
+        newListNode->Strengthen=0;
+        newListNode->times=0;
+        
+        list_add((struct list_head  *)newListNode, listHead);
+
+}
+/*更新列表预测列表中每个结构的time变量*/
+void  UpdataLastTimeINForecastList(struct DataFlowForecastInfo  * forecastInfo)
+{
+        struct NeroObjForecastList   * findObiPoint;
+        struct list_head  * p; 
+        
+        p=(struct list_head  *)(forecastInfo->headOfUpperLayer.p.next);
+        while(p != &(forecastInfo->headOfUpperLayer) 
+        {
+                findObiPoint=(struct NeroObjForecastList   *) p;
+                (findObiPoint->times)++;
+                p=p->next;
+        
+        }
+        p=(struct list_head  *)forecastInfo->headOfLowerLayer.p.next;
+        while(p != &(forecastInfo->headOfLowerLayer)) 
+        {
+                findObiPoint=(struct NeroObjForecastList   *) p;
+                (findObiPoint->times)++;
+                p=p->next;
+        
+        }
+        p=(struct list_head  *)forecastInfo->headOfSameLayer.p.next;
+        while(p != &(forecastInfo->headOfSameLayer)) 
+        {
+                findObiPoint=(struct NeroObjForecastList   *) p;
+                (findObiPoint->times)++;
+                p=p->next;
+        
+        }
+}
 
 /*判断DataFlowForecastInfo中 objPoint之前的数据是否能够有子集形成衍生类 */
 NeuronObject * Process_IfFindDerivativeObj(struct DataFlowForecastInfo  * forecastInfo)
@@ -699,7 +794,7 @@ NeuronObject * Process_IfFindDerivativeObj(struct DataFlowForecastInfo  * foreca
         /*实际上就是判断从0到，objPoint-1位置是否有子集的衍生类别*/
         for (i=forecastInfo->objPoint-2;i>=0;i--)
         {
-                findobj=nero_IfHasObjFromMultiples4(&((forecastInfo->Obis)[i]),(forecastInfo->objPoint-1-i+1));
+                findobj=nero_IfHasObjFromMultiples4(&((forecastInfo->objs)[i]),(forecastInfo->objPoint-1-i+1));
                 if (findobj != NULL)
                 {
                         forecastInfo->start=i;
@@ -731,10 +826,10 @@ struct NeroObjForecastList   * Process_CompareWithForecastList(struct DataFlowFo
 		return NULL; 
         }
        
-       findObiPoint=  FindObjInForecastList(forecastInfo->headOfUpperLayer, findObi);
+       findObiPoint=  FindObjInForecastList(&(forecastInfo->headOfUpperLayer), findObi);
        if (findObiPoint == NULL )
        {
-            findObiPoint=  FindObjInForecastList(forecastInfo->headOfSameLayer, findObi);   
+            findObiPoint=  FindObjInForecastList(&(forecastInfo->headOfSameLayer), findObi);   
        }
        
         return findObiPoint;

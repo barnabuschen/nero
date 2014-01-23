@@ -213,7 +213,7 @@ NeuronObject * getNeuronObject();
 NeuronObject *  nero_createNeroObj(nero_s32int kind);
 /*创建一个数据存储 神经元,并初始化*/
 ActNero * nero_createDataNero();
-
+nero_s32int getFiberType(NerveFiber * fiber);
 
 /*下面是几个处理神经元链表的函数，，，必须快速和方便使用*/
 

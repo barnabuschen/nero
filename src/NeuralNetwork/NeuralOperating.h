@@ -18,6 +18,33 @@ nero_s32int dataNum;
 NeroConf * conf;
 
 };
+
+
+struct NeroObjForecastList
+{
+	struct list_head p;
+	NeuronObject * obj;
+	nero_s32int Strengthen;//在一次预测过程中可能一个对象被多次预测,初始化为0
+	nero_s32int times;//在整个预测成功中，该节点存在的时间长度,初始化为0
+};
+
+struct DataFlowForecastInfo
+{
+	NeuronObject ** objs;//实际对象指针
+	nero_s32int objNum;//实际对象个数，也是objs这个数组的有效长度，数组长度必须大于objNum，不然越界	
+	nero_s32int objPoint;//指向一个objs中可以读取的位置,初始为0，最大值为objNum
+        struct NeroObjForecastList   headOfUpperLayer;//指向第一个预测对象	
+	struct NeroObjForecastList   headOfLowerLayer;//指向第一个预测对象
+	struct NeroObjForecastList   headOfSameLayer;//指向第一个预测对象
+	
+	nero_s32int start;//start end 是objs中某个子集的起始位置，用来指示该位置有衍生概念
+	nero_s32int end;
+			
+};
+
+
+
+
 void *thread_for_Operating_Pic(void *arg);
 void * thread_for_Sys_Pic(void *arg);
 
@@ -52,15 +79,15 @@ struct NeroObjForecastList   *  FindObjInForecastList(struct NeroObjForecastList
 
 NeuronObject * Process_IfFindDerivativeObj(struct DataFlowForecastInfo  * forecastInfo);
 
-nero_s32int Process_UpdataForecastList(struct DataFlowForecastInfo  * forecastInfo);
+nero_s32int Process_UpdataForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * newObj);
 
+void  UpdataLastTimeINForecastList(struct DataFlowForecastInfo  * forecastInfo);
 
+void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * newObj);
 
+void AddNodeIntoForecastList(struct list_head  * listHead,NeuronObject * Obj);
 
-
-
-
-
+void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo);
 
 
 

@@ -369,6 +369,51 @@ void myMainWindow(GtkWidget *window)
 	//工程信息初始化
 	ProInitialization();
 }
+
+void SetUpSomeWordsIntoSys( GtkWidget *widget, gpointer data )
+{
+
+	/*从默认的配置文件中读取数据所在的文件，向void *thread_for_IO_Pic(void *arg)发送消息*/
+	struct  IODataMsg_  DataIO_st;
+	gchar * fileName="./NeroConfig/wordsFileName";
+	int  countline,i;
+	char * datafile;
+	nero_8int  dataFilePath[FILEPATH_MAX];
+	int * line=findAllLine(fileName,&countline);
+	if (line)
+	{
+			free(line);
+	}
+	getcwd(file_path_getcwd,FILEPATH_MAX);
+	 
+        
+			/*现在可以想系统发送消息了*/
+	DataIO_st.MsgId = MsgId_Nero_ConfModify;
+	DataIO_st.fucId = 1;
+	DataIO_st.operateKind =Conf_Modify_addLevelObjAlways;
+	memcpy(DataIO_st.str,&neroConf,sizeof(NeroConf));
+	((NeroConf *)DataIO_st.str)->addLevelObjAlways=1;
+	msgsnd(Operating_mq_id, &DataIO_st, sizeof(DataIO_st), 0);
+		 
+		 
+	
+/*-----------------------------*/
+	/*将一些词加入网络 */
+	Utf8Word  wordsHead;
+	Utf8Word  MultiBytewordsHead;	
+
+	readUTF8FileForWords("data/实验词汇" ,& MultiBytewordsHead);
+	nero_AddWordsIntoNet( GodNero,& MultiBytewordsHead);
+	
+	
+	
+	
+	
+/*--------------------------------*/	
+	((NeroConf *)DataIO_st.str)->addLevelObjAlways=0;
+	msgsnd(Operating_mq_id, &DataIO_st, sizeof(DataIO_st), 0);
+
+}
 /*给系统发送数据，*/
 void GetDataForNeroSys( GtkWidget *widget, gpointer data )
 {
@@ -384,7 +429,16 @@ void GetDataForNeroSys( GtkWidget *widget, gpointer data )
 			free(line);
 	}
 	getcwd(file_path_getcwd,FILEPATH_MAX);
-	 
+	
+	
+	/*将一些词加入网络 */
+	Utf8Word  wordsHead;
+	Utf8Word  MultiBytewordsHead;	
+
+	readUTF8FileForWords("data/实验词汇" ,& MultiBytewordsHead);
+/*	nero_AddWordsIntoNet( GodNero,& MultiBytewordsHead);*/
+	
+		 
 	for (i=0;i<countline;i++)
 	{
 		 datafile=getLineInFile(fileName,i+1);
@@ -448,7 +502,12 @@ void createToolsTab(GtkWidget *fixedInside)
 	g_signal_connect (buttoms[buttomID], "clicked",G_CALLBACK(GetDataForNeroSys), NULL);
 	gtk_fixed_put (GTK_FIXED (fixedInside), buttoms[buttomID], 0, 30);
 	buttomID++;
-	
+
+	text = g_strdup_printf("设置指定词汇");
+	buttoms[buttomID]=gtk_button_new_with_label(text);
+	g_signal_connect (buttoms[buttomID], "clicked",G_CALLBACK(SetUpSomeWordsIntoSys), NULL);
+	gtk_fixed_put (GTK_FIXED (fixedInside), buttoms[buttomID], 0, 60);
+	buttomID++;	
 /*	gtk_widget_set_size_request (vbox, 15, 15);*/
 	
 	
@@ -929,10 +988,12 @@ void initNeroNetWork( )
 		
 	/*将一些词加入网络 */
 	Utf8Word  wordsHead;
-/*	Utf8Word  MultiBytewordsHead;	*/
-	#ifdef  Nero_DeBuging03_12_131_
+	
+	#ifdef  Nero_DeBuging03_12_13_
+	Utf8Word  MultiBytewordsHead;	
 /*	readUTF8FileForWords("data/词库" ,& MultiBytewordsHead);*/
-	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& MultiBytewordsHead);
+/*	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& MultiBytewordsHead);*/
+	readUTF8FileForWords("data/实验词汇" ,& MultiBytewordsHead);
 	nero_AddWordsIntoNet( GodNero,& MultiBytewordsHead);
 	#endif	
 /*	printWords(&wordsHead);		*/

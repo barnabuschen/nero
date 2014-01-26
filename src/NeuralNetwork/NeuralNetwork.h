@@ -45,6 +45,9 @@ int next;
 对一些全局配置进行统一管理
 
 */
+
+/*几个有关NeroConfiguration的宏*/
+#define  Conf_Modify_addLevelObjAlways    1   //修改addLevelObjAlways
  typedef struct NeroConfiguration
  {
 	nero_us32int  addNewObj; /*是否在DataFlowProcess中添加在网络中的没有的数据为一个新概念，
@@ -92,6 +95,8 @@ msg：
 typedef struct ActivationNeuron  NeuronObject;
 typedef struct ActivationNeuron ActNero;
  typedef struct NerveFiber_ NerveFiber;
+
+
 
 
  struct ActivationNeuron
@@ -194,7 +199,7 @@ extern NeroConf neroConf;
 #define	Fiber_PointToSameLayer	3
 
 /*神经纤维链接强度的最大值*/
-#define	Fiber_StrengthenMax	200
+#define	Fiber_StrengthenMax	100
 /*你需要定义个内存池，来管理使用和未使用的神经元*/
 
 
@@ -275,7 +280,7 @@ inline nero_s32int  nero_ifHasThisData(ActNero * nero,nero_s32int x,nero_s32int 
 
 nero_s32int   nero_IfHasObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum);
 NeuronObject *   nero_IfHasObjFromMultiples2(NeuronObject *Obis[],nero_s32int objNum);
-
+NeuronObject *   nero_IfHasObjFromMultiples4(NeuronObject *Obis[],nero_s32int objNum);
 
 
 

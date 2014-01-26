@@ -54,7 +54,7 @@ END_ONE_ARG_MESSAGE_MAP
 
 BEGIN_TWO_ARG_MESSAGE_MAP(IO_msg_dataIO_map)
     MSG_NAME(1, IO_InputDataToSys)
-/*    MSG_NAME(2, Log_printAllKindOf)*/
+    MSG_NAME(2, IO_NeroConfigurationModify)
 /*    MSG_NAME(3, del_data)*/
 /*    MSG_NAME(4, sort_data)*/
 END_TWO_ARG_MESSAGE_MAP
@@ -77,7 +77,25 @@ nero_8int  strTmp[1500];
 
 
 
+nero_s32int IO_NeroConfigurationModify(void * operateKind,void *c)
+{
+        NeroConf * tmpConf=c;
+        nero_s32int kind=*((nero_s32int *)operateKind);
+/*        printf("i=%d.\n",tmpConf->addLevelObjAlways);*/
+        switch(kind)
+        {
+        
+        case Conf_Modify_addLevelObjAlways:
+/*                neroConf.addLevelObjAlways=tmpConf->addLevelObjAlways;*/
+                break;
+        
+        
+        
+        
+        default:break;
+        }
 
+}
 /**/
 nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 {
@@ -248,6 +266,7 @@ nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 	close(fd);
 	munmap(mapped_mem, flength);
 	
+	printf("IO_InputDataToSys  end\n");
 	return nero_msg_ok;	
 	
 }
@@ -403,7 +422,7 @@ nero_s32int Log_printNeroObjLink(void * arg)
 							break;
 					
 					}
-					sprintf(strLinshi,"		-->%x  <%s>\n",(int)tmp,str);
+					sprintf(strLinshi,"		-->%x  <%s>,FiberType=%d\n",(int)tmp,str,getFiberType(curFiber));
 					addLineToFile(logFile,strLinshi);
 				}	
 				else
@@ -621,6 +640,8 @@ void *thread_for_IO_Pic(void *arg)
 
 	const nero_s32int size_message_map = 
 	      sizeof(IO_msg_print_map) / sizeof(struct one_arg_message_entry );   //求得表长
+	const nero_s32int size_message_map2 = 
+	      sizeof(IO_msg_dataIO_map) / sizeof(struct two_arg_message_entry );   //求得表长	      
 	/* Generate the ipc key */
 
 	ipckey = ftok(IO_ipckey , IPCKEY);
@@ -635,7 +656,7 @@ void *thread_for_IO_Pic(void *arg)
 	while(x == 0)
 	{
 /*		sleep(1);*/
-		printf("wait for IO msg......\n");
+/*		printf("wait for IO msg......\n");*/
 		received = msgrcv(IO_mq_id, &IOMsg, sizeof(IOMsg), 0, MSG_NOERROR);
 		if (errno != 0)
 		printf("msgrcv strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
@@ -675,7 +696,7 @@ void *thread_for_IO_Pic(void *arg)
 
 			DataIO_st=(struct  IODataMsg_  * )&IOMsg;
 			
-			for( i = 0; i < size_message_map; i++)
+			for( i = 0; i < size_message_map2; i++)
 			{
 			    if( IO_msg_dataIO_map[i].id == DataIO_st->fucId )
 				 (*(IO_msg_dataIO_map[i].operate) )(&(DataIO_st->operateKind),DataIO_st->str);
@@ -720,7 +741,8 @@ void *thread_for_Log_Pic(void *arg)
 	const nero_s32int size_message_map2 = 
 	      sizeof(nero_msg_WithStr_map) / sizeof(struct two_arg_message_entry );   //求得表长
 	
-
+        printf("i=%d.\n",size_message_map);
+        printf("i=%d.\n",size_message_map2);
 	 
 	 getcwd(file_path_getcwd,FILEPATH_MAX);
 	 /*设置日志目录*/
@@ -746,7 +768,7 @@ void *thread_for_Log_Pic(void *arg)
 	while(x == 0)
 	{
 /*		sleep(1);*/
-		printf("wait for Log msg......\n");
+/*		printf("wait for Log msg......\n");*/
 		received = msgrcv(Log_mq_id, &LogMsg, sizeof(LogMsg), 0, MSG_NOERROR);
 		if (errno != 0)
 		{
@@ -907,7 +929,7 @@ nero_s32int IO_getZhInNero(nero_8int str[],NeuronObject * obj)
 																	
 		tmpFiber1=tmpObi->inputListHead;
 		tmp=tmpFiber1->obj;
-		sprintf(str,"%c%c%c",tmp->x,tmp->y,tmp->z);
+		sprintf(str,"%c%c%c,<%x%x%x>",tmp->x,tmp->y,tmp->z,tmp->x,tmp->y,tmp->z);
 	
 	}
 	else

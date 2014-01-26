@@ -3,6 +3,8 @@
 #include "../common/type.h"
 //#include "../tools/readUTF8File.h"
 #include "../NeuralNetwork/NeuralNetwork.h"
+
+
 struct  NeuronObjectMsg_
 { 
 long MsgId; 
@@ -21,7 +23,7 @@ struct  IODataMsg_
 long MsgId; 
 nero_8int fucId;
 nero_s32int operateKind; 
-nero_8int str[100];
+nero_8int str[300];
 } ;
 
 
@@ -61,7 +63,6 @@ struct two_arg_message_entry
 
 
 
-
 void *thread_for_IO_Pic(void *arg);
 
 
@@ -87,7 +88,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_);
 nero_s32int IO_GetNeroObjMsg(void * arg);
 
 nero_s32int IO_InputDataToSys(void * operateKind,void *str);
-
+nero_s32int IO_NeroConfigurationModify(void * operateKind,void *dataFilePath);
 
 int UTF8ToGBK(char src[],char res[]);
 int  GetToken( char * str);

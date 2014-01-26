@@ -1,0 +1,30 @@
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：80ad040,打印词组对象《兰许玉兰许玉兰》,句子长度为：7,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：8081e70,打印字符对象(许),打印识别对象obj =8081e70 id=52,数据是：《e8aeb8》
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：8085410,打印字符对象(玉),打印识别对象obj =8085410 id=52,数据是：《e78e89》
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：806fb40,打印字符对象(兰),打印识别对象obj =806fb40 id=52,数据是：《e585b0》
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：8081e70,打印字符对象(许),打印识别对象obj =8081e70 id=52,数据是：《e8aeb8》
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：8085410,打印字符对象(玉),打印识别对象obj =8085410 id=52,数据是：《e78e89》
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：806fb40,打印字符对象(兰),打印识别对象obj =806fb40 id=52,数据是：《e585b0》
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：8081e70,打印字符对象(许),打印识别对象obj =8081e70 id=52,数据是：《e8aeb8》
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：8081e70,打印字符对象(许),识别结束后打印识别对象obj =8081e70 id=52,数据是：《e8aeb8》
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：8085410,打印字符对象(玉),识别结束后打印识别对象obj =8085410 id=52,数据是：《e78e89》
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：806fb40,打印字符对象(兰),识别结束后打印识别对象obj =806fb40 id=52,数据是：《e585b0》
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：8081e70,打印字符对象(许),识别结束后打印识别对象obj =8081e70 id=52,数据是：《e8aeb8》
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：8085410,打印字符对象(玉),识别结束后打印识别对象obj =8085410 id=52,数据是：《e78e89》
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：806fb40,打印字符对象(兰),识别结束后打印识别对象obj =806fb40 id=52,数据是：《e585b0》
+Log_printSomeMsgForObj:Sun Jan 26 21:51:58 2014
+		地址：8081e70,打印字符对象(许),识别结束后打印识别对象obj =8081e70 id=52,数据是：《e8aeb8》

@@ -25,7 +25,16 @@ struct NeroObjForecastList
 	struct list_head p;
 	NeuronObject * obj;
 	nero_s32int Strengthen;//在一次预测过程中可能一个对象被多次预测,初始化为0
+	                        //普通对象在FindObjInForecastList被增加，上层衍生概念
+	                        //在Process_GetNewActivateForecastObj  和
+	                        //Process_IfIsChildOfActivateForecastObj被增加
+	
+	
 	nero_s32int times;//在整个预测成功中，该节点存在的时间长度,初始化为0
+	                  //头节点的times用来记录该列表中的节点个数，不包括头节点
+	nero_s32int start;//如果该节点对象是一个被识别出来的子集衍生对象，start end 是objs中这个子集的起始位置
+	nero_s32int end;	                  
+	                  
 };
 
 struct DataFlowForecastInfo
@@ -36,9 +45,12 @@ struct DataFlowForecastInfo
         struct NeroObjForecastList   headOfUpperLayer;//指向第一个预测对象	
 	struct NeroObjForecastList   headOfLowerLayer;//指向第一个预测对象
 	struct NeroObjForecastList   headOfSameLayer;//指向第一个预测对象
-	
+	struct NeroObjForecastList   *activateForecastObj;//在headOfUpperLayer中，当前被预测的，等待
+	                                                        //后续输入判断的节点，
 	nero_s32int start;//start end 是objs中某个子集的起始位置，用来指示该位置有衍生概念
 	nero_s32int end;
+	nero_s32int timeToMerage;//合并子集标志
+	nero_s32int DeBugMsg;
 			
 };
 
@@ -88,15 +100,15 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
 void AddNodeIntoForecastList(struct list_head  * listHead,NeuronObject * Obj);
 
 void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo);
+ struct NeroObjForecastList   * Process_IfHasThisObjINList(struct list_head  * listHead,NeuronObject * Obj);
 
+void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo);
 
+nero_s32int Process_IfIsChildOfActivateForecastObj(struct DataFlowForecastInfo  * forecastInfo,struct NeroObjForecastList   *findObiPoint);
+nero_s32int Process_GetNewActivateForecastObj(struct DataFlowForecastInfo  * forecastInfo,struct NeroObjForecastList   *findObiPoint);
 
-
-
-
-
-
-
-
+ void ReSetForecastList(struct DataFlowForecastInfo  * forecastInfo);
+void Process_MerageObjsList(struct DataFlowForecastInfo  * forecastInfo);
+nero_s32int Operating_NeroConfigurationModify(void * operateKind,void *c);
 
 #endif

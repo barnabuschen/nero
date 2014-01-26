@@ -58,11 +58,12 @@ typedef  char  nero_8int;
 
 
 /*调试开关*/
-#define  Nero_ProcessERROR_Msg
+//#define  Nero_ProcessERROR_Msg
 #define  Nero_DeBuging1_cacel
 #define Nero_DeBuging0
 #define Nero_DeBuging1 
 #define Nero_DeBuging2 
+//#define DataFlowProcess_error_Msg
 //#define Nero_DeBuging17/11/13
 #define Nero_DeBuging18_11_13 
 #define Nero_DeBuging22_11_13 
@@ -75,6 +76,8 @@ typedef  char  nero_8int;
 #define Nero_DeBuging10_01_14
 #define Nero_DeBuging09_01_14
 #define Nero_DeBuging14_01_14
+#define Nero_DeBuging24_01_14
+#define Nero_DeBuging25_01_14
 #define NowIdDeBug 
 //#define Nero_DeBugInOperating_Pic
 #define NoIncludeG_return_if_fail  

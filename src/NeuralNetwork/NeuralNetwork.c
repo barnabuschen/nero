@@ -115,19 +115,27 @@ static inline nero_us32int getFiberUpdataTime(NerveFiber * fiber)
 	return time;
 }
 /**/
-static inline nero_s32int getFiberType(NerveFiber * fiber)
+ inline nero_s32int getFiberType(NerveFiber * fiber)
 {
-	nero_s32int kind;
+	nero_us32int kind;
 	
 	if(fiber ==NULL )
 		return nero_msg_unknowError;
-		
+/*1-------8  9-----16 17-----24  25----32
+				  1111 1111 0011 1111 1111 1111 1111 1111 
+				  
+				  */		
 	kind=fiber->msg1  & 0x00000300;/*提取对应的俩位*/
 	kind=kind  >>  8;
 	
 	
 	if (kind >=Fiber_PointToData  && kind <=Fiber_PointToSameLayer)
 	{
+/*	        if (kind == 3)*/
+/*	        {*/
+/*	                 printf("kind=%d.///////////////////////////\n",kind);*/
+/*	        }*/
+	       
 		return kind;
 	}
 	return nero_msg_unknowError;
@@ -191,29 +199,30 @@ static inline void setFiberPointToKind(NerveFiber * fiber,nero_us32int kind)
 	
 	if(fiber ==NULL || kind <Fiber_PointToData || kind >Fiber_PointToSameLayer)
 		return ;
-	
+/*	printf("kind=%d.\n",kind);*/
 	switch(kind)
 	{
-	
+	        fiber->msg1 =fiber->msg1  & 0xfffffcff;/*先设置为00，再在下面修改*/
 		case Fiber_PointToData	:
 				/*将第9  10位设置为00*/
 				/*1-------8  9-----16 17-----24  25----32
 				  1111 1111 0011 1111 1111 1111 1111 1111 
 				  
 				  */
-				fiber->msg1 =fiber->msg1  & 0xfffffcff;
+				fiber->msg1 =fiber->msg1 | 0x00000c00;
 				break;
 		case Fiber_PointToUpperLayer	:
 				/*1111 1111 1011 1111 1111 1111 1111 1111 */
-				fiber->msg1 =fiber->msg1  & 0xfffffdff;
+				fiber->msg1 =fiber->msg1  | 0x00000d00;
 				break;
 		case Fiber_PointToLowerLayer	:
 				/*1111 1111 0111 1111 1111 1111 1111 1111 */
-				fiber->msg1 =fiber->msg1  & 0xfffffeff;		
+				fiber->msg1 =fiber->msg1  | 0x00000e00;		
 				break;
 		case Fiber_PointToSameLayer	:
 				/*1111 1111 1111 1111 1111 1111 1111 1111 */
-				fiber->msg1 =fiber->msg1  & 0xfffffeff;	
+				fiber->msg1 =fiber->msg1  | 0x00000f00;	
+/*				printf("kind=%d.///////////////////////////\n",kind);*/
 				break;
 		default:break;	
 		
@@ -334,7 +343,26 @@ nero_s32int CreateActNeroNet()
 
 	
 	}
+	#ifdef Nero_DeBuging14_01_14_
+	{
+	NerveFiber  *curFiber=GodNero->outputListHead;
+	printf("len=%d.\n",sizeof(neroKind)/sizeof(nero_us32int));
+	for (;curFiber !=NULL;curFiber=curFiber->next)
+	{
+		nero_s32int BaseObi=curFiber->obj;
+		nero_s32int ObjectKind=nero_GetNeroKind(BaseObi);
+		#ifdef Nero_DeBuging14_01_14
+		printf("BaseObi=%x.\n",BaseObi);
+		printf("ObjectKind=%d.\n",ObjectKind);
+/*		printf("curFiber->next=%x.\n\n",curFiber->next);*/
 
+		#endif				
+	
+	
+	
+	}		
+        }
+	#endif	
 		printf("CreateActNeroNet   ok.\n");
 
 	return NeroOK;
@@ -367,7 +395,7 @@ nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher,nero_s32in
 	curFiber=lower->outputListHead;
 	for (;curFiber !=NULL;curFiber=curFiber->next)
 	{
-		if (curFiber->obj  == higher  ||   getFiberType(curFiber)  == pointTotype)
+		if (curFiber->obj  == higher &&   getFiberType(curFiber)  == pointTotype)
 		{
 			return NeroOK;
 		}
@@ -488,12 +516,13 @@ NeuronObject * nero_createNeroObj(nero_s32int kind)
 	}	
 	else
 		NeroErrorMsg;
-	#ifdef   Nero_DeBuging04_01_14
-/*	if (kind != NeuronNode_ForChCharacter)*/
+	#ifdef   Nero_DeBuging04_01_14_
+	if (kind != NeuronNode_ForChCharacter)
 	{
 /*		printf("新建概念id=%d ，kind=%d \n",newObj,kind);*/
 		char str[500];
-		sprintf(str,"新建概念id=%d ，kind=%d \n",newObj,kind);		
+		NeuronObject * tmpObj=newObj->inputListHead.obj;
+		sprintf(str,"新建概念id=%d ，kind=%d data:<%x%x%x><%x %x %x>\n",newObj,kind,tmpObj->x,tmpObj->y,tmpObj->z,tmpObj->x,tmpObj->y,tmpObj->z);		
 		nero_log("log/createNewObj.log",str);
 	}
 	
@@ -619,10 +648,18 @@ nero_s32int nero_addZhCharIntoNet(NeuronObject *GodNero,ChUTF8 chChar[],nero_s32
 			/*往概念填数据*/
 			nero_addDataToZhNeroObj(newObj,&chChar[i]);
 			
-			#ifdef  Nero_DeBuging18_11_13_0
-			printf("new nero:   kind=%d.\n",nero_GetNeroKind(newObj));
-			#endif			
-			
+			#ifdef  Nero_DeBuging18_11_13_
+/*			printf("new nero:   kind=%d.\n",nero_GetNeroKind(newObj));*/
+
+		        char str[500];
+		        char TMPstr[50];
+		        NeuronObject * tmpObj=newObj->inputListHead->obj;
+/*		         sprintf(TMPstr,"%d%d%d",tmpObj->x,tmpObj->y,tmpObj->z);*/
+		         sprintf(TMPstr,"%c%c%c",(int)tmpObj->x,(int)tmpObj->y,(int)tmpObj->z);
+		        sprintf(str,"概念id=%x ，kind=%d data:<%x%x%x><%s>\n",newObj,nero_GetNeroKind(newObj),tmpObj->x,tmpObj->y,tmpObj->z,TMPstr);		
+		        nero_log("log/createNewObj.log",str);
+
+	                #endif				
 			/*最后加入网络*/
 /*			nero_printNeroMsg(newObj) ;*/
 			nero_addNeroIntoNet( GodNero,newObj);
@@ -790,7 +827,7 @@ nero_s32int  nero_ifMakeUpWithTheseObjs(NeuronObject *obj,NeuronObject *childred
 	NerveFiber *tmpFiber1;
 	NeuronObject  *tmpObi;
 	
-	if (childred == NULL  || objNum <2  || obj==NULL) 
+	if (childred == NULL  || objNum <1  || obj==NULL) 
 		return nero_msg_ParameterError	;
 				
 	
@@ -834,6 +871,7 @@ nero_s32int  nero_ifMakeUpWithTheseObjs(NeuronObject *obj,NeuronObject *childred
 	/*运行到这里说明都找到了*/
 	return NeroYES;
 }
+
 /*判断tmpFiber2指向的对象是否一个词的概念，并且这个词由Obis里面的字，依次组成*/
 /*返回1表示是*/
 nero_s32int  nero_ifHasThisData_word(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum)
@@ -952,7 +990,7 @@ NeuronObject *   nero_IfHasObjFromMultiples2(NeuronObject *Obis[],nero_s32int ob
 				printf("nero_IfHasObjFromMultiples2 msg%x.\n",obj);
 				msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			
 			#endif	
-			#ifdef Nero_DeBuging09_01_14
+			#ifdef Nero_DeBuging09_01_14_
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 			neroObjMsgWithStr_st.fucId = 1;
 			neroObjMsgWithStr_st.Obi =obj;
@@ -1047,7 +1085,7 @@ nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNu
 			}			
 /*			printf("flag=%d.  obj=%x\n",flag,obj);*/
 			/*判断这个对象是否包含所以子类型*/
-			if (flag == 1)
+			if (flag == 1   &&  nero_isBaseObj(obj) !=1)
 			{
 				makeup=nero_ifMakeUpWithTheseObjs(obj, Obis,objNum);
 /*				printf("makeup=%d\n",makeup);*/
@@ -1068,7 +1106,69 @@ nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNu
 
 
 }
+NeuronObject *   nero_IfHasObjFromMultiples4(NeuronObject *Obis[],nero_s32int objNum)
+{
 
+	/*根据类（对象）的定义：这个函数的目的是判断是否有一个类恰好或部分由这些子类构成*/
+	nero_s32int i;
+	NerveFiber *tmpFiber1;
+	NeuronObject *obj;
+	NeuronObject *findobj;
+	nero_s32int flag,kind,makeup;	
+	if (Obis == NULL  || objNum <2)
+		return NULL;
+	
+	flag=0;
+	/*循环首先找到所以Obis概念都指向的概念*/
+	/*考虑到数组一般不会太过庞大，所以使用最简单的暴力遍历就好了*/
+	for (i=0;i<objNum;i++)
+	{
+
+		tmpFiber1=Obis[i]->outputListHead;/*数据的神经链表，任何概念都会指向所有他的上层概念*/
+						/*你只需要在这些上层概念中找有没有需要的概念*/
+		while(tmpFiber1 )
+		{			
+			obj=tmpFiber1->obj;
+			/*首先判断这个概念的类型是不是可能是要找的，有些基类类型不可能是要找的*/
+			kind=nero_GetNeroKind(obj);
+			switch(kind)
+			{
+				case NeuronNode_ForChCharacter: 
+				case NeuronNode_ForNone: 
+				case NeuronNode_ForGodNero: 
+				case NeuronNode_ForData: 
+				case NeuronNode_ForConnect: 
+
+					flag=0;/*直接排除*/
+					break;				
+				default:
+					flag=1;
+					break;
+		
+			}			
+/*			printf("flag=%d.  obj=%x\n",flag,obj);*/
+			/*判断这个对象是否包含所以子类型*/
+			if (flag == 1  &&  nero_isBaseObj(obj) !=1)
+			{
+				makeup=nero_ifMakeUpWithTheseObjs(obj, Obis,objNum);
+/*				printf("makeup=%d\n",makeup);*/
+				if (makeup == NeroYES)/*找到了要找的对象*/
+				{
+					return obj;
+				}
+			}
+			
+			
+			tmpFiber1=tmpFiber1->next;
+		}			
+	}	
+
+
+	return NULL;
+
+
+
+}
 /*判断是否已经从俩个已知道俩个概念中生成一个了新的概念,有则返回这个对象*/
 /*问题是万一不止一个共同的对象怎么办*/
 NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
@@ -1398,8 +1498,7 @@ nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead)
 	NeuronObject  *word[25];/*定义一个指针数组，该数组保存一个词中每个字的概念的指针*/
 	last=wordsHead->next;
 	nero_s32int i,res;	
-/*	PrintUtf8 ttt;*/
-/*	ttt.end=0;	*/
+
 	
 	while(last)
 	{
@@ -1474,12 +1573,13 @@ nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead)
 
 				if (newWords )
 				{	
-					
+						PrintUtf8 ttt;
+	ttt.end=0;	
 					ttt.tmp=last->words[0];
 					printf("%s",(nero_s8int *)&ttt);
 					ttt.tmp=last->words[1];
 					printf("%s \n",(nero_s8int *)&ttt);					
-					
+					printf("obj=%x.\n",newWords);
 				}
 				else
 					printf("创建失败  \n");
@@ -1621,7 +1721,7 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 		#ifdef Nero_DeBuging14_01_14_
 		
 /*			printf("寻找字符2：%x %x %x.\n",wordP2[i].first,words[i].second,words[i].third);*/
-			printf("寻找字符2：%x %x %x.\n",ttt22[0],ttt22[1],ttt22[2]);
+			printf("寻找字符2：%c%c%c.\n",ttt22[0],ttt22[1],ttt22[2]);
 		#endif	
 		tmp=nero_IfHasZhWord( GodNero,&wordP2, dataKind);
 		break;
@@ -1686,9 +1786,31 @@ NeuronObject * nero_IfHasZhWord(NeuronObject *GodNero,ChUTF8 * word,nero_s32int 
 	
 		#ifdef Nero_DeBuging14_01_14_
 		
-			printf("寻找字符3：%x %x %x.\n",word->first,word->second,word->third);
+			printf("寻找字符3：%c%c%c.\n",word->first,word->second,word->third);
 /*			printf("寻找字符3：%x %x %x.\n",ttt22[0],ttt22[1],ttt22[2]);*/
 		#endif	
+	#ifdef Nero_DeBuging14_01_14_
+	curFiber=GodNero->outputListHead;
+	for (;curFiber !=NULL;curFiber=curFiber->next)
+	{
+		BaseObi=curFiber->obj;
+		ObjectKind=nero_GetNeroKind(BaseObi);
+		#ifdef Nero_DeBuging14_01_14
+		printf("BaseObi=%x.\n",BaseObi);
+		printf("ObjectKind=%d.\n",ObjectKind);
+		printf("curFiber->next=%x.\n\n",curFiber->next);
+
+		#endif				
+	
+	
+	
+	}		
+
+	#endif			
+		
+		
+		
+		
 	curFiber=GodNero->outputListHead;
 	for (;curFiber !=NULL;curFiber=curFiber->next)
 	{
@@ -1698,7 +1820,12 @@ NeuronObject * nero_IfHasZhWord(NeuronObject *GodNero,ChUTF8 * word,nero_s32int 
 		ObjectKind=nero_GetNeroKind(BaseObi);
 			
 		/*现在遍历基类下面的数据：*/
-		
+		#ifdef Nero_DeBuging14_01_14_
+		printf("BaseObi=%x.\n",BaseObi);
+		printf("ObjectKind=%d.\n",ObjectKind);
+		printf("curFiber->next=%x.\n",curFiber->next);
+
+		#endif			
 		
 		if(kind != ObjectKind)
 			continue;

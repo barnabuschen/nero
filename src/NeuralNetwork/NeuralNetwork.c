@@ -828,7 +828,11 @@ nero_s32int  nero_ifMakeUpWithTheseObjs(NeuronObject *obj,NeuronObject *childred
 	NeuronObject  *tmpObi;
 	
 	if (childred == NULL  || objNum <1  || obj==NULL) 
-		return nero_msg_ParameterError	;
+	{
+	        printf("childred=%x   objNum=%x  obj=%d\n",childred,objNum,obj);
+	        return nero_msg_ParameterError	;
+	}
+		
 				
 	
 	/**/

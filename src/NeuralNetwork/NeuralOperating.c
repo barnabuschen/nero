@@ -358,12 +358,13 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
         /*对象预测-------------------------*/
 	/*初始化*/
+	 printf("id=%d  ----------------------\n",coutOferror_Msg_);
 	printf("识别对象数=%d.\n",j);
 /*	printf("objs=%x.\n",objs);*/
         #ifdef Nero_DeBuging25_01_14
         nero_s32int tmpc=0;
         
-        if (coutOferror_Msg_ ==52 )
+        if (coutOferror_Msg_ ==  Nero_TestCount )
         {
                 
                for (;tmpc<j;tmpc++)
@@ -371,7 +372,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
   				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = objs[tmpc];
-				sprintf(neroObjMsgWithStr_st.str,"打印识别对象obj =%x id=%d",objs[tmpc],coutOferror_Msg_);
+				sprintf(neroObjMsgWithStr_st.str,"打印识别对象obj(%d) =%x id=%d",tmpc,objs[tmpc],coutOferror_Msg_);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);	                     
                } 
         }
@@ -385,30 +386,26 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		
 	
 	/*-----------*/
-        Process_ObjForecast(&forecastInfo_st);
+	if (  Nero_TestCount  ==  coutOferror_Msg_ )
+	{
+	        Process_ObjForecast(&forecastInfo_st);
+	}
+        
         
         
 	#ifdef Nero_DeBuging14_01_14
-/*        nero_s32int */tmpc=0;
-		if (forecastInfo_st.objNum ==1)
-		{
-		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-		neroObjMsgWithStr_st.fucId = 1;
-		neroObjMsgWithStr_st.Obi = (forecastInfo_st.objs)[0];
-		sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中forecastInfo_st.objNum =1   obj=%x     id=%d",neroObjMsgWithStr_st.Obi,coutOferror_Msg_);		
-		msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);		        
-		}
-			
-                printf("id=%d  ----\n",coutOferror_Msg_);
+	if (coutOferror_Msg_ ==  Nero_TestCount )
+	{
+               
                 printf("DataFlowForecastInfo:\n    objNum=%d\n    objPoint=%d ",forecastInfo_st.objNum,forecastInfo_st.objPoint);
                 printf("\n    UpperLayerobjNum=%d\n    SameLayerobjNum=%d\n    LowerLayerobjNum=%d\n    dataNum=%d\n\n ",forecastInfo_st.headOfUpperLayer.times,forecastInfo_st.headOfSameLayer.times,forecastInfo_st.headOfLowerLayer.times,dataNum);
-
+        }
 	#endif		
 	
         #ifdef Nero_DeBuging25_01_14
         tmpc=0;
         
-        if (coutOferror_Msg_ ==52 )
+/*        if (coutOferror_Msg_ ==52 )*/
         {
                 
                for (;tmpc<forecastInfo_st.objNum;tmpc++)
@@ -892,18 +889,20 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
 		#endif
 		return ; 
         }	
-		#ifdef Nero_DeBuging09_01_14_
-		neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
-		neroObjMsg_st.fucId = 2;
-		neroObjMsg_st.Obi = newObj;
-		msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			
-		#endif	
+ 	#ifdef Nero_ProcessERROR_Msg
+	neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+	neroObjMsgWithStr_st.fucId = 1;
+	neroObjMsgWithStr_st.Obi = newObj;
+	sprintf(neroObjMsgWithStr_st.str,"AddNewObjToForecastList  newObj");
+	msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+	#endif	
 	
-
         p=newObj->outputListHead;
 /*        printf("                p=%x,newObj=%x.\n",p,newObj);*/
+
         while(p != NULL) 
         {
+/*                printf("                p=%x,Obj=%x.\n",p,p->obj);*/
                 Obj=p->obj;
                 
                 if (Obj != NULL  &&  nero_isBaseObj(Obj) != 1)
@@ -933,7 +932,7 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
                                 
                                 if (findNodeINlist == NULL)
                                 {
-                  		        #ifdef Nero_DeBuging24_01_14_
+                  		        #ifdef Nero_DeBuging24_01_14
                                         printf("预测链表增长。。。。。。。\n");
 		                        #endif	 
                                          AddNodeIntoForecastList(listHead,Obj);
@@ -978,6 +977,8 @@ struct NeroObjForecastList * Process_IfHasThisObjINList(struct list_head  * list
                 findForecastObj=(struct NeroObjForecastList   *) p;
                 if (findForecastObj->obj  == Obj)
                 {
+                
+/*                        printf("IfHasThisObjINList obj=%x.  Obj=%x\n",findForecastObj->obj,Obj);*/
                         return findForecastObj;
                 }
                 p=p->next;
@@ -1209,29 +1210,29 @@ NeuronObject * Process_IfHasNextObjToread(struct DataFlowForecastInfo  * forecas
  }
   nero_s32int SetStartAndEndForListNode(struct DataFlowForecastInfo  * forecastInfo, NeuronObject   *obj)
  {
- 
+/*                                 printf(" 7GetNewActivateForecastObj=%x\n",forecastInfo->activateForecastObj->obj);*/
          nero_s32int pos=0;
 /*                                 pos= getPosInObjs(forecastInfo,obj);*/
-                                pos=forecastInfo->objPoint -1;
+         pos=forecastInfo->objPoint -1;
                                 if (pos >= 0)
                                 {
                                         if ((forecastInfo->activateForecastObj)->start <0   ||  (forecastInfo->activateForecastObj)->end <0)
                                         {
                                                 /*如果之前没有被识别过的话*/
-                                                forecastInfo->activateForecastObj->start=pos;
-                                                forecastInfo->activateForecastObj->end=pos;
+                                                (forecastInfo->activateForecastObj)->start=pos;
+                                                (forecastInfo->activateForecastObj)->end=pos;
                                         }
                                         else
                                         {
                                                 /*如果恰好是end的下一个的话*/
-                                                if (forecastInfo->activateForecastObj->end == (pos-1))
+                                                if ((forecastInfo->activateForecastObj)->end == (pos-1))
                                                 {
-                                                        forecastInfo->activateForecastObj->end =pos;
+                                                        (forecastInfo->activateForecastObj)->end =pos;
                                                 }
                                                 /*如果恰好是end的下一个的话*/
-                                                if (forecastInfo->activateForecastObj->start == (pos+1))
+                                                if ((forecastInfo->activateForecastObj)->start == (pos+1))
                                                 {
-                                                        forecastInfo->activateForecastObj->start =pos;
+                                                        (forecastInfo->activateForecastObj)->start =pos;
                                                 }
                                                 /*其他情况先不管*/
                                                 
@@ -1239,8 +1240,13 @@ NeuronObject * Process_IfHasNextObjToread(struct DataFlowForecastInfo  * forecas
 
                                 }
                                 else
-                                       return NeroNO;
- 
+                                {
+                                 
+/*                                printf(" 9GetNewActivateForecastObj=%x\n",forecastInfo->activateForecastObj->obj);*/
+                                return NeroNO;
+                                }
+                                      
+/* printf(" 8GetNewActivateForecastObj=%x\n",forecastInfo->activateForecastObj->obj);*/
         return NeroYES;
  
  }
@@ -1270,18 +1276,36 @@ nero_s32int Process_GetNewActivateForecastObj(struct DataFlowForecastInfo  * for
                         
                         if (newActivateForecastObj)
                         {
+                        
+                        
+                        
                                 forecastInfo->activateForecastObj=newActivateForecastObj;
                                 /*修改newActivateForecastObj的信息*/
                                 newActivateForecastObj->Strengthen++;
-                                
+/*                                printf(" 1GetNewActivateForecastObj=%x.obj=%x\n",forecastInfo->activateForecastObj->obj,newActivateForecastObj->obj);*/
                                 res=SetStartAndEndForListNode( forecastInfo,obj);
+/*                                printf(" 4GetNewActivateForecastObj =%x.\n",forecastInfo->activateForecastObj->obj);*/
                                 if (res == NeroNO)
                                 {
+/*                                        printf(" 3GetNewActivateForecastObj =%x.\n",forecastInfo->activateForecastObj);*/
                                         forecastInfo->activateForecastObj=NULL;
                                        return NeroNO;
                                 }
                                 else
-                                        return NeroYES;
+                                {
+                                
+    				#ifdef Nero_DeBuging09_01_14_
+/*    				printf(" 2GetNewActivateForecastObj =%x.\n",forecastInfo->activateForecastObj);*/
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;
+				neroObjMsgWithStr_st.Obi = forecastInfo->activateForecastObj->obj;
+				sprintf(neroObjMsgWithStr_st.str,"GetNewActivateForecastObj 取得新对象%x id=%d",newActivateForecastObj,forecastInfo->DeBugMsg);
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
+				#endif                                
+                                
+                                return NeroYES;
+                                }
+                                        
                         }
                 }
         
@@ -1297,13 +1321,24 @@ nero_s32int Process_GetNewActivateForecastObj(struct DataFlowForecastInfo  * for
 */
 nero_s32int Process_IfIsChildOfActivateForecastObj(struct DataFlowForecastInfo  * forecastInfo,struct NeroObjForecastList   *findObiPoint)
 {
+        nero_s32int res=NeroNO;
         NeuronObject *childred=findObiPoint->obj;
-        
+        if (forecastInfo->activateForecastObj)
+        {
+                res= nero_ifMakeUpWithTheseObjs(forecastInfo->activateForecastObj->obj,&childred,1);
+                 #ifdef Nero_DeBuging27_01_14
+                printf("IfIsChildOfActivateForecastObj:====\n");
+                printf("findObiPoint->obj=%x.\n",findObiPoint->obj);
+                printf("res=%d.\n",res);
+                printf("activateForecastObj=%x.start,end<%d,%d>====\n",forecastInfo->activateForecastObj->obj,forecastInfo->activateForecastObj->start,forecastInfo->activateForecastObj->end);
+                #endif  
+        }
+    
 
-/*        res=SetStartAndEndForListNode(forecastInfo,findObiPoint->obj);*/
-        nero_s32int res= nero_ifMakeUpWithTheseObjs(forecastInfo->activateForecastObj,&childred,1);
-
-
+        if (res != NeroYES)
+        {
+                return NeroNO;
+        }
          return res;
 }
 /*判断是否可以合并objs数组
@@ -1322,36 +1357,52 @@ void Process_IsTimeToMerage(struct DataFlowForecastInfo  * forecastInfo)
         struct NeroObjForecastList   *listNode;
         NerveFiber  * curFiber;
         struct NeroObjForecastList * newActivateForecastObj;
-
-        obj=forecastInfo->activateForecastObj->obj;
-        curFiber=obj->inputListHead;
-        len=forecastInfo->activateForecastObj->end - forecastInfo->activateForecastObj->start+1;
-        i=forecastInfo->activateForecastObj->start;
-        while(curFiber  &&  i<=forecastInfo->activateForecastObj->end)
+/*        printf("forecastInfo->activateForecastObj=%x.\n",forecastInfo->activateForecastObj);*/
+        if (forecastInfo->activateForecastObj)
         {
-        
-                tmpobj=curFiber->obj;
-  
-                if (tmpobj !=  (forecastInfo->objs)[i])
+                
+                
+                obj=forecastInfo->activateForecastObj->obj;
+                curFiber=obj->inputListHead;
+                len=forecastInfo->activateForecastObj->end - forecastInfo->activateForecastObj->start+1;
+                i=forecastInfo->activateForecastObj->start;
+                
+           
+                
+                while(curFiber  &&  i<=forecastInfo->activateForecastObj->end)
                 {
-                        flag=NeroNO;
-                        break;
+                
+                        tmpobj=curFiber->obj;
+          
+                        if (tmpobj !=  (forecastInfo->objs)[i])
+                        {
+                                flag=NeroNO;
+                                break;
+                        }
+                        curFiber=curFiber->next;
+                        i++;
                 }
-                curFiber=curFiber->next;
-                i++;
-        }
-        
-        if (i == forecastInfo->activateForecastObj->end   &&   curFiber==NULL)
-        {
-/*                 return flag;*/
-                if (flag  == NeroYES )
+                if ((i-1) == forecastInfo->activateForecastObj->end   &&   curFiber==NULL)
+               // if (/*i == forecastInfo->activateForecastObj->end   && */  curFiber==NULL)
                 {
-                        forecastInfo->timeToMerage=1;
+        /*                 return flag;*/
+                        if (flag  == NeroYES )
+                        {
+                                forecastInfo->timeToMerage=1;
+                        }
                 }
+        /*         return NeroNO;*/
+                #ifdef Nero_DeBuging27_01_14
+                printf("IsTimeToMerage:\n");
+                printf("start=%d. end=%d  \n",forecastInfo->activateForecastObj->start,forecastInfo->activateForecastObj->end);
+                printf("i=%d,curFiber=%x\n",i,curFiber);
+                printf("timeToMerage=%d.\n\n",forecastInfo->timeToMerage);
+                #endif	   
         }
-/*         return NeroNO;*/
-
-
+        else
+                #ifdef Nero_DeBuging27_01_14
+                printf("无激活对象\n");
+                #endif	
 }
 void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 {
@@ -1366,6 +1417,8 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 	/*因为后面只是需要objs, j这俩个变量，而objs不需要重新申请也可以使用，只需要修改j就好了 
 	但是子概念和高层概念预测链表还是作为全局的好，这样的话当前的预测链表还能影响下次的东东
 	 */
+	 #define ObjForecast_DeBug_msg
+	 
 	 
 	while( (tmpObi=Process_IfHasNextObjToread(forecastInfo))  !=   NULL)
 	{
@@ -1377,8 +1430,24 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 		findObiPoint=Process_CompareWithForecastList(forecastInfo,tmpObi);	
 		if (findObiPoint != NULL)
 		{
+                        #ifdef ObjForecast_DeBug_msg
+
+                        if (forecastInfo->DeBugMsg ==52  || forecastInfo->DeBugMsg ==7)
+                        {
+
+                                printf("findObi=%x objNum=%d \n",findObiPoint->obj,forecastInfo->objNum);
+                        }
+                        #endif			
+		
+		
 		        /*判断tmpObi是不是activateForecastObj的等待输入的对象*/
 		        res1= Process_IfIsChildOfActivateForecastObj( forecastInfo, findObiPoint);
+                        #ifdef ObjForecast_DeBug_msg
+                        if (forecastInfo->DeBugMsg ==52 || forecastInfo->DeBugMsg ==7)
+                        {
+                                printf("res1=%d \n",res1);
+                        }
+                        #endif
 		        if (NeroYES  == res1)
 		        {
 		                /*更新activateForecastObj*/
@@ -1389,7 +1458,7 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 		        {
 		                Process_GetNewActivateForecastObj( forecastInfo, findObiPoint);
 		                /*获取新的activateForecastObj*/
-		        
+		                printf("NewActivate=%x objPoint=%x.\n",forecastInfo->activateForecastObj,forecastInfo->objPoint-1);
 		        }
 		        else
 		                continue;
@@ -1399,7 +1468,21 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 		         /*修改*/
 		      if (forecastInfo->timeToMerage ==1)
 		      {
-		                  
+                                #ifdef ObjForecast_DeBug_msg
+/*                                if (forecastInfo->DeBugMsg ==52 )*/
+                                {
+                                        printf("timeToMerage------------- id=%d\n",forecastInfo->DeBugMsg);
+                                        printf("activateForecastObj=%x.\n",forecastInfo->activateForecastObj);
+  				#ifdef Nero_DeBuging09_01_14
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;
+				neroObjMsgWithStr_st.Obi = forecastInfo->activateForecastObj;
+				sprintf(neroObjMsgWithStr_st.str,"Merage激活对象 id=%d",forecastInfo->DeBugMsg);
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
+				#endif                                      
+                                        
+                                }
+                                #endif         
 		                Process_MerageObjsList(forecastInfo);
 		              /*修改过后就重新开始  循环*/
 		                forecastInfo->activateForecastObj->start=-1;
@@ -1411,8 +1494,10 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 		      }
 		        
 		}	
-		
-		        
+		#ifdef Nero_DeBuging09_01_14_
+		printf("before Updata tmpObi=%x.\n",tmpObi);
+                printf("objNum=%d objPoint=%d \n\n",forecastInfo->objNum,forecastInfo->objPoint);
+                #endif     
 		Process_UpdataForecastList(forecastInfo,tmpObi);
 	}	 
 	 
@@ -1433,20 +1518,27 @@ void Process_MerageObjsList(struct DataFlowForecastInfo  * forecastInfo)
 	nero_s32int start,end,i,j;
 	forecastInfo->objNum=OldobjNum- objNum+1;   /*新的objNum值*/
                     
+
         /*结束条件是end后面剩余的对象数OldobjNum-（forecastInfo_st.end+1)  */
         start=forecastInfo->activateForecastObj->start;
         end=forecastInfo->activateForecastObj->end;
-		               for (j=start,i=0;i<=(OldobjNum-(forecastInfo->end+1));j++,i++)
+        #ifdef Nero_DeBuging27_01_14
+        printf("MerageObjsList:\n");
+        printf("start=%d. end=%d  \n",start,end);
+         printf("OldobjNum=%d.  len=%d  new objNum=%d\n",OldobjNum,objNum,forecastInfo->objNum);
+         printf("结束条件=%d.\n",(OldobjNum-(end+1)));
+        #endif	
+		               for (j=start,i=0;i<=(OldobjNum-(end+1));j++,i++)
 		               {
 
 		               
 		                       if (j == start )
 		                       {
-		                               (forecastInfo->objs)[j]=forecastInfo->activateForecastObj;
+		                               (forecastInfo->objs)[j]=forecastInfo->activateForecastObj->obj;
 		                               
 		                       }
 		                       else
-		                              (forecastInfo->objs)[j]=(forecastInfo->objs)[forecastInfo->end+i];
+		                              (forecastInfo->objs)[j]=(forecastInfo->objs)[end+i];
 		               }
 			
 

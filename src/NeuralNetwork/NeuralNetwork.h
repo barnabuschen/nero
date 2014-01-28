@@ -199,7 +199,7 @@ extern NeroConf neroConf;
 #define	Fiber_PointToSameLayer	3
 
 /*神经纤维链接强度的最大值*/
-#define	Fiber_StrengthenMax	100
+#define	Fiber_StrengthenMax	200
 /*你需要定义个内存池，来管理使用和未使用的神经元*/
 
 

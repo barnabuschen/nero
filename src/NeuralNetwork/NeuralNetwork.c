@@ -820,6 +820,11 @@ nero_s32int nero_isInNet(NeuronObject *Obi)
 }
 
 /*判断该复杂对象是否由数组内的对象组成或者部分组成，不考虑顺序*/
+/*
+现在有一个逻辑上的bug，如果这些概念之间都是俩俩相连接的，那么无论如何最后发现
+都是已经有高层概念的，
+解决方法：判断该链接的类型是不是链接高层概念的
+*/
 nero_s32int  nero_ifMakeUpWithTheseObjs(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum)
 {
 /*	nero_us32int kind;*/
@@ -829,7 +834,7 @@ nero_s32int  nero_ifMakeUpWithTheseObjs(NeuronObject *obj,NeuronObject *childred
 	
 	if (childred == NULL  || objNum <1  || obj==NULL) 
 	{
-	        printf("childred=%x   objNum=%x  obj=%d\n",childred,objNum,obj);
+	        printf("ifMakeUpWithTheseObjs childred=%x   objNum=%x  obj=%d\n",childred,objNum,obj);
 	        return nero_msg_ParameterError	;
 	}
 		
@@ -855,7 +860,8 @@ nero_s32int  nero_ifMakeUpWithTheseObjs(NeuronObject *obj,NeuronObject *childred
 		for (tmpObi=tmpFiber1->obj;tmpObi != NULL &&  tmpFiber1 != NULL;tmpFiber1=tmpFiber1->next)
 		{
 			tmpObi=tmpFiber1->obj;
-			if (obj   ==  tmpObi)/*看能不能咋obj中找到子概念*/
+			/*增加判断：判断该链接的类型是不是链接高层概念的*/
+			if (obj   ==  tmpObi  &&  getFiberType(tmpFiber1)== Fiber_PointToUpperLayer)/*看能不能咋obj中找到子概念*/
 			{
 				flag=1;
 				break;
@@ -1095,6 +1101,7 @@ nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNu
 /*				printf("makeup=%d\n",makeup);*/
 				if (makeup == NeroYES)/*找到了要找的对象*/
 				{
+				        printf("找到了要找的对象\n");
 					return NeroYES;
 				}
 			}
@@ -1326,23 +1333,39 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	NeuronObject *newObi;
 	NerveFiber *tmpFiber;
 	nero_s32int newObiKind,res,i;
-
+/*        #define createObjFromMultiples_DeBug_Msg*/
 	if (Obis == NULL  || objNum <2)
-		return NULL;
+	{
+	        printf("nero_createObjFromMultiples  参数错误\n");
+	        return NULL;
+	}
+		
 		
 	/*首先你要判断这些个概念是不是在网络中存在，如果不存在，则报错返回*/
 	for (i=0;i<objNum;i++)
 	{
 		
 		if ( nero_isInNet(Obis[i]) !=1  )
-			return NULL;		
+		{
+		        #ifdef   createObjFromMultiples_DeBug_Msg
+		        printf("nero_createObjFromMultiples  概念不在网络中\n");
+		        #endif	
+		        return NULL;	
+		}
+				
 	}
 	/*判断这些个对象是不是已经有生成过新概念了*/
 	
 	res=nero_IfHasObjFromMultiples3(Obis, objNum);
 /*	printf("判断这些个对象是不是已经有生成过新概念了=%d.\n",res);*/
 	if(res == NeroYES)
-		return NULL;	
+	{
+	        #ifdef   createObjFromMultiples_DeBug_Msg
+	        printf("nero_createObjFromMultiples  要创建的概念已经存在在网络中\n");
+	        #endif	
+	        return NULL;	
+	}
+		
 		
 		
 			
@@ -1366,7 +1389,9 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	res= nero_addNeroIntoNet( GodNero,newObi);
 	if(nero_msg_ok != res)
 	{
+	        #ifdef   createObjFromMultiples_DeBug_Msg
 		printf("概念加入网络失败id=%d Kind %d \n",newObi,newObiKind);
+		 #endif	
 /*		return NULL;*/
 	
 	}

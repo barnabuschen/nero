@@ -51,7 +51,7 @@ struct DataFlowForecastInfo
 	nero_s32int end;
 	nero_s32int timeToMerage;//合并子集标志
 	nero_s32int DeBugMsg;
-			
+	nero_s32int DeBugMsgTwo;
 };
 
 

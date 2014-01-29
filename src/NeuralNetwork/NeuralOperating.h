@@ -47,6 +47,12 @@ struct DataFlowForecastInfo
 	struct NeroObjForecastList   headOfSameLayer;//指向第一个预测对象
 	struct NeroObjForecastList   *activateForecastObj;//在headOfUpperLayer中，当前被预测的，等待
 	                                                        //后续输入判断的节点，
+	                                                        
+	                                                    
+	NeuronObject * waitForRecognise; /*如果没有在预测列表中的数据会先放在这里，
+	                                       看下次能不能被识别*/
+	nero_s32int waitForRecogniseObjPos;/*waitForRecognise的位置*/
+	                                             
 	nero_s32int start;//start end 是objs中某个子集的起始位置，用来指示该位置有衍生概念
 	nero_s32int end;
 	nero_s32int timeToMerage;//合并子集标志

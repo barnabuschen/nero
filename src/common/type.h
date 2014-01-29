@@ -63,8 +63,8 @@ typedef  char  nero_8int;
 #define Nero_DeBuging0
 #define Nero_DeBuging1 
 #define Nero_DeBuging2 
-#define Nero_TestCount     MaxNeroNum 
-//#define DataFlowProcess_error_Msg
+#define Nero_TestCount     30
+#define DataFlowProcess_error_Msg
 //#define Nero_DeBuging17/11/13
 #define Nero_DeBuging18_11_13 
 #define Nero_DeBuging22_11_13 

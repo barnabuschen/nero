@@ -1101,7 +1101,7 @@ nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNu
 /*				printf("makeup=%d\n",makeup);*/
 				if (makeup == NeroYES)/*找到了要找的对象*/
 				{
-				        printf("找到了要找的对象\n");
+/*				        printf("找到了要找的对象\n");*/
 					return NeroYES;
 				}
 			}

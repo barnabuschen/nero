@@ -1,4 +1,40 @@
-Log_printSomeMsgForObj:Tue Jan 28 20:58:38 2014
-		地址：80ad070,ObjectKind=2000,在DataFlowProcess中创建高级衍生对象成功
-Log_printSomeMsgForObj:Tue Jan 28 20:58:38 2014
-		地址：80ad088,ObjectKind=2000,在DataFlowProcess中创建高级衍生对象成功
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad040,打印字符对象(特殊符号)《***》,打印识别对象obj(0) =80ad040 id=1,数据是：《3100》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad070,打印字符对象(特殊符号)《***》,打印识别对象obj(1) =80ad070 id=1,数据是：《3200》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad0a0,打印字符对象(特殊符号)《***》,打印识别对象obj(2) =80ad0a0 id=1,数据是：《3300》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad0d0,打印字符对象(特殊符号)《***》,打印识别对象obj(3) =80ad0d0 id=1,数据是：《3400》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad100,打印字符对象(特殊符号)《***》,打印识别对象obj(4) =80ad100 id=1,数据是：《3500》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad130,打印字符对象(特殊符号)《***》,打印识别对象obj(5) =80ad130 id=1,数据是：《3600》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad160,打印字符对象(特殊符号)《***》,打印识别对象obj(6) =80ad160 id=1,数据是：《3700》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad040,打印字符对象(特殊符号)《***》,识别结束后打印识别对象obj =80ad040 id=1,数据是：《3100》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad070,打印字符对象(特殊符号)《***》,识别结束后打印识别对象obj =80ad070 id=1,数据是：《3200》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad0a0,打印字符对象(特殊符号)《***》,识别结束后打印识别对象obj =80ad0a0 id=1,数据是：《3300》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad0d0,打印字符对象(特殊符号)《***》,识别结束后打印识别对象obj =80ad0d0 id=1,数据是：《3400》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad100,打印字符对象(特殊符号)《***》,识别结束后打印识别对象obj =80ad100 id=1,数据是：《3500》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad130,打印字符对象(特殊符号)《***》,识别结束后打印识别对象obj =80ad130 id=1,数据是：《3600》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad160,打印字符对象(特殊符号)《***》,识别结束后打印识别对象obj =80ad160 id=1,数据是：《3700》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad190,打印字符对象(特殊符号)《***》,打印识别对象obj(0) =80ad190 id=2,数据是：《3800》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad1c0,打印字符对象(特殊符号)《***》,打印识别对象obj(1) =80ad1c0 id=2,数据是：《3900》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad1f0,打印字符对象(特殊符号)《***》,打印识别对象obj(2) =80ad1f0 id=2,数据是：《3000》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad190,打印字符对象(特殊符号)《***》,识别结束后打印识别对象obj =80ad190 id=2,数据是：《3800》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad1c0,打印字符对象(特殊符号)《***》,识别结束后打印识别对象obj =80ad1c0 id=2,数据是：《3900》
+Log_printSomeMsgForObj:Wed Jan 29 17:43:09 2014
+		地址：80ad1f0,打印字符对象(特殊符号)《***》,识别结束后打印识别对象obj =80ad1f0 id=2,数据是：《3000》

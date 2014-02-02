@@ -966,7 +966,7 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
 
         while(p != NULL) 
         {
-/*                printf("                p=%x,Obj=%x.\n",p,p->obj);*/
+/*                printf("                p=%x,Obj=%x.\n", p,p->obj);*/
                 Obj=p->obj;
                 FiberType=getFiberType(p);
                 if (Obj != NULL  &&  nero_isBaseObj(Obj) != 1)

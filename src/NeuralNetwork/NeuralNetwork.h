@@ -65,6 +65,12 @@ int next;
 					这个选项激活时会不管当前链接的活跃情况和addLevelObj的值
 					，总是会创建新  高层概念
 					*/
+					
+	
+	nero_us32int CreateNewBaseObjKind;/*是否创建新基类的标志，默认打开为1*/
+	
+	
+	
 	nero_us32int  neroTime;     /*系统运行时间单位，初始化为0，隔1秒钟增加1*/
 	nero_us32int  ifReCreateLogFile;     /*系统运行时是否重新生成log文件*/
 	nero_us32int	  UsedNeroNum;
@@ -84,10 +90,10 @@ msg：
 低位			高位
 1-------8  9-----16 17-----24  25----32
 1111 1111 1111 1111 1111 1111 1111 1111 
-1-16位表示该节点种类
+1-16位表示该节点种类,注意，17到24位尽量别用，以免节点种类用16位不够用需要扩展
 
 
-
+31：在一些基类中，用来表示该种类别的子类的排列顺序是否固定，1表示顺序固定，0表示顺序无所谓
 32位：区别一般的概念和基类，1表示基类，0表示衍生类(网络中真正的数据)
 */
 
@@ -138,6 +144,12 @@ msg1：
 	指向该纤维所属神经元的同层次概念的神经元	#define	Fiber_PointToSameLayer	11
 	就是说如果为Fiber_PointToUpperLayer	01，那么第9位为1，第10位为0
 	
+11-12位：
+        有且必须存在一个                         #define Fiber_PointToUniqueObj	00
+	可重复，但必须存在一个	                #define	Fiber_PointToMutiObj	01
+	可有可没有 	                        #define	Fiber_PointToUnnecessaryObj	10
+	就是说如果为Fiber_PointToMutiObj	01，那么第11位为1，第12位为0       
+
 	
 time：
 低位			高位
@@ -182,7 +194,7 @@ extern NeroConf neroConf;
 #define NeuronNode_ForChSentence   63    //当一个概念节点的类型为此时表示一个中文句子
 
 #define NeuronNode_ForComplexDerivative  2000    //高级衍生类
-#define NeuronNode_Max   2500
+#define NeuronNode_Max   65535
 
 
 /*区别一般的概念和基类*/
@@ -197,9 +209,12 @@ extern NeroConf neroConf;
 #define	Fiber_PointToUpperLayer	1
 #define	Fiber_PointToLowerLayer	2
 #define	Fiber_PointToSameLayer	3
-
+/*基类中子类的出现情况定义*/
+#define Fiber_PointToUniqueObj	        0
+#define	Fiber_PointToMutiObj	        1
+#define	Fiber_PointToUnnecessaryObj	2
 /*神经纤维链接强度的最大值*/
-#define	Fiber_StrengthenMax	200
+#define	Fiber_StrengthenMax	200     //在结构体中共用了8位来记录这个值，所以最大为255
 /*你需要定义个内存池，来管理使用和未使用的神经元*/
 
 

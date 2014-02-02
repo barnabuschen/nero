@@ -114,6 +114,33 @@ static inline nero_us32int getFiberUpdataTime(NerveFiber * fiber)
 /*	fiber->time =fiber->time | time;*/
 	return time;
 }
+ inline nero_s32int getFiberPointToObjNum(NerveFiber * fiber)
+{
+	nero_us32int kind;
+	
+	if(fiber ==NULL )
+		return nero_msg_unknowError;
+/*1-------8  9-----16 17-----24  25----32
+				  1111 1111 1100 1111 1111 1111 1111 1111 
+				  
+				  */		
+	kind=fiber->msg1  & 0x00000c00;/*提取对应的俩位*/
+	kind=kind  >>  10;
+	
+	
+	if (kind >=Fiber_PointToUniqueObj  && kind <=Fiber_PointToUnnecessaryObj)
+	{
+/*	        if (kind == 3)*/
+/*	        {*/
+/*	                 printf("kind=%d.///////////////////////////\n",kind);*/
+/*	        }*/
+	       
+		return kind;
+	}
+	return nero_msg_unknowError;
+
+}
+
 /**/
  inline nero_s32int getFiberType(NerveFiber * fiber)
 {
@@ -193,6 +220,48 @@ static inline nero_s32int gainFiberStrengthen(NerveFiber * fiber,nero_us32int ti
 	#endif		
 	return (Strengthen);
 }
+/*
+#define Fiber_PointToUniqueObj	        0
+#define	Fiber_PointToMutiObj	        1
+#define	Fiber_PointToUnnecessaryObj	2
+设置纤维指向的子概念的出现数量*/
+static inline void setFiberPointToNums(NerveFiber * fiber,nero_us32int type)
+{
+	
+	if(fiber ==NULL || type <Fiber_PointToUniqueObj || type >Fiber_PointToUnnecessaryObj)
+		return ;
+/*	printf("kind=%d.\n",kind);*/
+	switch(type)
+	{
+	        fiber->msg1 =fiber->msg1  & 0xfffff3ff;/*先设置为00，再在下面修改*/
+		case Fiber_PointToUniqueObj	:
+				/*将第11  12位设置为00*/
+				/*1-------8  9-----16 17-----24  25----32
+				  1111 1111 1100 1111 1111 1111 1111 1111 
+				  
+				  */
+				  /*不需要改了，已经是00了*/
+/*				fiber->msg1 =fiber->msg1 | 0x00000c00;*/
+				break;
+		case Fiber_PointToMutiObj	:
+				/*1111 1111 1110 1111 1111 1111 1111 1111 */
+				fiber->msg1 =fiber->msg1  | 0x00000700;
+				break;
+		case Fiber_PointToUnnecessaryObj	:
+				/*1111 1111 1101 1111 1111 1111 1111 1111 */
+				fiber->msg1 =fiber->msg1  | 0x00000b00;		
+				break;
+/*		case Fiber_PointToSameLayer	:*/
+				/*1111 1111 1111 1111 1111 1111 1111 1111 */
+/*				fiber->msg1 =fiber->msg1  | 0x00000f00;	*/
+/*				printf("kind=%d.///////////////////////////\n",kind);*/
+/*				break;*/
+		default:break;	
+		
+	}
+}
+
+
 /*设置纤维指向的神经元与该纤维所属概念的关系*/
 static inline void setFiberPointToKind(NerveFiber * fiber,nero_us32int kind)
 {
@@ -209,7 +278,8 @@ static inline void setFiberPointToKind(NerveFiber * fiber,nero_us32int kind)
 				  1111 1111 0011 1111 1111 1111 1111 1111 
 				  
 				  */
-				fiber->msg1 =fiber->msg1 | 0x00000c00;
+				  /*不需要改了，已经是00了*/
+/*				fiber->msg1 =fiber->msg1 | 0x00000c00;*/
 				break;
 		case Fiber_PointToUpperLayer	:
 				/*1111 1111 1011 1111 1111 1111 1111 1111 */
@@ -228,8 +298,37 @@ static inline void setFiberPointToKind(NerveFiber * fiber,nero_us32int kind)
 		
 	}
 }
+/*设置基类的子类排序是否要固定*/
+static inline void setChildrenOrderRule(ActNero *nero,nero_us32int rule)
+{
+	
+	if(nero ==NULL || rule <0 || rule >1)
+		return ;
+		
+		
+	if (rule == 1)
+	{	/*把末k位变成1          | (101001->101111,k=4)      | x | (1 < < k-1) */
+		nero->msg =nero->msg | (1<<(32-2));
+	}
+	else	
+		nero->msg =nero->msg & 0xbfffffff;// 1101  第31位清零
 
+}
+static inline nero_s32int getChildrenOrderRule(ActNero *nero)
+{
+	nero_s32int rule;
+	if(nero ==NULL)
+		return nero_msg_ParameterError;
+		
+		
+		/*最后看31位是不是1*/
+		rule=nero->msg   & 0x40000000;//
+		if(rule != 0)
+			return 1;
+			
+		return 0;
 
+}
 /*区别一般的概念和基类*/
 static inline void setActNeroAsBaseObject(ActNero *nero,nero_us32int kind)
 {
@@ -312,7 +411,7 @@ nero_s32int CreateActNeroNet()
 	neroConf.neroTime=0;
 	neroConf.ifReCreateLogFile=1;
 	neroConf.addLevelObjAlways=0;
-	
+	neroConf.CreateNewBaseObjKind=1;
 	/*首先一个网络你是否导入了数据必须有一些基本的构建*/
 
 	/*显然它必须生成一些基本的神经对象，就像面向对象语言中万物。之母一样*/
@@ -461,6 +560,7 @@ nero_s32int initActNero(ActNero * nero,nero_us32int kind,NerveFiber *inputListHe
 {
 	if(nero ==NULL || kind <NeuronNode_ForNone || kind >=NeuronNode_Max)
 		return NeroError;
+	nero->msg=0;
 	setActNeroKind( nero,kind);
 	nero->inputListHead=inputListHead;
 	nero->outputListHead=outputListHead;

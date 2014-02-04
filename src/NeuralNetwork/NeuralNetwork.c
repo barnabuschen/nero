@@ -140,7 +140,32 @@ static inline nero_us32int getFiberUpdataTime(NerveFiber * fiber)
 	return nero_msg_unknowError;
 
 }
+NeuronObject *  getBaseObjName(NeuronObject * baseobj)
+{
+	nero_s32int ObjectKind;
+	NerveFiber  *  curFiber,*Obi;
+        if (baseobj == NULL ||  nero_isBaseObj(baseobj) != 1)
+        {
+                return NULL;
+        }
 
+	        curFiber=godNero->outputListHead;
+	        for (;curFiber !=NULL;curFiber=curFiber->next)
+	        {
+	        
+
+		      Obi=curFiber->obj;
+		      ObjectKind=nero_GetNeroKind(Obi); 
+	        
+	                if ( (ObjectKind == NeuronNode_ForChCharacter  ||  ObjectKind ==NeuronNode_ForChWord) &&  getFiberType(curFiber)  ==   Fiber_PointToLowerLayer )
+	                {
+	                        return BaseObi;
+	                }
+	        
+	        }
+        return NULL;
+
+}
 /**/
  inline nero_s32int getFiberType(NerveFiber * fiber)
 {
@@ -167,6 +192,34 @@ static inline nero_us32int getFiberUpdataTime(NerveFiber * fiber)
 	}
 	return nero_msg_unknowError;
 
+}
+NeuronObject * getBaseObjPoint(NeuronObject  *godNero,nero_s32int kind)
+{
+
+	nero_s32int ObjectKind;
+
+	NeuronObject * BaseObi;
+	NerveFiber  *  curFiber;
+        if (godNero == NULL ||  kind <0  ||  kind >NeuronNode_MaxNewDerivativeClassId)
+        {
+                return NULL;
+        }
+
+	        curFiber=godNero->outputListHead;
+	        for (;curFiber !=NULL;curFiber=curFiber->next)
+	        {
+	        
+
+		      BaseObi=curFiber->obj;
+		      ObjectKind=nero_GetNeroKind(BaseObi); 
+	        
+	                if (ObjectKind == kind)
+	                {
+	                        return BaseObi;
+	                }
+	        
+	        }
+        return NULL;
 }
 /*加强连接强度*/
 static inline nero_s32int gainFiberStrengthen(NerveFiber * fiber,nero_us32int time)
@@ -412,6 +465,7 @@ nero_s32int CreateActNeroNet()
 	neroConf.ifReCreateLogFile=1;
 	neroConf.addLevelObjAlways=0;
 	neroConf.CreateNewBaseObjKind=1;
+	neroConf.NewNeroClassID=NeuronNode_MinNewDerivativeClassId;
 	/*首先一个网络你是否导入了数据必须有一些基本的构建*/
 
 	/*显然它必须生成一些基本的神经对象，就像面向对象语言中万物。之母一样*/
@@ -1369,14 +1423,89 @@ nero_s32int  nero_IfHasObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
 	return has;
 
 }
+NeuronObject * nero_CreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
+{
+	if (objs == NULL  || objNum <2 ||  godNero==NULL ||  conf==NULL)
+	{
+	        printf("nero_CreateNewBaseObj  参数错误\n");
+	        return NULL;
+	}
+	
+	
+	nero_s32int i,ObjectKind,res;
+	NeuronObject * BaseObi,* BaseNeuronObject;
+
+
+        if (conf->NewNeroClassID  > NeuronNode_MaxNewDerivativeClassId)
+        {
+                printf("基类创建失败,种类过多\n");
+		return NULL;              
+        }
+	BaseNeuronObject=(NeuronObject *)getNeuronObject();
+	res=initActNero(BaseNeuronObject,conf->NewNeroClassID,NULL,NULL);
+	(conf->NewNeroClassID)++;
+	if(res == NeroError)
+	{
+                        printf("基类创建失败0\n");
+			return NULL;
+	}	
+	/*现在设置基类的孩子概念类型*/
+	/*从objs[1]开始判断，objs[0]是类型名字*/
+	
+	/*这里先不管数组中的子概念的类型是不是有重复连续相同的，都一一的在
+	基类中做对应
+	*/
+	for (i=1;i<objNum;i++)
+	{
+	        ObjectKind=nero_GetNeroKind(objs[i]);            
+		/*生成新概念的数据链表模板*/
+		tmpFiber= addNerveFiber(BaseNeuronObject,NerveFiber_Input,Fiber_PointToData);
+		if (tmpFiber == NULL )
+		{
+                        printf("基类创建失败2\n");
+		        return NULL; 		        
+		}
+		tmpFiber->obj= getBaseObjPoint(godNero,ObjectKind);
+		if (tmpFiber->obj == NULL )
+		{
+                        printf("基类创建失败3\n");
+		        return NULL; 		        
+		}
+		/*建立新概念已经子对象之间的关系*/
+/*		PointingToObject(Obis[i],newObi,Fiber_PointToUpperLayer);*/
+/*#define Fiber_PointToUniqueObj	        0*/
+/*#define	Fiber_PointToMutiObj	        1*/
+/*#define	Fiber_PointToUnnecessaryObj	2*/
+                setFiberPointToNums(tmpFiber,Fiber_PointToUniqueObj);	
+			        
+	}
+	
+	/*将其他基类加入网络，他们与GodNero是相互联系的关系*/	
+	setActNeroAsBaseObject(BaseNeuronObject,NeuronNode_BaseObject);
+	addNeuronChild(godNero,BaseNeuronObject,Relationship_FatherToChild);
+		
+	setChildrenOrderRule(BaseNeuronObject,1);/*默认为1*/
+
+
+
+        /*添加基类和基类名称的链接*/
+        PointingToObject(objs[0],BaseNeuronObject,Fiber_PointToUpperLayer);
+        PointingToObject(BaseNeuronObject,objs[0],Fiber_PointToLowerLayer);
+        return BaseNeuronObject; 	
+
+}
 /*判断新概念的种类 	见神经网络记录 sheet   5系统概略图
 	*/
 nero_s32int nero_judgeNewObjKind(NeuronObject *Obis[],nero_s32int objNum)
 {
 	nero_s32int kind=NeuronNode_ForNone;
-	nero_s32int i,sameKind;
+	nero_s32int i,sameKind,findKind;
+	
+	nero_s32int ObjectKind;
+	NeuronObject * BaseObi;
+	NerveFiber  *  curFiber;
 	/*首先判断参数合法性*/
-	if (Obis ==NULL || objNum <2)
+	if (Obis ==NULL || objNum <1)
 	{
 		return kind;
 	}
@@ -1390,17 +1519,25 @@ nero_s32int nero_judgeNewObjKind(NeuronObject *Obis[],nero_s32int objNum)
 	
 	/*首先判断是不是特殊情况
 	1:是不是都是同一个类
-	*/
 	
-	for (sameKind=1,i=1;i<objNum;i++)
+	
+	如果objNum=1，sameKind=1;
+	*/
+	if (objNum >=2)
 	{
-		if (nero_GetNeroKind(Obis[i])  != nero_GetNeroKind(Obis[i-1]))
-		{
-			sameKind=0;
-			break;
-		}
+	        
+	
+	        for (sameKind=1,i=1;i<objNum;i++)
+	        {
+		        if (nero_GetNeroKind(Obis[i])  != nero_GetNeroKind(Obis[i-1]))
+		        {
+			        sameKind=0;
+			        break;
+		        }
+	        }
 	}	
-	if (sameKind == 1)
+	/*排除objNum =1的情况*/
+	if (sameKind == 1  &&  objNum >=2)
 	{
 		kind=nero_GetNeroKind(Obis[0]);
 		switch(kind)
@@ -1420,11 +1557,126 @@ nero_s32int nero_judgeNewObjKind(NeuronObject *Obis[],nero_s32int objNum)
 		}			
 		return kind;
 	}
+	else
+	{
+                findKind=NeuronNode_ForComplexDerivative;
+                
+	        /*从基类列表中查找是否有合适的类*/
+	        curFiber=GodNero->outputListHead;
+	        for (;curFiber !=NULL;curFiber=curFiber->next)
+	        {	
+		        BaseObi=curFiber->obj;
+		        ObjectKind=nero_GetNeroKind(BaseObi);
+		        	                        
+	                if (ObjectKind > NeuronNode_MinNewDerivativeClassId)
+	                {
+	                      /*判断是不是可以组成ObjectKind类*/  
+	                      
+	                      /*逻辑上有问题：
+	                      如果你在后面创建基类时，只要有重复就设置相应的fiber的标识
+	                      来识别重复的类型，这样会导致nero_IfIsThisKind错误对应基类
+	                      
+	                      */
+	                      i=nero_IfIsThisKind(Obis,objNum,BaseObi);
+	                      
+	                      if (i == NeroYES)
+	                      {
+	                              findKind=ObjectKind;
+	                      }
+	                      
+	                }
+	
+	        }
+	        kind=findKind;
+	
+	}
 	
 	
-	/*其他情况*/
-	kind=NeuronNode_ForComplexDerivative;
 	return kind;
+}
+/*判断Obis里面的概念是否可以组成一个baseKindObj类型*/
+nero_s32int nero_IfIsThisKind(NeuronObject *Obis[],nero_s32int objNum,NeuronObject * baseKindObj)
+{
+	if (Obis == NULL  || objNum <1 ||  baseKindObj==NULL)
+	{
+	        printf("nero_IfIsThisKind  参数错误\n");
+	        return nero_msg_ParameterError;
+	}
+        NeuronObject *Obi;
+	NerveFiber *curFiber;
+        nero_s32int Kind,res,i,baseDataKind,childKind,FLAG;
+
+        Kind= nero_isBaseObj(baseKindObj);
+        if (Kind == 0)
+        {
+ 	        printf("nero_IfIsThisKind  参数不满足要求1\n");
+	        return nero_msg_ParameterError;               
+        }
+        Kind= nero_GetNeroKind(baseKindObj);
+        if (Kind  <= NeuronNode_MinNewDerivativeClassId)
+        {
+                printf("nero_IfIsThisKind  参数不满足要求2\n");
+                return nero_msg_ParameterError;    
+        }
+        /*接下来判断baseKindObj类型（基类）是否可以包含Obis：
+        
+        子类的排列顺序是否固定，1表示顺序固定，0表示顺序无所谓
+        */
+        i=getChildrenOrderRule(baseKindObj);
+        res=NeroNO;
+        FLAG=0;
+        if (i != 1  )/*我觉得顺序固定的方式应该是符合大多数情况的才对*/
+        {
+                
+                curFiber=baseKindObj->inputListHead;
+	       for (i=0;curFiber !=NULL  &&  i<objNum;curFiber=curFiber->next)
+	       {
+	         Obi=curFiber->obj;
+	         baseDataKind=nero_GetNeroKind(Obi);
+	         childKind=nero_GetNeroKind(Obis[i]);
+	         
+	         if (baseDataKind ！= childKind)
+	         {
+	                FLAG=1;
+	                 break;
+	         }
+	         /*这里假设在基类的数据结构中没有连续几个都是一个类型的情况，这种连续几个相同类型
+	         的都是用在Fiber加标记实现的
+	         */
+	          i++;   
+	         if (getFiberPointToObjNum(curFiber) == Fiber_PointToMutiObj )
+	         {
+	                 while(i < (objNum)  &&   nero_GetNeroKind(Obis[i]) ==  baseDataKind)
+	                 {
+                                i++;        
+	                 }	                 
+	         }
+
+	         
+	       }              
+                if ( FLAG ==0)
+                {
+                       res=NeroYES;  
+                }   
+                
+                
+                
+        }
+        else/*顺序无所谓*/
+        {
+        
+                /*等待实现*/
+        
+        }
+        
+
+	       
+        
+        
+        
+        return  res;
+        
+
 }
 /*从多个>=2已知道俩个概念中生成一个新的概念，新概念的种类在函数内部自动判断，最后返回新对象指针*/
 /**/
@@ -1434,7 +1686,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	NerveFiber *tmpFiber;
 	nero_s32int newObiKind,res,i;
 /*        #define createObjFromMultiples_DeBug_Msg*/
-	if (Obis == NULL  || objNum <2)
+	if (Obis == NULL  || objNum <1)
 	{
 	        printf("nero_createObjFromMultiples  参数错误\n");
 	        return NULL;
@@ -1815,7 +2067,11 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 	/*最后加入网络*/
 	if (tmp != NULL)
 	{
-		nero_addNeroIntoNet( GodNero,tmp);
+		i=nero_addNeroIntoNet( GodNero,tmp);
+		if (i !=  nero_msg_ok)
+		{
+		        printf("addNeroByData  addNeroIntoNet fail \n");
+		}
 	}
 	
 	return tmp;

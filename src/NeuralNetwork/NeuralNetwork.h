@@ -74,6 +74,10 @@ int next;
 	nero_us32int  neroTime;     /*系统运行时间单位，初始化为0，隔1秒钟增加1*/
 	nero_us32int  ifReCreateLogFile;     /*系统运行时是否重新生成log文件*/
 	nero_us32int	  UsedNeroNum;
+	nero_us32int	  NewNeroClassID;/*创建新类时候可以使用的编号，它从
+	                                #define NeuronNode_MinNewDerivativeClassId  2001
+	                                开始
+	                                */
  }NeroConf;
 /*ActNero只是用来保存基础数据，它对应于一个单纯的神经元*/
 
@@ -144,7 +148,7 @@ msg1：
 	指向该纤维所属神经元的同层次概念的神经元	#define	Fiber_PointToSameLayer	11
 	就是说如果为Fiber_PointToUpperLayer	01，那么第9位为1，第10位为0
 	
-11-12位：
+11-12位（）：
         有且必须存在一个                         #define Fiber_PointToUniqueObj	00
 	可重复，但必须存在一个	                #define	Fiber_PointToMutiObj	01
 	可有可没有 	                        #define	Fiber_PointToUnnecessaryObj	10
@@ -194,6 +198,10 @@ extern NeroConf neroConf;
 #define NeuronNode_ForChSentence   63    //当一个概念节点的类型为此时表示一个中文句子
 
 #define NeuronNode_ForComplexDerivative  2000    //高级衍生类
+#define NeuronNode_MinNewDerivativeClassId  2001
+
+
+#define NeuronNode_MaxNewDerivativeClassId  65530
 #define NeuronNode_Max   65535
 
 
@@ -297,9 +305,9 @@ nero_s32int   nero_IfHasObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum
 NeuronObject *   nero_IfHasObjFromMultiples2(NeuronObject *Obis[],nero_s32int objNum);
 NeuronObject *   nero_IfHasObjFromMultiples4(NeuronObject *Obis[],nero_s32int objNum);
 
-
-
-
+nero_s32int nero_IfIsThisKind(NeuronObject *Obis[],nero_s32int objNum,NeuronObject * baseKindObj);
+NeuronObject * nero_CreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf);
+NeuronObject *  getBaseObjName(NeuronObject * baseobj);
 
 
 

@@ -224,8 +224,8 @@ dataNum	   数据的指针数组数据的个数，就是数组的长度
 
 nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf)
 {
-	nero_s32int i,j,hasAddObj/*,hasNewObj*/,res1,objNum,OldobjNum/*,res2*/;
-	NeuronObject * tmpObi;
+	nero_s32int i,j,hasAddObj/*,hasNewObj*/,res1,objNum,OldobjNum,res2;
+	NeuronObject * tmpObi,* tmpBaseObi;
 	NeuronObject ** objs=NULL;
 /*        struct NeroObjForecastList   *findObiPoint; */
 /*        NeuronObject * findForecastObj;	*/
@@ -390,12 +390,12 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*	forecastInfo_st.head=NULL;//在thread_for_Sys_Pic(void *arg)中被初始化*/
 		
 	
-	/*-----------*/
+	/***************************************************************/
 	if (  Nero_TestCount >= coutOferror_Msg_ )
 	{
 	        Process_ObjForecast(&forecastInfo_st);
 	}
-        
+        /***************************************************************/
 /*        printf("coutOferror=%d.\n",coutOferror_Msg_);*/
         
 	#ifdef DataFlowProcess_error_Msg
@@ -442,8 +442,33 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	
 	
 	*/
+	 /*这个开关打开的时间说明可以进行新基类（抽象概念）创建了*/  
+        if (conf->CreateNewBaseObjKind == 1 )
+        {
+             
+              
+              /*判断是否可以进行新基类（抽象概念）创建*/
+              res2=Process_IfCreateNewBaseObj(objs,objNum,GodNero,conf);
+              /*开始添加基类 */
+              tmpBaseObi=nero_CreateNewBaseObj(objs,objNum,GodNero, conf);
+              
+              /*很显然对于那些特殊高层衍生概念的创建createObjFromMultiples会出现问题
+              事实上：队伍数字这个抽象概念来说，如果输入了一个字符1，这个这个字符很可能在
+              Process_ObjForecast(&forecastInfo_st);已经被替换为数字类型的概念，也可能
+              不被替换，显然这需要上下文来判断
+              */
+           
+              /*这里大概需要保证如果objNum-1=1时这个对象必须是不存在的，如果存在的话
+              在Process_ObjForecast(&forecastInfo_st);已经被替换为数字类型的概念
+              */
+              /*这时候你发现，一个概念出现了同时指向俩个基类的情况了*/
+              nero_createObjFromMultiples( &(objs[1]), objNum-1);
 
-	if (conf->addLevelObjAlways == 1   )
+
+
+              /*立马关闭开关，以免影响下次操作*/
+              conf->CreateNewBaseObjKind = 0;
+        }else if (conf->addLevelObjAlways == 1   )
 	{
 		/*这里必须说明的是，这个新生成的概念究竟是什么类型的，createObjFromMultiples内部会根据子类型自动指定*/
 		/*但是这里不能用createObjFromMultiples，因为它里面有太多字符的东西，不够泛化*/
@@ -563,8 +588,79 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	return nero_msg_ok;
 
 }
+/*判断是否需要创建新基类*/
+nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
+{
+        NeuronObject * tmp;
+        nero_s32int i,mark,objKind,baseKind;
+        NeuronObject *Obi,*tmpObi;
+	NerveFiber *curFiber;
 
+	/*参数检查*/
+	if (objs == NULL  || godNero ==NULL  ||  objNum <2 || conf ==NULL)
+	{
+		return nero_msg_ParameterError;
+	}
 
+        /*首先把第一个字符或者词组类放在objs第一个位置*/
+        mark=-1;
+        for (i=0;i<objNum;i++)
+        {
+                tmp=objs[i];
+                if (tmp == NULL)
+                {
+                        printf("IfCreateNewBaseObj 严重错误\n");
+                        return nero_msg_unknowError;
+                }
+                
+                objKind=nero_GetNeroKind(tmp);
+                if (objKind == NeuronNode_ForChWord   ||  objKind == NeuronNode_ForChCharacter)
+                {
+                        mark=i;
+                      break;  
+                }
+        }
+        if (mark != 0)
+        {
+               /*交换了*/ 
+               tmp=objs[0];
+               objs[0]=objs[mark];
+               objs[mark]=objs[0];
+        }
+        /*可以先判断是否已经有相应名字的抽象概念了*/
+        curFiber=godNero->outputListHead;
+	for (;curFiber !=NULL ;curFiber=curFiber->next)
+	{
+	         Obi=curFiber->obj;
+	         baseDataKind=nero_GetNeroKind(Obi);	        
+	        if (baseDataKind >=NeuronNode_MinNewDerivativeClassId)
+	        {
+	                /*判断基类名和objs[0]是否相同*/
+	                if (getBaseObjName(baseDataKind) ==  objs[0])
+	                {
+	                         return NeroYES;
+	                }
+	                
+	        }
+	
+	
+	}
+        
+        baseKind=nero_judgeNewObjKind(&(Neuobjs[1]),objNum-1);
+        
+        /*如果baseKind =NeuronNode_ForComplexDerivative，
+        说明找不到合适的类来
+        匹配数据，需要创建新类
+        */
+        if (NeuronNode_ForComplexDerivative ！= baseKind    )
+        {
+                return NeroYES;
+        }
+        
+        
+        
+         return NeroNO;
+}
 
 
 

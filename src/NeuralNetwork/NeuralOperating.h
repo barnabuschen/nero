@@ -117,4 +117,21 @@ nero_s32int Process_GetNewActivateForecastObj(struct DataFlowForecastInfo  * for
 void Process_MerageObjsList(struct DataFlowForecastInfo  * forecastInfo);
 nero_s32int Operating_NeroConfigurationModify(void * operateKind,void *c);
 
+nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf);
+
+void nero_CreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #endif

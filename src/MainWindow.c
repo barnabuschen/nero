@@ -43,6 +43,7 @@
 #include "tools/Nero_IO.h"
 #include "NeuralNetwork/NeuralOperating.h"
 #include "tools/Nero_IO.h"
+#include "tools/Nero_Task.h"
 #include <cairo.h>
 
 extern nero_s32int readUTF8FileData(nero_8int * FileName);
@@ -72,6 +73,8 @@ GtkTextBuffer *textViewForSearchBuff;
 GtkWidget *textViewForSearchFixedInsideBox;
 GtkWidget * ceshibuttoms;
 
+static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
+
 
 static nero_8int  file_path_getcwd[FILEPATH_MAX];/*保存当前目录*/
 
@@ -87,8 +90,8 @@ void ProInitialization()
 	key_t ipckey = ftok(Operating_ipckey, IPCKEY);
 /*	 Set up the message queue */
 	Operating_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
-	printf("ProInitialization Operating strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
-	printf("ProInitialization Operating identifier is %d\n", Operating_mq_id);	
+/*	printf("ProInitialization Operating strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
+/*	printf("ProInitialization Operating identifier is %d\n", Operating_mq_id);	*/
 	/*res =*/ pthread_create(&a_thread, NULL,thread_for_Operating_Pic, NULL);
 	
 
@@ -98,8 +101,8 @@ void ProInitialization()
 	ipckey = ftok(IO_ipckey, IPCKEY);
 /*	 Set up the message queue */
 	IO_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
-	printf("ProInitialization IO strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
-	printf("ProInitialization IO identifier is %d\n", IO_mq_id);	
+/*	printf("ProInitialization IO strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
+/*	printf("ProInitialization IO identifier is %d\n", IO_mq_id);	*/
 	/*res =*/ pthread_create(&a_thread, NULL,thread_for_IO_Pic, NULL);
 
 
@@ -109,18 +112,18 @@ void ProInitialization()
 	ipckey = ftok(Log_ipckey, IPCKEY);
 /*	 Set up the message queue */
 	Log_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
-	printf("ProInitialization Log strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
-	printf("ProInitialization Log identifier is %d\n", Log_mq_id);	
+/*	printf("ProInitialization Log strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
+/*	printf("ProInitialization Log identifier is %d\n", Log_mq_id);	*/
 	/*res =*/ pthread_create(&a_thread, NULL,thread_for_Log_Pic, NULL);
 
 	Sys_ipckey="/tmp/Sys_ipckey"; 
 	createFile(Sys_ipckey);
 /*	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
-	ipckey = ftok(Sys_ipckey, IPCKEY);
+/*	ipckey = ftok(Sys_ipckey, IPCKEY);*/
 /*	 Set up the message queue */
-	Sys_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
-	printf("ProInitialization Sys strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
-	printf("ProInitialization Sys identifier is %d\n", Sys_mq_id);	
+/*	Sys_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT*/
+/*	printf("ProInitialization Sys strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
+/*	printf("ProInitialization Sys identifier is %d\n", Sys_mq_id);	*/
 	/*res =*/ pthread_create(&a_thread, NULL,thread_for_Sys_Pic, NULL);
 
 
@@ -128,7 +131,16 @@ void ProInitialization()
 /*	sleep(1);*/
 	/*建立网络*/
 	initNeroNetWork( );
+	printf("initNeroNetWork ok\n");
+	
+	/*do   more  */
+	JustDoTask();
+/*	 ReadTaskFromTxt();*/
+	 CreateBaseKindOfShu();
+ 	 ModifyBaseKindOfShu();
 
+
+        printf("ProInitialization ok\n");
 }
 void frame_callback(GtkWindow *window, GdkEvent *event, gpointer data)
 {
@@ -235,15 +247,73 @@ void drow2( GtkWidget *widget, gpointer data )
 {
 struct  NeuronObjectMsg_   mymsg;
 
-/*		memset(mymsg.text, 0, 100);  //Clear out the space */
-/*		strcpy(mymsg.text,"测试" );//newfilename就是发送的字符串*/
-		mymsg.MsgId = MsgId_Log_PrintObjMsg;
-		mymsg.fucId = 1;
+        NeuronObject * tmp;
+        nero_s32int i,mark,objKind,baseKind,baseDataKind,flag,ObjectKind,hasModify;
+        NeuronObject *Obi,*tmpChildObi,* baseObj,* godNero;
+	NerveFiber *curFiber,* tmpFiber;
+                godNero=GodNero;
 
-/*		printf("mymsg.text is :%s\n", mymsg.text);*/
-		/*int res=*/msgsnd( Log_mq_id, &mymsg, sizeof(mymsg), 0);
-		
+        curFiber=godNero->outputListHead;
+        baseObj=NULL;
+/*        printf("start show baseDataKind curFiber=%x\n",curFiber);*/
+	for (;curFiber !=NULL ;curFiber=curFiber->next)
+	{
+	         Obi=curFiber->obj;
+	         baseDataKind=nero_GetNeroKind(Obi);	 
+/*	         printf("shoe baseDataKind=%d.\n",baseDataKind);       */
+	        if (baseDataKind >=NeuronNode_MinNewDerivativeClassId)
+	        {
 
+
+                                #ifdef Nero_DeBuging10_01_14
+                                /*打印基类的组成结构*/
+                                tmpFiber=Obi->inputListHead;
+                                printf("基类%d的组成结构\n",nero_GetNeroKind(Obi));
+                                for (;tmpFiber !=NULL ;tmpFiber=tmpFiber->next)
+                                {
+                                        
+                                        printf("        子结构kind=%d,性质：%d\n",nero_GetNeroKind(tmpFiber->obj), getFiberPointToObjNum(tmpFiber) );
+                                
+                                }
+                                
+                                
+                                #endif	
+                                
+ 	                        #ifdef Nero_DeBuging10_01_14
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId =2;
+				neroObjMsgWithStr_st.Obi =NULL;
+				nero_s32int xxxxxx=baseDataKind;
+				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
+
+
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+                                 #endif	
+
+	                
+	                
+	        }
+	
+	
+	}
+
+
+
+
+
+
+
+
+ 	#ifdef Nero_DeBuging10_01_14_
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId =2;
+				neroObjMsgWithStr_st.Obi =NULL;
+				nero_s32int xxxxxx=neroConf.NewNeroClassID-1;
+				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
+
+
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+        #endif	
 }
 gboolean draw_callback (GtkWidget *widget, cairo_t *cr, gpointer data)
 {
@@ -971,7 +1041,7 @@ void initNeroNetWork( )
 
 	struct { long type; char text[100]; } mymsg;	
 	readUTF8FileData("data/ChUnicode");
-	
+	printf("initNeroNetWork....\n");
 	mymsg.type =MsgId_Nero_CreateNetNet;
 	/*res=*/msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
 /*	printf("msgsnd strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
@@ -992,8 +1062,9 @@ void initNeroNetWork( )
 	#ifdef  Nero_DeBuging03_12_13_
 	Utf8Word  MultiBytewordsHead;	
 /*	readUTF8FileForWords("data/词库" ,& MultiBytewordsHead);*/
+        readUTF8FileForWords("data/ceshi2" ,& MultiBytewordsHead);
 /*	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& MultiBytewordsHead);*/
-	readUTF8FileForWords("data/实验词汇" ,& MultiBytewordsHead);
+/*	readUTF8FileForWords("data/实验词汇" ,& MultiBytewordsHead);*/
 	nero_AddWordsIntoNet( GodNero,& MultiBytewordsHead);
 	#endif	
 /*	printWords(&wordsHead);		*/
@@ -1008,13 +1079,14 @@ void initNeroNetWork( )
 	
 	
 	
-	#ifdef  Nero_DeBuging20_12_13_
+	#ifdef  Nero_DeBuging20_12_13
 	void **DataFlow;
 	nero_s32int *dataKind;
 	Utf8Word  *wP;
 	char *linc;
 	nero_s32int dataNum,k,countOfWord,m;
-	readUTF8FileForWords("data/ceshi2" ,& wordsHead);
+	readUTF8FileForWords("data/词库" ,& wordsHead);
+/*	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& wordsHead);*/
 	/*将Utf8Word转化为一个数组，每个单位是一个词*/
 		wP=wordsHead.next;
 		countOfWord=0;

@@ -48,6 +48,8 @@ int next;
 
 /*几个有关NeroConfiguration的宏*/
 #define  Conf_Modify_addLevelObjAlways    1   //修改addLevelObjAlways
+#define  Conf_Modify_CreateNewBaseObjKind    2   //修改CreateNewBaseObjKind
+
  typedef struct NeroConfiguration
  {
 	nero_us32int  addNewObj; /*是否在DataFlowProcess中添加在网络中的没有的数据为一个新概念，
@@ -307,9 +309,9 @@ NeuronObject *   nero_IfHasObjFromMultiples4(NeuronObject *Obis[],nero_s32int ob
 
 nero_s32int nero_IfIsThisKind(NeuronObject *Obis[],nero_s32int objNum,NeuronObject * baseKindObj);
 NeuronObject * nero_CreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf);
-NeuronObject *  getBaseObjName(NeuronObject * baseobj);
-
-
+NeuronObject *  getBaseObjName(NeuronObject * baseobj,NeuronObject *);
+nero_s32int  nero_ifMakeUpWithTheseObjsInOrder(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum);
+NeuronObject * nero_ModifyBaseKind(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf);
 
 
 

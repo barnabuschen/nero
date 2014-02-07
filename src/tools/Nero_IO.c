@@ -296,7 +296,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 				break;
 			}
 		}		
-		printf("Log_printAllKindOf  start\n");	
+		printf("Log_printAllKindOf  start:  Object Kind=%d\n",ObjectKind);	
 	/*	printf("str %s  and logFile=%s",str,logFile);*/
 		switch(ObjectKind)
 		{
@@ -331,7 +331,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 							break;
 						default:
 					
-					
+					                str[0]=0;
 							break;
 					
 					}
@@ -342,9 +342,38 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 			}
 				
 			break;
-		default:break;
-
+		default:
 		
+			curFiber=BaseObi->outputListHead;
+			sprintf(str,"Log_printAllKindOf:%s		ObjectKind=%d的所有对象为：\n",asctime(timenow),ObjectKind);
+			addLineToFile(AllKindOfFile,str);
+			while(curFiber)
+			{
+				tmp=curFiber->obj;
+
+					ObjectKind2=nero_GetNeroKind(tmp);
+					switch(ObjectKind2)
+					{
+						case NeuronNode_ForChCharacter:
+							IO_getZhInNero(str,tmp);
+							break;
+						case NeuronNode_ForChWord:
+							IO_getWordsInNero(str,tmp);
+							break;
+						default:
+					
+					                str[0]=0;
+							break;
+					
+					}
+					sprintf(strLinshi,"		地址%x  <%s>\n",(int)tmp,str/*,getFiberPointToObjNum(curFiber)*/);
+					addLineToFile(AllKindOfFile,strLinshi);
+
+				curFiber=curFiber->next;
+			}		
+		
+		
+		        break;
 		}
 
 		
@@ -645,12 +674,15 @@ void *thread_for_IO_Pic(void *arg)
 	/* Generate the ipc key */
 
 	ipckey = ftok(IO_ipckey , IPCKEY);
-/*	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
-/*	printf("Operating_ipckey key is %d\n", ipckey);*/
+	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+	printf("Operating_ipckey key is %d\n", ipckey);
 /*	*/
 	/* Set up the message queue */
 	IO_mq_id = msgget(ipckey,0);// IPC_CREAT
 	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+/*		msgctl(IO_mq_id,IPC_RMID,0);*/
+/*	printf("IO_mq_id :    清空队列: %s\n", strerror(errno));*/
+/*	IO_mq_id = msgget(ipckey,0);// IPC_CREAT*/
 	printf("IO_ipckey Message identifier is %d\n", IO_mq_id);
 
 	while(x == 0)
@@ -659,7 +691,7 @@ void *thread_for_IO_Pic(void *arg)
 /*		printf("wait for IO msg......\n");*/
 		received = msgrcv(IO_mq_id, &IOMsg, sizeof(IOMsg), 0, MSG_NOERROR);
 		if (errno != 0)
-		printf("msgrcv strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+		printf("IO msgrcv strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 		if (received<1)
 		{
 			#ifdef Nero_DeBugInOperating_Pic
@@ -757,13 +789,16 @@ void *thread_for_Log_Pic(void *arg)
 	/* Generate the ipc key */
 
 	ipckey = ftok(Log_ipckey , IPCKEY);
-/*	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
-/*	printf("Operating_ipckey key is %d\n", ipckey);*/
+	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+	printf("Log_ipckey key is %d\n", ipckey);
 /*	*/
 	/* Set up the message queue */
 	Log_mq_id = msgget(ipckey,0);// IPC_CREAT
 	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
-	printf("Log_ipckey Message identifier is %d\n", Log_mq_id);
+/*			msgctl(Log_mq_id,IPC_RMID,0);*/
+/*	printf("Log_mq_id :    清空队列: %s\n", strerror(errno));*/
+/*	Log_mq_id = msgget(ipckey,0);// IPC_CREAT*/
+/*	printf("Log_ipckey Message identifier is %d\n", Log_mq_id);*/
 /*	while( msgrcv(Log_mq_id, &LogMsg, sizeof(LogMsg), 0, MSG_NOERROR) >1 );*/
 	while(x == 0)
 	{
@@ -772,7 +807,7 @@ void *thread_for_Log_Pic(void *arg)
 		received = msgrcv(Log_mq_id, &LogMsg, sizeof(LogMsg), 0, MSG_NOERROR);
 		if (errno != 0)
 		{
-			printf("msgrcv strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息			
+			printf(" Log msgrcv strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息			
 		}
 
 		if (received<1)

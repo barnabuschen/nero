@@ -15,3 +15,13 @@ mv configure.scan configure.ac
 autoreconf -i
 
 ./configure
+
+最后修改makefile
+
+all: config.h
+	$(MAKE) $(AM_MAKEFLAGS) all-am
+	./$(bin_PROGRAMS)
+	
+	
+d: 
+	gdb $(bin_PROGRAMS)

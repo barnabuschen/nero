@@ -41,10 +41,12 @@ nero_s32int Operating_NeroConfigurationModify(void * operateKind,void *c)
         switch(kind)
         {
         
-        case Conf_Modify_addLevelObjAlways:
+         case Conf_Modify_addLevelObjAlways:
                 neroConf.addLevelObjAlways=tmpConf->addLevelObjAlways;
                 break;
-        
+         case Conf_Modify_CreateNewBaseObjKind:
+                neroConf.CreateNewBaseObjKind=tmpConf->CreateNewBaseObjKind;
+                break;       
         
         
         
@@ -65,7 +67,7 @@ void * thread_for_Operating_Pic(void *arg)
 	key_t ipckey;
 	int Operating_mq_id;
 
-	int received,hasSetUpNeroSys;
+	int received,hasSetUpNeroSys,hasAddZhChar;
 
 
 /*	const nero_s32int size_message_map = */
@@ -79,14 +81,18 @@ void * thread_for_Operating_Pic(void *arg)
 /*	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
 	#define IPCKEY 0x111
 	ipckey = ftok(Operating_ipckey, IPCKEY);
-/*	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
-/*	printf("Operating_ipckey key is %d\n", ipckey);*/
+	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+	printf("Operating_ipckey key is %d\n", ipckey);
 /*	*/
 	/* Set up the message queue */
 	Operating_mq_id = msgget(ipckey,0);// IPC_CREAT
-	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
-	printf("Operating_ipckey Message identifier is %d\n", Operating_mq_id);
+	printf("Operating_mq_id :strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+/*	msgctl(Operating_mq_id,IPC_RMID,0);*/
+/*	printf("Operating_mq_id :    清空队列: %s\n", strerror(errno));*/
+/*	Operating_mq_id = msgget(ipckey,0);// IPC_CREAT*/
+/*	printf("Operating_ipckey Message identifier is %d\n", Operating_mq_id);*/
 	hasSetUpNeroSys=0;
+	hasAddZhChar=0;
 /*	while( msgrcv(Operating_mq_id, &OperatingMsg, sizeof(OperatingMsg), 0, MSG_NOERROR) >1 );*/
 	while(x == 0)
 	{
@@ -94,7 +100,7 @@ void * thread_for_Operating_Pic(void *arg)
 /*		printf("wait for Operating msg......\n");*/
 		received = msgrcv(Operating_mq_id, &OperatingMsg, sizeof(OperatingMsg), 0, MSG_NOERROR);
 		if (errno != 0)
-		printf("Operating strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+		printf("Operating Operating strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 		if (received<1)
 		{
 			#ifdef Nero_DeBugInOperating_Pic
@@ -128,12 +134,19 @@ void * thread_for_Operating_Pic(void *arg)
 			#endif
 			break;
 		case MsgId_Nero_addZhCharIntoNet:
+			if (hasSetUpNeroSys == 1)
+			{
 			arg1=(struct ZhCharArg *)OperatingMsg.text;
 			nero_addZhCharIntoNet( GodNero,arg1->chChar, arg1->charCounts);
 			#ifdef Nero_DeBuging09_01_14
 			 printf("MsgId_Nero_addZhCharIntoNet:添加字符数：%d个\n",arg1->charCounts);
-			#endif			
+			#endif	
+			hasAddZhChar=1;		
+			}
+			else{
+				printf("系统未初始化\n");			
 			
+			}			
 			
 			break;	
 		case MsgId_Nero_DataFlowProcess :
@@ -240,6 +253,9 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	}
 /*	system("xdot data/wordspic.dot");*/
 	(objs)=(NeuronObject **)malloc(sizeof(NeuronObject *)*dataNum);
+	
+	
+	
 	/*先不比对DataFlow  dataKind  dataNum*/
 	/*断DataFlow中的数据是否在系统中已经存在该数据*/
 	for (i=0,j=0,hasAddObj=0;i<dataNum;i++)
@@ -308,8 +324,8 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*				 neroObjMsg_st.Obi = tmpObi;*/
 /*				 msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);*/
 /*				*/
-				#ifdef Nero_DeBuging09_01_14_
-				printf("添加子概念成功\n\n");
+				#ifdef Nero_DeBuging09_01_14
+/*				printf("添加子概念成功\n\n");*/
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = tmpObi;
@@ -326,7 +342,10 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 			}
 			else 
 			{
-				printf("添加子概念失败\n\n");
+			        #ifdef Nero_DeBuging09_01_14_
+			        printf("DataFlow[i]=%s.\n",DataFlow[i]);
+/*				printf("添加子概念失败,dataKind=%d\n\n",dataKind[i]);*/
+				#endif		
 			}			
 			#endif	
 /*			createNeroNetDotGraphForWords(GodNero, "data/wordspic.dot");		*/
@@ -357,7 +376,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
         /*对象预测-------------------------*/
 	/*初始化*/
 	 nero_s32int tmpc=0;
-	#ifdef DataFlowProcess_error_Msg
+	#ifdef DataFlowProcess_error_Msg_
 	if (coutOferror_Msg_ <=  Nero_TestCount )
 	{
 	        printf("id=%d  --------------------------------\n",coutOferror_Msg_);
@@ -398,7 +417,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
         /***************************************************************/
 /*        printf("coutOferror=%d.\n",coutOferror_Msg_);*/
         
-	#ifdef DataFlowProcess_error_Msg
+	#ifdef DataFlowProcess_error_Msg_
 	
 	if (coutOferror_Msg_ <= Nero_TestCount )
 	{
@@ -437,20 +456,33 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 					也是整个系统中最关键的机制，比如你输入一个句子
 					怎么在大量句子中生成新词呢
 				2:整个数组形成新概念
-	
-	
-	
-	
 	*/
 	 /*这个开关打开的时间说明可以进行新基类（抽象概念）创建了*/  
+/*	 printf("1 CreateNewBaseObjKind=%d.  add=%x\n",conf->CreateNewBaseObjKind,conf);*/
         if (conf->CreateNewBaseObjKind == 1 )
         {
              
-              
+              #ifdef Nero_DeBuging06_02_14
+              int tmpi;
+              for (tmpi=0;tmpi<objNum;tmpi++)
+              {
+                      printf("list  obj%c  kind=%d.\n",tmpi,nero_GetNeroKind(objs[tmpi]));
+              }
+              #endif
+              printf("\n");
               /*判断是否可以进行新基类（抽象概念）创建*/
               res2=Process_IfCreateNewBaseObj(objs,objNum,GodNero,conf);
               /*开始添加基类 */
-              tmpBaseObi=nero_CreateNewBaseObj(objs,objNum,GodNero, conf);
+              if (res2 == NeroYES)
+              {
+                      tmpBaseObi=nero_CreateNewBaseObj(objs,objNum,GodNero, conf);
+              }
+              else
+              {
+                        /*如果不需要添加新的基类，那就是修改基类了*/
+              
+                        nero_ModifyBaseKind(objs,objNum,GodNero,conf);
+              }
               
               /*很显然对于那些特殊高层衍生概念的创建createObjFromMultiples会出现问题
               事实上：队伍数字这个抽象概念来说，如果输入了一个字符1，这个这个字符很可能在
@@ -462,9 +494,16 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
               在Process_ObjForecast(&forecastInfo_st);已经被替换为数字类型的概念
               */
               /*这时候你发现，一个概念出现了同时指向俩个基类的情况了*/
-              nero_createObjFromMultiples( &(objs[1]), objNum-1);
-
-
+              printf("开始u创建了新类 objNum=%d\n",objNum); 
+              tmpObi =nero_createObjFromMultiples( &(objs[1]), objNum-1);
+                #ifdef Nero_DeBuging09_01_14
+                if (tmpObi)
+                {
+                       printf("创建了新类 %x---kind=%d.objNum=%d\n\n",tmpObi,nero_GetNeroKind(tmpObi),objNum); 
+                }
+                
+                #endif
+                
 
               /*立马关闭开关，以免影响下次操作*/
               conf->CreateNewBaseObjKind = 0;
@@ -592,7 +631,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
 {
         NeuronObject * tmp;
-        nero_s32int i,mark,objKind,baseKind;
+        nero_s32int i,mark,objKind,baseKind,baseDataKind;
         NeuronObject *Obi,*tmpObi;
 	NerveFiber *curFiber;
 
@@ -623,6 +662,7 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
         if (mark != 0)
         {
                /*交换了*/ 
+/*               printf("交换了\n");*/
                tmp=objs[0];
                objs[0]=objs[mark];
                objs[mark]=objs[0];
@@ -636,9 +676,12 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 	        if (baseDataKind >=NeuronNode_MinNewDerivativeClassId)
 	        {
 	                /*判断基类名和objs[0]是否相同*/
-	                if (getBaseObjName(baseDataKind) ==  objs[0])
+/*	                printf("IfCreateNewBaseObj:  baseDataKind=%d.\n",baseDataKind);*/
+/*	                printf("getBaseObjName= %x  objs[0]=%x.\n",getBaseObjName(Obi,godNero),objs[0]);*/
+	                if (getBaseObjName(Obi,godNero) ==  objs[0])
 	                {
-	                         return NeroYES;
+/*	                         printf("找到了相同名的基类\n");*/
+	                         return NeroNO;
 	                }
 	                
 	        }
@@ -646,13 +689,13 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 	
 	}
         
-        baseKind=nero_judgeNewObjKind(&(Neuobjs[1]),objNum-1);
-        
+        baseKind=nero_judgeNewObjKind(&(objs[1]),objNum-1);
+/*        printf("IfCreateNewBaseObj :baseKind=%d.\n",baseKind);*/
         /*如果baseKind =NeuronNode_ForComplexDerivative，
         说明找不到合适的类来
         匹配数据，需要创建新类
         */
-        if (NeuronNode_ForComplexDerivative ！= baseKind    )
+        if (NeuronNode_ForComplexDerivative == baseKind    )
         {
                 return NeroYES;
         }
@@ -1056,26 +1099,34 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
 	sprintf(neroObjMsgWithStr_st.str,"AddNewObjToForecastList  newObj");
 	msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 	#endif	
+	/*控制替换的深度，这里只替换一层*/
+	if (nero_GetNeroKind(newObj) < NeuronNode_MinNewDerivativeClassId )
+	{
+	        
 	
-        p=newObj->outputListHead;
-/*        printf("                p=%x,newObj=%x.\n",p,newObj);*/
+	
+	
+	
+	
+                p=newObj->outputListHead;
+        /*        printf("                p=%x,newObj=%x.\n",p,newObj);*/
 
-        while(p != NULL) 
-        {
-/*                printf("                p=%x,Obj=%x.\n", p,p->obj);*/
-                Obj=p->obj;
-                FiberType=getFiberType(p);
-                if (Obj != NULL  &&  nero_isBaseObj(Obj) != 1)
+                while(p != NULL) 
                 {
-                        AddNewObjToList( forecastInfo,FiberType,Obj);
+        /*                printf("                p=%x,Obj=%x.\n", p,p->obj);*/
+                        Obj=p->obj;
+                        FiberType=getFiberType(p);
+                        if (Obj != NULL  &&  nero_isBaseObj(Obj) != 1)
+                        {
+                                AddNewObjToList( forecastInfo,FiberType,Obj);
+                                
+                        }
                         
+                        
+                        p=p->next;
+                
                 }
-                
-                
-                p=p->next;
-        
         }
- 
         /*判断是不是要把newObj本身也加入预测列表：*/
         if (forecastInfo->waitForRecognise  !=NULL)
         {
@@ -1241,7 +1292,11 @@ NeuronObject * Process_IfFindDerivativeObj(struct DataFlowForecastInfo  * foreca
         return findobj;
 
 }
-/*看看预测列表中能不能找到findObi*/
+/*看看预测列表中能不能找到findObi,
+
+为了控制替换的深度，对查找进行了控制
+
+*/
 struct NeroObjForecastList   * Process_CompareWithForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * findObi)
 {
         struct NeroObjForecastList   *head;
@@ -1263,9 +1318,12 @@ struct NeroObjForecastList   * Process_CompareWithForecastList(struct DataFlowFo
        /*只在headOfSameLayer中寻找*/
 /*       findObiPoint=  FindObjInForecastList(&(forecastInfo->headOfUpperLayer), findObi);*/
 /*       if (findObiPoint == NULL )*/
+/*        if (nero_GetNeroKind(findObi) < NeuronNode_MinNewDerivativeClassId )*/
        {
             findObiPoint=  FindObjInForecastList(&(forecastInfo->headOfSameLayer), findObi);   
        }
+/*       else*/
+/*                findObiPoint=NULL;*/
        
         return findObiPoint;
 

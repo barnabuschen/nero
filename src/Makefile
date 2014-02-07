@@ -101,7 +101,7 @@ am_gtkMain_OBJECTS = gtkMain-gtkMain.$(OBJEXT) \
 	gtkMain-MainWindow.$(OBJEXT) gtkMain-fileOperating.$(OBJEXT) \
 	gtkMain-readUTF8File.$(OBJEXT) gtkMain-createDot.$(OBJEXT) \
 	gtkMain-Nero_IO.$(OBJEXT) gtkMain-NeuralOperating.$(OBJEXT) \
-	gtkMain-NeuralNetwork.$(OBJEXT)
+	gtkMain-NeuralNetwork.$(OBJEXT) gtkMain-Nero_Task.$(OBJEXT)
 gtkMain_OBJECTS = $(am_gtkMain_OBJECTS)
 am__DEPENDENCIES_1 =
 gtkMain_DEPENDENCIES = $(am__DEPENDENCIES_1)
@@ -281,12 +281,14 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-gtkMain_SOURCES = gtkMain.c MainWindow.c MainWindow.h common/fileOperating.h common/fileOperating.c  tools/readUTF8File.h tools/readUTF8File.c tools/createDot.h tools/createDot.c tools/Nero_IO.h tools/Nero_IO.c NeuralNetwork/NeuralOperating.h NeuralNetwork/NeuralOperating.c common/type.h NeuralNetwork/NeuralNetwork.h NeuralNetwork/NeuralNetwork.c
+gtkMain_SOURCES = gtkMain.c MainWindow.c MainWindow.h common/fileOperating.h common/fileOperating.c  tools/readUTF8File.h tools/readUTF8File.c tools/createDot.h tools/createDot.c tools/Nero_IO.h tools/Nero_IO.c NeuralNetwork/NeuralOperating.h NeuralNetwork/NeuralOperating.c common/type.h NeuralNetwork/NeuralNetwork.h NeuralNetwork/NeuralNetwork.c   tools/Nero_Task.h tools/Nero_Task.c
 gtkMain_LDADD = $(gtkMain_LIBS)
 AM_LDFLAGS = $(gtkMain_CFLAGS)
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 	./$(bin_PROGRAMS)
+d: 
+	gdb $(bin_PROGRAMS)
 .SUFFIXES:
 .SUFFIXES: .c .o .obj
 am--refresh: Makefile
@@ -390,10 +392,10 @@ mostlyclean-compile:
 
 distclean-compile:
 	-rm -f *.tab.c
-d: 
-	gdb $(bin_PROGRAMS)
+
 include ./$(DEPDIR)/gtkMain-MainWindow.Po
 include ./$(DEPDIR)/gtkMain-Nero_IO.Po
+include ./$(DEPDIR)/gtkMain-Nero_Task.Po
 include ./$(DEPDIR)/gtkMain-NeuralNetwork.Po
 include ./$(DEPDIR)/gtkMain-NeuralOperating.Po
 include ./$(DEPDIR)/gtkMain-createDot.Po
@@ -526,6 +528,20 @@ gtkMain-NeuralNetwork.obj: NeuralNetwork/NeuralNetwork.c
 #	$(AM_V_CC)source='NeuralNetwork/NeuralNetwork.c' object='gtkMain-NeuralNetwork.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
 #	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gtkMain_CFLAGS) $(CFLAGS) -c -o gtkMain-NeuralNetwork.obj `if test -f 'NeuralNetwork/NeuralNetwork.c'; then $(CYGPATH_W) 'NeuralNetwork/NeuralNetwork.c'; else $(CYGPATH_W) '$(srcdir)/NeuralNetwork/NeuralNetwork.c'; fi`
+
+gtkMain-Nero_Task.o: tools/Nero_Task.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gtkMain_CFLAGS) $(CFLAGS) -MT gtkMain-Nero_Task.o -MD -MP -MF $(DEPDIR)/gtkMain-Nero_Task.Tpo -c -o gtkMain-Nero_Task.o `test -f 'tools/Nero_Task.c' || echo '$(srcdir)/'`tools/Nero_Task.c
+	$(AM_V_at)$(am__mv) $(DEPDIR)/gtkMain-Nero_Task.Tpo $(DEPDIR)/gtkMain-Nero_Task.Po
+#	$(AM_V_CC)source='tools/Nero_Task.c' object='gtkMain-Nero_Task.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gtkMain_CFLAGS) $(CFLAGS) -c -o gtkMain-Nero_Task.o `test -f 'tools/Nero_Task.c' || echo '$(srcdir)/'`tools/Nero_Task.c
+
+gtkMain-Nero_Task.obj: tools/Nero_Task.c
+	$(AM_V_CC)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gtkMain_CFLAGS) $(CFLAGS) -MT gtkMain-Nero_Task.obj -MD -MP -MF $(DEPDIR)/gtkMain-Nero_Task.Tpo -c -o gtkMain-Nero_Task.obj `if test -f 'tools/Nero_Task.c'; then $(CYGPATH_W) 'tools/Nero_Task.c'; else $(CYGPATH_W) '$(srcdir)/tools/Nero_Task.c'; fi`
+	$(AM_V_at)$(am__mv) $(DEPDIR)/gtkMain-Nero_Task.Tpo $(DEPDIR)/gtkMain-Nero_Task.Po
+#	$(AM_V_CC)source='tools/Nero_Task.c' object='gtkMain-Nero_Task.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+#	$(AM_V_CC_no)$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gtkMain_CFLAGS) $(CFLAGS) -c -o gtkMain-Nero_Task.obj `if test -f 'tools/Nero_Task.c'; then $(CYGPATH_W) 'tools/Nero_Task.c'; else $(CYGPATH_W) '$(srcdir)/tools/Nero_Task.c'; fi`
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique

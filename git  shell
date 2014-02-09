@@ -28,7 +28,7 @@ push本地分支代码到远端服务器,如果没有就创建该分支
 	git push origin --delete testing
 提交分支数据到远程服务器
 	git push origin <local_branch_name>:<remote_branch_name>
-	git push origin ver0.12:ver0.12
+	git push origin ver0.1701:ver0.1701
 
 	git push origin <local_branch_name>:<remote_branch_name>
 	git push origin  ver0.16:ver0.16

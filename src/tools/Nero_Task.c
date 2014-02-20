@@ -294,7 +294,7 @@ void ReadTaskFromTxt()
 		        memset(tff.str,0,500);
 		        memcpy(tff.str,linStart,linEnd-linStart+1);
 
-                        /*题目信息中的各个字段*/
+                        /*提取信息中的各个字段*/
                         if( (tff.str)[0]  !=  '#')
                         {
   		                printf("%s.\n",tff.str);
@@ -334,7 +334,7 @@ void getMsgInToTFF(TFF *  tff)
 
         /*提取tff-<str中被tff.msgSeparator分割符分割的字条*/
 
-
+        
 
 
 

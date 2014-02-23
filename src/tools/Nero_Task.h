@@ -11,7 +11,7 @@ typedef struct TaskFileFormat
         nero_s32int MsgCount;/*信息条数（分割符号分隔），包括命令*/  
         nero_8int   msgSeparator;/*信息分割符号，一般用空格*/
         nero_8int   orderSeparator;/*不同命令的分割符号，一般用换行*/
-        nero_8int   str[1500];
+        nero_8int   str[3500];
         void **     data;/*二维数组指针*/
         
 }TFF;

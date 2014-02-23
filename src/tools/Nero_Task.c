@@ -271,6 +271,7 @@ void ReadTaskFromTxt()
 	tff.order=0;
 	tff.msgSeparator=' ';
 	tff.orderSeparator=0x0a;/*换行符号*/
+	tff.data=NULL;	
 
 	/*首先确保q不是指向分割符号*/
         while( p <= end &&  (*(p) ==tff.msgSeparator || *(p) ==tff.orderSeparator)  )

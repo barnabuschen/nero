@@ -31,7 +31,7 @@ push本地分支代码到远端服务器,如果没有就创建该分支
 	git push origin ver0.1701:ver0.1701
 
 	git push origin <local_branch_name>:<remote_branch_name>
-	git push origin  ver0.16:ver0.16
+	git push origin  ver0.1701:ver0.1701
 	git push origin master
 列出版本库中所有已删除的文件
 	git log --diff-filter=D --summary 

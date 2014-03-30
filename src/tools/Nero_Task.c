@@ -25,7 +25,55 @@
 #include "../common/fileOperating.h"
 #include <gtk/gtk.h>
 #include "../MainWindow.h"
+
+
+
+//TFF  中  order的定义
+#define  Task_Order_Min     1
+#define  Task_Order_CreateObjShu     100	/*数*/
+#define  Task_Order_CreateObjALBS     101  /*阿拉伯数字*/
+#define  Task_Order_Max     1000
+
+
+#define TFFDataType_Num   	10	/*数*/
+#define TFFDataType_Character   11
+#define TFFDataType_String   	12
+
+#define OrderListLen		100  /*最多支持OrderListLen条命令*/
+#define OrderListWigth		100	/*每条命令最多100个参数*/
+
+
+
+
+/*命令的格式：数组中每一行对应该类型各个数据的类型*/
+/*每一行对于如下：*/
+/*1   	2   					3  .....*/
+/*命令	该命令后面的数据个数，不包括1,2  	第一个数据*/
+
+nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
+/*创建"数"		  参数个数 新类名	     	新类的第一个数据*/
+{Task_Order_CreateObjShu, 2	,  TFFDataType_Character,TFFDataType_Character},
+/*创建"阿拉伯数"	  参数个数 新类名	     	新类的第一个数据*/
+{Task_Order_CreateObjALBS,2	,  TFFDataType_String,	TFFDataType_Character},
+{0},
+{0},
+{0},
+{0},
+{0},
+};
+
+
+
+
+
+
+
 static nero_8int  file_path_getcwd[FILEPATH_MAX]="/tmp";/*保存当前目录*/
+
+
+
+
+
 
 
 void ModifyBaseKindOfShu()
@@ -271,7 +319,7 @@ void ReadTaskFromTxt()
 	tff.order=0;
 	tff.msgSeparator=' ';
 	tff.orderSeparator=0x0a;/*换行符号*/
-	tff.data=NULL;	
+/*	tff.data=NULL;	*/
 
 	/*首先确保q不是指向分割符号*/
         while( p <= end &&  (*(p) ==tff.msgSeparator || *(p) ==tff.orderSeparator)  )
@@ -298,8 +346,11 @@ void ReadTaskFromTxt()
                         /*提取信息中的各个字段*/
                         if( (tff.str)[0]  !=  '#')
                         {
-  		                printf("%s.\n",tff.str);
+  		                printf("%s\n",tff.str);
                                  getMsgInToTFF(&tff);
+/*				下面将tff中的信息转化为实际的命令*/
+				
+				obtainOrderFromTFF(&tff);/*从TFF中分析得到命令后在函数里面直接发送就行了*/
 
                         }
 
@@ -320,13 +371,144 @@ void ReadTaskFromTxt()
 
 }
 
+void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里面直接发送就行了*/
+{
+        if (tff == NULL  ||  tff->MsgCount <1  )
+        {
+                return ;
+        }
+        tff->order=atoi(  (tff->data)[0]   );
+        if (tff->order <= Task_Order_Min  ||  tff->order >= Task_Order_Max  )
+        {
+        	printf("obtainOrderFromTFF: wrong data  tff->order=%d\n",tff->order);
+                return ;
+        }
+ 	nero_s32int *dataKind;
+        nero_us8int *linc;
+        nero_s32int dataNum,k,countOfWord,m,lenOfpar;
+        void **DataFlow;
+        nero_8int baseobjName[100]="阿拉伯数字";
+        struct DataFlowProcessArg arg2;		
+        struct { long type; char text[100]; } mymsg;        
+        
+        
+        
+	nero_s32int i,orderPos;
+	/*先转化为可以发送命令的参数*/
+	/*1 找到参数类型列表项*/
+	orderPos=-1;
+	for (i=0;i<OrderListLen;i++)
+	{
+/*		printf("OrderDataTypeList[%d][0]=%d.\n",i,OrderDataTypeList[i][0]);*/
+		if (OrderDataTypeList[i][0] ==  tff->order)
+		{
+			orderPos=i;
+			printf("orderPos=%d.\n",orderPos);
+		}
+	}
+	/*命令合法性判断*/
+	if (orderPos <0  ||  orderPos >=OrderListLen)
+	{
+		printf("obtainOrderFromTFF:  cannot find order  order=%d\n",tff->order);
+		return;
+	}
+	if (OrderDataTypeList[orderPos][1] !=  (tff->MsgCount -1))
+	{
+		printf("obtainOrderFromTFF:  order  参数个数 error,shuld:%d,but:%d\n",OrderDataTypeList[orderPos][1],(tff->MsgCount -1));
+		return;
+	}
+	/*现在开始转化发送命令的参数*/	
+        for (i=0;i<=0;i++)
+        {
+                
+        
+                countOfWord=tff->MsgCount -1;
+                DataFlow=(void **)malloc(sizeof(void *)*countOfWord);
+                dataKind=(nero_s32int *)malloc(sizeof(nero_s32int *) * countOfWord);
+                
+                for (k=0;k<countOfWord;k++)
+	        {
+
+/*                        if (k == 0)*/
+/*                        {*/
+
+/*                        }*/
+/*                        else*/
+/*                        {*/
+/*                        */
+
+/*                        }*/
+
+			switch(OrderDataTypeList[orderPos][k+2])
+			{
+				case TFFDataType_Character:
+/*					printf("obtainOrderFromTFF: CreateObjShu order \n");*/
+					lenOfpar=strlen( tff->data[k+1]);
+		                        DataFlow[k]=(void *)malloc((sizeof( char)*3));
+		                        linc=(char *)DataFlow[k];
+		                        memset(linc,0,3);
+		                        memcpy(linc,&(tff->data[k+1]),lenOfpar);
+		                        dataKind[k]=NeuronNode_ForChCharacter;					
+					break;
+				case TFFDataType_String:
+/*					printf("obtainOrderFromTFF: CreateObjShu order \n");*/
+					lenOfpar=strlen( tff->data[k+1]);
+		                        DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
+		                         linc=(char *)DataFlow[k];
+		                         memset(linc,0,(lenOfpar) +1);
+		                        memcpy(linc,tff->data[k+1],(lenOfpar) +1);
+		                        dataKind[k]=NeuronNode_ForChWord;
+					break;					
+					
+				default:
+					printf("obtainOrderFromTFF: unknow order \n");
+					break;
+		
+			}			
+
+
+	        }
+                /*现在开始准备发送消息了*/
+                dataNum=countOfWord;
+                arg2.dataNum=dataNum;
+                arg2.dataKind=dataKind;
+                arg2.conf=&neroConf;
+                arg2.DataFlow=DataFlow;
+                
+                /*必须通过发送消息来修改conf*/
+		struct  IODataMsg_  DataIO_st; 
+		DataIO_st.MsgId = MsgId_Nero_ConfModify;
+		DataIO_st.fucId = 1;
+		DataIO_st.operateKind =Conf_Modify_CreateNewBaseObjKind;
+		memcpy(DataIO_st.str,&neroConf,sizeof(NeroConf));
+		((NeroConf *)DataIO_st.str)->CreateNewBaseObjKind=1;
+		msgsnd(Operating_mq_id, &DataIO_st, sizeof(DataIO_st), 0);
+	
+	
+	
+/*                printf(" neroConf.CreateNewBaseObjKind=%d.\n", neroConf.CreateNewBaseObjKind);*/
+                memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
+                mymsg.type =MsgId_Nero_DataFlowProcess ;
+                msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+        }	
+	
+	
+
+
+
+
+}
 void getMsgInToTFF(TFF *  tff)
 {
+        
 
         if (tff == NULL )
         {
                 return ;
         }
+	nero_us8int * str =tff->str; 
+	nero_us8int  split[2] ;
+	
         nero_s32int  strLen=strlen(tff->str);
         if (strLen < 1  ||  strLen  >= 500)
         {
@@ -335,10 +517,25 @@ void getMsgInToTFF(TFF *  tff)
 
         /*提取tff-<str中被tff.msgSeparator分割符分割的字条*/
 
-        
 
-
-
+	split[0]=tff->msgSeparator; 
+	split[1]=0; 
+	tff->MsgCount=0; 
+	
+	nero_us8int * p; 
+	p = strsep (&str,split); 
+	while(p!=NULL   &&  tff->MsgCount < TFFDataWidth   &&  strlen(p) < TFFDataLength) 
+	{ 
+/*		(tff->data )[tff->MsgCount][ ]*/
+		memcpy((tff->data )[tff->MsgCount], p, strlen(p) );/*把每条子信息条码以字符串的形式存储下来*/
+		
+		
+		
+/*		printf ("%s\n",(tff->data )[tff->MsgCount]);  */
+		tff->MsgCount=tff->MsgCount +1; 
+		p = strsep(&str, split);
+	} 	
+	
 
 }
 

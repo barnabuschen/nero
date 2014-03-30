@@ -1670,7 +1670,7 @@ NeuronObject * nero_ModifyBaseKind(NeuronObject * objs[],nero_s32int objNum,Neur
 /*	                printf("getBaseObjName= %x  objs[0]=%x.\n",getBaseObjName(Obi,godNero),objs[0]);*/
 	                if (getBaseObjName(Obi,godNero) ==  objs[0])
 	                {
-	                         printf("找到了相同名的基类  kind=%d\n",baseDataKind);
+/*	                         printf("找到了相同名的基类  kind=%d\n",baseDataKind);*/
 	                         baseObj=Obi;
 	                         break;
 	                }
@@ -1696,7 +1696,7 @@ NeuronObject * nero_ModifyBaseKind(NeuronObject * objs[],nero_s32int objNum,Neur
 		/*修改新概念的数据链表模板*/
 		
 		tmpChildObi=tmpFiber->obj;
-		 printf("ObjectKind=%d  i=%d.  基类结构kind=%d\n",ObjectKind,i,nero_GetNeroKind(tmpChildObi));
+/*		 printf("ObjectKind=%d  i=%d.  基类结构kind=%d\n",ObjectKind,i,nero_GetNeroKind(tmpChildObi));*/
 		if (nero_GetNeroKind(tmpChildObi)  ==  ObjectKind )
 		{
 		        
@@ -1934,7 +1934,7 @@ nero_s32int nero_judgeNewObjKind(NeuronObject *Obis[],nero_s32int objNum)
 	                      */
 /*	                      printf("ObjectKind: =%d.\n",ObjectKind);*/
 	                      i=nero_IfIsThisKind(Obis,objNum,BaseObi);
-	                      printf("IfIsThisKind=%d.\n",i);
+/*	                      printf("IfIsThisKind=%d.\n",i);*/
 	                      if (i == NeroYES)
 	                      {
 /*	                               printf("judgeNewObjKind   findKind=%d.\n",ObjectKind);*/
@@ -1983,7 +1983,7 @@ nero_s32int nero_IfIsThisKind(NeuronObject *Obis[],nero_s32int objNum,NeuronObje
         i=getChildrenOrderRule(baseKindObj);
         res=NeroNO;
         FLAG=0;
-        printf("getChildrenOrderRule=%d.objNum=%d\n",i,objNum);
+/*        printf("getChildrenOrderRule=%d.objNum=%d\n",i,objNum);*/
         if (i == 1  )/*我觉得顺序固定的方式应该是符合大多数情况的才对*/
         {
                 
@@ -1998,7 +1998,7 @@ nero_s32int nero_IfIsThisKind(NeuronObject *Obis[],nero_s32int objNum,NeuronObje
 /*	         printf("baseDataKind=%d. childKind=%d\n",baseDataKind,childKind);*/
 	         if (baseDataKind != childKind)
 	         {
-	                printf("end i=%d. baseDataKind=%d  childKind=%d \n",i,baseDataKind,childKind);
+/*	                printf("end i=%d. baseDataKind=%d  childKind=%d \n",i,baseDataKind,childKind);*/
 	                FLAG=1;
 	                 break;
 	         }
@@ -2109,6 +2109,19 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	{
 	        #ifdef   createObjFromMultiples_DeBug_Msg
 		printf("概念加入网络失败id=%x Kind %d ,objNum=%d\n",newObi,newObiKind,objNum);
+		
+		
+
+/*		neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;*/
+/*		neroObjMsg_st.fucId = 1;*/
+/*		nero_us32int tmpi=0;*/
+/*		*/
+/*		for (;tmpi < objNum;tmpi++)*/
+/*		{*/
+/*			neroObjMsg_st.Obi = Obis[tmpi];*/
+/*			msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			*/
+/*			*/
+/*		}		*/
 		 #endif	
 		return NULL;
 	

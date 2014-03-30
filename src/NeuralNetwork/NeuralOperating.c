@@ -462,7 +462,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
         if (conf->CreateNewBaseObjKind == 1 )
         {
              
-              #ifdef Nero_DeBuging06_02_14
+              #ifdef Nero_DeBuging06_02_14_
               int tmpi;
               for (tmpi=0;tmpi<objNum;tmpi++)
               {
@@ -494,9 +494,11 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
               在Process_ObjForecast(&forecastInfo_st);已经被替换为数字类型的概念
               */
               /*这时候你发现，一个概念出现了同时指向俩个基类的情况了*/
-              printf("开始u创建了新类 objNum=%d\n",objNum); 
+              
               tmpObi =nero_createObjFromMultiples( &(objs[1]), objNum-1);
-                #ifdef Nero_DeBuging09_01_14
+              
+                #ifdef Nero_DeBuging09_01_14_
+                printf("开始u创建了新类 objNum=%d\n",objNum); 
                 if (tmpObi)
                 {
                        printf("创建了新类 %x---kind=%d.objNum=%d\n\n",tmpObi,nero_GetNeroKind(tmpObi),objNum); 

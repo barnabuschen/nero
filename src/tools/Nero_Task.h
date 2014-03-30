@@ -5,6 +5,10 @@
 #include "../NeuralNetwork/NeuralNetwork.h"
 
 
+
+#define TFFDataWidth  100   //可以保存的数据条数
+#define TFFDataLength 300   //每条数据数据的最大长度
+
 typedef struct TaskFileFormat
 {
         nero_s32int order;/*保存命令种类*/  
@@ -12,13 +16,11 @@ typedef struct TaskFileFormat
         nero_8int   msgSeparator;/*信息分割符号，一般用空格*/
         nero_8int   orderSeparator;/*不同命令的分割符号，一般用换行*/
         nero_8int   str[3500];
-        void **     data;/*二维数组指针*/
+        nero_us8int      data[TFFDataWidth][TFFDataLength];/*二维数组指针*/
         
 }TFF;
 
 
-//TFF  中  order的定义
-#define  Task_Order_CreateNewBaseObj     100
 
 
 
@@ -27,12 +29,7 @@ typedef struct TaskFileFormat
 
 
 
-
-
-
-
-
-
+void obtainOrderFromTFF(TFF * tff);/*从TFF中分析得到命令后在函数里面直接发送就行了*/
 
 
 

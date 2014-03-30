@@ -134,10 +134,10 @@ void ProInitialization()
 	printf("initNeroNetWork ok\n");
 	
 	/*do   more  */
-	JustDoTask();
-/*	 ReadTaskFromTxt();*/
-	 CreateBaseKindOfShu();
- 	 ModifyBaseKindOfShu();
+	//JustDoTask();/*生成  数   和  阿拉伯数字 的概念*/
+	 ReadTaskFromTxt();
+	// CreateBaseKindOfShu();
+/* 	 ModifyBaseKindOfShu();*/
 
 
         printf("ProInitialization ok\n");

@@ -403,7 +403,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 		if (OrderDataTypeList[i][0] ==  tff->order)
 		{
 			orderPos=i;
-			printf("orderPos=%d.\n",orderPos);
+/*			printf("orderPos=%d.\n",orderPos);*/
 		}
 	}
 	/*命令合法性判断*/

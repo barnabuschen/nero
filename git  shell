@@ -37,9 +37,9 @@ push本地分支代码到远端服务器,如果没有就创建该分支
 	git log --diff-filter=D --summary 
 
 
-
-
-
+	git pull origin ver0.1701:ver0.1701
+	git pull origin master:ver0.1701
+	git pull origin master:libuv-io
 
 
 
@@ -69,10 +69,13 @@ git fetch nginx-1.0.14_comment
 
 https://github.com/piaoyaosuifengji/mytest.git
 
-
+https://github.com/limetext/lime.git
 git clone git@github.com:piaoyaosuifengji/nero.git
-
-
+git clone git@github.com:neovim/neovim.git
+git clone git@github.com:influxdb/influxdb.git
+git clone git@github.com:limetext/lime.git
+https://github.com/neovim/neovim.git
+https://github.com/influxdb/influxdb.git
 #添加文件脚本：
 git add *
 git commit  

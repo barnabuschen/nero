@@ -1,0 +1,878 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ACLOCAL	Makefile	/^ACLOCAL = ${SHELL} \/home\/ub\/git\/nero\/src\/missing aclocal-1.14$/;"	m
+ACLOCAL_M4	Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
+AMTAR	Makefile	/^AMTAR = $${TAR-tar}$/;"	m
+AM_DEFAULT_VERBOSITY	Makefile	/^AM_DEFAULT_VERBOSITY = 1$/;"	m
+AM_LDFLAGS	Makefile	/^AM_LDFLAGS = $(gtkMain_CFLAGS)$/;"	m
+AM_RECURSIVE_TARGETS	Makefile	/^AM_RECURSIVE_TARGETS = cscope$/;"	m
+AM_V_CC	Makefile	/^AM_V_CC = $(am__v_CC_$(V))$/;"	m
+AM_V_CCLD	Makefile	/^AM_V_CCLD = $(am__v_CCLD_$(V))$/;"	m
+AM_V_GEN	Makefile	/^AM_V_GEN = $(am__v_GEN_$(V))$/;"	m
+AM_V_P	Makefile	/^AM_V_P = $(am__v_P_$(V))$/;"	m
+AM_V_at	Makefile	/^AM_V_at = $(am__v_at_$(V))$/;"	m
+AM_V_lt	Makefile	/^AM_V_lt = $(am__v_lt_$(V))$/;"	m
+AUTOCONF	Makefile	/^AUTOCONF = ${SHELL} \/home\/ub\/git\/nero\/src\/missing autoconf$/;"	m
+AUTOHEADER	Makefile	/^AUTOHEADER = ${SHELL} \/home\/ub\/git\/nero\/src\/missing autoheader$/;"	m
+AUTOMAKE	Makefile	/^AUTOMAKE = ${SHELL} \/home\/ub\/git\/nero\/src\/missing automake-1.14$/;"	m
+AWK	Makefile	/^AWK = gawk$/;"	m
+ActNero	NeuralNetwork/NeuralNetwork.h	/^typedef struct ActivationNeuron ActNero;$/;"	t	typeref:struct:ActivationNeuron
+ActivationNeuron	NeuralNetwork/NeuralNetwork.h	/^ struct ActivationNeuron$/;"	s
+AddNewObjToForecastList	NeuralNetwork/NeuralOperating.c	/^void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * newObj)$/;"	f
+AddNewObjToList	NeuralNetwork/NeuralOperating.c	/^void AddNewObjToList(struct DataFlowForecastInfo  * forecastInfo,nero_s32int FiberType,NeuronObject * Obj)$/;"	f
+AddNodeIntoForecastList	NeuralNetwork/NeuralOperating.c	/^void AddNodeIntoForecastList(struct list_head  * listHead,NeuronObject * Obj)$/;"	f
+AllKindOfFile	tools/Nero_IO.c	/^nero_8int  AllKindOfFile[FILEPATH_MAX]="\/tmp\/AllKindOfFile.txt";$/;"	v
+BEGIN_ONE_ARG_MESSAGE_MAP	NeuralNetwork/NeuralOperating.c	/^BEGIN_ONE_ARG_MESSAGE_MAP(Operating_msg_OneArg_map)$/;"	f
+BEGIN_ONE_ARG_MESSAGE_MAP	tools/Nero_IO.h	42;"	d
+BEGIN_TWO_ARG_MESSAGE_MAP	tools/Nero_IO.h	54;"	d
+CC	Makefile	/^CC = gcc$/;"	m
+CCDEPMODE	Makefile	/^CCDEPMODE = depmode=gcc3$/;"	m
+CCLD	Makefile	/^CCLD = $(CC)$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -g -O2$/;"	m
+COLOUR	common/type.h	/^typedef struct COLOUR$/;"	s
+COLOURCount	common/type.h	/^typedef struct COLOURCount$/;"	s
+COMPILE	Makefile	/^COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \\$/;"	m
+CONFIG_CLEAN_FILES	Makefile	/^CONFIG_CLEAN_FILES =$/;"	m
+CONFIG_CLEAN_VPATH_FILES	Makefile	/^CONFIG_CLEAN_VPATH_FILES =$/;"	m
+CONFIG_HEADER	Makefile	/^CONFIG_HEADER = config.h$/;"	m
+CPP	Makefile	/^CPP = gcc -E$/;"	m
+CPPFLAGS	Makefile	/^CPPFLAGS = $/;"	m
+CREATEDOT_H	tools/createDot.h	2;"	d
+CSCOPE	Makefile	/^CSCOPE = cscope$/;"	m
+CTAGS	Makefile	/^CTAGS = ctags$/;"	m
+CXX	Makefile	/^CXX = g++$/;"	m
+CXXDEPMODE	Makefile	/^CXXDEPMODE = depmode=gcc3$/;"	m
+CXXFLAGS	Makefile	/^CXXFLAGS = -g -O2$/;"	m
+CYGPATH_W	Makefile	/^CYGPATH_W = echo$/;"	m
+ChUTF8	common/type.h	/^}ChUTF8;$/;"	t	typeref:struct:ChineseUtf8Code
+ChUTF8_	common/type.h	/^}ChUTF8_;$/;"	t	typeref:struct:ChineseUtf8Code_
+ChineseCharNum	common/type.h	20;"	d
+ChineseUnicode16Code	common/type.h	/^typedef struct ChineseUnicode16Code   \/\/16位的Unicode编码$/;"	s
+ChineseUnicode16DigitalCode	common/type.h	/^typedef struct ChineseUnicode16DigitalCode\/\/五位拼起来就是Unicode16码$/;"	s
+ChineseUtf8Code	common/type.h	/^typedef struct ChineseUtf8Code$/;"	s
+ChineseUtf8Code_	common/type.h	/^typedef struct ChineseUtf8Code_$/;"	s
+CleanForecastList	NeuralNetwork/NeuralOperating.c	/^void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)$/;"	f
+Color	common/type.h	/^}Color;$/;"	t	typeref:struct:COLOUR
+ColorCnt	common/type.h	/^}ColorCnt;$/;"	t	typeref:struct:COLOURCount
+Conf_Modify_CreateNewBaseObjKind	NeuralNetwork/NeuralNetwork.h	51;"	d
+Conf_Modify_addLevelObjAlways	NeuralNetwork/NeuralNetwork.h	50;"	d
+CreateActNeroNet	NeuralNetwork/NeuralNetwork.c	/^nero_s32int CreateActNeroNet()$/;"	f
+CreateBaseKindOfShu	tools/Nero_Task.c	/^void CreateBaseKindOfShu()$/;"	f
+CreateImageNode	common/Neuron.c	/^int CreateImageNode(NeuronMan * nm)$/;"	f
+CreateListNode	common/Neuron.c	/^int CreateListNode(NeuronMan * nm)$/;"	f
+CreateNeroNetWork	MainWindow.c	/^void CreateNeroNetWork( GtkWidget *widget, gpointer data )$/;"	f
+CreateNeroNetWork_old	MainWindow.c	/^void CreateNeroNetWork_old( GtkWidget *widget, gpointer data )$/;"	f
+CreateNewBaseObjKind	NeuralNetwork/NeuralNetwork.h	/^	nero_us32int CreateNewBaseObjKind;\/*是否创建新基类的标志，默认打开为1*\/$/;"	m	struct:NeroConfiguration
+CreateNewNeuronFile	common/Neuron.c	/^int  CreateNewNeuronFile(NeoF * f,char * fileName)$/;"	f
+CurrentLevel	common/Neuron.h	18;"	d
+DEFAULT_INCLUDES	Makefile	/^DEFAULT_INCLUDES = -I.$/;"	m
+DEFS	Makefile	/^DEFS = -DHAVE_CONFIG_H$/;"	m
+DEPDIR	Makefile	/^DEPDIR = .deps$/;"	m
+DISTFILES	Makefile	/^DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)$/;"	m
+DIST_ARCHIVES	Makefile	/^DIST_ARCHIVES = $(distdir).tar.gz$/;"	m
+DIST_COMMON	Makefile	/^DIST_COMMON = $(srcdir)\/Makefile.in $(srcdir)\/Makefile.am \\$/;"	m
+DIST_SOURCES	Makefile	/^DIST_SOURCES = $(gtkMain_SOURCES)$/;"	m
+DIST_TARGETS	Makefile	/^DIST_TARGETS = dist-gzip$/;"	m
+DataFlow	NeuralNetwork/NeuralOperating.h	/^void **DataFlow;$/;"	m	struct:DataFlowProcessArg
+DataFlowForecastInfo	NeuralNetwork/NeuralOperating.h	/^struct DataFlowForecastInfo$/;"	s
+DataFlowProcess	NeuralNetwork/NeuralOperating.c	/^nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf)$/;"	f
+DataFlowProcessArg	NeuralNetwork/NeuralOperating.h	/^struct DataFlowProcessArg$/;"	s
+DataFlowProcessObjNum_MAX	common/type.h	17;"	d
+DataFlowProcess_error_Msg	common/type.h	67;"	d
+DeBugForMsgID	common/NeroMsgId.h	9;"	d
+DeBugMsg	NeuralNetwork/NeuralOperating.h	/^	nero_s32int DeBugMsg;$/;"	m	struct:DataFlowForecastInfo
+DeBugMsgTwo	NeuralNetwork/NeuralOperating.h	/^	nero_s32int DeBugMsgTwo;$/;"	m	struct:DataFlowForecastInfo
+DigitalUnicode16	common/type.h	/^}DigitalUnicode16;$/;"	t	typeref:struct:ChineseUnicode16DigitalCode
+DrawPictureWithLineMan	MainWindow-old.c	/^void DrawPictureWithLineMan(GtkWidget *darea,LineMan *manAllLine)$/;"	f
+DrawPictureWithLineManInVector	MainWindow-old.c	/^void DrawPictureWithLineManInVector(GtkWidget *darea,LineMan *manAllLine)$/;"	f
+DrawPictureWithLineManInVectorN	MainWindow-old.c	/^void DrawPictureWithLineManInVectorN(GtkWidget *darea,LineMan *manAllLine,int showLine)$/;"	f
+DrawPictureWithPoints	MainWindow-old.c	/^void DrawPictureWithPoints(GtkWidget *darea,int coloutCount,POS * p)$/;"	f
+ECHO_C	Makefile	/^ECHO_C = $/;"	m
+ECHO_N	Makefile	/^ECHO_N = -n$/;"	m
+ECHO_T	Makefile	/^ECHO_T = $/;"	m
+EGREP	Makefile	/^EGREP = \/bin\/grep -E$/;"	m
+END_ONE_ARG_MESSAGE_MAP	tools/Nero_IO.h	48;"	d
+END_TWO_ARG_MESSAGE_MAP	tools/Nero_IO.h	60;"	d
+ERROR_h	common/NeroError.h	3;"	d
+ETAGS	Makefile	/^ETAGS = etags$/;"	m
+EXEEXT	Makefile	/^EXEEXT = $/;"	m
+FILENAME	MainWindow-old.c	2;"	d	file:
+FILENAME	MainWindow.c	2;"	d	file:
+FILENAME	common/Neuron.c	2;"	d	file:
+FILEOPERATING_H	common/fileOperating.h	3;"	d
+FILEPATH_MAX	common/type.h	18;"	d
+Fiber_PointToData	NeuralNetwork/NeuralNetwork.h	218;"	d
+Fiber_PointToLowerLayer	NeuralNetwork/NeuralNetwork.h	220;"	d
+Fiber_PointToMutiObj	NeuralNetwork/NeuralNetwork.h	224;"	d
+Fiber_PointToSameLayer	NeuralNetwork/NeuralNetwork.h	221;"	d
+Fiber_PointToUniqueObj	NeuralNetwork/NeuralNetwork.h	223;"	d
+Fiber_PointToUnnecessaryObj	NeuralNetwork/NeuralNetwork.h	225;"	d
+Fiber_PointToUpperLayer	NeuralNetwork/NeuralNetwork.h	219;"	d
+Fiber_StrengthenMax	NeuralNetwork/NeuralNetwork.h	227;"	d
+FileData	common/Neuron.h	/^char *  FileData;\/\/文件数据的起始地址$/;"	m	struct:NeuronManage
+FillListByPosList	common/Neuron.c	/^int FillListByPosList(int line,PosList * head,NeuronMan * nm)$/;"	f
+FindObjInForecastList	NeuralNetwork/NeuralOperating.c	/^struct NeroObjForecastList   *  FindObjInForecastList(struct NeroObjForecastList   *head,NeuronObject * findObi)$/;"	f
+FirstNoUseNeu	common/Neuron.h	/^int FirstNoUseNeu;\/\/第一个没有使用的neo----从0开始算-----为了在一些时候得到方便，前面20个节点永远不使用$/;"	m	struct:NeuronFile
+FirstNoUseNeuWhenCreate	common/Neuron.h	8;"	d
+FleData	common/Neuron.h	/^int FleData;\/\/整个文件大小$/;"	m	struct:NeuronFile
+GREP	Makefile	/^GREP = \/bin\/grep$/;"	m
+GTKMAIN_H	gtkMain.h	2;"	d
+GZIP_ENV	Makefile	/^GZIP_ENV = --best$/;"	m
+GetDataForNeroSys	MainWindow.c	/^void GetDataForNeroSys( GtkWidget *widget, gpointer data )$/;"	f
+GetLineManByNeo	common/Neuron.c	/^int GetLineManByNeo(int imageIndex,NeuronMan * nm,LineMan *manAllLine)$/;"	f
+GetNeuronNode	common/Neuron.c	/^inline Neo * GetNeuronNode(NeuronMan * nm,int n)$/;"	f
+GetNeurons	common/Neuron.c	/^int GetNeurons(int n,NeuronMan * nm)$/;"	f
+GetNewNeuronFileMsg	common/Neuron.c	/^int  GetNewNeuronFileMsg(NeoF * f,char * fileName)$/;"	f
+GetToken	tools/Nero_IO.c	/^int  GetToken( char * str)$/;"	f
+GodNero	NeuralNetwork/NeuralNetwork.c	/^NeuronObject *GodNero;\/*所有神经元理论上都最终与这个相通*\/$/;"	v
+HAVE_ARPA_INET_H	config.h	5;"	d
+HAVE_FCNTL_H	config.h	8;"	d
+HAVE_FTRUNCATE	config.h	11;"	d
+HAVE_GETCWD	config.h	14;"	d
+HAVE_GETPAGESIZE	config.h	17;"	d
+HAVE_INTTYPES_H	config.h	20;"	d
+HAVE_MALLOC	config.h	24;"	d
+HAVE_MALLOC_H	config.h	27;"	d
+HAVE_MEMORY_H	config.h	30;"	d
+HAVE_MEMSET	config.h	33;"	d
+HAVE_MMAP	config.h	36;"	d
+HAVE_MUNMAP	config.h	39;"	d
+HAVE_NETINET_IN_H	config.h	42;"	d
+HAVE_STDINT_H	config.h	45;"	d
+HAVE_STDLIB_H	config.h	48;"	d
+HAVE_STRERROR	config.h	51;"	d
+HAVE_STRINGS_H	config.h	54;"	d
+HAVE_STRING_H	config.h	57;"	d
+HAVE_STRSTR	config.h	60;"	d
+HAVE_STRTOL	config.h	63;"	d
+HAVE_SYS_PARAM_H	config.h	66;"	d
+HAVE_SYS_STAT_H	config.h	69;"	d
+HAVE_SYS_TYPES_H	config.h	72;"	d
+HAVE_UNISTD_H	config.h	75;"	d
+INIT_LIST_HEAD	common/list.h	/^static inline void INIT_LIST_HEAD(struct list_head *list)$/;"	f
+INSTALL	Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
+INSTALL_DATA	Makefile	/^INSTALL_DATA = ${INSTALL} -m 644$/;"	m
+INSTALL_HEADER	Makefile	/^INSTALL_HEADER = $(INSTALL_DATA)$/;"	m
+INSTALL_PROGRAM	Makefile	/^INSTALL_PROGRAM = ${INSTALL}$/;"	m
+INSTALL_SCRIPT	Makefile	/^INSTALL_SCRIPT = ${INSTALL}$/;"	m
+INSTALL_STRIP_PROGRAM	Makefile	/^INSTALL_STRIP_PROGRAM = $(install_sh) -c -s$/;"	m
+IODataMsg_	tools/Nero_IO.h	/^struct  IODataMsg_$/;"	s
+IO_GetNeroObjMsg	tools/Nero_IO.c	/^nero_s32int IO_GetNeroObjMsg(void * arg)$/;"	f
+IO_IfIsChineseChar	tools/Nero_IO.c	/^int IO_IfIsChineseChar(char src[])$/;"	f
+IO_InputDataToSys	tools/Nero_IO.c	/^nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)$/;"	f
+IO_NeroConfigurationModify	tools/Nero_IO.c	/^nero_s32int IO_NeroConfigurationModify(void * operateKind,void *c)$/;"	f
+IO_getWordsInNero	tools/Nero_IO.c	/^nero_s32int IO_getWordsInNero(nero_8int str[],NeuronObject * obj)$/;"	f
+IO_getZhInNero	tools/Nero_IO.c	/^nero_s32int IO_getZhInNero(nero_8int str[],NeuronObject * obj)$/;"	f
+IO_ipckey	common/type.h	/^nero_8int * IO_ipckey ;$/;"	v
+IO_mq_id	common/type.h	/^nero_s32int IO_mq_id;$/;"	v
+IPCKEY	NeuralNetwork/NeuralOperating.c	82;"	d	file:
+IPCKEY	common/NeroMsgId.h	7;"	d
+InitiaNeuronFileNode	common/Neuron.c	/^int InitiaNeuronFileNode(NeoF * f)$/;"	f
+InitiaNeuronMan	common/Neuron.c	/^int InitiaNeuronMan(char * fileName,NeuronMan * nm)$/;"	f
+InitialCOLOUR	common/type.h	177;"	d
+InitialPOS	common/type.h	176;"	d
+JustDoTask	tools/Nero_Task.c	/^void JustDoTask()$/;"	f
+LDFLAGS	Makefile	/^LDFLAGS = $/;"	m
+LIBOBJS	Makefile	/^LIBOBJS = $/;"	m
+LIBS	Makefile	/^LIBS = $/;"	m
+LINK	Makefile	/^LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@$/;"	m
+LISH_H	common/list.h	3;"	d
+LIST_INCLUDE	common/list.h	12;"	d
+LTLIBOBJS	Makefile	/^LTLIBOBJS = $/;"	m
+LineMan	common/type.h	/^}LineMan;$/;"	t	typeref:struct:lineManagement
+LineThickness	common/Neuron.h	22;"	d
+ListPos	common/type.h	/^typedef struct ListPos$/;"	s
+Log_ipckey	common/type.h	/^nero_8int * Log_ipckey ;$/;"	v
+Log_mq_id	common/type.h	/^nero_s32int Log_mq_id;$/;"	v
+Log_printAllKindOf	tools/Nero_IO.c	/^nero_s32int Log_printAllKindOf(void * obj_,void *str_)$/;"	f
+Log_printNeroObjLink	tools/Nero_IO.c	/^nero_s32int Log_printNeroObjLink(void * arg)$/;"	f
+Log_printNeroObjMsg	tools/Nero_IO.c	/^nero_s32int Log_printNeroObjMsg(void * arg)$/;"	f
+Log_printSomeMsgForObj	tools/Nero_IO.c	/^nero_s32int Log_printSomeMsgForObj(void * obj_,void *str_)$/;"	f
+MAINWINDOW_H	MainWindow.h	4;"	d
+MAKEINFO	Makefile	/^MAKEINFO = ${SHELL} \/home\/ub\/git\/nero\/src\/missing makeinfo$/;"	m
+MKDIR_P	Makefile	/^MKDIR_P = \/bin\/mkdir -p$/;"	m
+MSG_NAME	tools/Nero_IO.h	45;"	d
+MSG_NAME	tools/Nero_IO.h	57;"	d
+MYTYPE_H	common/type.h	3;"	d
+Mainwindow	MainWindow.c	/^GtkWidget *Mainwindow;$/;"	v
+MaxNeroNum	common/type.h	23;"	d
+ModifyBaseKindOfShu	tools/Nero_Task.c	/^void ModifyBaseKindOfShu()$/;"	f
+MsgCount	tools/Nero_Task.h	/^        nero_s32int MsgCount;\/*信息条数（分割符号分隔），包括命令*\/  $/;"	m	struct:TaskFileFormat
+MsgId	tools/Nero_IO.h	/^long MsgId; $/;"	m	struct:IODataMsg_
+MsgId	tools/Nero_IO.h	/^long MsgId; $/;"	m	struct:NeuronObjectMsgWithStr_
+MsgId	tools/Nero_IO.h	/^long MsgId; $/;"	m	struct:NeuronObjectMsg_
+MsgId_IO_GetObjMsg	common/NeroMsgId.h	31;"	d
+MsgId_IO_PrintObjMsgWithStr	common/NeroMsgId.h	32;"	d
+MsgId_IO_dataIO	common/NeroMsgId.h	33;"	d
+MsgId_Log_PrintObjMsg	common/NeroMsgId.h	24;"	d
+MsgId_Log_PrintObjMsgWithStr	common/NeroMsgId.h	25;"	d
+MsgId_Nero_ConfModify	common/NeroMsgId.h	19;"	d
+MsgId_Nero_CreateNetNet	common/NeroMsgId.h	16;"	d
+MsgId_Nero_CreateNetNet	common/NeroMsgId.h	40;"	d
+MsgId_Nero_DataFlowProcess	common/NeroMsgId.h	18;"	d
+MsgId_Nero_DataFlowProcess	common/NeroMsgId.h	42;"	d
+MsgId_Nero_NONE	common/NeroMsgId.h	15;"	d
+MsgId_Nero_NONE	common/NeroMsgId.h	39;"	d
+MsgId_Nero_addZhCharIntoNet	common/NeroMsgId.h	17;"	d
+MsgId_Nero_addZhCharIntoNet	common/NeroMsgId.h	41;"	d
+NORMAL_INSTALL	Makefile	/^NORMAL_INSTALL = :$/;"	m
+NORMAL_UNINSTALL	Makefile	/^NORMAL_UNINSTALL = :$/;"	m
+Neo	common/Neuron.h	/^}Neo;$/;"	t	typeref:struct:Neuron
+NeoData	common/Neuron.h	/^Neo *  NeoData;$/;"	m	struct:NeuronManage
+NeoF	common/Neuron.h	/^}NeoF;$/;"	t	typeref:struct:NeuronFile
+NerOkMsg	common/type.h	45;"	d
+NerReportMsgError	common/type.h	46;"	d
+NeroActivateMaxTimes	common/type.h	15;"	d
+NeroConf	NeuralNetwork/NeuralNetwork.h	/^ }NeroConf;$/;"	t	typeref:struct:NeroConfiguration
+NeroConfiguration	NeuralNetwork/NeuralNetwork.h	/^ typedef struct NeroConfiguration$/;"	s
+NeroError	common/type.h	43;"	d
+NeroErrorMsg	common/type.h	44;"	d
+NeroForgetCycle	common/type.h	11;"	d
+NeroIO_H	tools/Nero_IO.h	2;"	d
+NeroMaxLastTimeINForecastList	common/type.h	16;"	d
+NeroMsgIDFile_H	common/NeroMsgId.h	2;"	d
+NeroNO	common/NeroError.h	21;"	d
+NeroOK	common/type.h	42;"	d
+NeroObjForecastList	NeuralNetwork/NeuralOperating.h	/^struct NeroObjForecastList$/;"	s
+NeroPool	NeuralNetwork/NeuralNetwork.c	/^ActNero NeroPool[MaxNeroNum];$/;"	v
+NeroTASK_H	tools/Nero_Task.h	2;"	d
+NeroYES	common/NeroError.h	20;"	d
+Nero_DeBuging0	common/type.h	63;"	d
+Nero_DeBuging03_12_13	common/type.h	71;"	d
+Nero_DeBuging04_01_14	common/type.h	74;"	d
+Nero_DeBuging06_02_14	common/type.h	83;"	d
+Nero_DeBuging08_01_14	common/type.h	75;"	d
+Nero_DeBuging09_01_14	common/type.h	76;"	d
+Nero_DeBuging1	common/type.h	64;"	d
+Nero_DeBuging10_01_14	common/type.h	77;"	d
+Nero_DeBuging14_01_14	common/type.h	79;"	d
+Nero_DeBuging18_11_13	common/type.h	69;"	d
+Nero_DeBuging1_cacel	common/type.h	62;"	d
+Nero_DeBuging2	common/type.h	65;"	d
+Nero_DeBuging20_12_13	common/type.h	72;"	d
+Nero_DeBuging21_12_13	common/type.h	73;"	d
+Nero_DeBuging22_11_13	common/type.h	70;"	d
+Nero_DeBuging24_01_14	common/type.h	80;"	d
+Nero_DeBuging25_01_14	common/type.h	81;"	d
+Nero_DeBuging27_01_14	common/type.h	82;"	d
+Nero_TestCount	common/type.h	66;"	d
+NerveFiber	NeuralNetwork/NeuralNetwork.h	/^ typedef struct NerveFiber_ NerveFiber;$/;"	t	typeref:struct:NerveFiber_
+NerveFiber_	NeuralNetwork/NeuralNetwork.h	/^  struct NerveFiber_$/;"	s
+NerveFiber_Input	common/type.h	37;"	d
+NerveFiber_Output	common/type.h	38;"	d
+NeuralNetwork_H	NeuralNetwork/NeuralNetwork.h	6;"	d
+NeuralOperating_H	NeuralNetwork/NeuralOperating.h	2;"	d
+Neuron	common/Neuron.h	/^typedef struct Neuron$/;"	s
+NeuronFile	common/Neuron.h	/^typedef struct NeuronFile$/;"	s
+NeuronMan	common/Neuron.h	/^}NeuronMan;$/;"	t	typeref:struct:NeuronManage
+NeuronManage	common/Neuron.h	/^typedef struct NeuronManage$/;"	s
+NeuronNodeForConnect	common/Neuron.h	15;"	d
+NeuronNodeForImage	common/Neuron.h	13;"	d
+NeuronNodeForLine	common/Neuron.h	14;"	d
+NeuronNodeForNone	common/Neuron.h	12;"	d
+NeuronNode_BaseObject	NeuralNetwork/NeuralNetwork.h	211;"	d
+NeuronNode_DerivativeObject	NeuralNetwork/NeuralNetwork.h	212;"	d
+NeuronNode_ForChCharacter	NeuralNetwork/NeuralNetwork.h	198;"	d
+NeuronNode_ForChSentence	NeuralNetwork/NeuralNetwork.h	200;"	d
+NeuronNode_ForChWord	NeuralNetwork/NeuralNetwork.h	199;"	d
+NeuronNode_ForComplexDerivative	NeuralNetwork/NeuralNetwork.h	202;"	d
+NeuronNode_ForConnect	NeuralNetwork/NeuralNetwork.h	193;"	d
+NeuronNode_ForData	NeuralNetwork/NeuralNetwork.h	188;"	d
+NeuronNode_ForGodNero	NeuralNetwork/NeuralNetwork.h	187;"	d
+NeuronNode_ForImage	NeuralNetwork/NeuralNetwork.h	194;"	d
+NeuronNode_ForLine	NeuralNetwork/NeuralNetwork.h	195;"	d
+NeuronNode_ForNone	NeuralNetwork/NeuralNetwork.h	186;"	d
+NeuronNode_Max	NeuralNetwork/NeuralNetwork.h	207;"	d
+NeuronNode_MaxNewDerivativeClassId	NeuralNetwork/NeuralNetwork.h	206;"	d
+NeuronNode_MinNewDerivativeClassId	NeuralNetwork/NeuralNetwork.h	203;"	d
+NeuronNum	common/Neuron.h	/^int NeuronNum;\/\/存储的Neuron数量$/;"	m	struct:NeuronFile
+NeuronNumFirst	common/Neuron.h	7;"	d
+NeuronObject	NeuralNetwork/NeuralNetwork.h	/^typedef struct ActivationNeuron  NeuronObject;$/;"	t	typeref:struct:ActivationNeuron
+NeuronObjectMsgWithStr_	tools/Nero_IO.h	/^struct  NeuronObjectMsgWithStr_$/;"	s
+NeuronObjectMsg_	tools/Nero_IO.h	/^struct  NeuronObjectMsg_$/;"	s
+NeuronType	common/Neuron.h	/^int NeuronType;\/\/该文件Neuron的类型$/;"	m	struct:NeuronFile
+Neuron_H	common/Neuron.h	4;"	d
+NewNeroClassID	NeuralNetwork/NeuralNetwork.h	/^	nero_us32int	  NewNeroClassID;\/*创建新类时候可以使用的编号，它从$/;"	m	struct:NeroConfiguration
+NextLevel	common/Neuron.h	20;"	d
+NoIncludeG_return_if_fail	common/type.h	87;"	d
+NoMSG	common/Neuron.h	6;"	d
+NowIdDeBug	common/type.h	85;"	d
+OBJEXT	Makefile	/^OBJEXT = o$/;"	m
+Obi	tools/Nero_IO.h	/^NeuronObject * Obi; $/;"	m	struct:NeuronObjectMsgWithStr_
+Obi	tools/Nero_IO.h	/^NeuronObject * Obi; $/;"	m	struct:NeuronObjectMsg_
+ObjForecast_DeBug_msg_	NeuralNetwork/NeuralOperating.c	1623;"	d	file:
+Operating_ipckey	common/type.h	/^nero_8int * Operating_ipckey; $/;"	v
+Operating_mq_id	common/type.h	/^nero_s32int Operating_mq_id;$/;"	v
+OrderDataTypeList	tools/Nero_Task.c	/^nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={$/;"	v
+OrderListLen	tools/Nero_Task.c	42;"	d	file:
+OrderListWigth	tools/Nero_Task.c	43;"	d	file:
+PACKAGE	Makefile	/^PACKAGE = gtkmain$/;"	m
+PACKAGE	config.h	78;"	d
+PACKAGE_BUGREPORT	Makefile	/^PACKAGE_BUGREPORT = sdfsdf$/;"	m
+PACKAGE_BUGREPORT	config.h	81;"	d
+PACKAGE_NAME	Makefile	/^PACKAGE_NAME = gtkMain$/;"	m
+PACKAGE_NAME	config.h	84;"	d
+PACKAGE_STRING	Makefile	/^PACKAGE_STRING = gtkMain 1$/;"	m
+PACKAGE_STRING	config.h	87;"	d
+PACKAGE_TARNAME	Makefile	/^PACKAGE_TARNAME = gtkmain$/;"	m
+PACKAGE_TARNAME	config.h	90;"	d
+PACKAGE_URL	Makefile	/^PACKAGE_URL = $/;"	m
+PACKAGE_URL	config.h	93;"	d
+PACKAGE_VERSION	Makefile	/^PACKAGE_VERSION = 1$/;"	m
+PACKAGE_VERSION	config.h	96;"	d
+PATH_SEPARATOR	Makefile	/^PATH_SEPARATOR = :$/;"	m
+PKG_CONFIG	Makefile	/^PKG_CONFIG = \/usr\/bin\/pkg-config$/;"	m
+PKG_CONFIG_LIBDIR	Makefile	/^PKG_CONFIG_LIBDIR = $/;"	m
+PKG_CONFIG_PATH	Makefile	/^PKG_CONFIG_PATH = $/;"	m
+POS	common/type.h	/^}POS;$/;"	t	typeref:struct:POSITIOM
+POSITIOM	common/type.h	/^typedef struct POSITIOM$/;"	s
+POST_INSTALL	Makefile	/^POST_INSTALL = :$/;"	m
+POST_UNINSTALL	Makefile	/^POST_UNINSTALL = :$/;"	m
+PRE_INSTALL	Makefile	/^PRE_INSTALL = :$/;"	m
+PRE_UNINSTALL	Makefile	/^PRE_UNINSTALL = :$/;"	m
+PROGRAMS	Makefile	/^PROGRAMS = $(bin_PROGRAMS)$/;"	m
+PointingToObject	NeuralNetwork/NeuralNetwork.c	/^nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher,nero_s32int pointTotype)$/;"	f
+PosList	common/type.h	/^}PosList;$/;"	t	typeref:struct:ListPos
+PrintUtf8	tools/readUTF8File.h	/^}PrintUtf8;$/;"	t	typeref:struct:adkfjao
+ProInitialization	MainWindow-old.c	/^void ProInitialization()$/;"	f
+ProInitialization	MainWindow.c	/^void ProInitialization()$/;"	f
+Process_CompareWithForecastList	NeuralNetwork/NeuralOperating.c	/^struct NeroObjForecastList   * Process_CompareWithForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * findObi)$/;"	f
+Process_GetNewActivateForecastObj	NeuralNetwork/NeuralOperating.c	/^nero_s32int Process_GetNewActivateForecastObj(struct DataFlowForecastInfo  * forecastInfo,struct NeroObjForecastList   *findObiPoint)$/;"	f
+Process_IfCreateNewBaseObj	NeuralNetwork/NeuralOperating.c	/^nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)$/;"	f
+Process_IfFindDerivativeObj	NeuralNetwork/NeuralOperating.c	/^NeuronObject * Process_IfFindDerivativeObj(struct DataFlowForecastInfo  * forecastInfo)$/;"	f
+Process_IfHasNextObjToread	NeuralNetwork/NeuralOperating.c	/^NeuronObject * Process_IfHasNextObjToread(struct DataFlowForecastInfo  * forecastInfo)$/;"	f
+Process_IfHasThisObjINList	NeuralNetwork/NeuralOperating.c	/^struct NeroObjForecastList * Process_IfHasThisObjINList(struct list_head  * listHead,NeuronObject * Obj)$/;"	f
+Process_IfIsChildOfActivateForecastObj	NeuralNetwork/NeuralOperating.c	/^nero_s32int Process_IfIsChildOfActivateForecastObj(struct DataFlowForecastInfo  * forecastInfo,struct NeroObjForecastList   *findObiPoint)$/;"	f
+Process_IsTimeToMerage	NeuralNetwork/NeuralOperating.c	/^void Process_IsTimeToMerage(struct DataFlowForecastInfo  * forecastInfo)$/;"	f
+Process_MerageObjsList	NeuralNetwork/NeuralOperating.c	/^void Process_MerageObjsList(struct DataFlowForecastInfo  * forecastInfo)$/;"	f
+Process_ObjForecast	NeuralNetwork/NeuralOperating.c	/^void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)$/;"	f
+Process_ObjForecast_old	NeuralNetwork/NeuralOperating.c	/^void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)$/;"	f
+Process_StrengthenLink	NeuralNetwork/NeuralOperating.c	/^nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)$/;"	f
+Process_UpdataForecastList	NeuralNetwork/NeuralOperating.c	/^nero_s32int Process_UpdataForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * newObj)$/;"	f
+Process_msg_CreateNewObj	common/NeroError.h	26;"	d
+READUTF8File_H	tools/readUTF8File.h	5;"	d
+REGION_BUTTON_DOWN	MainWindow.c	/^  REGION_BUTTON_DOWN$/;"	e	enum:__anon1	file:
+REGION_BUTTON_UP	MainWindow.c	/^  REGION_BUTTON_UP,$/;"	e	enum:__anon1	file:
+REGION_ENTRY	MainWindow.c	/^  REGION_ENTRY,$/;"	e	enum:__anon1	file:
+ReSetForecastList	NeuralNetwork/NeuralOperating.c	/^void ReSetForecastList(struct DataFlowForecastInfo  * forecastInfo)$/;"	f
+ReadDataNeuronMan	common/Neuron.c	/^int ReadDataNeuronMan(char * fileName,NeuronMan * nm)$/;"	f
+ReadNeuronData	common/Neuron.c	/^void *  ReadNeuronData(NeoF * f,char * fileName,int *Filefd)$/;"	f
+ReadTaskFromTxt	tools/Nero_Task.c	/^void ReadTaskFromTxt()$/;"	f
+Relationship_ChildToFather	common/type.h	31;"	d
+Relationship_FatherToChild	common/type.h	30;"	d
+Relationship_bothTother	common/type.h	32;"	d
+SET_MAKE	Makefile	/^SET_MAKE = $/;"	m
+SHELL	Makefile	/^SHELL = \/bin\/bash$/;"	m
+SOURCES	Makefile	/^SOURCES = $(gtkMain_SOURCES)$/;"	m
+STDC_HEADERS	config.h	99;"	d
+STRIP	Makefile	/^STRIP = $/;"	m
+SavecurrentCair	MainWindow.c	/^cairo_t  *SavecurrentCair ;$/;"	v
+SendMsgToCandy	MainWindow-old.c	/^void SendMsgToCandy(char * fileName)$/;"	f
+SetStartAndEndForListNode	NeuralNetwork/NeuralOperating.c	/^  nero_s32int SetStartAndEndForListNode(struct DataFlowForecastInfo  * forecastInfo, NeuronObject   *obj)$/;"	f
+SetUpSomeWordsIntoSys	MainWindow.c	/^void SetUpSomeWordsIntoSys( GtkWidget *widget, gpointer data )$/;"	f
+ShmmaxCheck	MainWindow.h	40;"	d
+Strengthen	NeuralNetwork/NeuralOperating.h	/^	nero_s32int Strengthen;\/\/在一次预测过程中可能一个对象被多次预测,初始化为0$/;"	m	struct:NeroObjForecastList
+SubP	MainWindow-old.c	/^void SubP(char * File1)$/;"	f
+Sys_ipckey	common/type.h	/^nero_8int * Sys_ipckey ;$/;"	v
+Sys_mq_id	common/type.h	/^nero_s32int Sys_mq_id;$/;"	v
+TFF	tools/Nero_Task.h	/^}TFF;$/;"	t	typeref:struct:TaskFileFormat
+TFFDataLength	tools/Nero_Task.h	10;"	d
+TFFDataType_Character	tools/Nero_Task.c	39;"	d	file:
+TFFDataType_Num	tools/Nero_Task.c	38;"	d	file:
+TFFDataType_String	tools/Nero_Task.c	40;"	d	file:
+TFFDataWidth	tools/Nero_Task.h	9;"	d
+TabSize	MainWindow.c	836;"	d	file:
+TaskFileFormat	tools/Nero_Task.h	/^typedef struct TaskFileFormat$/;"	s
+Task_Order_CreateObjALBS	tools/Nero_Task.c	34;"	d	file:
+Task_Order_CreateObjShu	tools/Nero_Task.c	33;"	d	file:
+Task_Order_Max	tools/Nero_Task.c	35;"	d	file:
+Task_Order_Min	tools/Nero_Task.c	32;"	d	file:
+UTF8ToGBK	tools/Nero_IO.c	/^int UTF8ToGBK(char src[],char res[])$/;"	f
+Unicode16	common/type.h	/^}Unicode16;$/;"	t	typeref:struct:ChineseUnicode16Code
+UpLevel	common/Neuron.h	19;"	d
+UpdataLastTimeINForecastList	NeuralNetwork/NeuralOperating.c	/^void  UpdataLastTimeINForecastList(struct DataFlowForecastInfo  * forecastInfo)$/;"	f
+UsedNeroNum	NeuralNetwork/NeuralNetwork.h	/^	nero_us32int	  UsedNeroNum;$/;"	m	struct:NeroConfiguration
+Utf8Word	tools/readUTF8File.h	/^}Utf8Word;$/;"	t	typeref:struct:Utf8Word_
+Utf8Word_	tools/readUTF8File.h	/^typedef struct Utf8Word_$/;"	s
+VERSION	Makefile	/^VERSION = 1$/;"	m
+VERSION	config.h	102;"	d
+ZhCharArg	NeuralNetwork/NeuralOperating.h	/^struct ZhCharArg$/;"	s
+__list_add	common/list.h	/^static inline void __list_add(struct list_head *new,$/;"	f
+__list_del	common/list.h	/^static inline void __list_del(struct list_head * prev, struct list_head * next)$/;"	f
+__list_del_entry	common/list.h	/^static inline void __list_del_entry(struct list_head *entry)$/;"	f
+abs_builddir	Makefile	/^abs_builddir = \/home\/ub\/git\/nero\/src$/;"	m
+abs_srcdir	Makefile	/^abs_srcdir = \/home\/ub\/git\/nero\/src$/;"	m
+abs_top_builddir	Makefile	/^abs_top_builddir = \/home\/ub\/git\/nero\/src$/;"	m
+abs_top_srcdir	Makefile	/^abs_top_srcdir = \/home\/ub\/git\/nero\/src$/;"	m
+ac_ct_CC	Makefile	/^ac_ct_CC = gcc$/;"	m
+ac_ct_CXX	Makefile	/^ac_ct_CXX = g++$/;"	m
+ac_fn_c_check_func	configure	/^ac_fn_c_check_func ()$/;"	f
+ac_fn_c_check_header_compile	configure	/^ac_fn_c_check_header_compile ()$/;"	f
+ac_fn_c_check_header_mongrel	configure	/^ac_fn_c_check_header_mongrel ()$/;"	f
+ac_fn_c_try_compile	configure	/^ac_fn_c_try_compile ()$/;"	f
+ac_fn_c_try_cpp	configure	/^ac_fn_c_try_cpp ()$/;"	f
+ac_fn_c_try_link	configure	/^ac_fn_c_try_link ()$/;"	f
+ac_fn_c_try_run	configure	/^ac_fn_c_try_run ()$/;"	f
+ac_fn_cxx_try_compile	configure	/^ac_fn_cxx_try_compile ()$/;"	f
+activateForecastObj	NeuralNetwork/NeuralOperating.h	/^	struct NeroObjForecastList   *activateForecastObj;\/\/在headOfUpperLayer中，当前被预测的，等待$/;"	m	struct:DataFlowForecastInfo	typeref:struct:DataFlowForecastInfo::NeroObjForecastList
+addLevelObj	NeuralNetwork/NeuralNetwork.h	/^	nero_us32int  addLevelObj; \/*是否在DataFlowProcess中形成层次结构，为1添加否则不添加$/;"	m	struct:NeroConfiguration
+addLevelObjAlways	NeuralNetwork/NeuralNetwork.h	/^	nero_us32int  addLevelObjAlways; \/*在DataFlowProcess中总是形成层次结构，为1添加否则不添加$/;"	m	struct:NeroConfiguration
+addLineToFile	common/fileOperating.c	/^int addLineToFile(char * FileName,char * str)$/;"	f
+addLineToImage	common/Neuron.c	/^int addLineToImage(int line,int image,NeuronMan * nm)$/;"	f
+addNeoByLineMan	common/Neuron.c	/^int addNeoByLineMan(NeuronMan * nm,LineMan *manAllLine)$/;"	f
+addNeoToFile	common/Neuron.c	/^void addNeoToFile(NeoF * f,char * fileName,int  addNeoNUM)$/;"	f
+addNerveFiber	NeuralNetwork/NeuralNetwork.c	/^static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type,nero_s32int pointTotype)$/;"	f	file:
+addNeuronChild	NeuralNetwork/NeuralNetwork.c	/^nero_s32int addNeuronChild(NeuronObject *father,NeuronObject *child,nero_s32int Relationship)$/;"	f
+addNewObj	NeuralNetwork/NeuralNetwork.h	/^	nero_us32int  addNewObj; \/*是否在DataFlowProcess中添加在网络中的没有的数据为一个新概念，$/;"	m	struct:NeroConfiguration
+addPosToLine	common/Neuron.c	/^int addPosToLine(int line,PosList * posnode,NeuronMan * nm)$/;"	f
+adkfjao	tools/readUTF8File.h	/^ typedef struct adkfjao$/;"	s
+aix_post_process_depfile	depcomp	/^aix_post_process_depfile ()$/;"	f
+am__CONFIG_DISTCLEAN_FILES	Makefile	/^am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \\$/;"	m
+am__DEPENDENCIES_1	Makefile	/^am__DEPENDENCIES_1 =$/;"	m
+am__aclocal_m4_deps	Makefile	/^am__aclocal_m4_deps = $(top_srcdir)\/configure.ac$/;"	m
+am__can_run_installinfo	Makefile	/^am__can_run_installinfo = \\$/;"	m
+am__cd	Makefile	/^am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd$/;"	m
+am__configure_deps	Makefile	/^am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \\$/;"	m
+am__define_uniq_tagged_files	Makefile	/^am__define_uniq_tagged_files = \\$/;"	m
+am__depfiles_maybe	Makefile	/^am__depfiles_maybe = depfiles$/;"	m
+am__distuninstallcheck_listfiles	Makefile	/^am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \\$/;"	m
+am__include	Makefile	/^am__include = include$/;"	m
+am__installdirs	Makefile	/^am__installdirs = "$(DESTDIR)$(bindir)"$/;"	m
+am__is_gnu_make	Makefile	/^am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'$/;"	m
+am__leading_dot	Makefile	/^am__leading_dot = .$/;"	m
+am__make_dryrun	Makefile	/^am__make_dryrun = (target_option=n; $(am__make_running_with_option))$/;"	m
+am__make_keepgoing	Makefile	/^am__make_keepgoing = (target_option=k; $(am__make_running_with_option))$/;"	m
+am__make_running_with_option	Makefile	/^am__make_running_with_option = \\$/;"	m
+am__mv	Makefile	/^am__mv = mv -f$/;"	m
+am__post_remove_distdir	Makefile	/^am__post_remove_distdir = $(am__remove_distdir)$/;"	m
+am__quote	Makefile	/^am__quote = $/;"	m
+am__remove_distdir	Makefile	/^am__remove_distdir = \\$/;"	m
+am__tagged_files	Makefile	/^am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) \\$/;"	m
+am__tar	Makefile	/^am__tar = $${TAR-tar} chof - "$$tardir"$/;"	m
+am__uniquify_input	Makefile	/^am__uniquify_input = $(AWK) '\\$/;"	m
+am__untar	Makefile	/^am__untar = $${TAR-tar} xf -$/;"	m
+am__v_CCLD_	Makefile	/^am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_CCLD_0	Makefile	/^am__v_CCLD_0 = @echo "  CCLD    " $@;$/;"	m
+am__v_CCLD_1	Makefile	/^am__v_CCLD_1 = $/;"	m
+am__v_CC_	Makefile	/^am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_CC_0	Makefile	/^am__v_CC_0 = @echo "  CC      " $@;$/;"	m
+am__v_CC_1	Makefile	/^am__v_CC_1 = $/;"	m
+am__v_GEN_	Makefile	/^am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_GEN_0	Makefile	/^am__v_GEN_0 = @echo "  GEN     " $@;$/;"	m
+am__v_GEN_1	Makefile	/^am__v_GEN_1 = $/;"	m
+am__v_P_	Makefile	/^am__v_P_ = $(am__v_P_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_P_0	Makefile	/^am__v_P_0 = false$/;"	m
+am__v_P_1	Makefile	/^am__v_P_1 = :$/;"	m
+am__v_at_	Makefile	/^am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_at_0	Makefile	/^am__v_at_0 = @$/;"	m
+am__v_at_1	Makefile	/^am__v_at_1 = $/;"	m
+am__v_lt_	Makefile	/^am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_lt_0	Makefile	/^am__v_lt_0 = --silent$/;"	m
+am__v_lt_1	Makefile	/^am__v_lt_1 = $/;"	m
+am_gtkMain_OBJECTS	Makefile	/^am_gtkMain_OBJECTS = gtkMain-gtkMain.$(OBJEXT) \\$/;"	m
+app_set_theme	MainWindow.c	/^void app_set_theme(const gchar *theme_path)$/;"	f
+as_fn_append	config.status	/^  as_fn_append ()$/;"	f
+as_fn_append	configure	/^  as_fn_append ()$/;"	f
+as_fn_arith	config.status	/^  as_fn_arith ()$/;"	f
+as_fn_arith	configure	/^  as_fn_arith ()$/;"	f
+as_fn_error	config.status	/^as_fn_error ()$/;"	f
+as_fn_error	configure	/^as_fn_error ()$/;"	f
+as_fn_executable_p	config.status	/^as_fn_executable_p ()$/;"	f
+as_fn_executable_p	configure	/^as_fn_executable_p ()$/;"	f
+as_fn_exit	config.status	/^as_fn_exit ()$/;"	f
+as_fn_exit	configure	/^as_fn_exit ()$/;"	f
+as_fn_failure	configure	/^as_fn_failure () { as_fn_return 1; }$/;"	f
+as_fn_mkdir_p	config.status	/^as_fn_mkdir_p ()$/;"	f
+as_fn_mkdir_p	configure	/^as_fn_mkdir_p ()$/;"	f
+as_fn_ret_failure	configure	/^as_fn_ret_failure () { return 1; }$/;"	f
+as_fn_ret_success	configure	/^as_fn_ret_success () { return 0; }$/;"	f
+as_fn_set_status	config.status	/^as_fn_set_status ()$/;"	f
+as_fn_set_status	configure	/^as_fn_set_status ()$/;"	f
+as_fn_success	configure	/^as_fn_success () { as_fn_return 0; }$/;"	f
+as_fn_unset	config.status	/^as_fn_unset ()$/;"	f
+as_fn_unset	configure	/^as_fn_unset ()$/;"	f
+b	common/type.h	/^unsigned char b;$/;"	m	struct:COLOUR
+b	common/type.h	/^unsigned char b;$/;"	m	struct:COLOURCount
+bin_PROGRAMS	Makefile	/^bin_PROGRAMS = gtkMain$(EXEEXT)$/;"	m
+bindir	Makefile	/^bindir = ${exec_prefix}\/bin$/;"	m
+build_alias	Makefile	/^build_alias = $/;"	m
+builddir	Makefile	/^builddir = .$/;"	m
+buttomNum	MainWindow.h	6;"	d
+buttoms	MainWindow.c	/^GtkWidget * buttoms[buttomNum];$/;"	v
+c	MainWindow-old.c	/^int c=0;$/;"	v
+ceshibuttoms	MainWindow.c	/^GtkWidget * ceshibuttoms;$/;"	v
+chChar	NeuralNetwork/NeuralOperating.h	/^	ChUTF8 *chChar;$/;"	m	struct:ZhCharArg
+chChar	tools/readUTF8File.c	/^ChUTF8 chChar[ChineseCharNum];$/;"	v
+charCounts	NeuralNetwork/NeuralOperating.h	/^	nero_s32int charCounts;$/;"	m	struct:ZhCharArg
+charCounts	tools/readUTF8File.c	/^nero_s32int charCounts;$/;"	v
+charshuzhu6	tools/readUTF8File.c	/^struct charshuzhu6$/;"	s	file:
+cntHead	common/type.h	/^ColorCnt * cntHead;\/\/指向用COLOURCount表示的线条链表的表头的指针$/;"	m	struct:lineManagement
+conf	NeuralNetwork/NeuralOperating.h	/^NeroConf * conf;$/;"	m	struct:DataFlowProcessArg
+count	common/type.h	/^int count;$/;"	m	struct:COLOURCount
+count	common/type.h	/^int count;\/\/如果是表头：记录多少条线$/;"	m	struct:lineManagement
+countNode2	common/Neuron.c	/^int   countNode2(struct list_head  *cnt)$/;"	f
+createCreateNeroTab	MainWindow.c	/^void createCreateNeroTab(GtkWidget *fixedInside)$/;"	f
+createFile	common/fileOperating.c	/^void createFile(char * fileName)$/;"	f
+createMsgSearchTab	MainWindow.c	/^void createMsgSearchTab(GtkWidget *fixedInside)$/;"	f
+createNeroNetDotGraph	tools/createDot.c	/^void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName)$/;"	f
+createNeroNetDotGraphForWords	tools/createDot.c	/^void createNeroNetDotGraphForWords(NeuronObject *GodNero,  char *fileName)$/;"	f
+createObjFromMultiples_DeBug_Msg	NeuralNetwork/NeuralNetwork.c	2051;"	d	file:
+createTab1_InMainWindow	MainWindow.c	/^void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook)$/;"	f
+createToolsTab	MainWindow.c	/^void createToolsTab(GtkWidget *fixedInside)$/;"	f
+currentCair	MainWindow.c	/^cairo_t  *currentCair ;$/;"	v
+darea	MainWindow.c	/^GtkWidget *darea;$/;"	v
+dareaForComper	MainWindow.c	/^GtkWidget *dareaForComper[15];$/;"	v
+data	common/Neuron.h	/^int data;\/\/ 数据的起始位置，即第一个Neuron的字节位置$/;"	m	struct:NeuronFile
+data	tools/Nero_Task.h	/^        nero_us8int      data[TFFDataWidth][TFFDataLength];\/*二维数组指针*\/$/;"	m	struct:TaskFileFormat
+dataKind	NeuralNetwork/NeuralOperating.h	/^nero_s32int *dataKind;$/;"	m	struct:DataFlowProcessArg
+dataNum	NeuralNetwork/NeuralOperating.h	/^nero_s32int dataNum;$/;"	m	struct:DataFlowProcessArg
+datadir	Makefile	/^datadir = ${datarootdir}$/;"	m
+datarootdir	Makefile	/^datarootdir = ${prefix}\/share$/;"	m
+delLine	common/fileOperating.c	/^int delLine(char * FileName,int line)$/;"	f
+delStrInFile	common/fileOperating.c	/^int     delStrInFile(char * FileName,int len,int point)\/\/note:the point means the first char need to del$/;"	f
+delete_event	gtkMain.c	/^gint delete_event( GtkWidget *widget, GdkEvent *event, gpointer data )$/;"	f
+delete_eventInMainWin	MainWindow-old.c	/^gint delete_eventInMainWin( GtkWidget *widget, GdkEvent *event, gpointer data )$/;"	f
+delete_eventInMainWin	MainWindow.c	/^gint delete_eventInMainWin( GtkWidget *widget, GdkEvent *event, gpointer data )$/;"	f
+depcomp	Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
+destroy	gtkMain.c	/^void destroy( GtkWidget *widget, gpointer data )$/;"	f
+distcleancheck_listfiles	Makefile	/^distcleancheck_listfiles = find . -type f -print$/;"	m
+distdir	Makefile	/^distdir = $(PACKAGE)-$(VERSION)$/;"	m
+distuninstallcheck_listfiles	Makefile	/^distuninstallcheck_listfiles = find . -type f -print$/;"	m
+docdir	Makefile	/^docdir = ${datarootdir}\/doc\/${PACKAGE_TARNAME}$/;"	m
+draw_callback	MainWindow-old.c	/^gboolean draw_callback (GtkWidget *widget, cairo_t *cr, gpointer data)$/;"	f
+draw_callback	MainWindow.c	/^gboolean draw_callback (GtkWidget *widget, cairo_t *cr, gpointer data)$/;"	f
+drow1	MainWindow-old.c	/^void drow1( GtkWidget *widget, gpointer data )$/;"	f
+drow1	MainWindow.c	/^void drow1( GtkWidget *widget, gpointer data )$/;"	f
+drow2	MainWindow-old.c	/^void drow2( GtkWidget *widget, gpointer data )$/;"	f
+drow2	MainWindow.c	/^void drow2( GtkWidget *widget, gpointer data )$/;"	f
+dvidir	Makefile	/^dvidir = ${docdir}$/;"	m
+emptyFile	common/fileOperating.c	/^void emptyFile(char * fileName)$/;"	f
+end	NeuralNetwork/NeuralOperating.h	/^	nero_s32int end;	                  $/;"	m	struct:NeroObjForecastList
+end	NeuralNetwork/NeuralOperating.h	/^	nero_s32int end;$/;"	m	struct:DataFlowForecastInfo
+end	tools/readUTF8File.h	/^nero_s32int end;$/;"	m	struct:adkfjao
+equalCOlVsColorCnt	common/type.h	173;"	d
+exec_prefix	Makefile	/^exec_prefix = ${prefix}$/;"	m
+fd	common/Neuron.h	/^int fd;\/\/文件fileName句柄$/;"	m	struct:NeuronManage
+fifth	common/type.h	/^nero_us8int fifth;$/;"	m	struct:ChineseUnicode16DigitalCode
+fileName	common/Neuron.h	/^char * fileName;$/;"	m	struct:NeuronManage
+file_path_getcwd	MainWindow.c	/^static nero_8int  file_path_getcwd[FILEPATH_MAX];\/*保存当前目录*\/$/;"	v	file:
+file_path_getcwd	tools/Nero_IO.c	/^static nero_8int  file_path_getcwd[FILEPATH_MAX]="\/tmp";\/*保存当前目录*\/$/;"	v	file:
+file_path_getcwd	tools/Nero_Task.c	/^static nero_8int  file_path_getcwd[FILEPATH_MAX]="\/tmp";\/*保存当前目录*\/$/;"	v	file:
+findAllLine	common/fileOperating.c	/^int * findAllLine(char * FileName,int * countline)$/;"	f
+findImageNode	common/Neuron.c	/^int findImageNode(NeuronMan * nm,int *index)$/;"	f
+findListEnd	common/Neuron.c	/^int findListEnd(int mark,int start,NeuronMan * nm,int Max)$/;"	f
+first	common/list.h	/^	struct hlist_node *first;$/;"	m	struct:hlist_head	typeref:struct:hlist_head::hlist_node
+first	common/type.h	/^	nero_us8int first;$/;"	m	struct:ChineseUnicode16Code
+first	common/type.h	/^nero_us8int first;$/;"	m	struct:ChineseUnicode16DigitalCode
+first	common/type.h	/^nero_us8int first;$/;"	m	struct:ChineseUtf8Code
+first	common/type.h	/^nero_us8int first;$/;"	m	struct:ChineseUtf8Code_
+fixed	MainWindow.c	/^GtkWidget *fixed;$/;"	v
+flag10	common/Neuron.h	/^int flag10;$/;"	m	struct:NeuronFile
+flag11	common/Neuron.h	/^int flag11;$/;"	m	struct:NeuronFile
+flag12	common/Neuron.h	/^int flag12;$/;"	m	struct:NeuronFile
+flag13	common/Neuron.h	/^int flag13;$/;"	m	struct:NeuronFile
+flag14	common/Neuron.h	/^int flag14;$/;"	m	struct:NeuronFile
+flag15	common/Neuron.h	/^int flag15;$/;"	m	struct:NeuronFile
+flag16	common/Neuron.h	/^int flag16;$/;"	m	struct:NeuronFile
+flag17	common/Neuron.h	/^int flag17;$/;"	m	struct:NeuronFile
+flag3	common/Neuron.h	/^int flag3;$/;"	m	struct:NeuronFile
+flag4	common/Neuron.h	/^int flag4;$/;"	m	struct:NeuronFile
+flag5	common/Neuron.h	/^int flag5;$/;"	m	struct:NeuronFile
+flag6	common/Neuron.h	/^int flag6;$/;"	m	struct:NeuronFile
+flag7	common/Neuron.h	/^int flag7;$/;"	m	struct:NeuronFile
+flag8	common/Neuron.h	/^int flag8;$/;"	m	struct:NeuronFile
+flag9	common/Neuron.h	/^int flag9;$/;"	m	struct:NeuronFile
+forecastInfo_st	NeuralNetwork/NeuralOperating.c	/^	struct DataFlowForecastInfo  forecastInfo_st;	$/;"	v	typeref:struct:DataFlowForecastInfo
+fourth	common/type.h	/^nero_us8int fourth;\/\/下面是高位$/;"	m	struct:ChineseUnicode16DigitalCode
+fourth	common/type.h	/^nero_us8int fourth;\/\/下面是高位$/;"	m	struct:ChineseUtf8Code
+frame_callback	MainWindow-old.c	/^void frame_callback(GtkWindow *window, GdkEvent *event, gpointer data)$/;"	f
+frame_callback	MainWindow.c	/^void frame_callback(GtkWindow *window, GdkEvent *event, gpointer data)$/;"	f
+fucId	tools/Nero_IO.h	/^nero_8int fucId;$/;"	m	struct:IODataMsg_
+fucId	tools/Nero_IO.h	/^nero_8int fucId;$/;"	m	struct:NeuronObjectMsgWithStr_
+fucId	tools/Nero_IO.h	/^nero_8int fucId;$/;"	m	struct:NeuronObjectMsg_
+func_cl_dashL	compile	/^func_cl_dashL ()$/;"	f
+func_cl_dashl	compile	/^func_cl_dashl ()$/;"	f
+func_cl_wrapper	compile	/^func_cl_wrapper ()$/;"	f
+func_file_conv	compile	/^func_file_conv ()$/;"	f
+g	common/type.h	/^unsigned char g;$/;"	m	struct:COLOUR
+g	common/type.h	/^unsigned char g;$/;"	m	struct:COLOURCount
+gainFiberStrengthen	NeuralNetwork/NeuralNetwork.c	/^static inline nero_s32int gainFiberStrengthen(NerveFiber * fiber,nero_us32int time)$/;"	f	file:
+getBaseObjName	NeuralNetwork/NeuralNetwork.c	/^NeuronObject *  getBaseObjName(NeuronObject * baseobj,NeuronObject * godNero)$/;"	f
+getBaseObjPoint	NeuralNetwork/NeuralNetwork.c	/^NeuronObject * getBaseObjPoint(NeuronObject  *godNero,nero_s32int kind)$/;"	f
+getBasePointByObj	NeuralNetwork/NeuralNetwork.c	/^NeuronObject * getBasePointByObj(NeuronObject  *godNero,NeuronObject  * n)$/;"	f
+getChildrenOrderRule	NeuralNetwork/NeuralNetwork.c	/^ inline nero_s32int getChildrenOrderRule(ActNero *nero)$/;"	f
+getFiberPointToObjNum	NeuralNetwork/NeuralNetwork.c	/^ inline nero_s32int getFiberPointToObjNum(NerveFiber * fiber)$/;"	f
+getFiberType	NeuralNetwork/NeuralNetwork.c	/^ inline nero_s32int getFiberType(NerveFiber * fiber)$/;"	f
+getFiberUpdataTime	NeuralNetwork/NeuralNetwork.c	/^static inline nero_us32int getFiberUpdataTime(NerveFiber * fiber)$/;"	f	file:
+getLineInFile	common/fileOperating.c	/^ char * getLineInFile(char * FileName,int num)$/;"	f
+getMsgInToTFF	tools/Nero_Task.c	/^void getMsgInToTFF(TFF *  tff)$/;"	f
+getNeuronObject	NeuralNetwork/NeuralNetwork.c	/^NeuronObject * getNeuronObject()$/;"	f
+getObjOrderRule	NeuralNetwork/NeuralNetwork.c	/^ nero_s32int getObjOrderRule(NeuronObject  *godNero,ActNero *nero)$/;"	f
+getPosInObjs	NeuralNetwork/NeuralOperating.c	/^ nero_s32int getPosInObjs(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * obj)$/;"	f
+getStrInFile	common/fileOperating.c	/^ char * getStrInFile(char * FileName,int len,int point)\/\/返回获取的字符串，point为起始位置$/;"	f
+getStrInFile2	common/fileOperating.c	/^char * getStrInFile2(char * FileName,int len,int point)\/\/返回获取的字符串，point为起始位置$/;"	f
+give_advice	missing	/^give_advice ()$/;"	f
+gtkMain_CFLAGS	Makefile	/^gtkMain_CFLAGS = -pthread -I\/usr\/local\/include\/glib-2.0 -I\/usr\/local\/lib\/glib-2.0\/include -I\/usr\/local\/include\/atk-1.0 -I\/usr\/local\/include\/pango-1.0 -I\/usr\/local\/include\/gio-unix-2.0\/ -I\/usr\/local\/include\/cairo -I\/usr\/local\/include\/gdk-pixbuf-2.0 -I\/usr\/local\/include -I\/usr\/include\/freetype2 -I\/usr\/include\/gtk-3.0 -I\/usr\/include\/at-spi2-atk\/2.0 -I\/usr\/include\/harfbuzz -I\/usr\/include\/pixman-1 -I\/usr\/include\/libpng12  $/;"	m
+gtkMain_DEPENDENCIES	Makefile	/^gtkMain_DEPENDENCIES = $(am__DEPENDENCIES_1)$/;"	m
+gtkMain_LDADD	Makefile	/^gtkMain_LDADD = $(gtkMain_LIBS)$/;"	m
+gtkMain_LIBS	Makefile	/^gtkMain_LIBS = -L\/usr\/local\/lib -lgtk-3 -lgdk-3 -latk-1.0 -lgio-2.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo-gobject -lpango-1.0 -lcairo -lgobject-2.0 -lglib-2.0  $/;"	m
+gtkMain_LINK	Makefile	/^gtkMain_LINK = $(CCLD) $(gtkMain_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \\$/;"	m
+gtkMain_OBJECTS	Makefile	/^gtkMain_OBJECTS = $(am_gtkMain_OBJECTS)$/;"	m
+gtkMain_SOURCES	Makefile	/^gtkMain_SOURCES = gtkMain.c MainWindow.c MainWindow.h common\/fileOperating.h common\/fileOperating.c  tools\/readUTF8File.h tools\/readUTF8File.c tools\/createDot.h tools\/createDot.c tools\/Nero_IO.h tools\/Nero_IO.c NeuralNetwork\/NeuralOperating.h NeuralNetwork\/NeuralOperating.c common\/type.h NeuralNetwork\/NeuralNetwork.h NeuralNetwork\/NeuralNetwork.c   tools\/Nero_Task.h tools\/Nero_Task.c$/;"	m
+headOfLowerLayer	NeuralNetwork/NeuralOperating.h	/^	struct NeroObjForecastList   headOfLowerLayer;\/\/指向第一个预测对象$/;"	m	struct:DataFlowForecastInfo	typeref:struct:DataFlowForecastInfo::NeroObjForecastList
+headOfSameLayer	NeuralNetwork/NeuralOperating.h	/^	struct NeroObjForecastList   headOfSameLayer;\/\/指向第一个预测对象$/;"	m	struct:DataFlowForecastInfo	typeref:struct:DataFlowForecastInfo::NeroObjForecastList
+headOfUpperLayer	NeuralNetwork/NeuralOperating.h	/^        struct NeroObjForecastList   headOfUpperLayer;\/\/指向第一个预测对象	$/;"	m	struct:DataFlowForecastInfo	typeref:struct:DataFlowForecastInfo::NeroObjForecastList
+hello	MainWindow-old.c	/^void hello( GtkWidget *widget, gpointer data )$/;"	f
+hello	MainWindow.c	/^void hello( GtkWidget *widget, gpointer data )$/;"	f
+hlist_head	common/list.h	/^struct hlist_head {$/;"	s
+hlist_node	common/list.h	/^struct hlist_node {$/;"	s
+host_alias	Makefile	/^host_alias = $/;"	m
+htmldir	Makefile	/^htmldir = ${docdir}$/;"	m
+id	tools/Nero_IO.h	/^    nero_us32int id; $/;"	m	struct:one_arg_message_entry
+id	tools/Nero_IO.h	/^    nero_us32int id; $/;"	m	struct:two_arg_message_entry
+ifReCreateLogFile	NeuralNetwork/NeuralNetwork.h	/^	nero_us32int  ifReCreateLogFile;     \/*系统运行时是否重新生成log文件*\/$/;"	m	struct:NeroConfiguration
+image	MainWindow.c	/^cairo_surface_t *image;$/;"	v
+includedir	Makefile	/^includedir = ${prefix}\/include$/;"	m
+infodir	Makefile	/^infodir = ${datarootdir}\/info$/;"	m
+initActNero	NeuralNetwork/NeuralNetwork.c	/^nero_s32int initActNero(ActNero * nero,nero_us32int kind,NerveFiber *inputListHead,NerveFiber *outputListHead)$/;"	f
+initActNeroNet	NeuralNetwork/NeuralNetwork.c	/^nero_s32int initActNeroNet()$/;"	f
+initNeroNetWork	MainWindow.c	/^void initNeroNetWork( )$/;"	f
+initNeroPool	NeuralNetwork/NeuralNetwork.c	/^nero_s32int initNeroPool()$/;"	f
+inputListHead	NeuralNetwork/NeuralNetwork.h	/^struct NerveFiber_  * inputListHead;\/*其实究竟对于一个神经元来说是不是需要这个输入神经元的链表，*\/$/;"	m	struct:ActivationNeuron	typeref:struct:ActivationNeuron::NerveFiber_
+install_sh	Makefile	/^install_sh = ${SHELL} \/home\/ub\/git\/nero\/src\/install-sh$/;"	m
+install_sh_DATA	Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
+install_sh_PROGRAM	Makefile	/^install_sh_PROGRAM = $(install_sh) -c$/;"	m
+install_sh_SCRIPT	Makefile	/^install_sh_SCRIPT = $(install_sh) -c$/;"	m
+libdir	Makefile	/^libdir = ${exec_prefix}\/lib$/;"	m
+libexecdir	Makefile	/^libexecdir = ${exec_prefix}\/libexec$/;"	m
+lineManagement	common/type.h	/^typedef struct  lineManagement$/;"	s
+list_GetNUMn	common/list.h	/^static inline struct list_head * list_GetNUMn(struct list_head * head,int n)$/;"	f
+list_ISempty	common/list.h	/^static inline int list_ISempty(struct list_head * head)$/;"	f
+list_add	common/list.h	/^static inline void list_add(struct list_head *new, struct list_head *head)$/;"	f
+list_add_tail	common/list.h	/^static inline void list_add_tail(struct list_head *new, struct list_head *head)$/;"	f
+list_head	common/list.h	/^struct list_head {$/;"	s
+list_replace	common/list.h	/^static inline void list_replace(struct list_head *old,$/;"	f
+localedir	Makefile	/^localedir = ${datarootdir}\/locale$/;"	m
+localstatedir	Makefile	/^localstatedir = ${prefix}\/var$/;"	m
+logFile	tools/Nero_IO.c	/^nero_8int  logFile[FILEPATH_MAX]="\/tmp\/log.txt";$/;"	v
+main	gtkMain.c	/^int main( int argc, char *argv[] )$/;"	f
+make_dummy_depfile	depcomp	/^make_dummy_depfile ()$/;"	f
+manAllLineFromNeo	MainWindow.c	/^LineMan *manAllLineFromNeo;$/;"	v
+mandir	Makefile	/^mandir = ${datarootdir}\/man$/;"	m
+mkdir_p	Makefile	/^mkdir_p = $(MKDIR_P)$/;"	m
+mkinstalldirs	Makefile	/^mkinstalldirs = $(install_sh) -d$/;"	m
+mouseEnter	MainWindow-old.c	/^gint mouseEnter( GtkWidget *widget, GdkEvent *event, gpointer data )$/;"	f
+mouseEnter	MainWindow.c	/^gint mouseEnter( GtkWidget *widget, GdkEvent *event, gpointer data )$/;"	f
+msg	NeuralNetwork/NeuralNetwork.h	/^nero_us32int msg;\/*记录该nero的种类，性质等信息*\/$/;"	m	struct:ActivationNeuron
+msg1	NeuralNetwork/NeuralNetwork.h	/^nero_us32int msg1;\/*存储额外的信息*\/$/;"	m	struct:NerveFiber_
+msgSeparator	tools/Nero_Task.h	/^        nero_8int   msgSeparator;\/*信息分割符号，一般用空格*\/$/;"	m	struct:TaskFileFormat
+munmapNeuronMan	common/Neuron.c	/^int munmapNeuronMan(NeuronMan * nm)$/;"	f
+myMainWindow	MainWindow-old.c	/^void myMainWindow(GtkWidget *window)$/;"	f
+myMainWindow	MainWindow.c	/^void myMainWindow(GtkWidget *window)$/;"	f
+myitoa	common/fileOperating.c	/^char *myitoa(int value,char *string,int radix)$/;"	f
+neoFNode	common/Neuron.h	/^NeoF neoFNode;$/;"	m	struct:NeuronManage
+neroConf	NeuralNetwork/NeuralNetwork.c	/^NeroConf neroConf;$/;"	v
+neroKind	NeuralNetwork/NeuralNetwork.c	/^nero_us32int neroKind[]=$/;"	v
+neroObjMsgWithStr_st	MainWindow.c	/^static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;$/;"	v	typeref:struct:NeuronObjectMsgWithStr_	file:
+neroObjMsgWithStr_st	NeuralNetwork/NeuralNetwork.c	/^static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;$/;"	v	typeref:struct:NeuronObjectMsgWithStr_	file:
+neroObjMsgWithStr_st	NeuralNetwork/NeuralOperating.c	/^static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;$/;"	v	typeref:struct:NeuronObjectMsgWithStr_	file:
+neroObjMsg_st	NeuralNetwork/NeuralNetwork.c	/^static struct  NeuronObjectMsg_    neroObjMsg_st;$/;"	v	typeref:struct:NeuronObjectMsg_	file:
+neroObjMsg_st	NeuralNetwork/NeuralOperating.c	/^static struct  NeuronObjectMsg_    neroObjMsg_st;$/;"	v	typeref:struct:NeuronObjectMsg_	file:
+neroTime	NeuralNetwork/NeuralNetwork.h	/^	nero_us32int  neroTime;     \/*系统运行时间单位，初始化为0，隔1秒钟增加1*\/$/;"	m	struct:NeroConfiguration
+nero_8int	common/type.h	/^typedef  char  nero_8int;$/;"	t
+nero_AddWordsIntoNet	NeuralNetwork/NeuralNetwork.c	/^nero_s32int  nero_AddWordsIntoNet(NeuronObject *GodNero,Utf8Word * wordsHead)$/;"	f
+nero_CreateNewBaseObj	NeuralNetwork/NeuralNetwork.c	/^NeuronObject * nero_CreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)$/;"	f
+nero_GetNeroKind	NeuralNetwork/NeuralNetwork.c	/^ inline  nero_us32int nero_GetNeroKind(ActNero * nero)$/;"	f
+nero_GetSomeNeroForData	NeuralNetwork/NeuralNetwork.c	/^ActNero * nero_GetSomeNeroForData(nero_s32int  num)$/;"	f
+nero_IfHasNeuronObject	NeuralNetwork/NeuralNetwork.c	/^NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObject *GodNero)$/;"	f
+nero_IfHasObjFromMultiples	NeuralNetwork/NeuralNetwork.c	/^nero_s32int   nero_IfHasObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum)$/;"	f
+nero_IfHasObjFromMultiples2	NeuralNetwork/NeuralNetwork.c	/^NeuronObject *   nero_IfHasObjFromMultiples2(NeuronObject *Obis[],nero_s32int objNum)$/;"	f
+nero_IfHasObjFromMultiples3	NeuralNetwork/NeuralNetwork.c	/^nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNum)$/;"	f
+nero_IfHasObjFromMultiples4	NeuralNetwork/NeuralNetwork.c	/^NeuronObject *   nero_IfHasObjFromMultiples4(NeuronObject *Obis[],nero_s32int objNum)$/;"	f
+nero_IfHasObjFromPair	NeuralNetwork/NeuralNetwork.c	/^nero_s32int  nero_IfHasObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)$/;"	f
+nero_IfHasZhWord	NeuralNetwork/NeuralNetwork.c	/^NeuronObject * nero_IfHasZhWord(NeuronObject *GodNero,ChUTF8 * word,nero_s32int kind)$/;"	f
+nero_IfIsThisKind	NeuralNetwork/NeuralNetwork.c	/^nero_s32int nero_IfIsThisKind(NeuronObject *Obis[],nero_s32int objNum,NeuronObject * baseKindObj)$/;"	f
+nero_ModifyBaseKind	NeuralNetwork/NeuralNetwork.c	/^NeuronObject * nero_ModifyBaseKind(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)$/;"	f
+nero_StrengthenLink	NeuralNetwork/NeuralNetwork.c	/^nero_s32int nero_StrengthenLink(NeuronObject * a,NeuronObject * b)$/;"	f
+nero_addDataToZhNeroObj	NeuralNetwork/NeuralNetwork.c	/^nero_s32int nero_addDataToZhNeroObj(NeuronObject * n,ChUTF8 *chChar)$/;"	f
+nero_addNeroByData	NeuralNetwork/NeuralNetwork.c	/^NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)$/;"	f
+nero_addNeroByData_debug_msg	NeuralNetwork/NeuralNetwork.c	2387;"	d	file:
+nero_addNeroIntoBaseObj	NeuralNetwork/NeuralNetwork.c	/^nero_s32int nero_addNeroIntoBaseObj(NeuronObject *BaseObi,NeuronObject *newObj)$/;"	f
+nero_addNeroIntoNet	NeuralNetwork/NeuralNetwork.c	/^nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj)$/;"	f
+nero_addZhCharIntoNet	NeuralNetwork/NeuralNetwork.c	/^nero_s32int nero_addZhCharIntoNet(NeuronObject *GodNero,ChUTF8 chChar[],nero_s32int charCounts)$/;"	f
+nero_createDataNero	NeuralNetwork/NeuralNetwork.c	/^ActNero * nero_createDataNero()$/;"	f
+nero_createNeroObj	NeuralNetwork/NeuralNetwork.c	/^NeuronObject * nero_createNeroObj(nero_s32int kind)$/;"	f
+nero_createObjFromMultiples	NeuralNetwork/NeuralNetwork.c	/^NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum)$/;"	f
+nero_createObjFromPair	NeuralNetwork/NeuralNetwork.c	/^NeuronObject * nero_createObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)$/;"	f
+nero_error_Id	tools/readUTF8File.c	/^static int nero_error_Id=0;$/;"	v	file:
+nero_findSameObjFromPair	NeuralNetwork/NeuralNetwork.c	/^NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)$/;"	f
+nero_ifHasThisData	NeuralNetwork/NeuralNetwork.c	/^inline nero_s32int  nero_ifHasThisData(ActNero * n,nero_s32int x,nero_s32int y,nero_s32int z)$/;"	f
+nero_ifHasThisData_word	NeuralNetwork/NeuralNetwork.c	/^nero_s32int  nero_ifHasThisData_word(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum)$/;"	f
+nero_ifMakeUpWithTheseObjs	NeuralNetwork/NeuralNetwork.c	/^nero_s32int  nero_ifMakeUpWithTheseObjs(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum)$/;"	f
+nero_ifMakeUpWithTheseObjsInOrder	NeuralNetwork/NeuralNetwork.c	/^nero_s32int  nero_ifMakeUpWithTheseObjsInOrder(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum)$/;"	f
+nero_ifMakeUpWithTheseObjsNotInOrder	NeuralNetwork/NeuralNetwork.c	/^nero_s32int  nero_ifMakeUpWithTheseObjsNotInOrder(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum)$/;"	f
+nero_ifMakeUpWithTheseObjs_old	NeuralNetwork/NeuralNetwork.c	/^nero_s32int  nero_ifMakeUpWithTheseObjs_old(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum)$/;"	f
+nero_isBaseObj	NeuralNetwork/NeuralNetwork.c	/^nero_s32int  nero_isBaseObj(NeuronObject *Obi)$/;"	f
+nero_isInNet	NeuralNetwork/NeuralNetwork.c	/^nero_s32int nero_isInNet(NeuronObject *Obi)$/;"	f
+nero_judgeNewObjKind	NeuralNetwork/NeuralNetwork.c	/^nero_s32int nero_judgeNewObjKind(NeuronObject *Obis[],nero_s32int objNum)$/;"	f
+nero_log	tools/readUTF8File.c	/^nero_s32int nero_log(nero_8int * FileName,nero_8int * msg)$/;"	f
+nero_msg_ParameterError	common/NeroError.h	13;"	d
+nero_msg_fail	common/NeroError.h	10;"	d
+nero_msg_ok	common/NeroError.h	11;"	d
+nero_msg_unknowError	common/NeroError.h	9;"	d
+nero_printNeroLink	tools/readUTF8File.c	/^nero_s32int nero_printNeroLink(nero_8int * FileName,void *n)$/;"	f
+nero_printNeroMsg	NeuralNetwork/NeuralNetwork.h	297;"	d
+nero_putDataIntoNero	NeuralNetwork/NeuralNetwork.c	/^ inline  void  nero_putDataIntoNero(ActNero *n,nero_us32int x,nero_us32int y,nero_us32int z)$/;"	f
+nero_s32int	common/type.h	/^typedef int  nero_s32int;$/;"	t
+nero_s8int	common/type.h	/^typedef signed char  nero_s8int;$/;"	t
+nero_us32int	common/type.h	/^typedef unsigned int  nero_us32int;$/;"	t
+nero_us8int	common/type.h	/^typedef unsigned char  nero_us8int;$/;"	t
+next	NeuralNetwork/NeuralNetwork.h	/^struct NerveFiber_ * next;$/;"	m	struct:NerveFiber_	typeref:struct:NerveFiber_::NerveFiber_
+next	common/Neuron.h	/^int next;$/;"	m	struct:Neuron
+next	common/list.h	/^	struct hlist_node *next, **pprev;$/;"	m	struct:hlist_node	typeref:struct:hlist_node::hlist_node
+next	common/list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::list_head
+next	tools/readUTF8File.h	/^	struct Utf8Word_ *next;$/;"	m	struct:Utf8Word_	typeref:struct:Utf8Word_::Utf8Word_
+nextAvailableNeroInPool	NeuralNetwork/NeuralNetwork.c	/^nero_us32int nextAvailableNeroInPool;\/\/它指向NeroPool中当前可用的（即使未加入网络的nero）$/;"	v
+notebook	MainWindow.c	/^GtkWidget *notebook;$/;"	v
+num	tools/readUTF8File.h	/^	nero_s32int num;\/*数组words中的字符个数，就是该词的汉字个数*\/$/;"	m	struct:Utf8Word_
+obj	NeuralNetwork/NeuralNetwork.h	/^struct ActivationNeuron   *obj;$/;"	m	struct:NerveFiber_	typeref:struct:NerveFiber_::ActivationNeuron
+obj	NeuralNetwork/NeuralOperating.h	/^	NeuronObject * obj;$/;"	m	struct:NeroObjForecastList
+objNum	NeuralNetwork/NeuralOperating.h	/^	nero_s32int objNum;\/\/实际对象个数，也是objs这个数组的有效长度，数组长度必须大于objNum，不然越界	$/;"	m	struct:DataFlowForecastInfo
+objPoint	NeuralNetwork/NeuralOperating.h	/^	nero_s32int objPoint;\/\/指向一个objs中可以读取的位置,初始为0，最大值为objNum$/;"	m	struct:DataFlowForecastInfo
+objs	NeuralNetwork/NeuralOperating.h	/^	NeuronObject ** objs;\/\/实际对象指针$/;"	m	struct:DataFlowForecastInfo
+obtainOrderFromTFF	tools/Nero_Task.c	/^void obtainOrderFromTFF(TFF * tff)\/*从TFF中分析得到命令后在函数里面直接发送就行了*\/$/;"	f
+oldincludedir	Makefile	/^oldincludedir = \/usr\/include$/;"	m
+one_arg_message_entry	tools/Nero_IO.h	/^struct one_arg_message_entry $/;"	s
+operate	tools/Nero_IO.h	/^    nero_s32int (*operate)(void *); $/;"	m	struct:one_arg_message_entry
+operate	tools/Nero_IO.h	/^    nero_s32int (*operate)(void *,void *); $/;"	m	struct:two_arg_message_entry
+operateKind	tools/Nero_IO.h	/^nero_s32int operateKind; $/;"	m	struct:IODataMsg_
+order	tools/Nero_Task.h	/^        nero_s32int order;\/*保存命令种类*\/  $/;"	m	struct:TaskFileFormat
+orderSeparator	tools/Nero_Task.h	/^        nero_8int   orderSeparator;\/*不同命令的分割符号，一般用换行*\/$/;"	m	struct:TaskFileFormat
+otput	common/fileOperating.c	/^void otput()$/;"	f
+outputListHead	NeuralNetwork/NeuralNetwork.h	/^struct NerveFiber_   * outputListHead; $/;"	m	struct:ActivationNeuron	typeref:struct:ActivationNeuron::NerveFiber_
+p	NeuralNetwork/NeuralOperating.h	/^	struct list_head p;$/;"	m	struct:NeroObjForecastList	typeref:struct:NeroObjForecastList::list_head
+p	common/type.h	/^struct list_head p;$/;"	m	struct:COLOURCount	typeref:struct:COLOURCount::list_head
+p	common/type.h	/^struct list_head p;$/;"	m	struct:ListPos	typeref:struct:ListPos::list_head
+p	common/type.h	/^struct list_head p;\/\/用来维持所有线条表头的结构--就是维持LineMan本身的链表$/;"	m	struct:lineManagement	typeref:struct:lineManagement::list_head
+paintInRGB24	MainWindow-old.c	/^void paintInRGB24(char * filename)\/\/数据和像素大小$/;"	f
+paintInSurfaceRGB24	MainWindow-old.c	/^void paintInSurfaceRGB24(cairo_surface_t *image,int weight,int height,unsigned char * bmpdata)$/;"	f
+paintwindow	MainWindow.c	/^GdkWindow *paintwindow;$/;"	v
+pdfdir	Makefile	/^pdfdir = ${docdir}$/;"	m
+pkgdatadir	Makefile	/^pkgdatadir = $(datadir)\/gtkmain$/;"	m
+pkgincludedir	Makefile	/^pkgincludedir = $(includedir)\/gtkmain$/;"	m
+pkglibdir	Makefile	/^pkglibdir = $(libdir)\/gtkmain$/;"	m
+pkglibexecdir	Makefile	/^pkglibexecdir = $(libexecdir)\/gtkmain$/;"	m
+pos	common/type.h	/^POS pos;$/;"	m	struct:ListPos
+posHead	common/type.h	/^PosList * posHead;\/\/指向用PosList表示的线条链表的表头的指针$/;"	m	struct:lineManagement
+pprev	common/list.h	/^	struct hlist_node *next, **pprev;$/;"	m	struct:hlist_node	typeref:struct:hlist_node::
+prefix	Makefile	/^prefix = \/usr\/local$/;"	m
+prev	common/list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::
+printColor	common/type.h	171;"	d
+printColorCNT	common/type.h	169;"	d
+printDAta	MainWindow-old.c	/^void printDAta(unsigned char * bmpdata,int w,int h)$/;"	f
+printNeuronFileMsg	common/Neuron.c	/^void printNeuronFileMsg(NeoF * f)$/;"	f
+printNeuronManData	common/Neuron.c	/^int printNeuronManData(NeuronMan * nm)$/;"	f
+printPos	MainWindow-old.c	/^void printPos()$/;"	f
+printWords	tools/readUTF8File.c	/^nero_s32int printWords(Utf8Word * wordsHead)$/;"	f
+program_details	missing	/^program_details ()$/;"	f
+program_transform_name	Makefile	/^program_transform_name = s,x,x,$/;"	m
+prototypes	configure	/^   function prototypes and stuff, but not '\\xHH' hex character constants.$/;"	f
+psdir	Makefile	/^psdir = ${docdir}$/;"	m
+putNumFourINOne	common/type.h	185;"	d
+putNumTwoINOne	common/type.h	183;"	d
+putStrInFile	common/fileOperating.c	/^int putStrInFile(char * FileName,char * str,int len,int point)\/\/在文件特定位置插入一个字符串,point 												\/\/is the  location of the str,if $/;"	f
+putSubStrIntoOther	common/fileOperating.c	/^void putSubStrIntoOther(char * a,char *b,int startA,int startB,int len)$/;"	f
+r	common/type.h	/^unsigned char r;$/;"	m	struct:COLOUR
+r	common/type.h	/^unsigned char r;$/;"	m	struct:COLOURCount
+readUTF8File	MainWindow.c	/^void readUTF8File( GtkWidget *widget, gpointer data )$/;"	f
+readUTF8FileData	tools/readUTF8File.c	/^nero_s32int readUTF8FileData(nero_8int * FileName)\/\/$/;"	f
+readUTF8FileForWords	tools/readUTF8File.c	/^nero_s32int readUTF8FileForWords(nero_8int * FileName ,Utf8Word * wordsHead)$/;"	f
+recoverPic	MainWindow.c	/^int recoverPic=0;$/;"	v
+sbindir	Makefile	/^sbindir = ${exec_prefix}\/sbin$/;"	m
+searchStrInFile	common/fileOperating.c	/^int searchStrInFile(char * FileName,char * searchstr)$/;"	f
+second	common/type.h	/^	nero_us8int second;$/;"	m	struct:ChineseUnicode16Code
+second	common/type.h	/^nero_us8int second;$/;"	m	struct:ChineseUnicode16DigitalCode
+second	common/type.h	/^nero_us8int second;$/;"	m	struct:ChineseUtf8Code
+second	common/type.h	/^nero_us8int second;$/;"	m	struct:ChineseUtf8Code_
+setActNeroAsBaseObject	NeuralNetwork/NeuralNetwork.c	/^static inline void setActNeroAsBaseObject(ActNero *nero,nero_us32int kind)$/;"	f	file:
+setActNeroKind	NeuralNetwork/NeuralNetwork.c	/^static inline void setActNeroKind(ActNero *nero,nero_us32int kind)$/;"	f	file:
+setChildrenOrderRule	NeuralNetwork/NeuralNetwork.c	/^static inline void setChildrenOrderRule(ActNero *nero,nero_us32int rule)$/;"	f	file:
+setFiberPointToKind	NeuralNetwork/NeuralNetwork.c	/^static inline void setFiberPointToKind(NerveFiber * fiber,nero_us32int kind)$/;"	f	file:
+setFiberPointToNums	NeuralNetwork/NeuralNetwork.c	/^static inline void setFiberPointToNums(NerveFiber * fiber,nero_us32int type)$/;"	f	file:
+setFiberPointToNums_debug_msg_	NeuralNetwork/NeuralNetwork.c	340;"	d	file:
+setFiberUpdataTime	NeuralNetwork/NeuralNetwork.c	/^static inline void setFiberUpdataTime(NerveFiber * fiber,nero_us32int time)$/;"	f	file:
+set_base_from	depcomp	/^set_base_from ()$/;"	f
+set_dir_from	depcomp	/^set_dir_from ()$/;"	f
+sharedstatedir	Makefile	/^sharedstatedir = ${prefix}\/com$/;"	m
+sortChar	tools/readUTF8File.c	/^nero_s32int sortChar()$/;"	f
+spin_myWidget_draw	MainWindow.c	/^gboolean spin_myWidget_draw (GtkWidget *widget, cairo_t   *cr)$/;"	f
+srcdir	Makefile	/^srcdir = .$/;"	m
+srollWindows	MainWindow.c	/^GtkWidget * srollWindows[textNum];$/;"	v
+start	NeuralNetwork/NeuralOperating.h	/^	nero_s32int start;\/\/start end 是objs中某个子集的起始位置，用来指示该位置有衍生概念$/;"	m	struct:DataFlowForecastInfo
+start	NeuralNetwork/NeuralOperating.h	/^	nero_s32int start;\/\/如果该节点对象是一个被识别出来的子集衍生对象，start end 是objs中这个子集的起始位置$/;"	m	struct:NeroObjForecastList
+str	tools/Nero_IO.h	/^nero_8int str[100];$/;"	m	struct:NeuronObjectMsgWithStr_
+str	tools/Nero_IO.h	/^nero_8int str[300];$/;"	m	struct:IODataMsg_
+str	tools/Nero_Task.h	/^        nero_8int   str[3500];$/;"	m	struct:TaskFileFormat
+str1	tools/createDot.c	/^nero_s8int str1[]={ "digraph graphname {\\n"};$/;"	v
+str2	tools/createDot.c	/^nero_s8int str2[]={ "\\n}\\n"};$/;"	v
+strTmp	tools/Nero_IO.c	/^nero_8int  strTmp[1500];$/;"	v
+subdir	Makefile	/^subdir = .$/;"	m
+sysconfdir	Makefile	/^sysconfdir = ${prefix}\/etc$/;"	m
+tab_SetSearchNeroMsgViewText	MainWindow.c	/^void tab_SetSearchNeroMsgViewText(gchar *  str)$/;"	f
+tab_searchNeroMsg	MainWindow.c	/^void tab_searchNeroMsg( GtkWidget *widget, gpointer data )$/;"	f
+tab_textViewForSearchChanged	MainWindow.c	/^void tab_textViewForSearchChanged( GtkWidget *widget, gpointer data )$/;"	f
+table	MainWindow.c	/^GtkWidget * table;\/\/主界面的table$/;"	v
+tardir	Makefile	/^	tardir=$(distdir) && $(am__tar) | BZIP2=$${BZIP2--9} bzip2 -c >$(distdir).tar.bz2$/;"	m
+tardir	Makefile	/^	tardir=$(distdir) && $(am__tar) | GZIP=$(GZIP_ENV) gzip -c >$(distdir).tar.gz$/;"	m
+tardir	Makefile	/^	tardir=$(distdir) && $(am__tar) | XZ_OPT=$${XZ_OPT--e} xz -c >$(distdir).tar.xz$/;"	m
+tardir	Makefile	/^	tardir=$(distdir) && $(am__tar) | compress -c >$(distdir).tar.Z$/;"	m
+tardir	Makefile	/^	tardir=$(distdir) && $(am__tar) | lzip -c $${LZIP_OPT--9} >$(distdir).tar.lz$/;"	m
+target_alias	Makefile	/^target_alias = $/;"	m
+textNum	MainWindow.h	7;"	d
+textViewForSearch	MainWindow.c	/^GtkWidget *textViewForSearch;$/;"	v
+textViewForSearchBuff	MainWindow.c	/^GtkTextBuffer *textViewForSearchBuff;$/;"	v
+textViewForSearchFixedInsideBox	MainWindow.c	/^GtkWidget *textViewForSearchFixedInsideBox;$/;"	v
+third	common/type.h	/^nero_us8int third;$/;"	m	struct:ChineseUnicode16DigitalCode
+third	common/type.h	/^nero_us8int third;$/;"	m	struct:ChineseUtf8Code
+third	common/type.h	/^nero_us8int third;$/;"	m	struct:ChineseUtf8Code_
+thread_for_IO_Pic	tools/Nero_IO.c	/^void *thread_for_IO_Pic(void *arg)$/;"	f
+thread_for_Log_Pic	tools/Nero_IO.c	/^void *thread_for_Log_Pic(void *arg)$/;"	f
+thread_for_Operating_Pic	NeuralNetwork/NeuralOperating.c	/^void * thread_for_Operating_Pic(void *arg)$/;"	f
+thread_for_Sys_Pic	NeuralNetwork/NeuralOperating.c	/^void * thread_for_Sys_Pic(void *arg)$/;"	f
+thread_for_paint_Pic	MainWindow-old.c	/^void *thread_for_paint_Pic(void *arg)$/;"	f
+time	NeuralNetwork/NeuralNetwork.h	/^nero_us32int time;\/*有关修改时间的信息*\/$/;"	m	struct:NerveFiber_
+timeToMerage	NeuralNetwork/NeuralOperating.h	/^	nero_s32int timeToMerage;\/\/合并子集标志$/;"	m	struct:DataFlowForecastInfo
+timenow	tools/Nero_IO.c	/^struct  tm  *timenow;         \/\/实例化tm结构指针$/;"	v	typeref:struct:tm
+times	NeuralNetwork/NeuralOperating.h	/^	nero_s32int times;\/\/在整个预测成功中，该节点存在的时间长度,初始化为0$/;"	m	struct:NeroObjForecastList
+tmp	tools/readUTF8File.c	/^nero_us8int tmp[6];$/;"	m	struct:charshuzhu6	file:
+tmp	tools/readUTF8File.h	/^ChUTF8 tmp;$/;"	m	struct:adkfjao
+tmpObiForTemporary	NeuralNetwork/NeuralNetwork.c	/^NeuronObject tmpObiForTemporary[tmpObiForTemporaryNUM];$/;"	v
+tmpObiForTemporaryNUM	NeuralNetwork/NeuralNetwork.c	45;"	d	file:
+top_build_prefix	Makefile	/^top_build_prefix = $/;"	m
+top_builddir	Makefile	/^top_builddir = .$/;"	m
+top_distdir	Makefile	/^top_distdir = $(distdir)$/;"	m
+top_srcdir	Makefile	/^top_srcdir = .$/;"	m
+transform	Makefile	/^transform = $(program_transform_name)$/;"	m
+tryShm	MainWindow.h	41;"	d
+two_arg_message_entry	tools/Nero_IO.h	/^struct two_arg_message_entry $/;"	s
+updataLine	common/fileOperating.c	/^void updataLine(char * FileName,char * newStr,int line)$/;"	f
+updataNeuronFileHead	common/Neuron.c	/^int updataNeuronFileHead(NeoF * f,char * fileName)$/;"	f
+waitForRecognise	NeuralNetwork/NeuralOperating.h	/^	NeuronObject * waitForRecognise; \/*如果没有在预测列表中的数据会先放在这里，$/;"	m	struct:DataFlowForecastInfo
+waitForRecogniseObjPos	NeuralNetwork/NeuralOperating.h	/^	nero_s32int waitForRecogniseObjPos;\/*waitForRecognise的位置*\/$/;"	m	struct:DataFlowForecastInfo
+words	tools/readUTF8File.h	/^	ChUTF8    *words;$/;"	m	struct:Utf8Word_
+x	MainWindow-old.c	/^	gint x=50;$/;"	v
+x	MainWindow.c	/^gint x=50;$/;"	v
+x	NeuralNetwork/NeuralNetwork.h	/^nero_s32int x;\/*取值范围-2147483648 ~ 2147483647*\/$/;"	m	struct:ActivationNeuron
+x	common/Neuron.h	/^int x;$/;"	m	struct:Neuron
+x	common/type.h	/^int x;$/;"	m	struct:POSITIOM
+y	MainWindow-old.c	/^	gint y=50;$/;"	v
+y	MainWindow.c	/^gint y=50;$/;"	v
+y	NeuralNetwork/NeuralNetwork.h	/^nero_s32int y;$/;"	m	struct:ActivationNeuron
+y	common/Neuron.h	/^int y;$/;"	m	struct:Neuron
+y	common/type.h	/^int y;$/;"	m	struct:POSITIOM
+z	NeuralNetwork/NeuralNetwork.h	/^nero_s32int z;$/;"	m	struct:ActivationNeuron
+z	common/Neuron.h	/^int z;$/;"	m	struct:Neuron

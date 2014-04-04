@@ -179,17 +179,23 @@ GtkWidget *textViewForSearch;
 	
 
 }
+/*打算在这个函数里面读取文本中的信息搜索请求*/
+/*请求的信息格式，仿照Nero_Task里面*/
 void drow1( GtkWidget *widget, gpointer data )
 {
-struct { long type; char text[100]; } mymsg;
-		memset(mymsg.text, 0, 100);  //Clear out the space 
-		strcpy(mymsg.text,"测试" );//newfilename就是发送的字符串
-		mymsg.type = 1;
-/*		printf("mymsg.text is :%s\n", mymsg.text);*/
-		msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+/*struct { long type; char text[100]; } mymsg;*/
+/*		memset(mymsg.text, 0, 100);  //Clear out the space */
+/*		strcpy(mymsg.text,"测试" );//newfilename就是发送的字符串*/
+/*		mymsg.type = 1;*/
+/*		msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);*/
+/*		*/
+/*		msgsnd( IO_mq_id, &mymsg, sizeof(mymsg), 0);*/
+/*		msgsnd( Log_mq_id, &mymsg, sizeof(mymsg), 0);*/
 		
-		msgsnd( IO_mq_id, &mymsg, sizeof(mymsg), 0);
-		msgsnd( Log_mq_id, &mymsg, sizeof(mymsg), 0);
+		
+		
+		
+		
 		
 		
 		

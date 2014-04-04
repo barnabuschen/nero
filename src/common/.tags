@@ -1,0 +1,245 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+COLOUR	type.h	/^typedef struct COLOUR$/;"	s
+COLOURCount	type.h	/^typedef struct COLOURCount$/;"	s
+ChUTF8	type.h	/^}ChUTF8;$/;"	t	typeref:struct:ChineseUtf8Code
+ChUTF8_	type.h	/^}ChUTF8_;$/;"	t	typeref:struct:ChineseUtf8Code_
+ChineseCharNum	type.h	20;"	d
+ChineseUnicode16Code	type.h	/^typedef struct ChineseUnicode16Code   \/\/16位的Unicode编码$/;"	s
+ChineseUnicode16DigitalCode	type.h	/^typedef struct ChineseUnicode16DigitalCode\/\/五位拼起来就是Unicode16码$/;"	s
+ChineseUtf8Code	type.h	/^typedef struct ChineseUtf8Code$/;"	s
+ChineseUtf8Code_	type.h	/^typedef struct ChineseUtf8Code_$/;"	s
+Color	type.h	/^}Color;$/;"	t	typeref:struct:COLOUR
+ColorCnt	type.h	/^}ColorCnt;$/;"	t	typeref:struct:COLOURCount
+CreateImageNode	Neuron.c	/^int CreateImageNode(NeuronMan * nm)$/;"	f
+CreateListNode	Neuron.c	/^int CreateListNode(NeuronMan * nm)$/;"	f
+CreateNewNeuronFile	Neuron.c	/^int  CreateNewNeuronFile(NeoF * f,char * fileName)$/;"	f
+CurrentLevel	Neuron.h	18;"	d
+DataFlowProcessObjNum_MAX	type.h	17;"	d
+DataFlowProcess_error_Msg	type.h	67;"	d
+DeBugForMsgID	NeroMsgId.h	9;"	d
+DigitalUnicode16	type.h	/^}DigitalUnicode16;$/;"	t	typeref:struct:ChineseUnicode16DigitalCode
+ERROR_h	NeroError.h	3;"	d
+FILENAME	Neuron.c	2;"	d	file:
+FILEOPERATING_H	fileOperating.h	3;"	d
+FILEPATH_MAX	type.h	18;"	d
+FileData	Neuron.h	/^char *  FileData;\/\/文件数据的起始地址$/;"	m	struct:NeuronManage
+FillListByPosList	Neuron.c	/^int FillListByPosList(int line,PosList * head,NeuronMan * nm)$/;"	f
+FirstNoUseNeu	Neuron.h	/^int FirstNoUseNeu;\/\/第一个没有使用的neo----从0开始算-----为了在一些时候得到方便，前面20个节点永远不使用$/;"	m	struct:NeuronFile
+FirstNoUseNeuWhenCreate	Neuron.h	8;"	d
+FleData	Neuron.h	/^int FleData;\/\/整个文件大小$/;"	m	struct:NeuronFile
+GetLineManByNeo	Neuron.c	/^int GetLineManByNeo(int imageIndex,NeuronMan * nm,LineMan *manAllLine)$/;"	f
+GetNeuronNode	Neuron.c	/^inline Neo * GetNeuronNode(NeuronMan * nm,int n)$/;"	f
+GetNeurons	Neuron.c	/^int GetNeurons(int n,NeuronMan * nm)$/;"	f
+GetNewNeuronFileMsg	Neuron.c	/^int  GetNewNeuronFileMsg(NeoF * f,char * fileName)$/;"	f
+INIT_LIST_HEAD	list.h	/^static inline void INIT_LIST_HEAD(struct list_head *list)$/;"	f
+IO_ipckey	type.h	/^nero_8int * IO_ipckey ;$/;"	v
+IO_mq_id	type.h	/^nero_s32int IO_mq_id;$/;"	v
+IPCKEY	NeroMsgId.h	7;"	d
+InitiaNeuronFileNode	Neuron.c	/^int InitiaNeuronFileNode(NeoF * f)$/;"	f
+InitiaNeuronMan	Neuron.c	/^int InitiaNeuronMan(char * fileName,NeuronMan * nm)$/;"	f
+InitialCOLOUR	type.h	177;"	d
+InitialPOS	type.h	176;"	d
+LISH_H	list.h	3;"	d
+LIST_INCLUDE	list.h	12;"	d
+LineMan	type.h	/^}LineMan;$/;"	t	typeref:struct:lineManagement
+LineThickness	Neuron.h	22;"	d
+ListPos	type.h	/^typedef struct ListPos$/;"	s
+Log_ipckey	type.h	/^nero_8int * Log_ipckey ;$/;"	v
+Log_mq_id	type.h	/^nero_s32int Log_mq_id;$/;"	v
+MYTYPE_H	type.h	3;"	d
+MaxNeroNum	type.h	23;"	d
+MsgId_IO_GetObjMsg	NeroMsgId.h	31;"	d
+MsgId_IO_PrintObjMsgWithStr	NeroMsgId.h	32;"	d
+MsgId_IO_dataIO	NeroMsgId.h	33;"	d
+MsgId_Log_PrintObjMsg	NeroMsgId.h	24;"	d
+MsgId_Log_PrintObjMsgWithStr	NeroMsgId.h	25;"	d
+MsgId_Nero_ConfModify	NeroMsgId.h	19;"	d
+MsgId_Nero_CreateNetNet	NeroMsgId.h	16;"	d
+MsgId_Nero_CreateNetNet	NeroMsgId.h	40;"	d
+MsgId_Nero_DataFlowProcess	NeroMsgId.h	18;"	d
+MsgId_Nero_DataFlowProcess	NeroMsgId.h	42;"	d
+MsgId_Nero_NONE	NeroMsgId.h	15;"	d
+MsgId_Nero_NONE	NeroMsgId.h	39;"	d
+MsgId_Nero_addZhCharIntoNet	NeroMsgId.h	17;"	d
+MsgId_Nero_addZhCharIntoNet	NeroMsgId.h	41;"	d
+Neo	Neuron.h	/^}Neo;$/;"	t	typeref:struct:Neuron
+NeoData	Neuron.h	/^Neo *  NeoData;$/;"	m	struct:NeuronManage
+NeoF	Neuron.h	/^}NeoF;$/;"	t	typeref:struct:NeuronFile
+NerOkMsg	type.h	45;"	d
+NerReportMsgError	type.h	46;"	d
+NeroActivateMaxTimes	type.h	15;"	d
+NeroError	type.h	43;"	d
+NeroErrorMsg	type.h	44;"	d
+NeroForgetCycle	type.h	11;"	d
+NeroMaxLastTimeINForecastList	type.h	16;"	d
+NeroMsgIDFile_H	NeroMsgId.h	2;"	d
+NeroNO	NeroError.h	21;"	d
+NeroOK	type.h	42;"	d
+NeroYES	NeroError.h	20;"	d
+Nero_DeBuging0	type.h	63;"	d
+Nero_DeBuging03_12_13	type.h	71;"	d
+Nero_DeBuging04_01_14	type.h	74;"	d
+Nero_DeBuging06_02_14	type.h	83;"	d
+Nero_DeBuging08_01_14	type.h	75;"	d
+Nero_DeBuging09_01_14	type.h	76;"	d
+Nero_DeBuging1	type.h	64;"	d
+Nero_DeBuging10_01_14	type.h	77;"	d
+Nero_DeBuging14_01_14	type.h	79;"	d
+Nero_DeBuging18_11_13	type.h	69;"	d
+Nero_DeBuging1_cacel	type.h	62;"	d
+Nero_DeBuging2	type.h	65;"	d
+Nero_DeBuging20_12_13	type.h	72;"	d
+Nero_DeBuging21_12_13	type.h	73;"	d
+Nero_DeBuging22_11_13	type.h	70;"	d
+Nero_DeBuging24_01_14	type.h	80;"	d
+Nero_DeBuging25_01_14	type.h	81;"	d
+Nero_DeBuging27_01_14	type.h	82;"	d
+Nero_TestCount	type.h	66;"	d
+NerveFiber_Input	type.h	37;"	d
+NerveFiber_Output	type.h	38;"	d
+Neuron	Neuron.h	/^typedef struct Neuron$/;"	s
+NeuronFile	Neuron.h	/^typedef struct NeuronFile$/;"	s
+NeuronMan	Neuron.h	/^}NeuronMan;$/;"	t	typeref:struct:NeuronManage
+NeuronManage	Neuron.h	/^typedef struct NeuronManage$/;"	s
+NeuronNodeForConnect	Neuron.h	15;"	d
+NeuronNodeForImage	Neuron.h	13;"	d
+NeuronNodeForLine	Neuron.h	14;"	d
+NeuronNodeForNone	Neuron.h	12;"	d
+NeuronNum	Neuron.h	/^int NeuronNum;\/\/存储的Neuron数量$/;"	m	struct:NeuronFile
+NeuronNumFirst	Neuron.h	7;"	d
+NeuronType	Neuron.h	/^int NeuronType;\/\/该文件Neuron的类型$/;"	m	struct:NeuronFile
+Neuron_H	Neuron.h	4;"	d
+NextLevel	Neuron.h	20;"	d
+NoIncludeG_return_if_fail	type.h	87;"	d
+NoMSG	Neuron.h	6;"	d
+NowIdDeBug	type.h	85;"	d
+Operating_ipckey	type.h	/^nero_8int * Operating_ipckey; $/;"	v
+Operating_mq_id	type.h	/^nero_s32int Operating_mq_id;$/;"	v
+POS	type.h	/^}POS;$/;"	t	typeref:struct:POSITIOM
+POSITIOM	type.h	/^typedef struct POSITIOM$/;"	s
+PosList	type.h	/^}PosList;$/;"	t	typeref:struct:ListPos
+Process_msg_CreateNewObj	NeroError.h	26;"	d
+ReadDataNeuronMan	Neuron.c	/^int ReadDataNeuronMan(char * fileName,NeuronMan * nm)$/;"	f
+ReadNeuronData	Neuron.c	/^void *  ReadNeuronData(NeoF * f,char * fileName,int *Filefd)$/;"	f
+Relationship_ChildToFather	type.h	31;"	d
+Relationship_FatherToChild	type.h	30;"	d
+Relationship_bothTother	type.h	32;"	d
+Sys_ipckey	type.h	/^nero_8int * Sys_ipckey ;$/;"	v
+Sys_mq_id	type.h	/^nero_s32int Sys_mq_id;$/;"	v
+Unicode16	type.h	/^}Unicode16;$/;"	t	typeref:struct:ChineseUnicode16Code
+UpLevel	Neuron.h	19;"	d
+__list_add	list.h	/^static inline void __list_add(struct list_head *new,$/;"	f
+__list_del	list.h	/^static inline void __list_del(struct list_head * prev, struct list_head * next)$/;"	f
+__list_del_entry	list.h	/^static inline void __list_del_entry(struct list_head *entry)$/;"	f
+addLineToFile	fileOperating.c	/^int addLineToFile(char * FileName,char * str)$/;"	f
+addLineToImage	Neuron.c	/^int addLineToImage(int line,int image,NeuronMan * nm)$/;"	f
+addNeoByLineMan	Neuron.c	/^int addNeoByLineMan(NeuronMan * nm,LineMan *manAllLine)$/;"	f
+addNeoToFile	Neuron.c	/^void addNeoToFile(NeoF * f,char * fileName,int  addNeoNUM)$/;"	f
+addPosToLine	Neuron.c	/^int addPosToLine(int line,PosList * posnode,NeuronMan * nm)$/;"	f
+b	type.h	/^unsigned char b;$/;"	m	struct:COLOUR
+b	type.h	/^unsigned char b;$/;"	m	struct:COLOURCount
+cntHead	type.h	/^ColorCnt * cntHead;\/\/指向用COLOURCount表示的线条链表的表头的指针$/;"	m	struct:lineManagement
+count	type.h	/^int count;$/;"	m	struct:COLOURCount
+count	type.h	/^int count;\/\/如果是表头：记录多少条线$/;"	m	struct:lineManagement
+countNode2	Neuron.c	/^int   countNode2(struct list_head  *cnt)$/;"	f
+createFile	fileOperating.c	/^void createFile(char * fileName)$/;"	f
+data	Neuron.h	/^int data;\/\/ 数据的起始位置，即第一个Neuron的字节位置$/;"	m	struct:NeuronFile
+delLine	fileOperating.c	/^int delLine(char * FileName,int line)$/;"	f
+delStrInFile	fileOperating.c	/^int     delStrInFile(char * FileName,int len,int point)\/\/note:the point means the first char need to del$/;"	f
+emptyFile	fileOperating.c	/^void emptyFile(char * fileName)$/;"	f
+equalCOlVsColorCnt	type.h	173;"	d
+fd	Neuron.h	/^int fd;\/\/文件fileName句柄$/;"	m	struct:NeuronManage
+fifth	type.h	/^nero_us8int fifth;$/;"	m	struct:ChineseUnicode16DigitalCode
+fileName	Neuron.h	/^char * fileName;$/;"	m	struct:NeuronManage
+findAllLine	fileOperating.c	/^int * findAllLine(char * FileName,int * countline)$/;"	f
+findImageNode	Neuron.c	/^int findImageNode(NeuronMan * nm,int *index)$/;"	f
+findListEnd	Neuron.c	/^int findListEnd(int mark,int start,NeuronMan * nm,int Max)$/;"	f
+first	list.h	/^	struct hlist_node *first;$/;"	m	struct:hlist_head	typeref:struct:hlist_head::hlist_node
+first	type.h	/^	nero_us8int first;$/;"	m	struct:ChineseUnicode16Code
+first	type.h	/^nero_us8int first;$/;"	m	struct:ChineseUnicode16DigitalCode
+first	type.h	/^nero_us8int first;$/;"	m	struct:ChineseUtf8Code
+first	type.h	/^nero_us8int first;$/;"	m	struct:ChineseUtf8Code_
+flag10	Neuron.h	/^int flag10;$/;"	m	struct:NeuronFile
+flag11	Neuron.h	/^int flag11;$/;"	m	struct:NeuronFile
+flag12	Neuron.h	/^int flag12;$/;"	m	struct:NeuronFile
+flag13	Neuron.h	/^int flag13;$/;"	m	struct:NeuronFile
+flag14	Neuron.h	/^int flag14;$/;"	m	struct:NeuronFile
+flag15	Neuron.h	/^int flag15;$/;"	m	struct:NeuronFile
+flag16	Neuron.h	/^int flag16;$/;"	m	struct:NeuronFile
+flag17	Neuron.h	/^int flag17;$/;"	m	struct:NeuronFile
+flag3	Neuron.h	/^int flag3;$/;"	m	struct:NeuronFile
+flag4	Neuron.h	/^int flag4;$/;"	m	struct:NeuronFile
+flag5	Neuron.h	/^int flag5;$/;"	m	struct:NeuronFile
+flag6	Neuron.h	/^int flag6;$/;"	m	struct:NeuronFile
+flag7	Neuron.h	/^int flag7;$/;"	m	struct:NeuronFile
+flag8	Neuron.h	/^int flag8;$/;"	m	struct:NeuronFile
+flag9	Neuron.h	/^int flag9;$/;"	m	struct:NeuronFile
+fourth	type.h	/^nero_us8int fourth;\/\/下面是高位$/;"	m	struct:ChineseUnicode16DigitalCode
+fourth	type.h	/^nero_us8int fourth;\/\/下面是高位$/;"	m	struct:ChineseUtf8Code
+g	type.h	/^unsigned char g;$/;"	m	struct:COLOUR
+g	type.h	/^unsigned char g;$/;"	m	struct:COLOURCount
+getLineInFile	fileOperating.c	/^ char * getLineInFile(char * FileName,int num)$/;"	f
+getStrInFile	fileOperating.c	/^ char * getStrInFile(char * FileName,int len,int point)\/\/返回获取的字符串，point为起始位置$/;"	f
+getStrInFile2	fileOperating.c	/^char * getStrInFile2(char * FileName,int len,int point)\/\/返回获取的字符串，point为起始位置$/;"	f
+hlist_head	list.h	/^struct hlist_head {$/;"	s
+hlist_node	list.h	/^struct hlist_node {$/;"	s
+lineManagement	type.h	/^typedef struct  lineManagement$/;"	s
+list_GetNUMn	list.h	/^static inline struct list_head * list_GetNUMn(struct list_head * head,int n)$/;"	f
+list_ISempty	list.h	/^static inline int list_ISempty(struct list_head * head)$/;"	f
+list_add	list.h	/^static inline void list_add(struct list_head *new, struct list_head *head)$/;"	f
+list_add_tail	list.h	/^static inline void list_add_tail(struct list_head *new, struct list_head *head)$/;"	f
+list_head	list.h	/^struct list_head {$/;"	s
+list_replace	list.h	/^static inline void list_replace(struct list_head *old,$/;"	f
+munmapNeuronMan	Neuron.c	/^int munmapNeuronMan(NeuronMan * nm)$/;"	f
+myitoa	fileOperating.c	/^char *myitoa(int value,char *string,int radix)$/;"	f
+neoFNode	Neuron.h	/^NeoF neoFNode;$/;"	m	struct:NeuronManage
+nero_8int	type.h	/^typedef  char  nero_8int;$/;"	t
+nero_msg_ParameterError	NeroError.h	13;"	d
+nero_msg_fail	NeroError.h	10;"	d
+nero_msg_ok	NeroError.h	11;"	d
+nero_msg_unknowError	NeroError.h	9;"	d
+nero_s32int	type.h	/^typedef int  nero_s32int;$/;"	t
+nero_s8int	type.h	/^typedef signed char  nero_s8int;$/;"	t
+nero_us32int	type.h	/^typedef unsigned int  nero_us32int;$/;"	t
+nero_us8int	type.h	/^typedef unsigned char  nero_us8int;$/;"	t
+next	Neuron.h	/^int next;$/;"	m	struct:Neuron
+next	list.h	/^	struct hlist_node *next, **pprev;$/;"	m	struct:hlist_node	typeref:struct:hlist_node::hlist_node
+next	list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::list_head
+otput	fileOperating.c	/^void otput()$/;"	f
+p	type.h	/^struct list_head p;$/;"	m	struct:COLOURCount	typeref:struct:COLOURCount::list_head
+p	type.h	/^struct list_head p;$/;"	m	struct:ListPos	typeref:struct:ListPos::list_head
+p	type.h	/^struct list_head p;\/\/用来维持所有线条表头的结构--就是维持LineMan本身的链表$/;"	m	struct:lineManagement	typeref:struct:lineManagement::list_head
+pos	type.h	/^POS pos;$/;"	m	struct:ListPos
+posHead	type.h	/^PosList * posHead;\/\/指向用PosList表示的线条链表的表头的指针$/;"	m	struct:lineManagement
+pprev	list.h	/^	struct hlist_node *next, **pprev;$/;"	m	struct:hlist_node	typeref:struct:hlist_node::
+prev	list.h	/^	struct list_head *next, *prev;$/;"	m	struct:list_head	typeref:struct:list_head::
+printColor	type.h	171;"	d
+printColorCNT	type.h	169;"	d
+printNeuronFileMsg	Neuron.c	/^void printNeuronFileMsg(NeoF * f)$/;"	f
+printNeuronManData	Neuron.c	/^int printNeuronManData(NeuronMan * nm)$/;"	f
+putNumFourINOne	type.h	185;"	d
+putNumTwoINOne	type.h	183;"	d
+putStrInFile	fileOperating.c	/^int putStrInFile(char * FileName,char * str,int len,int point)\/\/在文件特定位置插入一个字符串,point 												\/\/is the  location of the str,if $/;"	f
+putSubStrIntoOther	fileOperating.c	/^void putSubStrIntoOther(char * a,char *b,int startA,int startB,int len)$/;"	f
+r	type.h	/^unsigned char r;$/;"	m	struct:COLOUR
+r	type.h	/^unsigned char r;$/;"	m	struct:COLOURCount
+searchStrInFile	fileOperating.c	/^int searchStrInFile(char * FileName,char * searchstr)$/;"	f
+second	type.h	/^	nero_us8int second;$/;"	m	struct:ChineseUnicode16Code
+second	type.h	/^nero_us8int second;$/;"	m	struct:ChineseUnicode16DigitalCode
+second	type.h	/^nero_us8int second;$/;"	m	struct:ChineseUtf8Code
+second	type.h	/^nero_us8int second;$/;"	m	struct:ChineseUtf8Code_
+third	type.h	/^nero_us8int third;$/;"	m	struct:ChineseUnicode16DigitalCode
+third	type.h	/^nero_us8int third;$/;"	m	struct:ChineseUtf8Code
+third	type.h	/^nero_us8int third;$/;"	m	struct:ChineseUtf8Code_
+updataLine	fileOperating.c	/^void updataLine(char * FileName,char * newStr,int line)$/;"	f
+updataNeuronFileHead	Neuron.c	/^int updataNeuronFileHead(NeoF * f,char * fileName)$/;"	f
+x	Neuron.h	/^int x;$/;"	m	struct:Neuron
+x	type.h	/^int x;$/;"	m	struct:POSITIOM
+y	Neuron.h	/^int y;$/;"	m	struct:Neuron
+y	type.h	/^int y;$/;"	m	struct:POSITIOM
+z	Neuron.h	/^int z;$/;"	m	struct:Neuron

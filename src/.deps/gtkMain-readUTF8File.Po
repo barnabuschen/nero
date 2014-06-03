@@ -1,11 +1,10 @@
-gtkMain-readUTF8File.o: tools/readUTF8File.c /usr/include/string.h \
- /usr/include/features.h /usr/include/stdc-predef.h \
- /usr/include/i386-linux-gnu/bits/predefs.h \
+gtkMain-readUTF8File.o: tools/readUTF8File.c /usr/include/stdc-predef.h \
+ /usr/include/string.h /usr/include/features.h \
  /usr/include/i386-linux-gnu/sys/cdefs.h \
  /usr/include/i386-linux-gnu/bits/wordsize.h \
  /usr/include/i386-linux-gnu/gnu/stubs.h \
  /usr/include/i386-linux-gnu/gnu/stubs-32.h \
- /usr/lib/gcc/i686-linux-gnu/4.7/include/stddef.h /usr/include/xlocale.h \
+ /usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h /usr/include/xlocale.h \
  /usr/include/i386-linux-gnu/bits/string.h \
  /usr/include/i386-linux-gnu/bits/string2.h /usr/include/endian.h \
  /usr/include/i386-linux-gnu/bits/endian.h \
@@ -15,13 +14,14 @@ gtkMain-readUTF8File.o: tools/readUTF8File.c /usr/include/string.h \
  /usr/include/i386-linux-gnu/bits/byteswap-16.h /usr/include/stdlib.h \
  /usr/include/i386-linux-gnu/bits/string3.h /usr/include/malloc.h \
  /usr/include/stdio.h /usr/include/libio.h /usr/include/_G_config.h \
- /usr/include/wchar.h /usr/lib/gcc/i686-linux-gnu/4.7/include/stdarg.h \
+ /usr/include/wchar.h /usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h \
  /usr/include/i386-linux-gnu/bits/stdio_lim.h \
  /usr/include/i386-linux-gnu/bits/sys_errlist.h \
  /usr/include/i386-linux-gnu/bits/stdio.h \
  /usr/include/i386-linux-gnu/bits/stdio2.h \
  /usr/include/i386-linux-gnu/sys/mman.h \
  /usr/include/i386-linux-gnu/bits/mman.h \
+ /usr/include/i386-linux-gnu/bits/mman-linux.h \
  /usr/include/i386-linux-gnu/sys/types.h /usr/include/time.h \
  /usr/include/i386-linux-gnu/sys/select.h \
  /usr/include/i386-linux-gnu/bits/select.h \
@@ -48,13 +48,11 @@ gtkMain-readUTF8File.o: tools/readUTF8File.c /usr/include/string.h \
  tools/../NeuralNetwork/../tools/../common/type.h tools/readUTF8File.h \
  tools/../common/fileOperating.h
 
+/usr/include/stdc-predef.h:
+
 /usr/include/string.h:
 
 /usr/include/features.h:
-
-/usr/include/stdc-predef.h:
-
-/usr/include/i386-linux-gnu/bits/predefs.h:
 
 /usr/include/i386-linux-gnu/sys/cdefs.h:
 
@@ -64,7 +62,7 @@ gtkMain-readUTF8File.o: tools/readUTF8File.c /usr/include/string.h \
 
 /usr/include/i386-linux-gnu/gnu/stubs-32.h:
 
-/usr/lib/gcc/i686-linux-gnu/4.7/include/stddef.h:
+/usr/lib/gcc/i686-linux-gnu/4.8/include/stddef.h:
 
 /usr/include/xlocale.h:
 
@@ -98,7 +96,7 @@ gtkMain-readUTF8File.o: tools/readUTF8File.c /usr/include/string.h \
 
 /usr/include/wchar.h:
 
-/usr/lib/gcc/i686-linux-gnu/4.7/include/stdarg.h:
+/usr/lib/gcc/i686-linux-gnu/4.8/include/stdarg.h:
 
 /usr/include/i386-linux-gnu/bits/stdio_lim.h:
 
@@ -111,6 +109,8 @@ gtkMain-readUTF8File.o: tools/readUTF8File.c /usr/include/string.h \
 /usr/include/i386-linux-gnu/sys/mman.h:
 
 /usr/include/i386-linux-gnu/bits/mman.h:
+
+/usr/include/i386-linux-gnu/bits/mman-linux.h:
 
 /usr/include/i386-linux-gnu/sys/types.h:
 

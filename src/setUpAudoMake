@@ -1,19 +1,14 @@
-autoscan
-mv configure.scan configure.ac
+  git config --global user.email "piaoyaosuifengji@sina.com"
+  git config --global user.name "piaoyaosuifengji"
 
 
-/*     gtkMain     */
+touch Makefile.am
+运行autoscan  并：mv configure.scan configure.ac
 
 
-#aclocal -I /usr/share/aclocal
-#autoheader
-#autoconf
-#automake --add-missing
-#./configure
-
+设置Makefile.am
 
 autoreconf -i
-
 ./configure
 
 最后修改makefile

@@ -285,6 +285,7 @@ gtkMain_LDADD = $(gtkMain_LIBS)
 AM_LDFLAGS = $(gtkMain_CFLAGS)
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
+	./$(bin_PROGRAMS)
 
 .SUFFIXES:
 .SUFFIXES: .c .o .obj

@@ -80,6 +80,8 @@ static nero_8int  file_path_getcwd[FILEPATH_MAX];/*保存当前目录*/
 
 LineMan *manAllLineFromNeo;
 
+
+//整个系统的启动函数
 void ProInitialization()
 {
 /*	int res;*/
@@ -245,6 +247,41 @@ void tab_searchNeroMsg( GtkWidget *widget, gpointer data )
 	mymsg.fucId = 1;
 	mymsg.Obi =obj;
 	sprintf(mymsg.str,"查询对象信息\n");
+	msgsnd( Log_mq_id, &mymsg, sizeof(mymsg), 0);
+		
+
+}
+void tab_showBaseNeurontree( GtkWidget *widget, gpointer data )
+{
+	NeuronObject *obj;
+	struct  NeuronObjectMsgWithStr_   mymsg;
+/*	 gtk_text_buffer_get_iter_at_offset(textViewForSearchBuff, &iter, 0);*/
+/*	 gtk_text_buffer_insert_with_tags_by_name(textViewForSearchBuff, &iter, "Colored Text\n", -1, "blue_fg", "lmarg",  NULL);*/
+ 	 GtkTextIter /*iter,*/start,end;
+	 gtk_text_buffer_get_start_iter (textViewForSearchBuff,&start);
+	 gtk_text_buffer_get_end_iter (textViewForSearchBuff,&end);
+	 
+	gchar *  str=gtk_text_buffer_get_text(textViewForSearchBuff,&start,&end,TRUE);
+	printf("%s.\n",str);
+
+	//~ 这里需要吧指定的基类名（就是一个词），转换成相应的基类对象的地址
+	//~ obj=   (NeuronObject *)strtol(str,NULL,16);
+	//~ printf("obj=:%x\n",(unsigned int )obj);
+	
+	
+	
+	
+	
+	if (str)
+	{
+		g_free (str);
+	}
+
+		
+	mymsg.MsgId = MsgId_Log_PrintObjMsgWithStr;
+	mymsg.fucId = 1;
+	mymsg.Obi =obj;
+	sprintf(mymsg.str,"tab_showBaseNeurontree\n");
 	msgsnd( Log_mq_id, &mymsg, sizeof(mymsg), 0);
 		
 
@@ -851,16 +888,24 @@ void createMsgSearchTab(GtkWidget *fixedInside)
 
 
 	
-	
+	//~ 这个按钮的作用为：
 	text = g_strdup_printf("search nero");
 	buttoms[buttomID]=gtk_button_new_with_label(text);
 	ceshibuttoms=buttoms[buttomID];
 	
 	g_signal_connect (buttoms[buttomID], "clicked",G_CALLBACK(tab_searchNeroMsg), NULL);
-/*	gtk_container_add(GTK_CONTAINER(vbox), buttoms[buttomID]);*/
-/*	gtk_box_pack_start(GTK_BOX(vbox), buttoms[buttomID], TRUE, TRUE, 0);*/
 	gtk_fixed_put (GTK_FIXED (fixedInside), buttoms[buttomID], 0, 0);
 	buttomID++;
+	
+	//~ 这个按钮的作用为：用来查询一个指定名称的类的所有子成员，并得到一个dot图	
+	text = g_strdup_printf("show Base Neuron tree");
+	buttoms[buttomID]=gtk_button_new_with_label(text);
+	ceshibuttoms=buttoms[buttomID];
+	g_signal_connect (buttoms[buttomID], "clicked",G_CALLBACK(tab_showBaseNeurontree), NULL);
+	gtk_fixed_put (GTK_FIXED (fixedInside), buttoms[buttomID], 100, 0);
+	buttomID++;	
+	
+	
 	/*view*/
 	textViewForSearch = gtk_text_view_new ();
 	textViewForSearchBuff = gtk_text_view_get_buffer (GTK_TEXT_VIEW (textViewForSearch));
@@ -891,7 +936,7 @@ void createMsgSearchTab(GtkWidget *fixedInside)
 	
 /*	gtk_widget_set_size_request (vbox, 15, 15);*/
 /*	gtk_fixed_put (GTK_FIXED (fixedInside), vbox, 0, 0);*/
-	gtk_fixed_put (GTK_FIXED (fixedInside), textViewForSearch, 0, 30);
+	gtk_fixed_put (GTK_FIXED (fixedInside), textViewForSearch, 0, 35);
 	
 	
 	

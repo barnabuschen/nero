@@ -45,8 +45,12 @@
 #define NerOkMsg   	printf("exit right way!\n")
 #define NerReportMsgError(id)   	printf("something wrong with ID:%d!\n",id)
 
-
-
+//~ #define Conf_Modify_Info    1
+#ifdef   Conf_Modify_Info
+				#define printConfChangMsg(a)    printf("conf has changed:%d  \n",a)
+#else
+				#define printConfChangMsg(a)    printf("  \n")
+#endif
 
 /*变量类型重定义*/
 typedef int  nero_s32int;

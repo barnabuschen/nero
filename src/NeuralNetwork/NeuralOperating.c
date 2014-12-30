@@ -43,11 +43,19 @@ nero_s32int Operating_NeroConfigurationModify(void * operateKind,void *c)
         
          case Conf_Modify_addLevelObjAlways:
                 neroConf.addLevelObjAlways=tmpConf->addLevelObjAlways;
+                 printConfChangMsg(Conf_Modify_addLevelObjAlways);
+                
                 break;
          case Conf_Modify_CreateNewBaseObjKind:
                 neroConf.CreateNewBaseObjKind=tmpConf->CreateNewBaseObjKind;
+                   printConfChangMsg(Conf_Modify_CreateNewBaseObjKind);
+              
                 break;       
-        
+           case Conf_Modify_ReSet:
+					resetNeroConf();
+                   printConfChangMsg(Conf_Modify_ReSet);
+              
+                break;          
         
         
         default:break;
@@ -116,7 +124,7 @@ void * thread_for_Operating_Pic(void *arg)
 		
 		switch(MsgId)
 		{
-		case MsgId_Nero_ConfModify:
+			case MsgId_Nero_ConfModify:
  			DataIO_st=(struct    IODataMsg_   * )&OperatingMsg;
 			
 			for( i = 0; i < size_message_map2; i++)
@@ -325,7 +333,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*				 msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);*/
 /*				*/
 				#ifdef Nero_DeBuging09_01_14
-/*				printf("添加子概念成功\n\n");*/
+				//~ printf("添加子概念成功\n\n");
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = tmpObi;

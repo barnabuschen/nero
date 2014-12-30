@@ -1,6 +1,6 @@
 提交更新：
-git commit -a -m "new  start  140604"
-git push origin  ver0.1701:ver0.1701
+git commit -a -m "updata：20141230"
+git push origin  ver0.1702:ver0.1702
 
 显示所有分支
 	 git branch -v

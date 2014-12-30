@@ -520,7 +520,18 @@ static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type,nero_s32i
 	return  tmp;
 
 }
-
+void resetNeroConf()
+{
+		neroConf.addNewObj=1;
+	neroConf.addLevelObj=1;
+	neroConf.neroTime=0;
+	neroConf.ifReCreateLogFile=1;
+	neroConf.addLevelObjAlways=0;
+	neroConf.CreateNewBaseObjKind=0;
+	neroConf.NewNeroClassID=NeuronNode_MinNewDerivativeClassId;
+	
+	
+}
 nero_s32int CreateActNeroNet()
 {
 	
@@ -530,13 +541,8 @@ nero_s32int CreateActNeroNet()
 	/*do some init*/
 	initNeroPool();
 	/*设置neroConf全局配置*/
-	neroConf.addNewObj=1;
-	neroConf.addLevelObj=1;
-	neroConf.neroTime=0;
-	neroConf.ifReCreateLogFile=1;
-	neroConf.addLevelObjAlways=0;
-	neroConf.CreateNewBaseObjKind=0;
-	neroConf.NewNeroClassID=NeuronNode_MinNewDerivativeClassId;
+	resetNeroConf();
+
 	/*首先一个网络你是否导入了数据必须有一些基本的构建*/
 
 	/*显然它必须生成一些基本的神经对象，就像面向对象语言中万物。之母一样*/

@@ -49,6 +49,7 @@ int next;
 /*几个有关NeroConfiguration的宏*/
 #define  Conf_Modify_addLevelObjAlways    1   //修改addLevelObjAlways
 #define  Conf_Modify_CreateNewBaseObjKind    2   //修改CreateNewBaseObjKind
+#define  Conf_Modify_ReSet    100  //修改conf   为默认状态
 
  typedef struct NeroConfiguration
  {
@@ -313,7 +314,7 @@ NeuronObject *  getBaseObjName(NeuronObject * baseobj,NeuronObject *);
 nero_s32int  nero_ifMakeUpWithTheseObjsInOrder(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum);
 NeuronObject * nero_ModifyBaseKind(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf);
 
-
+void resetNeroConf();
 
 /*遍历网络的代码：*/
 

@@ -1816,7 +1816,7 @@ NeuronObject * nero_CreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum,Ne
 
 
 
-        /*添加基类和基类名称的链接*/
+        /*添加基类和基类名称(默认就是objs[0]))的链接*/
         PointingToObject(objs[0],BaseNeuronObject,Fiber_PointToUpperLayer);
         PointingToObject(BaseNeuronObject,objs[0],Fiber_PointToLowerLayer);
          #ifdef  Nero_DeBuging06_02_14

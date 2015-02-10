@@ -1,7 +1,10 @@
 提交更新：
 git commit -a -m "updata：20141230"
 git push origin  ver0.1702:ver0.1702
-
+添加文件到库，并上传
+git add readme.txt
+git commit   -m "give a new file"
+git push origin master
 显示所有分支
 	 git branch -v
 创建一个新的分支
@@ -52,7 +55,7 @@ git config --global user.email "piaoyaosuifengji@sina.com"
 git config --global user.name "piaoyaosuifengji"
 
 
-
+重新配置git：
  ssh-keygen -t rsa -C "piaoyaosuifengji@sina.com"
 
 
@@ -69,18 +72,19 @@ https://github.com/piaoyaosuifengji/mytest.git
 git clone https://github.com/piaoyaosuifengji/nginx-1.0.14_comment.git
 git remote add nginx-1.0.14_comment https://github.com/piaoyaosuifengji/nginx-1.0.14_comment.git
 git fetch nginx-1.0.14_comment
-
+git clone https://github.com/piaoyaosuifengji/neroSources.git
 https://github.com/piaoyaosuifengji/mytest.git
-
+https://github.com/piaoyaosuifengji/neroSources.git
 https://github.com/limetext/lime.git
 git clone git@github.com:piaoyaosuifengji/nero.git
 git clone git@github.com:neovim/neovim.git
 git clone git@github.com:influxdb/influxdb.git
 git clone git@github.com:limetext/lime.git
+
 https://github.com/neovim/neovim.git
 https://github.com/influxdb/influxdb.git
 #添加文件脚本：
 git add *
-git commit  
+git commit  -a -m "begin:"
 git push origin master
 

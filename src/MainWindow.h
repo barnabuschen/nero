@@ -2,8 +2,9 @@
 //   
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#define widgetsNum  40
 #define buttomNum  40
+
 #define textNum  4
 #include <gtk/gtk.h>
 void initNeroNetWork( );
@@ -11,6 +12,10 @@ void GetDataForNeroSys( GtkWidget *widget, gpointer data );
 void CreateNeroNetWork( GtkWidget *widget, gpointer data );
 void createMsgSearchTab(GtkWidget *fixedInside);
 void createToolsTab();
+//~ void createCreateNeroTab();
+
+void createNeroTreeTab(GtkWidget *fixedInside);
+
 void createCreateNeroTab(GtkWidget *fixedInside);
 void createTab1_InMainWindow(GtkWidget * window,gint count,GtkWidget *notebook);
 void myMainWindow(GtkWidget *window);
@@ -25,6 +30,7 @@ void DrawPictureWithPoints();
 void hello( GtkWidget *widget, gpointer data );
 void drow1( GtkWidget *widget, gpointer data );
 void drow2( GtkWidget *widget, gpointer data );
+//~ void  typeChoseRadiotoggledHandle( GtkWidget *widget, gpointer data );
 //进行一些初始化
 void ProInitialization();
 gint delete_eventInMainWin( GtkWidget *widget, GdkEvent *event, gpointer data );

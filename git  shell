@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "updata：20141230"
+git commit -a -m "updata：20150212"
 git push origin  ver0.1702:ver0.1702
 添加文件到库，并上传
 git add readme.txt
@@ -47,6 +47,7 @@ push本地分支代码到远端服务器,如果没有就创建该分支
 	git pull origin master:ver0.1701
 	git pull origin master:libuv-io
 
+Git怎么查看某次提交某个文件的修改
 
 
 

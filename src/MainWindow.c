@@ -83,8 +83,24 @@ GtkWidget * ceshibuttoms;
 	
 GtkWidget *textViewForTreeCreates[widgetsNum];
 GtkTextBuffer *textBuffForTreeCreates[widgetsNum];
-	
-	
+	#define  ChoseBaseObj   1
+	#define  ChoseDerivativeObj   2	
+	#define  ChoseOutputAddress  1
+	#define  ChoseOutputType   2	
+	#define  ChoseOutputData  3
+
+	struct 
+	{
+			gint choseType;//默认是ChoseDerivativeObj
+			gint degreeOutputType;//默认是ChoseOutputAddress
+			gint *  obAddress;
+			gint 	 treeDepth;
+			gint    treeMaxdegree;
+			gchar    outputMsgFile[300];
+			gchar    outputTreeFile[300];
+			gchar    obTypeName[300];
+			gchar    obData[300];			
+		}objTreeSt;
 	
 static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
 
@@ -215,6 +231,8 @@ void drow1( GtkWidget *widget, gpointer data )
 
 
 }
+//~ widget传进来的就是buff的指针而不是iew的指针
+
 void tab_textViewForSearchChanged( GtkWidget *widget, gpointer data )
 {
  	 GtkTextIter /*iter,*/start,end;
@@ -224,12 +242,13 @@ void tab_textViewForSearchChanged( GtkWidget *widget, gpointer data )
 
 
 }
+//~ widget传进来的就是buff的指针而不是iew的指针
 void tab_textViewForTreeCreateChanged( GtkWidget *widget, gpointer data )
 {
  	 GtkTextIter /*iter,*/start,end;
-	 gtk_text_buffer_get_start_iter (gtk_text_view_get_buffer (widget),&start);
-	 gtk_text_buffer_get_end_iter (gtk_text_view_get_buffer (widget),&end);
-	 gtk_text_buffer_apply_tag_by_name(gtk_text_view_get_buffer (widget),"深粉红",&start,&end);
+	 gtk_text_buffer_get_start_iter (widget,&start);
+	 gtk_text_buffer_get_end_iter (widget,&end);
+	 gtk_text_buffer_apply_tag_by_name(widget,"深粉红",&start,&end);
 
 
 }
@@ -777,7 +796,31 @@ void  outputTypeRadiotoggledHandle( GtkToggleButton  *widget, gpointer data )
 	
 	
 }
+		//~ struct 
+	//~ {
+			//~ gint choseType;//默认是ChoseDerivativeObj
+			//~ gint degreeOutputType;//默认是ChoseOutputAddress
+			//~ gint *  obAddress;
+			//~ gint 	 treeDepth;
+			//~ gint    treeMaxdegree;
+			//~ gchar    outputMsgFile[300];
+			//~ gchar    outputTreeFile[300];
+			//~ gchar    obTypeName[300];
+			//~ gchar    obData[300];			
+		//~ }objTreeSt; 
+	 //~ 
+void ToCreateTreeButtonClicked( GtkWidget *widget, gpointer data )
+{
+		//~ 在各个控件中修改了objTreeSt的值后，这里只需要输出就行了
+		
+		
+		//打印各个值
+		printf("	choseType:%d\n	degreeOutputType:%d\n	obaddress:%x\n	treeMaxdegree:%d\n	outputMsgFile:%s\n	outputTreeFile:%s\n	obtypename:%s\n	obdata:%s\n",
+																	objTreeSt.choseType,objTreeSt.degreeOutputType,objTreeSt.obAddress,objTreeSt.treeMaxdegree,objTreeSt.outputMsgFile,objTreeSt.outputTreeFile,
+																					objTreeSt.obTypeName,objTreeSt.obData);
 
+
+	}
 void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 {
 
@@ -980,10 +1023,36 @@ void createMsgSearchTab(GtkWidget *fixedInside)
 void createNeroTreeTab(GtkWidget *fixedInside)
 {
 		gchar *text;
+	GtkWidget * buttoms[buttomNum];		
 	gint buttomID=1;
 	 GtkTextIter /*iter,*/start,end;
 	gint i=0,typeChoseRadioBoxXPos=80,typeChoseRadioBoxYPos=20,padBetweenLable=45,chae=18,sendondLie=230,xpadForTextView=150;
 	 GdkRGBA  rgba;
+	 gchar   str1[]="NULL";
+	  gchar   str2[]="OutPutMsgFile.txt";
+	   gchar   str3[]="outputTreeFile.pic";
+		//~ struct 
+	//~ {
+			//~ gint choseType;//默认是ChoseDerivativeObj
+			//~ gint degreeOutputType;//默认是ChoseOutputAddress
+			//~ gint *  obAddress;
+			//~ gint 	 treeDepth;
+			//~ gint    treeMaxdegree;
+			//~ gchar    outputMsgFile[300];
+			//~ gchar    outputTreeFile[300];
+			//~ gchar    obTypeName[300];
+			//~ gchar    obData[300];			
+		//~ }objTreeSt; 
+	 //~ 
+		objTreeSt.choseType=ChoseDerivativeObj;
+		objTreeSt.degreeOutputType=ChoseOutputAddress;
+		objTreeSt.obAddress=NULL;
+		objTreeSt.treeDepth=2;
+		objTreeSt.treeMaxdegree=150;
+	   memcpy(objTreeSt.outputMsgFile,str2,strlen(str2)+1);
+		 memcpy(objTreeSt.outputTreeFile,str3,strlen(str3)+1);
+	 memcpy(objTreeSt.obTypeName,str1,strlen(str1)+1);
+	  memcpy(objTreeSt.obData,str1,strlen(str1)+1);
 //绘制标签
 	lableTexts[i] =g_strdup_printf("type chosse:");
 	lables[i] =gtk_label_new (lableTexts[i] );
@@ -1032,7 +1101,7 @@ void createNeroTreeTab(GtkWidget *fixedInside)
 						textViewForTreeCreates[i]= gtk_text_view_new ();
 						textBuffForTreeCreates[i] = gtk_text_view_get_buffer (GTK_TEXT_VIEW (textViewForTreeCreates[i]));
 						gtk_text_buffer_set_text (textBuffForTreeCreates[i], "0x0000", -1);
-						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), NULL);
+						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), i);
 
 						 gtk_text_buffer_create_tag(textBuffForTreeCreates[i], "深粉红", "foreground-rgba", &rgba, NULL);
 						 gtk_text_buffer_get_start_iter (textBuffForTreeCreates[i],&start);
@@ -1045,7 +1114,7 @@ void createNeroTreeTab(GtkWidget *fixedInside)
 						textViewForTreeCreates[i]= gtk_text_view_new ();
 						textBuffForTreeCreates[i] = gtk_text_view_get_buffer (GTK_TEXT_VIEW (textViewForTreeCreates[i]));
 						gtk_text_buffer_set_text (textBuffForTreeCreates[i], "2", -1);
-						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), NULL);
+						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), i);
 
 						 gtk_text_buffer_create_tag(textBuffForTreeCreates[i], "深粉红", "foreground-rgba", &rgba, NULL);
 						 gtk_text_buffer_get_start_iter (textBuffForTreeCreates[i],&start);
@@ -1058,7 +1127,7 @@ void createNeroTreeTab(GtkWidget *fixedInside)
 						textViewForTreeCreates[i]= gtk_text_view_new ();
 						textBuffForTreeCreates[i] = gtk_text_view_get_buffer (GTK_TEXT_VIEW (textViewForTreeCreates[i]));
 						gtk_text_buffer_set_text (textBuffForTreeCreates[i], "150", -1);
-						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), NULL);
+						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), i);
 
 						 gtk_text_buffer_create_tag(textBuffForTreeCreates[i], "深粉红", "foreground-rgba", &rgba, NULL);
 						 gtk_text_buffer_get_start_iter (textBuffForTreeCreates[i],&start);
@@ -1071,7 +1140,7 @@ void createNeroTreeTab(GtkWidget *fixedInside)
 						textViewForTreeCreates[i]= gtk_text_view_new ();
 						textBuffForTreeCreates[i] = gtk_text_view_get_buffer (GTK_TEXT_VIEW (textViewForTreeCreates[i]));
 						gtk_text_buffer_set_text (textBuffForTreeCreates[i], "q.txt", -1);
-						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), NULL);
+						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), i);
 
 						 gtk_text_buffer_create_tag(textBuffForTreeCreates[i], "深粉红", "foreground-rgba", &rgba, NULL);
 						 gtk_text_buffer_get_start_iter (textBuffForTreeCreates[i],&start);
@@ -1084,7 +1153,7 @@ void createNeroTreeTab(GtkWidget *fixedInside)
 						textViewForTreeCreates[i]= gtk_text_view_new ();
 						textBuffForTreeCreates[i] = gtk_text_view_get_buffer (GTK_TEXT_VIEW (textViewForTreeCreates[i]));
 						gtk_text_buffer_set_text (textBuffForTreeCreates[i], "b.dot", -1);
-						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), NULL);
+						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), i);
 
 						 gtk_text_buffer_create_tag(textBuffForTreeCreates[i], "深粉红", "foreground-rgba", &rgba, NULL);
 						 gtk_text_buffer_get_start_iter (textBuffForTreeCreates[i],&start);
@@ -1097,7 +1166,7 @@ void createNeroTreeTab(GtkWidget *fixedInside)
 						textViewForTreeCreates[i]= gtk_text_view_new ();
 						textBuffForTreeCreates[i] = gtk_text_view_get_buffer (GTK_TEXT_VIEW (textViewForTreeCreates[i]));
 						gtk_text_buffer_set_text (textBuffForTreeCreates[i], "NULL", -1);
-						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), NULL);
+						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), i);
 
 						 gtk_text_buffer_create_tag(textBuffForTreeCreates[i], "深粉红", "foreground-rgba", &rgba, NULL);
 						 gtk_text_buffer_get_start_iter (textBuffForTreeCreates[i],&start);
@@ -1109,7 +1178,7 @@ void createNeroTreeTab(GtkWidget *fixedInside)
 						textViewForTreeCreates[i]= gtk_text_view_new ();
 						textBuffForTreeCreates[i] = gtk_text_view_get_buffer (GTK_TEXT_VIEW (textViewForTreeCreates[i]));
 						gtk_text_buffer_set_text (textBuffForTreeCreates[i], "NULL", -1);
-						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), NULL);
+						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), i);
 
 						 gtk_text_buffer_create_tag(textBuffForTreeCreates[i], "深粉红", "foreground-rgba", &rgba, NULL);
 						 gtk_text_buffer_get_start_iter (textBuffForTreeCreates[i],&start);
@@ -1151,8 +1220,14 @@ void createNeroTreeTab(GtkWidget *fixedInside)
     
 	gtk_widget_set_size_request (outputTypeRadioBox, 20, 20);
 	gtk_fixed_put (GTK_FIXED (fixedInside), outputTypeRadioBox, sendondLie+100, 110);	
+	
+	//按钮
 
-
+	text = g_strdup_printf("ToCreateTree");
+	buttoms[buttomID]=gtk_button_new_with_label(text);
+	g_signal_connect (buttoms[buttomID], "clicked",G_CALLBACK(ToCreateTreeButtonClicked), NULL);
+	gtk_fixed_put (GTK_FIXED (fixedInside), buttoms[buttomID], 290, 320);
+	buttomID++;
 }
 
 void createCreateNeroTab(GtkWidget *fixedInside)

@@ -96,7 +96,7 @@ nero_s32int IO_NeroConfigurationModify(void * operateKind,void *c)
         }
 
 }
-/**/
+/*这个函数用来从文件中读取输入数据，自动向系统数据数据流*/
 nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 {
 	nero_s32int operate,isZh;

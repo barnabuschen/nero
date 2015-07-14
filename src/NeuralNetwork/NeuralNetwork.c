@@ -550,64 +550,59 @@ nero_s32int CreateActNeroNet()
 	res=initActNero(GodNero,NeuronNode_ForGodNero,NULL,NULL);
 	if(res == NeroError)
 	{
-		NeroErrorMsg;
-		return res;
+			NeroErrorMsg;
+			return res;
 	}
 	setActNeroAsBaseObject(GodNero,NeuronNode_BaseObject);
 		/*现在生成其他基类*/
 	for(i=0;i<sizeof(neroKind)/sizeof(nero_us32int);i++)	
 	{
 	
-		BaseNeuronObject=(NeuronObject *)getNeuronObject();
-		res=initActNero(BaseNeuronObject,neroKind[i],NULL,NULL);
-		if(res == NeroError)
-		{
-			NeroErrorMsg;
-			return res;
-		}	
-		/*将其他基类加入网络，他们与GodNero是相互联系的关系*/	
-		setActNeroAsBaseObject(BaseNeuronObject,NeuronNode_BaseObject);
-		addNeuronChild(GodNero,BaseNeuronObject,Relationship_FatherToChild);
-		
-		switch(neroKind[i])
-		{
-		case   NeuronNode_ForChWord:
-		        setChildrenOrderRule(BaseNeuronObject,1);
-		        break;
-		case   NeuronNode_ForChCharacter:
-		        setChildrenOrderRule(BaseNeuronObject,1);
-		        break;		
-/*		*/
-/*		case   :*/
-/*		        break;		*/
-/*		case   :*/
-/*		        break;*/
-		default:
-		        setChildrenOrderRule(BaseNeuronObject,1);
-		        break;		
-		}
+				BaseNeuronObject=(NeuronObject *)getNeuronObject();
+				res=initActNero(BaseNeuronObject,neroKind[i],NULL,NULL);
+				if(res == NeroError)
+				{
+					NeroErrorMsg;
+					return res;
+				}	
+				/*将其他基类加入网络，他们与GodNero是相互联系的关系*/	
+				setActNeroAsBaseObject(BaseNeuronObject,NeuronNode_BaseObject);
+				addNeuronChild(GodNero,BaseNeuronObject,Relationship_FatherToChild);
+				
+				switch(neroKind[i])
+				{
+				case   NeuronNode_ForChWord:
+						setChildrenOrderRule(BaseNeuronObject,1);
+						break;
+				case   NeuronNode_ForChCharacter:
+						setChildrenOrderRule(BaseNeuronObject,1);
+						break;		
+		/*		*/
+		/*		case   :*/
+		/*		        break;		*/
+		/*		case   :*/
+		/*		        break;*/
+				default:
+						setChildrenOrderRule(BaseNeuronObject,1);
+						break;		
+				}
 
 	
 	}
-	#ifdef Nero_DeBuging14_01_14_
+	#ifdef Nero_DeBuging14_01_14
 	{
-	NerveFiber  *curFiber=GodNero->outputListHead;
-	printf("len=%d.\n",sizeof(neroKind)/sizeof(nero_us32int));
-	for (;curFiber !=NULL;curFiber=curFiber->next)
-	{
-		nero_s32int BaseObi=curFiber->obj;
-		nero_s32int ObjectKind=nero_GetNeroKind(BaseObi);
-		#ifdef Nero_DeBuging14_01_14
-		printf("BaseObi=%x.\n",BaseObi);
-		printf("ObjectKind=%d.\n",ObjectKind);
-/*		printf("curFiber->next=%x.\n\n",curFiber->next);*/
-
-		#endif				
-	
-	
-	
-	}		
-        }
+				NerveFiber  *curFiber=GodNero->outputListHead;
+				printf("一共生成基类个数=%d.\n",sizeof(neroKind)/sizeof(nero_us32int));
+				for (;curFiber !=NULL;curFiber=curFiber->next)
+				{
+					nero_s32int BaseObi=curFiber->obj;
+					nero_s32int ObjectKind=nero_GetNeroKind(BaseObi);
+					printf("BaseObi=%x.\n",BaseObi);
+					printf("ObjectKind=%d.\n",ObjectKind);
+			/*		printf("curFiber->next=%x.\n\n",curFiber->next);*/
+				
+		     	}		
+    }
 	#endif	
 		printf("CreateActNeroNet   ok.\n");
 
@@ -2452,7 +2447,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 			if (str[i]  == NULL)
 			{
 	                        #ifdef nero_addNeroByData_debug_msg
-				printf("nero_addNeroByData:  找不到词组中的字符\n",strlenInData);
+				printf("nero_addNeroByData:  找不到词组中的字符\n");
 
 	                        #endif			        
 			}

@@ -1,24 +1,4 @@
-Log_printSomeMsgForObj:Thu Jul  2 10:35:53 2015
-		地址：80bc478,打印词组对象《阿拉伯数字》,句子长度为：5,在DataFlowProcess中创建对象成功
-Log_printSomeMsgForObj:Thu Jul  2 10:35:53 2015
-		地址：80bc4a8,打印词组对象《数字》,句子长度为：2,在DataFlowProcess中创建对象成功
-Log_printSomeMsgForObj:Thu Jul  2 10:35:53 2015
-		地址：80bc4c0,打印字符对象(特殊符号)《***》,在DataFlowProcess中创建对象成功,数据是：《3000》
-Log_printSomeMsgForObj:Thu Jul  2 10:35:53 2015
-		地址：80bc520,打印字符对象(特殊符号)《***》,在DataFlowProcess中创建对象成功,数据是：《3100》
-Log_printSomeMsgForObj:Thu Jul  2 10:35:53 2015
-		地址：80bc568,打印字符对象(特殊符号)《***》,在DataFlowProcess中创建对象成功,数据是：《3200》
-Log_printSomeMsgForObj:Thu Jul  2 10:35:53 2015
-		地址：80bc5b0,打印字符对象(特殊符号)《***》,在DataFlowProcess中创建对象成功,数据是：《3300》
-Log_printSomeMsgForObj:Thu Jul  2 10:35:53 2015
-		地址：80bc5f8,打印字符对象(特殊符号)《***》,在DataFlowProcess中创建对象成功,数据是：《3400》
-Log_printSomeMsgForObj:Thu Jul  2 10:35:53 2015
-		地址：80bc640,打印字符对象(特殊符号)《***》,在DataFlowProcess中创建对象成功,数据是：《3500》
-Log_printSomeMsgForObj:Thu Jul  2 10:35:53 2015
-		地址：80bc688,打印字符对象(特殊符号)《***》,在DataFlowProcess中创建对象成功,数据是：《3600》
-Log_printSomeMsgForObj:Thu Jul  2 10:35:53 2015
-		地址：80bc6d0,打印字符对象(特殊符号)《***》,在DataFlowProcess中创建对象成功,数据是：《3700》
-Log_printSomeMsgForObj:Thu Jul  2 10:35:53 2015
-		地址：80bc718,打印字符对象(特殊符号)《***》,在DataFlowProcess中创建对象成功,数据是：《3800》
-Log_printSomeMsgForObj:Thu Jul  2 10:35:53 2015
-		地址：80bc760,打印字符对象(特殊符号)《***》,在DataFlowProcess中创建对象成功,数据是：《3900》
+Log_printSomeMsgForObj:Tue Jul 14 17:08:10 2015
+		地址：80bd338,打印词组对象《阿拉伯数字》,句子长度为：5,在DataFlowProcess中创建对象成功
+Log_printSomeMsgForObj:Tue Jul 14 17:08:10 2015
+		地址：80bd368,打印词组对象《数字》,句子长度为：2,在DataFlowProcess中创建对象成功

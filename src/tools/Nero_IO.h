@@ -75,14 +75,14 @@ nero_s32int Log_printNeroObjMsg(void *);
 
 /*从一个数组对象中提前词组，存与str中*/
 nero_s32int IO_getWordsInNero(nero_8int str[],NeuronObject * obj);
-
+//向文件中打印对象的信息
 nero_s32int Log_printSomeMsgForObj(void * obj_,void *str_);
-
+//打印对象的链接信息
 nero_s32int Log_printNeroObjLink(void * arg);
 
 /*从一个字符对象中提取，存与str中*/
 nero_s32int IO_getZhInNero(nero_8int str[],NeuronObject * obj);
-
+/*打印某个类别下面的所有的衍生类*/
 nero_s32int Log_printAllKindOf(void * obj_,void *str_);
 
 nero_s32int IO_GetNeroObjMsg(void * arg);

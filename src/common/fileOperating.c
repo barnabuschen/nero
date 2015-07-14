@@ -15,7 +15,19 @@
 #include <gtk/gtk.h>
 #include "fileOperating.h"
 
-
+int    *    mystrToInt(char  *  str )
+{
+	
+	if(str  == NULL)
+		return  NULL;
+    //~ char   szValue[]  =   "0x11";     
+    int    nValude    =   0;         
+    int   *   res;
+    sscanf(str,"%x",&nValude);  
+	
+	res  =    (int  *)nValude;
+	return  res;
+	}
 
 void createFile(char * fileName)
 {

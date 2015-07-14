@@ -85,6 +85,7 @@ GtkWidget *textViewForTreeCreates[widgetsNum];
 GtkTextBuffer *textBuffForTreeCreates[widgetsNum];
 	#define  ChoseBaseObj   1
 	#define  ChoseDerivativeObj   2	
+	
 	#define  ChoseOutputAddress  1
 	#define  ChoseOutputType   2	
 	#define  ChoseOutputData  3
@@ -93,13 +94,16 @@ GtkTextBuffer *textBuffForTreeCreates[widgetsNum];
 	{
 			gint choseType;//默认是ChoseDerivativeObj
 			gint degreeOutputType;//默认是ChoseOutputAddress
-			gint *  obAddress;
+			gint *  obAddress;//这个不是个问题，虽然32和64位的长度是不一样的，但是不同系统下你需要传入的数据也不一样
 			gint 	 treeDepth;
 			gint    treeMaxdegree;
 			gchar    outputMsgFile[300];
 			gchar    outputTreeFile[300];
 			gchar    obTypeName[300];
-			gchar    obData[300];			
+			gint  *     obData;			//问题来了这个数据是什么数据，显然这里就是编辑框上的字符串
+																					//这里有一个问题是：你要确保编辑框的编码和你从自定义文件的编码方式是一致的，不然对于汉字是有问题的
+																					//另外比如你输入了125，那么你显然输入的数据是123，而不是字符串‘123’，这是有区别的
+																					//所以，你还是需要把字符串改为真正在系统中被识别的二进制数据
 		}objTreeSt;
 	
 static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
@@ -245,12 +249,47 @@ void tab_textViewForSearchChanged( GtkWidget *widget, gpointer data )
 //~ widget传进来的就是buff的指针而不是iew的指针
 void tab_textViewForTreeCreateChanged( GtkWidget *widget, gpointer data )
 {
+	
+	gint    flag;
+		gchar *    text;
  	 GtkTextIter /*iter,*/start,end;
 	 gtk_text_buffer_get_start_iter (widget,&start);
 	 gtk_text_buffer_get_end_iter (widget,&end);
 	 gtk_text_buffer_apply_tag_by_name(widget,"深粉红",&start,&end);
 
-
+	flag =data;
+	text = gtk_text_buffer_get_text (widget, &start,&end,FALSE);
+	switch(flag)
+	{
+		case 1:
+							//~ printf("ob  address  changed :%s\n", text);	
+							objTreeSt.obAddress    =    mystrToInt(text ) ;
+						     break;
+			case 2:
+								objTreeSt.treeDepth    =    atoi(text ) ;
+							break;	
+		case 3:
+							objTreeSt.treeMaxdegree =   atoi(text ) ;
+							break;		
+			case 4:
+								if(text  !=  NULL)
+										strcpy(objTreeSt.outputMsgFile, text);
+								break;	
+		case 5:
+								if(text  !=  NULL)
+										strcpy(objTreeSt.outputTreeFile, text);
+								break;		
+		case 6:
+								if(text  !=  NULL)
+										strcpy(objTreeSt.obTypeName, text);
+								break;			
+			case 7:
+								if(text  !=  NULL)
+										//~ strcpy(objTreeSt.obData, text);
+										objTreeSt.obData    =    (int  *)mystrToInt(text ) ;
+								break;		
+		default:break;
+		}
 }
 void tab_SetSearchNeroMsgViewText(gchar *  str)
 {
@@ -811,15 +850,42 @@ void  outputTypeRadiotoggledHandle( GtkToggleButton  *widget, gpointer data )
 	 //~ 
 void ToCreateTreeButtonClicked( GtkWidget *widget, gpointer data )
 {
-		//~ 在各个控件中修改了objTreeSt的值后，这里只需要输出就行了
-		
-		
-		//打印各个值
-		printf("	choseType:%d\n	degreeOutputType:%d\n	obaddress:%x\n	treeMaxdegree:%d\n	outputMsgFile:%s\n	outputTreeFile:%s\n	obtypename:%s\n	obdata:%s\n",
-																	objTreeSt.choseType,objTreeSt.degreeOutputType,objTreeSt.obAddress,objTreeSt.treeMaxdegree,objTreeSt.outputMsgFile,objTreeSt.outputTreeFile,
-																					objTreeSt.obTypeName,objTreeSt.obData);
-
-
+		printf("	choseType:%d\n	degreeOutputType:%d\n	obaddress:0x%x\n	treeMaxdegree:%d\n	outputMsgFile:%s\n	outputTreeFile:%s\n	obtypename:%s\n	obdata:0x%x\n",
+																	objTreeSt.choseType,
+																	objTreeSt.degreeOutputType,
+																	 objTreeSt.obAddress,
+																	objTreeSt.treeMaxdegree,
+																	objTreeSt.outputMsgFile,
+																	objTreeSt.outputTreeFile,
+																	objTreeSt.obTypeName,
+																	 objTreeSt.obData);
+																	
+																	
+			//~ 你需要向void *thread_for_IO_Pic(void *arg)发送消息			
+				//~ 首先你得确定几种搜索的方式，及其具体的方案：						
+								//~ 1:by  adress
+								//~ 2:by  type name    And  data									
+			//~ 这里首先实现第二种方案
+			if(objTreeSt.obAddress     !=0)     
+			{
+				
+				}
+			else  if(objTreeSt.obTypeName   !=  NULL) 
+			{
+							
+							if(objTreeSt.choseType  ==  ChoseBaseObj )
+							{
+										
+								
+							}
+							else if(objTreeSt.choseType  ==    ChoseDerivativeObj )
+							{
+								
+							
+							}
+				}
+				
+			
 	}
 void CreateNeroNetWork( GtkWidget *widget, gpointer data )
 {
@@ -1030,7 +1096,7 @@ void createNeroTreeTab(GtkWidget *fixedInside)
 	 GdkRGBA  rgba;
 	 gchar   str1[]="NULL";
 	  gchar   str2[]="OutPutMsgFile.txt";
-	   gchar   str3[]="outputTreeFile.pic";
+	   gchar   str3[]="outputTreeFile.dot";
 		//~ struct 
 	//~ {
 			//~ gint choseType;//默认是ChoseDerivativeObj
@@ -1052,7 +1118,7 @@ void createNeroTreeTab(GtkWidget *fixedInside)
 	   memcpy(objTreeSt.outputMsgFile,str2,strlen(str2)+1);
 		 memcpy(objTreeSt.outputTreeFile,str3,strlen(str3)+1);
 	 memcpy(objTreeSt.obTypeName,str1,strlen(str1)+1);
-	  memcpy(objTreeSt.obData,str1,strlen(str1)+1);
+	  //~ memcpy(objTreeSt.obData,str1,strlen(str1)+1);
 //绘制标签
 	lableTexts[i] =g_strdup_printf("type chosse:");
 	lables[i] =gtk_label_new (lableTexts[i] );
@@ -1139,7 +1205,7 @@ void createNeroTreeTab(GtkWidget *fixedInside)
 						i++;					
 						textViewForTreeCreates[i]= gtk_text_view_new ();
 						textBuffForTreeCreates[i] = gtk_text_view_get_buffer (GTK_TEXT_VIEW (textViewForTreeCreates[i]));
-						gtk_text_buffer_set_text (textBuffForTreeCreates[i], "q.txt", -1);
+						gtk_text_buffer_set_text (textBuffForTreeCreates[i], str2, -1);
 						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), i);
 
 						 gtk_text_buffer_create_tag(textBuffForTreeCreates[i], "深粉红", "foreground-rgba", &rgba, NULL);
@@ -1152,7 +1218,7 @@ void createNeroTreeTab(GtkWidget *fixedInside)
 						i++;			
 						textViewForTreeCreates[i]= gtk_text_view_new ();
 						textBuffForTreeCreates[i] = gtk_text_view_get_buffer (GTK_TEXT_VIEW (textViewForTreeCreates[i]));
-						gtk_text_buffer_set_text (textBuffForTreeCreates[i], "b.dot", -1);
+						gtk_text_buffer_set_text (textBuffForTreeCreates[i], str3, -1);
 						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), i);
 
 						 gtk_text_buffer_create_tag(textBuffForTreeCreates[i], "深粉红", "foreground-rgba", &rgba, NULL);
@@ -1177,7 +1243,7 @@ void createNeroTreeTab(GtkWidget *fixedInside)
 						i++;			
 						textViewForTreeCreates[i]= gtk_text_view_new ();
 						textBuffForTreeCreates[i] = gtk_text_view_get_buffer (GTK_TEXT_VIEW (textViewForTreeCreates[i]));
-						gtk_text_buffer_set_text (textBuffForTreeCreates[i], "NULL", -1);
+						gtk_text_buffer_set_text (textBuffForTreeCreates[i], "0x0000", -1);
 						g_signal_connect (textBuffForTreeCreates[i], "changed",G_CALLBACK(tab_textViewForTreeCreateChanged), i);
 
 						 gtk_text_buffer_create_tag(textBuffForTreeCreates[i], "深粉红", "foreground-rgba", &rgba, NULL);
@@ -1371,7 +1437,7 @@ gboolean spin_myWidget_draw (GtkWidget *widget, cairo_t   *cr)
 gtk_widget_override_background_color(widget,GTK_STATE_FLAG_NORMAL,&rgba);
 
 }
-/*建立nero系统*/
+/*建立nero系统，他是发送给 消息给 void * thread_for_Operating_Pic(void *arg)建立网络  */
 void initNeroNetWork( )
 {
 

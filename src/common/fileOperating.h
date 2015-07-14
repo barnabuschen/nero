@@ -19,6 +19,10 @@ void putSubStrIntoOther(char * a,char *b,int startA,int startB,int len);
 
 //将数字转化为字符串
 char *myitoa(int value,char *string,int radix);
+//~ 将一个十六进制“字符串”转换为十进制数值的问题
+//~ 这里不直接返回整形是为了保存返回的整形可以比较大的取值范围（在64位系统下能返回64位）
+int    *    mystrToInt(char  *  str );
+
 
 
 //读取文件中的第xx行，注意@@@@@@@@@@@@@@@这里的num是从一开始算@@@@@@@@@@@@@@@@@@@@@@@@@

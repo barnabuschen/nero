@@ -29,7 +29,7 @@
 BEGIN_ONE_ARG_MESSAGE_MAP(nero_msg_print_map)
     MSG_NAME(1, Log_printNeroObjMsg)
     MSG_NAME(2, Log_printNeroObjLink)
-/*    MSG_NAME(3, Log_GetNeroObjMsg)*/
+    MSG_NAME(3, Log_printNeroObjLinkTree)
 /*    MSG_NAME(4, sort_data)*/
 END_ONE_ARG_MESSAGE_MAP
 
@@ -380,7 +380,51 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 	printf("Log_printAllKindOf  done\n");
 	return nero_msg_ok;
 }
+nero_s32int Log_printNeroObjLinkTree(void * arg)
+{
+		nero_8int  *str=strTmp;
+	nero_s32int ObjectKind,ObjectKind2,ObjectKind3;
+	nero_8int  strLinshi[500];
+	NeuronObject * obj=(NeuronObject *)arg;
+	NeuronObject * tmp;
+	NerveFiber  *  curFiber;
+	
+																		
+		//~ 首先你得确定几种搜索的方式，及其具体的方案：						
+						//~ 1:by  adress
+						//~ 2:by  type name    And  data									
+	//~ 这里首先实现第二种方案
+	if(objTreeSt.obAddress     !=0)     
+	{
+		
+		}
+	else  if(objTreeSt.obTypeName   !=  NULL) 
+	{
+					
+					if(objTreeSt.choseType  ==  ChoseBaseObj )
+					{
+								//~ 已知：obTypeName
+													//~ ChoseBaseObj
+								//~ 求输出该类的子对象的信息（地址，类型或者数据，但是好像输出类型用的比较少吧）
+								//~ 实现方式是向thread_for_Log_Pic  发送消息，需要定义一个新的消息函数（把整个objTreeSt传送过去）
+								
 
+		
+								
+								
+						
+					}
+					else if(objTreeSt.choseType  ==    ChoseDerivativeObj )
+					{
+								
+					
+					}
+		}	
+	
+	
+	
+	
+}
 
 nero_s32int Log_printNeroObjLink(void * arg)
 {
@@ -833,7 +877,7 @@ void *thread_for_Log_Pic(void *arg)
 			for( i = 0; i < size_message_map; i++)
 			{
 			    if( nero_msg_print_map[i].id == NeroArgMsg_st->fucId )
-				 (*(nero_msg_print_map[i].operate) )(NeroArgMsg_st->Obi);
+				 (*(nero_msg_print_map[i].operate) )(  NeroArgMsg_st->Obi  );
 			}			
 			
 			
@@ -851,7 +895,6 @@ void *thread_for_Log_Pic(void *arg)
 				 (*(nero_msg_WithStr_map[i].operate) )(NeroWithStrArgMsg_st->Obi,NeroWithStrArgMsg_st->str);
 			}			
 			break;
-	
 		default:			
 			#ifdef Nero_DeBugInOperating_Pic
 			 printf("LogId_Nero_NONE:  \n");

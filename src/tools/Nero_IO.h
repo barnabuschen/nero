@@ -9,7 +9,7 @@ struct  NeuronObjectMsg_
 { 
 long MsgId; 
 nero_8int fucId;
-NeuronObject * Obi; 
+void    *  Obi; 
 } ;
 struct  NeuronObjectMsgWithStr_
 { 
@@ -69,7 +69,8 @@ void *thread_for_IO_Pic(void *arg);
 void *thread_for_Log_Pic(void *arg);
 
 
-
+//~ 打印某对象的子对象树
+nero_s32int Log_printNeroObjLinkTree(void * arg);
 
 nero_s32int Log_printNeroObjMsg(void *);
 

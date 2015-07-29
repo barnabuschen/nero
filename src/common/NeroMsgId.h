@@ -23,7 +23,7 @@
 /**********************log  ID*************************/
 #define  MsgId_Log_PrintObjMsg    2000 
 #define  MsgId_Log_PrintObjMsgWithStr    2001 
-
+//~ #define  MsgId_Log_PrintNeroObjLinkTree    2002
 /*****************************************************/
 
 

@@ -90,24 +90,10 @@ GtkTextBuffer *textBuffForTreeCreates[widgetsNum];
 	#define  ChoseOutputType   2	
 	#define  ChoseOutputData  3
 
-	struct 
-	{
-			gint choseType;//默认是ChoseDerivativeObj
-			gint degreeOutputType;//默认是ChoseOutputAddress
-			gint *  obAddress;//这个不是个问题，虽然32和64位的长度是不一样的，但是不同系统下你需要传入的数据也不一样
-			gint 	 treeDepth;
-			gint    treeMaxdegree;
-			gchar    outputMsgFile[300];
-			gchar    outputTreeFile[300];
-			gchar    obTypeName[300];
-			gint  *     obData;			//问题来了这个数据是什么数据，显然这里就是编辑框上的字符串
-																					//这里有一个问题是：你要确保编辑框的编码和你从自定义文件的编码方式是一致的，不然对于汉字是有问题的
-																					//另外比如你输入了125，那么你显然输入的数据是123，而不是字符串‘123’，这是有区别的
-																					//所以，你还是需要把字符串改为真正在系统中被识别的二进制数据
-		}objTreeSt;
-	
-static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
 
+static struct    PrintNeroLInkTree_St    objTreeSt;
+static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
+static struct  NeuronObjectMsg_    neroObjMsg_st;
 
 static nero_8int  file_path_getcwd[FILEPATH_MAX];/*保存当前目录*/
 
@@ -860,30 +846,17 @@ void ToCreateTreeButtonClicked( GtkWidget *widget, gpointer data )
 																	objTreeSt.obTypeName,
 																	 objTreeSt.obData);
 																	
-																	
-			//~ 你需要向void *thread_for_IO_Pic(void *arg)发送消息			
-				//~ 首先你得确定几种搜索的方式，及其具体的方案：						
-								//~ 1:by  adress
-								//~ 2:by  type name    And  data									
-			//~ 这里首先实现第二种方案
-			if(objTreeSt.obAddress     !=0)     
-			{
-				
-				}
-			else  if(objTreeSt.obTypeName   !=  NULL) 
-			{
-							
-							if(objTreeSt.choseType  ==  ChoseBaseObj )
-							{
-										
-								
-							}
-							else if(objTreeSt.choseType  ==    ChoseDerivativeObj )
-							{
-								
-							
-							}
-				}
+						
+						
+	
+		neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
+		neroObjMsg_st.fucId = 3;
+		neroObjMsg_st.Obi = (void *)&objTreeSt;
+		//~ printf("nero_IfHasObjFromMultiples2 msg%x.\n",obj);
+		msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);								
+
+
+	
 				
 			
 	}

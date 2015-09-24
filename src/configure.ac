@@ -2,9 +2,8 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([gtkMain], [1], [sdfsdf])
-AM_INIT_AUTOMAKE([-Wall foreign])
-AC_CONFIG_SRCDIR([gtkMain.c])
+AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
+AC_CONFIG_SRCDIR([MainWindow.h])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
@@ -16,16 +15,15 @@ AC_PROG_CPP
 AC_PROG_MKDIR_P
 
 # Checks for libraries.
-PKG_CHECK_MODULES([gtkMain],[
-    glib-2.0
-    gtk+-3.0
-])
-PKG_PROG_PKG_CONFIG
+# FIXME: Replace `main' with a function in `-lcairo':
+AC_CHECK_LIB([cairo], [main])
+
 # Checks for header files.
 AC_CHECK_HEADERS([arpa/inet.h fcntl.h malloc.h netinet/in.h stdlib.h string.h unistd.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_INLINE
+AC_TYPE_SIZE_T
 
 # Checks for library functions.
 AC_FUNC_MALLOC

@@ -1,6 +1,6 @@
 提交更新：
-git commit -a -m "updata：20150729_搜索功能更新2"
-git push origin  ver0.1702:ver0.1702
+git commit -a -m "updata：20160214_002"
+git push origin  ver0.1800:ver0.1800
 添加文件到库，并上传
 git add readme.txt
 git commit   -m "give a new file"

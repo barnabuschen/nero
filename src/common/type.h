@@ -2,12 +2,21 @@
 #ifndef MYTYPE_H
 #define MYTYPE_H
 
-
+// #include <glib.h>
 #include "list.h"
 #include "NeroError.h"
 #include "NeroMsgId.h"
 
 /*一些常量*/
+	#define  ChoseBaseObj   1
+	#define  ChoseDerivativeObj   2	
+	
+	#define  ChoseOutputAddress  1
+	#define  ChoseOutputType   2	
+	#define  ChoseOutputData  3
+
+
+	
 #define NeroForgetCycle    10  /*10秒 超过这个时间不被更新，下次被识别时就不更新神经纤维的链接强度
 				对于一个无符号int来说，如果1表示1秒，那么一个int可以表示136年
 
@@ -59,8 +68,8 @@ typedef unsigned int  nero_us32int;
 typedef unsigned char  nero_us8int;
 typedef signed char  nero_s8int;
 typedef  char  nero_8int;
-
-
+// typedef  int  gint;
+// typedef  char  gchar;
 /*调试开关*/
 //#define  Nero_ProcessERROR_Msg
 #define  Nero_DeBuging1_cacel

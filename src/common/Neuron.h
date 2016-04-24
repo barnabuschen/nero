@@ -2,7 +2,7 @@
 
 #ifndef Neuron_H
 #define Neuron_H
-
+#include "../common/type.h"
 #define NoMSG		0	//没有数据
 #define NeuronNumFirst  50000 //wen新文件创建是初始Neuron个数---全部未使用
 #define FirstNoUseNeuWhenCreate  20//前面二十个node不使用
@@ -70,15 +70,15 @@ char *  FileData;//文件数据的起始地址
 
 	struct    PrintNeroLInkTree_St
 	{
-			gint choseType;//默认是ChoseDerivativeObj
-			gint degreeOutputType;//默认是ChoseOutputAddress
-			gint *  obAddress;//这个不是个问题，虽然32和64位的长度是不一样的，但是不同系统下你需要传入的数据也不一样
-			gint 	 treeDepth;
-			gint    treeMaxdegree;
-			gchar    outputMsgFile[300];
-			gchar    outputTreeFile[300];
-			gchar    obTypeName[300];
-			gint  *     obData;			//问题来了这个数据是什么数据，显然这里就是编辑框上的字符串
+			nero_s32int choseType;//默认是ChoseDerivativeObj
+			nero_s32int degreeOutputType;//默认是ChoseOutputAddress
+			nero_s32int *  obAddress;//这个不是个问题，虽然32和64位的长度是不一样的，但是不同系统下你需要传入的数据也不一样
+			nero_s32int 	 treeDepth;
+			nero_s32int    treeMaxdegree;
+			nero_8int    outputMsgFile[300];
+			nero_8int    outputTreeFile[300];
+			nero_8int    obTypeName[300];
+			nero_s32int  *     obData;			//问题来了这个数据是什么数据，显然这里就是编辑框上的字符串
 																					//这里有一个问题是：你要确保编辑框的编码和你从自定义文件的编码方式是一致的，不然对于汉字是有问题的
 																					//另外比如你输入了125，那么你显然输入的数据是123，而不是字符串‘123’，这是有区别的
 																					//所以，你还是需要把字符串改为真正在系统中被识别的二进制数据

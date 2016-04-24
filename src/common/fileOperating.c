@@ -11,8 +11,8 @@
 #include <sys/msg.h>
 #include <malloc.h>
 #include <errno.h>
-
-#include <gtk/gtk.h>
+#include <glib.h>
+// #include <gtk/gtk.h>
 #include "fileOperating.h"
 
 int    *    mystrToInt(char  *  str )
@@ -33,9 +33,10 @@ void createFile(char * fileName)
 {
 
 	FILE * myfile=fopen(fileName, "w+");
+	printf("fileName: %s\n", fileName);
 /*	usleep(2000);*/
 	fclose(myfile);
-/*	printf("strerror: %s\n", strerror(errno));*/
+	// printf("fclose  strerror: %s\n", strerror(errno));
 }
 void emptyFile(char * fileName)
 {
@@ -263,7 +264,7 @@ int     delStrInFile(char * FileName,int len,int point)//note:the point means th
 //make sure that the' len' is not large than the whole file from point to end,but if it is,just del all char from 
 //'point' to the end
 	FILE * myfile=fopen(FileName, "r+");
-
+	int res3;
 	fseek(myfile,0, SEEK_END);
 
 	int numFromPointToEnd=ftell(myfile);
@@ -274,7 +275,7 @@ int     delStrInFile(char * FileName,int len,int point)//note:the point means th
 	if(len >  numFromPointToEnd)
 	{
 	int fd=fileno(myfile);
-	ftruncate(fd,point-1);
+	res3 = ftruncate(fd,point-1);
 	return 2;
 	}
 	//now is normal case:	
@@ -289,7 +290,7 @@ int     delStrInFile(char * FileName,int len,int point)//note:the point means th
                   fseek(myfile, len, SEEK_CUR);
           }
 	  int fd=fileno(myfile);
-	  ftruncate(fd,wholeFileLen-len-1);
+	 res3 = ftruncate(fd,wholeFileLen-len-1);
 	fclose(myfile);
 	return 0;
 }
@@ -302,7 +303,7 @@ void updataLine(char * FileName,char * newStr,int line)
 	printf("line is %d and newstr is :\n%s\n",line,newStr);
 
 	char * fileName=FileName;
-        int len1=0;
+        int len1=0,res3;
         int *loc= findAllLine(fileName,&len1);
 	//outPutSomeNumber(loc,len1*(-2));
 	//int point =delLine(FileName,(line));
@@ -314,7 +315,7 @@ void updataLine(char * FileName,char * newStr,int line)
 	{
 		int fd = open(FileName,O_RDWR);
 		
-		ftruncate(fd,loc[(line)*2]);
+		res3=ftruncate(fd,loc[(line)*2]);
 		close(fd);
 		addLineToFile(FileName,newStr);
 		addLineToFile(FileName,"\n");

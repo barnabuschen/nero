@@ -89,12 +89,12 @@ void * thread_for_Operating_Pic(void *arg)
 /*	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
 	#define IPCKEY 0x111
 	ipckey = ftok(Operating_ipckey, IPCKEY);
-	printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+	// printf("strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 	printf("Operating_ipckey key is %d\n", ipckey);
 /*	*/
 	/* Set up the message queue */
 	Operating_mq_id = msgget(ipckey,0);// IPC_CREAT
-	printf("Operating_mq_id :strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+	// printf("Operating_mq_id :strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 /*	msgctl(Operating_mq_id,IPC_RMID,0);*/
 /*	printf("Operating_mq_id :    清空队列: %s\n", strerror(errno));*/
 /*	Operating_mq_id = msgget(ipckey,0);// IPC_CREAT*/

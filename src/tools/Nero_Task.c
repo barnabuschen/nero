@@ -23,9 +23,10 @@
 #include "Nero_Task.h"
 /*#include "../common/error.h"*/
 #include "../common/fileOperating.h"
-#include <gtk/gtk.h>
-#include "../MainWindow.h"
-
+// #include <gtk/gtk.h>
+#include "../common/type.h"
+#include "../common/Neuron.h"
+#include "neroMain.h"
 
 
 //TFF  中  order的定义

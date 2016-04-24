@@ -15,16 +15,18 @@
 #include <unistd.h>    /* for lseek and write */
 
 
-#include<time.h>
+#include <time.h>
 #include "../NeuralNetwork/NeuralNetwork.h"
 #include "../NeuralNetwork/NeuralOperating.h"
 #include "../tools/readUTF8File.h"
 #include "Nero_IO.h"
 /*#include "../common/error.h"*/
 #include "../common/fileOperating.h"
-#include <gtk/gtk.h>
-#include "../MainWindow.h"
-
+#include "../common/type.h"
+#include "../common/Neuron.h"
+// #include "common/Neuron.h"
+// #include "../MainWindow.h"
+#include "neroMain.h"
 /**************Log函数族**************/
 BEGIN_ONE_ARG_MESSAGE_MAP(nero_msg_print_map)
     MSG_NAME(1, Log_printNeroObjMsg)
@@ -75,7 +77,7 @@ nero_8int  AllKindOfFile[FILEPATH_MAX]="/tmp/AllKindOfFile.txt";
 static nero_8int  file_path_getcwd[FILEPATH_MAX]="/tmp";/*保存当前目录*/
 nero_8int  strTmp[1500];
 
-
+ extern struct    PrintNeroLInkTree_St    objTreeSt;
 
 nero_s32int IO_NeroConfigurationModify(void * operateKind,void *c)
 {

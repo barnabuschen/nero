@@ -3,7 +3,20 @@
 
 
 touch Makefile.am
-运行autoscan  并：mv configure.scan configure.ac
+运行
+autoscan
+  并：
+mv configure.scan configure.in
+
+
+
+
+
+aclocal
+autoconf
+automake  --add-missing
+
+
 
 
 设置Makefile.am
@@ -20,3 +33,19 @@ all: config.h
 	
 d: 
 	gdb $(bin_PROGRAMS)
+
+c: 
+	rm *.o ./common/*.o ./NeuralNetwork/*.o ./tools/*.o   neroMain
+
+make >filename 2>&1
+
+
+
+
+
+
+
+
+
+
+

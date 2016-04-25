@@ -148,7 +148,7 @@ void ProInitialization()
 		
 		/*	sleep(1);*/
 		/*建立网络*/
-		initNeroNetWork( );
+		initNeroNetWork( );    
 		printf("initNeroNetWork ok\n");
 		
 		/*do   more  */
@@ -169,4 +169,116 @@ void ProInitialization()
 								// printf("\r");
 
 		}
+}
+/*建立nero系统，他是发送给 消息给 void * thread_for_Operating_Pic(void *arg)建立网络  */
+void initNeroNetWork( )
+{
+
+/*	int res;*/
+	struct ZhCharArg arg1;
+	struct DataFlowProcessArg arg2;
+
+
+	struct { long type; char text[100]; } mymsg;
+	readUTF8FileData("data/ChUnicode");
+	printf("initNeroNetWork....\n");
+	mymsg.type =MsgId_Nero_CreateNetNet;
+	/*res=*/msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+/*	printf("msgsnd strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
+/*	printf("msgsnd chars-%d.\n",res);*/
+
+	/*一下步就是将字符信息加入网络 */
+	arg1.chChar=chChar;
+	arg1.charCounts=charCounts;
+	memcpy(&(mymsg.text),&arg1,sizeof(struct ZhCharArg));
+	mymsg.type =MsgId_Nero_addZhCharIntoNet;
+	/*res=*/msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+
+
+
+	/*将一些词加入网络 */
+	Utf8Word  wordsHead;
+
+	#ifdef  Nero_DeBuging03_12_13_
+	Utf8Word  MultiBytewordsHead;
+/*	readUTF8FileForWords("data/词库" ,& MultiBytewordsHead);*/
+        readUTF8FileForWords("data/ceshi2" ,& MultiBytewordsHead);
+/*	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& MultiBytewordsHead);*/
+/*	readUTF8FileForWords("data/实验词汇" ,& MultiBytewordsHead);*/
+	nero_AddWordsIntoNet( GodNero,& MultiBytewordsHead);
+	#endif
+
+
+/*	printWords(&wordsHead);		*/
+	/*字库*/
+	#ifdef  Nero_DeBuging03_12_13_
+	readUTF8FileForWords("data/ceshi2" ,& wordsHead);
+	nero_AddWordsIntoNet( GodNero,& wordsHead);
+	#endif
+
+
+
+
+
+
+	#ifdef  Nero_DeBuging20_12_13
+	void **DataFlow;
+	nero_s32int *dataKind;
+	Utf8Word  *wP;
+	char *linc;
+	nero_s32int dataNum,k,countOfWord,m;
+	printf("Nero_DeBuging20_12_13:::::::\n");
+	readUTF8FileForWords("data/词库" ,& wordsHead);
+/*	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& wordsHead);*/
+	/*将Utf8Word转化为一个数组，每个单位是一个词*/
+		wP=wordsHead.next;
+		countOfWord=0;
+		while (wP)
+		{
+		// printf("wP->num=%d.\n",wP->num);
+			countOfWord++;
+			wP=wP->next;
+
+		}
+		(DataFlow)=(void **)malloc(sizeof(void *)*countOfWord);
+		(dataKind)=(nero_s32int *)malloc(sizeof(nero_s32int *)*countOfWord);
+		for (k=0,wP=wordsHead.next;k<countOfWord  &&  (wP != NULL);k++)
+		{
+			DataFlow[k]=(void *)malloc((sizeof( char)*(wP->num * 3+1)));
+			linc=(char *)DataFlow[k];
+
+			for (m=0;m<wP->num;m++)
+			{
+				memcpy(&(linc[m*3]), &((wP->words)[m]), (3));
+			}
+
+			linc[wP->num * 3]=0;
+			dataKind[k]=NeuronNode_ForChWord;
+			#ifdef  Nero_DeBuging20_12_13
+			printf("wP->num=%d.\n",wP->num);
+			printf("len=%d,%s.\n\n",sizeof(linc),linc);
+			#endif
+			wP=wP->next;
+		}
+		dataNum=countOfWord;
+		neroConf.addLevelObjAlways = 1 ;
+
+
+	arg2.dataNum=dataNum;
+	arg2.dataKind=dataKind;
+	arg2.conf=&neroConf;
+	arg2.DataFlow=DataFlow;
+/*	memset(mymsg.text, 0, 100);  */
+	memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
+	mymsg.type =MsgId_Nero_DataFlowProcess ;
+	msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+
+
+	#endif
+
+
+
+
+
+
 }

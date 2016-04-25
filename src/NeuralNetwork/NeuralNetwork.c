@@ -17,6 +17,7 @@ NeuronNode_ForLine,    //当一个概念节点的类型为此时表示一个线�
 NeuronNode_ForChCharacter,    //当一个概念节点的类型为此时表示一个汉字
 NeuronNode_ForChWord ,    //当一个概念节点的类型为此时表示一个中文词语
  NeuronNode_ForChSentence,    //当一个概念节点的类型为此时表示一个中文句子
+NeuronNode_ForComplexDerivative,     //高级衍生类,for  some can not be classify  obj
 };
 
 
@@ -725,6 +726,11 @@ nero_s32int initActNeroNet()
 	return NeroOK;
 }
 
+
+
+
+// there is  some problem  in this fuc:the return is not work right
+   // you need return a  address,but it dot not work right
 NeuronObject * getNeuronObject()
 {
 /*	nero_us32int nextAvailableNeroInPool,cur ;*/
@@ -740,6 +746,7 @@ NeuronObject * getNeuronObject()
 	}
 /*	cur=nextAvailableNeroInPool;*/
 /*	nextAvailableNeroInPool++;*/
+	// printf("getNeuronObject address=%x\n",(&(NeroPool[nextAvailableNeroInPool])));
 	neroConf.UsedNeroNum=nextAvailableNeroInPool;
 	return (&(NeroPool[nextAvailableNeroInPool++]));
 
@@ -2104,7 +2111,8 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	
 
 	/*生成新概念，并加入网络*/
-	newObi= nero_createNeroObj(newObiKind);
+	newObi= nero_createNeroObj (newObiKind);
+	printf("newObi=%x\n",newObi);
 	res= nero_addNeroIntoNet( GodNero,newObi);
 	if(nero_msg_ok != res)
 	{
@@ -2113,16 +2121,16 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 		
 		
 
-/*		neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;*/
-/*		neroObjMsg_st.fucId = 1;*/
-/*		nero_us32int tmpi=0;*/
-/*		*/
-/*		for (;tmpi < objNum;tmpi++)*/
-/*		{*/
-/*			neroObjMsg_st.Obi = Obis[tmpi];*/
-/*			msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			*/
-/*			*/
-/*		}		*/
+		// neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
+		// neroObjMsg_st.fucId = 1;
+		// nero_us32int tmpi=0;
+		
+		// for (;tmpi < objNum;tmpi++)
+		// {
+		// 	neroObjMsg_st.Obi = Obis[tmpi];
+		// 	msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			
+			
+		// }		
 		 #endif	
 		return NULL;
 	
@@ -2171,11 +2179,13 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	}
 /*	nero_printNeroLink("log/ObjLink.log",(void *)newObi);*/
 
-	#ifdef   createObjFromMultiples_DeBug_Msg
+	#ifdef   Nero_DeBuging04_25_16
 	if (newObi == NULL)
 	{
 	        printf("nero_createObjFromMultiples  未知错误，newObi=%x\n",newObi);
 	}
+	else
+			printf("nero_createObjFromMultiples  success=%x,kind=%d,,objNum=%d\n",newObi,newObiKind,objNum);
 	#endif	
 	return newObi;
 

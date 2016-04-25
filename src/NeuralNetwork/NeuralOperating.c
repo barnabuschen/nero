@@ -502,26 +502,27 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
               在Process_ObjForecast(&forecastInfo_st);已经被替换为数字类型的概念
               */
               /*这时候你发现，一个概念出现了同时指向俩个基类的情况了*/
-              
+              // printf("nero_createObjFromMultiples  1111   \n");
               tmpObi =nero_createObjFromMultiples( &(objs[1]), objNum-1);
               
-                #ifdef Nero_DeBuging09_01_14_
+                // #ifdef Nero_DeBuging09_01_14
                 printf("开始u创建了新类 objNum=%d\n",objNum); 
                 if (tmpObi)
                 {
                        printf("创建了新类 %x---kind=%d.objNum=%d\n\n",tmpObi,nero_GetNeroKind(tmpObi),objNum); 
                 }
                 
-                #endif
+                // #endif
                 
 
               /*立马关闭开关，以免影响下次操作*/
               conf->CreateNewBaseObjKind = 0;
-        }else if (conf->addLevelObjAlways == 1   )
-	{
-		/*这里必须说明的是，这个新生成的概念究竟是什么类型的，createObjFromMultiples内部会根据子类型自动指定*/
-		/*但是这里不能用createObjFromMultiples，因为它里面有太多字符的东西，不够泛化*/
-		
+        }
+        else if (conf->addLevelObjAlways == 1   )
+		{
+				/*这里必须说明的是，这个新生成的概念究竟是什么类型的，createObjFromMultiples内部会根据子类型自动指定*/
+				/*但是这里不能用createObjFromMultiples，因为它里面有太多字符的东西，不够泛化*/
+				
 		
 				#ifdef   Nero_DeBuging04_01_14_
 				char str[500];
@@ -532,8 +533,8 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				system(str2);
 		
 				#endif			
-		
-		nero_createObjFromMultiples( objs, objNum);
+				// printf("nero_createObjFromMultiples  2\n");
+				nero_createObjFromMultiples( objs, objNum);
 				#ifdef   Nero_DeBuging04_01_14_
 				char str[500];
 				char str2[500];
@@ -544,7 +545,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		
 				#endif			
 		
-	}
+		}
 	else
 	{
 	#ifdef DataFlowProcess_error_Msg_
@@ -569,6 +570,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		if (res1  ==  Process_msg_CreateNewObj  && conf->addLevelObj == 1)
 		{
 			/*首先创建一个新概念，然后把这些子概念之间的链接强度归零*/
+			// printf("nero_createObjFromMultiples  3\n");
 			tmpObi =nero_createObjFromMultiples( objs, objNum);
 			/*强度暂时先不归0，因为这样的结果还不清楚*/
 				#ifdef Nero_DeBuging09_01_14

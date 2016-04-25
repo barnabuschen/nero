@@ -94,7 +94,7 @@ typedef  char  nero_8int;
 #define Nero_DeBuging25_01_14
 #define Nero_DeBuging27_01_14
 #define Nero_DeBuging06_02_14
-
+#define Nero_DeBuging04_25_16
 #define NowIdDeBug 
 //#define Nero_DeBugInOperating_Pic
 #define NoIncludeG_return_if_fail  

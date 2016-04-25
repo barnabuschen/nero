@@ -180,7 +180,7 @@ nero_s32int readUTF8FileForWords(nero_8int * FileName ,Utf8Word * wordsHead)
 }
 nero_s32int readUTF8FileData(nero_8int * FileName)//
 {
-/*	struct adkfjao  testsadkfjao;*/
+	struct adkfjao  testsadkfjao;
 /*	struct charshuzhu6 trunshuzi;*/
 /*	struct charshuzhu6 *trunshuziPoint;*/
 /*	DigitalUnicode16 unicodeInDigtial;*/
@@ -210,7 +210,7 @@ nero_s32int readUTF8FileData(nero_8int * FileName)//
 	
 
 	/* 使用映射区域. 现在开始解析UTF8File*/	
-	#ifdef Nero_DeBuging10
+	#ifdef Nero_DeBuging10_01_14_
 	printf("flength=%d.\n",flength);
 	printf("FileName=%s.\n",FileName);
 	printf("mapped_mem=%x.\n",mapped_mem);
@@ -264,6 +264,7 @@ nero_s32int readUTF8FileData(nero_8int * FileName)//
 		
 		if(charLength !=3)
 		{
+			// printf("p=%x.\n",p);
 			NerReportMsgError(nero_error_Id);
 			return NeroError;
 		
@@ -277,7 +278,10 @@ nero_s32int readUTF8FileData(nero_8int * FileName)//
 				case 2: chChar[charCounts].second=*p;p++;break;
 				case 3: chChar[charCounts].third=*p;p++;break;
 				case 4: chChar[charCounts].fourth=*p;p++;break;
-				default:NerReportMsgError(nero_error_Id);return NeroError;
+				default:
+						// printf("p=%x.\n",p);
+						NerReportMsgError(nero_error_Id);
+						return NeroError;
 			}
 		}
 		//下一个字符应该是冒号
@@ -299,8 +303,8 @@ nero_s32int readUTF8FileData(nero_8int * FileName)//
 /*		nero_s32int res=atoi(trunshuzi.tmp);				*/
 		
 		//打印utf8编码数据：
-		#ifdef Nero_DeBuging10
-		if(charCounts >5000)
+		#ifdef Nero_DeBuging10_01_14_
+	if(charCounts >6700)
 		{
 			testsadkfjao.tmp=chChar[charCounts];
 			testsadkfjao.end=0;
@@ -309,7 +313,7 @@ nero_s32int readUTF8FileData(nero_8int * FileName)//
 		#endif
 
 /* */
-/*		printf("%d:%d \n",charCounts,res);*/
+		// printf("%d:%d \n",charCounts,res);
 
 		p+=6;
 		charCounts++;
@@ -317,7 +321,7 @@ nero_s32int readUTF8FileData(nero_8int * FileName)//
 	
 	
 	
-	
+	NerOkMsg;
 	close(fd);
 	munmap(mapped_mem, flength);
 

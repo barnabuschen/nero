@@ -201,7 +201,7 @@ extern NeroConf neroConf;
 #define NeuronNode_ForChSentence   63    //当一个概念节点的类型为此时表示一个中文句子
 
 #define NeuronNode_ForComplexDerivative  2000    //高级衍生类
-#define NeuronNode_MinNewDerivativeClassId  2001
+#define NeuronNode_MinNewDerivativeClassId  2001   //you can  create it  by code.
 
 
 #define NeuronNode_MaxNewDerivativeClassId  65530

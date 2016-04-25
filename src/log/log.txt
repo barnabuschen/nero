@@ -1,0 +1,4 @@
+Log_printSomeMsgForObj:Tue Apr 26 01:30:10 2016
+		地址：68ac80,打印词组对象《阿拉伯数字》,句子长度为：5,在DataFlowProcess中创建对象成功
+Log_printSomeMsgForObj:Tue Apr 26 01:30:10 2016
+		地址：68acc0,打印词组对象《数字》,句子长度为：2,在DataFlowProcess中创建对象成功

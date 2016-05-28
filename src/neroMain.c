@@ -243,15 +243,15 @@ void initNeroNetWork( )
 
 
 
-	#ifdef  Nero_DeBuging20_12_13_
+	#ifdef  Nero_DeBuging20_12_13
 	void **DataFlow;
 	nero_s32int *dataKind;
 	Utf8Word  *wP;
 	char *linc;
 	nero_s32int dataNum,k,countOfWord,m;
 	// printf("Nero_DeBuging20_12_13:::::::\n");
-	readUTF8FileForWords("data/词库" ,& wordsHead);
-/*	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& wordsHead);*/
+	// readUTF8FileForWords("data/词库" ,& wordsHead);
+	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& wordsHead);
 	/*将Utf8Word转化为一个数组，每个单位是一个词*/
 		wP=wordsHead.next;
 		countOfWord=0;
@@ -276,7 +276,7 @@ void initNeroNetWork( )
 
 			linc[wP->num * 3]=0;
 			dataKind[k]=NeuronNode_ForChWord;
-			#ifdef  Nero_DeBuging20_12_13
+			#ifdef  Nero_DeBuging20_12_13_
 			printf("wP->num=%d.\n",wP->num);
 			printf("len=%d,%s.\n\n",sizeof(linc),linc);
 			#endif

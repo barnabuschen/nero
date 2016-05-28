@@ -1680,6 +1680,7 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 		        }
 		        else if(NeroNO  == res1)
 		        {
+		        		//find  new  ActivateForecastObj   if  findObiPoint  is not  the  child  of current ForecastObj
 		                Process_GetNewActivateForecastObj( forecastInfo, findObiPoint);
 		                /*获取新的activateForecastObj*/
 		                #ifdef ObjForecast_DeBug_msg
@@ -1708,7 +1709,8 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 				#endif                                      
                                         
                                 }
-                                #endif         
+                                #endif   
+                                //put       activateForecastObj  into  list objs  list
 		                Process_MerageObjsList(forecastInfo);
 		              /*修改过后就重新开始  循环*/
 		                forecastInfo->activateForecastObj->start=-1;

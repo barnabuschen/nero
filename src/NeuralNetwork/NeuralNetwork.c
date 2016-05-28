@@ -2112,7 +2112,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 
 	/*生成新概念，并加入网络*/
 	newObi= nero_createNeroObj (newObiKind);
-	printf("newObi=%x\n",newObi);
+	// printf("newObi=%x\n",newObi);
 	res= nero_addNeroIntoNet( GodNero,newObi);
 	if(nero_msg_ok != res)
 	{
@@ -2179,7 +2179,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	}
 /*	nero_printNeroLink("log/ObjLink.log",(void *)newObi);*/
 
-	#ifdef   Nero_DeBuging04_25_16
+	#ifdef   Nero_DeBuging04_25_16_
 	if (newObi == NULL)
 	{
 	        printf("nero_createObjFromMultiples  未知错误，newObi=%x\n",newObi);

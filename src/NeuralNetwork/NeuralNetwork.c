@@ -590,7 +590,7 @@ nero_s32int CreateActNeroNet()
 
 	
 	}
-	#ifdef Nero_DeBuging14_01_14
+	#ifdef Nero_DeBuging14_01_14_
 	{
 				NerveFiber  *curFiber=GodNero->outputListHead;
 				printf("一共生成基类个数=%d.\n",sizeof(neroKind)/sizeof(nero_us32int));

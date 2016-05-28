@@ -1,4 +1,10 @@
-Log_printSomeMsgForObj:Tue Apr 26 01:30:10 2016
-		地址：68ac80,打印词组对象《阿拉伯数字》,句子长度为：5,在DataFlowProcess中创建对象成功
-Log_printSomeMsgForObj:Tue Apr 26 01:30:10 2016
-		地址：68acc0,打印词组对象《数字》,句子长度为：2,在DataFlowProcess中创建对象成功
+Log_printSomeMsgForObj:Sat May 28 14:40:51 2016
+		地址：6201a0,ObjectKind=1,test:,-2147483647,0,0,0,0,440008c0
+Log_printNeroObjLink:Sat May 28 14:40:51 2016
+		地址：6201a0的link对象,ObjectKind=1
+		该对象6201c0为基类,ObjectKind=50，无需link
+		该对象6201e0为基类,ObjectKind=51，无需link
+		该对象620200为基类,ObjectKind=61，无需link
+		该对象620220为基类,ObjectKind=62，无需link
+		该对象620240为基类,ObjectKind=63，无需link
+		该对象620260为基类,ObjectKind=2000，无需link

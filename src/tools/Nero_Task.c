@@ -69,21 +69,12 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 
 
 
-
-
-
 static nero_8int  file_path_getcwd[FILEPATH_MAX]="/tmp";/*保存当前目录*/
-
-
-
-
 
 
 
 void ModifyBaseKindOfShu()
 {
-
-
 /*生成  数   概念*/
  	nero_s32int *dataKind;
         char *linc;

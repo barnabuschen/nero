@@ -149,23 +149,45 @@ void ProInitialization()
 		/*	sleep(1);*/
 		/*建立网络*/
 		initNeroNetWork( );    
+		sleep(1);	
 		printf("initNeroNetWork ok\n");
-		
+		printf("ProInitialization ok\n");	
+
 		/*do   more  */
-		//JustDoTask();/*生成  数   和  阿拉伯数字 的概念*/
+		// JustDoTask();/*生成  数   和  阿拉伯数字 的概念*/
 		// ReadTaskFromTxt();
-		// CreateBaseKindOfShu();
-		/* 	 ModifyBaseKindOfShu();*/
-		printf("ProInitialization ok\n");
 
 
-
+		#ifdef Nero_DeBuging14_01_14
+			// printf  msg  by  obj
+			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+			neroObjMsgWithStr_st.fucId = 1;
+			neroObjMsgWithStr_st.Obi = GodNero;
+			sprintf(neroObjMsgWithStr_st.str,"test:");
+			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+		#endif
+		#ifdef Nero_DeBuging09_01_14
+			// print  one  obj  link
+			neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
+			neroObjMsg_st.fucId = 2;
+			neroObjMsg_st.Obi = GodNero;
+			int  tmp2222=0;
+			printf("nero   msg:%x,%x \n",GodNero,&tmp2222);
+			msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			
+		#endif	
+ 		#ifdef Nero_DeBuging10_01_14
+			// print  all  of  the  kind  obj
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId =2;
+				neroObjMsgWithStr_st.Obi =NULL;
+				nero_s32int xxxxxx=NeuronNode_ForChCharacter;
+				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+     	#endif	
 		for(;;)
 		{
 								// printf("...\n");				
 								sleep(1);
-
-
 								// printf("\r");
 
 		}
@@ -221,13 +243,13 @@ void initNeroNetWork( )
 
 
 
-	#ifdef  Nero_DeBuging20_12_13
+	#ifdef  Nero_DeBuging20_12_13_
 	void **DataFlow;
 	nero_s32int *dataKind;
 	Utf8Word  *wP;
 	char *linc;
 	nero_s32int dataNum,k,countOfWord,m;
-	printf("Nero_DeBuging20_12_13:::::::\n");
+	// printf("Nero_DeBuging20_12_13:::::::\n");
 	readUTF8FileForWords("data/词库" ,& wordsHead);
 /*	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& wordsHead);*/
 	/*将Utf8Word转化为一个数组，每个单位是一个词*/

@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "updata：20160528_004"
+git commit -a -m "updata：20160528_005"
 git push origin  ver0.1800:ver0.1800
 添加文件到库，并上传
 git add readme.txt
@@ -8,7 +8,7 @@ git push origin master
 显示所有分支
 	 git branch -v
 创建一个新的分支
-	git branch testing
+	git branch ver0.1801
 要切换到其他分支
 	git checkout testing
 要新建并切换到该分支

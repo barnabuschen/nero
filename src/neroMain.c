@@ -158,7 +158,7 @@ void ProInitialization()
 		// ReadTaskFromTxt();
 
 
-		#ifdef Nero_DeBuging14_01_14
+		#ifdef Nero_DeBuging14_01_14_
 			// printf  msg  by  obj
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 			neroObjMsgWithStr_st.fucId = 1;
@@ -166,7 +166,7 @@ void ProInitialization()
 			sprintf(neroObjMsgWithStr_st.str,"test:");
 			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 		#endif
-		#ifdef Nero_DeBuging09_01_14
+		#ifdef Nero_DeBuging09_01_14_
 			// print  one  obj  link
 			neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
 			neroObjMsg_st.fucId = 2;
@@ -175,7 +175,7 @@ void ProInitialization()
 			printf("nero   msg:%x,%x \n",GodNero,&tmp2222);
 			msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			
 		#endif	
- 		#ifdef Nero_DeBuging10_01_14
+ 		#ifdef Nero_DeBuging10_01_14_
 			// print  all  of  the  kind  obj
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId =2;

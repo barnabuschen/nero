@@ -32,6 +32,7 @@ BEGIN_ONE_ARG_MESSAGE_MAP(nero_msg_print_map)
     MSG_NAME(1, Log_printNeroObjMsg)
     MSG_NAME(2, Log_printNeroObjLink)
     MSG_NAME(3, Log_printNeroObjLinkTree)
+    MSG_NAME(4, Log_printAllNeroMsg)
 /*    MSG_NAME(4, sort_data)*/
 END_ONE_ARG_MESSAGE_MAP
 
@@ -427,7 +428,48 @@ nero_s32int Log_printNeroObjLinkTree(void * arg)
 	
 	
 }
+//print all  nero used  msg
+nero_s32int Log_printAllNeroMsg(void * arg)
+{
+	nero_8int  *str=strTmp;
+	nero_s32int ObjectKind,ObjectKind2,ObjectKind3,objnums;
+	nero_8int  strLinshi[500];
+	NeuronObject * obj=(NeuronObject *)arg;
+	NeuronObject * tmp;
+	NerveFiber  *  curFiberOfbase;
+	NerveFiber  *  curFiberOfObj;
 
+	if(obj)
+	{
+
+		// ObjectKind=nero_GetNeroKind(obj);
+		// if(ObjectKind == NeuronNode_ForGodNero)
+
+	}
+	else
+		return  NeroError;
+	
+	for(curFiberOfbase=obj->outputListHead;curFiberOfbase !=NULL; curFiberOfbase=curFiberOfbase->next)
+	{
+		obj=curFiberOfbase->obj;
+		objnums=0;
+		if(obj)
+		{	
+			ObjectKind=nero_GetNeroKind(obj);
+
+			for(curFiberOfObj=obj->outputListHead;curFiberOfObj !=NULL; curFiberOfObj=curFiberOfObj->next)
+			{
+
+				objnums++;
+			}
+			printf("Kind:%d,num:%d\n", ObjectKind,objnums);
+		}
+		
+	}
+	printf("\n");
+	return  NeroOK;
+	
+}
 nero_s32int Log_printNeroObjLink(void * arg)
 {
 	nero_8int  *str=strTmp;

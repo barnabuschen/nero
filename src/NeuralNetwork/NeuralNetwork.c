@@ -523,7 +523,7 @@ static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type,nero_s32i
 }
 void resetNeroConf()
 {
-		neroConf.addNewObj=1;
+	neroConf.addNewObj=1;
 	neroConf.addLevelObj=1;
 	neroConf.neroTime=0;
 	neroConf.ifReCreateLogFile=1;
@@ -1271,10 +1271,12 @@ nero_s32int  nero_ifHasThisData_word(NeuronObject *obj,NeuronObject *childred[],
 		
 		tmpFiber1=tmpFiber1->next;
 	}		
-	if (i<  (objNum-1))
+	if (i ==  (objNum)  &&  tmpFiber1== NULL )
 	{
-		flag=0;
+		flag=1;
 	}
+	else
+		flag=0;
 	return flag;
 			
 }
@@ -2583,7 +2585,7 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 			words[i].second=wordP[i].second;
 			words[i].third=wordP[i].third;
 			
-			
+			// 根据给定数据寻找是否网络中已经有该   字   概念了，这里只搜索一个字,找到则返回该概念的指针
 			str[i]=nero_IfHasZhWord( GodNero,&(words[i]),NeuronNode_ForChCharacter);
 			
 			#ifdef Nero_DeBuging14_01_14_

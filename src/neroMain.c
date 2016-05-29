@@ -184,10 +184,22 @@ void ProInitialization()
 				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
      	#endif	
+
+
+
 		for(;;)
 		{
 								// printf("...\n");				
-								sleep(1);
+								sleep(35);
+				#ifdef Nero_DeBuging10_01_14_
+				// print  all  of  the  kind  obj
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId =2;
+				neroObjMsgWithStr_st.Obi =NULL;
+				nero_s32int xxxxxx=NeuronNode_ForChWord;
+				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+	     	#endif	
 								// printf("\r");
 
 		}
@@ -239,28 +251,80 @@ void initNeroNetWork( )
 	#endif
 
 
-
-
-
-
 	#ifdef  Nero_DeBuging20_12_13
+{
 	void **DataFlow;
 	nero_s32int *dataKind;
 	Utf8Word  *wP;
 	char *linc;
 	nero_s32int dataNum,k,countOfWord,m;
-	// printf("Nero_DeBuging20_12_13:::::::\n");
 	// readUTF8FileForWords("data/词库" ,& wordsHead);
 	readUTF8FileForWords("data/现代汉语常用词汇表utf8.txt" ,& wordsHead);
+	/*将Utf8Word转化为一个数组，每个单位是一个词*/
+	wP=wordsHead.next;
+	countOfWord=0;
+	while (wP)
+	{
+	// printf("wP->num=%d.\n",wP->num);
+		countOfWord++;
+		wP=wP->next;
+
+	}
+	(DataFlow)=(void **)malloc(sizeof(void *)*countOfWord);
+	(dataKind)=(nero_s32int *)malloc(sizeof(nero_s32int *)*countOfWord);
+	for (k=0,wP=wordsHead.next;k<countOfWord  &&  (wP != NULL);k++)
+	{
+		DataFlow[k]=(void *)malloc((sizeof( char)*(wP->num * 3+1)));
+		linc=(char *)DataFlow[k];
+
+		for (m=0;m<wP->num;m++)
+		{
+			memcpy(&(linc[m*3]), &((wP->words)[m]), (3));
+		}
+
+		linc[wP->num * 3]=0;
+		dataKind[k]=NeuronNode_ForChWord;
+		#ifdef  Nero_DeBuging20_12_13_
+		printf("wP->num=%d.\n",wP->num);
+		printf("len=%d,%s.\n\n",sizeof(linc),linc);
+		#endif
+		wP=wP->next;
+	}
+	#ifdef  Nero_DeBuging20_12_13_
+	printf("++++++++++countOfWord=%d.\n",countOfWord);
+	// printf("len=%d,%s.\n\n",sizeof(linc),linc);
+	#endif		
+	dataNum=countOfWord;
+	neroConf.addLevelObjAlways = 0;
+
+
+	arg2.dataNum=dataNum;
+	arg2.dataKind=dataKind;
+	arg2.conf=&neroConf;
+	arg2.DataFlow=DataFlow;
+	memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
+	mymsg.type =MsgId_Nero_DataFlowProcess ;
+	msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+}
+	#endif
+
+
+
+
+	#ifdef  Nero_DeBuging20_12_13
+{	void **DataFlow;
+	nero_s32int *dataKind;
+	Utf8Word  *wP;
+	char *linc;
+	nero_s32int dataNum,k,countOfWord,m;
+	readUTF8FileForWords("data/词库" ,& wordsHead);
 	/*将Utf8Word转化为一个数组，每个单位是一个词*/
 		wP=wordsHead.next;
 		countOfWord=0;
 		while (wP)
 		{
-		// printf("wP->num=%d.\n",wP->num);
 			countOfWord++;
 			wP=wP->next;
-
 		}
 		(DataFlow)=(void **)malloc(sizeof(void *)*countOfWord);
 		(dataKind)=(nero_s32int *)malloc(sizeof(nero_s32int *)*countOfWord);
@@ -281,26 +345,17 @@ void initNeroNetWork( )
 			printf("len=%d,%s.\n\n",sizeof(linc),linc);
 			#endif
 			wP=wP->next;
-		}
+		}	
 		dataNum=countOfWord;
-		neroConf.addLevelObjAlways = 1 ;
-
-
-	arg2.dataNum=dataNum;
-	arg2.dataKind=dataKind;
-	arg2.conf=&neroConf;
-	arg2.DataFlow=DataFlow;
-/*	memset(mymsg.text, 0, 100);  */
-	memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
-	mymsg.type =MsgId_Nero_DataFlowProcess ;
-	msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
-
-
+		neroConf.addLevelObjAlways = 0;
+		arg2.dataNum=dataNum;
+		arg2.dataKind=dataKind;
+		arg2.conf=&neroConf;
+		arg2.DataFlow=DataFlow;
+		memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
+		mymsg.type =MsgId_Nero_DataFlowProcess ;
+		msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+}
 	#endif
-
-
-
-
-
 
 }

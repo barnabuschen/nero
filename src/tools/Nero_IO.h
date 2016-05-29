@@ -73,7 +73,7 @@ void *thread_for_Log_Pic(void *arg);
 nero_s32int Log_printNeroObjLinkTree(void * arg);
 
 nero_s32int Log_printNeroObjMsg(void *);
-
+nero_s32int Log_printAllNeroMsg(void * arg);
 /*从一个数组对象中提前词组，存与str中*/
 nero_s32int IO_getWordsInNero(nero_8int str[],NeuronObject * obj);
 //向文件中打印对象的信息

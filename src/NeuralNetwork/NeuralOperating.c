@@ -245,7 +245,7 @@ dataNum	   数据的指针数组数据的个数，就是数组的长度
 
 nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf)
 {
-	nero_s32int i,j,hasAddObj/*,hasNewObj*/,res1,objNum,OldobjNum,res2;
+	nero_s32int i,j,hasAddObj/*,hasNewObj*/,res1,objNum,OldobjNum,res2,tmoForRecordNUm;;
 	NeuronObject * tmpObi,* tmpBaseObi;
 	NeuronObject ** objs=NULL;
 /*        struct NeroObjForecastList   *findObiPoint; */
@@ -263,7 +263,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	(objs)=(NeuronObject **)malloc(sizeof(NeuronObject *)*dataNum);
 	
 	
-	
+	tmoForRecordNUm=0;
 	/*先不比对DataFlow  dataKind  dataNum*/
 	/*断DataFlow中的数据是否在系统中已经存在该数据*/
 	for (i=0,j=0,hasAddObj=0;i<dataNum;i++)
@@ -295,11 +295,11 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		#endif	
 		tmpObi =nero_IfHasNeuronObject(DataFlow[i],dataKind[i], GodNero);
 
-		#ifdef Nero_DeBuging21_12_13_
+		#ifdef Nero_DeBuging21_12_13
 		if (tmpObi == NULL  )
 		{
 				
-				#ifdef Nero_DeBuging09_01_14
+				#ifdef Nero_DeBuging09_01_14_
 				printf("找不到子概念\n");
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
@@ -313,7 +313,20 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		}
 		else 
 		{
-			printf("找到子概念\n");
+
+				#ifdef Nero_DeBuging09_01_14_
+				
+				// printf("找到子概念\n");
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;
+				neroObjMsgWithStr_st.Obi = tmpObi;
+				sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中找到该概念");
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+				#endif	
+				tmoForRecordNUm++;
+				printf(" already has  this obj  in sys :i=%d.j=%d,tmoForRecordNUm=%d\n",i,j,tmoForRecordNUm);
+			// exit(0);
+			// printf("找到子概念\n");
 		}			
 		#endif
 		/*如果不存在则尝试将该对象加入网络*/
@@ -332,7 +345,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*				 neroObjMsg_st.Obi = tmpObi;*/
 /*				 msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);*/
 /*				*/
-				#ifdef Nero_DeBuging09_01_14
+				#ifdef Nero_DeBuging09_01_14_
 				//~ printf("添加子概念成功\n\n");
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
@@ -350,10 +363,10 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 			}
 			else 
 			{
-			        #ifdef Nero_DeBuging09_01_14_
-			        printf("DataFlow[i]=%s.\n",DataFlow[i]);
-/*				printf("添加子概念失败,dataKind=%d\n\n",dataKind[i]);*/
-				#endif		
+			        #ifdef Nero_DeBuging09_01_14
+			        // printf("DataFlow[i]=%s.\n",DataFlow[i]);
+					printf("添加子概念失败,dataKind=%d,i=%d\n",dataKind[i],i);
+					#endif		
 			}			
 			#endif	
 /*			createNeroNetDotGraphForWords(GodNero, "data/wordspic.dot");		*/
@@ -369,7 +382,8 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		else if (tmpObi != NULL )
 		{
 			objs[j]=tmpObi;
-/*			printf("objs[j]=%x.tmpObi=%x\n",objs[j],tmpObi);*/
+			// printf(" already has  this obj  in sys :objs[j]=%x.tmpObi=%x\n",objs[j],tmpObi);
+			// printf(" already has  this obj  in sys :i=%d.j=%d\n",i,j);
 			j++;
 		}
 		
@@ -599,8 +613,9 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		
 	
 	}
-	
-	
+	// you should  init   neroConf  every time  you  run  this  fuc
+	resetNeroConf();
+
 	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   1:%d.\n",coutOferror_Msg_);
 	#endif	
@@ -636,6 +651,8 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   5:%d.\n",coutOferror_Msg_);
 	#endif	
+	printf("end  of  DataFlowProcess \n\n\n");
+
 	return nero_msg_ok;
 
 }
@@ -809,12 +826,54 @@ nero_us32int nextAvailableNeroInPool;*/
 	while(1)
 	{
 		/*死循环*/
-		sleep(1);
+		sleep(2);
 		(neroConf.neroTime)++;
 		flag++;
 		if (flag==10)
 		{
 			printf("已经使用的nero数量:%d,剩余:%d\n",neroConf.UsedNeroNum,MaxNeroNum-neroConf.UsedNeroNum);
+
+
+			#ifdef Nero_DeBuging14_01_14_
+				// printf  msg  by  obj
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;
+				neroObjMsgWithStr_st.Obi = GodNero;
+				sprintf(neroObjMsgWithStr_st.str,"test:");
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+			#endif
+			#ifdef Nero_DeBuging09_01_14_
+				// print  one  obj  link
+				neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
+				neroObjMsg_st.fucId = 2;
+				neroObjMsg_st.Obi = GodNero;
+				int  tmp2222=0;
+				printf("nero   msg:%x,%x \n",GodNero,&tmp2222);
+				msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			
+			#endif	
+	 		#ifdef Nero_DeBuging10_01_14_
+				// print  all  of  the  kind  obj
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId =2;
+				neroObjMsgWithStr_st.Obi =NULL;
+				nero_s32int xxxxxx=NeuronNode_ForChWord;
+				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+	     	#endif	
+	 		#ifdef Nero_DeBuging10_01_14
+				// print all  nero used  msg
+				neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
+				neroObjMsg_st.fucId = 4;
+				neroObjMsg_st.Obi = GodNero;
+				msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);		
+	     	#endif	
+
+
+
+
+
+
+
 			flag=0;
 		}
 /*		printf("neroTime:%d.\n",neroConf.neroTime);*/

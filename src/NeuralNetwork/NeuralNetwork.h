@@ -172,13 +172,13 @@ time：
 
 */
 
-  struct NerveFiber_
- {
-struct ActivationNeuron   *obj;
-struct NerveFiber_ * next;
-nero_us32int msg1;/*存储额外的信息*/
-nero_us32int time;/*有关修改时间的信息*/
- };
+struct NerveFiber_
+{
+	struct ActivationNeuron   *obj;
+	struct NerveFiber_ * next;
+	nero_us32int msg1;/*存储额外的信息*/
+	nero_us32int time;/*有关修改时间的信息*/
+};
 
 
 

@@ -154,9 +154,7 @@ void ProInitialization()
 		printf("ProInitialization ok\n");	
 
 		/*do   more  */
-		// JustDoTask();/*生成  数   和  阿拉伯数字 的概念*/
-		// ReadTaskFromTxt();
-
+		ReadTaskFromTxt();
 
 		#ifdef Nero_DeBuging14_01_14_
 			// printf  msg  by  obj
@@ -199,7 +197,7 @@ void ProInitialization()
 				nero_s32int xxxxxx=NeuronNode_ForChWord;
 				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
-	     	#endif	
+	     		#endif	
 								// printf("\r");
 
 		}
@@ -251,7 +249,7 @@ void initNeroNetWork( )
 	#endif
 
 
-	#ifdef  Nero_DeBuging20_12_13
+	#ifdef  Nero_DeBuging20_12_13_
 {
 	void **DataFlow;
 	nero_s32int *dataKind;

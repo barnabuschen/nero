@@ -33,6 +33,9 @@
 #define  Task_Order_Min     1
 #define  Task_Order_CreateObjShu     100	/*数*/
 #define  Task_Order_CreateObjALBS     101  /*阿拉伯数字*/
+#define  Task_Order_MathNotation     102  /*数学符号*/
+#define  Task_Order_CreateKindWithOneCharArg     200  /*创建一个新类，由单个字符组成，新类名称为一个字符串*/
+#define  Task_Order_CreateKindWithOneCharArg2     201  /*创建一个新类，由单个字符组成，新类名称为一个字*/
 #define  Task_Order_ResetConf     500  /*将conf恢复为默认配置*/
 
 #define  Task_Order_Max     1000
@@ -54,12 +57,18 @@
 /*命令	该命令后面的数据个数，不包括1,2  	第一个数据*/
 
 nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
-/*创建"数"		  参数个数 新类名	     	新类的第一个数据*/
+/*创建"数字"		  参数个数 新类名	     	新类的第一个数据*/
 {Task_Order_CreateObjShu, 2	,  TFFDataType_Character,TFFDataType_Character},
-/*创建"阿拉伯数"	  参数个数 新类名	     	新类的第一个数据*/
+/*创建"阿拉伯数字"	  参数个数 新类名	     	新类的第一个数据*/
 {Task_Order_CreateObjALBS,2,TFFDataType_String,	TFFDataType_Character},
 //~ 将conf恢复为默认配置   参数个数 新类名	     	新类的第一个数据
 {Task_Order_ResetConf,   0}, 
+/*创建"数学符号"	  参数个数 新类名	     	新类的第一个数据*/
+{Task_Order_MathNotation,2,TFFDataType_String,	TFFDataType_Character},
+/*创建"new  kind"	  参数个数 新类名	     	新类的第一个数据*/
+{Task_Order_CreateKindWithOneCharArg,2,TFFDataType_String,	TFFDataType_Character},
+/*创建"new  kind"	  参数个数 新类名	     	新类的第一个数据*/
+{Task_Order_CreateKindWithOneCharArg2,2,TFFDataType_Character,	TFFDataType_Character},
 {0},
 {0},
 {0},
@@ -211,7 +220,7 @@ void CreateBaseKindOfShu()
                 msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
         }
 }
-
+//never  use it
 void JustDoTask()
 {
 /*生成  数   和  阿拉伯数字 的概念*/
@@ -471,10 +480,15 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 			{
 				case    Task_Order_CreateObjShu:
 				case    Task_Order_CreateObjALBS:
+				case    Task_Order_MathNotation:
+				case    Task_Order_CreateKindWithOneCharArg:
+				case    Task_Order_CreateKindWithOneCharArg2:
 				DataIO_st.operateKind =Conf_Modify_CreateNewBaseObjKind;break;
-			
+
+				// DataIO_st.operateKind =Conf_Modify_ReSet;break;			
 				case    Task_Order_ResetConf:
 				DataIO_st.operateKind =Conf_Modify_ReSet;break;
+
 				
 				 default :DataIO_st.operateKind =Conf_Modify_ReSet; break;
 			}

@@ -249,8 +249,10 @@ nero_s32int getFiberType(NerveFiber * fiber);
 /*下面是几个处理神经元链表的函数，，，必须快速和方便使用*/
 
 
-	/*在higher下面增加一个下层概念，仅仅lower指向higher*/
+	/*在higher下面增加一个下层概念，仅仅lower指向higher  in  outputlist*/
 nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher,nero_s32int pointTotype);
+	/*在higher下面增加一个下层概念，仅仅lower指向higher  in  inputlist*/
+nero_s32int PointingToObject2(NeuronObject *lower,NeuronObject *higher,nero_s32int pointTotype);
 
 	/*根据Relationship来增加一个下层概念*/
 nero_s32int addNeuronChild(NeuronObject *father,NeuronObject *child,nero_s32int Relationship);

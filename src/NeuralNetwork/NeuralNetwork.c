@@ -156,7 +156,7 @@ NeuronObject *  getBaseObjName(NeuronObject * baseobj,NeuronObject * godNero)
                 return NULL;
         }
 /*                Obi=getBasePointByObj(  godNero,baseobj);*/
-	        curFiber=baseobj->outputListHead;
+	        curFiber=baseobj->inputListHead;
 	        for (;curFiber !=NULL;curFiber=curFiber->next)
 	        {
 	        
@@ -523,15 +523,22 @@ static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type,nero_s32i
 }
 void resetNeroConf()
 {
+	static  nero_s32int  flag=0;
+
 	neroConf.addNewObj=1;
 	neroConf.addLevelObj=1;
 	neroConf.neroTime=0;
 	neroConf.ifReCreateLogFile=1;
 	neroConf.addLevelObjAlways=0;
 	neroConf.CreateNewBaseObjKind=0;
-	neroConf.NewNeroClassID=NeuronNode_MinNewDerivativeClassId;
+
+	if(flag   == 0)
+	{
+		neroConf.NewNeroClassID=NeuronNode_MinNewDerivativeClassId;
+		printf("NewNeroClassID  changed  in resetNeroConf\n");
+	}
 	
-	
+	flag=1;
 }
 nero_s32int CreateActNeroNet()
 {
@@ -609,9 +616,7 @@ nero_s32int CreateActNeroNet()
 
 	return NeroOK;
 }
-
-
-nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher,nero_s32int pointTotype)
+nero_s32int PointingToObject2(NeuronObject *lower,NeuronObject *higher,nero_s32int pointTotype)
 {
 	/*很明显各个对象之间的连接关系需要额外的空间来存储
 	你有俩种选择：使用神经元来保存，---浪费空间
@@ -621,7 +626,7 @@ nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher,nero_s32in
 	nero_s32int BaseObjectKind,newObjKind;
 	NeuronObject * BaseObi;
 	NerveFiber  *  curFiber;	
-	
+	NerveFiber * newfiber;
 	
 	
 	if(lower ==NULL || higher ==NULL )
@@ -633,8 +638,11 @@ nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher,nero_s32in
 	
 	
 	/*需要判断是不是已经有联系了*/
-
-	curFiber=lower->outputListHead;
+	// if(  nero_isBaseObj(lower ) == 1 &&  nero_isBaseObj(higher ) !=1    &&     (nero_GetNeroKind(lower) !=  nero_GetNeroKind(higher) )  )
+	// 	curFiber=lower->inputListHead;
+	// else
+		curFiber=lower->inputListHead;
+	// curFiber=lower->outputListHead;
 	for (;curFiber !=NULL;curFiber=curFiber->next)
 	{
 		if (curFiber->obj  == higher &&   getFiberType(curFiber)  == pointTotype)
@@ -644,8 +652,67 @@ nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher,nero_s32in
 	
 	
 	}
-		
-	NerveFiber * newfiber=addNerveFiber(lower,NerveFiber_Output,pointTotype);
+	
+
+		newfiber=addNerveFiber(lower,NerveFiber_Input,pointTotype);
+	if (newfiber ==NULL)
+	{
+		NeroErrorMsg;
+		return NeroError;
+	}
+	newfiber->obj=higher;
+	
+	
+	
+	return NeroOK;
+}
+
+nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher,nero_s32int pointTotype)
+{
+	/*很明显各个对象之间的连接关系需要额外的空间来存储
+	你有俩种选择：使用神经元来保存，---浪费空间
+		：    使用额外的结构，----似乎会麻烦
+	这里还是觉得该用第二种方案
+	*/
+	nero_s32int BaseObjectKind,newObjKind;
+	NeuronObject * BaseObi;
+	NerveFiber  *  curFiber;	
+	NerveFiber * newfiber;
+	
+	
+	if(lower ==NULL || higher ==NULL )
+	{
+		NeroErrorMsg;
+		return NeroError;
+	}	
+	
+	
+	
+	/*需要判断是不是已经有联系了*/
+	// if(  nero_isBaseObj(lower ) == 1 &&  nero_isBaseObj(higher ) !=1    &&     (nero_GetNeroKind(lower) !=  nero_GetNeroKind(higher) )  )
+	// 	curFiber=lower->inputListHead;
+	// else
+		curFiber=lower->outputListHead;
+	// curFiber=lower->outputListHead;
+	for (;curFiber !=NULL;curFiber=curFiber->next)
+	{
+		if (curFiber->obj  == higher &&   getFiberType(curFiber)  == pointTotype)
+		{
+			return NeroOK;
+		}
+	
+	
+	}
+	
+	//there is a bug here :if  lower  is a  baseobj  and  higher is not ,
+	// but  lower  ,higher  do not have  the same kind 
+	//that mean  this fuc  is  called in  nero_CreateNewBaseObj(),you should 
+	// do  it like this :NerveFiber_Input
+
+	// if(  nero_isBaseObj(lower ) == 1 &&  nero_isBaseObj(higher ) !=1    &&     (nero_GetNeroKind(lower) !=  nero_GetNeroKind(higher) )  )
+	// 	newfiber=addNerveFiber(lower,NerveFiber_Input,pointTotype);
+	// else
+		newfiber=addNerveFiber(lower,NerveFiber_Output,pointTotype);
 	if (newfiber ==NULL)
 	{
 		NeroErrorMsg;
@@ -953,7 +1020,7 @@ nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj)
 		BaseObi=curFiber->obj;
 		BaseObjectKind=nero_GetNeroKind(BaseObi);
 	
-			#ifdef  Nero_DeBuging18_11_13_0
+			#ifdef  Nero_DeBuging18_11_13_0_
 			printf("newObjKind=%d.BaseObjectKind=%d\n",newObjKind,BaseObjectKind);
 			#endif			
 		if(newObjKind == BaseObjectKind)
@@ -961,6 +1028,10 @@ nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj)
 			/*加入该区域*/
 			
 			 nero_addNeroIntoBaseObj(BaseObi,newObj);
+			#ifdef  Nero_DeBuging18_11_13_
+			printf("add new  obj to net:newObjKind=%d.BaseObjectKind=%d\n",newObjKind,BaseObjectKind);
+			#endif	
+
 			 return  nero_msg_ok;
 			
 		}		
@@ -1680,7 +1751,7 @@ NeuronObject * nero_ModifyBaseKind(NeuronObject * objs[],nero_s32int objNum,Neur
 /*	                printf("getBaseObjName= %x  objs[0]=%x.\n",getBaseObjName(Obi,godNero),objs[0]);*/
 	                if (getBaseObjName(Obi,godNero) ==  objs[0])
 	                {
-/*	                         printf("找到了相同名的基类  kind=%d\n",baseDataKind);*/
+	                         // printf("找到了相同名的基类  kind=%d\n",baseDataKind);
 	                         baseObj=Obi;
 	                         break;
 	                }
@@ -1691,6 +1762,7 @@ NeuronObject * nero_ModifyBaseKind(NeuronObject * objs[],nero_s32int objNum,Neur
 	}
  	if (baseObj ==NULL)
 	{
+		printf("nero_msg_ParameterError  in nero_ModifyBaseKind  1 \n");
 		return nero_msg_ParameterError;
 	}       
 	/*从objs[1]开始判断，objs[0]是类型名字*/
@@ -1706,6 +1778,13 @@ NeuronObject * nero_ModifyBaseKind(NeuronObject * objs[],nero_s32int objNum,Neur
 		/*修改新概念的数据链表模板*/
 		
 		tmpChildObi=tmpFiber->obj;
+		if(tmpChildObi ==  NULL)
+		{
+
+			printf("nero_msg_ParameterError  in nero_ModifyBaseKind 2\n");
+			return nero_msg_ParameterError;
+		}
+
 /*		 printf("ObjectKind=%d  i=%d.  基类结构kind=%d\n",ObjectKind,i,nero_GetNeroKind(tmpChildObi));*/
 		if (nero_GetNeroKind(tmpChildObi)  ==  ObjectKind )
 		{
@@ -1781,6 +1860,11 @@ NeuronObject * nero_CreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum,Ne
                         printf("基类创建失败0\n");
 			return NULL;
 	}	
+
+    /*添加基类和基类名称(默认就是objs[0]))的链接*/
+        PointingToObject(objs[0],BaseNeuronObject,Fiber_PointToUpperLayer);//
+        PointingToObject2(BaseNeuronObject,objs[0],Fiber_PointToLowerLayer);
+
 	/*现在设置基类的孩子概念类型*/
 	/*从objs[1]开始判断，objs[0]是类型名字*/
 	
@@ -1820,11 +1904,9 @@ NeuronObject * nero_CreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum,Ne
 
 
 
-        /*添加基类和基类名称(默认就是objs[0]))的链接*/
-        PointingToObject(objs[0],BaseNeuronObject,Fiber_PointToUpperLayer);
-        PointingToObject(BaseNeuronObject,objs[0],Fiber_PointToLowerLayer);
-         #ifdef  Nero_DeBuging06_02_14
-        printf("基类创建成功，kind=%d,基类名称：%x\n",nero_GetNeroKind(BaseNeuronObject) ,objs[0]);
+
+         #ifdef  Nero_DeBuging06_02_14_
+        printf("基类创建成功，kind=%d,基类名称：%x,adress:%x\n",nero_GetNeroKind(BaseNeuronObject) ,objs[0],BaseNeuronObject);
         
         printf("基类名=%x.-------------------------------------\n",getBaseObjName(BaseNeuronObject,  godNero));
         
@@ -2057,7 +2139,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 {
 	NeuronObject *newObi;
 	NerveFiber *tmpFiber;
-	nero_s32int newObiKind,res,i;
+	nero_s32int newObiKind,res,i,createNewBaseKindFlag;
         #define createObjFromMultiples_DeBug_Msg
 	if (Obis == NULL  || objNum <1)
 	{
@@ -2065,7 +2147,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	        return NULL;
 	}
 		
-		
+	createNewBaseKindFlag =  neroConf.CreateNewBaseObjKind;
 	/*首先你要判断这些个概念是不是在网络中存在，如果不存在，则报错返回*/
 	for (i=0;i<objNum;i++)
 	{
@@ -2097,7 +2179,12 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	/*判断新概念的种类 
 	见神经网络记录 sheet   5系统概略图
 	*/
-	newObiKind= nero_judgeNewObjKind(Obis, objNum);
+	if(createNewBaseKindFlag  == 1)
+		newObiKind = neroConf.NewNeroClassID -1;
+	else
+		newObiKind= nero_judgeNewObjKind(Obis, objNum);
+
+
 	if (newObiKind == NeuronNode_ForNone)
 	{
 	        #ifdef   createObjFromMultiples_DeBug_Msg

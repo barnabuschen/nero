@@ -299,7 +299,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 				break;
 			}
 		}		
-		printf("Log_printAllKindOf  start:  Object Kind=%d\n",ObjectKind);	
+		// printf("Log_printAllKindOf  start:  Object Kind=%d,adress:%x\n",ObjectKind,BaseObi);	
 	/*	printf("str %s  and logFile=%s",str,logFile);*/
 		switch(ObjectKind)
 		{
@@ -369,7 +369,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 							break;
 					
 					}
-					sprintf(strLinshi,"		地址%x  <%s>\n",(int)tmp,str/*,getFiberPointToObjNum(curFiber)*/);
+					sprintf(strLinshi,"		地址%x  <%s>,kind=%d,name=%x\n",(int)tmp,str,ObjectKind2,BaseObi->inputListHead->obj/*,getFiberPointToObjNum(curFiber)*/);
 					addLineToFile(AllKindOfFile,strLinshi);
 
 				curFiber=curFiber->next;
@@ -380,7 +380,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 		}
 
 		
-	printf("Log_printAllKindOf  done\n");
+	// printf("Log_printAllKindOf  done\n");
 	return nero_msg_ok;
 }
 nero_s32int Log_printNeroObjLinkTree(void * arg)
@@ -590,7 +590,7 @@ struct NerveFiber_   * outputListHead;
 	timenow   =   localtime(&now);//localtime函数把从time取得的时间now换算成你电脑中的时间(就是你设置的地区)
 /*		printf("Local   time   is   %s/n",asctime(timenow));*/
 
-	if (obj &&  (nero_isBaseObj(obj ) !=0))
+	if (obj &&  (nero_isBaseObj(obj ) ==0))
 	{
 		ObjectKind=nero_GetNeroKind(obj);
 		msg=obj->msg;
@@ -636,12 +636,10 @@ struct NerveFiber_   * outputListHead;
 		default:break;
 
 		
-		}
-
-			
+		}		
 	}
 	else
-		sprintf(str,"Log_printSomeMsgForObj:%s		空对象或者为基类对象,%s\n",asctime(timenow),(char *)str_);	
+		sprintf(str,"Log_printSomeMsgForObj:%s		空对象或者为基类对象,%s,kind=%d,%x\n",asctime(timenow),(char *)str_,nero_GetNeroKind(obj),obj);	
 
 	addLineToFile(logFile,str);
 	return nero_msg_ok;

@@ -200,6 +200,50 @@ extern NeroConf neroConf;
 #define NeuronNode_ForChWord   62    //当一个概念节点的类型为此时表示一个中文词语
 #define NeuronNode_ForChSentence   63    //当一个概念节点的类型为此时表示一个中文句子
 
+
+
+
+/*
+操作的实现形式：																			
+		最基础的那些动作一定是链接一些实现特定功能的函数																	
+			可以参见新基类的创建方式，建立新类，不同的动作就是一个新类别							
+			但是那种先天就有的操作和后天学习来的技能是需要区分的么	,很明显是需要区分的							
+			因为后天学习来的如果不涉及具体的操作的话，就是逻辑推理方面的东西							
+			而推理恐怕就是记忆而已吧，就是形成一些临时性质的记忆把							
+											
+		关于操作的功能的神经元的存在形式：								
+			可以是指定操作的具体函数或者一个函数编号，都是可以的							
+			可是操作的参数怎么确定呢，这样吧，几个parameter就指定几个输入列表的节点，但是要不要给每个							
+			操作类给定一个名称呢，我觉得还是要有，方便与外界进行沟通和调试。其存在方式参见新类的方式							
+																			
+			这里主要是对一个操作类的参数的确定以及因该有的参数个数  持谨慎态度							
+										
+			你可能定义的操作种类：								1				   2						3
+				鼠标，键盘点击     --------- 				点击的种类             持续时间      				力度
+				字符打印			--------- 				具体那个字符 
+
+			the question is :if you  can  definition a fuc  that can output a   char  ? 
+			does a  char  learn acquired  , not the sys get born ?
+			the answer is  :you  can  definition a fuc  that can output a   char  or words.
+			as  it is a  basic  ability  to  communicat with outside
+
+		这样来定义一个操作类型的nero：只要该nero  kind确定就由系统指定与一个实际完成操作的函数绑定
+
+			 struct ActivationNeuron							基类          	 	 衍生类
+			{	
+			nero_us32int msg;/*记录该nero的种类，性质等信息
+			nero_s32int x;						
+			nero_s32int y;										  					xyz就是操作的一些定性要求
+			nero_s32int z; 
+			struct NerveFiber_  * inputListHead;				指向输出的类型		 	指向操作的数据
+			struct NerveFiber_   * outputListHead; 				指向所以衍生类
+			};
+
+*/
+//kind down here is  some kind for operating
+#define  NeuronNode_ForInputWord      100     //talk to  outside  wangts to get  words (include Character or  words)  motivated  by  sys-self
+#define  NeuronNode_ForOutputWord      101   
+
 #define NeuronNode_ForComplexDerivative  2000    //高级衍生类
 #define NeuronNode_MinNewDerivativeClassId  2001   //you can  create it  by code.
 

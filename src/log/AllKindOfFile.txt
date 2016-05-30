@@ -1,199 +1,315 @@
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-		地址68b1e0  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-		地址68b1e0  <>,kind=2001,name=648be0
-		地址68b240  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-		地址68b1e0  <>,kind=2001,name=648be0
-		地址68b240  <>,kind=2001,name=648be0
-		地址68b2a0  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-		地址68b1e0  <>,kind=2001,name=648be0
-		地址68b240  <>,kind=2001,name=648be0
-		地址68b2a0  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-		地址68b1e0  <>,kind=2001,name=648be0
-		地址68b240  <>,kind=2001,name=648be0
-		地址68b2a0  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-		地址68b1e0  <>,kind=2001,name=648be0
-		地址68b240  <>,kind=2001,name=648be0
-		地址68b2a0  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-		地址68b1e0  <>,kind=2001,name=648be0
-		地址68b240  <>,kind=2001,name=648be0
-		地址68b2a0  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-		地址68b1e0  <>,kind=2001,name=648be0
-		地址68b240  <>,kind=2001,name=648be0
-		地址68b2a0  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-		地址68b1e0  <>,kind=2001,name=648be0
-		地址68b240  <>,kind=2001,name=648be0
-		地址68b2a0  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-		地址68b1e0  <>,kind=2001,name=648be0
-		地址68b240  <>,kind=2001,name=648be0
-		地址68b2a0  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-		地址68b1e0  <>,kind=2001,name=648be0
-		地址68b240  <>,kind=2001,name=648be0
-		地址68b2a0  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-		地址68b1e0  <>,kind=2001,name=648be0
-		地址68b240  <>,kind=2001,name=648be0
-		地址68b2a0  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-		地址68b1e0  <>,kind=2001,name=648be0
-		地址68b240  <>,kind=2001,name=648be0
-		地址68b2a0  <>,kind=2001,name=648be0
-Log_printAllKindOf:Mon May 30 03:35:32 2016
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
 		ObjectKind=2001的所有对象为：
-		地址68af40  <>,kind=2001,name=648be0
-		地址68afa0  <>,kind=2001,name=648be0
-		地址68b000  <>,kind=2001,name=648be0
-		地址68b060  <>,kind=2001,name=648be0
-		地址68b0c0  <>,kind=2001,name=648be0
-		地址68b120  <>,kind=2001,name=648be0
-		地址68b180  <>,kind=2001,name=648be0
-		地址68b1e0  <>,kind=2001,name=648be0
-		地址68b240  <>,kind=2001,name=648be0
-		地址68b2a0  <>,kind=2001,name=648be0
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
+		ObjectKind=2001的所有对象为：
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
+		ObjectKind=2001的所有对象为：
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
+		ObjectKind=2001的所有对象为：
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
+		ObjectKind=2001的所有对象为：
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
+		ObjectKind=2001的所有对象为：
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
+		ObjectKind=2001的所有对象为：
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
+		ObjectKind=2001的所有对象为：
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
+		ObjectKind=2001的所有对象为：
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
+		ObjectKind=2001的所有对象为：
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20
+Log_printAllKindOf:Mon May 30 16:25:57 2016
+		ObjectKind=2001的所有对象为：
+		地址68af80  <>,kind=2001,name=648c20
+		地址68afe0  <>,kind=2001,name=648c20
+		地址68b040  <>,kind=2001,name=648c20
+		地址68b0a0  <>,kind=2001,name=648c20
+		地址68b100  <>,kind=2001,name=648c20
+		地址68b160  <>,kind=2001,name=648c20
+		地址68b1c0  <>,kind=2001,name=648c20
+		地址68b220  <>,kind=2001,name=648c20
+		地址68b280  <>,kind=2001,name=648c20
+		地址68b2e0  <>,kind=2001,name=648c20

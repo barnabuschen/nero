@@ -271,7 +271,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 
 
-				// printf("processed  data:kind=%d \n",dataKind[i]);
+
 	
 				#ifdef   Nero_DeBuging04_01_14_
 				char str[500];
@@ -287,16 +287,9 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				system(str2);
 		
 				#endif	
-	
-	
+		printf("processed  data:kind=%d ,%s\n",dataKind[i],DataFlow[i]);	
 		/*先不管有句子的情况*/
 		/*通过objs[j]里面的值就可以知道有没有在网络中找到这个对象*/
-
-/*		objs[i]*/
-		#ifdef Nero_DeBuging14_01_14_
-		nero_us8int * tttttm=(char *)DataFlow[i];
-		printf("寻找字符1：%x %x %x .\n",(int)tttttm[0],(int)tttttm[1],(int)tttttm[2]);
-		#endif	
 		tmpObi =nero_IfHasNeuronObject(DataFlow[i],dataKind[i], GodNero);
 
 		#ifdef Nero_DeBuging21_12_13
@@ -350,8 +343,8 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*				 msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);*/
 /*				*/
 
-				// printf("添加子概念,dataKind=%d,isbase=%d,adress:%x\n",dataKind[i],nero_isBaseObj(tmpObi),tmpObi);
-				#ifdef Nero_DeBuging09_01_14_
+				printf("添加子概念,dataKind=%d,isbase=%d,adress:%x\n",dataKind[i],nero_isBaseObj(tmpObi),tmpObi);
+				#ifdef Nero_DeBuging09_01_14
 				//~ printf("添加子概念成功\n\n");
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
@@ -673,7 +666,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   5:%d.\n",coutOferror_Msg_);
 	#endif	
-	// printf("end ...... \n\n\n");
+	printf("end ...... \n\n\n");
 
 	return nero_msg_ok;
 
@@ -1597,16 +1590,16 @@ nero_s32int Process_GetNewActivateForecastObj(struct DataFlowForecastInfo  * for
                                 else
                                 {
                                 
-    				#ifdef Nero_DeBuging09_01_14_
-/*    				printf(" 2GetNewActivateForecastObj =%x.\n",forecastInfo->activateForecastObj);*/
-				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-				neroObjMsgWithStr_st.fucId = 1;
-				neroObjMsgWithStr_st.Obi = forecastInfo->activateForecastObj->obj;
-				sprintf(neroObjMsgWithStr_st.str,"GetNewActivateForecastObj 取得新对象%x id=%d",newActivateForecastObj,forecastInfo->DeBugMsg);
-				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
-				#endif                                
+				    				#ifdef Nero_DeBuging09_01_14_
+				/*    				printf(" 2GetNewActivateForecastObj =%x.\n",forecastInfo->activateForecastObj);*/
+									neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+									neroObjMsgWithStr_st.fucId = 1;
+									neroObjMsgWithStr_st.Obi = forecastInfo->activateForecastObj->obj;
+									sprintf(neroObjMsgWithStr_st.str,"GetNewActivateForecastObj 取得新对象%x id=%d",newActivateForecastObj,forecastInfo->DeBugMsg);
+									msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
+									#endif                                
                                 
-                                return NeroYES;
+                                	return NeroYES;
                                 }
                                         
                         }
@@ -1737,8 +1730,8 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 	 
 	while( (tmpObi=Process_IfHasNextObjToread(forecastInfo))  !=   NULL)
 	{
-	 ObjForecast_DeBug_Count++;
-	 forecastInfo->DeBugMsgTwo=ObjForecast_DeBug_Count;
+	 	ObjForecast_DeBug_Count++;
+	 	forecastInfo->DeBugMsgTwo=ObjForecast_DeBug_Count;
 	 
 	        /*与预测链表进行比较，看能不能找到tmpObi
 		
@@ -1748,24 +1741,24 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 		findObiPoint=Process_CompareWithForecastList(forecastInfo,tmpObi);	
 		if (findObiPoint != NULL)
 		{
-                        #ifdef ObjForecast_DeBug_msg
+                #ifdef ObjForecast_DeBug_msg
 
-                        if (forecastInfo->DeBugMsg <= Nero_TestCount)
-                        {
+                if (forecastInfo->DeBugMsg <= Nero_TestCount)
+                {
 
-                                printf("findObi=%x objNum=%d  ObjForecastTimes=%d _______\n",findObiPoint->obj,forecastInfo->objNum,forecastInfo->DeBugMsgTwo);
-                        }
-                        #endif			
+                        printf("findObi=%x objNum=%d  ObjForecastTimes=%d _______\n",findObiPoint->obj,forecastInfo->objNum,forecastInfo->DeBugMsgTwo);
+                }
+                #endif			
 		
 		
 		        /*判断tmpObi是不是activateForecastObj的等待输入的对象*/
 		        res1= Process_IfIsChildOfActivateForecastObj( forecastInfo, findObiPoint);
-                        #ifdef ObjForecast_DeBug_msg
-                        if (forecastInfo->DeBugMsg <= Nero_TestCount)
-                        {
-                                printf("res1=%d \n",res1);
-                        }
-                        #endif
+                #ifdef ObjForecast_DeBug_msg
+                if (forecastInfo->DeBugMsg <= Nero_TestCount)
+                {
+                        printf("res1=%d \n",res1);
+                }
+                #endif
 		        if (NeroYES  == res1)
 		        {
 /*		                if (forecastInfo->waitForRecognise != NULL)*/
@@ -1795,21 +1788,21 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 		         /*修改*/
 		      if (forecastInfo->timeToMerage ==1)
 		      {
-                                #ifdef ObjForecast_DeBug_msg
-/*                                if (forecastInfo->DeBugMsg ==52 )*/
-                                {
-                                        printf("timeToMerage------------- id=%d\n",forecastInfo->DeBugMsg);
-                                        printf("activateForecastObj=%x.\n",forecastInfo->activateForecastObj);
-  				#ifdef Nero_DeBuging09_01_14
-				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-				neroObjMsgWithStr_st.fucId = 1;
-				neroObjMsgWithStr_st.Obi = forecastInfo->activateForecastObj;
-				sprintf(neroObjMsgWithStr_st.str,"Merage激活对象 id=%d",forecastInfo->DeBugMsg);
-				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
-				#endif                                      
+					#ifdef ObjForecast_DeBug_msg
+					/*                                if (forecastInfo->DeBugMsg ==52 )*/
+					{
+						printf("timeToMerage------------- id=%d\n",forecastInfo->DeBugMsg);
+						printf("activateForecastObj=%x.\n",forecastInfo->activateForecastObj);
+						#ifdef Nero_DeBuging09_01_14
+						neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+						neroObjMsgWithStr_st.fucId = 1;
+						neroObjMsgWithStr_st.Obi = forecastInfo->activateForecastObj;
+						sprintf(neroObjMsgWithStr_st.str,"Merage激活对象 id=%d",forecastInfo->DeBugMsg);
+						msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
+						#endif                                      
                                         
-                                }
-                                #endif   
+                    }
+                    #endif   
                                 //put       activateForecastObj  into  list objs  list
 		                Process_MerageObjsList(forecastInfo);
 		              /*修改过后就重新开始  循环*/
@@ -1838,12 +1831,8 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 	}	 
 	 
 	 
-	 /*最后还有清理本次运行的垃圾数据，以免误导下次运行的结果*/
-	ReSetForecastList( forecastInfo);
-	 
-	 
-
-
+	 	/*最后还有清理本次运行的垃圾数据，以免误导下次运行的结果*/
+		ReSetForecastList( forecastInfo);
 }
 void Process_MerageObjsList(struct DataFlowForecastInfo  * forecastInfo)
 {

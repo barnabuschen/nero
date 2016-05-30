@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "updata：20160530_001"
+git commit -a -m "updata：20160530_002"
 git push origin  ver0.1801:ver0.1801
 添加文件到库，并上传
 git add readme.txt

@@ -5,18 +5,8 @@
 touch Makefile.am
 运行
 autoscan
-  并：
-mv configure.scan configure.in
-
-
-
-
-
 aclocal
 autoconf
-automake  --add-missing
-
-
 
 
 设置Makefile.am

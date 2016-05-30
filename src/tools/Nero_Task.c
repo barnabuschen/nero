@@ -292,7 +292,7 @@ void JustDoTask()
 void ReadTaskFromTxt()
 {
 
-        nero_us32int strlenMax,flength,strlenMin,strLen,pos;
+        nero_us32int strlenMax,flength,strlenMin,strLen,pos,tmpII,tmpJJ;
 /*        nero_8int s[strlenMax+1];*/
 /*        nero_8int * findStr;*/
         nero_8int  fileName[FILEPATH_MAX];
@@ -345,6 +345,11 @@ void ReadTaskFromTxt()
 /*		if (linEnd  > linStart )*/
 		{
 		        memset(tff.str,0,500);
+                for(tmpII=0; tmpII<TFFDataWidth; tmpII++)
+                {
+                    memset(tff.data[tmpII], 0, sizeof(nero_us8int ) * TFFDataLength);
+                }
+
 		        memcpy(tff.str,linStart,linEnd-linStart+1);
 
                         /*提取信息中的各个字段*/

@@ -41,12 +41,12 @@ struct DataFlowForecastInfo
 {
 	NeuronObject ** objs;//实际对象指针
 	nero_s32int objNum;//实际对象个数，也是objs这个数组的有效长度，数组长度必须大于objNum，不然越界	
-	nero_s32int objPoint;//指向一个objs中可以读取的位置,初始为0，最大值为objNum
-        struct NeroObjForecastList   headOfUpperLayer;//指向第一个预测对象	
+	nero_s32int objPoint;//指向一个objs中可以读取的位置,初始为0，最大值为objNum,  is the pos you can read to forecast
+    struct NeroObjForecastList   headOfUpperLayer;//指向第一个预测对象	
 	struct NeroObjForecastList   headOfLowerLayer;//指向第一个预测对象
 	struct NeroObjForecastList   headOfSameLayer;//指向第一个预测对象
 	struct NeroObjForecastList   *activateForecastObj;//在headOfUpperLayer中，当前被预测的，等待
-	                                                        //后续输入判断的节点，
+	                                                        //后续输入判断的节点，it is not a list
 	                                                        
 	                                                    
 	NeuronObject * waitForRecognise; /*如果没有在预测列表中的数据会先放在这里，

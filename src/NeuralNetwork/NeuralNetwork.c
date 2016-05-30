@@ -16,6 +16,8 @@ NeuronNode_ForLine,    //当一个概念节点的类型为此时表示一个线�
 
 NeuronNode_ForChCharacter,    //当一个概念节点的类型为此时表示一个汉字
 NeuronNode_ForChWord ,    //当一个概念节点的类型为此时表示一个中文词语
+NeuronNode_ForInputWord,
+NeuronNode_ForOutputWord,
  NeuronNode_ForChSentence,    //当一个概念节点的类型为此时表示一个中文句子
 NeuronNode_ForComplexDerivative,     //高级衍生类,for  some can not be classify  obj
 };
@@ -1511,6 +1513,9 @@ nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNu
 				case NeuronNode_ForData: 
 				case NeuronNode_ForConnect: 
 
+				case NeuronNode_ForInputWord: 
+				case NeuronNode_ForOutputWord: 
+
 					flag=0;/*直接排除*/
 					break;				
 				default:
@@ -1990,7 +1995,12 @@ nero_s32int nero_judgeNewObjKind(NeuronObject *Obis[],nero_s32int objNum)
 			case NeuronNode_ForGodNero: 
 			case NeuronNode_ForData: 
 				kind=NeuronNode_ForNone;
-				break;				
+				break;	
+
+			case NeuronNode_ForInputWord: 
+			case NeuronNode_ForOutputWord: 
+				// kind=kind;
+				break;							
 			default:
 				kind=NeuronNode_ForComplexDerivative;
 				break;
@@ -2481,9 +2491,11 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 	NeuronObject  *str[400];
 	ChUTF8  words[400];
 	NeuronObject *tmp;
+	NeuronObject *tmp2;
 	nero_s32int strlenInData,i;
 	ChUTF8_  *wordP;
 	ChUTF8 * wordP2;	
+		NerveFiber *tmpFiber;
 	#define nero_addNeroByData_debug_msg
 	
 	if (Data == NULL  || dataKind<NeuronNode_ForNone  || dataKind>NeuronNode_Max   )
@@ -2493,10 +2505,31 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 	        #endif
 		return NULL;
 	}
-	tmp=NULL;
+	tmp=tmp2=NULL;
 	switch(dataKind)
 	{
-	case NeuronNode_ForChCharacter:
+		case NeuronNode_ForInputWord:
+		case NeuronNode_ForOutputWord:
+			wordP2=(ChUTF8  *)Data;/*实际上只是一个ChUTF8而非ChUTF8_结构的数据，但是不影响结果*/
+
+			tmp=nero_IfHasZhWord( GodNero,wordP2, NeuronNode_ForChCharacter);/*多余的*/
+			if (tmp  != NULL)
+			{
+				 tmp2= nero_createNeroObj(dataKind);
+				if(tmp2)
+				{
+					/*往概念填数据*/
+					tmpFiber= addNerveFiber(tmp2,NerveFiber_Input,Fiber_PointToData);
+					tmpFiber->obj=tmp;	
+					/*建立新概念已经子对象之间的关系*/
+					PointingToObject(tmp,tmp2,Fiber_PointToUpperLayer);
+										
+				}			
+			}
+			tmp=tmp2;
+			break;
+
+		case NeuronNode_ForChCharacter:
 		wordP2=(ChUTF8  *)Data;/*实际上只是一个ChUTF8而非ChUTF8_结构的数据，但是不影响结果*/
 
 		tmp=nero_IfHasZhWord( GodNero,wordP2, dataKind);/*多余的*/
@@ -2625,10 +2658,12 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObject *GodNero)
 {
 	NeuronObject  *str[400];
+	NerveFiber  *  curFiber;	
 	ChUTF8  words[400];
 	NeuronObject *tmp;
+	NeuronObject *tmp2;
 	nero_s32int strlenInData,i;
-	ChUTF8  wordP2;
+	ChUTF8  * wordP2;
 	ChUTF8_  *wordP;
 	nero_us8int  * ttt22;
 	if (Data == NULL  || dataKind<NeuronNode_ForNone  || dataKind>NeuronNode_Max  || GodNero == NULL )
@@ -2640,17 +2675,33 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 	switch(dataKind)
 	{
 	case NeuronNode_ForChCharacter:
-		ttt22=Data;
+		
+/////////////////////////////////////////
+		// 这里容易产生一个bug：
+		// add  nero  here is just  the same with  fuc  nero_addNeroByData(DataFlow[i],dataKind[i])  ????/
+////////////////////////////////////////////////////////
 /*		wordP2=(ChUTF8  *)Data;*/
+		wordP2=(ChUTF8  *)Data;/*实际上只是一个ChUTF8而非ChUTF8_结构的数据，但是不影响结果*/
+		#ifdef Nero_DeBuging14_01_14_
+		ttt22=Data;
 		wordP2.first=ttt22[0];
 		wordP2.second=ttt22[1];
 		wordP2.third=ttt22[2];
-		#ifdef Nero_DeBuging14_01_14_
-		
-/*			printf("寻找字符2：%x %x %x.\n",wordP2[i].first,words[i].second,words[i].third);*/
-			printf("寻找字符2：%c%c%c.\n",ttt22[0],ttt22[1],ttt22[2]);
+		printf("寻找字符2：%c%c%c.\n",ttt22[0],ttt22[1],ttt22[2]);
 		#endif	
-		tmp=nero_IfHasZhWord( GodNero,&wordP2, dataKind);
+		tmp=nero_IfHasZhWord( GodNero,wordP2, dataKind);
+
+		//if can not find it :add it
+		// if(tmp == NULL)
+		// {
+		// 	tmp2= nero_createNeroObj(NeuronNode_ForChCharacter);
+		// 	if(tmp2)
+		// 	{
+		// 		/*往概念填数据*/
+		// 		nero_addDataToZhNeroObj(tmp2,wordP2);		
+		// 	}		
+		// 	tmp=tmp2;
+		// }
 		break;
 	
 	case NeuronNode_ForChWord:
@@ -2691,6 +2742,35 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 		/*先不处理*/
 		break;
 
+	case NeuronNode_ForInputWord:
+	case NeuronNode_ForOutputWord:
+		// 1:假设数据只有一个字符
+			tmp =nero_IfHasNeuronObject( Data,NeuronNode_ForChCharacter , GodNero);
+			tmp2=NULL;
+			if(tmp)
+			{
+				curFiber=GodNero->outputListHead;
+				//find the  dataKind  baseobj
+				while(    nero_GetNeroKind(curFiber->obj) ==   dataKind  )
+					curFiber=curFiber->next;
+				tmp2=curFiber->obj;//baseobj
+				if(tmp2 )
+				{
+					curFiber=tmp2 ->outputListHead;
+					while(  curFiber->obj->inputListHead  !=   tmp)
+					{
+						curFiber=curFiber->next;
+					}
+
+
+
+				}
+
+
+
+			}
+			tmp=tmp2;
+			break;			
 	default:break;	
 	
 	

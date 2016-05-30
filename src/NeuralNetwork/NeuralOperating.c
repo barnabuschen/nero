@@ -248,6 +248,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	nero_s32int i,j,hasAddObj/*,hasNewObj*/,res1,objNum,OldobjNum,res2,tmoForRecordNUm;;
 	NeuronObject * tmpObi,* tmpBaseObi;
 	NeuronObject ** objs=NULL;
+	NeuronObject * complexObj;
 /*        struct NeroObjForecastList   *findObiPoint; */
 /*        NeuronObject * findForecastObj;	*/
 /*        struct NeroObjForecastList   *findForecastObjPoint; 	*/
@@ -262,7 +263,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*	system("xdot data/wordspic.dot");*/
 	(objs)=(NeuronObject **)malloc(sizeof(NeuronObject *)*dataNum);
 	
-	
+	complexObj=NULL;
 	tmoForRecordNUm=0;
 	/*先不比对DataFlow  dataKind  dataNum*/
 	/*断DataFlow中的数据是否在系统中已经存在该数据*/
@@ -364,7 +365,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 			{
 			        #ifdef Nero_DeBuging09_01_14
 			        // printf("DataFlow[i]=%s.\n",DataFlow[i]);
-					printf("添加子概念失败,dataKind=%d,i=%d\n",dataKind[i],i);
+					printf("添加子概念失败,dataKind=%d,ii=%d\n",dataKind[i],i);
 					#endif		
 			}			
 			#endif	
@@ -444,9 +445,9 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	if (coutOferror_Msg_ <= Nero_TestCount )
 	{
                
-                printf("DataFlowForecastInfo:\n    objNum=%d\n    objPoint=%d ",forecastInfo_st.objNum,forecastInfo_st.objPoint);
-                printf("\n    UpperLayerobjNum=%d\n    SameLayerobjNum=%d\n    LowerLayerobjNum=%d\n    dataNum=%d\n\n ",forecastInfo_st.headOfUpperLayer.times,forecastInfo_st.headOfSameLayer.times,forecastInfo_st.headOfLowerLayer.times,dataNum);
-        }
+	        printf("DataFlowForecastInfo:\n    objNum=%d\n    objPoint=%d ",forecastInfo_st.objNum,forecastInfo_st.objPoint);
+	        printf("\n    UpperLayerobjNum=%d\n    SameLayerobjNum=%d\n    LowerLayerobjNum=%d\n    dataNum=%d\n\n ",forecastInfo_st.headOfUpperLayer.times,forecastInfo_st.headOfSameLayer.times,forecastInfo_st.headOfLowerLayer.times,dataNum);
+	}
 
         tmpc=0;
         #ifdef DataFlowProcess_error_Msg
@@ -467,9 +468,9 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
     #endif	
 	
 	
-/*	printf("start形成层次结构* \n");*/
+		/*	printf("start形成层次结构* \n");*/
 	
-	objNum=forecastInfo_st.objNum;
+		objNum=forecastInfo_st.objNum;
 	
 	/*将这几个对象形成层次结构*/
 	/*其实就是将这几个对象形成一个新的对象，见神经网络记录 sheet   5系统概略图*/
@@ -563,7 +564,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		
 				#endif			
 				// printf("nero_createObjFromMultiples  2\n");
-				nero_createObjFromMultiples( objs, objNum);
+				complexObj=nero_createObjFromMultiples( objs, objNum);
 				#ifdef   Nero_DeBuging04_01_14_
 				char str[500];
 				char str2[500];
@@ -575,59 +576,59 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				#endif			
 		
 		}
-	else
-	{
-	#ifdef DataFlowProcess_error_Msg_
-	printf("coutOferror_Msg_  before  StrengthenLink=%d.\n",coutOferror_Msg_);
-	#endif		
-		/*如果不把这些概念形成一个新的概念，就把他们联系起来，就是用输出链表连接起来
-		对于已经连接的对象则加强连接强度
-		*/
-/*		printf("已经连接的对象则加强连接强度\n");*/
-
-		/*这里面有一个问题，*/
-
-		res1=Process_StrengthenLink(objs,objNum,GodNero, conf);
-/*		printf("res1=%d.\n",res1);*/
-		
-		/*如果发现强度足够高时则生成新概念*/
-		/*如果子概念分别为a b c,而 b c  已经组成了概念，那么这个由a b c  组成的概念和b c
-		组成的概念是什么关系呢
-		*/
-		
-		/*一旦形成新的概念，就需要对相应的连接的连接强度做一些修改，怎么样的修改呢？？*/
-		if (res1  ==  Process_msg_CreateNewObj  && conf->addLevelObj == 1)
+		else
 		{
-			/*首先创建一个新概念，然后把这些子概念之间的链接强度归零*/
-			// printf("nero_createObjFromMultiples  3\n");
-			tmpObi =nero_createObjFromMultiples( objs, objNum);
-			/*强度暂时先不归0，因为这样的结果还不清楚*/
-				#ifdef Nero_DeBuging09_01_14
-				if (tmpObi)
-				{
-				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-				neroObjMsgWithStr_st.fucId = 1;
-				neroObjMsgWithStr_st.Obi = tmpObi;
-				sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中创建高级衍生对象成功");
-				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
-				}
-				#ifdef DataFlowProcess_error_Msg
-				else
-				{
-				        printf("创建高级衍生对象失败\n");
-				        printf("objNum=%d.\n",objNum);
-				}
-				    #endif	    
+			#ifdef DataFlowProcess_error_Msg_
+			printf("coutOferror_Msg_  before  StrengthenLink=%d.\n",coutOferror_Msg_);
+			#endif		
+			/*如果不把这些概念形成一个新的概念，就把他们联系起来，就是用输出链表连接起来
+			对于已经连接的对象则加强连接强度
+			*/
+	/*		printf("已经连接的对象则加强连接强度\n");*/
 
-				#endif			
+			/*这里面有一个问题，*/
+
+			res1=Process_StrengthenLink(objs,objNum,GodNero, conf);
+	/*		printf("res1=%d.\n",res1);*/
 			
-			
+			/*如果发现强度足够高时则生成新概念*/
+			/*如果子概念分别为a b c,而 b c  已经组成了概念，那么这个由a b c  组成的概念和b c
+			组成的概念是什么关系呢
+			*/	
+			/*一旦形成新的概念，就需要对相应的连接的连接强度做一些修改，怎么样的修改呢？？*/
+			if (res1  ==  Process_msg_CreateNewObj  && conf->addLevelObj == 1)
+			{
+				/*首先创建一个新概念，然后把这些子概念之间的链接强度归零*/
+				// printf("nero_createObjFromMultiples  3\n");
+				tmpObi =nero_createObjFromMultiples( objs, objNum);
+				complexObj=tmpObi;
+				/*强度暂时先不归0，因为这样的结果还不清楚*/
+					#ifdef Nero_DeBuging09_01_14
+					if (tmpObi)
+					{
+						neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+						neroObjMsgWithStr_st.fucId = 1;
+						neroObjMsgWithStr_st.Obi = tmpObi;
+						sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中创建高级衍生对象成功");
+						msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
+					}
+					#ifdef DataFlowProcess_error_Msg
+					else
+					{
+					        printf("创建高级衍生对象失败\n");
+					        printf("objNum=%d.\n",objNum);
+					}
+					#endif	    
+					#endif			
+			}
 		}
-		
-		
-		
-	
-	}
+
+
+
+
+	Process_IoFuc( &forecastInfo_st,  complexObj);
+
+
 	// you should  init   neroConf  every time  you  run  this  fuc
 	resetNeroConf();
 
@@ -669,6 +670,82 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	printf("end ...... \n\n\n");
 
 	return nero_msg_ok;
+
+}
+	/*
+	Its time to  output  what  you want to give  outside  some msg.
+	The msg  you  need to  process is :
+		1: search  ------->  DataFlowForecastInfo->headOfUpperLayer    
+						find if has operating neros,including input ,output
+						find if has 
+		2:  check the  retuen  of nero_createObjFromMultiples()  has operating neros or not 
+
+	*/
+void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObject *  complexObj)
+{
+
+	NeuronObject *  tmp;
+	struct list_head  * listHead;       
+	// AddNewObjToList();
+	nero_s32int  i,j;
+	nero_us32int kind;
+	// if(forecastInfo_st == NULL  ||  complexObj == NULL  || orecastInfo_st->headOfUpperLayer == NULL  ||   forecastInfo_st->objNum <= 0 || orecastInfo_st->objs == NULL)
+	// {
+	// 	return ;
+	// }
+	listHead=(struct list_head  *)&(forecastInfo_st->headOfUpperLayer);
+
+
+	/*
+		first : search forecastInfo_st list  and objs
+
+	*/
+	if(forecastInfo_st != NULL )
+	{
+		//search  objs first
+		if(forecastInfo_st->objNum > 0 &&  forecastInfo_st->objs != NULL)
+		{
+
+			// tmp = 
+			for(i=0,tmp=(forecastInfo_st->objs)[i];i < forecastInfo_st->objNum  ; tmp=(forecastInfo_st->objs)[i++]  )
+			{
+				kind = nero_GetNeroKind(tmp);
+				switch(kind)
+				{
+					case NeuronNode_ForInputWord:
+
+						break;
+					case NeuronNode_ForOutputWord:
+
+						#ifdef Nero_DeBuging09_01_14
+							// print  one  obj  link
+							neroObjMsg_st.MsgId = MsgId_IO_ForOutputWord;
+							neroObjMsg_st.fucId = 2;
+							neroObjMsg_st.Obi = tmp;
+							// int  tmp2222=0;
+							// printf("nero   msg:%x,%x \n",GodNero,&tmp2222);
+							msgsnd( IO_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			
+						#endif							
+
+
+						break;
+					default:
+						break;
+				}
+
+
+
+			}
+
+		}
+
+
+
+
+	}
+
+
+
 
 }
 /*判断是否需要创建新基类*/
@@ -1144,21 +1221,21 @@ void AddNewObjToList(struct DataFlowForecastInfo  * forecastInfo,nero_s32int Fib
                         if (listHead !=NULL)
                         {
                          
-                                /*首先判断是否已经有这个概念*/
-                                 struct NeroObjForecastList   *  findNodeINlist;
-                                 findNodeINlist=Process_IfHasThisObjINList( listHead,Obj);
-                                
-                                if (findNodeINlist == NULL)
-                                {
-                  		        #ifdef Nero_DeBuging24_01_14_
-                                        printf("预测链表增长。。。。p->next=%x。。。\n",p->next);
-				        neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-				        neroObjMsgWithStr_st.fucId = 1;
-				        neroObjMsgWithStr_st.Obi = Obj;
-				        sprintf(neroObjMsgWithStr_st.str,"预测链表增长 id=%d id2=%d",forecastInfo->DeBugMsg,forecastInfo->DeBugMsgTwo);
-				        msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
-				        #endif                                         
-                                         AddNodeIntoForecastList(listHead,Obj);
+								/*首先判断是否已经有这个概念*/
+								struct NeroObjForecastList   *  findNodeINlist;
+								findNodeINlist=Process_IfHasThisObjINList( listHead,Obj);
+
+								if (findNodeINlist == NULL)
+								{
+								#ifdef Nero_DeBuging24_01_14_
+								printf("预测链表增长。。。。p->next=%x。。。\n",p->next);
+								neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+								neroObjMsgWithStr_st.fucId = 1;
+								neroObjMsgWithStr_st.Obi = Obj;
+								sprintf(neroObjMsgWithStr_st.str,"预测链表增长 id=%d id2=%d",forecastInfo->DeBugMsg,forecastInfo->DeBugMsgTwo);
+								msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
+								#endif                                         
+								AddNodeIntoForecastList(listHead,Obj);
                                 }
                                 else
                                 {
@@ -1837,34 +1914,34 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 void Process_MerageObjsList(struct DataFlowForecastInfo  * forecastInfo)
 {
 
-        nero_s32int OldobjNum=forecastInfo->objNum;
-	nero_s32int objNum=(forecastInfo->activateForecastObj->end-forecastInfo->activateForecastObj->start)+1;/*被替换掉的子集的对象个数*/
-	
-	nero_s32int start,end,i,j;
-	forecastInfo->objNum=OldobjNum- objNum+1;   /*新的objNum值*/
-                    
+		nero_s32int OldobjNum=forecastInfo->objNum;
+		nero_s32int objNum=(forecastInfo->activateForecastObj->end-forecastInfo->activateForecastObj->start)+1;/*被替换掉的子集的对象个数*/
 
-        /*结束条件是end后面剩余的对象数OldobjNum-（forecastInfo_st.end+1)  */
-        start=forecastInfo->activateForecastObj->start;
-        end=forecastInfo->activateForecastObj->end;
-        #ifdef Nero_DeBuging27_01_14_
-        printf("MerageObjsList:\n");
-        printf("start=%d. end=%d  \n",start,end);
-         printf("OldobjNum=%d.  len=%d  new objNum=%d\n",OldobjNum,objNum,forecastInfo->objNum);
-         printf("结束条件=%d.\n",(OldobjNum-(end+1)));
-        #endif	
-		               for (j=start,i=0;i<=(OldobjNum-(end+1));j++,i++)
-		               {
+		nero_s32int start,end,i,j;
+		forecastInfo->objNum=OldobjNum- objNum+1;   /*新的objNum值*/
 
-		               
-		                       if (j == start )
-		                       {
-		                               (forecastInfo->objs)[j]=forecastInfo->activateForecastObj->obj;
-		                               
-		                       }
-		                       else
-		                              (forecastInfo->objs)[j]=(forecastInfo->objs)[end+i];
-		               }
+
+		/*结束条件是end后面剩余的对象数OldobjNum-（forecastInfo_st.end+1)  */
+		start=forecastInfo->activateForecastObj->start;
+		end=forecastInfo->activateForecastObj->end;
+		#ifdef Nero_DeBuging27_01_14_
+		printf("MerageObjsList:\n");
+		printf("start=%d. end=%d  \n",start,end);
+		printf("OldobjNum=%d.  len=%d  new objNum=%d\n",OldobjNum,objNum,forecastInfo->objNum);
+		printf("结束条件=%d.\n",(OldobjNum-(end+1)));
+		#endif	
+       for (j=start,i=0;i<=(OldobjNum-(end+1));j++,i++)
+       {
+
+       
+               if (j == start )
+               {
+                       (forecastInfo->objs)[j]=forecastInfo->activateForecastObj->obj;
+                       
+               }
+               else
+                      (forecastInfo->objs)[j]=(forecastInfo->objs)[end+i];
+       }
 			
 
 

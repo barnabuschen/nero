@@ -49,7 +49,7 @@ END_TWO_ARG_MESSAGE_MAP
 /*************IO函数族/**************/
 BEGIN_ONE_ARG_MESSAGE_MAP(IO_msg_print_map)
     MSG_NAME(1, IO_GetNeroObjMsg)
-/*    MSG_NAME(2, Log_printNeroObjLink)*/
+    MSG_NAME(2, IO_ForOutputWord)
 /*    MSG_NAME(3, Log_GetNeroObjMsg)*/
 /*    MSG_NAME(4, sort_data)*/
 END_ONE_ARG_MESSAGE_MAP
@@ -644,6 +644,19 @@ struct NerveFiber_   * outputListHead;
 	addLineToFile(logFile,str);
 	return nero_msg_ok;
 }
+
+
+//print  word  to  ...
+nero_s32int IO_ForOutputWord(void * arg)
+{
+
+	nero_s32int res=0;
+
+
+
+	printf("IO_ForOutputWord:..........................\n");
+
+}
 /*想窗口发送信息*/
 nero_s32int IO_GetNeroObjMsg(void * arg)
 {
@@ -804,6 +817,24 @@ void *thread_for_IO_Pic(void *arg)
 		
 		switch(MsgId)
 		{
+			
+		case MsgId_IO_ForOutputWord:
+
+			NeroArgMsg_st=(struct  NeuronObjectMsg_  * )&IOMsg;
+			
+			for( i = 0; i < size_message_map; i++)
+			{
+			    if( IO_msg_print_map[i].id == NeroArgMsg_st->fucId )
+				 (*(IO_msg_print_map[i].operate) )(NeroArgMsg_st->Obi);
+			}				
+			
+			
+			
+			#ifdef Nero_DeBugInOperating_Pic
+			 printf("MsgId_IO_CreateNetNet:\n");
+			#endif
+			break;
+
 		case MsgId_IO_GetObjMsg:
 
 			NeroArgMsg_st=(struct  NeuronObjectMsg_  * )&IOMsg;

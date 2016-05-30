@@ -2511,10 +2511,12 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 		case NeuronNode_ForInputWord:
 		case NeuronNode_ForOutputWord:
 			wordP2=(ChUTF8  *)Data;/*实际上只是一个ChUTF8而非ChUTF8_结构的数据，但是不影响结果*/
-
+// exit(0);
 			tmp=nero_IfHasZhWord( GodNero,wordP2, NeuronNode_ForChCharacter);/*多余的*/
 			if (tmp  != NULL)
 			{
+				// printf("nero_addNeroByData: find ZhWord  in case  NeuronNode_ForOutputWord\n");
+				// exit(0);
 				 tmp2= nero_createNeroObj(dataKind);
 				if(tmp2)
 				{
@@ -2525,6 +2527,11 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 					PointingToObject(tmp,tmp2,Fiber_PointToUpperLayer);
 										
 				}			
+			}
+			else
+			{
+
+				// printf("nero_addNeroByData:can not find ZhWord  in case  NeuronNode_ForOutputWord\n");
 			}
 			tmp=tmp2;
 			break;
@@ -2648,6 +2655,11 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 		        printf("addNeroByData  addNeroIntoNet fail \n");
 		}
 	}
+	else
+	{
+
+		printf("addNeroByData  addNeroIntoNet fail :tmp == NULL\n");
+	}
 	
 	return tmp;
 
@@ -2757,10 +2769,17 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 				if(tmp2 )
 				{
 					curFiber=tmp2 ->outputListHead;
-					while(  curFiber->obj->inputListHead  !=   tmp)
+
+					if(curFiber)
 					{
-						curFiber=curFiber->next;
+						while(  curFiber->obj->inputListHead  !=   tmp)
+						{
+							curFiber=curFiber->next;
+						}
+
 					}
+					else
+						tmp2=NULL;
 
 
 

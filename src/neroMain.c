@@ -46,38 +46,8 @@ extern void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName);
 
 int x=50;
 int y=50;
-// GtkWidget * table;//主界面的table
-// GtkWidget * buttoms[buttomNum];
-// GtkWidget * srollWindows[textNum];
-// GdkWindow *paintwindow;
-// GtkWidget *darea;
-// GtkWidget *Mainwindow;
-// GtkWidget *dareaForComper[15];
-// cairo_t  *currentCair ;
+
 int recoverPic=0;
-// cairo_t  *SavecurrentCair ;
-
-// GtkWidget *fixed;
-// cairo_surface_t *image;
-// GtkWidget *notebook;
-
-/*搜索面板中的text控件*/
-// GtkWidget *textViewForSearch;
-// GtkTextBuffer *textViewForSearchBuff;
-// GtkWidget *textViewForSearchFixedInsideBox;
-// GtkWidget * ceshibuttoms;
-
-
-//tree  搜索面板中的各个变量
-	//  GtkWidget   *typeChoseRadio1, *typeChoseRadio2,*typeChoseRadio0,* typeChoseRadioBox,*typeChoseEntry;
-	//  	 GtkWidget   *outputTypeRadio1, *outputTypeRadio0,*outputTypeRadio2,*outputTypeRadioBox,*outputTypeEntry;
-	// GtkWidget  *    lables[widgetsNum];
-	gchar  *  				lableTexts[widgetsNum] ;
-		gchar  *  				radioButtonTexts[widgetsNum] ;	
-	
-// GtkWidget *textViewForTreeCreates[widgetsNum];
-// GtkTextBuffer *textBuffForTreeCreates[widgetsNum];
-
 
 
 struct    PrintNeroLInkTree_St    objTreeSt;
@@ -86,7 +56,7 @@ static struct  NeuronObjectMsg_    neroObjMsg_st;
 
 static nero_8int  file_path_getcwd[FILEPATH_MAX];/*保存当前目录*/
 
-// LineMan *manAllLineFromNeo;
+
 
 void ProInitialization();
 void main()
@@ -154,7 +124,12 @@ void ProInitialization()
 		printf("ProInitialization ok\n");	
 
 		/*do   more  */
-		ReadTaskFromTxt();
+		nero_8int * fileName1="/data/taskFile.sh";
+		ReadTaskFromTxt( fileName1  );
+
+		nero_8int * fileName2="/data/taskFileForCreateIO.sh";
+		ReadTaskFromTxt( fileName2  );	
+
 
 		#ifdef Nero_DeBuging14_01_14_
 			// printf  msg  by  obj

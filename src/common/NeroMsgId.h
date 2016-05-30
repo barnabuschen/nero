@@ -6,6 +6,25 @@
 
 #define IPCKEY 0x111
 
+
+
+/**********************Task operateKind ID*************************/
+
+/*几个有关NeroConfiguration的宏*/
+#define  Conf_Modify_addLevelObjAlways    1   //修改addLevelObjAlways
+#define  Conf_Modify_CreateNewBaseObjKind    2   //修改CreateNewBaseObjKind
+
+#define  Conf_Modify_ReSet    100  //修改conf   为默认状态
+/*****************************************************/
+
+#define  Process_Create_ForOutputWord    3  //create a   NeuronNode_ForOutputWord  kind   obj
+
+
+
+
+
+
+
 #define DeBugForMsgID
 
 #ifdef DeBugForMsgID
@@ -31,7 +50,11 @@
 #define  MsgId_IO_GetObjMsg    3000 
 #define  MsgId_IO_PrintObjMsgWithStr    3001 
 #define  MsgId_IO_dataIO    3002 
+#define  MsgId_IO_ForOutputWord    3003 
+
 /*****************************************************/
+
+
 
 
 #else
@@ -46,71 +69,5 @@
 
 
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif

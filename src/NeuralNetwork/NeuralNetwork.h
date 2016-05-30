@@ -46,10 +46,6 @@ int next;
 
 */
 
-/*几个有关NeroConfiguration的宏*/
-#define  Conf_Modify_addLevelObjAlways    1   //修改addLevelObjAlways
-#define  Conf_Modify_CreateNewBaseObjKind    2   //修改CreateNewBaseObjKind
-#define  Conf_Modify_ReSet    100  //修改conf   为默认状态
 
  typedef struct NeroConfiguration
  {

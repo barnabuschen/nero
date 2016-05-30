@@ -90,7 +90,7 @@ nero_s32int IO_GetNeroObjMsg(void * arg);
 
 nero_s32int IO_InputDataToSys(void * operateKind,void *str);
 nero_s32int IO_NeroConfigurationModify(void * operateKind,void *dataFilePath);
-
+nero_s32int IO_ForOutputWord(void * arg);
 int UTF8ToGBK(char src[],char res[]);
 int  GetToken( char * str);
 

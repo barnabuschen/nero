@@ -32,8 +32,8 @@ typedef struct TaskFileFormat
 void obtainOrderFromTFF(TFF * tff);/*从TFF中分析得到命令后在函数里面直接发送就行了*/
 
 
-
-void ReadTaskFromTxt(void);
+// void ReadTaskFromTxt();
+void ReadTaskFromTxt(nero_8int  * fileNameInpt);
 void getMsgInToTFF(struct TaskFileFormat *  tff);
 void JustDoTask();
 void CreateBaseKindOfShu();

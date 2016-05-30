@@ -36,6 +36,11 @@
 #define  Task_Order_MathNotation     102  /*数学符号*/
 #define  Task_Order_CreateKindWithOneCharArg     200  /*创建一个新类，由单个字符组成，新类名称为一个字符串*/
 #define  Task_Order_CreateKindWithOneCharArg2     201  /*创建一个新类，由单个字符组成，新类名称为一个字*/
+#define  Task_Order_CreateOutputWordKindObj    202      /*创建NeuronNode_ForOutputWord  kind  obj*/
+
+
+
+
 #define  Task_Order_ResetConf     500  /*将conf恢复为默认配置*/
 
 #define  Task_Order_Max     1000
@@ -69,6 +74,8 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 {Task_Order_CreateKindWithOneCharArg,2,TFFDataType_String,	TFFDataType_Character},
 /*创建"new  kind"	  参数个数 新类名	     	新类的第一个数据*/
 {Task_Order_CreateKindWithOneCharArg2,2,TFFDataType_Character,	TFFDataType_Character},
+/*创建"new  kind"                 参数个数    第一个数据*/
+{Task_Order_CreateOutputWordKindObj,1,TFFDataType_Character},
 {0},
 {0},
 {0},
@@ -288,8 +295,8 @@ void JustDoTask()
                 msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
         }
 }
-
-void ReadTaskFromTxt()
+// void ReadTaskFromTxt()
+void ReadTaskFromTxt(nero_8int  * fileNameInpt)
 {
 
         nero_us32int strlenMax,flength,strlenMin,strLen,pos,tmpII,tmpJJ;
@@ -300,8 +307,9 @@ void ReadTaskFromTxt()
 	nero_8int *mapped_mem, * p,*end;
         nero_8int       *linStart,*linEnd;
  	getcwd(file_path_getcwd,FILEPATH_MAX);
-	sprintf(fileName,"%s/data/taskFile.sh",file_path_getcwd);
 
+	// sprintf(fileName,"%s/data/taskFile.sh",file_path_getcwd);
+    sprintf(fileName,"%s%s",file_path_getcwd,fileNameInpt);
  	void * start_addr = 0;
 	fd = open(fileName, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
 	flength = lseek(fd, 1, SEEK_END);
@@ -402,7 +410,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         
         
         
-	nero_s32int i,orderPos;
+	nero_s32int i,orderPos,flag;
 	/*先转化为可以发送命令的参数*/
 	/*1 找到参数类型列表项*/
 	orderPos=-1;
@@ -440,9 +448,9 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 				}
           
                 for (k=0;k<countOfWord;k++)
-	        {
-				switch(OrderDataTypeList[orderPos][k+2])
-				{
+	           {
+				    switch(OrderDataTypeList[orderPos][k+2])
+				    {
 					case TFFDataType_Character:
 	/*					printf("obtainOrderFromTFF: CreateObjShu order \n");*/
 						lenOfpar=strlen( tff->data[k+1]);
@@ -466,7 +474,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 						printf("obtainOrderFromTFF: unknow order \n");
 						break;
 			
-				}			
+				    }			
 
 
 	        }
@@ -488,19 +496,33 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 				case    Task_Order_MathNotation:
 				case    Task_Order_CreateKindWithOneCharArg:
 				case    Task_Order_CreateKindWithOneCharArg2:
-				DataIO_st.operateKind =Conf_Modify_CreateNewBaseObjKind;break;
-
-				// DataIO_st.operateKind =Conf_Modify_ReSet;break;			
+				        DataIO_st.operateKind =Conf_Modify_CreateNewBaseObjKind;
+                        flag=1;
+                        break;			
 				case    Task_Order_ResetConf:
-				DataIO_st.operateKind =Conf_Modify_ReSet;break;
-
-				
-				 default :DataIO_st.operateKind =Conf_Modify_ReSet; break;
+				        DataIO_st.operateKind =Conf_Modify_ReSet;
+                        flag=1;
+                        break;
+                case    Task_Order_CreateOutputWordKindObj:
+                        //it  is  different form  up cases.
+                        //if  you  wangt  to  created  obj  by  data,the  kind is  depending  on   tff->order  ,rather than  the  type of data
+                        //
+                        dataKind[0]=NeuronNode_ForOutputWord;
+				        // DataIO_st.operateKind =Process_Create_ForOutputWord;
+                        break;
+				 default :
+                        DataIO_st.operateKind =Conf_Modify_ReSet; 
+                        flag=0;
+                        break;
 			}
-			memcpy(DataIO_st.str,&neroConf,sizeof(NeroConf));
-			((NeroConf *)DataIO_st.str)->CreateNewBaseObjKind=1;
-			msgsnd(Operating_mq_id, &DataIO_st, sizeof(DataIO_st), 0);
-		
+
+            if(flag  == 1)
+            {
+                memcpy(DataIO_st.str,&neroConf,sizeof(NeroConf));
+                ((NeroConf *)DataIO_st.str)->CreateNewBaseObjKind=1;
+                msgsnd(Operating_mq_id, &DataIO_st, sizeof(DataIO_st), 0);          
+            }
+
 		
 			 if(countOfWord > 0)
 			{

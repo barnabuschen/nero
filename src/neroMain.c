@@ -125,10 +125,14 @@ void ProInitialization()
 
 		/*do   more  */
 		nero_8int * fileName1="/data/taskFile.sh";
-		// ReadTaskFromTxt( fileName1  );
+		ReadTaskFromTxt( fileName1  );
 
 		nero_8int * fileName2="/data/taskFileForCreateIO.sh";
-		// ReadTaskFromTxt( fileName2  );	
+		ReadTaskFromTxt( fileName2  );	
+
+		nero_8int * fileName3="/data/taskfileForDataStream.sh";
+		ReadTaskFromTxtByline( fileName3  );	
+
 
 
 		#ifdef Nero_DeBuging14_01_14_

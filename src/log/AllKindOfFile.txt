@@ -1,2 +1,0 @@
-Log_printAllKindOf(default):Tue May 31 23:32:33 2016
-		ObjectKind=2004 ,name=0的所有对象为(0):

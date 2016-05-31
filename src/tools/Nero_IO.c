@@ -348,7 +348,13 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 		default:
 		
 			curFiber=BaseObi->outputListHead;
-			sprintf(str,"Log_printAllKindOf(default):%s		ObjectKind=%d ,name=%x的所有对象为(%d):\n",asctime(timenow),ObjectKind,BaseObi->inputListHead->obj,BaseObi->x);
+			// if(BaseObi->inputListHead->obj)
+			// 	sprintf(str,"Log_printAllKindOf(default):%s		ObjectKind=%d ,name=%x的所有对象为(%d):\n",asctime(timenow),ObjectKind,BaseObi->inputListHead->obj,BaseObi->x);
+			
+			// else
+				sprintf(str,"Log_printAllKindOf(default):%s		ObjectKind=%d ,的所有对象为(%d):\n",asctime(timenow),ObjectKind,BaseObi->x);
+
+
 			addLineToFile(AllKindOfFile,str);
 			while(curFiber)
 			{
@@ -374,7 +380,13 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 					
 					}
 					// printf("Log_printAllKindOf kind =%d,inputListHead->obj kind=%d  \n",nero_GetNeroKind( tmp  ),nero_GetNeroKind ( tmp->inputListHead->obj));
-					sprintf(strLinshi,"		地址%x  <%s>,kind=%d,name=%x\n",(int)tmp,str,ObjectKind2,BaseObi->inputListHead->obj/*,getFiberPointToObjNum(curFiber)*/);
+					
+					// if(BaseObi->inputListHead->obj)
+					// 	sprintf(strLinshi,"		地址%x  <%s>,kind=%d,name=%x\n",(int)tmp,str,ObjectKind2,BaseObi->inputListHead->obj/*,getFiberPointToObjNum(curFiber)*/);
+					
+					// else
+						sprintf(strLinshi,"		地址%x  <%s>,kind=%d\n",(int)tmp,str,ObjectKind2/*,getFiberPointToObjNum(curFiber)*/);
+
 					addLineToFile(AllKindOfFile,strLinshi);
 
 				curFiber=curFiber->next;

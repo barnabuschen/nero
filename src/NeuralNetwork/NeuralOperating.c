@@ -298,8 +298,8 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		{
 				// ifHasUnknowObj=1;
 
-				#ifdef Nero_DeBuging09_01_14_
-				printf("找不到子概念\n");
+				#ifdef Nero_DeBuging09_01_14
+				// printf("找不到子概念\n");
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = tmpObi;
@@ -313,11 +313,11 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		else 
 		{
 				// ifHasUnknowObj=0;
-				#ifdef Nero_DeBuging09_01_14_				
+				#ifdef Nero_DeBuging09_01_14		
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = tmpObi;
-				sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中找到该概念");
+				sprintf(neroObjMsgWithStr_st.str,"<STREAM   IN   DataFlowProcess>");
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif	
 				tmoForRecordNUm++;
@@ -984,7 +984,7 @@ nero_us32int nextAvailableNeroInPool;*/
 				sprintf(neroObjMsgWithStr_st.str,"test:");
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 			#endif
-			#ifdef Nero_DeBuging09_01_14
+			#ifdef Nero_DeBuging09_01_14_
 				// print  one  obj  link
 				neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
 				neroObjMsg_st.fucId = 2;
@@ -993,7 +993,7 @@ nero_us32int nextAvailableNeroInPool;*/
 				printf("nero   msg:%x,%x \n",GodNero,&tmp2222);
 				msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			
 			#endif	
-	 		#ifdef Nero_DeBuging10_01_14
+	 		#ifdef Nero_DeBuging10_01_14_
 				// print  all  of  the  kind  obj
 				{
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
@@ -1012,7 +1012,7 @@ nero_us32int nextAvailableNeroInPool;*/
 				neroObjMsgWithStr_st.fucId =2;
 				neroObjMsgWithStr_st.Obi =NULL;
 				// nero_s32int xxxxxx=NeuronNode_ForChWord;
-				nero_s32int xxxxxx=2004;
+				nero_s32int xxxxxx=NeuronNode_ForChWord;
 				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);	
 						}

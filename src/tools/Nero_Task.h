@@ -39,7 +39,7 @@ void JustDoTask();
 void CreateBaseKindOfShu();
 void ModifyBaseKindOfShu();
 //every line  in  file is a  data string ,every char in str  is  a  char  obj
-// void ReadTaskFromTxtByline(nero_8int  * FileName);
+void ReadTaskFromTxtByline(nero_8int  * FileName);
 
 
 #endif

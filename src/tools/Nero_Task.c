@@ -39,6 +39,9 @@
 #define  Task_Order_CreateOutputWordKindObj    202      /*创建NeuronNode_ForOutputWord  kind  obj*/
 
 
+#define  Task_Order_DataInput    300      /* just  input some  data  into  sys,  its parameter  is just a  string */
+
+
 
 
 #define  Task_Order_ResetConf     500  /*将conf恢复为默认配置*/
@@ -61,6 +64,11 @@
 /*1   	2   					3  .....*/
 /*命令	该命令后面的数据个数，不包括1,2  	第一个数据*/
 
+
+// 这个机制无法处理参数为可变的情况,所以必须做出特别规定  for spectial case 
+            // when  Task_Order_DataInput  set  in  input file ,
+            // it means 参数个数=1,but in fact  every char  in  the  string  is  a  obj ,so  参数个数 is  Variable
+
 nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 /*创建"数字"		  参数个数 新类名	     	新类的第一个数据*/
 {Task_Order_CreateObjShu, 2	,  TFFDataType_Character,TFFDataType_Character},
@@ -76,6 +84,8 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 {Task_Order_CreateKindWithOneCharArg2,2,TFFDataType_Character,	TFFDataType_Character},
 /*创建"new  kind"                 参数个数    第一个数据*/
 {Task_Order_CreateOutputWordKindObj,1,TFFDataType_Character},
+/*创建"new  kind"     参数个数   第一个数据*/
+{Task_Order_DataInput,1,TFFDataType_String},
 {0},
 {0},
 {0},
@@ -363,11 +373,11 @@ void ReadTaskFromTxt(nero_8int  * fileNameInpt)
                         /*提取信息中的各个字段*/
                         if( (tff.str)[0]  !=  '#')
                         {
-								//~ printf("ReadTaskFromTxt::%s\n",tff.str);
-                                 getMsgInToTFF(&tff);
+								 // printf("ReadTaskFromTxt::%s\n",tff.str);
+                                 getMsgInToTFF(&tff);//  the data in tff.str is  l  line  in file
 /*				下面将tff中的信息转化为实际的命令*/
 				
-				obtainOrderFromTFF(&tff);/*从TFF中分析得到命令后在函数里面直接发送就行了*/
+				                obtainOrderFromTFF(&tff);/*从TFF中分析得到命令后在函数里面直接发送就行了*/
 
                         }
 
@@ -390,6 +400,7 @@ void ReadTaskFromTxt(nero_8int  * fileNameInpt)
 
 void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里面直接发送就行了*/
 {
+        static nero_us8int  coutOfRun=0;
         if (tff == NULL  ||  tff->MsgCount <1  )
         {
                 return ;
@@ -435,106 +446,117 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 		return;
 	}
 	/*现在开始转化发送命令的参数*/	
-        for (i=0;i<=0;i++)
-        {
                 
-        
-                countOfWord=tff->MsgCount -1;
-                if(countOfWord > 0)
-                {
-	                DataFlow=(void **)malloc(sizeof(void *)*countOfWord);
-					dataKind=(nero_s32int *)malloc(sizeof(nero_s32int *) * countOfWord);
-      				
-				}
-          
-                for (k=0;k<countOfWord;k++)
-	           {
-				    switch(OrderDataTypeList[orderPos][k+2])
-				    {
-					case TFFDataType_Character:
-	/*					printf("obtainOrderFromTFF: CreateObjShu order \n");*/
-						lenOfpar=strlen( tff->data[k+1]);
-									DataFlow[k]=(void *)malloc((sizeof( char)*3));
-									linc=(char *)DataFlow[k];
-									memset(linc,0,3);
-									memcpy(linc,&(tff->data[k+1]),lenOfpar);
-									dataKind[k]=NeuronNode_ForChCharacter;					
-						break;
-					case TFFDataType_String:
-	/*					printf("obtainOrderFromTFF: CreateObjShu order \n");*/
-						lenOfpar=strlen( tff->data[k+1]);
-									DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
-									 linc=(char *)DataFlow[k];
-									 memset(linc,0,(lenOfpar) +1);
-									memcpy(linc,tff->data[k+1],(lenOfpar) +1);
-									dataKind[k]=NeuronNode_ForChWord;
-						break;					
-						
-					default:
-						printf("obtainOrderFromTFF: unknow order \n");
-						break;
+
+    countOfWord=tff->MsgCount -1;
+    if(countOfWord > 0)
+    {
+        DataFlow=(void **)malloc(sizeof(void *)*countOfWord);
+		dataKind=(nero_s32int *)malloc(sizeof(nero_s32int *) * countOfWord);
 			
-				    }			
+	}
+    //there is 
+    for (k=0;k<countOfWord;k++)
+   {
+	    switch(OrderDataTypeList[orderPos][k+2])
+	    {
+		case TFFDataType_Character:
+/*					printf("obtainOrderFromTFF: CreateObjShu order \n");*/
+			lenOfpar=strlen( tff->data[k+1]);
+						DataFlow[k]=(void *)malloc((sizeof( char)*3));
+						linc=(char *)DataFlow[k];
+						memset(linc,0,3);
+
+                        //lenOfpar=1  or 3,so in fact  you do not need to  copy 3 char,
+                        //but  when you want to  use this data to create a  NeuronNode_ForChCharacter
+                        //  obj  ,you  need  the len of DataFlow[k] is three  
+                        //                                  DataFlow[k][0]=   tff->data[k+1]    
+                        //                                  DataFlow[k][1]=   tff->data[k+2]  =0    (if  the data is a num)
+                        //                                  DataFlow[k][2]=   tff->data[k+3]    =0   (if  the data is a num)                   
+
+						memcpy(linc,&(tff->data[k+1]),3);
 
 
-	        }
-                /*现在开始准备发送消息了*/
-                dataNum=countOfWord;
-                arg2.dataNum=dataNum;
-                arg2.dataKind=dataKind;
-                arg2.conf=&neroConf;
-                arg2.DataFlow=DataFlow;
-                
-                /*必须通过发送消息来修改conf*/
-			struct  IODataMsg_  DataIO_st; 
-			DataIO_st.MsgId = MsgId_Nero_ConfModify;
-			DataIO_st.fucId = 1;
-			switch( tff->order)
-			{
-				case    Task_Order_CreateObjShu:
-				case    Task_Order_CreateObjALBS:
-				case    Task_Order_MathNotation:
-				case    Task_Order_CreateKindWithOneCharArg:
-				case    Task_Order_CreateKindWithOneCharArg2:
-				        DataIO_st.operateKind =Conf_Modify_CreateNewBaseObjKind;
-                        flag=1;
-                        break;			
-				case    Task_Order_ResetConf:
-				        DataIO_st.operateKind =Conf_Modify_ReSet;
-                        flag=1;
-                        break;
-                case    Task_Order_CreateOutputWordKindObj:
-                        //it  is  different form  up cases.
-                        //if  you  wangt  to  created  obj  by  data,the  kind is  depending  on   tff->order  ,rather than  the  type of data
-                        //
-                        dataKind[0]=NeuronNode_ForOutputWord;
-				        // DataIO_st.operateKind =Process_Create_ForOutputWord;
-                        break;
-				 default :
-                        DataIO_st.operateKind =Conf_Modify_ReSet; 
-                        flag=0;
-                        break;
-			}
 
-            if(flag  == 1)
-            {
-                memcpy(DataIO_st.str,&neroConf,sizeof(NeroConf));
-                ((NeroConf *)DataIO_st.str)->CreateNewBaseObjKind=1;
-                msgsnd(Operating_mq_id, &DataIO_st, sizeof(DataIO_st), 0);          
-            }
+                        // printf("code is =%c ,%d lenOfpar=%d\n",linc,linc[0],lenOfpar);
+						dataKind[k]=NeuronNode_ForChCharacter;					
+			break;
+		case TFFDataType_String:
+/*					printf("obtainOrderFromTFF: CreateObjShu order \n");*/
+			lenOfpar=strlen( tff->data[k+1]);
+						DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
+						 linc=(char *)DataFlow[k];
+						 memset(linc,0,(lenOfpar) +1);
+						memcpy(linc,tff->data[k+1],(lenOfpar) +1);
+						dataKind[k]=NeuronNode_ForChWord;
+			break;					
+			
+		default:
+			printf("obtainOrderFromTFF: unknow order \n");
+			break;
 
-		
-			 if(countOfWord > 0)
-			{
-	/*                printf(" neroConf.CreateNewBaseObjKind=%d.\n", neroConf.CreateNewBaseObjKind);*/
-					memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
-					mymsg.type =MsgId_Nero_DataFlowProcess ;
-					msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
-					
-			}
-        }	
-	
-	
+	    }			
+   }
+    /*现在开始准备发送消息了*/
+    dataNum=countOfWord;
+    arg2.dataNum=dataNum;
+    arg2.dataKind=dataKind;
+    arg2.conf=&neroConf;
+    arg2.DataFlow=DataFlow;
+    
+        /*必须通过发送消息来修改conf*/
+    struct  IODataMsg_  DataIO_st; 
+    DataIO_st.MsgId = MsgId_Nero_ConfModify;
+    DataIO_st.fucId = 1;
+    switch( tff->order)
+    {
+    	case    Task_Order_CreateObjShu:
+    	case    Task_Order_CreateObjALBS:
+    	case    Task_Order_MathNotation:
+    	case    Task_Order_CreateKindWithOneCharArg:
+    	case    Task_Order_CreateKindWithOneCharArg2:
+    	        DataIO_st.operateKind =Conf_Modify_CreateNewBaseObjKind;
+                flag=1;
+                break;			
+    	case    Task_Order_ResetConf:
+    	        DataIO_st.operateKind =Conf_Modify_ReSet;
+                flag=1;
+                break;
+        case    Task_Order_CreateOutputWordKindObj:
+                //it  is  different form  up cases.
+                //if  you  wangt  to  created  obj  by  data,the  kind is  depending  on   tff->order  ,rather than  the  type of data
+                //
+                dataKind[0]=NeuronNode_ForOutputWord;
+                flag=0;
+    	        // DataIO_st.operateKind =Process_Create_ForOutputWord;
+                break;
+    	 default :
+                DataIO_st.operateKind =Conf_Modify_ReSet; 
+                flag=0;
+                break;
+    }
+
+    if(flag  == 1)
+    {
+        memcpy(DataIO_st.str,&neroConf,sizeof(NeroConf));
+        ((NeroConf *)DataIO_st.str)->CreateNewBaseObjKind=1;
+        msgsnd(Operating_mq_id, &DataIO_st, sizeof(DataIO_st), 0);          
+    }
+
+
+     if(countOfWord > 0)
+    {
+
+            coutOfRun++;
+            // printf(" obtainOrderFromTFF:coutOfRun=%d  %s.%s\n", coutOfRun,arg2.DataFlow[0],arg2.DataFlow[1]);
+    		memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
+    		mymsg.type =MsgId_Nero_DataFlowProcess ;
+    		msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+    		
+    }
+
+
+
 
 
 

@@ -65,7 +65,7 @@ END_TWO_ARG_MESSAGE_MAP
 
 
 
-
+#define  LenOfstrTmp   2000
 
 
 
@@ -76,7 +76,7 @@ struct  tm  *timenow;         //实例化tm结构指针
 nero_8int  logFile[FILEPATH_MAX]="/tmp/log.txt";
 nero_8int  AllKindOfFile[FILEPATH_MAX]="/tmp/AllKindOfFile.txt";
 static nero_8int  file_path_getcwd[FILEPATH_MAX]="/tmp";/*保存当前目录*/
-nero_8int  strTmp[1500];
+nero_8int  strTmp[LenOfstrTmp];
 
  extern struct    PrintNeroLInkTree_St    objTreeSt;
 
@@ -317,7 +317,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 		case NeuronNode_ForChCharacter:
 /*		case NeuronNode_ForChWord :*/
 			curFiber=BaseObi->outputListHead;
-			sprintf(str,"Log_printAllKindOf:%s		ObjectKind=%d的所有对象为：\n",asctime(timenow),ObjectKind);
+			sprintf(str,"Log_printAllKindOf(undefault):%s		ObjectKind=%d的所有对象为：\n",asctime(timenow),ObjectKind);
 			addLineToFile(AllKindOfFile,str);
 			while(curFiber)
 			{
@@ -348,10 +348,11 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 		default:
 		
 			curFiber=BaseObi->outputListHead;
-			sprintf(str,"Log_printAllKindOf:%s		ObjectKind=%d的所有对象为：\n",asctime(timenow),ObjectKind);
+			sprintf(str,"Log_printAllKindOf(default):%s		ObjectKind=%d ,name=%x的所有对象为(%d):\n",asctime(timenow),ObjectKind,BaseObi->inputListHead->obj,BaseObi->x);
 			addLineToFile(AllKindOfFile,str);
 			while(curFiber)
 			{
+					//tmp  is the obj you wangt to search
 				tmp=curFiber->obj;
 
 					ObjectKind2=nero_GetNeroKind(tmp);
@@ -362,13 +363,17 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 							break;
 						case NeuronNode_ForChWord:
 							IO_getWordsInNero(str,tmp);
-							break;
-						default:
-					
+							break;		
+						default:	
+
+								if( nero_GetNeroKind ( tmp->inputListHead->obj)   ==  NeuronNode_ForChCharacter )	
+									IO_getZhInNero(str,tmp->inputListHead->obj);
+								else 	
 					                str[0]=0;
-							break;
+								break;
 					
 					}
+					// printf("Log_printAllKindOf kind =%d,inputListHead->obj kind=%d  \n",nero_GetNeroKind( tmp  ),nero_GetNeroKind ( tmp->inputListHead->obj));
 					sprintf(strLinshi,"		地址%x  <%s>,kind=%d,name=%x\n",(int)tmp,str,ObjectKind2,BaseObi->inputListHead->obj/*,getFiberPointToObjNum(curFiber)*/);
 					addLineToFile(AllKindOfFile,strLinshi);
 
@@ -616,16 +621,31 @@ struct NerveFiber_   * outputListHead;
 				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,ObjectKind=%d,非法的打印信息\n",asctime(timenow),(int)obj,(int)ObjectKind);	
 			break;	
 		case NeuronNode_ForChCharacter:
-			tmp=obj->inputListHead->obj;/*衍生对象的第一个数据*/
-			if (strlen(str_) <400  && tmp->x !=0 && tmp->y !=0 && tmp->z !=0)
-			{
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象(%c%c%c),%s,数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(char *)str_,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
-			}
-			else if (strlen(str_) <400)
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象(特殊符号)《***》,%s,数据是：《%x%x%x》\n",asctime(timenow),(int)obj/*,(int)tmp->x,(int)tmp->y,(int)tmp->z*/,(char *)str_,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
-			else
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象《%c%c%c》,非法的打印信息\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
-			break;
+				tmp=obj->inputListHead->obj;/*衍生对象的第一个数据*/
+				if (strlen(str_) <400  && tmp->x !=0 && tmp->y !=0 && tmp->z !=0)
+				{
+					sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象(%c%c%c),%s,数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(char *)str_,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+				}
+				else if (strlen(str_) <400)
+				{
+
+					if(tmp->x !=0   )
+					{
+						sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+					}
+					else if(tmp->y !=0   )
+					{
+						sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->y,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+					}
+					else if(tmp->z !=0   )
+					{
+						sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+					}
+
+				}
+				else
+					sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象《%c%c%c》,非法的打印信息\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+				break;
 		case NeuronNode_ForChWord :
 			linshi=IO_getWordsInNero(strLinshi,obj);
 			if (strlen(str_) <400)
@@ -651,11 +671,55 @@ nero_s32int IO_ForOutputWord(void * arg)
 {
 
 	nero_s32int res=0;
+	nero_8int  *str=strTmp;
+	nero_s32int ObjectKind;
+	nero_8int  strLinshi[500];
+	NeuronObject * obj=(NeuronObject *)arg;
+	NeuronObject * tmp;
+	
+	memset(strTmp,0,LenOfstrTmp);
+	time(&now);//time函数读取现在的时间(国际标准时间非北京时间)，然后传值给now
+	timenow   =   localtime(&now);//localtime函数把从time取得的时间now换算成你电脑中的时间(就是你设置的地区)
+/*		printf("Local   time   is   %s/n",asctime(timenow));*/
 
+	if (obj)
+	{
+		ObjectKind=nero_GetNeroKind(obj);
+		if(ObjectKind  ==  NeuronNode_ForOutputWord)
+		{
 
+			tmp=obj->inputListHead->obj;/*衍生对象的第一个数据obj*/
+			tmp=tmp->inputListHead->obj;/*the data of 数据obj*/
 
-	printf("IO_ForOutputWord:..........................\n");
+			// printf("kind of  obj=%d\n",nero_GetNeroKind(obj));
+			// printf("kind of  data=%d\n",nero_GetNeroKind(tmp));
+		    // printf("地址：%x,打印字符对象(%c%c%c),数据是：《%x %x %x》\n",(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
 
+			if (tmp->x !=0 && tmp->y !=0 && tmp->z !=0)
+			{
+				sprintf(str,"IO_ForOutputWord:%s		地址：%x,打印字符对象(%c%c%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+			}
+			else if(tmp->x !=0   )
+			{
+				sprintf(str,"IO_ForOutputWord1:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+			}
+			else if(tmp->y !=0   )
+			{
+				sprintf(str,"IO_ForOutputWord2:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->y,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+			}
+			else if(tmp->z !=0   )
+			{
+				sprintf(str,"IO_ForOutputWord3:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+			}
+			else
+				sprintf(str,"IO_ForOutputWord:%s		地址：%x,打印字符对象《%c%c%c》,非法的打印信息\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+
+		}
+
+			
+	}
+	addLineToFile(logFile,str);
+	return nero_msg_ok;
 }
 /*想窗口发送信息*/
 nero_s32int IO_GetNeroObjMsg(void * arg)

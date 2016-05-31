@@ -777,7 +777,9 @@ nero_s32int initActNero(ActNero * nero,nero_us32int kind,NerveFiber *inputListHe
 	nero->inputListHead=inputListHead;
 	nero->outputListHead=outputListHead;
 
-
+	nero->x=0;
+	nero->y=0;
+	nero->z=0;
 
 
 	return NeroOK;
@@ -1006,7 +1008,7 @@ nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj)
 	NeuronObject * BaseObi;
 	NerveFiber  *  curFiber;	
 	/*要遍历整个以GodNero为起点(遍历它下层的对象）的网络*/
-			#ifdef  Nero_DeBuging18_11_130
+			#ifdef  Nero_DeBuging18_11_13_
 			printf("newObj Kind=%d.\n",nero_GetNeroKind(newObj));
 			#endif	
 
@@ -1030,9 +1032,11 @@ nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj)
 			/*加入该区域*/
 			
 			 nero_addNeroIntoBaseObj(BaseObi,newObj);
-			#ifdef  Nero_DeBuging18_11_13_
-			printf("add new  obj to net:newObjKind=%d.BaseObjectKind=%d\n",newObjKind,BaseObjectKind);
-			#endif	
+
+			printf("nero_addNeroIntoNet:add new  obj to net:newObj(%x)=%d.BaseObjectKind=%d\n",newObj,newObjKind,BaseObjectKind);
+
+
+			BaseObi->x =BaseObi-> x+1;
 
 			 return  nero_msg_ok;
 			
@@ -1062,6 +1066,7 @@ nero_s32int nero_addNeroIntoBaseObj(NeuronObject *BaseObi,NeuronObject *newObj)
 	}
 
 /*	res=*/addNeuronChild(BaseObi,newObj,Relationship_bothTother);
+	// BaseObi->x =BaseObi->x  +1;
 	return NeroOK;
 }
 /*判断是不是基类,是返回1*/
@@ -2234,10 +2239,6 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 		return NULL;
 	
 	}
-		
-	
-	
-	
 	
 	/*将新概念与旧概念生成联系,此外俩个旧概念，这里仅仅第一个指向第二个*/
 	
@@ -2539,6 +2540,15 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 		case NeuronNode_ForChCharacter:
 		wordP2=(ChUTF8  *)Data;/*实际上只是一个ChUTF8而非ChUTF8_结构的数据，但是不影响结果*/
 
+		/*
+
+		 chinese  need 3 char to  srote it.
+		 but you use utf8  in sys ,so  when  you read nums in  file,
+		it just use  1  char to store,in this way ,for example:
+			you  read char '1'  in  file ,its code  is  48
+		then  you  store it  in  wordP2{48,0,0}  (see fuc :obtainOrderFromTFF() ,line 460)
+		thas is  ok ,when you  want to outpu is ,you just need  48.
+		*/
 		tmp=nero_IfHasZhWord( GodNero,wordP2, dataKind);/*多余的*/
 		
 		if (tmp  == NULL)
@@ -2599,29 +2609,24 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 			if(tmp)
 			{
 				/*往概念填数据*/
-/*				nero_addDataToZhNeroObj(tmp,wordP);*/
-/*				if (strlenInData >=3)*/
-				{
-					tmp= nero_createObjFromMultiples(str, strlenInData);
-				}
-/*				else*/
-/*					tmp=nero_createObjFromPair(str[0],str[1]);*/
-/*					*/
-				
-	                        #ifdef nero_addNeroByData_debug_msg
+
+				//has  add to net  in here
+				tmp= nero_createObjFromMultiples(str, strlenInData);
+					
 				if (tmp == NULL)
 				{
 				        printf("nero_addNeroByData:概念创建失败,strlenInData=%d\n",strlenInData);
 				}
-	                        #endif				
+				else
+					return tmp;
 
 			}
 			else
 			{
-			
-		                 #ifdef nero_addNeroByData_debug_msg
-		                printf("nero_addNeroByData，createNeroObj失败\n");
-		                 #endif				
+	
+                 #ifdef nero_addNeroByData_debug_msg
+                printf("nero_addNeroByData，createNeroObj失败\n");
+                 #endif				
 			}
 		}		
 		else
@@ -2652,8 +2657,10 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind)
 		i=nero_addNeroIntoNet( GodNero,tmp);
 		if (i !=  nero_msg_ok)
 		{
+
 		        printf("addNeroByData  addNeroIntoNet fail \n");
 		}
+
 	}
 	else
 	{

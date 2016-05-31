@@ -108,12 +108,16 @@ nero_us8int third;
 nero_us8int fourth;//下面是高位
 
 }ChUTF8;
+
+
 typedef struct ChineseUtf8Code_
 {
 nero_us8int first;
 nero_us8int second;
 nero_us8int third;
 }ChUTF8_;
+
+
 typedef struct ChineseUnicode16Code   //16位的Unicode编码
 {
 //	union{

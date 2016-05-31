@@ -239,6 +239,7 @@ nero_s32int readUTF8FileData(nero_8int * FileName)//
 			break;
 		}
 		nero_error_Id++;
+		// the  highest  len of uft8  code  for chinese is 3
 		if( (tmp & 0x80 ) ==0)
 		{
 /*			printf("xx.\n");*/

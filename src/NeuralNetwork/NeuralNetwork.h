@@ -111,7 +111,7 @@ typedef struct ActivationNeuron ActNero;
  struct ActivationNeuron
 {
 nero_us32int msg;/*记录该nero的种类，性质等信息*/
-nero_s32int x;/*取值范围-2147483648 ~ 2147483647*/
+nero_s32int x;/*取值范围-2147483648 ~ 2147483647       use x  to  recond  how many chind has  if  its  a  baseObj */
 nero_s32int y;
 nero_s32int z;
 struct NerveFiber_  * inputListHead;/*其实究竟对于一个神经元来说是不是需要这个输入神经元的链表，*/

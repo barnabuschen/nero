@@ -195,6 +195,8 @@ void initNeroNetWork( )
 /*	printf("msgsnd chars-%d.\n",res);*/
 
 	/*一下步就是将字符信息加入网络 */
+
+	//the msg  in  chChar  is  utf8  
 	arg1.chChar=chChar;
 	arg1.charCounts=charCounts;
 	memcpy(&(mymsg.text),&arg1,sizeof(struct ZhCharArg));

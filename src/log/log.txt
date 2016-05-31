@@ -1,130 +1,34 @@
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68ac60,打印词组对象《许玉兰》,句子长度为：3,在DataFlowProcess中创建对象成功:许玉兰
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68aca0,打印词组对象《刘泵》,句子长度为：2,在DataFlowProcess中创建对象成功:刘泵
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68ace0,打印词组对象《阿曼》,句子长度为：2,在DataFlowProcess中创建对象成功:阿曼
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68ad20,打印词组对象《阿拉伯数字》,句子长度为：5,在DataFlowProcess中创建对象成功:阿拉伯数字
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68ad60,打印词组对象《数字》,句子长度为：2,在DataFlowProcess中创建对象成功:数字
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68ada0,打印词组对象《十进制》,句子长度为：3,在DataFlowProcess中创建对象成功:十进制
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68ade0,打印词组对象《二进制》,句子长度为：3,在DataFlowProcess中创建对象成功:二进制
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68ae20,打印词组对象《数学符号》,句子长度为：4,在DataFlowProcess中创建对象成功:数学符号
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68ae60,打印词组对象《运算符》,句子长度为：3,在DataFlowProcess中创建对象成功:运算符
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68aea0,打印词组对象《加法》,句子长度为：2,在DataFlowProcess中创建对象成功:加法
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68aee0,打印词组对象《减法》,句子长度为：2,在DataFlowProcess中创建对象成功:减法
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68af20,打印词组对象《乘法》,句子长度为：2,在DataFlowProcess中创建对象成功:乘法
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68af60,打印词组对象《除法》,句子长度为：2,在DataFlowProcess中创建对象成功:除法
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68afa0,打印词组对象《负号》,句子长度为：2,在DataFlowProcess中创建对象成功:负号
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
+Log_printSomeMsgForObj:Tue May 31 23:32:33 2016
 		地址：68afe0,打印词组对象《等于号》,句子长度为：3,在DataFlowProcess中创建对象成功:等于号
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b000,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b080,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b0e0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b140,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b1a0,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b200,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b260,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b2c0,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b320,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b380,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b540,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b5c0,打印字符对象(-),数据是：《2d00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b620,打印字符对象(*),数据是：《2a00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b680,打印字符对象(/),数据是：《2f00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b6e0,打印字符对象(&),数据是：《2600》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b740,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b7a0,打印字符对象(<),数据是：《3c00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b800,打印字符对象(>),数据是：《3e00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b860,打印字符对象(|),数据是：《7c00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b8c0,打印字符对象(!),数据是：《2100》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b920,打印字符对象(a),数据是：《6100》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b980,打印字符对象(b),数据是：《6200》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68b9e0,打印字符对象(c),数据是：《6300》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68ba40,打印字符对象(d),数据是：《6400》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68baa0,打印字符对象(e),数据是：《6500》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68bb00,打印字符对象(f),数据是：《6600》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68bb60,打印字符对象(g),数据是：《6700》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68bbc0,打印字符对象(h),数据是：《6800》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68bc20,打印字符对象(i),数据是：《6900》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68bc80,打印字符对象(j),数据是：《6a00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68bce0,打印字符对象(k),数据是：《6b00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68bd40,打印字符对象(l),数据是：《6c00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68bda0,打印字符对象(m),数据是：《6d00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68be00,打印字符对象(n),数据是：《6e00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68be60,打印字符对象(o),数据是：《6f00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68bec0,打印字符对象(p),数据是：《7000》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68bf20,打印字符对象(q),数据是：《7100》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68bf80,打印字符对象(r),数据是：《7200》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68bfe0,打印字符对象(s),数据是：《7300》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68c040,打印字符对象(t),数据是：《7400》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68c0a0,打印字符对象(u),数据是：《7500》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68c100,打印字符对象(v),数据是：《7600》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68c160,打印字符对象(w),数据是：《7700》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68c1c0,打印字符对象(x),数据是：《7800》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68c220,打印字符对象(y),数据是：《7900》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68c280,打印字符对象(z),数据是：《7a00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		地址：68c280,打印字符对象(z),数据是：《7a00》
-Log_printSomeMsgForObj:Tue May 31 20:15:55 2016
-		空对象或者为基类对象,在DataFlowProcess中创建对象fail:m,kind=0,0
-Log_printNeroObjLink:Tue May 31 20:15:59 2016
+Log_printNeroObjLink:Tue May 31 23:32:38 2016
 		地址：621060的link对象,ObjectKind=1
 		该对象621080为基类,ObjectKind=50，无需link
 		该对象6210a0为基类,ObjectKind=51，无需link
@@ -134,13 +38,3 @@ Log_printNeroObjLink:Tue May 31 20:15:59 2016
 		该对象621120为基类,ObjectKind=101，无需link
 		该对象621140为基类,ObjectKind=63，无需link
 		该对象621160为基类,ObjectKind=2000，无需link
-		该对象68b040为基类,ObjectKind=2001，无需link
-		该对象68b3e0为基类,ObjectKind=2002，无需link
-		该对象68b580为基类,ObjectKind=2003，无需link
-		该对象68c2e0为基类,ObjectKind=2004，无需link
-		该对象68c320为基类,ObjectKind=2005，无需link
-		该对象68c360为基类,ObjectKind=2006，无需link
-		该对象68c3a0为基类,ObjectKind=2007，无需link
-		该对象68c3e0为基类,ObjectKind=2008，无需link
-		该对象68c420为基类,ObjectKind=2009，无需link
-		该对象68c4a0为基类,ObjectKind=2010，无需link

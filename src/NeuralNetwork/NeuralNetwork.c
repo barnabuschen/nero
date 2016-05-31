@@ -1033,7 +1033,7 @@ nero_s32int nero_addNeroIntoNet(NeuronObject *GodNero,NeuronObject *newObj)
 			
 			 nero_addNeroIntoBaseObj(BaseObi,newObj);
 
-			printf("nero_addNeroIntoNet:add new  obj to net:newObj(%x)=%d.BaseObjectKind=%d\n",newObj,newObjKind,BaseObjectKind);
+			// printf("nero_addNeroIntoNet:add new  obj to net:newObj(%x)=%d.BaseObjectKind=%d\n",newObj,newObjKind,BaseObjectKind);
 
 
 			BaseObi->x =BaseObi-> x+1;

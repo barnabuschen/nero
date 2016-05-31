@@ -345,7 +345,6 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 			}
 			
-	
 			#ifdef Nero_DeBuging21_12_13
 			if (tmpObi != NULL  )
 			{
@@ -531,7 +530,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
               {
               		   // printf("need  to create new kind\n"); 
                       tmpBaseObi=nero_CreateNewBaseObj(objs,objNum,GodNero, conf);
-                      printf("NewBaseObj:%x\n",tmpBaseObi); 
+                      // printf("NewBaseObj:%x\n",tmpBaseObi); 
 
               }
               else

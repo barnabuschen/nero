@@ -29,6 +29,10 @@
 #include "neroMain.h"
 
 
+
+
+
+
 //TFF  中  order的定义
 #define  Task_Order_Min     1
 #define  Task_Order_CreateObjShu     100	/*数*/
@@ -96,8 +100,9 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 
 
 static nero_8int  file_path_getcwd[FILEPATH_MAX]="/tmp";/*保存当前目录*/
-
-
+ChUTF8 chCharInTask[ChineseCharNum];
+nero_s32int charCountsInTask;
+// static int nero_error_Id=0;
 
 void ModifyBaseKindOfShu()
 {
@@ -305,7 +310,209 @@ void JustDoTask()
                 msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
         }
 }
-// void ReadTaskFromTxt()
+//every line  in  file is a  data string ,every char in str  is  a  char  obj
+void ReadTaskFromTxtByline(nero_8int  * FileName)
+{
+
+    nero_s32int *dataKind;
+    nero_us8int *linc;
+    nero_s32int dataNum,k,countOfWord,m,lenOfpar;
+    void **DataFlow;
+    nero_8int baseobjName[100]="阿拉伯数字";
+    struct DataFlowProcessArg arg2;     
+    struct { long type; char text[100]; } mymsg;  
+
+
+    struct adkfjao  testsadkfjao;
+    nero_s32int fd;
+    nero_s8int *mapped_mem, * p;
+    nero_s32int flength = 1024;
+    nero_us8int tmp;
+    nero_s32int i;
+    nero_s32int charLength=0;//该字节所占位数
+    //存储utf编码，chChar中是以utf8编码的汉字，chCharUnicode16Code中则是对应的UnicodeCode
+    charCounts=0;
+    
+/*  nero_us32int chCharUnicodeCode[ChineseCharNum];*/
+/*  Unicode16 chCharUnicode16Code[ChineseCharNum];*/
+    
+    void * start_addr = 0;
+    fd = open(FileName, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+    flength = lseek(fd, 1, SEEK_END);
+//  write(fd, "7", 1); /* 在文件最后添加一个空字符，以便下面printf正常工作 */
+    lseek(fd, 0, SEEK_SET);
+/*  write(fd, "7", 1);*/
+    mapped_mem = mmap(start_addr, flength, PROT_READ,        //允许读
+    MAP_PRIVATE,       //不允许其它进程访问此内存区域
+    fd, 0);
+    
+    
+
+    /* 使用映射区域. 现在开始解析UTF8File*/ 
+    #ifdef Nero_DeBuging10_01_14_
+    printf("flength=%d.\n",flength);
+    printf("FileName=%s.\n",FileName);
+    printf("mapped_mem=%x.\n",mapped_mem);
+    printf("start  \n");
+    #endif
+    p=mapped_mem;
+    // charCountsInTask=0;
+
+    /*
+    while(1)
+    {
+    
+        tmp=*p;
+    
+        //这里需要判断tmp的最高位是0，还是110还是1110
+        
+        // 一个数与   1000 0000做与运算,等于0说明最高位为0
+        // 一个数与   0010 0000做与运算,等于0说明第3位为0
+        
+        #ifdef Nero_DeBuging1
+        if(charCountsInTask >55500)
+            break;
+        #endif
+        if( *p ==13  && *(p+1) ==10)
+        {
+          NerReportMsgError(nero_error_Id);
+            break;
+        }
+        nero_error_Id++;
+        // the  highest  len of uft8  code  for chinese is 3
+        if( (tmp & 0x80 ) ==0)
+        {
+            charLength=1;
+        }
+        else 
+        {   if((tmp & 0x20 ) ==0)
+            {
+                charLength=2;
+            
+            }
+            else
+            {
+                charLength=3;
+            }
+        }
+        //
+        nero_error_Id++;
+        #ifdef Nero_DeBuging20
+        printf("charLength=%d.\n",charLength);
+        printf("tmp=%d.\n",tmp);
+        #endif      
+        
+        if(charLength !=3)
+        {
+            // printf("p=%x.\n",p);
+            NerReportMsgError(nero_error_Id);
+            return NeroError;
+        
+        }
+        for(i=1;i<=charLength;i++)
+        {
+        
+            switch(i)
+            {
+                case 1: chCharInTask[charCountsInTask].first=*p;p++;break;//低位
+                case 2: chCharInTask[charCountsInTask].second=*p;p++;break;
+                case 3: chCharInTask[charCountsInTask].third=*p;p++;break;
+                case 4: chCharInTask[charCountsInTask].fourth=*p;p++;break;
+                default:
+                        // printf("p=%x.\n",p);
+                        NerReportMsgError(nero_error_Id);
+                        return NeroError;
+            }
+            charCountsInTask++;
+        }
+        //if get another line :send msg
+        nero_error_Id++;
+        if(*p == 0x0a)
+        {
+            
+            if(charCountsInTask > 0)
+            {
+                DataFlow=(void **)malloc(sizeof(void *)*charCountsInTask);
+                dataKind=(nero_s32int *)malloc(sizeof(nero_s32int *) * charCountsInTask);
+                    
+            
+
+
+                for (k=0;k<charCountsInTask;k++)
+                {
+
+                    DataFlow[k]=(void *)malloc((sizeof( char)*3));
+                    linc=(char *)DataFlow[k];
+                    memset(linc,0,3);
+
+                    //len Of char =1  or 3,so in fact  you do not need to  copy 3 char,
+                    //but  when you want to  use this data to create a  NeuronNode_ForChCharacter
+                    //  obj  ,you  need  the len of DataFlow[k] is three  
+                    //                                  DataFlow[k][0]=   tff->data[k+1]    
+                    //                                  DataFlow[k][1]=   tff->data[k+2]  =0    (if  the data is a num)
+                    //                                  DataFlow[k][2]=   tff->data[k+3]    =0   (if  the data is a num)                   
+
+                    memcpy(linc,(chCharInTask),3);
+                    dataKind[k]=NeuronNode_ForChCharacter;
+            
+
+                }
+                if(charCountsInTask > 0)
+                {
+
+                    // 现在开始准备发送消息了
+                    dataNum=charCountsInTask;
+                    arg2.dataNum=dataNum;
+                    arg2.dataKind=dataKind;
+                    arg2.conf=&neroConf;
+                    arg2.DataFlow=DataFlow;
+
+
+                
+                    memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
+                    mymsg.type =MsgId_Nero_DataFlowProcess ;
+                    msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+                    
+                }   
+
+
+
+            }
+
+            charCountsInTask=0;
+        }
+        p++;        
+        //现在开始 将Unicode编码存于unicodeInDigtial中
+        
+        //打印utf8编码数据：
+        #ifdef Nero_DeBuging10_01_14_
+        if(charCounts >6700)
+        {
+            testsadkfjao.tmp=chChar[charCounts];
+            testsadkfjao.end=0;
+            printf("%s\n",(nero_s8int *)&testsadkfjao);
+        }
+        #endif
+
+
+        // printf("%d:%d \n",charCounts,res);
+
+        // p+=6;
+        // charCounts++;
+
+
+    }
+    
+    */
+    
+    NerOkMsg;
+    close(fd);
+    munmap(mapped_mem, flength);
+
+    
+
+
+}
 void ReadTaskFromTxt(nero_8int  * fileNameInpt)
 {
 

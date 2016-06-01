@@ -1,5 +1,5 @@
-Log_printAllKindOf(default):Wed Jun  1 13:38:01 2016
-		ObjectKind=62 ,的所有对象为(16):
+Log_printAllKindOf(default):Wed Jun  1 18:42:09 2016
+		ObjectKind=62 ,的所有对象为(19):
 		地址68bd20  <许玉兰>,kind=62
 		地址68bd60  <刘泵>,kind=62
 		地址68bda0  <阿曼>,kind=62
@@ -16,3 +16,6 @@ Log_printAllKindOf(default):Wed Jun  1 13:38:01 2016
 		地址68c060  <负号>,kind=62
 		地址68c0a0  <等于号>,kind=62
 		地址68c0e0  <正号>,kind=62
+		地址68c120  <个位数>,kind=62
+		地址68c160  <十位数>,kind=62
+		地址68c1a0  <千位数>,kind=62

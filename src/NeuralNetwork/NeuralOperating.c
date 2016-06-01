@@ -298,7 +298,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		{
 				// ifHasUnknowObj=1;
 
-				#ifdef Nero_DeBuging09_01_14
+				#ifdef Nero_DeBuging09_01_14_
 				// printf("找不到子概念\n");
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
@@ -450,7 +450,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*	forecastInfo_st.head=NULL;//在thread_for_Sys_Pic(void *arg)中被初始化*/
 		
 
-	#ifdef DataFlowProcess_error_Msg
+	#ifdef DataFlowProcess_error_Msg_
 
 	//print objs  array
 	printf("before Process_ObjForecast:\n");
@@ -476,7 +476,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*        printf("coutOferror=%d.\n",coutOferror_Msg_);*/
         
 
-	#ifdef DataFlowProcess_error_Msg
+	#ifdef DataFlowProcess_error_Msg_
 
 	//print objs  array
 	printf("after Process_ObjForecast:\n");

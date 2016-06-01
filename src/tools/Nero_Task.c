@@ -317,7 +317,7 @@ void ReadTaskFromTxt(nero_8int  * fileNameInpt)
         nero_us32int strlenMax,flength,strlenMin,strLen,pos,tmpII,tmpJJ;
 /*        nero_8int s[strlenMax+1];*/
 /*        nero_8int * findStr;*/
-        nero_8int  fileName[FILEPATH_MAX];
+    nero_8int  fileName[FILEPATH_MAX];
 	nero_s32int fd;
 	nero_8int *mapped_mem, * p,*end;
         nero_8int       *linStart,*linEnd;
@@ -668,9 +668,9 @@ void ReadTaskFromTxtByline(nero_8int  * FileName)
      objNUm=0;
     charCountsInTask=0;
 
-    while( p <  end)
+    while( charCountsInTask <=  flength)
     {
-        charCountsInTask++;
+        // printf("start   %d <  %d\n",charCountsInTask,flength);
         tmp=*p;
         charLength=0;
         //这里需要判断tmp的最高位是0，还是110还是1110
@@ -678,20 +678,13 @@ void ReadTaskFromTxtByline(nero_8int  * FileName)
         // 一个数与   1000 0000做与运算,等于0说明最高位为0
         // 一个数与   0010 0000做与运算,等于0说明第3位为0
         
-        #ifdef Nero_DeBuging1_
-        if(charCountsInTask >40)
-            break;
-        #endif
+
         if( *p ==13  && *(p+1) ==10)
         {
           // NerReportMsgError(nero_error_Id);
             break;
         }
-        if( *p == 10)
-        {
-          // NerReportMsgError(nero_error_Id);
-            continue;
-        }
+
 
 
         // nero_error_Id++;
@@ -711,20 +704,25 @@ void ReadTaskFromTxtByline(nero_8int  * FileName)
                 charLength=3;
             }
         }
+        if( *p == 10)
+        {
+            charLength=0;
+        }
+
         //
         // nero_error_Id++;
-        #ifdef Nero_DeBuging2
+        #ifdef Nero_DeBuging2_
         printf("charLength=%d.\n",charLength);
         printf("tmp=%d.\n",tmp);
         #endif      
         
-        if(charLength >3  ||  charLength< 1 )
-        {
-            // printf("p=%x.\n",p);
-            // NerReportMsgError(nero_error_Id);
-            return NeroError;
+        // if(charLength >3  ||  charLength< 1 )
+        // {
+        //     // printf("p=%x.\n",p);
+        //     // NerReportMsgError(nero_error_Id);
+        //     return NeroError;
         
-        }
+        // }
         chCharInTask[objNUm].first=0;//低位
         chCharInTask[objNUm].second=0;
         chCharInTask[objNUm].third=0;
@@ -733,10 +731,10 @@ void ReadTaskFromTxtByline(nero_8int  * FileName)
            
             switch(i)
             {
-                case 1: chCharInTask[objNUm].first=*p;p++;break;//低位
-                case 2: chCharInTask[objNUm].second=*p;p++;break;
-                case 3: chCharInTask[objNUm].third=*p;p++;break;
-                case 4: chCharInTask[objNUm].fourth=*p;p++;break;
+                case 1: chCharInTask[objNUm].first=*p;p++;charCountsInTask++;break;//低位
+                case 2: chCharInTask[objNUm].second=*p;p++;charCountsInTask++;break;
+                case 3: chCharInTask[objNUm].third=*p;p++;charCountsInTask++;break;
+                case 4: chCharInTask[objNUm].fourth=*p;p++;charCountsInTask++;break;
                 default:
                         // printf("p=%x.\n",p);
                         // NerReportMsgError(nero_error_Id);
@@ -749,39 +747,45 @@ void ReadTaskFromTxtByline(nero_8int  * FileName)
         //     p++;
         if(charLength >0 /* &&  *(p) ==10 */)
         {
+
+            
+             #ifdef Nero_DeBuging2_
             // charCountsInTask++; 
             x=chCharInTask[objNUm].first;
             y=chCharInTask[objNUm].second;
             z=chCharInTask[objNUm].third;
             if (x !=0 && y !=0 &&  z !=0)
             {
-                printf("打印字符对象《%c%c%c》\n",x,y,z); 
+                printf("打印字符对象1《%c%c%c》charLength=%d\n",x,y,z,charLength); 
             }
             else if(x !=0   )
             {
-                printf("打印字符对象《%c》\n",x); 
+                printf("打印字符对象2《%c》charLength=%d\n",x,charLength); 
             }
             else if(y !=0   )
             {
-                printf("打印字符对象《%c》\n",y); 
+                printf("打印字符对象3《%c》charLength=%d\n",y,charLength); 
             }
             else if(z !=0   )
             {
-                printf("打印字符对象《%c》\n",z); 
+                printf("打印字符对象4《%c》charLength=%d\n",z,charLength); 
             }
 
+            #endif  
+
+             objNUm=objNUm+1;
         }
 
-        objNUm=objNUm+1;
+
         if(*p != 0x0a)
         {
-
+            // printf("*p != 0x0a\n"); 
             continue;
         }
         else
         {
             
-            if(charCountsInTask > 0)
+            if(objNUm > 0)
             {
                 DataFlow=(void **)malloc(sizeof(void *)*objNUm);
                 dataKind=(nero_s32int *)malloc(sizeof(nero_s32int *) * objNUm);
@@ -791,6 +795,7 @@ void ReadTaskFromTxtByline(nero_8int  * FileName)
 
                 for (k=0;k<objNUm;k++)
                 {
+                            // printf("%d:%d \n",charCounts,res);
 
                     DataFlow[k]=(void *)malloc((sizeof( char)*3));
                     linc=(char *)DataFlow[k];
@@ -830,9 +835,12 @@ void ReadTaskFromTxtByline(nero_8int  * FileName)
 
             }
 
-            charCountsInTask=0;
         }
-        p++;        
+
+        // while(*p == 0x0a)
+        // {
+        //     p++;
+        // }
         //现在开始 将Unicode编码存于unicodeInDigtial中
         
         //打印utf8编码数据：
@@ -845,11 +853,9 @@ void ReadTaskFromTxtByline(nero_8int  * FileName)
         }
         #endif
 
-
+        p++;     
+        charCountsInTask++;  
         // printf("%d:%d \n",charCounts,res);
-
-        // p+=6;
-        // charCounts++;
         objNUm=0;
 
     }

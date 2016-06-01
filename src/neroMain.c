@@ -126,13 +126,20 @@ void ProInitialization()
 		/*do   more  */
 		nero_8int * fileName1="/data/taskFile.sh";
 		ReadTaskFromTxt( fileName1  );
+		printf("end of  fuc ReadTaskFromTxt\n");
 
 		nero_8int * fileName2="/data/taskFileForCreateIO.sh";
 		ReadTaskFromTxt( fileName2  );	
+		printf("end of  fuc ReadTaskFromTxt\n");
+
+
+
+		nero_8int * fileName4="/data/dataStringCreate.sh";
+		// CreatedWordsIntoFile(fileName4);
 
 		nero_8int * fileName3="/data/taskfileForDataStream.sh";
-		ReadTaskFromTxtByline( fileName3  );	
-
+		ReadTaskFromTxtByline( fileName4  );	
+		printf("end of  fuc ReadTaskFromTxtByline\n");
 
 
 		#ifdef Nero_DeBuging14_01_14_

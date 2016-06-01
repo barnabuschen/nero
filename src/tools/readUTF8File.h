@@ -33,7 +33,7 @@ nero_s32int readUTF8FileData(nero_8int * FileName);
 nero_s32int readUTF8FileForWords(nero_8int * FileName ,Utf8Word * wordsHead);
 
 
-nero_s32int rprintWords(Utf8Word * wordsHead);
+nero_s32int printWords(Utf8Word * wordsHead);
 
 
 nero_s32int nero_log(nero_8int * FileName,nero_8int * msg);
@@ -42,7 +42,8 @@ nero_s32int nero_printNeroLink(nero_8int * FileName,void *nero);
 
 
 
-
+// nero_s32int printWordsToFileByLIne(nero_8int * FileName);
+nero_s32int CreatedWordsIntoFile(nero_8int * FileName);
 
 
 

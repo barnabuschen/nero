@@ -253,7 +253,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*        NeuronObject * findForecastObj;	*/
 /*        struct NeroObjForecastList   *findForecastObjPoint; 	*/
 
-	static nero_us32int coutOferror_Msg_=0;
+	static nero_us32int coutOferror_Msg_=0;//  it recond  how many  times  the  DataFlowProcess  be  called
 	coutOferror_Msg_=coutOferror_Msg_+1;
 	/*参数检查*/
 	if (DataFlow == NULL  || dataKind ==NULL  ||  dataNum <1)
@@ -428,21 +428,18 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 		}
 
-
-
-
 		if (coutOferror_Msg_ <=  Nero_TestCount )
 		{
 
-		for (;tmpc<j;tmpc++)
-		{
-		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-		neroObjMsgWithStr_st.fucId = 1;
-		neroObjMsgWithStr_st.Obi = objs[tmpc];
-		sprintf(neroObjMsgWithStr_st.str,"打印识别对象obj(%d) =%x id=%d",tmpc,objs[tmpc],coutOferror_Msg_);
-		msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);	                     
-		} 
-		printf("\n");
+			for (;tmpc<j;tmpc++)
+			{
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;
+				neroObjMsgWithStr_st.Obi = objs[tmpc];
+				sprintf(neroObjMsgWithStr_st.str,"打印识别对象obj(%d) =%x id=%d",tmpc,objs[tmpc],coutOferror_Msg_);
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);	                     
+			} 
+			printf("\n");
 		}
        
         #endif
@@ -452,16 +449,48 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	forecastInfo_st.DeBugMsg=coutOferror_Msg_;
 /*	forecastInfo_st.head=NULL;//在thread_for_Sys_Pic(void *arg)中被初始化*/
 		
+
+	#ifdef DataFlowProcess_error_Msg
+
+	//print objs  array
+	printf("before Process_ObjForecast:\n");
+	for(tmpc=0;tmpc < j;tmpc++)
+	{
+
+		printf("%x{%d}  ", forecastInfo_st.objs[tmpc] ,nero_GetNeroKind(forecastInfo_st.objs[tmpc]) );
+
+	}
+	printf(" \n" );
+	#endif
+
+
 	
 	/***************************************************************/
 	// CreateNewBaseObjKind=1将影响新类的创建，影响类型判断,所以这里需要要这个条件
-	if (  Nero_TestCount >= coutOferror_Msg_  &&  conf->CreateNewBaseObjKind != 1 )
+	// #define Nero_TestCount     30
+	if (  /*Nero_TestCount >= coutOferror_Msg_  && */ conf->CreateNewBaseObjKind != 1 )
 	{
 	        Process_ObjForecast(&forecastInfo_st);
 	}
         /***************************************************************/
 /*        printf("coutOferror=%d.\n",coutOferror_Msg_);*/
         
+
+	#ifdef DataFlowProcess_error_Msg
+
+	//print objs  array
+	printf("after Process_ObjForecast:\n");
+	for(tmpc=0;tmpc < forecastInfo_st.objNum;tmpc++)
+	{
+
+		printf("%x{%d}  ", forecastInfo_st.objs[tmpc] ,nero_GetNeroKind(forecastInfo_st.objs[tmpc]) );
+
+	}
+	printf(" \n\n\n" );
+	#endif
+
+
+
 	#ifdef DataFlowProcess_error_Msg_
 	
 	if (coutOferror_Msg_ <= Nero_TestCount )
@@ -471,28 +500,28 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	        printf("\n    UpperLayerobjNum=%d\n    SameLayerobjNum=%d\n    LowerLayerobjNum=%d\n    dataNum=%d\n\n ",forecastInfo_st.headOfUpperLayer.times,forecastInfo_st.headOfSameLayer.times,forecastInfo_st.headOfLowerLayer.times,dataNum);
 	}
 
-        tmpc=0;
-        #ifdef DataFlowProcess_error_Msg
-        if (coutOferror_Msg_ <= Nero_TestCount )
-        {
-                
-               for (;tmpc<forecastInfo_st.objNum;tmpc++)
-               {
-  				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-				neroObjMsgWithStr_st.fucId = 1;
-				neroObjMsgWithStr_st.Obi = objs[tmpc];
-				sprintf(neroObjMsgWithStr_st.str,"识别结束后打印识别对象obj =%x id=%d",objs[tmpc],coutOferror_Msg_);
-				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);	                     
-               } 
-        }
-        printf("\n");
-        #endif	
+    tmpc=0;
+    #ifdef DataFlowProcess_error_Msg
+    if (coutOferror_Msg_ <= Nero_TestCount )
+    {
+            
+           for (;tmpc<forecastInfo_st.objNum;tmpc++)
+           {
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+			neroObjMsgWithStr_st.fucId = 1;
+			neroObjMsgWithStr_st.Obi = objs[tmpc];
+			sprintf(neroObjMsgWithStr_st.str,"after ObjForecast识打印识别对象obj =%x id=%d",objs[tmpc],coutOferror_Msg_);
+			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);	                     
+           } 
+    }
+    // printf("\n");
+    #endif	
     #endif	
 	
 	
 		/*	printf("start形成层次结构* \n");*/
 	
-		objNum=forecastInfo_st.objNum;
+	objNum=forecastInfo_st.objNum;
 	
 	/*将这几个对象形成层次结构*/
 	/*其实就是将这几个对象形成一个新的对象，见神经网络记录 sheet   5系统概略图*/

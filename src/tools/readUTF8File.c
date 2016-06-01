@@ -30,8 +30,37 @@ nero_us8int tmp[6];
 
 ChUTF8 chChar[ChineseCharNum];
 nero_s32int charCounts;
+static nero_8int  file_path_getcwd[FILEPATH_MAX]="/tmp";/*保存当前目录*/
 
 
+
+//this file wang to  add  line  to  file  ,which line is  a  str  
+nero_s32int CreatedWordsIntoFile(nero_8int * FileName)
+{
+    nero_8int  fileName[FILEPATH_MAX];
+    nero_8int  writeStr[StringLen_MAX];
+	nero_s32int i=0,j;
+	// nero_8int *mapped_mem, * p,*end;
+ //        nero_8int       *linStart,*linEnd;
+ 	getcwd(file_path_getcwd,FILEPATH_MAX);
+    sprintf(fileName,"%s%s",file_path_getcwd,FileName);
+	createFile(fileName);
+
+
+	printf("%s\n",fileName);
+	for(i=0;i<10;i++)
+	{
+
+		for(j=0;j<10;j++)
+		{
+			sprintf(writeStr,"%d+%d=%d\n",i,j,i+j);
+			addLineToFile(fileName,writeStr);
+
+		}
+
+	}
+
+}
 
 
 

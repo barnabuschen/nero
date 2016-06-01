@@ -1,0 +1,18 @@
+Log_printAllKindOf(default):Wed Jun  1 13:38:01 2016
+		ObjectKind=62 ,的所有对象为(16):
+		地址68bd20  <许玉兰>,kind=62
+		地址68bd60  <刘泵>,kind=62
+		地址68bda0  <阿曼>,kind=62
+		地址68bde0  <阿拉伯数字>,kind=62
+		地址68be20  <数字>,kind=62
+		地址68be60  <十进制>,kind=62
+		地址68bea0  <二进制>,kind=62
+		地址68bee0  <数学符号>,kind=62
+		地址68bf20  <运算符>,kind=62
+		地址68bf60  <加法>,kind=62
+		地址68bfa0  <减法>,kind=62
+		地址68bfe0  <乘法>,kind=62
+		地址68c020  <除法>,kind=62
+		地址68c060  <负号>,kind=62
+		地址68c0a0  <等于号>,kind=62
+		地址68c0e0  <正号>,kind=62

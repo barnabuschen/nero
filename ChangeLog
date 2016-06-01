@@ -64,7 +64,8 @@ ver0.18版本：
 	
 	
 		下一步：规则学习
-
+				因为规则得学习强调层次化得作用，所以Process_ObjForecast(&forecastInfo_st);
+				得准确率就非常重要
 
 
 

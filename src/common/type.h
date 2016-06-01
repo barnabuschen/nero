@@ -8,12 +8,12 @@
 #include "NeroMsgId.h"
 
 /*一些常量*/
-	#define  ChoseBaseObj   1
-	#define  ChoseDerivativeObj   2	
-	
-	#define  ChoseOutputAddress  1
-	#define  ChoseOutputType   2	
-	#define  ChoseOutputData  3
+#define  ChoseBaseObj   1
+#define  ChoseDerivativeObj   2	
+
+#define  ChoseOutputAddress  1
+#define  ChoseOutputType   2	
+#define  ChoseOutputData  3
 
 
 	
@@ -25,6 +25,7 @@
 #define NeroMaxLastTimeINForecastList    20  /*对象在预测列表中最长等待时间，超时则被去除列表*/
 #define DataFlowProcessObjNum_MAX (7)
 #define FILEPATH_MAX (180)
+#define StringLen_MAX (500)			
 /*8192kb  =1032KB*/
 #define ChineseCharNum  8000
 /*2的32次=	     4294967295   42亿*/

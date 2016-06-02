@@ -609,7 +609,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 
         }
-        else if (conf->addLevelObjAlways == 1   )
+        else if (conf->addLevelObjAlways == 1    &&  ifHasUnknowObj == 0)
 		{
 				/*这里必须说明的是，这个新生成的概念究竟是什么类型的，createObjFromMultiples内部会根据子类型自动指定*/
 				/*但是这里不能用createObjFromMultiples，因为它里面有太多字符的东西，不够泛化*/
@@ -637,7 +637,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				#endif			
 		
 		}
-		else
+		else if(  ifHasUnknowObj == 0)
 		{
 			#ifdef DataFlowProcess_error_Msg_
 			printf("coutOferror_Msg_  before  StrengthenLink=%d.\n",coutOferror_Msg_);
@@ -686,7 +686,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 
 
-
+		
 	Process_IoFuc( &forecastInfo_st,  complexObj);
 
 

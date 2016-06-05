@@ -112,7 +112,7 @@ typedef struct ActivationNeuron ActNero;
 {
 nero_us32int msg;/*记录该nero的种类，性质等信息*/
 nero_s32int x;/*取值范围-2147483648 ~ 2147483647       use x  to  recond  how many chind has  if  its  a  baseObj */
-nero_s32int y;
+nero_s32int y;	/*	it use  to  recond  how many times  this obj  has been input  recently只在临时区域中使用这个变量*/
 nero_s32int z;
 struct NerveFiber_  * inputListHead;/*其实究竟对于一个神经元来说是不是需要这个输入神经元的链表，*/
 					/*好像其实不是那么必要的是吧，因为，这实际上会造成冗余数据*/
@@ -138,7 +138,7 @@ struct NerveFiber_   * outputListHead;
 msg1：
 低位			高位
 1-------8  9-----16 17-----24  25----32
-1111 1111 1111 1111 1111 1111 1111 1111 
+1111 1111 1111 1111 1111 1111 1111 1111 neroConf
 1-8位表示该链接的强度，就是没被搜索并匹配成功到一次，加1,暂时100最大，初始化为0
 9-10位表示该神经纤维的类型：
 	指向该纤维所属神经元存储数据的神经元      #define	Fiber_PointToData	00

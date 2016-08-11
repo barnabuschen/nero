@@ -40,6 +40,9 @@ static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
 
 NeroConf neroConf;
 ActNero NeroPool[MaxNeroNum];
+// ActNero NeroPool1[MaxNeroNum];
+// ActNero NeroPool2[MaxNeroNum];
+// ActNero NeroPool3[MaxNeroNum];
 /*ActNero NeroPool2[MaxNeroNum];*/
 /*ActNero NeroPool3[MaxNeroNum];*/
 nero_us32int nextAvailableNeroInPool;//它指向NeroPool中当前可用的（即使未加入网络的nero）
@@ -764,7 +767,18 @@ nero_s32int addNeuronChild(NeuronObject *father,NeuronObject *child,nero_s32int 
 nero_s32int initNeroPool()
 {
 
+
+
 	nextAvailableNeroInPool=0;
+	int i=0;
+	for(;i< MaxNeroNum;i++)
+	{
+
+		NeroPool[i].x=0;
+	}
+	
+
+
 	return NeroOK;
 }
 

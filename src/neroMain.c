@@ -25,7 +25,7 @@
 #include <dirent.h>
 #include <stdio.h>
 #include <string.h>
-
+#include <sys/resource.h>
 
 #include "NeuralNetwork/NeuralNetwork.h"
 #include "common/Neuron.h"
@@ -61,6 +61,11 @@ static nero_8int  file_path_getcwd[FILEPATH_MAX];/*保存当前目录*/
 void ProInitialization();
 void main()
 {
+
+		printf(" \n \n \n \n \n \nthe size of  ActivationNeuron is: %llu  \n ",  sizeof(ActNero));
+struct rlimit resource_limit;
+getrlimit(RLIMIT_STACK, &resource_limit);
+printf("STACK: soft_limit - %ld hard_limit - %ld\n", resource_limit.rlim_cur, resource_limit.rlim_max);
 
 
 		ProInitialization();

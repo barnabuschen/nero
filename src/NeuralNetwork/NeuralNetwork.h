@@ -73,6 +73,7 @@ int next;
 	nero_us32int  neroTime;     /*系统运行时间单位，初始化为0，隔1秒钟增加1*/
 	nero_us32int  ifReCreateLogFile;     /*系统运行时是否重新生成log文件*/
 	nero_us32int	  UsedNeroNum;
+	nero_us32int	  UsedSANeroNum;
 	nero_us32int	  NewNeroClassID;/*创建新类时候可以使用的编号，它从
 	                                #define NeuronNode_MinNewDerivativeClassId  2001
 	                                开始
@@ -274,16 +275,20 @@ extern NeroConf neroConf;
 
 void donother();
 
-
+nero_s32int CreateStagingAreaNeroNet();
 
 nero_s32int initActNero(ActNero * nero,nero_us32int kind,NerveFiber *inputListHead,NerveFiber *outputListHead);
 nero_s32int initNeroPool();
 /*从神经元库存中获取一个空闲的神经元*/
 NeuronObject * getNeuronObject();
+/*从StagingArea神经元库存中获取一个空闲的神经元*/
+NeuronObject * getSANeuronObject();
 /*创建一个指定类型的神经概念*/
 NeuronObject *  nero_createNeroObj(nero_s32int kind);
+
 /*创建一个数据存储 神经元,并初始化*/
 ActNero * nero_createDataNero();
+
 nero_s32int getFiberType(NerveFiber * fiber);
 
 /*下面是几个处理神经元链表的函数，，，必须快速和方便使用*/
@@ -357,7 +362,7 @@ nero_s32int  nero_ifMakeUpWithTheseObjsInOrder(NeuronObject *obj,NeuronObject *c
 NeuronObject * nero_ModifyBaseKind(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf);
 
 void resetNeroConf();
-
+void   testDataIn201608();
 /*遍历网络的代码：*/
 
 

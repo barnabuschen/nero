@@ -1,1382 +1,1382 @@
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68bd20,打印词组对象《许玉兰》,句子长度为：3,在DataFlowProcess中创建对象成功:许玉兰
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68bd60,打印词组对象《刘泵》,句子长度为：2,在DataFlowProcess中创建对象成功:刘泵
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68bda0,打印词组对象《阿曼》,句子长度为：2,在DataFlowProcess中创建对象成功:阿曼
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68bde0,打印词组对象《阿拉伯数字》,句子长度为：5,在DataFlowProcess中创建对象成功:阿拉伯数字
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68be20,打印词组对象《数字》,句子长度为：2,在DataFlowProcess中创建对象成功:数字
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68be60,打印词组对象《十进制》,句子长度为：3,在DataFlowProcess中创建对象成功:十进制
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68bea0,打印词组对象《二进制》,句子长度为：3,在DataFlowProcess中创建对象成功:二进制
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,在DataFlowProcess中创建对象成功:数学符号
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68bf20,打印词组对象《运算符》,句子长度为：3,在DataFlowProcess中创建对象成功:运算符
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68bf60,打印词组对象《加法》,句子长度为：2,在DataFlowProcess中创建对象成功:加法
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68bfa0,打印词组对象《减法》,句子长度为：2,在DataFlowProcess中创建对象成功:减法
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68bfe0,打印词组对象《乘法》,句子长度为：2,在DataFlowProcess中创建对象成功:乘法
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68c020,打印词组对象《除法》,句子长度为：2,在DataFlowProcess中创建对象成功:除法
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68c060,打印词组对象《负号》,句子长度为：2,在DataFlowProcess中创建对象成功:负号
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68c0a0,打印词组对象《等于号》,句子长度为：3,在DataFlowProcess中创建对象成功:等于号
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68c0e0,打印词组对象《正号》,句子长度为：2,在DataFlowProcess中创建对象成功:正号
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68c120,打印词组对象《个位数》,句子长度为：3,在DataFlowProcess中创建对象成功:个位数
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68c160,打印词组对象《十位数》,句子长度为：3,在DataFlowProcess中创建对象成功:十位数
-Log_printSomeMsgForObj:Thu Aug 11 19:49:13 2016
-		地址：68c1a0,打印词组对象《千位数》,句子长度为：3,在DataFlowProcess中创建对象成功:千位数
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c780,打印字符对象(-),数据是：《2d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c7e0,打印字符对象(*),数据是：《2a00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c840,打印字符对象(/),数据是：《2f00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c8a0,打印字符对象(&),数据是：《2600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c960,打印字符对象(<),数据是：《3c00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c9c0,打印字符对象(>),数据是：《3e00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68ca20,打印字符对象(|),数据是：《7c00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68ca80,打印字符对象(!),数据是：《2100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68cae0,打印字符对象(a),数据是：《6100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68cb40,打印字符对象(b),数据是：《6200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68cba0,打印字符对象(c),数据是：《6300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68cc00,打印字符对象(d),数据是：《6400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68cc60,打印字符对象(e),数据是：《6500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68ccc0,打印字符对象(f),数据是：《6600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68cd20,打印字符对象(g),数据是：《6700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68cd80,打印字符对象(h),数据是：《6800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68cde0,打印字符对象(i),数据是：《6900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68ce40,打印字符对象(j),数据是：《6a00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68cea0,打印字符对象(k),数据是：《6b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68cf00,打印字符对象(l),数据是：《6c00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68cf60,打印字符对象(m),数据是：《6d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68cfc0,打印字符对象(n),数据是：《6e00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68d020,打印字符对象(o),数据是：《6f00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68d080,打印字符对象(p),数据是：《7000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68d0e0,打印字符对象(q),数据是：《7100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68d140,打印字符对象(r),数据是：《7200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68d1a0,打印字符对象(s),数据是：《7300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68d200,打印字符对象(t),数据是：《7400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68d260,打印字符对象(u),数据是：《7500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68d2c0,打印字符对象(v),数据是：《7600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68d320,打印字符对象(w),数据是：《7700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68d380,打印字符对象(x),数据是：《7800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68d3e0,打印字符对象(y),数据是：《7900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68d440,打印字符对象(z),数据是：《7a00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c060,打印词组对象《负号》,句子长度为：2,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c780,打印字符对象(-),数据是：《2d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c0a0,打印词组对象《等于号》,句子长度为：3,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：6348c0,打印字符对象(加),<STREAM   IN   DataFlowProcess>,数据是：《e58aa0》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：635140,打印字符对象(减),<STREAM   IN   DataFlowProcess>,数据是：《e5878f》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c780,打印字符对象(-),数据是：《2d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：627340,打印字符对象(乘),<STREAM   IN   DataFlowProcess>,数据是：《e4b998》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c7e0,打印字符对象(*),数据是：《2a00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：627fc0,打印字符对象(除),<STREAM   IN   DataFlowProcess>,数据是：《e999a4》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c840,打印字符对象(/),数据是：《2f00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c0e0,打印词组对象《正号》,句子长度为：2,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068bd20,打印词组对象《许玉兰》,句子长度为：3,在DataFlowProcess中创建对象成功:许玉兰
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068bd60,打印词组对象《刘泵》,句子长度为：2,在DataFlowProcess中创建对象成功:刘泵
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068bda0,打印词组对象《阿曼》,句子长度为：2,在DataFlowProcess中创建对象成功:阿曼
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068bde0,打印词组对象《阿拉伯数字》,句子长度为：5,在DataFlowProcess中创建对象成功:阿拉伯数字
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068be20,打印词组对象《数字》,句子长度为：2,在DataFlowProcess中创建对象成功:数字
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068be60,打印词组对象《十进制》,句子长度为：3,在DataFlowProcess中创建对象成功:十进制
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068bea0,打印词组对象《二进制》,句子长度为：3,在DataFlowProcess中创建对象成功:二进制
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,在DataFlowProcess中创建对象成功:数学符号
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068bf20,打印词组对象《运算符》,句子长度为：3,在DataFlowProcess中创建对象成功:运算符
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068bf60,打印词组对象《加法》,句子长度为：2,在DataFlowProcess中创建对象成功:加法
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068bfa0,打印词组对象《减法》,句子长度为：2,在DataFlowProcess中创建对象成功:减法
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068bfe0,打印词组对象《乘法》,句子长度为：2,在DataFlowProcess中创建对象成功:乘法
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068c020,打印词组对象《除法》,句子长度为：2,在DataFlowProcess中创建对象成功:除法
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068c060,打印词组对象《负号》,句子长度为：2,在DataFlowProcess中创建对象成功:负号
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068c0a0,打印词组对象《等于号》,句子长度为：3,在DataFlowProcess中创建对象成功:等于号
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068c0e0,打印词组对象《正号》,句子长度为：2,在DataFlowProcess中创建对象成功:正号
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068c120,打印词组对象《个位数》,句子长度为：3,在DataFlowProcess中创建对象成功:个位数
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068c160,打印词组对象《十位数》,句子长度为：3,在DataFlowProcess中创建对象成功:十位数
+Log_printSomeMsgForObj:Thu Aug 11 22:59:30 2016
+		地址：4068c1a0,打印词组对象《千位数》,句子长度为：3,在DataFlowProcess中创建对象成功:千位数
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：40649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：40649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：40649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：40649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：40649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：40649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：40649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：40649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：40649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：40649c40,打印字符对象(数),<STREAM   IN   DataFlowProcess>,数据是：《e695b0》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bde0,打印词组对象《阿拉伯数字》,句子长度为：5,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c780,打印字符对象(-),数据是：《2d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c7e0,打印字符对象(*),数据是：《2a00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c840,打印字符对象(/),数据是：《2f00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c8a0,打印字符对象(&),数据是：《2600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c960,打印字符对象(<),数据是：《3c00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c9c0,打印字符对象(>),数据是：《3e00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068ca20,打印字符对象(|),数据是：《7c00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068ca80,打印字符对象(!),数据是：《2100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068cae0,打印字符对象(a),数据是：《6100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068cb40,打印字符对象(b),数据是：《6200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068cba0,打印字符对象(c),数据是：《6300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068cc00,打印字符对象(d),数据是：《6400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068cc60,打印字符对象(e),数据是：《6500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068ccc0,打印字符对象(f),数据是：《6600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068cd20,打印字符对象(g),数据是：《6700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068cd80,打印字符对象(h),数据是：《6800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068cde0,打印字符对象(i),数据是：《6900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068ce40,打印字符对象(j),数据是：《6a00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068cea0,打印字符对象(k),数据是：《6b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068cf00,打印字符对象(l),数据是：《6c00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068cf60,打印字符对象(m),数据是：《6d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068cfc0,打印字符对象(n),数据是：《6e00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068d020,打印字符对象(o),数据是：《6f00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068d080,打印字符对象(p),数据是：《7000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068d0e0,打印字符对象(q),数据是：《7100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068d140,打印字符对象(r),数据是：《7200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068d1a0,打印字符对象(s),数据是：《7300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068d200,打印字符对象(t),数据是：《7400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068d260,打印字符对象(u),数据是：《7500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068d2c0,打印字符对象(v),数据是：《7600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068d320,打印字符对象(w),数据是：《7700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068d380,打印字符对象(x),数据是：《7800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068d3e0,打印字符对象(y),数据是：《7900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068bee0,打印词组对象《数学符号》,句子长度为：4,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068d440,打印字符对象(z),数据是：《7a00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c060,打印词组对象《负号》,句子长度为：2,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c780,打印字符对象(-),数据是：《2d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c0a0,打印词组对象《等于号》,句子长度为：3,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：406348c0,打印字符对象(加),<STREAM   IN   DataFlowProcess>,数据是：《e58aa0》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：40635140,打印字符对象(减),<STREAM   IN   DataFlowProcess>,数据是：《e5878f》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c780,打印字符对象(-),数据是：《2d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：40627340,打印字符对象(乘),<STREAM   IN   DataFlowProcess>,数据是：《e4b998》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c7e0,打印字符对象(*),数据是：《2a00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：40627fc0,打印字符对象(除),<STREAM   IN   DataFlowProcess>,数据是：《e999a4》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c840,打印字符对象(/),数据是：《2f00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c0e0,打印词组对象《正号》,句子长度为：2,<STREAM   IN   DataFlowProcess>
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
 		空对象或者为基类对象,在DataFlowProcess中创建对象fail:m,kind=0,0
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c1c0,打印字符对象(0),数据是：《3000》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c2a0,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c300,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c360,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c3c0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c420,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c480,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c700,打印字符对象(+),数据是：《2b00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c540,打印字符对象(9),数据是：《3900》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c900,打印字符对象(=),数据是：《3d00》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c240,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Thu Aug 11 19:49:14 2016
-		地址：68c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c1c0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c2a0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c300,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c360,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c3c0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c420,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c480,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c700,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c540,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c900,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c240,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Thu Aug 11 22:59:31 2016
+		地址：4068c4e0,打印字符对象(8),数据是：《3800》

@@ -40,16 +40,51 @@ static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
 
 NeroConf neroConf;
 ActNero NeroPool[MaxNeroNum];
-// ActNero NeroPool1[MaxNeroNum];
+ActNero StagingAreaNeroPool[StagingAreaNeroNum];
 // ActNero NeroPool2[MaxNeroNum];
 // ActNero NeroPool3[MaxNeroNum];
 /*ActNero NeroPool2[MaxNeroNum];*/
 /*ActNero NeroPool3[MaxNeroNum];*/
 nero_us32int nextAvailableNeroInPool;//它指向NeroPool中当前可用的（即使未加入网络的nero）
-NeuronObject *GodNero;/*所有神经元理论上都最终与这个相通*/
+nero_us32int nextAvailableNeroInStaging;//它指向StagingAreaNeroPool中当前可用的（即使未加入网络的nero）
 
+
+
+
+NeuronObject *GodNero;/*所有神经元理论上都最终与这个相通*/
+NeuronObject *SAGodNero;/*所有StagingArea神经元理论上都最终与这个相通*/
 #define tmpObiForTemporaryNUM   150
 NeuronObject tmpObiForTemporary[tmpObiForTemporaryNUM];
+
+
+void  testDataIn201608()
+{
+
+
+
+	int i=0,j=0;
+	for(;i< MaxNeroNum;i++,j++)
+	{
+		// if(j ==  100000)
+		// {
+		// 	printf("i=%d\n",i );
+		// 	j=0;
+		// }
+		NeroPool[i].x=1;
+	}
+
+	for(i=0;i< StagingAreaNeroNum;i++)
+	{
+		// if(j ==  100000)
+		// {
+		// 	printf("i=%d\n",i );
+		// 	j=0;
+		// }
+		StagingAreaNeroPool[i].x=1;
+	}
+}
+
+
 /*下面是几个简单的判断函数*/
 inline nero_s32int  nero_ifHasThisData(ActNero * n,nero_s32int x,nero_s32int y,nero_s32int z)
 {
@@ -535,6 +570,7 @@ void resetNeroConf()
 	neroConf.neroTime=0;
 	neroConf.ifReCreateLogFile=1;
 	neroConf.addLevelObjAlways=0;
+	// neroConf.
 	neroConf.CreateNewBaseObjKind=0;
 
 	if(flag   == 0)
@@ -617,10 +653,79 @@ nero_s32int CreateActNeroNet()
 		     	}		
     }
 	#endif	
-		printf("CreateActNeroNet   ok.\n");
+	printf("CreateActNeroNet   ok.\n");
+
+
+
+	//is time to create  Staging area  pool
+	CreateStagingAreaNeroNet();
+
+
+
+
 
 	return NeroOK;
 }
+// create  Staging area  pool.
+nero_s32int CreateStagingAreaNeroNet()
+{
+	nero_s32int res;
+	nero_s32int i;
+	NeuronObject *BaseNeuronObject;
+
+	/*首先一个网络你是否导入了数据必须有一些基本的构建*/
+
+	/*显然它必须生成一些基本的神经对象，就像面向对象语言中万物。之母一样*/
+	SAGodNero=(NeuronObject *)getSANeuronObject();
+	res=initActNero(SAGodNero,NeuronNode_ForGodNero,NULL,NULL);
+	if(res == NeroError)
+	{
+			NeroErrorMsg;
+			return res;
+	}
+	setActNeroAsBaseObject(SAGodNero,NeuronNode_BaseObject);
+		/*现在生成其他基类*/
+	for(i=0;i<sizeof(neroKind)/sizeof(nero_us32int);i++)	
+	{
+	
+				BaseNeuronObject=(NeuronObject *)getSANeuronObject();
+				res=initActNero(BaseNeuronObject,neroKind[i],NULL,NULL);
+				if(res == NeroError)
+				{
+					NeroErrorMsg;
+					return res;
+				}	
+				/*将其他基类加入网络，他们与GodNero是相互联系的关系*/	
+				setActNeroAsBaseObject(BaseNeuronObject,NeuronNode_BaseObject);
+				addNeuronChild(SAGodNero,BaseNeuronObject,Relationship_FatherToChild);
+				
+				switch(neroKind[i])
+				{
+				case   NeuronNode_ForChWord:
+						setChildrenOrderRule(BaseNeuronObject,1);
+						break;
+				case   NeuronNode_ForChCharacter:
+						setChildrenOrderRule(BaseNeuronObject,1);
+						break;		
+		/*		*/
+		/*		case   :*/
+		/*		        break;		*/
+		/*		case   :*/
+		/*		        break;*/
+				default:
+						setChildrenOrderRule(BaseNeuronObject,1);
+						break;		
+				}
+
+	
+	}
+	printf("CreateStagingAreaNeroNet   ok.\n");
+	return NeroOK;
+}
+
+
+
+
 nero_s32int PointingToObject2(NeuronObject *lower,NeuronObject *higher,nero_s32int pointTotype)
 {
 	/*很明显各个对象之间的连接关系需要额外的空间来存储
@@ -770,13 +875,8 @@ nero_s32int initNeroPool()
 
 
 	nextAvailableNeroInPool=0;
-	int i=0;
-	for(;i< MaxNeroNum;i++)
-	{
 
-		NeroPool[i].x=0;
-	}
-	
+	nextAvailableNeroInStaging=0;
 
 
 	return NeroOK;
@@ -799,8 +899,8 @@ nero_s32int initActNero(ActNero * nero,nero_us32int kind,NerveFiber *inputListHe
 	return NeroOK;
 }
 
-nero_s32int initActNeroNet()
-{
+// nero_s32int initActNeroNet()
+// {
 
 
 
@@ -808,8 +908,8 @@ nero_s32int initActNeroNet()
 
 
 
-	return NeroOK;
-}
+// 	return NeroOK;
+// }
 
 
 
@@ -836,6 +936,33 @@ NeuronObject * getNeuronObject()
 	return (&(NeroPool[nextAvailableNeroInPool++]));
 
 }
+NeuronObject * getSANeuronObject()
+{
+
+/*	nero_us32int nextAvailableNeroInPool,cur ;*/
+
+	if(nextAvailableNeroInStaging <0 || nextAvailableNeroInStaging >=StagingAreaNeroNum)
+	{
+	
+		printf("nero StagingArea  pools  erro\n");;
+		exit(0);
+		return NULL;
+		
+		
+	}
+
+	neroConf.UsedSANeroNum=nextAvailableNeroInStaging;
+
+
+	return (&(StagingAreaNeroPool[ nextAvailableNeroInStaging++]));
+
+
+// ActNero StagingAreaNeroPool[StagingAreaNeroNum];
+
+}
+
+
+
 /*创建一个衍生神经概念,并初始化*/
 NeuronObject * nero_createNeroObj(nero_s32int kind)
 {

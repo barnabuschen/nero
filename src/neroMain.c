@@ -43,7 +43,7 @@
 extern nero_s32int readUTF8FileData(nero_8int * FileName);
 extern nero_s32int CreateActNeroNet();
 extern void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName);
-
+extern void  testDataIn201608();
 int x=50;
 int y=50;
 
@@ -62,12 +62,12 @@ void ProInitialization();
 void main()
 {
 
-		printf(" \n \n \n \n \n \nthe size of  ActivationNeuron is: %llu  \n ",  sizeof(ActNero));
-struct rlimit resource_limit;
-getrlimit(RLIMIT_STACK, &resource_limit);
-printf("STACK: soft_limit - %ld hard_limit - %ld\n", resource_limit.rlim_cur, resource_limit.rlim_max);
+// 		printf(" \n \n \n \n \n \nthe size of  ActivationNeuron is: %llu  \n ",  sizeof(ActNero));
+// struct rlimit resource_limit;
+// getrlimit(RLIMIT_STACK, &resource_limit);
+// printf("STACK: soft_limit - %ld hard_limit - %ld\n", resource_limit.rlim_cur, resource_limit.rlim_max);
 
-
+		// testDataIn201608();
 		ProInitialization();
 }
 

@@ -920,12 +920,47 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 // 如果无法确定kind就给他一个临时得kind，否则就是确定得kind
 // ，关键是：该对象存储于临时区域，当将来该对象得链接程度
 // 足够高时就生成新得衍生类，如果无法确定类比就放在无指定类比中
+//   so,the new  obj (Complex Derivative  class obj ) will  link the   obj  in   NeroPool,but the new obj is in   Staging Area Pool
+
+
+
 
 // 另外，该对象放在临时区域中，它得链接强度指的是obj得y值， 不会影响永久存储
 // 得衍生类得链接关系（强度）
 /*如果返回1 ,则表面 连接的强度都已经达到最大值,so  created  new  obj  in  永久区域 */
 
 // 当短时间内出现大量相似数据时，会有机制加强这几个数据类基类得联系，达到一定程度后形成新类
+
+nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
+{
+	nero_s32int Strengthen,i,j,flag;
+	/*参数检查*/
+	if (objs == NULL  || godNero ==NULL  ||  objNum <2 || conf ==NULL)
+	{
+		return nero_msg_ParameterError;
+	}
+
+	flag=1;
+
+
+
+
+
+
+
+
+
+
+
+	if (flag  ==  1)
+	{
+/*	        printf("time to createNewObj\n");*/
+		return  Process_msg_CreateNewObj;
+	}
+	return   nero_msg_ok;
+}
+
+#ifdef   Nero_DeBuging08_12_16_
 nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
 {
 
@@ -974,7 +1009,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 	return   nero_msg_ok;
 }
 
-
+#endif
 
 void * thread_for_Sys_Pic(void *arg)
 {

@@ -2403,7 +2403,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 		
 		/*建立新概念已经子对象之间的关系*/
 /*		addNeuronChild(newObi,Obis[i],Relationship_ChildToFather);*/
-		PointingToObject(Obis[i],newObi,Fiber_PointToUpperLayer);
+		PointingToObject(Obis[i],newObi,Fiber_PointToUpperLayer);// put  newObi  in  Obis[i]  's   output list
 		if (i>0)
 		{
 /*			addNeuronChild(Obis[i],Obis[i-1],Relationship_ChildToFather);	*/

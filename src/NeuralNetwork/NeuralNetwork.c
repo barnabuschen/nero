@@ -3077,7 +3077,42 @@ nero_s32int nero_StrengthenLink(NeuronObject * a,NeuronObject * b)
 }
 
 
+	// 根据数组中得子对象看看是否有指向临时区域得上层概念，如果数据数组中几个子对象
+	// 同时指向一个临时对象，且输入顺序是一致得,thats it
 
+	//只要是子对象数组中部分连续对象和  SAPool中衍生对象中得部分连续子对象
+	// 相同就可以
+	//找到得数据存于Process_tmpObi，返回找到得数据个数
+nero_s32int  FindUpperObjInSAPool(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeuronObject * Process_tmpObi)
+{
+	nero_s32int findNum=0;
+	nero_us32int  i,j;
+	if (objs == NULL  || godNero ==NULL  ||  objNum <1 || Process_tmpObi ==NULL)
+	{
+		return nero_msg_ParameterError;
+	}
+
+
+	for(i=0;i<objNum;i++)
+	{
+
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	return findNum;
+}
 
 
 

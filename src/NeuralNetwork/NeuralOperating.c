@@ -952,13 +952,6 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 	flag=1;
 	// 首先判断对象数组是否在临时区域中已经有衍生对象,根据数组中得子对象看看是否有指向临时区域得上层概念，如果数据数组中几个子对象
 	// 同时指向一个临时对象，且输入顺序是一致得,thats it
-
-
-	// 根据数组中得子对象看看是否有指向临时区域得上层概念，如果数据数组中几个子对象
-	// 同时指向一个临时对象，且输入顺序是一致得,thats it
-	nero_us32int  Process_tmpObiUsed= FindUpperObjInSAPool(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeuronObject * Process_tmpObi);
-
-
 	//first ,find  all  all  UpperObj  In SAPool  ,return the  list(save in  Process_tmpObi)
 	Process_tmpObiUsed= FindUpperObjInSAPool(  objs,objNum, godNero, Process_tmpObi);
 
@@ -977,6 +970,17 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 
 
 	// ////////////最后，既然是临时对象，必须有遗忘得机制/////////////////////////
+			// 一种解决方案是[定期减弱机制---in  short  time]：				
+			// 	在数据训练过程中，每当一个子对象被识别出来是和一个上层相关联时，首先是加强他们得链接强度
+			// 其次，判断子对象得outputlist，减弱但不解除子对象指向得在临时区域中得其他临时对象，这意味着，如果
+			// 该自对象大多数指向一个衍生概念时，会有赢者通吃得效应，相反得，如果，在所有样本中，它所指向得不同得
+			// 上层衍生对象得次数相近时，结果就是永远不会有一个强度特别大得链接出来
+
+			// 一种解决方案是[定期减弱机制2---in  long  time]：
+				// chean  the whole   SAPool  per  one time
+
+
+
 	if (flag  ==  1)
 	{
 /*	        printf("time to createNewObj\n");*/

@@ -140,7 +140,7 @@ msg1：
 低位			高位
 1-------8  9-----16 17-----24  25----32
 1111 1111 1111 1111 1111 1111 1111 1111 neroConf
-1-8位表示该链接的强度，就是没被搜索并匹配成功到一次，加1,暂时100最大，初始化为0
+1-8位表示该链接的强度，就是没被搜索并匹配成功到一次，加1,暂时100最大，初始化为0,对于计算机来说，250次算是很少的了,如果实在不够用，只好放在变量time里面了
 9-10位表示该神经纤维的类型：
 	指向该纤维所属神经元存储数据的神经元      #define	Fiber_PointToData	00
 	指向该纤维所属神经元的上层概念的神经元	#define	Fiber_PointToUpperLayer	01
@@ -154,7 +154,12 @@ msg1：
 	可有可没有 	                        #define	Fiber_PointToUnnecessaryObj	10
 	就是说如果为Fiber_PointToMutiObj	01，那么第11位为1，第12位为0       
 
-	
+13-14位：用来表明该纤维结构中指针obj所指向对象得所属区域
+
+	所指向对象所在区域为永久得NeroInPool			#define	Fiber_ObjInNeroPool	00
+	所指向对象所在区域为StagingAreaNeroPool	 	#define	Fiber_ObjInSAPool	01
+
+
 time：
 低位			高位
 1-------8  9-----16 17-----24  25----32
@@ -261,6 +266,8 @@ extern NeroConf neroConf;
 #define	Fiber_PointToUpperLayer	1
 #define	Fiber_PointToLowerLayer	2
 #define	Fiber_PointToSameLayer	3
+
+
 /*基类中子类的出现情况定义*/
 #define Fiber_PointToUniqueObj	        0
 #define	Fiber_PointToMutiObj	        1
@@ -269,7 +276,8 @@ extern NeroConf neroConf;
 #define	Fiber_StrengthenMax	200     //在结构体中共用了8位来记录这个值，所以最大为255
 /*你需要定义个内存池，来管理使用和未使用的神经元*/
 
-
+#define	Fiber_ObjInNeroPool	00  //所指向对象所在区域为永久得NeroInPool			
+#define	Fiber_ObjInSAPool	01  //所指向对象所在区域为StagingAreaNeroPool	 	
 
 
 

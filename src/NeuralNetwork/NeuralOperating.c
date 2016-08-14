@@ -12,10 +12,12 @@
 /*#include "../common/error.h"*/
 static struct  NeuronObjectMsg_    neroObjMsg_st;
 static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
+#define Process_TemporaryNUM   7500    //just used  in  fuc  Process_StrengthenLink
+nero_us32int     tmpObiUsed;						//record    how many objs  store  in  
+static NeuronObject Process_tmpObi[Process_TemporaryNUM];
 
 
-
-	struct DataFlowForecastInfo  forecastInfo_st;	
+struct DataFlowForecastInfo  forecastInfo_st;	
 	
 /*************Operating函数族/**************/
 BEGIN_ONE_ARG_MESSAGE_MAP(Operating_msg_OneArg_map)
@@ -934,6 +936,13 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
 {
 	nero_s32int Strengthen,i,j,flag;
+
+
+// #define Process_TemporaryNUM   7500    //just used  in  fuc  Process_StrengthenLink
+// nero_us32int     Process_tmpObiUsed;						//record    how many objs  store  in  
+// static NeuronObject Process_tmpObi[Process_TemporaryNUM];
+	tmpObiUsed=0;
+
 	/*参数检查*/
 	if (objs == NULL  || godNero ==NULL  ||  objNum <2 || conf ==NULL)
 	{
@@ -941,17 +950,33 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 	}
 
 	flag=1;
+	// 首先判断对象数组是否在临时区域中已经有衍生对象,根据数组中得子对象看看是否有指向临时区域得上层概念，如果数据数组中几个子对象
+	// 同时指向一个临时对象，且输入顺序是一致得,thats it
+
+
+	// 根据数组中得子对象看看是否有指向临时区域得上层概念，如果数据数组中几个子对象
+	// 同时指向一个临时对象，且输入顺序是一致得,thats it
+	nero_us32int  Process_tmpObiUsed= FindUpperObjInSAPool(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeuronObject * Process_tmpObi);
+
+
+	//first ,find  all  all  UpperObj  In SAPool  ,return the  list(save in  Process_tmpObi)
+	Process_tmpObiUsed= FindUpperObjInSAPool(  objs,objNum, godNero, Process_tmpObi);
+
+	//if  Process_tmpObiUsed >0  , 
+		// 如果数据数组中得子对象都是指向未知类型得上层概念， 那么对不起永远无法生成永久对象，直接生成临时衍生对象就好
+		// 如果是已知类型，即是说数据数组中【部分连续得子对象】指向同一个已知类型得上层对象，那么加强这几个对象对概上层对象得链接强度
+		// （这样得情况就是当达到一定链接强度后可以生成永久对象得例子。）---其他不需要加强得de数据，到最后往往就是垃圾数据，丢弃
+				// 你不需要考虑这样处理如何区分分类还是筛选新对象得区别了，因为如果你是在做分类得工作，那么在学习完后，分类得
+				// 				数据流得上层类就是无类别的数据，那么往往数据流就是预测最后一个数据。相反得，如果是生成新对象得化，一定是有
+				// 				类型得情况，不然怎么生成新对象呢！！
+
+  
 
 
 
 
 
-
-
-
-
-
-
+	// ////////////最后，既然是临时对象，必须有遗忘得机制/////////////////////////
 	if (flag  ==  1)
 	{
 /*	        printf("time to createNewObj\n");*/

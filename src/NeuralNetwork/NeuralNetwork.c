@@ -54,7 +54,7 @@ nero_us32int nextAvailableNeroInStaging;//它指向StagingAreaNeroPool中当前�
 NeuronObject *GodNero;/*所有神经元理论上都最终与这个相通*/
 NeuronObject *SAGodNero;/*所有StagingArea神经元理论上都最终与这个相通*/
 #define tmpObiForTemporaryNUM   150
-NeuronObject tmpObiForTemporary[tmpObiForTemporaryNUM];
+static NeuronObject tmpObiForTemporary[tmpObiForTemporaryNUM];
 
 
 void  testDataIn201608()

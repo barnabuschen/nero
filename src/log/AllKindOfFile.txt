@@ -1,4 +1,46 @@
-Log_printAllKindOf(default):Fri Aug 12 21:39:29 2016
+Log_printAllKindOf(default):Sun Aug 14 22:07:56 2016
+		ObjectKind=62 ,的所有对象为(19):
+		地址4068bd20  <许玉兰>,kind=62
+		地址4068bd60  <刘泵>,kind=62
+		地址4068bda0  <阿曼>,kind=62
+		地址4068bde0  <阿拉伯数字>,kind=62
+		地址4068be20  <数字>,kind=62
+		地址4068be60  <十进制>,kind=62
+		地址4068bea0  <二进制>,kind=62
+		地址4068bee0  <数学符号>,kind=62
+		地址4068bf20  <运算符>,kind=62
+		地址4068bf60  <加法>,kind=62
+		地址4068bfa0  <减法>,kind=62
+		地址4068bfe0  <乘法>,kind=62
+		地址4068c020  <除法>,kind=62
+		地址4068c060  <负号>,kind=62
+		地址4068c0a0  <等于号>,kind=62
+		地址4068c0e0  <正号>,kind=62
+		地址4068c120  <个位数>,kind=62
+		地址4068c160  <十位数>,kind=62
+		地址4068c1a0  <千位数>,kind=62
+Log_printAllKindOf(default):Sun Aug 14 22:08:01 2016
+		ObjectKind=62 ,的所有对象为(19):
+		地址4068bd20  <许玉兰>,kind=62
+		地址4068bd60  <刘泵>,kind=62
+		地址4068bda0  <阿曼>,kind=62
+		地址4068bde0  <阿拉伯数字>,kind=62
+		地址4068be20  <数字>,kind=62
+		地址4068be60  <十进制>,kind=62
+		地址4068bea0  <二进制>,kind=62
+		地址4068bee0  <数学符号>,kind=62
+		地址4068bf20  <运算符>,kind=62
+		地址4068bf60  <加法>,kind=62
+		地址4068bfa0  <减法>,kind=62
+		地址4068bfe0  <乘法>,kind=62
+		地址4068c020  <除法>,kind=62
+		地址4068c060  <负号>,kind=62
+		地址4068c0a0  <等于号>,kind=62
+		地址4068c0e0  <正号>,kind=62
+		地址4068c120  <个位数>,kind=62
+		地址4068c160  <十位数>,kind=62
+		地址4068c1a0  <千位数>,kind=62
+Log_printAllKindOf(default):Sun Aug 14 22:08:06 2016
 		ObjectKind=62 ,的所有对象为(19):
 		地址4068bd20  <许玉兰>,kind=62
 		地址4068bd60  <刘泵>,kind=62

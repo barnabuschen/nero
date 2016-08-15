@@ -366,6 +366,78 @@ static inline nero_s32int gainFiberStrengthen(NerveFiber * fiber,nero_us32int ti
 	#endif		
 	return (Strengthen);
 }
+
+static inline nero_us32int getFiberPointToPool(NerveFiber * fiber )
+{
+	
+	
+	nero_us32int  kind=0;
+	
+	if(fiber ==NULL )
+		return nero_msg_ParameterError;
+
+	kind=fiber->msg1  & 0x00003000;/*提取对应的俩位*/
+	kind=kind  >>  12;
+	
+	
+	if (kind >=Fiber_ObjInNeroPool  && kind <=Fiber_ObjInSAPool)
+	{
+/*	        if (kind == 3)*/
+/*	        {*/
+/*	                 printf("kind=%d.///////////////////////////\n",kind);*/
+/*	        }*/
+	       
+		return kind;
+	}
+	return nero_msg_unknowError;
+
+
+
+}
+
+
+// #define	Fiber_ObjInNeroPool	0  //所指向对象所在区域为永久得NeroInPool			
+// #define	Fiber_ObjInSAPool	1  //所指向对象所在区域为StagingAreaNeroPool	 	
+/*设置纤维指向的神经元所在得位置 */
+// 13-14位：用来表明该纤维结构中指针obj所指向对象得所属区域
+static inline void setFiberPointToPool(NerveFiber * fiber,nero_us32int posFlag)
+{
+	
+	if(fiber ==NULL || posFlag <Fiber_ObjInNeroPool || posFlag >Fiber_ObjInSAPool)
+		return ;
+/*	printf("kind=%d.\n",kind);*/
+	switch(posFlag)
+	{
+	        fiber->msg1 =fiber->msg1  & 0xffffcfff;/*先设置为00，再在下面修改*/
+		case Fiber_ObjInNeroPool	:
+				/*将第13  14位设置为00*/
+				/*1-------8  9-----16 17-----24  25----32
+				  1111 1111 1111 0011 1111 1111 1111 1111 
+				  
+				  */
+				  /*不需要改了，已经是00了*/
+/*				fiber->msg1 =fiber->msg1 | 0x00000c00;*/
+				break;
+		case Fiber_ObjInSAPool	:
+				/*1111 1111 1111 1011 1111 1111 1111 1111 */
+				fiber->msg1 =fiber->msg1  | 0x00001000;
+				break;
+// 		case Fiber_PointToLowerLayer	:
+// 				/*1111 1111 0111 1111 1111 1111 1111 1111 */
+// 				fiber->msg1 =fiber->msg1  | 0x00000200;		
+// 				break;
+// 		case Fiber_PointToSameLayer	:
+// 				/*1111 1111 1111 1111 1111 1111 1111 1111 */
+// 				fiber->msg1 =fiber->msg1  | 0x00000300;	
+// /*				printf("kind=%d.///////////////////////////\n",kind);*/
+// 				break;
+		default:break;	
+		
+	}
+}
+
+
+
 /*
 #define Fiber_PointToUniqueObj	        0
 #define	Fiber_PointToMutiObj	        1
@@ -3087,6 +3159,8 @@ nero_s32int  FindUpperObjInSAPool(NeuronObject * objs[],nero_s32int objNum,Neuro
 {
 	nero_s32int findNum=0;
 	nero_us32int  i,j;
+	NeuronObject * tmpobj;
+	NerveFiber  *  curFiber;
 	if (objs == NULL  || godNero ==NULL  ||  objNum <1 || Process_tmpObi ==NULL)
 	{
 		return nero_msg_ParameterError;
@@ -3096,8 +3170,18 @@ nero_s32int  FindUpperObjInSAPool(NeuronObject * objs[],nero_s32int objNum,Neuro
 	for(i=0;i<objNum;i++)
 	{
 
+		tmpobj= objs[i];
+		curFiber=tmpobj->outputListHead;
+
+		for (;curFiber !=NULL;curFiber=curFiber->next)
+		{
+
+				//if is point to SA Pool
 
 
+
+
+		}	
 	}
 
 

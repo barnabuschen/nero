@@ -276,8 +276,8 @@ extern NeroConf neroConf;
 #define	Fiber_StrengthenMax	200     //在结构体中共用了8位来记录这个值，所以最大为255
 /*你需要定义个内存池，来管理使用和未使用的神经元*/
 
-#define	Fiber_ObjInNeroPool	00  //所指向对象所在区域为永久得NeroInPool			
-#define	Fiber_ObjInSAPool	01  //所指向对象所在区域为StagingAreaNeroPool	 	
+#define	Fiber_ObjInNeroPool	0  //所指向对象所在区域为永久得NeroInPool			
+#define	Fiber_ObjInSAPool	1  //所指向对象所在区域为StagingAreaNeroPool	 	
 
 
 

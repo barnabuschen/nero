@@ -22,6 +22,19 @@ NeuronNode_ForOutputWord,
 NeuronNode_ForComplexDerivative,     //高级衍生类,for  some can not be classify  obj
 };
 
+nero_us32int SAPoolneroKind[]=
+{
+NeuronNode_ForUndefined,	//表示是一个未定义类型的神经元，是一个概念,表示这个对象实际存在，但是没有一个类型去给他进行分类
+ NeuronNode_ForImage,    //当一个概念节点的类型为此时表示一个图像对象
+NeuronNode_ForLine,    //当一个概念节点的类型为此时表示一个线条对象
+
+NeuronNode_ForChCharacter,    //当一个概念节点的类型为此时表示一个汉字
+NeuronNode_ForChWord ,    //当一个概念节点的类型为此时表示一个中文词语
+NeuronNode_ForInputWord,
+NeuronNode_ForOutputWord,
+ NeuronNode_ForChSentence,    //当一个概念节点的类型为此时表示一个中文句子
+NeuronNode_ForComplexDerivative,     //高级衍生类,for  some can not be classify  obj
+};
 
 static struct  NeuronObjectMsg_    neroObjMsg_st;
 static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
@@ -756,12 +769,12 @@ nero_s32int CreateStagingAreaNeroNet()
 			return res;
 	}
 	setActNeroAsBaseObject(SAGodNero,NeuronNode_BaseObject);
-		/*现在生成其他基类*/
-	for(i=0;i<sizeof(neroKind)/sizeof(nero_us32int);i++)	
+		/*现在生成其他基类SAPoolneroKind   */
+	for(i=0;i<sizeof(SAPoolneroKind)/sizeof(nero_us32int);i++)	
 	{
 	
 				BaseNeuronObject=(NeuronObject *)getSANeuronObject();
-				res=initActNero(BaseNeuronObject,neroKind[i],NULL,NULL);
+				res=initActNero(BaseNeuronObject,SAPoolneroKind[i],NULL,NULL);
 				if(res == NeroError)
 				{
 					NeroErrorMsg;
@@ -771,7 +784,7 @@ nero_s32int CreateStagingAreaNeroNet()
 				setActNeroAsBaseObject(BaseNeuronObject,NeuronNode_BaseObject);
 				addNeuronChild(SAGodNero,BaseNeuronObject,Relationship_FatherToChild);
 				
-				switch(neroKind[i])
+				switch(SAPoolneroKind[i])
 				{
 				case   NeuronNode_ForChWord:
 						setChildrenOrderRule(BaseNeuronObject,1);
@@ -2232,44 +2245,48 @@ nero_s32int nero_judgeNewObjKind(NeuronObject *Obis[],nero_s32int objNum)
 		
 	}
 	
-	{
-                findKind=NeuronNode_ForComplexDerivative;
-                
-	        /*从基类列表中查找是否有合适的类*/
-	        curFiber=GodNero->outputListHead;
-/*	        printf("curFiber=%x.\n",curFiber);*/
-	        for (;curFiber !=NULL;curFiber=curFiber->next)
-	        {	
-		        BaseObi=curFiber->obj;
-		        ObjectKind=nero_GetNeroKind(BaseObi);
-		        	                        
-	                if (ObjectKind >= NeuronNode_MinNewDerivativeClassId)
-	                {
-	                      /*判断是不是可以组成ObjectKind类*/  
-	                      
-	                      /*逻辑上有问题：
-	                      如果你在后面创建基类时，只要有重复就设置相应的fiber的标识
-	                      来识别重复的类型，这样会导致nero_IfIsThisKind错误对应基类
-	                      
-	                      */
-/*	                      printf("ObjectKind: =%d.\n",ObjectKind);*/
-	                      i=nero_IfIsThisKind(Obis,objNum,BaseObi);
-/*	                      printf("IfIsThisKind=%d.\n",i);*/
-	                      if (i == NeroYES)
-	                      {
-/*	                               printf("judgeNewObjKind   findKind=%d.\n",ObjectKind);*/
-	                              findKind=ObjectKind;
-	                              break;
-	                      }
-	                      
-	                }
 	
-	        }
-	        kind=findKind;
-	
+	findKind=NeuronNode_ForComplexDerivative;
+
+	/*从基类列表中查找是否有合适的类*/
+	curFiber=GodNero->outputListHead;
+	/*	        printf("curFiber=%x.\n",curFiber);*/
+	for (;curFiber !=NULL;curFiber=curFiber->next)
+	{	
+		BaseObi=curFiber->obj;
+		ObjectKind=nero_GetNeroKind(BaseObi);
+		    
+		if (ObjectKind >= NeuronNode_MinNewDerivativeClassId)
+		{
+			/*判断是不是可以组成ObjectKind类*/  
+
+			/*逻辑上有问题：
+			如果你在后面创建基类时，只要有重复就设置相应的fiber的标识
+			来识别重复的类型，这样会导致nero_IfIsThisKind错误对应基类
+
+			*/
+			/*	                      printf("ObjectKind: =%d.\n",ObjectKind);*/
+			i=nero_IfIsThisKind(Obis,objNum,BaseObi);
+			/*	                      printf("IfIsThisKind=%d.\n",i);*/
+			if (i == NeroYES)
+			{
+				/*	                               printf("judgeNewObjKind   findKind=%d.\n",ObjectKind);*/
+				findKind=ObjectKind;
+				break;
+			}
+
+		}
+
 	}
 	
 	
+	if(findKind ==  NeuronNode_ForComplexDerivative)
+		kind=NeuronNode_ForUndefined;
+	else
+		kind=findKind;
+
+
+
 	return kind;
 }
 /*判断Obis里面的概念是否可以组成一个baseKindObj类型*/
@@ -3158,42 +3175,83 @@ nero_s32int nero_StrengthenLink(NeuronObject * a,NeuronObject * b)
 nero_s32int  FindUpperObjInSAPool(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeuronObject * Process_tmpObi)
 {
 	nero_s32int findNum=0;
-	nero_us32int  i,j;
+	nero_us32int  i,j,flag;
 	NeuronObject * tmpobj;
+	NeuronObject * UpperObj;
+	nero_s32int ObjectKind;
+	nero_s32int findKind;
 	NerveFiber  *  curFiber;
+	NerveFiber  *  tmpFiber;
 	if (objs == NULL  || godNero ==NULL  ||  objNum <1 || Process_tmpObi ==NULL)
 	{
 		return nero_msg_ParameterError;
 	}
 
 
+
+	// 现在你需要加入NeuronNode_ForUndefined的情况，因为该函数里面没有这个
+	// findKind= nero_judgeNewObjKind( objs, objNum);//如果满足不了要求，你需要修改代码
+
+
+
+	//search:
 	for(i=0;i<objNum;i++)
 	{
 
 		tmpobj= objs[i];
 		curFiber=tmpobj->outputListHead;
 
-		for (;curFiber !=NULL;curFiber=curFiber->next)
+		for (;curFiber !=NULL &&  findNum < Process_TemporaryNUM;curFiber=curFiber->next)
 		{
 
-				//if is point to SA Pool
+			//if is point to SA Pool
+			flag=getFiberPointToPool (curFiber);
+			// ObjectKind=nero_GetNeroKind(curFiber->obj);
+			if(flag ==Fiber_ObjInSAPool   &&   curFiber->obj != NULL   &&    nero_isBaseObj( curFiber->obj)  != 1 )
+			{
+				// 现在找到了临时区域得衍生概念，但是是不是我们要找得呢
+				UpperObj=curFiber->obj;
+				ObjectKind=nero_GetNeroKind(UpperObj);
+				tmpFiber=UpperObj->inputListHead;
+
+				// #define NeuronNode_ForUndefined   3   //表示是一个未定义类型的神经元，是一个概念,表示这个对象实际存在，但是没有一个类型去给他进行分类
+				// 对于kind为NeuronNode_ForUndefined得对象，它是有一个基类得
+				// 这个基类得作用只是为了搜索对象方便，无其他意义，
+				// 另外，这个NeuronNode_ForUndefined基类在临时区域中是必须有得
+				// 那永久区域中也需要么？
+				// 首先任何一个东西能被输入，必须是通过某种介质被感觉器官所接收，那么它
+				// 本身就一定是可以被归类得，所以这里所说得无法分类其实是说不知道这个新
+				// 得未定义（未定义不等于无法定义）得对象暂时不知道或者没有进行类型确认而已
+				// 也就是说：临时区域可以有未分类得对象，但是永久区域里面得对象必须进行分类
+
+
+				// if(ObjectKind == NeuronNode_ForUndefined)
+				while(tmpFiber != NULL &&  tmpFiber->obj  != NULL)
+				{
+					if(tmpFiber->obj ==  tmpobj)
+						break;
+					tmpFiber=tmpFiber->next;
+
+				}
+				if(tmpFiber != NULL && tmpFiber->obj ==  objs[i]  &&   (i+1)< objNum        )
+				{
+
+					if(tmpFiber->next  != NULL  &&   objs[i+1] == tmpFiber->next->obj   )
+					{
+
+						//if 临时区域得上层概念中几个子对象正好是objs数组得部分对象，且输入顺序是一致得
+						Process_tmpObi[findNum++]=curFiber->obj;
+				
+					}
+
+				}
 
 
 
+			}
 
 		}	
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 	return findNum;
 }

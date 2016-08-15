@@ -639,7 +639,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				#endif			
 		
 		}
-		else if(  ifHasUnknowObj == 0 &&  objNum > 1)
+		else if(  ifHasUnknowObj == 0 &&  objNum >= 1)
 		{
 			#ifdef DataFlowProcess_error_Msg_
 			printf("coutOferror_Msg_  before  StrengthenLink=%d.\n",coutOferror_Msg_);
@@ -931,7 +931,17 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 // 得衍生类得链接关系（强度）
 /*如果返回1 ,则表面 连接的强度都已经达到最大值,so  created  new  obj  in  永久区域 */
 
+
+///////////////////////////////////////////////////////////////////////////////////////////
 // 当短时间内出现大量相似数据时，会有机制加强这几个数据类基类得联系，达到一定程度后形成新类
+////////////////这个函数得最终目的是，当短时间内出现大量相似数据时，你得系统可能发现这些数据
+////////////////可以识别为某种特定类型  or  不可以被识别，当无法识别时会被定义为NeuronNode_ForUndefined,
+////////////////如果把NeuronNode_ForUndefined也认为是一种特殊得类，那么你得最终目的就只有一个
+////////////////就是在这一群数据中找出俩种关系：
+////////////////一种是数据与数据之间得关系（子对象与自对象之间）----------
+////////////////一种是数据与上层衍生类之间得关系-----------------------
+////////////////这俩种关系都可以用来进行数据得预测和分类
+
 
 nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
 {
@@ -944,7 +954,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 	tmpObiUsed=0;
 
 	/*参数检查*/
-	if (objs == NULL  || godNero ==NULL  ||  objNum <2 || conf ==NULL)
+	if (objs == NULL  || godNero ==NULL  ||  objNum <1 || conf ==NULL)
 	{
 		return nero_msg_ParameterError;
 	}
@@ -953,17 +963,28 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 	// 首先判断对象数组是否在临时区域中已经有衍生对象,根据数组中得子对象看看是否有指向临时区域得上层概念，如果数据数组中几个子对象
 	// 同时指向一个临时对象，且输入顺序是一致得,thats it
 	//first ,find  all  all  UpperObj  In SAPool  ,return the  list(save in  Process_tmpObi)
-	Process_tmpObiUsed= FindUpperObjInSAPool(  objs,objNum, godNero, Process_tmpObi);
 
-	//if  Process_tmpObiUsed >0  , 
-		// 如果数据数组中得子对象都是指向未知类型得上层概念， 那么对不起永远无法生成永久对象，直接生成临时衍生对象就好
+	if(objNum  > 1)
+		Process_tmpObiUsed= FindUpperObjInSAPool(  objs,objNum, godNero, Process_tmpObi);
+	else
+	{
+		// 直接加强链接就行
+	}
+		// 如果数据数组中得子对象都是指向未知类型得上层概念，直接生成临时衍生对象就好
 		// 如果是已知类型，即是说数据数组中【部分连续得子对象】指向同一个已知类型得上层对象，那么加强这几个对象对概上层对象得链接强度
 		// （这样得情况就是当达到一定链接强度后可以生成永久对象得例子。）---其他不需要加强得de数据，到最后往往就是垃圾数据，丢弃
 				// 你不需要考虑这样处理如何区分分类还是筛选新对象得区别了，因为如果你是在做分类得工作，那么在学习完后，分类得
 				// 				数据流得上层类就是无类别的数据，那么往往数据流就是预测最后一个数据。相反得，如果是生成新对象得化，一定是有
 				// 				类型得情况，不然怎么生成新对象呢！！
+ 
+		// 你别忘记一点：代码运行到这里，在Process_ObjForecast之后，已经表明在永久区域中
+		// 这些子对象无法被已有得高级衍生类识别，那么他们就可能有俩种情况：
+		// 1：这些数据是一些数据流，无法被归类
+		// 2：这些数据可以被归类，但没有已经created 得衍生对象
+		// 稀疏离散表征得精髓是，每一个输入得数据都将加大或者更加接近最后输出得那个数据（也可能是一个对象或
+		// 者对象，或者直接是一个基类）得可能性，也就是说你得算法导致得结果是，不仅你得系统中存储了大量得数据
+		// 同时也对数据进行了整理和层次化
 
-  
 
 
 
@@ -971,7 +992,8 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 
 	// ////////////最后，既然是临时对象，必须有遗忘得机制/////////////////////////
 			// 一种解决方案是[定期减弱机制---in  short  time]：				
-			// 	在数据训练过程中，每当一个子对象被识别出来是和一个上层相关联时，首先是加强他们得链接强度
+			// 	在数据训练过程中，每当一个子对象被识别(这个识别过程得算法指的是：只要是子对象数组中部分连续对象和  SAPool中衍生对象中得部分连续子对象
+			// 相同就可以)出来是和特定得临时区域得一个上层对象相关联时，首先是加强他们得链接强度
 			// 其次，判断子对象得outputlist，减弱但不解除子对象指向得在临时区域中得其他临时对象，这意味着，如果
 			// 该自对象大多数指向一个衍生概念时，会有赢者通吃得效应，相反得，如果，在所有样本中，它所指向得不同得
 			// 上层衍生对象得次数相近时，结果就是永远不会有一个强度特别大得链接出来
@@ -990,7 +1012,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 }
 
 #ifdef   Nero_DeBuging08_12_16_
-nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
+nero_s32int Process_StrengthenLink_old(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
 {
 
 	nero_s32int Strengthen,i,j,flag;
@@ -1416,63 +1438,59 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
 	nero_s32int i,FiberType;
 	NerveFiber * tmpFiber1;
 	
-        if (forecastInfo== NULL   || forecastInfo->objPoint > forecastInfo->objNum  ||  forecastInfo->objs == NULL ||  newObj == NULL)
-        {
-        
-        
- 		#ifdef Nero_ProcessERROR_Msg
-		printf("AddNewObjToForecastList  ProcessERROR\n");
-		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-		neroObjMsgWithStr_st.fucId = 1;
-		neroObjMsgWithStr_st.Obi = NULL;
-		sprintf(neroObjMsgWithStr_st.str,"AddNewObjToForecastList参数错误");
-		msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+    if (forecastInfo== NULL   || forecastInfo->objPoint > forecastInfo->objNum  ||  forecastInfo->objs == NULL ||  newObj == NULL)
+    {
+    
+    
+		#ifdef Nero_ProcessERROR_Msg
+			printf("AddNewObjToForecastList  ProcessERROR\n");
+			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+			neroObjMsgWithStr_st.fucId = 1;
+			neroObjMsgWithStr_st.Obi = NULL;
+			sprintf(neroObjMsgWithStr_st.str,"AddNewObjToForecastList参数错误");
+			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 		#endif
 		return ; 
-        }	
+    }	
  	#ifdef Nero_ProcessERROR_Msg
-	neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-	neroObjMsgWithStr_st.fucId = 1;
-	neroObjMsgWithStr_st.Obi = newObj;
-	sprintf(neroObjMsgWithStr_st.str,"AddNewObjToForecastList  newObj");
-	msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+		neroObjMsgWithStr_st.fucId = 1;
+		neroObjMsgWithStr_st.Obi = newObj;
+		sprintf(neroObjMsgWithStr_st.str,"AddNewObjToForecastList  newObj");
+		msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 	#endif	
 	/*控制替换的深度，这里只替换一层*/
 	if (nero_GetNeroKind(newObj) < NeuronNode_MinNewDerivativeClassId )
 	{
 	        
 	
-	
-	
-	
-	
-                p=newObj->outputListHead;
+         p=newObj->outputListHead;
         /*        printf("                p=%x,newObj=%x.\n",p,newObj);*/
 
                 while(p != NULL) 
                 {
         /*                printf("                p=%x,Obj=%x.\n", p,p->obj);*/
-                        Obj=p->obj;
-                        FiberType=getFiberType(p);
-                        if (Obj != NULL  &&  nero_isBaseObj(Obj) != 1)
-                        {
-                                AddNewObjToList( forecastInfo,FiberType,Obj);
-                                
-                        }
-                        
-                        
-                        p=p->next;
+                    Obj=p->obj;
+                    FiberType=getFiberType(p);
+                    if (Obj != NULL  &&  nero_isBaseObj(Obj) != 1)
+                    {
+                            AddNewObjToList( forecastInfo,FiberType,Obj);
+                            
+                    }
+                    
+                    
+                    p=p->next;
                 
                 }
-        }
-        /*判断是不是要把newObj本身也加入预测列表：*/
-        if (forecastInfo->waitForRecognise  !=NULL)
-        {
-                
-                
-                AddNewObjToList( forecastInfo,Fiber_PointToSameLayer,forecastInfo->waitForRecognise);
-                forecastInfo->waitForRecognise=NULL;
-        }
+     }
+    /*判断是不是要把newObj本身也加入预测列表：*/
+    if (forecastInfo->waitForRecognise  !=NULL)
+    {
+            
+            
+            AddNewObjToList( forecastInfo,Fiber_PointToSameLayer,forecastInfo->waitForRecognise);
+            forecastInfo->waitForRecognise=NULL;
+    }
  
 }
 /*判断预测列表中是否已经有这个概念*/

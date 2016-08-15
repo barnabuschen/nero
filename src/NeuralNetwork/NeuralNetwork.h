@@ -186,9 +186,12 @@ struct NerveFiber_
 
 extern NeuronObject *GodNero;
 extern NeroConf neroConf;
-#define NeuronNode_ForNone   0    //当一个概念节点的类型为此时表示一个未知对象
+#define NeuronNode_ForNone   0    //当一个概念节点的类型为此时表示一个未知对象,you can not use it
 #define NeuronNode_ForGodNero   1    //GodNero
 #define NeuronNode_ForData   2    //表示是一个数据存储的神经元，不是一个概念
+#define NeuronNode_ForUndefined   3   //表示是一个未定义类型的神经元，是一个概念,表示这个对象实际存在，但是没有一个类型去给他进行分类
+
+
 /*强调一点，人的大脑所以的输入信息都是通过各种感觉器官输入的，也就是说
 任何信息在输入大脑之前一定是通过一定加工和处理的
 
@@ -246,7 +249,7 @@ extern NeroConf neroConf;
 #define  NeuronNode_ForInputWord      100     //talk to  outside  wangts to get  words (include Character or  words)  motivated  by  sys-self
 #define  NeuronNode_ForOutputWord      101   
 
-#define NeuronNode_ForComplexDerivative  2000    //高级衍生类
+#define NeuronNode_ForComplexDerivative  2000    //高级衍生类			//never use it
 #define NeuronNode_MinNewDerivativeClassId  2001   //you can  create it  by code.
 
 

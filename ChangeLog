@@ -209,16 +209,20 @@ ver0.18版本：
 
 	
 	最后，既然是临时对象，必须有遗忘得机制
+////////////////////////////////////////////////////////////////////
+	还有你呀判断永久子对象指向临时对象后是否会对其他代码产生影响----有影响得，必须一一排除
+	////////////////////////////////////////////////////////////////////
 	
 	
-	
+	比如：
+	NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum)
+	中，调用：newObiKind= nero_judgeNewObjKind(Obis, objNum);是否有问题
 
 
+	还有
+	void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * newObj)
 
-
-
-
-
+	中关于预测链表得更新是直接把所有得outputlist都输入得
 
 
 

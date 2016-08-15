@@ -639,7 +639,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				#endif			
 		
 		}
-		else if(  ifHasUnknowObj == 0 &&  objNum >= 1)
+		else if(  ifHasUnknowObj == 0 &&  objNum >= 2)
 		{
 			#ifdef DataFlowProcess_error_Msg_
 			printf("coutOferror_Msg_  before  StrengthenLink=%d.\n",coutOferror_Msg_);
@@ -954,7 +954,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 	tmpObiUsed=0;
 
 	/*参数检查*/
-	if (objs == NULL  || godNero ==NULL  ||  objNum <1 || conf ==NULL)
+	if (objs == NULL  || godNero ==NULL  ||  objNum <2 || conf ==NULL)
 	{
 		return nero_msg_ParameterError;
 	}
@@ -986,9 +986,30 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 		// 同时也对数据进行了整理和层次化
 
 
+	if(Process_tmpObiUsed == 0)
+	{
+
+		// 直接生成新得临时对象
+
+		findKind= nero_judgeNewObjKind( objs, objNum);//如果满足不了要求，你需要修改代码
+
+
+		..........................
+		............................
 
 
 
+	}
+	else
+	{
+
+
+
+
+
+
+
+	}
 
 	// ////////////最后，既然是临时对象，必须有遗忘得机制/////////////////////////
 			// 一种解决方案是[定期减弱机制---in  short  time]：				

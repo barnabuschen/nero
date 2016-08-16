@@ -341,11 +341,11 @@ static inline nero_s32int gainFiberStrengthen(NerveFiber * fiber,nero_us32int ti
 	setFiberUpdataTime(  fiber,time);
 /*	chang=time-lasttime;*/
 /*	chang=chang >>  ;*/
-	if ((time-lasttime)  >  NeroForgetCycle)
-	{
-		chang=0;
-	}
-	else
+	// if ((time-lasttime)  >  NeroForgetCycle)
+	// {
+	// 	chang=0;
+	// }
+	// else
 		chang=1;
 	/*1111 1111 1111 1111 1111 0000 0000 0000 */
 	
@@ -359,7 +359,8 @@ static inline nero_s32int gainFiberStrengthen(NerveFiber * fiber,nero_us32int ti
 	}
 	else if (oldStrengthen < Fiber_StrengthenMax   )
 	{
-		Strengthen=oldStrengthen+chang;
+		// if(  (oldStrengthen+chang)  <  Fiber_StrengthenMax )
+		// 	Strengthen=oldStrengthen+chang;
 		fiber->msg1=fiber->msg1  +chang;
 	}
 	else
@@ -3258,8 +3259,125 @@ nero_s32int  FindUpperObjInSAPool(NeuronObject * objs[],nero_s32int objNum,Neuro
 
 
 
+// 加强a得 outputlist中指向得所有 属于 UpperObjKind类得实例得fiber链接强度
+// see 系统运行逻辑记录350页
+nero_s32int nero_StrengthenLinkWithK(NeuronObject * a,UpperObjKind)
+{
+	nero_s32int res,iffind;
+	NeuronObject * findObi;
+	NerveFiber  *  curFiber;
+	NerveFiber  *  lastFiber;
+	NerveFiber  *  nextFiber;
+	NerveFiber     tmpFiber;
+	if (a == NULL  || UpperObjKind == NeuronNode_ForNone)
+	{
+		return nero_msg_ParameterError;
+	}
 
 
 
+
+	curFiber=a->outputListHead;
+	lastFiber=NULL;
+	nextFiber=NULL;
+	for (iffind=0;curFiber !=NULL;lastFiber =curFiber, curFiber=curFiber->next )
+	{
+
+		findObi=curFiber->obj;
+			
+		if (nero_GetNeroKind(findObi) == UpperObjKind)
+		{
+			/*找到了*/
+			iffind=1;
+			res=gainFiberStrengthen(curFiber,neroConf.neroTime);
+			// 那么将x1对象outputlist中属于a基类实例得对象位置都往前面移动一位
+
+			if(lastFiber != NULL)
+			{	
+
+				// struct NerveFiber_
+				// {
+				// 	struct ActivationNeuron   *obj;
+				// 	struct NerveFiber_ * next;
+				// 	nero_us32int msg1;/*存储额外的信息*/
+				// 	nero_us32int time;/*有关修改时间的信息*/
+				// };
+				tmpFiber.obj = curFiber->obj;
+				tmpFiber.msg1 = curFiber->msg1;
+				tmpFiber.time = curFiber->time;
+
+				curFiber->obj = lastFiber->obj;
+				curFiber->msg1 = lastFiber->msg1;
+				curFiber->time = lastFiber->time;
+
+				lastFiber->obj = tmpFiber.obj;
+				lastFiber->msg1 = tmpFiber.msg1;
+				lastFiber->time = tmpFiber.time;
+			}
+
+		}
+		
+	}
+	return nero_msg_ok;	
+
+}
+
+// 将对象obj在 UpperObjKind类得outputlist列表中得位置往前移动一位
+// godNero决定了是哪个pool
+void nero_MovingForwardOneStep( NeuronObject * obj, NeuronObject  *godNero,nero_s32int basekind)
+{
+	NerveFiber     tmpFiber;
+	nero_s32int ObjectKind,ObjectKind2;
+	NerveFiber  *  curFiber;
+	NeuronObject * BaseObi;
+	NerveFiber  *  lastFiber;
+	// ObjectKind=nero_GetNeroKind(obj);
+
+	curFiber=godNero->outputListHead;
+	for (;curFiber !=NULL;curFiber=curFiber->next)
+	{
+		BaseObi=curFiber->obj;
+		ObjectKind2=nero_GetNeroKind(BaseObi);
+		if (ObjectKind2 == basekind)
+		{
+			break;
+		}
+	}	
+
+	lastFiber=NULL;
+	curFiber=BaseObi->outputListHead;
+	for(;curFiber != NULL;lastFiber =curFiber,curFiber=curFiber->next)
+	{
+		if(obj ==   curFiber->obj)
+		{
+
+
+			if(lastFiber != NULL)
+			{	
+
+				tmpFiber.obj = curFiber->obj;
+				tmpFiber.msg1 = curFiber->msg1;
+				tmpFiber.time = curFiber->time;
+
+				curFiber->obj = lastFiber->obj;
+				curFiber->msg1 = lastFiber->msg1;
+				curFiber->time = lastFiber->time;
+
+				lastFiber->obj = tmpFiber.obj;
+				lastFiber->msg1 = tmpFiber.msg1;
+				lastFiber->time = tmpFiber.time;
+			}
+
+		}
+
+	}
+
+
+
+
+
+
+
+}
 
 

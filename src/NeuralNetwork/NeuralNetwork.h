@@ -276,7 +276,7 @@ extern NeroConf neroConf;
 #define	Fiber_PointToMutiObj	        1
 #define	Fiber_PointToUnnecessaryObj	2
 /*神经纤维链接强度的最大值*/
-#define	Fiber_StrengthenMax	200     //在结构体中共用了8位来记录这个值，所以最大为255
+#define	Fiber_StrengthenMax	250     //在结构体中共用了8位来记录这个值，所以最大为255
 /*你需要定义个内存池，来管理使用和未使用的神经元*/
 
 #define	Fiber_ObjInNeroPool	0  //所指向对象所在区域为永久得NeroInPool			
@@ -371,7 +371,8 @@ NeuronObject * nero_CreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum,Ne
 NeuronObject *  getBaseObjName(NeuronObject * baseobj,NeuronObject *);
 nero_s32int  nero_ifMakeUpWithTheseObjsInOrder(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum);
 NeuronObject * nero_ModifyBaseKind(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf);
-
+// 加强a得 outputlist中指向得所有 属于 UpperObjKind类得实例得fiber链接强度
+nero_s32int nero_StrengthenLinkWithK(NeuronObject * a,UpperObjKind);
 void resetNeroConf();
 void   testDataIn201608();
 /*遍历网络的代码：*/

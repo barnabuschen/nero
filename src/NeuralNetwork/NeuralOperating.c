@@ -925,8 +925,6 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 //   so,the new  obj (Complex Derivative  class obj ) will  link the   obj  in   NeroPool,but the new obj is in   Staging Area Pool
 
 
-
-
 // 另外，该对象放在临时区域中，它得链接强度指的是obj得y值， 不会影响永久存储
 // 得衍生类得链接关系（强度）
 /*如果返回1 ,则表面 连接的强度都已经达到最大值,so  created  new  obj  in  永久区域 */
@@ -946,7 +944,7 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
 {
 	nero_s32int Strengthen,i,j,flag;
-
+	nero_s32int UpperObjKind;
 
 // #define Process_TemporaryNUM   7500    //just used  in  fuc  Process_StrengthenLink
 // nero_us32int     Process_tmpObiUsed;						//record    how many objs  store  in  
@@ -964,12 +962,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 	// 同时指向一个临时对象，且输入顺序是一致得,thats it
 	//first ,find  all  all  UpperObj  In SAPool  ,return the  list(save in  Process_tmpObi)
 
-	if(objNum  > 1)
-		Process_tmpObiUsed= FindUpperObjInSAPool(  objs,objNum, godNero, Process_tmpObi);
-	else
-	{
-		// 直接加强链接就行
-	}
+	Process_tmpObiUsed= FindUpperObjInSAPool(  objs,objNum, godNero, Process_tmpObi);
 		// 如果数据数组中得子对象都是指向未知类型得上层概念，直接生成临时衍生对象就好
 		// 如果是已知类型，即是说数据数组中【部分连续得子对象】指向同一个已知类型得上层对象，那么加强这几个对象对概上层对象得链接强度
 		// （这样得情况就是当达到一定链接强度后可以生成永久对象得例子。）---其他不需要加强得de数据，到最后往往就是垃圾数据，丢弃
@@ -978,38 +971,56 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 				// 				类型得情况，不然怎么生成新对象呢！！
  
 		// 你别忘记一点：代码运行到这里，在Process_ObjForecast之后，已经表明在永久区域中
-		// 这些子对象无法被已有得高级衍生类识别，那么他们就可能有俩种情况：
-		// 1：这些数据是一些数据流，无法被归类
-		// 2：这些数据可以被归类，但没有已经created 得衍生对象
+		// 这些子对象无法被已有得高级衍生类识别，那么他们就可能有2种情况：
+		// 1：这些数据是一些数据流，没有事先指定类别（无监督学习），不管能否被归类，
+		// 2：这些数据事先指定了类别（监督学习），但没有已经created 得衍生对象,
+		// 
+		// ******************这个函数只处理没有事先指定类别（无监督学习）得情况*****************************//////////
+		// else if (conf->addLevelObjAlways == 1    &&  ifHasUnknowObj == 0)-------这个分支中处理先指定了类别（监督学习）得情况
 		// 稀疏离散表征得精髓是，每一个输入得数据都将加大或者更加接近最后输出得那个数据（也可能是一个对象或
 		// 者对象，或者直接是一个基类）得可能性，也就是说你得算法导致得结果是，不仅你得系统中存储了大量得数据
 		// 同时也对数据进行了整理和层次化
 
 
-	if(Process_tmpObiUsed == 0)
+
+
+	// see 系统运行逻辑记录350页
+
+	// 因为是无监督学习，所以自己指定一个类
+	findKind= nero_judgeNewObjKind( objs, objNum);
+	if(NeuronNode_ForNone  ==     findKind   )
+		return nero_msg_fail;
+	for(i=0;i<Process_tmpObiUsed;i++)
 	{
+		UpperObjKind=nero_GetNeroKind(Process_tmpObi[i])  ;
+		if(  UpperObjKind  ==     findKind   )
+		{
 
-		// 直接生成新得临时对象
+			// 既然a1是属于基类a，那么将所以a得衍生类
+			// 中出现子对象X1,Y1,Z1得其中一个得就将其在
+			// ///////////////////1//////////////a得outputlist列表中得位置往前移动一位///////////////////////////////////////
+			/////2////// 同时，加强x1  list中指向得所有属于a类得实例得fiber链接强度///////////
+			// //3///////////同样得，对于x1这个子对象来说，既然a1是a，那么将x1对象outputlist中属于a基类实例得对象位置都往前面移动一位
+			// 所以我们得分类算法就是：遍历样本数据得子对象x，y，z得outputlist中出现a，b，c实例得次数，这个次数就是该对象属于某个类得可能性大小
+			// 往前面移动得意义在于，如果x1这个对象得出现极大概率指向基类a，那么x1得输出列表中有很多属于a类得对象，而这些对象中链接强度最大得那个往往在列表得
+			// 前部，也即是说，列表最前面得那个属于a类得对象得链接强度是最大得（因为这个fiber是最先出现得也是强化次数最多得）
 
-		findKind= nero_judgeNewObjKind( objs, objNum);//如果满足不了要求，你需要修改代码
+
+			for(j=0;j<objNum;j++)
+			{
+
+				// 1:加强objs 中子对象得 list中指向得所有 属于 UpperObjKind类得实例得fiber链接强度
+				nero_StrengthenLinkWithK(objs[j],UpperObjKind);
+				//2: 将Process_tmpObi[i]  将 UpperObjKind类得outputlist列表中得位置往前移动一位
+
+				nero_MovingForwardOneStep( Process_tmpObi[i], SAGodNero,UpperObjKind);
+			}
 
 
-		..........................
-		............................
-
-
-
+		}
 	}
-	else
-	{
 
 
-
-
-
-
-
-	}
 
 	// ////////////最后，既然是临时对象，必须有遗忘得机制/////////////////////////
 			// 一种解决方案是[定期减弱机制---in  short  time]：				

@@ -228,13 +228,11 @@ ver0.18版本：
 
 
 
+创建时间：16/08/2016 22:11:27 
 
 
-
-
-
-
-
+	Process_StrengthenLink已经初步完成,下一步是添加在SAPoool中衍生对象的代码,显然不好直接用函数
+nero_createObjFromMultiples,因为它太多地方默认使用了GodNero
 
 
 

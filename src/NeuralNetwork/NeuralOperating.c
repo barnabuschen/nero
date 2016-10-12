@@ -950,10 +950,16 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 			// 	如果UpperObj得最后一个的数据正好是Tag
 			// 则加入临时列表List中
 			// 2:比如objs中得某个子对象为a1,它(找出来得)对应得临时列表List1,
-			// 	强化,a1对List1中所有对象得链接强度,and outputlist列表中得位置往前移动一位
+			// 	首先是加强他们得链接强度:a1对List1中所有对象得链接强度,and outputlist列表中得位置往前移动一位
+			// 其次，判断子对象得outputlist，减弱但不解除子对象指向得在临时区域中得其他临时对象
 
 
-
+		// 稀疏离散表征得精髓是，每一个输入得数据都将加大或者更加接近最后输出得那个数据（也可能是一个对象或
+		// 者对象，或者直接是一个基类）得可能性，也就是说你得算法导致得结果是，不仅你得系统中存储了大量得数据
+		// 同时也对数据进行了整理和层次化
+		//但是在找到最后那个数据前,你每输入一个数据就会更新你得结果输出列表
+		// ,这个列表不仅指示了最后可能输出哪个对象,同时也包含可能性得大小
+		// :就是每个对象得激活程度(类比神经细胞是否达到兴奋值)
 
 
 nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
@@ -992,9 +998,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 		// 
 		// ******************这个函数只处理没有事先指定类别（无监督学习）得情况*****************************//////////
 		// else if (conf->addLevelObjAlways == 1    &&  ifHasUnknowObj == 0)-------这个分支中处理先指定了类别（监督学习）得情况
-		// 稀疏离散表征得精髓是，每一个输入得数据都将加大或者更加接近最后输出得那个数据（也可能是一个对象或
-		// 者对象，或者直接是一个基类）得可能性，也就是说你得算法导致得结果是，不仅你得系统中存储了大量得数据
-		// 同时也对数据进行了整理和层次化
+
 
 
 
@@ -1029,6 +1033,10 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 				//2: 将Process_tmpObi[i]  将 UpperObjKind类得outputlist列表中得位置往前移动一位
 
 				nero_MovingForwardOneStep( Process_tmpObi[i], SAGodNero,UpperObjKind);
+
+
+
+				//
 			}
 
 
@@ -1048,6 +1056,9 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 			// 一种解决方案是[定期减弱机制2---in  long  time]：
 				// chean  the whole   SAPool  per  one time
 
+	// now  :判断是否需要生成新得obj
+	// 关键是判断Process_tmpObi[i]数组中是否已经有对象
+	// 可以包含这个objs[]中得所有对象
 
 
 	if (flag  ==  1)

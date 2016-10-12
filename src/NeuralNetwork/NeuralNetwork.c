@@ -3241,7 +3241,15 @@ nero_s32int  FindUpperObjInSAPool(NeuronObject * objs[],nero_s32int objNum,Neuro
 					{
 
 						//if 临时区域得上层概念中几个子对象正好是objs数组得部分对象，且输入顺序是一致得
-						Process_tmpObi[findNum++]=curFiber->obj;
+
+						for(j=0;j<findNum ;j++)//find if  has this obj already
+						{
+							if(Process_tmpObi[j]  ==  curFiber->obj)
+								break;
+
+						}
+						if(j >=  findNum)
+							Process_tmpObi[findNum++]=curFiber->obj;
 				
 					}
 

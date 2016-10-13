@@ -938,9 +938,9 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 ////////////////如果把NeuronNode_ForUndefined也认为是一种特殊得类，那么你得最终目的就只有一个
 ////////////////就是在这一群数据中找出俩种关系：
 ////////////////一种是数据与数据之间得关系（子对象与自对象之间）----------无监督学习,在这个函数中只能找到这种关系
-////////////////一种是数据与上层衍生类之间得关系-----------------------监督学习,在这个函数中can  not 找到这种关系
+////////////////一种是数据与上层衍生类之间得关系-----------------------监督学习,在这个函数中can  not 找到这种关系(数据流中就包含着类别信息)
 ////////////////这俩种关系都可以用来进行数据得预测和分类-----------------这里实现得是对数据得预测
-			// 就拿adult数据集来说,如果进行无监督学习,
+			// 就拿adult数据集来说,如果进行监督学习,
 			// 那么我们得目标就是在学习之后判断:
 			// 如果只输入前面得部分数据,然后最后出现>50k
 			// 或者<50k得可能性
@@ -964,7 +964,7 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 
 nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
 {
-	nero_s32int Strengthen,i,j,flag;
+	nero_s32int Strengthen,i,j,flag,k,ifCreateObjInSAP;
 	nero_s32int UpperObjKind;
 
 // #define Process_TemporaryNUM   7500    //just used  in  fuc  Process_StrengthenLink
@@ -977,8 +977,8 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 	{
 		return nero_msg_ParameterError;
 	}
-
-	flag=1;
+	ifCreateObjInSAP=0;
+	flag=0;
 	// 首先判断对象数组是否在临时区域中已经有衍生对象,根据数组中得子对象看看是否有指向临时区域得上层概念，如果数据数组中几个子对象
 	// 同时指向一个临时对象，且输入顺序是一致得,thats it
 	//first ,find  all  all  UpperObj  In SAPool  ,return the  list(save in  Process_tmpObi)
@@ -996,7 +996,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 		// 1：这些数据是一些数据流，没有事先指定类别（无监督学习），不管能否被归类，
 		// 2：这些数据事先指定了类别（监督学习），但没有已经created 得衍生对象,
 		// 
-		// ******************这个函数只处理没有事先指定类别（无监督学习）得情况*****************************//////////
+		// ******************这个函数只处理事先指定类别（监督学习）得情况*****************************//////////
 		// else if (conf->addLevelObjAlways == 1    &&  ifHasUnknowObj == 0)-------这个分支中处理先指定了类别（监督学习）得情况
 
 
@@ -1005,11 +1005,24 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 
 	// see 系统运行逻辑记录350页
 
-	// 因为是无监督学习，所以自己指定一个类
+	// 因为是监督学习，数据流中就包含着类别信息,所以自己指定一个类,(花有红花，绿花等不同类得花，这里只能根据数据流得数据类型判断是花，而不知道是红花，绿花)
+	/////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////
 	findKind= nero_judgeNewObjKind( objs, objNum);
 	if(NeuronNode_ForNone  ==     findKind   )
 		return nero_msg_fail;
-	for(i=0;i<Process_tmpObiUsed;i++)
+
+	if(Process_tmpObiUsed <=0)
+	{
+		//需要生成一个新得临时对象
+		ifCreateObjInSAP =  1;
+		flag  =  0;
+	}
+	for(i=0,ifCreateObjInSAP=1;i<Process_tmpObiUsed;i++)
 	{
 		UpperObjKind=nero_GetNeroKind(Process_tmpObi[i])  ;
 		if(  UpperObjKind  ==     findKind   )
@@ -1024,26 +1037,50 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 			// 往前面移动得意义在于，如果x1这个对象得出现极大概率指向基类a，那么x1得输出列表中有很多属于a类得对象，而这些对象中链接强度最大得那个往往在列表得
 			// 前部，也即是说，列表最前面得那个属于a类得对象得链接强度是最大得（因为这个fiber是最先出现得也是强化次数最多得）
 
-
-			for(j=0;j<objNum;j++)
+			k=  nero_ifMakeUpWithTheseObjsInOrder(Process_tmpObi[i],objs,objNum)
+			if(k ==  NeroYES)
 			{
+				for(j=0;j<objNum;j++)
+				{
 
-				// 1:加强objs 中子对象得 list中指向得所有 属于 UpperObjKind类得实例得fiber链接强度
-				nero_StrengthenLinkWithK(objs[j],UpperObjKind);
-				//2: 将Process_tmpObi[i]  将 UpperObjKind类得outputlist列表中得位置往前移动一位
+					// 1:加强objs 中子对象得 list中指向得所有 属于 UpperObjKind类得实例得fiber链接强度
+					nero_StrengthenLinkWithK(objs[j],UpperObjKind);
+					//2: 将Process_tmpObi[i]  将 UpperObjKind类得outputlist列表中得位置往前移动一位
 
-				nero_MovingForwardOneStep( Process_tmpObi[i], SAGodNero,UpperObjKind);
+					nero_MovingForwardOneStep( Process_tmpObi[i], SAGodNero,UpperObjKind);
 
+				}
 
+				// now  :判断是否需要生成新得永久obj
+				// 关键是判断Process_tmpObi[i]数组中是否已经有对象
+				// 可以包含这个objs[]中得所有对象
+						// 1：显然这个包含得意思是，Process_tmpObi[i]得子对象和数组objs[]得对象
+						// 		一一对应，且顺序一致,如果找不到这样得对象就需要生成一个新得临时对象
+						// 2：当objs[]中得对象指向Process_tmpObi[i]得强度达到一定值
+				// 这里需要明确一点：所有在临时区域中得非baseobj都是临时得对象
+				// 可能在一段时间后被删除，那Process_StrengthenLink函数得部分意义
+				// 就在于判断何时将临时对象转还为永久对象		
 
-				//
+				ifCreateObjInSAP=0;
+				//查看链接强度,判断是否可以生成新得永久对象
+
+				flag=nero_checkIfCreateObjInNP(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum);
+				if(flag == NeroYES)
+					flag =1;
+				//可以结束循环了
+				break;
 			}
-
-
 		}
+
 	}
 
+	if(ifCreateObjInSAP ==  1)
+	{
+		//需要生成一个新得临时对象
 
+		
+		flag  =  0;
+	}
 
 	// ////////////最后，既然是临时对象，必须有遗忘得机制/////////////////////////
 			// 一种解决方案是[定期减弱机制---in  short  time]：				
@@ -1055,11 +1092,6 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 
 			// 一种解决方案是[定期减弱机制2---in  long  time]：
 				// chean  the whole   SAPool  per  one time
-
-	// now  :判断是否需要生成新得obj
-	// 关键是判断Process_tmpObi[i]数组中是否已经有对象
-	// 可以包含这个objs[]中得所有对象
-
 
 	if (flag  ==  1)
 	{

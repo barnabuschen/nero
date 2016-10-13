@@ -327,6 +327,34 @@ NeuronObject * getBasePointByObj(NeuronObject  *godNero,NeuronObject  * n)
         
         return  getChildrenOrderRule(baseobj);
 }
+
+/*获取low  for  upper连接强度*/
+static inline nero_s32int getFiberStrengthen(NeuronObject   * low,NeuronObject  * upper)
+{
+	NerveFiber * fiber;
+	nero_us32int Strengthen;
+	NeuronObject   * tmpobj;
+	if(low ==NULL  ||  upper == NULL)
+		return nero_msg_ParameterError;
+
+	fiber=low->outputListHead;
+	Strengthen=0;
+	while(fiber != NULL)
+	{
+		tmpobj=fiber->obj;
+		if(tmpobj !=NULL && tmpobj ==  upper )
+		{
+
+			Strengthen =fiber->msg1 & 0x000000ff;//获取低8位   Fiber_StrengthenMax
+		}
+		fiber =fiber->next;
+	}
+	
+	return  Strengthen;
+}
+
+
+
 /*加强连接强度*/
 static inline nero_s32int gainFiberStrengthen(NerveFiber * fiber,nero_us32int time)
 {
@@ -360,7 +388,7 @@ static inline nero_s32int gainFiberStrengthen(NerveFiber * fiber,nero_us32int ti
 	else if (oldStrengthen < Fiber_StrengthenMax   )
 	{
 		// if(  (oldStrengthen+chang)  <  Fiber_StrengthenMax )
-		// 	Strengthen=oldStrengthen+chang;
+		Strengthen=oldStrengthen+chang;
 		fiber->msg1=fiber->msg1  +chang;
 	}
 	else
@@ -3245,7 +3273,7 @@ nero_s32int  FindUpperObjInSAPool(NeuronObject * objs[],nero_s32int objNum,Neuro
 						for(j=0;j<findNum ;j++)//find if  has this obj already
 						{
 							if(Process_tmpObi[j]  ==  curFiber->obj)
-								break;
+								continue;
 
 						}
 						if(j >=  findNum)
@@ -3264,12 +3292,52 @@ nero_s32int  FindUpperObjInSAPool(NeuronObject * objs[],nero_s32int objNum,Neuro
 
 	return findNum;
 }
+// 判断是否在永久区域中生成一个对象
+// 该对象对应临时区域中得obj
+// 改对象得数据为数组childred
+nero_s32int nero_checkIfCreateObjInNP(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum)
+{
 
+// #define NeroYES   100		-----return  100  means  its time to CreateObjInNP
+// #define NeroNO    101	
+	nero_s32int  i,Strengthen;
+
+
+	// res =  NeroYES;
+	if (obj == NULL  || objNum <=0 ||  childred == NULL)
+	{
+		return nero_msg_ParameterError;
+	}
+
+	// 当且仅当，数组childred中得对象指向临时区域中得obj得
+	// 链接强度都达到极值时返回NeroYES
+
+
+	for(i=0;i<objNum;i++)												
+	{
+
+// Fiber_StrengthenMax
+		Strengthen=getFiberStrengthen(childred[i],obj);
+		if(Strengthen  != Fiber_StrengthenMax)
+		{
+
+			return  NeroNO;
+		}
+
+	}
+
+
+
+
+
+
+	return NeroYES;
+}
 
 
 // 加强a得 outputlist中指向得所有 属于 UpperObjKind类得实例得fiber链接强度
 // see 系统运行逻辑记录350页
-nero_s32int nero_StrengthenLinkWithK(NeuronObject * a,UpperObjKind)
+nero_s32int nero_StrengthenLinkWithK(NeuronObject * a,nero_s32int UpperObjKind)
 {
 	nero_s32int res,iffind;
 	NeuronObject * findObi;
@@ -3379,13 +3447,6 @@ void nero_MovingForwardOneStep( NeuronObject * obj, NeuronObject  *godNero,nero_
 		}
 
 	}
-
-
-
-
-
-
-
 }
 
 

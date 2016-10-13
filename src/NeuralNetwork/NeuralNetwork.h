@@ -325,7 +325,7 @@ nero_s32int nero_addNeroIntoBaseObj(NeuronObject *BaseObi,NeuronObject *newObj);
 NeuronObject * nero_createObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2);
 /*从多个>=3已知道俩个概念中生成一个新的概念，新概念的种类在函数内部自动判断，最后返回新对象指针*/
 /**/
-NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum);
+NeuronObject * 5nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum);
 /*判断是否已经从俩个已知道俩个概念中生成一个了新的概念,有则返回这个对象*/
 NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2);
 
@@ -372,7 +372,7 @@ NeuronObject *  getBaseObjName(NeuronObject * baseobj,NeuronObject *);
 nero_s32int  nero_ifMakeUpWithTheseObjsInOrder(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum);
 NeuronObject * nero_ModifyBaseKind(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf);
 // 加强a得 outputlist中指向得所有 属于 UpperObjKind类得实例得fiber链接强度
-nero_s32int nero_StrengthenLinkWithK(NeuronObject * a,UpperObjKind);
+nero_s32int nero_StrengthenLinkWithK(NeuronObject * a,nero_s32int UpperObjKind);
 void resetNeroConf();
 void   testDataIn201608();
 /*遍历网络的代码：*/

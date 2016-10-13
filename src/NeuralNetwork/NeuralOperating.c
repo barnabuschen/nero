@@ -658,31 +658,40 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 			/*如果子概念分别为a b c,而 b c  已经组成了概念，那么这个由a b c  组成的概念和b c
 			组成的概念是什么关系呢
 			*/	
-			/*一旦形成新的概念，就需要对相应的连接的连接强度做一些修改，怎么样的修改呢？？*/
+			/*res1  ==  Process_msg_CreateNewObj得意思是说，临时区域中得某个对象已经可以转换为永久对象了*/
+			// 转换需要注意得点是：
+			// 1：永久区域得对象还是要重新申请，但是数据一定要判断是否可以复制
+			// 2：临时区域中得对象怎么处理，这会牵扯到许多链接失效得问题必须考虑清楚
+			// 3：
 			if (res1  ==  Process_msg_CreateNewObj  && conf->addLevelObj == 1)
 			{
 				/*首先创建一个新概念，然后把这些子概念之间的链接强度归零*/
 				// printf("nero_createObjFromMultiples  3\n");
-				tmpObi =nero_createObjFromMultiples( objs, objNum);
-				complexObj=tmpObi;
+				// tmpObi =nero_createObjFromMultiples( objs, objNum);
+				// complexObj=tmpObi;
+
+
+
+
+
 				/*强度暂时先不归0，因为这样的结果还不清楚*/
-					#ifdef Nero_DeBuging09_01_14_
-					if (tmpObi)
-					{
-						neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-						neroObjMsgWithStr_st.fucId = 1;
-						neroObjMsgWithStr_st.Obi = tmpObi;
-						sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中创建高级衍生对象成功");
-						msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
-					}
-					#ifdef DataFlowProcess_error_Msg
-					else
-					{
-					        printf("创建高级衍生对象失败\n");
-					        printf("objNum=%d.\n",objNum);
-					}
-					#endif	    
-					#endif			
+				#ifdef Nero_DeBuging09_01_14_
+				if (tmpObi)
+				{
+					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+					neroObjMsgWithStr_st.fucId = 1;
+					neroObjMsgWithStr_st.Obi = tmpObi;
+					sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中创建高级衍生对象成功");
+					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
+				}
+				#ifdef DataFlowProcess_error_Msg
+				else
+				{
+				        printf("创建高级衍生对象失败\n");
+				        printf("objNum=%d.\n",objNum);
+				}
+				#endif	    
+				#endif			
 			}
 		}
 
@@ -983,7 +992,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 	// 同时指向一个临时对象，且输入顺序是一致得,thats it
 	//first ,find  all  all  UpperObj  In SAPool  ,return the  list(save in  Process_tmpObi)
 
-	Process_tmpObiUsed= FindUpperObjInSAPool(  objs,objNum, godNero, Process_tmpObi);
+	Process_tmpObiUsed= FindUpperObjInSAPool(  objs,objNum, SAGodNero, Process_tmpObi);
 		// 如果数据数组中得子对象都是指向未知类型得上层概念，直接生成临时衍生对象就好
 		// 如果是已知类型，即是说数据数组中【部分连续得子对象】指向同一个已知类型得上层对象，那么加强这几个对象对概上层对象得链接强度
 		// （这样得情况就是当达到一定链接强度后可以生成永久对象得例子。）---其他不需要加强得de数据，到最后往往就是垃圾数据，丢弃
@@ -1022,9 +1031,10 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 		ifCreateObjInSAP =  1;
 		flag  =  0;
 	}
+	UpperObjKind=nero_GetNeroKind(Process_tmpObi[i])  ;
 	for(i=0,ifCreateObjInSAP=1;i<Process_tmpObiUsed;i++)
 	{
-		UpperObjKind=nero_GetNeroKind(Process_tmpObi[i])  ;
+		
 		if(  UpperObjKind  ==     findKind   )
 		{
 
@@ -1064,7 +1074,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 				ifCreateObjInSAP=0;
 				//查看链接强度,判断是否可以生成新得永久对象
 
-				flag=nero_checkIfCreateObjInNP(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum);
+				flag=nero_checkIfCreateObjInNP(Process_tmpObi[i],objs,objNum);
 				if(flag == NeroYES)
 					flag =1;
 				//可以结束循环了
@@ -1078,7 +1088,8 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 	{
 		//需要生成一个新得临时对象
 
-		
+		// NeuronObject * nero_CreateObjInSAP(NeuronObject *Obis[],nero_s32int objNum,nero_s32int basekind,NeuronObject *godNero);
+		nero_CreateObjInSAP( objs,objNum,UpperObjKind,SAGodNero);
 		flag  =  0;
 	}
 

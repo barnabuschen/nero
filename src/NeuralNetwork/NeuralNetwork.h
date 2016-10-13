@@ -96,7 +96,13 @@ msg：
 1111 1111 1111 1111 1111 1111 1111 1111 
 1-16位表示该节点种类,注意，17到24位尽量别用，以免节点种类用16位不够用需要扩展
 
-
+25-26
+	对象所在区域为永久得NeroInPool			#define	Nero_ObjInNeroPool	00
+	对象所在区域为StagingAreaNeroPool	 	#define	Nero_ObjInSAPool	01
+27:当所在区域为StagingAreaNeroPool时，此位表示该对象已经可以被转化为永久对象了 
+28:当所在区域为StagingAreaNeroPool时，此位表示该对象已经被转化为永久对象了 ,可以在适当时间进行回收了
+29
+30
 31：在一些基类中，用来表示该种类别的子类的排列顺序是否固定，1表示顺序固定，0表示顺序无所谓
 32位：区别一般的概念和基类，1表示基类，0表示衍生类(网络中真正的数据)
 */
@@ -281,7 +287,8 @@ extern NeroConf neroConf;
 
 #define	Fiber_ObjInNeroPool	0  //所指向对象所在区域为永久得NeroInPool			
 #define	Fiber_ObjInSAPool	1  //所指向对象所在区域为StagingAreaNeroPool	 	
-
+#define	Nero_ObjInNeroPool	0	//对象所在区域为永久得NeroInPool		
+#define	Nero_ObjInSAPool	1	//对象所在区域为StagingAreaNeroPool	 
 
 
 void donother();
@@ -296,7 +303,7 @@ NeuronObject * getNeuronObject();
 NeuronObject * getSANeuronObject();
 /*创建一个指定类型的神经概念*/
 NeuronObject *  nero_createNeroObj(nero_s32int kind);
-
+NeuronObject *  nero_createNeroObjSAP(nero_s32int kind,NeuronObject * godNero);
 /*创建一个数据存储 神经元,并初始化*/
 ActNero * nero_createDataNero();
 
@@ -325,7 +332,8 @@ nero_s32int nero_addNeroIntoBaseObj(NeuronObject *BaseObi,NeuronObject *newObj);
 NeuronObject * nero_createObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2);
 /*从多个>=3已知道俩个概念中生成一个新的概念，新概念的种类在函数内部自动判断，最后返回新对象指针*/
 /**/
-NeuronObject * 5nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum);
+NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum);
+NeuronObject * nero_CreateObjInSAP(NeuronObject *Obis[],nero_s32int objNum,nero_s32int basekind,NeuronObject *godNero);
 /*判断是否已经从俩个已知道俩个概念中生成一个了新的概念,有则返回这个对象*/
 NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2);
 

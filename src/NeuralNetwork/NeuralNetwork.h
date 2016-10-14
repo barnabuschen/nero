@@ -310,6 +310,7 @@ void setNeroTransferTag(ActNero *nero,nero_us32int tag);
 nero_us32int getNeroTransferTag(ActNero *nero);
 nero_us32int getFiberPointToPool(NerveFiber * fiber );
 
+nero_s32int nero_TransferSAPoolObj(NeuronObject  *NPgodNero,NeuronObject  *SAPgodNero,NeroConf * conf,NeuronObject * needTransferNero);
 
 
 nero_s32int initActNero(ActNero * nero,nero_us32int kind,NerveFiber *inputListHead,NerveFiber *outputListHead);

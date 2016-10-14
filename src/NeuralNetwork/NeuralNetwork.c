@@ -443,7 +443,7 @@ static inline nero_s32int gainFiberStrengthen(NerveFiber * fiber,nero_us32int ti
 	return (Strengthen);
 }
 
-static inline nero_us32int getFiberPointToPool(NerveFiber * fiber )
+nero_us32int getFiberPointToPool(NerveFiber * fiber )
 {
 	
 	
@@ -3700,6 +3700,91 @@ void nero_MovingForwardOneStep( NeuronObject * obj, NeuronObject  *godNero,nero_
 		}
 
 	}
+}
+// 将SAP中的临时对象needTransferNero转化为NP中得永久对象
+/*
+	 struct ActivationNeuron
+	{
+	nero_us32int msg; 记录该nero的种类，性质等信息* 
+	nero_s32int x;//取值范围-2147483648 ~ 2147483647       use x  to  recond  how many chind has  if  its  a  baseObj 
+	nero_s32int y;	//	it use  to  recond  how many times  this obj  has been input  recently只在临时区域中使用这个变量
+	nero_s32int z;
+	struct NerveFiber_  * inputListHead;				
+	struct NerveFiber_   * outputListHead; 
+	};
+
+	struct NerveFiber_
+	{
+		struct ActivationNeuron   *obj;
+		struct NerveFiber_ * next;
+		nero_us32int msg1;
+		nero_us32int time;
+	};
+*/
+// 需要做得工作：
+// 1：在NP申请一个新得obj
+// 2：将必要得信息复制到obj，而inputListHead，outputListHead可以直接复制就行了，但是要过滤掉指向SAP得链接（动态分配得需要释放）
+//    	进行详细得信息修改
+// 		xyz可以直接复制
+// 		inputListHead可以直接复制
+// 		outputListHead需要过滤掉无用链接，指的是如果指向得是无效链接需要除掉（比如指向了同样被转移了得对象），但是不删仍然正常得obj
+//		 ,不需要删除临时区域中得指向基类得fiber
+// 		msg，25/26/27/28位需要修改
+	
+// 3：将needTransferNero从SAP得链表中摘除，并修改needTransferNero
+// 		所在得位置msg信息得28位
+
+// 4：删除子对象指向临时区域，改为指向新得对象
+nero_s32int nero_TransferSAPoolObj(NeuronObject  *NPgodNero,NeuronObject  *SAPgodNero,NeroConf * conf,NeuronObject * needTransferNero)
+{
+	NeuronObject *newObi;
+	NerveFiber *tmpFiber;
+	nero_s32int newObiKind,res,i,createNewBaseKindFlag;
+
+	/*参数检查*/
+	if (SAPgodNero == NULL  || NPgodNero ==NULL  || needTransferNero ==NULL  ||   conf ==NULL)
+	{
+		return nero_msg_ParameterError;
+	}
+
+
+	newObiKind= nero_GetNeroKind(needTransferNero);
+	/*生成新概念，并加入网络*/
+	newObi= nero_createNeroObj (newObiKind);
+	// printf("newObi=%x\n",newObi);
+
+
+	newObi->x = needTransferNero->x;
+	newObi->y = needTransferNero->y;
+	newObi->z = needTransferNero->z;
+	newObi->msg = needTransferNero->msg;
+	newObi->inputListHead = needTransferNero->inputListHead;
+	newObi->outputListHead = needTransferNero->outputListHead;
+
+	setActNeroPoolKind(newObi,Nero_ObjInNeroPool);//25-26
+	setNeroTransferTag(newObi,0);//27,  but  28位不需要修改,SAP  obj 需要修改
+
+
+	res= nero_addNeroIntoNet( NPgodNero,newObi);
+	if(nero_msg_ok != res)
+	{
+	        #ifdef   createObjFromMultiples_DeBug_Msg
+		printf("nero_TransferSAPoolObj概念加入网络失败id=%x Kind %d ,objNum=%d\n",newObi,newObiKind,objNum);
+		 #endif	
+		return NULL;
+	
+	}
+
+	// for (i=0;i<objNum;i++)
+	// {
+
+	// 	PointingToObject(Obis[i],newObi,Fiber_PointToUpperLayer);
+	// 	if (i>0)
+	// 	{
+	// 		PointingToObject(Obis[i-1],Obis[i],Fiber_PointToSameLayer);
+	// 	}
+			
+	// }
 }
 
 

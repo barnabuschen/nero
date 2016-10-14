@@ -668,8 +668,9 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 			{
 				// 进入到这里意味着由objs组成得一个临时区域中得对象(TmpStagingAreaNero)已经可以转化为永久对象了
 
+				// 
+				nero_TransferSAPoolObj(GodNero,SAGodNero,NeroConf * conf,TmpStagingAreaNero);
 
-				
 
 
 				/*强度暂时先不归0，因为这样的结果还不清楚*/

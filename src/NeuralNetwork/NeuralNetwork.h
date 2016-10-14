@@ -99,8 +99,8 @@ msg：
 25-26
 	对象所在区域为永久得NeroInPool			#define	Nero_ObjInNeroPool	00
 	对象所在区域为StagingAreaNeroPool	 	#define	Nero_ObjInSAPool	01
-27:当所在区域为StagingAreaNeroPool时，此位表示该对象已经可以被转化为永久对象了 
-28:当所在区域为StagingAreaNeroPool时，此位表示该对象已经被转化为永久对象了 ,可以在适当时间进行回收了
+27:当所在区域为StagingAreaNeroPool时，此位为1(Nero_TransferToNeroPool)表示该对象已经可以被转化为永久对象了 
+28:当所在区域为StagingAreaNeroPool时，此位为1(Nero_AlreadyTransfered)表示该对象已经被转化为永久对象了 ,可以在适当时间进行回收了
 29
 30
 31：在一些基类中，用来表示该种类别的子类的排列顺序是否固定，1表示顺序固定，0表示顺序无所谓
@@ -267,6 +267,17 @@ extern NeroConf neroConf;
 #define NeuronNode_BaseObject   1  /*就是一般的概念和基类进行区别*/
 #define NeuronNode_DerivativeObject   0  /*就是一般的概念（从基类衍生的概念）和基类进行区别*/
 
+#define	Nero_ObjInNeroPool	0	//对象所在区域为永久得NeroInPool		
+#define	Nero_ObjInSAPool	1	//对象所在区域为StagingAreaNeroPool	 
+
+
+#define	Nero_TransferToNeroPool	1	//标志临时区域对象可以转移至永久区域
+#define	Nero_AlreadyTransfered	1	//标志临时区域对象already转移至永久区域
+
+
+
+
+
 
 /*神经纤维类型*/
 /*有一种特殊的情况，就是一些类的数据就是一些保存数据的神经元，这些神经元用纤维连接起来
@@ -287,13 +298,19 @@ extern NeroConf neroConf;
 
 #define	Fiber_ObjInNeroPool	0  //所指向对象所在区域为永久得NeroInPool			
 #define	Fiber_ObjInSAPool	1  //所指向对象所在区域为StagingAreaNeroPool	 	
-#define	Nero_ObjInNeroPool	0	//对象所在区域为永久得NeroInPool		
-#define	Nero_ObjInSAPool	1	//对象所在区域为StagingAreaNeroPool	 
+
+
+
 
 
 void donother();
 
 nero_s32int CreateStagingAreaNeroNet();
+void setNeroTransferTag(ActNero *nero,nero_us32int tag);
+nero_us32int getNeroTransferTag(ActNero *nero);
+nero_us32int getFiberPointToPool(NerveFiber * fiber );
+
+
 
 nero_s32int initActNero(ActNero * nero,nero_us32int kind,NerveFiber *inputListHead,NerveFiber *outputListHead);
 nero_s32int initNeroPool();

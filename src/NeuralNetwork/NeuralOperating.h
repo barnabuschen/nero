@@ -84,7 +84,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 
 
-nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf);
+nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf,NeuronObject ** alreadyTransferNero);
 
 
 NeuronObject * Process_IfHasNextObjToread(struct DataFlowForecastInfo  * forecastInfo);

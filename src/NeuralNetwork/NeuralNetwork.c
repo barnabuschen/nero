@@ -143,6 +143,38 @@ static inline void setActNeroKind(ActNero *nero,nero_us32int kind)
 	nero->msg =nero->msg & 0xffff0000;//低16位清零
 	nero->msg =nero->msg | kind;//低16位清零
 }
+// 当nero所在区域为StagingAreaNeroPool时，此位为1(Nero_TransferToNeroPool)表示该对象已经可以被转化为永久对象了 
+  void setNeroTransferTag(ActNero *nero,nero_us32int tag)
+{
+	
+	if(nero ==NULL || tag >= Nero_TransferToNeroPool)
+		return ;
+		
+	if (tag == 1)
+	{	/*把末k位变成1          | (101001->101111,k=4)      | x | (1 < < k-1) */
+		nero->msg =nero->msg | (1<<(32-6));
+	}
+	else	
+		nero->msg =nero->msg & 0xfbffffff;// 1101  第27位清零
+}
+ nero_us32int getNeroTransferTag(ActNero *nero)
+{
+	nero_us32int kind;
+	if(nero ==NULL )
+		return ;
+
+	kind=fiber->msg1  & 0x04000000;/*提取对应的俩位*/
+	kind=kind  >>  26;
+	
+	
+	if ( kind <= Nero_TransferToNeroPool)
+	{
+	       
+		return kind;
+	}
+	return nero_msg_unknowError;		
+
+}
 
 /*设置纤维的更新时间*/
 static inline void setFiberUpdataTime(NerveFiber * fiber,nero_us32int time)

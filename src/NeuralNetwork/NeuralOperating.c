@@ -250,6 +250,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	nero_s32int i,j,hasAddObj/*,hasNewObj*/,res1,objNum,OldobjNum,res2,tmoForRecordNUm,ifHasUnknowObj;
 	NeuronObject * tmpObi,* tmpBaseObi;
 	NeuronObject ** objs=NULL;
+	NeuronObject * TmpStagingAreaNero=NULL;
 	NeuronObject * complexObj;
 /*        struct NeroObjForecastList   *findObiPoint; */
 /*        NeuronObject * findForecastObj;	*/
@@ -650,8 +651,8 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	/*		printf("已经连接的对象则加强连接强度\n");*/
 
 			/*这里面有一个问题，*/
-
-			res1=Process_StrengthenLink(objs,objNum,GodNero, conf);
+			TmpStagingAreaNero =NULL;
+			res1=Process_StrengthenLink(objs,objNum,GodNero, conf,&TmpStagingAreaNero);
 	/*		printf("res1=%d.\n",res1);*/
 			
 			/*如果发现强度足够高时则生成新概念*/
@@ -663,15 +664,12 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 			// 1：永久区域得对象还是要重新申请，但是数据一定要判断是否可以复制
 			// 2：临时区域中得对象怎么处理，这会牵扯到许多链接失效得问题必须考虑清楚
 			// 3：
-			if (res1  ==  Process_msg_CreateNewObj  && conf->addLevelObj == 1)
+			if (res1  ==  Process_msg_CreateNewObj  && conf->addLevelObj == 1  && TmpStagingAreaNero != NULL)
 			{
-				/*首先创建一个新概念，然后把这些子概念之间的链接强度归零*/
-				// printf("nero_createObjFromMultiples  3\n");
-				// tmpObi =nero_createObjFromMultiples( objs, objNum);
-				// complexObj=tmpObi;
+				// 进入到这里意味着由objs组成得一个临时区域中得对象(TmpStagingAreaNero)已经可以转化为永久对象了
 
 
-
+				
 
 
 				/*强度暂时先不归0，因为这样的结果还不清楚*/
@@ -971,7 +969,7 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 		// :就是每个对象得激活程度(类比神经细胞是否达到兴奋值)
 
 
-nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
+nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf,NeuronObject ** alreadyTransferNero)
 {
 	nero_s32int Strengthen,i,j,flag,k,ifCreateObjInSAP;
 	nero_s32int UpperObjKind;
@@ -1073,10 +1071,17 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 
 				ifCreateObjInSAP=0;
 				//查看链接强度,判断是否可以生成新得永久对象
-
-				flag=nero_checkIfCreateObjInNP(Process_tmpObi[i],objs,objNum);
+				flag=getNeroTransferTag(Process_tmpObi[i]);//检查是否已经有转移标记
+				if(flag != Nero_TransferToNeroPool)
+					flag=nero_checkIfCreateObjInNP(Process_tmpObi[i],objs,objNum);
+				else
+					flag =0;
 				if(flag == NeroYES)
+				{
 					flag =1;
+					* alreadyTransferNero = &(Process_tmpObi[i]);
+					setNeroTransferTag(Process_tmpObi[i],Nero_TransferToNeroPool);
+				}
 				//可以结束循环了
 				break;
 			}
@@ -1107,6 +1112,9 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 	if (flag  ==  1)
 	{
 /*	        printf("time to createNewObj\n");*/
+
+
+		
 		return  Process_msg_CreateNewObj;
 	}
 	return   nero_msg_ok;
@@ -1487,47 +1495,47 @@ void AddNewObjToList(struct DataFlowForecastInfo  * forecastInfo,nero_s32int Fib
                         /*加入列表*/
 
 /*                        printf("                FiberType=%d.\n",FiberType);*/
-                        if (FiberType == Fiber_PointToUpperLayer)
-                        {
-                             listHead=(struct list_head  *)&(forecastInfo->headOfUpperLayer);
-                        }
-                        else if(FiberType == Fiber_PointToSameLayer)
-                        {
-                                listHead=(struct list_head  *)&(forecastInfo->headOfSameLayer);
-                        }
-                        else
-                                listHead=NULL;
-                        if (listHead !=NULL)
-                        {
-                         
-								/*首先判断是否已经有这个概念*/
-								struct NeroObjForecastList   *  findNodeINlist;
-								findNodeINlist=Process_IfHasThisObjINList( listHead,Obj);
+        if (FiberType == Fiber_PointToUpperLayer)
+        {
+             listHead=(struct list_head  *)&(forecastInfo->headOfUpperLayer);
+        }
+        else if(FiberType == Fiber_PointToSameLayer)
+        {
+                listHead=(struct list_head  *)&(forecastInfo->headOfSameLayer);
+        }
+        else
+                listHead=NULL;
+        if (listHead !=NULL)
+        {
+         
+			/*首先判断是否已经有这个概念*/
+			struct NeroObjForecastList   *  findNodeINlist;
+			findNodeINlist=Process_IfHasThisObjINList( listHead,Obj);
 
-								if (findNodeINlist == NULL)
-								{
-								#ifdef Nero_DeBuging24_01_14_
-								printf("预测链表增长。。。。p->next=%x。。。\n",p->next);
-								neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-								neroObjMsgWithStr_st.fucId = 1;
-								neroObjMsgWithStr_st.Obi = Obj;
-								sprintf(neroObjMsgWithStr_st.str,"预测链表增长 id=%d id2=%d",forecastInfo->DeBugMsg,forecastInfo->DeBugMsgTwo);
-								msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
-								#endif                                         
-								AddNodeIntoForecastList(listHead,Obj);
-                                }
-                                else
-                                {
-                                        /*对于刚被查询的概念，就是新输入的，但是列表中
-                                        已经有的概念延长起存在时间，已避免反复添加删除
-                                        */
-                                        
-                                        (findNodeINlist->times)--;
+			if (findNodeINlist == NULL)
+			{
+			#ifdef Nero_DeBuging24_01_14_
+			printf("预测链表增长。。。。p->next=%x。。。\n",p->next);
+			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+			neroObjMsgWithStr_st.fucId = 1;
+			neroObjMsgWithStr_st.Obi = Obj;
+			sprintf(neroObjMsgWithStr_st.str,"预测链表增长 id=%d id2=%d",forecastInfo->DeBugMsg,forecastInfo->DeBugMsgTwo);
+			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
+			#endif                                         
+			AddNodeIntoForecastList(listHead,Obj);
+            }
+            else
+            {
+                    /*对于刚被查询的概念，就是新输入的，但是列表中
+                    已经有的概念延长起存在时间，已避免反复添加删除
+                    */
+                    
+                    (findNodeINlist->times)--;
 /*                                        printf("findNodeINlist->times=%d.\n",findNodeINlist->times);*/
-                                        
-                                }
+                    
+            }
 
-                        }
+        }
 
 }
 void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * newObj)
@@ -1568,29 +1576,28 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
          p=newObj->outputListHead;
         /*        printf("                p=%x,newObj=%x.\n",p,newObj);*/
 
-                while(p != NULL) 
-                {
-        /*                printf("                p=%x,Obj=%x.\n", p,p->obj);*/
-                    Obj=p->obj;
-                    FiberType=getFiberType(p);
-                    if (Obj != NULL  &&  nero_isBaseObj(Obj) != 1)
-                    {
-                            AddNewObjToList( forecastInfo,FiberType,Obj);
-                            
-                    }
+        while(p != NULL) 
+        {
+/*                printf("                p=%x,Obj=%x.\n", p,p->obj);*/
+            Obj=p->obj;
+            FiberType=getFiberType(p);
+            if (Obj != NULL  &&  nero_isBaseObj(Obj) != 1 && getFiberPointToPool(curFiber ) == Fiber_ObjInNeroPool )
+            {
+                    AddNewObjToList( forecastInfo,FiberType,Obj);
                     
-                    
-                    p=p->next;
-                
-                }
+            }
+            
+            
+            p=p->next;
+        
+        }
      }
     /*判断是不是要把newObj本身也加入预测列表：*/
     if (forecastInfo->waitForRecognise  !=NULL)
-    {
-            
-            
-            AddNewObjToList( forecastInfo,Fiber_PointToSameLayer,forecastInfo->waitForRecognise);
-            forecastInfo->waitForRecognise=NULL;
+    {      
+	    
+	    AddNewObjToList( forecastInfo,Fiber_PointToSameLayer,forecastInfo->waitForRecognise);
+	    forecastInfo->waitForRecognise=NULL;
     }
  
 }
@@ -1917,47 +1924,47 @@ nero_s32int Process_GetNewActivateForecastObj(struct DataFlowForecastInfo  * for
         curFiber=obj->outputListHead;
         while(curFiber)
         {
-                tmpobj=curFiber->obj;
-                if (getFiberType(curFiber) == Fiber_PointToUpperLayer  &&  nero_isBaseObj(tmpobj) != 1)
-                {
-                        newActivateForecastObj= Process_IfHasThisObjINList((struct list_head  *) &(forecastInfo->headOfUpperLayer),tmpobj);
-                        
-                        if (newActivateForecastObj)
-                        {
-                        
-                        
-                        
-                                forecastInfo->activateForecastObj=newActivateForecastObj;
-                                /*修改newActivateForecastObj的信息*/
-                                newActivateForecastObj->Strengthen++;
+            tmpobj=curFiber->obj;
+            if (getFiberType(curFiber) == Fiber_PointToUpperLayer  &&  nero_isBaseObj(tmpobj) != 1  && getFiberPointToPool(curFiber ) == Fiber_ObjInNeroPool)
+            {
+                    newActivateForecastObj= Process_IfHasThisObjINList((struct list_head  *) &(forecastInfo->headOfUpperLayer),tmpobj);
+                    
+                    if (newActivateForecastObj)
+                    {
+                    
+                    
+                    
+                            forecastInfo->activateForecastObj=newActivateForecastObj;
+                            /*修改newActivateForecastObj的信息*/
+                            newActivateForecastObj->Strengthen++;
 /*                                printf(" 1GetNewActivateForecastObj=%x.obj=%x\n",forecastInfo->activateForecastObj->obj,newActivateForecastObj->obj);*/
-                                res=SetStartAndEndForListNode( forecastInfo,obj);
+                            res=SetStartAndEndForListNode( forecastInfo,obj);
 /*                                printf(" 4GetNewActivateForecastObj =%x.\n",forecastInfo->activateForecastObj->obj);*/
-                                if (res == NeroNO)
-                                {
+                            if (res == NeroNO)
+                            {
 /*                                        printf(" 3GetNewActivateForecastObj =%x.\n",forecastInfo->activateForecastObj);*/
-                                        forecastInfo->activateForecastObj=NULL;
-                                       return NeroNO;
-                                }
-                                else
-                                {
-                                
-				    				#ifdef Nero_DeBuging09_01_14_
-				/*    				printf(" 2GetNewActivateForecastObj =%x.\n",forecastInfo->activateForecastObj);*/
-									neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-									neroObjMsgWithStr_st.fucId = 1;
-									neroObjMsgWithStr_st.Obi = forecastInfo->activateForecastObj->obj;
-									sprintf(neroObjMsgWithStr_st.str,"GetNewActivateForecastObj 取得新对象%x id=%d",newActivateForecastObj,forecastInfo->DeBugMsg);
-									msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
-									#endif                                
-                                
-                                	return NeroYES;
-                                }
-                                        
-                        }
-                }
-        
-                curFiber=curFiber->next;
+                                    forecastInfo->activateForecastObj=NULL;
+                                   return NeroNO;
+                            }
+                            else
+                            {
+                            
+			    				#ifdef Nero_DeBuging09_01_14_
+			/*    				printf(" 2GetNewActivateForecastObj =%x.\n",forecastInfo->activateForecastObj);*/
+								neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+								neroObjMsgWithStr_st.fucId = 1;
+								neroObjMsgWithStr_st.Obi = forecastInfo->activateForecastObj->obj;
+								sprintf(neroObjMsgWithStr_st.str,"GetNewActivateForecastObj 取得新对象%x id=%d",newActivateForecastObj,forecastInfo->DeBugMsg);
+								msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
+								#endif                                
+                            
+                            	return NeroYES;
+                            }
+                                    
+                    }
+            }
+    
+            curFiber=curFiber->next;
         
         }
          return NeroNO;

@@ -399,7 +399,7 @@ NeuronObject *  getBaseObjName(NeuronObject * baseobj,NeuronObject *);
 nero_s32int  nero_ifMakeUpWithTheseObjsInOrder(NeuronObject *obj,NeuronObject *childred[],nero_s32int objNum);
 NeuronObject * nero_ModifyBaseKind(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf);
 // 加强a得 outputlist中指向得所有 属于 UpperObjKind类得实例得fiber链接强度
-nero_s32int nero_StrengthenLinkWithK(NeuronObject * a,nero_s32int UpperObjKind);
+nero_s32int nero_StrengthenLinkWithK(NeuronObject * a,nero_s32int UpperObjKind,NeuronObject * targetObj);
 void resetNeroConf();
 void   testDataIn201608();
 /*遍历网络的代码：*/

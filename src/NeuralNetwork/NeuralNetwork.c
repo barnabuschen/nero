@@ -3683,9 +3683,9 @@ nero_s32int nero_checkIfCreateObjInNP(NeuronObject *obj,NeuronObject *childred[]
 }
 
 
-// 加强a得 outputlist中指向得所有 属于 UpperObjKind类得实例得fiber链接强度
+// 加强a得 outputlist中指向 UpperObjKind类得实例(targetObj)得fiber链接强度
 // see 系统运行逻辑记录350页
-nero_s32int nero_StrengthenLinkWithK(NeuronObject * a,nero_s32int UpperObjKind)
+nero_s32int nero_StrengthenLinkWithK(NeuronObject * a,nero_s32int UpperObjKind,NeuronObject * targetObj)
 {
 	nero_s32int res,iffind;
 	NeuronObject * findObi;
@@ -3693,7 +3693,7 @@ nero_s32int nero_StrengthenLinkWithK(NeuronObject * a,nero_s32int UpperObjKind)
 	NerveFiber  *  lastFiber;
 	NerveFiber  *  nextFiber;
 	NerveFiber     tmpFiber;
-	if (a == NULL  || UpperObjKind == NeuronNode_ForNone)
+	if (a == NULL  || UpperObjKind == NeuronNode_ForNone  ||   targetObj == NULL)
 	{
 		return nero_msg_ParameterError;
 	}
@@ -3709,7 +3709,7 @@ nero_s32int nero_StrengthenLinkWithK(NeuronObject * a,nero_s32int UpperObjKind)
 
 		findObi=curFiber->obj;
 			
-		if (nero_GetNeroKind(findObi) == UpperObjKind)
+		if ((findObi == targetObj)
 		{
 			/*找到了*/
 			iffind=1;
@@ -3738,7 +3738,7 @@ nero_s32int nero_StrengthenLinkWithK(NeuronObject * a,nero_s32int UpperObjKind)
 				lastFiber->msg1 = tmpFiber.msg1;
 				lastFiber->time = tmpFiber.time;
 			}
-
+			break;
 		}
 		
 	}
@@ -3984,6 +3984,8 @@ void nero_deleteObjFromBaseKindList(NeuronObject * deleteObj,NeuronObject  *godN
 				deleteObj->outputListHead=NULL;
 
 				deleteObj->msg=0;
+
+				baseobj->x  = baseobj->x -1;
 			}
 
 			if(fronttmpFiber == NULL)

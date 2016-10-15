@@ -1052,8 +1052,9 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 				for(j=0;j<objNum;j++)
 				{
 
-					// 1:加强objs 中子对象得 list中指向得所有 属于 UpperObjKind类得实例得fiber链接强度
-					nero_StrengthenLinkWithK(objs[j],UpperObjKind);
+					// 1:加强objs 中子对象得 list中指向得所有 属于 UpperObjKind类得实例(Process_tmpObi[i])得fiber链接强度
+					nero_StrengthenLinkWithK(objs[j],UpperObjKind,Process_tmpObi[i]);
+
 					//2: 将Process_tmpObi[i]  将 UpperObjKind类得outputlist列表中得位置往前移动一位
 
 					nero_MovingForwardOneStep( Process_tmpObi[i], SAGodNero,UpperObjKind);

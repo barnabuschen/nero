@@ -304,7 +304,8 @@ extern NeroConf neroConf;
 
 
 void donother();
-
+// 将一个obj从基类得子类列表中删除
+void nero_deleteObjFromBaseKindList(NeuronObject * deleteObj);
 nero_s32int CreateStagingAreaNeroNet();
 void setNeroTransferTag(ActNero *nero,nero_us32int tag);
 nero_us32int getNeroTransferTag(ActNero *nero);

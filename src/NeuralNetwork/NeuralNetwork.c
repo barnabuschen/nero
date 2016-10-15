@@ -143,12 +143,46 @@ static inline void setActNeroKind(ActNero *nero,nero_us32int kind)
 	nero->msg =nero->msg & 0xffff0000;//低16位清零
 	nero->msg =nero->msg | kind;//低16位清零
 }
-// 当nero所在区域为StagingAreaNeroPool时，此位为1(Nero_TransferToNeroPool)表示该对象已经可以被转化为永久对象了 
+
+// 当nero所在区域为StagingAreaNeroPool时，此位为1(Nero_AlreadyTransfered)表示该对象 已经被   转化为永久对象了 
+ static inline void setAlreadyNeroTransferTag(ActNero *nero,nero_us32int tag)
+{
+	
+	if(nero ==NULL || tag >= Nero_AlreadyTransfered)
+		return ;
+		
+	if (tag == 1)
+	{	/*把末k位变成1          | (101001->101111,k=4)      | x | (1 < < k-1) */
+		nero->msg =nero->msg | (1<<(32-5));
+	}
+	else	
+		nero->msg =nero->msg & 0xf7ffffff;// 1110  第27位清零
+}
+ static inline nero_us32int getAlreadyNeroTransferTag(ActNero *nero)
+{
+	nero_us32int kind;
+	if(nero ==NULL )
+		return nero_msg_unknowError; ;
+
+	kind=nero->msg  & 0x08000000;/*提取对应的位*/
+	kind=kind  >>  27;
+	
+	
+	if ( kind <= Nero_AlreadyTransfered)
+	{
+	       
+		return kind;
+	}
+	return nero_msg_unknowError;		
+
+}
+
+// 当nero所在区域为StagingAreaNeroPool时，此位为1(Nero_TransferToNeroPool)表示该对象已经  可以   被转化为永久对象了 
   void setNeroTransferTag(ActNero *nero,nero_us32int tag)
 {
 	
 	if(nero ==NULL || tag >= Nero_TransferToNeroPool)
-		return ;
+		return ; 
 		
 	if (tag == 1)
 	{	/*把末k位变成1          | (101001->101111,k=4)      | x | (1 < < k-1) */
@@ -161,9 +195,9 @@ static inline void setActNeroKind(ActNero *nero,nero_us32int kind)
 {
 	nero_us32int kind;
 	if(nero ==NULL )
-		return ;
+		return nero_msg_unknowError; ;
 
-	kind=fiber->msg1  & 0x04000000;/*提取对应的俩位*/
+	kind=nero->msg  & 0x04000000;/*提取对应的位*/
 	kind=kind  >>  26;
 	
 	
@@ -709,6 +743,67 @@ static inline void setActNeroAsBaseObject(ActNero *nero,nero_us32int kind)
 		nero->msg =nero->msg & 0x7fffffff;//第32位清零
 
 }
+// 因为fiber不能脱离obj单独存在，所以一旦从obj解除就必须释放相应内存
+//z实际上，theFrontFiber ==NULL得情况是存在得
+static inline  void freeNerveFiber(NerveFiber  *listHeadFiber,NerveFiber  *theFrontFiber,NerveFiber  *freeFiber  )
+{
+
+	NerveFiber  *theNextFiber;
+	if(listHeadFiber ==NULL ||  freeFiber ==NULL)
+	{
+		return ;
+	}	
+	
+	theNextFiber=freeFiber->next;
+	if(theFrontFiber == NULL)
+	{
+		listHeadFiber->next ==theNextFiber;
+	}
+	else
+	{
+		theFrontFiber->next ==theNextFiber;	
+	}
+	free(freeFiber);
+
+
+}
+	// outputListHead需要过滤掉无用链接，
+	// 指的是如果指向得是无效链接需要除掉（比如指向了同样被转移了得对象），但是不删仍然正常得obj,需要删除point to 临时区域中得基类得fiber
+void  cleanObjFiberListFromSAPool(NeuronObject  *newObi)
+{
+
+	NerveFiber *tmpFiber;
+	NerveFiber *fronttmpFiber;	
+	if(newObi ==NULL)
+		return  ;
+	// if(SAPgodNero ==NULL)
+	// 	return  ;
+
+	for (tmpFiber=newObi->outputListHead ,fronttmpFiber=NULL;tmpFiber != NULL;tmpFiber=tmpFiber->next)
+	{
+		if(tmpFiber->obj  != NULL   &&  getFiberPointToPool(tmpFiber)  ==  Fiber_ObjInSAPool )
+		{
+			// Fiber_ObjInNeroPool  && kind <=Fiber_ObjInSAPool)
+
+			if(  nero_isBaseObj(tmpFiber->obj)  ==  1    ||  getAlreadyNeroTransferTag( tmpFiber->obj)  ==  Nero_AlreadyTransfered)
+			{
+
+				// 删除临时区域中得指向基类得fiber
+				freeNerveFiber(newObi->outputListHead,tmpFiber,tmpFiber);
+
+			}
+
+			if(fronttmpFiber == NULL)
+				fronttmpFiber=tmpFiber;
+			else
+				fronttmpFiber=fronttmpFiber->next;
+
+		}
+	}
+
+
+}
+
 
 /*pointTotype指的是该纤维指向的概念与原来的概念的关系*/
 static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type,nero_s32int pointTotype)
@@ -3727,8 +3822,8 @@ void nero_MovingForwardOneStep( NeuronObject * obj, NeuronObject  *godNero,nero_
 //    	进行详细得信息修改
 // 		xyz可以直接复制
 // 		inputListHead可以直接复制
-// 		outputListHead需要过滤掉无用链接，指的是如果指向得是无效链接需要除掉（比如指向了同样被转移了得对象），但是不删仍然正常得obj
-//		 ,不需要删除临时区域中得指向基类得fiber
+// 		outputListHead需要过滤掉无用链接，
+// 		指的是如果指向得是无效链接需要除掉（比如指向了同样被转移了得对象），但是不删仍然正常得obj,需要删除临时区域中得指向基类得fiber
 // 		msg，25/26/27/28位需要修改
 	
 // 3：将needTransferNero从SAP得链表中摘除，并修改needTransferNero
@@ -3739,7 +3834,8 @@ nero_s32int nero_TransferSAPoolObj(NeuronObject  *NPgodNero,NeuronObject  *SAPgo
 {
 	NeuronObject *newObi;
 	NerveFiber *tmpFiber;
-	nero_s32int newObiKind,res,i,createNewBaseKindFlag;
+	NerveFiber *fronttmpFiber;
+	nero_s32int newObiKind,res,i;
 
 	/*参数检查*/
 	if (SAPgodNero == NULL  || NPgodNero ==NULL  || needTransferNero ==NULL  ||   conf ==NULL)
@@ -3751,7 +3847,7 @@ nero_s32int nero_TransferSAPoolObj(NeuronObject  *NPgodNero,NeuronObject  *SAPgo
 	newObiKind= nero_GetNeroKind(needTransferNero);
 	/*生成新概念，并加入网络*/
 	newObi= nero_createNeroObj (newObiKind);
-	// printf("newObi=%x\n",newObi);
+	// printf("newObi=%x\n",newObi); 
 
 
 	newObi->x = needTransferNero->x;
@@ -3775,16 +3871,134 @@ nero_s32int nero_TransferSAPoolObj(NeuronObject  *NPgodNero,NeuronObject  *SAPgo
 	
 	}
 
-	// for (i=0;i<objNum;i++)
-	// {
+	for (tmpFiber=newObi->inputListHead ;tmpFiber != NULL;tmpFiber=tmpFiber->next)
+	{
+		if(tmpFiber->obj  != NULL)
+		PointingToObject(tmpFiber->obj,newObi,Fiber_PointToUpperLayer);		
 
-	// 	PointingToObject(Obis[i],newObi,Fiber_PointToUpperLayer);
-	// 	if (i>0)
-	// 	{
-	// 		PointingToObject(Obis[i-1],Obis[i],Fiber_PointToSameLayer);
-	// 	}
-			
-	// }
+		// 4：删除子对象指向临时区域，改为指向新得对象	
+		cleanObjFiberListFromSAPool( tmpFiber->obj );
+	}
+
+
+
+	// outputListHead需要过滤掉无用链接，
+	// 指的是如果指向得是无效链接需要除掉（比如指向了同样被转移了得对象），但是不删仍然正常得obj,需要删除临时区域中得基类得fiber
+	for (tmpFiber=newObi->outputListHead ,fronttmpFiber=NULL;tmpFiber != NULL;tmpFiber=tmpFiber->next)
+	{
+		if(tmpFiber->obj  != NULL   &&  getFiberPointToPool(tmpFiber)  ==  Fiber_ObjInSAPool )
+		{
+			// Fiber_ObjInNeroPool  && kind <=Fiber_ObjInSAPool)
+
+			if(  nero_isBaseObj(tmpFiber->obj)  ==  1    ||  getAlreadyNeroTransferTag( tmpFiber->obj)  ==  Nero_AlreadyTransfered)
+			{
+
+				// 删除临时区域中得指向基类得fiber
+				freeNerveFiber(newObi->outputListHead,tmpFiber,tmpFiber);
+
+			}
+
+			if(fronttmpFiber == NULL)
+				fronttmpFiber=tmpFiber;
+			else
+				fronttmpFiber=fronttmpFiber->next;
+
+		}
+	}
+
+
+
+
+	// 3：将needTransferNero从SAP得链表中摘除，并修改needTransferNero
+	// 		所在得位置msg信息得28位
+
+	setAlreadyNeroTransferTag(needTransferNero,Nero_AlreadyTransfered);
+
+
+	// 将一个obj从基类得子类列表中删除
+	nero_deleteObjFromBaseKindList( needTransferNero,SAPgodNero);
+
+
 }
 
+// 将一个obj从基类得子类列表中删除
+//额外做如下工作：将obj数据清空
+void nero_deleteObjFromBaseKindList(NeuronObject * deleteObj,NeuronObject  *godNero)
+{
+
+
+
+	NerveFiber *tmpFiber;
+	NerveFiber *fronttmpFiber;
+	NerveFiber *baseFiber;
+	nero_us32int  kind;
+	NeuronObject  *baseobj;
+	NerveFiber  *theNextFiber;
+
+
+	if(deleteObj == NULL)
+		return;
+	baseFiber=godNero->outputListHead;
+	kind=nero_GetNeroKind(deleteObj);
+	baseobj=NULL;
+	while(baseFiber)
+	{
+
+		if(  nero_GetNeroKind(baseFiber->obj)  == kind )
+		{
+
+			baseobj=baseFiber->obj;
+			break;
+		}
+
+
+	}
+	if(baseobj)
+	{
+		baseFiber=baseobj->outputListHead;
+		fronttmpFiber=NULL;
+		while(baseFiber != NULL  &&  baseFiber->obj  != NULL)
+		{
+
+			if(baseFiber->obj   ==  deleteObj )
+			{
+
+				// if(baseobj->outputListHead ==NULL ||  deleteObj ==NULL)
+				// {
+				// 	return ;
+				// }	
+				
+				theNextFiber=baseFiber->next;
+				if(theFrontFiber == NULL)
+				{
+					baseobj->outputListHead->next ==theNextFiber;
+				}
+				else
+				{
+					theFrontFiber->next ==theNextFiber;	
+				}
+				free(baseFiber);	
+
+				// 将obj数据清空
+				deleteObj->inputListHead=NULL;
+				deleteObj->outputListHead=NULL;
+
+				deleteObj->msg=0;
+			}
+
+			if(fronttmpFiber == NULL)
+				fronttmpFiber=baseFiber;
+			else
+				fronttmpFiber=fronttmpFiber->next;
+
+			baseFiber=baseFiber->next;
+		}
+
+
+
+	}
+
+
+
+}
 

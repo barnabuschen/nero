@@ -15,6 +15,17 @@
 // #include <gtk/gtk.h>
 #include "fileOperating.h"
 
+
+void  testDebugForFileOperating()
+{
+
+	
+
+}
+
+
+
+
 int    *    mystrToInt(char  *  str )
 {
 	

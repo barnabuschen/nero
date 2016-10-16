@@ -191,6 +191,7 @@ struct NerveFiber_
 
 
 extern NeuronObject *GodNero;
+extern NeuronObject *SAGodNero;
 extern NeroConf neroConf;
 #define NeuronNode_ForNone   0    //当一个概念节点的类型为此时表示一个未知对象,you can not use it
 #define NeuronNode_ForGodNero   1    //GodNero
@@ -305,7 +306,7 @@ extern NeroConf neroConf;
 
 void donother();
 // 将一个obj从基类得子类列表中删除
-void nero_deleteObjFromBaseKindList(NeuronObject * deleteObj);
+void nero_deleteObjFromBaseKindList(NeuronObject * deleteObj,NeuronObject  *godNero);
 nero_s32int CreateStagingAreaNeroNet();
 void setNeroTransferTag(ActNero *nero,nero_us32int tag);
 nero_us32int getNeroTransferTag(ActNero *nero);

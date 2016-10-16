@@ -40,6 +40,6 @@ void CreateBaseKindOfShu();
 void ModifyBaseKindOfShu();
 //every line  in  file is a  data string ,every char in str  is  a  char  obj
 void ReadTaskFromTxtByline(nero_8int  * FileName);
-
+void ReadEnglishWordsFromTxt(nero_8int  * fileNameInpt);
 
 #endif

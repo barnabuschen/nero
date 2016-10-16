@@ -34,6 +34,11 @@ static nero_8int  file_path_getcwd[FILEPATH_MAX]="/tmp";/*保存当前目录*/
 
 
 
+
+
+
+
+
 //this file wang to  add  line  to  file  ,which line is  a  str  
 nero_s32int CreatedWordsIntoFile(nero_8int * FileName)
 {

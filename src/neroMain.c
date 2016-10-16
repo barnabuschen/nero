@@ -122,6 +122,10 @@ void ProInitialization()
 		
 		
 		/*	sleep(1);*/
+
+
+		// testDebugForFileOperating();
+
 		/*建立网络*/
 		initNeroNetWork( );    
 		sleep(1);	
@@ -134,7 +138,7 @@ void ProInitialization()
 		printf("end of  fuc ReadTaskFromTxt\n");
 
 		nero_8int * fileName2="/data/taskFileForCreateIO.sh";
-		ReadTaskFromTxt( fileName2  );	
+		// ReadTaskFromTxt( fileName2  );	
 		printf("end of  fuc ReadTaskFromTxt\n");
 
 
@@ -143,8 +147,15 @@ void ProInitialization()
 		// CreatedWordsIntoFile(fileName4);
 
 		nero_8int * fileName3="/data/taskfileForDataStream.sh";
-		ReadTaskFromTxtByline( fileName4  );	
+		// ReadTaskFromTxtByline( fileName4  );	
 		printf("end of  fuc ReadTaskFromTxtByline\n");
+
+
+
+
+		// 在taskFile.sh中输入生成了英文字母得基类，现在需要生成英文单词得基类
+
+
 
 
 		#ifdef Nero_DeBuging14_01_14_
@@ -179,7 +190,7 @@ void ProInitialization()
 		for(;;)
 		{
 								// printf("...\n");				
-								sleep(35);
+				sleep(35);
 				#ifdef Nero_DeBuging10_01_14_
 				// print  all  of  the  kind  obj
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
@@ -346,7 +357,60 @@ void initNeroNetWork( )
 		memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
 		mymsg.type =MsgId_Nero_DataFlowProcess ;
 		msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
-}
+	}
 	#endif
+
+
+
+	#ifdef  Nero_DeBuging10_16_16_
+{	void **DataFlow;
+	nero_s32int *dataKind;
+	Utf8Word  *wP;
+	char *linc;
+	nero_s32int dataNum,k,countOfWord,m;
+	readUTF8FileForWords("data/EnglishWords" ,& wordsHead);
+	/*将Utf8Word转化为一个数组，每个单位是一个词*/
+		wP=wordsHead.next;
+		countOfWord=0;
+		while (wP)
+		{
+			countOfWord++;
+			wP=wP->next;
+		}
+		(DataFlow)=(void **)malloc(sizeof(void *)*countOfWord);
+		(dataKind)=(nero_s32int *)malloc(sizeof(nero_s32int *)*countOfWord);
+		for (k=0,wP=wordsHead.next;k<countOfWord  &&  (wP != NULL);k++)
+		{
+			DataFlow[k]=(void *)malloc((sizeof( char)*(wP->num * 3+1)));
+			linc=(char *)DataFlow[k];
+
+			for (m=0;m<wP->num;m++)
+			{
+				memcpy(&(linc[m*3]), &((wP->words)[m]), (3));
+			}
+
+			linc[wP->num * 3]=0;
+			dataKind[k]=NeuronNode_ForChWord;
+			#ifdef  Nero_DeBuging20_12_13_
+			printf("wP->num=%d.\n",wP->num);
+			printf("len=%d,%s.\n\n",sizeof(linc),linc);
+			#endif
+			wP=wP->next;
+		}	
+		dataNum=countOfWord;
+		neroConf.addLevelObjAlways = 0;
+		arg2.dataNum=dataNum;
+		arg2.dataKind=dataKind;
+		arg2.conf=&neroConf;
+		arg2.DataFlow=DataFlow;
+		memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
+		mymsg.type =MsgId_Nero_DataFlowProcess ;
+		msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+	}
+	#endif
+
+
+
+
 
 }

@@ -12,9 +12,9 @@
 /*#include "../common/error.h"*/
 static struct  NeuronObjectMsg_    neroObjMsg_st;
 static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
-#define Process_TemporaryNUM   7500    //just used  in  fuc  Process_StrengthenLink
+// #define Process_TemporaryNUM   7500    //just used  in  fuc  Process_StrengthenLink
 nero_us32int     tmpObiUsed;						//record    how many objs  store  in  
-static NeuronObject Process_tmpObi[Process_TemporaryNUM];
+static NeuronObject  * Process_tmpObi[Process_TemporaryNUM];
 
 
 struct DataFlowForecastInfo  forecastInfo_st;	
@@ -669,7 +669,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				// 进入到这里意味着由objs组成得一个临时区域中得对象(TmpStagingAreaNero)已经可以转化为永久对象了
 
 				// 
-				nero_TransferSAPoolObj(GodNero,SAGodNero,NeroConf * conf,TmpStagingAreaNero);
+				nero_TransferSAPoolObj(GodNero,SAGodNero, conf,TmpStagingAreaNero);
 
 
 
@@ -973,10 +973,10 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf,NeuronObject ** alreadyTransferNero)
 {
 	nero_s32int Strengthen,i,j,flag,k,ifCreateObjInSAP;
-	nero_s32int UpperObjKind;
+	nero_s32int UpperObjKind,findKind;
 
 // #define Process_TemporaryNUM   7500    //just used  in  fuc  Process_StrengthenLink
-// nero_us32int     Process_tmpObiUsed;						//record    how many objs  store  in  
+	nero_us32int     Process_tmpObiUsed;						//record    how many objs  store  in  
 // static NeuronObject Process_tmpObi[Process_TemporaryNUM];
 	tmpObiUsed=0;
 
@@ -1030,7 +1030,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 		ifCreateObjInSAP =  1;
 		flag  =  0;
 	}
-	UpperObjKind=nero_GetNeroKind(Process_tmpObi[i])  ;
+	UpperObjKind=nero_GetNeroKind(  (Process_tmpObi[i]))  ;
 	for(i=0,ifCreateObjInSAP=1;i<Process_tmpObiUsed;i++)
 	{
 		
@@ -1046,18 +1046,18 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 			// 往前面移动得意义在于，如果x1这个对象得出现极大概率指向基类a，那么x1得输出列表中有很多属于a类得对象，而这些对象中链接强度最大得那个往往在列表得
 			// 前部，也即是说，列表最前面得那个属于a类得对象得链接强度是最大得（因为这个fiber是最先出现得也是强化次数最多得）
 
-			k=  nero_ifMakeUpWithTheseObjsInOrder(Process_tmpObi[i],objs,objNum)
+			k=  nero_ifMakeUpWithTheseObjsInOrder((Process_tmpObi[i]),objs,objNum);
 			if(k ==  NeroYES)
 			{
 				for(j=0;j<objNum;j++)
 				{
 
 					// 1:加强objs 中子对象得 list中指向得所有 属于 UpperObjKind类得实例(Process_tmpObi[i])得fiber链接强度
-					nero_StrengthenLinkWithK(objs[j],UpperObjKind,Process_tmpObi[i]);
+					nero_StrengthenLinkWithK(  &(objs[j]),UpperObjKind,(Process_tmpObi[i]));
 
 					//2: 将Process_tmpObi[i]  将 UpperObjKind类得outputlist列表中得位置往前移动一位
 
-					nero_MovingForwardOneStep( Process_tmpObi[i], SAGodNero,UpperObjKind);
+					nero_MovingForwardOneStep( (Process_tmpObi[i]), SAGodNero,UpperObjKind);
 
 				}
 
@@ -1073,7 +1073,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 
 				ifCreateObjInSAP=0;
 				//查看链接强度,判断是否可以生成新得永久对象
-				flag=getNeroTransferTag(Process_tmpObi[i]);//检查是否已经有转移标记
+				flag=getNeroTransferTag((Process_tmpObi[i]));//检查是否已经有转移标记
 				if(flag != Nero_TransferToNeroPool)
 					flag=nero_checkIfCreateObjInNP(Process_tmpObi[i],objs,objNum);
 				else
@@ -1081,8 +1081,8 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 				if(flag == NeroYES)
 				{
 					flag =1;
-					* alreadyTransferNero = &(Process_tmpObi[i]);
-					setNeroTransferTag(Process_tmpObi[i],Nero_TransferToNeroPool);
+					* alreadyTransferNero = (Process_tmpObi[i]);
+					setNeroTransferTag(   (Process_tmpObi[i]),Nero_TransferToNeroPool);
 				}
 				//可以结束循环了
 				break;
@@ -1583,7 +1583,7 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
 /*                printf("                p=%x,Obj=%x.\n", p,p->obj);*/
             Obj=p->obj;
             FiberType=getFiberType(p);
-            if (Obj != NULL  &&  nero_isBaseObj(Obj) != 1 && getFiberPointToPool(curFiber ) == Fiber_ObjInNeroPool )
+            if (Obj != NULL  &&  nero_isBaseObj(Obj) != 1 && getFiberPointToPool(p ) == Fiber_ObjInNeroPool )
             {
                     AddNewObjToList( forecastInfo,FiberType,Obj);
                     

@@ -45,7 +45,7 @@
 #define Relationship_bothTother  3/*双向联系：孩子概念连向父亲，同时，父亲概念连向孩子*/
 
 
-
+#define Process_TemporaryNUM   7500    //just used  in  fuc  Process_StrengthenLink
 /*传导纤维种类*/
 #define NerveFiber_Input 1 
 #define NerveFiber_Output  2
@@ -99,6 +99,10 @@ typedef  char  nero_8int;
 #define Nero_DeBuging27_01_14
 #define Nero_DeBuging06_02_14
 #define Nero_DeBuging04_25_16
+#define Nero_DeBuging10_16_16
+
+
+
 #define NowIdDeBug 
 //#define Nero_DeBugInOperating_Pic
 #define NoIncludeG_return_if_fail  

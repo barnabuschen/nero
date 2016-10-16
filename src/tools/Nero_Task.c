@@ -101,6 +101,104 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 
 static nero_8int  file_path_getcwd[FILEPATH_MAX]="/tmp";/*保存当前目录*/
 
+
+
+// 读取英文词库，一行一个词,，并在sys中生成这些词得概念
+void ReadEnglishWordsFromTxt(nero_8int  * fileNameInpt)
+{
+
+        nero_us32int strlenMax,flength,strlenMin,strLen,pos,tmpII,tmpJJ;
+/*        nero_8int s[strlenMax+1];*/
+/*        nero_8int * findStr;*/
+    nero_8int  fileName[FILEPATH_MAX];
+    nero_s32int fd;
+    nero_8int *mapped_mem, * p,*end;
+        nero_8int       *linStart,*linEnd;
+    getcwd(file_path_getcwd,FILEPATH_MAX);
+
+    // sprintf(fileName,"%s/data/taskFile.sh",file_path_getcwd);
+    sprintf(fileName,"%s%s",file_path_getcwd,fileNameInpt);
+    void * start_addr = 0;
+    fd = open(fileName, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+    flength = lseek(fd, 1, SEEK_END);
+//  write(fd, "7", 1); /* 在文件最后添加一个空字符，以便下面printf正常工作 */
+    lseek(fd, 0, SEEK_SET);
+/*  write(fd, "7", 1);*/
+    mapped_mem = mmap(start_addr, flength, PROT_READ,        //允许读
+    MAP_PRIVATE,       //不允许其它进程访问此内存区域
+    fd, 0);
+
+
+    p=mapped_mem;
+    end=p+flength-1;
+/*        start=p;*/
+
+    strlenMin=5;
+
+    TFF tff;
+    tff.order=0;
+    tff.msgSeparator=' ';
+    tff.orderSeparator=0x0a;/*换行符号*/
+/*  tff.data=NULL;  */
+
+    /*首先确保q不是指向分割符号*/
+        while( p <= end &&  (*(p) ==tff.msgSeparator || *(p) ==tff.orderSeparator)  )
+            p=p+1;
+
+    while(1)
+    {
+        if( p >= end /*|| *(p) ==0x0a*/)
+        {
+/*          NerReportMsgError(nero_error_Id);*/
+            break;
+        }
+
+        linStart=linEnd=p;
+                while(*(p) !=tff.orderSeparator /*&& *(q) !=0x09*/)/*换行符或者tab*/
+            p=p+1;
+        linEnd=p-1;
+        /*找到行末尾*/
+/*      if (linEnd  > linStart )*/
+        {
+        memset(tff.str,0,500);
+        for(tmpII=0; tmpII<TFFDataWidth; tmpII++)
+            memset(tff.data[tmpII], 0, sizeof(nero_us8int ) * TFFDataLength);
+        }
+
+        memcpy(tff.str,linStart,linEnd-linStart+1);
+
+        /*提取信息中的各个字段*/
+        if( (tff.str)[0]  !=  '#')
+        {
+                 // printf("ReadTaskFromTxt::%s\n",tff.str);
+                 getMsgInToTFF(&tff);//  the data in tff.str is  l  line  in file
+/*              下面将tff中的信息转化为实际的命令*/
+
+                // obtainOrderFromTFF(&tff);/*从TFF中分析得到命令后在函数里面直接发送就行了*/
+
+        }
+
+        }
+
+        /*寻找新一行的行开头*/
+                while( p <= end &&  (*(p) ==tff.msgSeparator || *(p) ==tff.orderSeparator)  )
+            p=p+1;
+    }
+
+    close(fd);
+    munmap(mapped_mem, flength);
+
+
+
+}
+
+
+
+
+
+
+
+
 // static int nero_error_Id=0;
 
 void ModifyBaseKindOfShu()

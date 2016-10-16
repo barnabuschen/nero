@@ -3,7 +3,7 @@
 #define FILEOPERATING_H
 
 
-
+void  testDebugForFileOperating();
 //文件清空
 void emptyFile(char * fileName);
 

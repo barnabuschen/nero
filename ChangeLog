@@ -237,27 +237,41 @@ nero_createObjFromMultiples,因为它太多地方默认使用了GodNero
 
 
 
+创建时间： 15/10/2016 21:32:36 
 
 
+		建立花得概念
+	 	--  Iris
+       		--  Setosa
+      		--  Versicolour
+      		--  Virginica	
+Attribute Information:
+		   1. sepal length in cm		注意这里得意识是iris得子概念是这4个属性，而不是直接得4个数字
+		   2. sepal width in cm
+		   3. petal length in cm
+		   4. petal width in cm
+
+	小数怎么办：
+		方法1：都乘以10倍处理，化解小数点	为了加快进度可以这样解决，但是后面在比较相似度时怎么处理
+		方法2：建立小数概念
 
 
+	如果在训练后，进行实验时某个数据未在训练时出现怎么处理
+		方法1：进行近似处理，变为出现过得数据进行处理（是说等效处理，而不是真得把实验数据改了）----更合适
+		方法2：直接忽略处理
 
 
+		如果要进行等效处理，就必须建立数得大小比较能力（比较相似度）----暂时设置为sys自带功能，直接给个函数即可
 
 
+静态代码分析
+提高质量，减少瑕疵的代码分析工具列表
 
-
-
-
-
-
-
-
-
-
-
-
-
+Cppcheck ：静态C/C++代码分析工具
+include-what-you-use ：使用clang进行代码分析的工具，可以#include在C和C++文件中。
+OCLint ：用于C，C++和Objective-C的静态源代码分析工具，用于提高质量，减少瑕疵。
+Clang Static Analyzer：查找C，C++和Objective-C程序bug的源代码分析工具
+List of tools for static code analysis ：来自维基百科的静态代码分析工具列表
 
 
 

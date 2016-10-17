@@ -1,5 +1,5 @@
-Log_printAllKindOf(default):Sun Oct 16 18:37:58 2016
-		ObjectKind=62 ,的所有对象为(20):
+Log_printAllKindOf(default):Mon Oct 17 22:40:13 2016
+		ObjectKind=62 ,的所有对象为(21):
 		地址4069a500  <许玉兰>,kind=62
 		地址4069a540  <刘泵>,kind=62
 		地址4069a580  <阿曼>,kind=62
@@ -20,3 +20,27 @@ Log_printAllKindOf(default):Sun Oct 16 18:37:58 2016
 		地址4069a940  <十位数>,kind=62
 		地址4069a980  <千位数>,kind=62
 		地址4069a9c0  <英文字母>,kind=62
+		地址4069aa00  <英文单词>,kind=62
+Log_printAllKindOf(default):Mon Oct 17 22:40:18 2016
+		ObjectKind=62 ,的所有对象为(21):
+		地址4069a500  <许玉兰>,kind=62
+		地址4069a540  <刘泵>,kind=62
+		地址4069a580  <阿曼>,kind=62
+		地址4069a5c0  <阿拉伯数字>,kind=62
+		地址4069a600  <数字>,kind=62
+		地址4069a640  <十进制>,kind=62
+		地址4069a680  <二进制>,kind=62
+		地址4069a6c0  <数学符号>,kind=62
+		地址4069a700  <运算符>,kind=62
+		地址4069a740  <加法>,kind=62
+		地址4069a780  <减法>,kind=62
+		地址4069a7c0  <乘法>,kind=62
+		地址4069a800  <除法>,kind=62
+		地址4069a840  <负号>,kind=62
+		地址4069a880  <等于号>,kind=62
+		地址4069a8c0  <正号>,kind=62
+		地址4069a900  <个位数>,kind=62
+		地址4069a940  <十位数>,kind=62
+		地址4069a980  <千位数>,kind=62
+		地址4069a9c0  <英文字母>,kind=62
+		地址4069aa00  <英文单词>,kind=62

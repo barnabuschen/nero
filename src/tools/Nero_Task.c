@@ -42,6 +42,8 @@
 #define  Task_Order_CreateKindWithOneCharArg2     201  /*创建一个新类，由单个字符组成，新类名称为一个字*/
 #define  Task_Order_CreateOutputWordKindObj    202      /*创建NeuronNode_ForOutputWord  kind  obj*/
 
+#define  Task_Order_CreateKindWithEnglishWord   220      /*创建一个新类，由多个英文字母组成，新类名称为一个字符串*/
+
 
 #define  Task_Order_DataInput    300      /* just  input some  data  into  sys,  its parameter  is just a  string */
 
@@ -56,9 +58,13 @@
 #define TFFDataType_Num   	10	/*数*/
 #define TFFDataType_Character   11
 #define TFFDataType_String   	12
+#define TFFDataType_unknow      100   //该类型为sys自动生成，不知道具体id，需要自动查询确定
+
+
 
 #define OrderListLen		100  /*最多支持OrderListLen条命令*/
 #define OrderListWigth		100	/*每条命令最多100个参数*/
+#define OrderListWigthMax      70 /*每条命令最多100个参数*/
 
 
 
@@ -70,9 +76,9 @@
 
 
 // 这个机制无法处理参数为可变的情况,所以必须做出特别规定  for spectial case 
-            // when  Task_Order_DataInput  set  in  input file ,
-            // it means 参数个数=1,but in fact  every char  in  the  string  is  a  obj ,so  参数个数 is  Variable
-
+            //
+            // 参数个数=OrderListWigthMax,mean: 参数个数 is  Variable
+            // TFFDataType_unknow  mean   you need  to  get  obj kind  by  youself
 nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 /*创建"数字"		  参数个数 新类名	     	新类的第一个数据*/
 {Task_Order_CreateObjShu, 2	,  TFFDataType_Character,TFFDataType_Character},
@@ -90,11 +96,20 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 {Task_Order_CreateOutputWordKindObj,1,TFFDataType_Character},
 /*创建"new  kind"     参数个数   第一个数据*/
 {Task_Order_DataInput,1,TFFDataType_String},
-{0},
+/*创建"new  kind"     参数个数   第一个数据*/
+{Task_Order_CreateKindWithEnglishWord,OrderListWigthMax,TFFDataType_String,TFFDataType_Character},
 {0},
 {0},
 {0},
 };
+
+
+// nero_us32int OrderDataTypeMapping[OrderListLen][2]={
+
+
+
+
+
 
 
 
@@ -178,7 +193,7 @@ void ReadEnglishWordsFromTxt(nero_8int  * fileNameInpt)
 
         }
 
-        }
+        
 
         /*寻找新一行的行开头*/
                 while( p <= end &&  (*(p) ==tff.msgSeparator || *(p) ==tff.orderSeparator)  )
@@ -516,7 +531,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         }
  	nero_s32int *dataKind;
         nero_us8int *linc;
-        nero_s32int dataNum,k,countOfWord,m,lenOfpar;
+        nero_s32int dataNum,k,countOfWord,m,lenOfpar,tmpCount;
         void **DataFlow;
         nero_8int baseobjName[100]="阿拉伯数字";
         struct DataFlowProcessArg arg2;		
@@ -543,7 +558,10 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 		printf("obtainOrderFromTFF:  cannot find order  order=%d\n",tff->order);
 		return;
 	}
-	if (OrderDataTypeList[orderPos][1] !=  (tff->MsgCount -1))
+    if (OrderDataTypeList[orderPos][1] ==  OrderListWigthMax )
+    { 
+    }
+    else if (OrderDataTypeList[orderPos][1] !=  (tff->MsgCount -1))
 	{
 		printf("obtainOrderFromTFF:  order  参数个数 error,shuld:%d,but:%d\n",OrderDataTypeList[orderPos][1],(tff->MsgCount -1));
 		return;
@@ -558,14 +576,30 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 		dataKind=(nero_s32int *)malloc(sizeof(nero_s32int *) * countOfWord);
 			
 	}
-    //there is 
+    // printf("obtainOrderFromTFF:  order ,num:%d,but:tff->MsgCount -1=%d\n",OrderDataTypeList[orderPos][1],(tff->MsgCount -1));
+
+
+    // /一般参数个数为OrderListWigthMax，表示参数个数可变
+    // OrderListWigthMax
+    if(  OrderDataTypeList[orderPos][1]  ==  OrderListWigthMax)
+    {
+
+        for(tmpCount=4;tmpCount <  OrderListWigthMax ;tmpCount++)
+        {
+
+            OrderDataTypeList[orderPos][tmpCount]=OrderDataTypeList[orderPos][3];
+        }
+
+    }
+
+    /*命令    该命令后面的数据个数，不包括1,2   第一个数据*/
     for (k=0;k<countOfWord;k++)
    {
 	    switch(OrderDataTypeList[orderPos][k+2])
 	    {
 		case TFFDataType_Character:
 /*					printf("obtainOrderFromTFF: CreateObjShu order \n");*/
-			lenOfpar=strlen( tff->data[k+1]);
+			             lenOfpar=strlen( tff->data[k+1]);
 						DataFlow[k]=(void *)malloc((sizeof( char)*3));
 						linc=(char *)DataFlow[k];
 						memset(linc,0,3);
@@ -586,14 +620,18 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 			break;
 		case TFFDataType_String:
 /*					printf("obtainOrderFromTFF: CreateObjShu order \n");*/
-			lenOfpar=strlen( tff->data[k+1]);
+			             lenOfpar=strlen( tff->data[k+1]);
 						DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
 						 linc=(char *)DataFlow[k];
 						 memset(linc,0,(lenOfpar) +1);
 						memcpy(linc,tff->data[k+1],(lenOfpar) +1);
 						dataKind[k]=NeuronNode_ForChWord;
 			break;					
-			
+        case TFFDataType_unknow:
+                //dataKind   need  to  search
+                //一般参数个数为OrderListWigthMax，表示参数个数可变，而数据类型不指定时需要自己临时确认
+
+            break;                  
 		default:
 			printf("obtainOrderFromTFF: unknow order \n");
 			break;
@@ -618,6 +656,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
     	case    Task_Order_MathNotation:
     	case    Task_Order_CreateKindWithOneCharArg:
     	case    Task_Order_CreateKindWithOneCharArg2:
+        case    Task_Order_CreateKindWithEnglishWord:
     	        DataIO_st.operateKind =Conf_Modify_CreateNewBaseObjKind;
                 flag=1;
                 break;			
@@ -633,6 +672,10 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 flag=0;
     	        // DataIO_st.operateKind =Process_Create_ForOutputWord;
                 break;
+
+                //dataKind   need  to  search
+
+                // break;
     	 default :
                 DataIO_st.operateKind =Conf_Modify_ReSet; 
                 flag=0;
@@ -646,12 +689,12 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         msgsnd(Operating_mq_id, &DataIO_st, sizeof(DataIO_st), 0);          
     }
 
+    // printf(" obtainOrderFromTFF:coutOfRun=%d  %s.%s\n", coutOfRun,arg2.DataFlow[0],arg2.DataFlow[1]);
 
      if(countOfWord > 0)
     {
 
             coutOfRun++;
-            // printf(" obtainOrderFromTFF:coutOfRun=%d  %s.%s\n", coutOfRun,arg2.DataFlow[0],arg2.DataFlow[1]);
     		memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
     		mymsg.type =MsgId_Nero_DataFlowProcess ;
     		msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);

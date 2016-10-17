@@ -319,6 +319,15 @@ nero_s32int readUTF8FileData(nero_8int * FileName)//
 						return NeroError;
 			}
 		}
+
+		#ifdef Nero_DeBuging2_
+		if(charLength  == 3)
+		{
+
+			printf("readUTF8FileData字符：%c%c%c(%x %x %x)\n",chChar[charCounts].first,chChar[charCounts].second,chChar[charCounts].third,chChar[charCounts].first,chChar[charCounts].second,chChar[charCounts].third);
+
+		}
+		#endif			
 		//下一个字符应该是冒号
 		nero_error_Id++;
 		if(*p != 0x3a)

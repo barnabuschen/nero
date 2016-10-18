@@ -56,7 +56,7 @@
 #define NeroError   -1
 #define NeroErrorMsg   printf("something wrong!\n")
 #define NerOkMsg   	printf("exit right way!\n")
-#define NerReportMsgError(id)   	printf("something wrong with ID:%d!\n",id)
+#define NerReportMsgError(id)   	printf("readUTF8FileData:something wrong with ID:%d!\n",id)
 
 //~ #define Conf_Modify_Info    1
 #ifdef   Conf_Modify_Info

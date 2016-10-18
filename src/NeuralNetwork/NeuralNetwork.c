@@ -97,7 +97,32 @@ void  testDataIn201608()
 	}
 }
 
+/*下面是几个简单的判断函数*/
+inline nero_s32int  nero_getBaseObjChildenNum(nero_s32int kind,ActNero * godNero)
+{
+	nero_s32int ObjectKind,num;
+	NeuronObject *Obi;
+	NerveFiber  *  curFiber;
 
+	num=0;
+	curFiber=godNero->outputListHead;
+	while(curFiber != NULL  )
+	{
+
+		if(nero_GetNeroKind(curFiber->obj) ==  kind )
+			break;
+
+	}
+
+	if(nero_GetNeroKind(curFiber->obj) ==  kind)
+	{
+
+		num=curFiber->obj->x;
+
+	}
+
+	return  num;
+}
 /*下面是几个简单的判断函数*/
 inline nero_s32int  nero_ifHasThisData(ActNero * n,nero_s32int x,nero_s32int y,nero_s32int z)
 {
@@ -3615,7 +3640,7 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 	ChUTF8  words[400];
 	NeuronObject *tmp;
 	NeuronObject *tmp2;
-	nero_s32int strlenInData,i;
+	nero_s32int strlenInData,i,allFindFlag;
 	ChUTF8  * wordP2;
 	ChUTF8_  *wordP;
 	nero_us8int  * ttt22;
@@ -3630,7 +3655,7 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 	ttt22=Data;
 	printf("NeuronNode_ForChCharacter-寻找字符2：%c%c%c(%x %x %x),kind=%d\n",ttt22[0],ttt22[1],ttt22[2],ttt22[0],ttt22[1],ttt22[2],dataKind);
 	#endif
-
+	allFindFlag=1;
 
 	switch(dataKind)
 	{
@@ -3673,6 +3698,9 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 			printf("nero_IfHasNeuronObject strlenInData >=400  fail \n");
 			break;
 		}
+
+		printf("nero_IfHasNeuronObject:%s    the child num of  ForChWord is %d \n\n",Data,nero_getBaseObjChildenNum(NeuronNode_ForChWord,GodNero));
+		allFindFlag=1;
 		for (i=0;i<strlenInData;i++)
 		{
 			
@@ -3683,16 +3711,26 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 			// 根据给定数据寻找是否网络中已经有该   字   概念了，这里只搜索一个字,找到则返回该概念的指针
 			str[i]=nero_IfHasZhWord( GodNero,&(words[i]),NeuronNode_ForChCharacter);
 			
-			#ifdef Nero_DeBuging14_01_14_
+			#ifdef Nero_DeBuging14_01_14
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 			neroObjMsgWithStr_st.fucId = 1;
 			neroObjMsgWithStr_st.Obi = str[i];
 			sprintf(neroObjMsgWithStr_st.str,"在nero_IfHasNeuronObject中找到该对象");
 			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
-			#endif				
+			#endif	
+
+			if(str[i]  == NULL)
+				allFindFlag=0;	
 			
 		}
-		tmp= nero_IfHasObjFromMultiples2(str,i);
+		if(allFindFlag == 1 )
+			tmp= nero_IfHasObjFromMultiples2(str,i);
+		else
+		{
+			printf("nero_IfHasNeuronObject  in NeuronNode_ForChWord  has  unknow  str  \n");
+			tmp =NULL;
+		}
+
 		
 		break;
 	case NeuronNode_ForChSentence:

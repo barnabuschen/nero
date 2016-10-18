@@ -110,7 +110,7 @@ void * thread_for_Operating_Pic(void *arg)
 /*		printf("wait for Operating msg......\n");*/
 		received = msgrcv(Operating_mq_id, &OperatingMsg, sizeof(OperatingMsg), 0, MSG_NOERROR);
 		if (errno != 0)
-		printf("Operating Operating strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+			printf("Operating Operating strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 		if (received<1)
 		{
 			#ifdef Nero_DeBugInOperating_Pic
@@ -154,7 +154,7 @@ void * thread_for_Operating_Pic(void *arg)
 			hasAddZhChar=1;		
 			}
 			else{
-				printf("系统未初始化\n");			
+				printf("MsgId_Nero_addZhCharIntoNet:系统未初始化\n");			
 			
 			}			
 			
@@ -162,6 +162,17 @@ void * thread_for_Operating_Pic(void *arg)
 		case MsgId_Nero_DataFlowProcess :
 			arg2=(struct DataFlowProcessArg *)OperatingMsg.text;
 			countRunTimes++;
+
+
+			// while(hasSetUpNeroSys != 1)
+			// {
+
+			// 	sleep(1);
+			// 	printf("MsgId_Nero_DataFlowProcess: waiting for 系统初始化....\n");			
+
+			// }
+
+
 			/*判断系统到底初始化没有*/
 			if (hasSetUpNeroSys == 1)
 			{
@@ -195,7 +206,7 @@ void * thread_for_Operating_Pic(void *arg)
 				#endif					
 			}
 			else{
-				printf("系统未初始化\n");			
+				printf("MsgId_Nero_DataFlowProcess:系统未初始化\n");			
 			
 			}
 
@@ -546,11 +557,11 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		else if (conf->CreateNewBaseObjKind == 1  &&  ifHasUnknowObj == 0)
         {
              
-              #ifdef Nero_DeBuging06_02_14_
+              #ifdef Nero_DeBuging06_02_14
               int tmpi;
               for (tmpi=0;tmpi<objNum;tmpi++)
               {
-                      printf("list  obj%c  kind=%d.\n",tmpi,nero_GetNeroKind(objs[tmpi]));
+                      printf("list  obj%c  kind=%d.  nextBaseKind  May  be=%d\n",tmpi,nero_GetNeroKind(objs[tmpi]),conf->NewNeroClassID);
               }
               #endif
               // printf("\n");
@@ -569,7 +580,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
               else
               {
                         /*如果不需要添加新的基类，那就是修改基类了*/
-              			// printf("do not create new base  kind\n"); 
+              			printf("do not create new base  kind\n"); 
                         // nero_ModifyBaseKind(objs,objNum,GodNero,conf);
               }
 

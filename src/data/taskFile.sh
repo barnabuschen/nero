@@ -106,10 +106,12 @@
 200 英文字母 X
 200 英文字母 Y
 200 英文字母 Z
-220 英文单词 s e t o s a
-220 英文单词 v e r s i c o l o r
-220 英文单词 v i r g i n i c a
-
+203 setosa
+#203 versicolor
+#203 virginica
+#220 setosa 51 35 14 2
+#220 versicolor 61 29 47 14
+#220 virginica 65 30 55 18
 
 
 

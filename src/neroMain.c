@@ -75,6 +75,7 @@ void main()
 //整个系统的启动函数
 void ProInitialization()
 {
+		nero_s32int xxxxxx,i;
 		/*	int res;*/
 		pthread_t a_thread;
 		Operating_ipckey="/tmp/Operating_ipckey";
@@ -121,14 +122,14 @@ void ProInitialization()
 		
 		
 		
-		/*	sleep(1);*/
+			// sleep(5);
 
 
 		// testDebugForFileOperating();
 
 		/*建立网络*/
 		initNeroNetWork( );    
-		sleep(1);	
+		sleep(4);	
 		printf("initNeroNetWork ok\n");
 		printf("ProInitialization ok\n");	
 
@@ -137,31 +138,32 @@ void ProInitialization()
 		ReadTaskFromTxt( fileName1  );
 		printf("end of  fuc ReadTaskFromTxt\n");
 
-		nero_8int * fileName2="/data/taskFileForCreateIO.sh";
+		// nero_8int * fileName2="/data/taskFileForCreateIO.sh";
 		// ReadTaskFromTxt( fileName2  );	
-		printf("end of  fuc ReadTaskFromTxt\n");
+		// printf("end of  fuc ReadTaskFromTxt\n");
 
 
 
-		nero_8int * fileName4="/data/dataStringCreate.sh";
+		// nero_8int * fileName4="/data/dataStringCreate.sh";
 		// CreatedWordsIntoFile(fileName4);
 
-		nero_8int * fileName3="/data/taskfileForDataStream.sh";
+		// nero_8int * fileName3="/data/taskfileForDataStream.sh";
 		// ReadTaskFromTxtByline( fileName4  );	
-		printf("end of  fuc ReadTaskFromTxtByline\n");
+		// printf("end of  fuc ReadTaskFromTxtByline\n");
 
 
 
 
 		// 在taskFile.sh中输入生成了英文字母得基类，现在需要生成英文单词得基类
+		// 为了尽快看到结果，这里用整数来替换iris中得小数
 
+		sleep(10);	
+		printf("\n\n\nTime  to  Search  Msg:::\n\n\n\n");
 
-
-
-		#ifdef Nero_DeBuging14_01_14_
+		#ifdef Nero_DeBuging14_01_14
 			// printf  msg  by  obj
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-			neroObjMsgWithStr_st.fucId = 1;
+			neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息
 			neroObjMsgWithStr_st.Obi = GodNero;
 			sprintf(neroObjMsgWithStr_st.str,"test:");
 			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
@@ -175,28 +177,32 @@ void ProInitialization()
 			printf("nero   msg:%x,%x \n",GodNero,&tmp2222);
 			msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			
 		#endif	
+
+		// for(i=2001;i<2015;i++)	
+		i=NeuronNode_ForChWord-1;
+		{
  		#ifdef Nero_DeBuging10_01_14_
 			// print  all  of  the  kind  obj
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-				neroObjMsgWithStr_st.fucId =2;
+				neroObjMsgWithStr_st.fucId =2;/*打印某个类别下面的所有的衍生类    Log_printAllKindOf*/
 				neroObjMsgWithStr_st.Obi =NULL;
-				nero_s32int xxxxxx=NeuronNode_ForChCharacter;
+				 xxxxxx=i;
 				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
-     	#endif	
+     	#endif
 
-
+		}		
 
 		for(;;)
 		{
-								// printf("...\n");				
+								printf("...\n");				
 				sleep(35);
 				#ifdef Nero_DeBuging10_01_14_
 				// print  all  of  the  kind  obj
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId =2;
 				neroObjMsgWithStr_st.Obi =NULL;
-				nero_s32int xxxxxx=NeuronNode_ForChWord;
+				 xxxxxx=NeuronNode_ForChWord;
 				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 	     		#endif	
@@ -314,7 +320,8 @@ void initNeroNetWork( )
 
 
 	#ifdef  Nero_DeBuging20_12_13
-{	void **DataFlow;
+	sleep(4);
+	void **DataFlow;
 	nero_s32int *dataKind;
 	Utf8Word  *wP;
 	char *linc;
@@ -357,7 +364,7 @@ void initNeroNetWork( )
 		memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
 		mymsg.type =MsgId_Nero_DataFlowProcess ;
 		msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
-	}
+	
 	#endif
 
 

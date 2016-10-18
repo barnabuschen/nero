@@ -41,8 +41,12 @@
 #define  Task_Order_CreateKindWithOneCharArg     200  /*创建一个新类，由单个字符组成，新类名称为一个字符串*/
 #define  Task_Order_CreateKindWithOneCharArg2     201  /*创建一个新类，由单个字符组成，新类名称为一个字*/
 #define  Task_Order_CreateOutputWordKindObj    202      /*创建NeuronNode_ForOutputWord  kind  obj*/
+#define  Task_Order_CreateChWordKindObj    203      /*创建NeuronNode_ForChCharacter  kind  obj*/
+
+
 
 #define  Task_Order_CreateKindWithEnglishWord   220      /*创建一个新类，由多个英文字母组成，新类名称为一个字符串*/
+// #define  Task_Order_CreateKindWithEnglishWord   220      /*创建一个新类，由多个英文字母组成，新类名称为一个字符串*/
 
 
 #define  Task_Order_DataInput    300      /* just  input some  data  into  sys,  its parameter  is just a  string */
@@ -98,6 +102,8 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 {Task_Order_DataInput,1,TFFDataType_String},
 /*创建"new  kind"     参数个数   第一个数据*/
 {Task_Order_CreateKindWithEnglishWord,OrderListWigthMax,TFFDataType_String,TFFDataType_Character},
+/*创建"new  kind"     参数个数   第一个数据*/
+{Task_Order_CreateChWordKindObj,1,TFFDataType_String},
 {0},
 {0},
 {0},
@@ -674,8 +680,10 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 break;
 
                 //dataKind   need  to  search
-
-                // break;
+        case    Task_Order_CreateChWordKindObj:
+                dataKind[0]=NeuronNode_ForChWord;
+                flag=0;                              
+                break;
     	 default :
                 DataIO_st.operateKind =Conf_Modify_ReSet; 
                 flag=0;

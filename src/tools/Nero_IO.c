@@ -299,6 +299,14 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 				break;
 			}
 		}		
+
+		if(ObjectKind2 != ObjectKind)
+		{
+			sprintf(str,"Log_printAllKindOf(undefault):%s		there is  no ObjectKind=%d的对象\n",asctime(timenow),ObjectKind);
+			addLineToFile(AllKindOfFile,str);
+			return nero_msg_ok;			
+		}
+
 		// printf("Log_printAllKindOf  start:  Object Kind=%d,adress:%x\n",ObjectKind,BaseObi);	
 	/*	printf("str %s  and logFile=%s",str,logFile);*/
 		switch(ObjectKind)
@@ -352,7 +360,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 			// 	sprintf(str,"Log_printAllKindOf(default):%s		ObjectKind=%d ,name=%x的所有对象为(%d):\n",asctime(timenow),ObjectKind,BaseObi->inputListHead->obj,BaseObi->x);
 			
 			// else
-				sprintf(str,"Log_printAllKindOf(default):%s		ObjectKind=%d ,的所有对象为(%d):\n",asctime(timenow),ObjectKind,BaseObi->x);
+				sprintf(str,"Log_printAllKindOf(default):%s		ObjectKind=%d ,所有对象num为(%d):\n",asctime(timenow),ObjectKind,BaseObi->x);
 
 
 			addLineToFile(AllKindOfFile,str);
@@ -479,13 +487,15 @@ nero_s32int Log_printAllNeroMsg(void * arg)
 
 				objnums++;
 			}
-			printf("Kind:%d,num:%d\n", ObjectKind,objnums);
+			if(ObjectKind <= NeuronNode_ForComplexDerivative)
+				printf("Kind:%d,actual num:%d ,record  num:%d\n", ObjectKind,objnums,obj->x);
+			else
+			{
+				printf("Kind:%d,actual num:%d ,record  num:%d,name adress:%x  \n", ObjectKind,objnums,obj->x,obj->inputListHead->obj);
+			}
 		}
 		
 	}
-	printf("\n");
-	return  NeroOK;
-	
 }
 nero_s32int Log_printNeroObjLink(void * arg)
 {

@@ -107,8 +107,8 @@
 200 英文字母 Y
 200 英文字母 Z
 203 setosa
-#203 versicolor
-#203 virginica
+203 versicolor
+203 virginica
 #220 setosa 51 35 14 2
 #220 versicolor 61 29 47 14
 #220 virginica 65 30 55 18

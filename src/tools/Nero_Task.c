@@ -43,9 +43,9 @@
 #define  Task_Order_CreateOutputWordKindObj    202      /*创建NeuronNode_ForOutputWord  kind  obj*/
 #define  Task_Order_CreateChWordKindObj    203      /*创建NeuronNode_ForChCharacter  kind  obj*/
 
+                                                    /*创建一个新类，由单个字符组成，新类名称为一个字符串*/
 
-
-#define  Task_Order_CreateKindWithEnglishWord   220      /*创建一个新类，由多个英文字母组成，新类名称为一个字符串*/
+#define  Task_Order_CreateKindWithEnglishWord   220      /*创建一个新类，由多个  unknow  char   组成，新类名称为一个字符串*/
 // #define  Task_Order_CreateKindWithEnglishWord   220      /*创建一个新类，由多个英文字母组成，新类名称为一个字符串*/
 
 

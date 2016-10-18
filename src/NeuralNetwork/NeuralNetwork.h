@@ -358,7 +358,7 @@ NeuronObject * nero_CreateObjInSAP(NeuronObject *Obis[],nero_s32int objNum,nero_
 NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2);
 
 /*根据dataKind概念的种类，在增加一个特定种类的数据，在这个函数里面不需要判断是否已经存在这个概念*/
-NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind);
+NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject * godNero);
 
 /*增强俩个对象的链接强度，如果没有连接就添加一个*/
 nero_s32int nero_StrengthenLink(NeuronObject * a,NeuronObject * b);

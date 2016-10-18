@@ -355,15 +355,32 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 			break;
 		default:
 		
-			curFiber=BaseObi->outputListHead;
 			// if(BaseObi->inputListHead->obj)
 			// 	sprintf(str,"Log_printAllKindOf(default):%s		ObjectKind=%d ,name=%x的所有对象为(%d):\n",asctime(timenow),ObjectKind,BaseObi->inputListHead->obj,BaseObi->x);
 			
 			// else
-				sprintf(str,"Log_printAllKindOf(default):%s		ObjectKind=%d ,所有对象num为(%d):\n",asctime(timenow),ObjectKind,BaseObi->x);
+			sprintf(strLinshi,"Log_printAllKindOf(default):%s		ObjectKind=%d ,所有对象num为(%d):\n",asctime(timenow),ObjectKind,BaseObi->x);
+			addLineToFile(AllKindOfFile,strLinshi);
+			sprintf(strLinshi,"所有child对象kind为\n");
+			addLineToFile(AllKindOfFile,strLinshi);
+			curFiber=BaseObi->inputListHead;
+
+			if(curFiber == NULL)
+			{
+					sprintf(strLinshi,"  inputListHead =NULL        n");
+				addLineToFile(AllKindOfFile,strLinshi);
+
+			}
+			while(curFiber)
+			{
+				tmp=curFiber->obj;
 
 
-			addLineToFile(AllKindOfFile,str);
+				sprintf(strLinshi,"          kind:%d\n",nero_GetNeroKind(tmp));
+				addLineToFile(AllKindOfFile,strLinshi);
+				curFiber=curFiber->next;
+			}
+			curFiber=BaseObi->outputListHead;
 			while(curFiber)
 			{
 					//tmp  is the obj you wangt to search
@@ -1032,8 +1049,8 @@ void *thread_for_Log_Pic(void *arg)
 			continue;
 		}
 		else
-			#ifdef Nero_DeBugInOperating_Pic
-			 printf("received  ok:\n");
+			#ifdef Nero_DeBugInOperating_Pic_
+			 printf("thread_for_Log_Pic:received  ok:\n");
 			#endif
 		MsgId=LogMsg.MsgId;
 
@@ -1053,7 +1070,7 @@ void *thread_for_Log_Pic(void *arg)
 			
 			 
 			#ifdef Nero_DeBugInOperating_Pic
-			 printf("MsgId_Nero_CreateNetNet:\n");
+			 printf("thread_for_Log_Pic:MsgId_Nero_CreateNetNet\n");
 			#endif
 			break;
 		case MsgId_Log_PrintObjMsgWithStr:

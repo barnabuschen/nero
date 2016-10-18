@@ -1,4 +1,159 @@
-Log_printAllKindOf(default):Tue Oct 18 16:59:41 2016
-		ObjectKind=62 ,所有对象num为(0):
-Log_printAllKindOf(default):Tue Oct 18 16:59:46 2016
-		ObjectKind=62 ,所有对象num为(0):
+Log_printAllKindOf(default):Wed Oct 19 03:51:52 2016
+		ObjectKind=62 ,所有对象num为(21):
+所有child对象kind为
+  inputListHead =NULL        n		地址4069b5a0  <许玉兰>,kind=62
+		地址4069b5c0  <刘泵>,kind=62
+		地址4069b5e0  <阿曼>,kind=62
+		地址4069b600  <阿拉伯数字>,kind=62
+		地址4069b620  <数字>,kind=62
+		地址4069b640  <十进制>,kind=62
+		地址4069b660  <二进制>,kind=62
+		地址4069b680  <数学符号>,kind=62
+		地址4069b6a0  <运算符>,kind=62
+		地址4069b6c0  <加法>,kind=62
+		地址4069b6e0  <减法>,kind=62
+		地址4069b700  <乘法>,kind=62
+		地址4069b720  <除法>,kind=62
+		地址4069b740  <负号>,kind=62
+		地址4069b760  <等于号>,kind=62
+		地址4069b780  <正号>,kind=62
+		地址4069b7a0  <个位数>,kind=62
+		地址4069b7c0  <十位数>,kind=62
+		地址4069b7e0  <千位数>,kind=62
+		地址4069b800  <英文字母>,kind=62
+		地址4069b820  <英文单词>,kind=62
+Log_printAllKindOf(default):Wed Oct 19 03:51:56 2016
+		ObjectKind=62 ,所有对象num为(24):
+所有child对象kind为
+  inputListHead =NULL        n		地址4069b5a0  <许玉兰>,kind=62
+		地址4069b5c0  <刘泵>,kind=62
+		地址4069b5e0  <阿曼>,kind=62
+		地址4069b600  <阿拉伯数字>,kind=62
+		地址4069b620  <数字>,kind=62
+		地址4069b640  <十进制>,kind=62
+		地址4069b660  <二进制>,kind=62
+		地址4069b680  <数学符号>,kind=62
+		地址4069b6a0  <运算符>,kind=62
+		地址4069b6c0  <加法>,kind=62
+		地址4069b6e0  <减法>,kind=62
+		地址4069b700  <乘法>,kind=62
+		地址4069b720  <除法>,kind=62
+		地址4069b740  <负号>,kind=62
+		地址4069b760  <等于号>,kind=62
+		地址4069b780  <正号>,kind=62
+		地址4069b7a0  <个位数>,kind=62
+		地址4069b7c0  <十位数>,kind=62
+		地址4069b7e0  <千位数>,kind=62
+		地址4069b800  <英文字母>,kind=62
+		地址4069b820  <英文单词>,kind=62
+		地址4069d6c0  <setosa>,kind=62
+		地址4069d6e0  <versicolor>,kind=62
+		地址4069d700  <virginica>,kind=62
+Log_printAllKindOf(default):Wed Oct 19 03:52:04 2016
+		ObjectKind=62 ,所有对象num为(24):
+所有child对象kind为
+  inputListHead =NULL        n		地址4069b5a0  <许玉兰>,kind=62
+		地址4069b5c0  <刘泵>,kind=62
+		地址4069b5e0  <阿曼>,kind=62
+		地址4069b600  <阿拉伯数字>,kind=62
+		地址4069b620  <数字>,kind=62
+		地址4069b640  <十进制>,kind=62
+		地址4069b660  <二进制>,kind=62
+		地址4069b680  <数学符号>,kind=62
+		地址4069b6a0  <运算符>,kind=62
+		地址4069b6c0  <加法>,kind=62
+		地址4069b6e0  <减法>,kind=62
+		地址4069b700  <乘法>,kind=62
+		地址4069b720  <除法>,kind=62
+		地址4069b740  <负号>,kind=62
+		地址4069b760  <等于号>,kind=62
+		地址4069b780  <正号>,kind=62
+		地址4069b7a0  <个位数>,kind=62
+		地址4069b7c0  <十位数>,kind=62
+		地址4069b7e0  <千位数>,kind=62
+		地址4069b800  <英文字母>,kind=62
+		地址4069b820  <英文单词>,kind=62
+		地址4069d6c0  <setosa>,kind=62
+		地址4069d6e0  <versicolor>,kind=62
+		地址4069d700  <virginica>,kind=62
+Log_printAllKindOf(default):Wed Oct 19 03:52:12 2016
+		ObjectKind=62 ,所有对象num为(24):
+所有child对象kind为
+  inputListHead =NULL        n		地址4069b5a0  <许玉兰>,kind=62
+		地址4069b5c0  <刘泵>,kind=62
+		地址4069b5e0  <阿曼>,kind=62
+		地址4069b600  <阿拉伯数字>,kind=62
+		地址4069b620  <数字>,kind=62
+		地址4069b640  <十进制>,kind=62
+		地址4069b660  <二进制>,kind=62
+		地址4069b680  <数学符号>,kind=62
+		地址4069b6a0  <运算符>,kind=62
+		地址4069b6c0  <加法>,kind=62
+		地址4069b6e0  <减法>,kind=62
+		地址4069b700  <乘法>,kind=62
+		地址4069b720  <除法>,kind=62
+		地址4069b740  <负号>,kind=62
+		地址4069b760  <等于号>,kind=62
+		地址4069b780  <正号>,kind=62
+		地址4069b7a0  <个位数>,kind=62
+		地址4069b7c0  <十位数>,kind=62
+		地址4069b7e0  <千位数>,kind=62
+		地址4069b800  <英文字母>,kind=62
+		地址4069b820  <英文单词>,kind=62
+		地址4069d6c0  <setosa>,kind=62
+		地址4069d6e0  <versicolor>,kind=62
+		地址4069d700  <virginica>,kind=62
+Log_printAllKindOf(default):Wed Oct 19 03:52:20 2016
+		ObjectKind=62 ,所有对象num为(24):
+所有child对象kind为
+  inputListHead =NULL        n		地址4069b5a0  <许玉兰>,kind=62
+		地址4069b5c0  <刘泵>,kind=62
+		地址4069b5e0  <阿曼>,kind=62
+		地址4069b600  <阿拉伯数字>,kind=62
+		地址4069b620  <数字>,kind=62
+		地址4069b640  <十进制>,kind=62
+		地址4069b660  <二进制>,kind=62
+		地址4069b680  <数学符号>,kind=62
+		地址4069b6a0  <运算符>,kind=62
+		地址4069b6c0  <加法>,kind=62
+		地址4069b6e0  <减法>,kind=62
+		地址4069b700  <乘法>,kind=62
+		地址4069b720  <除法>,kind=62
+		地址4069b740  <负号>,kind=62
+		地址4069b760  <等于号>,kind=62
+		地址4069b780  <正号>,kind=62
+		地址4069b7a0  <个位数>,kind=62
+		地址4069b7c0  <十位数>,kind=62
+		地址4069b7e0  <千位数>,kind=62
+		地址4069b800  <英文字母>,kind=62
+		地址4069b820  <英文单词>,kind=62
+		地址4069d6c0  <setosa>,kind=62
+		地址4069d6e0  <versicolor>,kind=62
+		地址4069d700  <virginica>,kind=62
+Log_printAllKindOf(default):Wed Oct 19 03:52:28 2016
+		ObjectKind=62 ,所有对象num为(24):
+所有child对象kind为
+  inputListHead =NULL        n		地址4069b5a0  <许玉兰>,kind=62
+		地址4069b5c0  <刘泵>,kind=62
+		地址4069b5e0  <阿曼>,kind=62
+		地址4069b600  <阿拉伯数字>,kind=62
+		地址4069b620  <数字>,kind=62
+		地址4069b640  <十进制>,kind=62
+		地址4069b660  <二进制>,kind=62
+		地址4069b680  <数学符号>,kind=62
+		地址4069b6a0  <运算符>,kind=62
+		地址4069b6c0  <加法>,kind=62
+		地址4069b6e0  <减法>,kind=62
+		地址4069b700  <乘法>,kind=62
+		地址4069b720  <除法>,kind=62
+		地址4069b740  <负号>,kind=62
+		地址4069b760  <等于号>,kind=62
+		地址4069b780  <正号>,kind=62
+		地址4069b7a0  <个位数>,kind=62
+		地址4069b7c0  <十位数>,kind=62
+		地址4069b7e0  <千位数>,kind=62
+		地址4069b800  <英文字母>,kind=62
+		地址4069b820  <英文单词>,kind=62
+		地址4069d6c0  <setosa>,kind=62
+		地址4069d6e0  <versicolor>,kind=62
+		地址4069d700  <virginica>,kind=62

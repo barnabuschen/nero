@@ -75,17 +75,16 @@ void main()
 //整个系统的启动函数
 void ProInitialization()
 {
-		nero_s32int xxxxxx,i;
 		/*	int res;*/
 		pthread_t a_thread;
-		Operating_ipckey="/tmp/Operating_ipckey";
+		Operating_ipckey="/tmp/Operating_ipckey2";
 		createFile(Operating_ipckey);
 		/*	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
 		key_t ipckey = ftok(Operating_ipckey, IPCKEY);
 		/*	 Set up the message queue */
 		Operating_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
-		/*	printf("ProInitialization Operating strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
-		/*	printf("ProInitialization Operating identifier is %d\n", Operating_mq_id);	*/
+			// printf("ProInitialization Operating strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
+		printf("ProInitialization :Operating_mq_id=%d\n", Operating_mq_id);	
 		/*res =*/ pthread_create(&a_thread, NULL,thread_for_Operating_Pic, NULL);
 		
 		
@@ -96,7 +95,7 @@ void ProInitialization()
 		/*	 Set up the message queue */
 		IO_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
 		/*	printf("ProInitialization IO strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
-		/*	printf("ProInitialization IO identifier is %d\n", IO_mq_id);	*/
+		printf("ProInitialization IO_mq_id=%d\n", IO_mq_id);	
 		/*res =*/ pthread_create(&a_thread, NULL,thread_for_IO_Pic, NULL);
 		
 		
@@ -121,9 +120,10 @@ void ProInitialization()
 		/*res =*/ pthread_create(&a_thread, NULL,thread_for_Sys_Pic, NULL);
 		
 		
-		
+		// return;
 			// sleep(5);
 
+				nero_s32int xxxxxx,i;
 
 		// testDebugForFileOperating();
 
@@ -132,6 +132,10 @@ void ProInitialization()
 		sleep(4);	
 		printf("initNeroNetWork ok\n");
 		printf("ProInitialization ok\n");	
+
+
+		// return;
+
 
 		/*do   more  */
 		nero_8int * fileName1="/data/taskFile.sh";
@@ -157,10 +161,10 @@ void ProInitialization()
 		// 在taskFile.sh中输入生成了英文字母得基类，现在需要生成英文单词得基类
 		// 为了尽快看到结果，这里用整数来替换iris中得小数
 
-		sleep(10);	
+		// sleep(10);	
 		printf("\n\n\nTime  to  Search  Msg:::\n\n\n\n");
 
-		#ifdef Nero_DeBuging14_01_14
+		#ifdef Nero_DeBuging14_01_14_
 			// printf  msg  by  obj
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 			neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息
@@ -179,9 +183,9 @@ void ProInitialization()
 		#endif	
 
 		// for(i=2001;i<2015;i++)	
-		i=NeuronNode_ForChWord-1;
+		i=NeuronNode_ForChWord;
 		{
- 		#ifdef Nero_DeBuging10_01_14_
+ 		#ifdef Nero_DeBuging10_01_14
 			// print  all  of  the  kind  obj
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId =2;/*打印某个类别下面的所有的衍生类    Log_printAllKindOf*/
@@ -195,12 +199,12 @@ void ProInitialization()
 
 		for(;;)
 		{
-								printf("...\n");				
+				printf("...\n");				
 				sleep(35);
 				#ifdef Nero_DeBuging10_01_14_
 				// print  all  of  the  kind  obj
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-				neroObjMsgWithStr_st.fucId =2;
+				neroObjMsgWithStr_st.fucId =2;//Log_printAllKindOf
 				neroObjMsgWithStr_st.Obi =NULL;
 				 xxxxxx=NeuronNode_ForChWord;
 				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
@@ -317,16 +321,17 @@ void initNeroNetWork( )
 	#endif
 
 
+	
 
-
-	#ifdef  Nero_DeBuging20_12_13
-	sleep(4);
+	// #ifdef  Nero_DeBuging20_12_13
+	// sleep(4);
 	void **DataFlow;
 	nero_s32int *dataKind;
 	Utf8Word  *wP;
 	char *linc;
 	nero_s32int dataNum,k,countOfWord,m;
 	readUTF8FileForWords("data/词库" ,& wordsHead);
+
 	/*将Utf8Word转化为一个数组，每个单位是一个词*/
 		wP=wordsHead.next;
 		countOfWord=0;
@@ -361,11 +366,14 @@ void initNeroNetWork( )
 		arg2.dataKind=dataKind;
 		arg2.conf=&neroConf;
 		arg2.DataFlow=DataFlow;
+		printf("词库  msg  send....\n");
+
 		memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
 		mymsg.type =MsgId_Nero_DataFlowProcess ;
-		msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
-	
-	#endif
+		dataKind=msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+		printf("  msg  send  return:%d\n",dataKind);
+
+	// #endif
 
 
 

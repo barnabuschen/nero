@@ -38,15 +38,13 @@
 #define  Task_Order_CreateObjShu     100	/*数*/
 #define  Task_Order_CreateObjALBS     101  /*阿拉伯数字*/
 #define  Task_Order_MathNotation     102  /*数学符号*/
-#define  Task_Order_CreateKindWithOneCharArg     200  /*创建一个新类，由单个字符组成，新类名称为一个字符串*/
-#define  Task_Order_CreateKindWithOneCharArg2     201  /*创建一个新类，由单个字符组成，新类名称为一个字*/
+#define  Task_Order_CreateKindWithOneCharArg     200    /*创建一个新类，由单个字符组成，新类名称为一个字符串*/
+#define  Task_Order_CreateKindWithOneCharArg2     201   /*创建一个新类，由单个字符组成，新类名称为一个字*/
 #define  Task_Order_CreateOutputWordKindObj    202      /*创建NeuronNode_ForOutputWord  kind  obj*/
-#define  Task_Order_CreateChWordKindObj    203      /*创建NeuronNode_ForChCharacter  kind  obj*/
+#define  Task_Order_CreateChWordKindObj    203          /*创建NeuronNode_ForChCharacter  kind  obj*/
 
-                                                    /*创建一个新类，由单个字符组成，新类名称为一个字符串*/
-
-#define  Task_Order_CreateKindWithEnglishWord   220      /*创建一个新类，由多个  unknow  char   组成，新类名称为一个字符串*/
-// #define  Task_Order_CreateKindWithEnglishWord   220      /*创建一个新类，由多个英文字母组成，新类名称为一个字符串*/
+#define  Task_Order_CreateKindWithMultipleWord   219    /*创建一个新类，由多个字符串组成，新类名称为一个字符串*/
+#define  Task_Order_CreateKindWithEnglishWord   220     /*创建一个新类，由多个char   组成，新类名称为一个字符串*/
 
 
 #define  Task_Order_DataInput    300      /* just  input some  data  into  sys,  its parameter  is just a  string */
@@ -101,6 +99,8 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 /*创建"new  kind"     参数个数   第一个数据*/
 {Task_Order_DataInput,1,TFFDataType_String},
 /*创建"new  kind"     参数个数   第一个数据*/
+{Task_Order_CreateKindWithMultipleWord,5,TFFDataType_String,TFFDataType_unknow,TFFDataType_unknow,TFFDataType_unknow,TFFDataType_unknow},
+/*创建"new  kind"     参数个数   第一个数据*/
 {Task_Order_CreateKindWithEnglishWord,OrderListWigthMax,TFFDataType_String,TFFDataType_Character},
 /*创建"new  kind"     参数个数   第一个数据*/
 {Task_Order_CreateChWordKindObj,1,TFFDataType_String},
@@ -114,7 +114,7 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 
 
 
-
+static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
 
 
 
@@ -535,15 +535,18 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         	printf("obtainOrderFromTFF: wrong data  tff->order=%d\n",tff->order);
                 return ;
         }
- 	nero_s32int *dataKind;
+ 	      nero_s32int *dataKind;
         nero_us8int *linc;
-        nero_s32int dataNum,k,countOfWord,m,lenOfpar,tmpCount;
+        nero_s32int dataNum,k,countOfWord,m,lenOfpar,tmpCount,searchForUnknowKind,FailTosearchForUnknowKind;
         void **DataFlow;
         nero_8int baseobjName[100]="阿拉伯数字";
         struct DataFlowProcessArg arg2;		
         struct { long type; char text[100]; } mymsg;        
         
-        
+
+
+        nero_8int  kindname1[]={"整数"};
+     
         
 	nero_s32int i,orderPos,flag;
 	/*先转化为可以发送命令的参数*/
@@ -597,6 +600,18 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         }
 
     }
+    FailTosearchForUnknowKind=0;
+
+
+    #ifdef Nero_DeBuging14_01_14
+        // printf  msg  by  obj
+        neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+        neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
+        neroObjMsgWithStr_st.Obi = NULL;
+        sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF 0: ********order=%d*********countOfWord=%d",OrderDataTypeList[orderPos][0],countOfWord);
+        msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
+    #endif
+
 
     /*命令    该命令后面的数据个数，不包括1,2   第一个数据*/
     for (k=0;k<countOfWord;k++)
@@ -637,6 +652,63 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 //dataKind   need  to  search
                 //一般参数个数为OrderListWigthMax，表示参数个数可变，而数据类型不指定时需要自己临时确认
 
+                //  可不可以说通过描述来确定数据得类型，比如说在类型上
+                // 220 setosa 51 35 14 2
+                // 220 versicolor 61 29 47 14
+                // 220 virginica 65 30 55 18
+                // 为例：
+                //     51 35 14 2 一排数据都是整数，
+                //     但是你不知道整数这个类别得kind  id
+                // 那么，你在类别栏里直接填写‘整数’，让sys自动查询整数得kind       
+                //             searchForUnknowKind=NeuronNode_ForNone;
+
+
+            lenOfpar=strlen( tff->data[k+1]);
+            DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
+            linc=(char *)DataFlow[k];
+            memset(linc,0,(lenOfpar) +1);
+            memcpy(linc,tff->data[k+1],(lenOfpar) +1);
+
+            #ifdef Nero_DeBuging14_01_14_
+                // printf  msg  by  obj
+                neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+                neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
+                neroObjMsgWithStr_st.Obi = NULL;
+                sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF 1: start find k");
+                msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
+            #endif
+            // dataKind[k]=NeuronNode_ForChWord;     
+            // printf("obtainOrderFromTFF: begin  ---nero_getObjKindByName=%d \n",dataKind[k]);
+      
+            switch( tff->order)
+            {
+                case  Task_Order_CreateKindWithMultipleWord:
+
+                    dataKind[k]=nero_getObjKindByName((void *)kindname1,GodNero);    
+                    // printf("obtainOrderFromTFF: nero_getObjKindByName=%d \n",dataKind[k]);
+
+
+ 
+                    #ifdef Nero_DeBuging14_01_14
+                        // printf  msg  by  obj
+                        neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+                        neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
+                        neroObjMsgWithStr_st.Obi = NULL;
+                        sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF2: find dataKind=%d",dataKind[k]);
+                        msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
+                    #endif
+
+
+                    if(dataKind[k]   <  NeuronNode_ForComplexDerivative)
+                        FailTosearchForUnknowKind=1;
+                    break;
+
+
+
+
+                default:
+                    break;
+            }
             break;                  
 		default:
 			printf("obtainOrderFromTFF: unknow order \n");
@@ -644,6 +716,13 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
 	    }			
    }
+
+    if(FailTosearchForUnknowKind ==  1)
+    {
+        printf("obtainOrderFromTFF:FailTosearchForUnknowKind -------- 内存泄漏   \n");
+        return;
+    }
+
     /*现在开始准备发送消息了*/
     dataNum=countOfWord;
     arg2.dataNum=dataNum;
@@ -663,6 +742,9 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
     	case    Task_Order_CreateKindWithOneCharArg:
     	case    Task_Order_CreateKindWithOneCharArg2:
         case    Task_Order_CreateKindWithEnglishWord:
+        case    Task_Order_CreateKindWithMultipleWord:
+       
+        
     	        DataIO_st.operateKind =Conf_Modify_CreateNewBaseObjKind;
                 flag=1;
                 break;			

@@ -278,6 +278,53 @@ List of tools for static code analysis ：来自维基百科的静态代码分�
 但必须保证一点：data中得一个或者多个数据必须都是同类型得，不然无法被识别
 
 
+
+
+
+
+
+
+创建时间：20/10/2016 01:55:58 
+
+添加子概念失败,yuan原因在于----------没有加入kind  》  2001得情况
+		/*如果不存在则尝试将该对象加入网络*/
+		if (tmpObi == NULL  && conf->addNewObj == 1)
+		{
+
+
+			// do  not add nero for  every  kind  of data
+			// there is  bug,where  
+			switch(dataKind[i])
+			{
+				case NeuronNode_ForChCharacter:
+				case NeuronNode_ForChWord:
+				
+						tmpObi=  nero_addNeroByData(DataFlow[i],dataKind[i],GodNero);
+						break;
+				default:
+						
+
+
+
+						break;
+
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	
 		

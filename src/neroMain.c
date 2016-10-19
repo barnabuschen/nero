@@ -183,7 +183,8 @@ void ProInitialization()
 		#endif	
 
 		// for(i=2001;i<2015;i++)	
-		i=NeuronNode_ForChWord;
+			sleep(5);
+		i=2001;
 		{
  		#ifdef Nero_DeBuging10_01_14
 			// print  all  of  the  kind  obj

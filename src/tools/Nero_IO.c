@@ -325,7 +325,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 		case NeuronNode_ForChCharacter:
 /*		case NeuronNode_ForChWord :*/
 			curFiber=BaseObi->outputListHead;
-			sprintf(str,"Log_printAllKindOf(undefault):%s		ObjectKind=%d的所有对象为：\n",asctime(timenow),ObjectKind);
+			sprintf(str,"Log_printAllKindOf(undefault):%s	add:%x	ObjectKind=%d的所有对象为：\n",asctime(timenow),BaseObi,ObjectKind);
 			addLineToFile(AllKindOfFile,str);
 			while(curFiber)
 			{
@@ -359,9 +359,14 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 			// 	sprintf(str,"Log_printAllKindOf(default):%s		ObjectKind=%d ,name=%x的所有对象为(%d):\n",asctime(timenow),ObjectKind,BaseObi->inputListHead->obj,BaseObi->x);
 			
 			// else
-			sprintf(strLinshi,"Log_printAllKindOf(default):%s		ObjectKind=%d ,所有对象num为(%d):\n",asctime(timenow),ObjectKind,BaseObi->x);
+			sprintf(strLinshi,"Log_printAllKindOf(default):%s		ObjectKind=%d add:%x,所有对象num为(%d):\n",asctime(timenow),ObjectKind,BaseObi,BaseObi->x);
 			addLineToFile(AllKindOfFile,strLinshi);
-			sprintf(strLinshi,"所有child对象kind为\n");
+
+			if(ObjectKind  >NeuronNode_ForComplexDerivative   &&    BaseObi->inputListHead->obj != NULL)
+				sprintf(strLinshi,"(%d%d%d)所有child对象kind为\n",BaseObi->inputListHead->obj->x,BaseObi->inputListHead->obj->y,BaseObi->inputListHead->obj->z);
+			// else
+			// 	sprintf(strLinshi,"(NULL)所有child对象kind为\n");
+
 			addLineToFile(AllKindOfFile,strLinshi);
 			curFiber=BaseObi->inputListHead;
 
@@ -376,7 +381,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 				tmp=curFiber->obj;
 
 
-				sprintf(strLinshi,"          kind:%d\n",nero_GetNeroKind(tmp));
+				sprintf(strLinshi,"          kind:%d,getFiberPointToObjNum=%d\n",nero_GetNeroKind(tmp),getFiberPointToObjNum(curFiber));
 				addLineToFile(AllKindOfFile,strLinshi);
 				curFiber=curFiber->next;
 			}
@@ -410,7 +415,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 					// 	sprintf(strLinshi,"		地址%x  <%s>,kind=%d,name=%x\n",(int)tmp,str,ObjectKind2,BaseObi->inputListHead->obj/*,getFiberPointToObjNum(curFiber)*/);
 					
 					// else
-						sprintf(strLinshi,"		地址%x  <%s>,kind=%d\n",(int)tmp,str,ObjectKind2/*,getFiberPointToObjNum(curFiber)*/);
+						sprintf(strLinshi,"		地址%x  <%s>,kind=%d,DataNUm=%d\n",(int)tmp,str,ObjectKind2,nero_getObjDataNum(tmp));
 
 					addLineToFile(AllKindOfFile,strLinshi);
 

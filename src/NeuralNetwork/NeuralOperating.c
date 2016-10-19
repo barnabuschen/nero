@@ -386,6 +386,10 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 						tmpObi=  nero_addNeroByData(DataFlow[i],dataKind[i],GodNero);
 						break;
 				default:
+						
+
+
+
 						break;
 
 			}
@@ -424,7 +428,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 					printf("添加子概念失败,dataKind=%d,i=%d\n",dataKind[i],i);
 
 					ifHasUnknowObj=1;
-			        #ifdef Nero_DeBuging09_01_14_
+			        #ifdef Nero_DeBuging09_01_14
 			        // printf("++++++++++++++DataFlow[i]=%s.\n",DataFlow[i]);
 					printf("添加子概念失败,dataKind=%d,i=%d\n",dataKind[i],i);
 					//~ printf("添加子概念成功\n\n");
@@ -597,7 +601,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		else if (conf->CreateNewBaseObjKind == 1  &&  ifHasUnknowObj == 0)
         {
              
-              #ifdef Nero_DeBuging06_02_14_
+              #ifdef Nero_DeBuging06_02_14
               int tmpi;
               for (tmpi=0;tmpi<objNum;tmpi++)
               {
@@ -649,9 +653,16 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
               }
               else
               {
-                        /*如果不需要添加新的基类，那就是修改基类了*/
-              			printf("do not create new base  kind\n"); 
-                        // nero_ModifyBaseKind(objs,objNum,GodNero,conf);
+                     /*如果不需要添加新的基类，那就是修改基类了*/
+              		printf("do not create new base  kind,but  see  if need to  Modify it\n"); 
+					 if(res2 !=   nero_msg_unknowError )
+					 {
+					 	printf("Modify base kind\n"); 
+						newBaseObjKind_= res2;
+                        nero_ModifyBaseKind(objs,objNum,GodNero,conf,res2);
+
+					 }
+
               }
 
 
@@ -693,6 +704,12 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	            
 	            #endif
             
+
+			}
+			else
+			{
+
+				printf("do not create new obj  with  newbaseobj\n"); 
 
 			}
 

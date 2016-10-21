@@ -510,9 +510,15 @@ nero_s32int Log_printAllNeroMsg(void * arg)
 				objnums++;
 			}
 			if(ObjectKind <= NeuronNode_ForComplexDerivative)
+			{
+			sprintf(str,"Log_printAllNeroMsg:		nerogod:%x,Kind:%d,actual num:%d ,record  num:%d\n",(NeuronObject *)arg, ObjectKind,objnums,obj->x);
+			addLineToFile(logFile,str);	
 				printf("Kind:%d,actual num:%d ,record  num:%d\n", ObjectKind,objnums,obj->x);
+			}
 			else
 			{
+			sprintf(str,"Log_printAllNeroMsg:		kind add=%x,Kind:%d,actual num:%d ,record  num:%d,name adress:%x  \n",curFiberOfbase->obj, ObjectKind,objnums,obj->x,obj->inputListHead->obj);
+			addLineToFile(logFile,str);					
 				printf("Kind:%d,actual num:%d ,record  num:%d,name adress:%x  \n", ObjectKind,objnums,obj->x,obj->inputListHead->obj);
 			}
 		}

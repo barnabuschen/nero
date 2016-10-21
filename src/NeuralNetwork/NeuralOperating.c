@@ -378,6 +378,10 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 			// do  not add nero for  every  kind  of data
 			// there is  bug,where  
+			 // 你不需要为所有类型都生成obj,除了NeuronNode_ForChCharacter这样得内定类型外
+			// 对于其他kind》NeuronNode_ForComplexDerivative得类型来说
+			// 要想生成永久对象，首先必须通过Process_StrengthenLink测试
+			// 而这里可以先生成临时对象
 			switch(dataKind[i])
 			{
 				case NeuronNode_ForChCharacter:
@@ -386,9 +390,21 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 						tmpObi=  nero_addNeroByData(DataFlow[i],dataKind[i],GodNero);
 						break;
 				default:
-						
+						// 比如对于生成一个 整数 14 类型得obj来说，首先，14作为一个字符串
+						// sys并没有这么一个obj
+						// if  CreateNewBaseObjKind == 1  生成永久对象，否则生成临时对象
+						// 但是还是有问题，就是生成得不能是太复杂得东西，if 把一个
+						// 东西得子东西得结构看成一棵树，树得深度不能超过一层
+						if (conf->CreateNewBaseObjKind == 1)
+						{
+							//暂时只处理这个
+							printf("在DataFlowProcess:nero_addNeroByData\n");
+							tmpObi=  nero_addNeroByData(DataFlow[i],dataKind[i],GodNero);						
+						}
+						else
+						{
 
-
+						}
 
 						break;
 

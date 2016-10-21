@@ -156,7 +156,7 @@ void ProInitialization()
 		// printf("end of  fuc ReadTaskFromTxtByline\n");
 
 
-
+		// sleep(4);	
 
 		// 在taskFile.sh中输入生成了英文字母得基类，现在需要生成英文单词得基类
 		// 为了尽快看到结果，这里用整数来替换iris中得小数
@@ -164,12 +164,12 @@ void ProInitialization()
 		// sleep(10);	
 		printf("\n\n\nTime  to  Search  Msg:::\n\n\n\n");
 
-		#ifdef Nero_DeBuging14_01_14_
+		#ifdef Nero_DeBuging14_01_14
 			// printf  msg  by  obj
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-			neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息
+			neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
 			neroObjMsgWithStr_st.Obi = GodNero;
-			sprintf(neroObjMsgWithStr_st.str,"test:");
+			sprintf(neroObjMsgWithStr_st.str,"GodNero  add:%x",GodNero);
 			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 		#endif
 		#ifdef Nero_DeBuging09_01_14_
@@ -178,12 +178,12 @@ void ProInitialization()
 			neroObjMsg_st.fucId = 2;
 			neroObjMsg_st.Obi = GodNero;
 			int  tmp2222=0;
-			printf("nero   msg:%x,%x \n",GodNero,&tmp2222);
+			// printf("nero   msg:%x,%x \n",GodNero,&tmp2222);
 			msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			
 		#endif	
 
 		// for(i=2001;i<2015;i++)	
-			sleep(5);
+			// sleep(5);
 		i=2001;
 		{
  		#ifdef Nero_DeBuging10_01_14

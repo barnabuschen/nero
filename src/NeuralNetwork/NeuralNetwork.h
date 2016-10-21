@@ -78,6 +78,9 @@ int next;
 	                                #define NeuronNode_MinNewDerivativeClassId  2001
 	                                开始
 	                                */
+
+
+	nero_us32int	  WantCreateObjKind;//在特殊情况下指定希望生成得obj得类型，危险，尽量别使用   NeuronNode_ForNone
  }NeroConf;
 /*ActNero只是用来保存基础数据，它对应于一个单纯的神经元*/
 
@@ -408,7 +411,7 @@ void resetNeroConf();
 void   testDataIn201608();
 
 
-NeuronObject * nero_IfHasNeuronObjectKindUnknow(void *Data ,NeuronObject *godNero);
+NeuronObject * nero_IfHasNeuronObjectKindUnknow(void *Data ,nero_s32int basekind,NeuronObject *godNero);
 NeuronObject *  nero_createObjFromSingleObj(NeuronObject *childObi,nero_s32int upkind,NeuronObject * godNero);
 
 /*遍历网络的代码：*/

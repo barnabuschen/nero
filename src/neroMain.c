@@ -172,7 +172,7 @@ void ProInitialization()
 			sprintf(neroObjMsgWithStr_st.str,"GodNero  add:%x",GodNero);
 			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 		#endif
-		#ifdef Nero_DeBuging09_01_14_
+		#ifdef Nero_DeBuging09_01_14
 			// print  one  obj  link
 			neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
 			neroObjMsg_st.fucId = 2;
@@ -183,8 +183,8 @@ void ProInitialization()
 		#endif	
 
 		// for(i=2001;i<2015;i++)	
-			// sleep(5);
-		i=2001;
+			sleep(5);
+		i=2013;
 		{
  		#ifdef Nero_DeBuging10_01_14
 			// print  all  of  the  kind  obj
@@ -199,10 +199,10 @@ void ProInitialization()
 		}		
 
 		for(;;)
-		{
+		{		/*打印某个类别下面的所有的衍生类*/
 				printf("...\n");				
-				sleep(35);
-				#ifdef Nero_DeBuging10_01_14_
+				
+				#ifdef Nero_DeBuging10_01_14
 				// print  all  of  the  kind  obj
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId =2;//Log_printAllKindOf
@@ -212,6 +212,7 @@ void ProInitialization()
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 	     		#endif	
 								// printf("\r");
+				sleep(35);
 
 		}
 }

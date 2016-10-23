@@ -509,6 +509,7 @@ void ReadTaskFromTxt(nero_8int  * fileNameInpt)
 
 
 		}
+        usleep(500);
 
 		/*寻找新一行的行开头*/
                 while( p <= end &&  (*(p) ==tff.msgSeparator || *(p) ==tff.orderSeparator)  )
@@ -576,7 +577,8 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 		return;
 	}
 	/*现在开始转化发送命令的参数*/	
-                
+    printf("obtainOrderFromTFF:tff->order=%d\n",tff->order);
+    
 
     countOfWord=tff->MsgCount -1;
     if(countOfWord > 0)
@@ -669,12 +671,12 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
             memset(linc,0,(lenOfpar) +1);
             memcpy(linc,tff->data[k+1],(lenOfpar) +1);
 
-            #ifdef Nero_DeBuging14_01_14_
+            #ifdef Nero_DeBuging14_01_14
                 // printf  msg  by  obj
                 neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
                 neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
                 neroObjMsgWithStr_st.Obi = NULL;
-                sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF 1: start find k");
+                sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF1:TFFDataType_unknow start find ");
                 msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
             #endif
             // dataKind[k]=NeuronNode_ForChWord;     
@@ -684,29 +686,36 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
             {
                 case  Task_Order_CreateKindWithMultipleWord:
 
+                    sleep(1);
                     dataKind[k]=nero_getObjKindByName((void *)kindname1,GodNero);    
                     // printf("obtainOrderFromTFF: nero_getObjKindByName=%d \n",dataKind[k]);
-
-
  
                     #ifdef Nero_DeBuging14_01_14
                         // printf  msg  by  obj
                         neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
                         neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
                         neroObjMsgWithStr_st.Obi = NULL;
-                        sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF2: find dataKind=%d",dataKind[k]);
+                        sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF2: find dataKind=%d,tff->order=%d",dataKind[k],tff->order);
                         msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
                     #endif
 
 
                     if(dataKind[k]   <  NeuronNode_ForComplexDerivative)
                         FailTosearchForUnknowKind=1;
+                   
+                       
+
+
                     break;
-
-
-
-
                 default:
+                     #ifdef Nero_DeBuging14_01_14
+                        // printf  msg  by  obj
+                        neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+                        neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
+                        neroObjMsgWithStr_st.Obi = NULL;
+                        sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF2:tff->order error,tff->order=%d",tff->order);
+                        msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
+                    #endif                
                     break;
             }
             break;                  
@@ -719,7 +728,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
     if(FailTosearchForUnknowKind ==  1)
     {
-        printf("obtainOrderFromTFF:FailTosearchForUnknowKind -------- 内存泄漏   \n");
+        printf("obtainOrderFromTFF: 内存泄漏   tff->order=%d,dataKind[k]=%d,k=%d\n",tff->order,dataKind[k],k);
         return;
     }
 

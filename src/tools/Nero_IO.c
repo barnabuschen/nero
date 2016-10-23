@@ -65,7 +65,7 @@ END_TWO_ARG_MESSAGE_MAP
 
 
 
-#define  LenOfstrTmp   2000
+#define  LenOfstrTmp   5000
 
 
 
@@ -511,18 +511,17 @@ nero_s32int Log_printAllNeroMsg(void * arg)
 			}
 			if(ObjectKind <= NeuronNode_ForComplexDerivative)
 			{
-			sprintf(str,"Log_printAllNeroMsg:		nerogod:%x,Kind:%d,actual num:%d ,record  num:%d\n",(NeuronObject *)arg, ObjectKind,objnums,obj->x);
-			addLineToFile(logFile,str);	
+				sprintf(str,"Log_printAllNeroMsg:		nerogod:%x,Kind:%d,actual num:%d ,record  num:%d\n",(NeuronObject *)arg, ObjectKind,objnums,obj->x);
+				addLineToFile(logFile,str);	
 				printf("Kind:%d,actual num:%d ,record  num:%d\n", ObjectKind,objnums,obj->x);
 			}
 			else
 			{
-			sprintf(str,"Log_printAllNeroMsg:		kind add=%x,Kind:%d,actual num:%d ,record  num:%d,name adress:%x  \n",curFiberOfbase->obj, ObjectKind,objnums,obj->x,obj->inputListHead->obj);
-			addLineToFile(logFile,str);					
+				sprintf(str,"Log_printAllNeroMsg:		kind add=%x,Kind:%d,actual num:%d ,record  num:%d,name adress:%x  \n",curFiberOfbase->obj, ObjectKind,objnums,obj->x,obj->inputListHead->obj);
+				addLineToFile(logFile,str);					
 				printf("Kind:%d,actual num:%d ,record  num:%d,name adress:%x  \n", ObjectKind,objnums,obj->x,obj->inputListHead->obj);
 			}
-		}
-		
+		}	
 	}
 }
 nero_s32int Log_printNeroObjLink(void * arg)
@@ -630,6 +629,9 @@ nero_s32int Log_printNeroObjLink(void * arg)
 
 nero_s32int Log_printSomeMsgForObj(void * obj_,void *str_)
 {
+// nero_8int  strTmp[LenOfstrTmp];
+
+
 	nero_8int  *str=strTmp;
 	nero_s32int ObjectKind,linshi;
 	nero_8int  strLinshi[500];
@@ -644,6 +646,8 @@ struct NerveFiber_   * outputListHead;
 	time(&now);//time函数读取现在的时间(国际标准时间非北京时间)，然后传值给now
 	timenow   =   localtime(&now);//localtime函数把从time取得的时间now换算成你电脑中的时间(就是你设置的地区)
 /*		printf("Local   time   is   %s/n",asctime(timenow));*/
+
+	memset(str,0,LenOfstrTmp);
 
 	if (obj &&  (nero_isBaseObj(obj ) ==0))
 	{
@@ -665,18 +669,18 @@ struct NerveFiber_   * outputListHead;
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:
 		case NeuronNode_ForChSentence:	
-			if (strlen(str_) <400)
+			if (strlen(str_) <LenOfstrTmp)
 				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,ObjectKind=%d,%s,%d,%d,%d,%d,%x,%x\n",asctime(timenow),(int)obj,(int)ObjectKind,(char *)str_,msg,x,y,z,inputListHead,outputListHead);	
 			else
 				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,ObjectKind=%d,非法的打印信息\n",asctime(timenow),(int)obj,(int)ObjectKind);	
 			break;	
 		case NeuronNode_ForChCharacter:
 				tmp=obj->inputListHead->obj;/*衍生对象的第一个数据*/
-				if (strlen(str_) <400  && tmp->x !=0 && tmp->y !=0 && tmp->z !=0)
+				if (strlen(str_) <LenOfstrTmp  && tmp->x !=0 && tmp->y !=0 && tmp->z !=0)
 				{
 					sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象(%c%c%c),%s,数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(char *)str_,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
 				}
-				else if (strlen(str_) <400)
+				else if (strlen(str_) <LenOfstrTmp)
 				{
 
 					if(tmp->x !=0   )
@@ -698,7 +702,7 @@ struct NerveFiber_   * outputListHead;
 				break;
 		case NeuronNode_ForChWord :
 			linshi=IO_getWordsInNero(strLinshi,obj);
-			if (strlen(str_) <400)
+			if (strlen(str_) <LenOfstrTmp)
 				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印词组对象《%s》,句子长度为：%d,%s\n",asctime(timenow),(int)obj,strLinshi,linshi,(char *)str_);	
 			else
 				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印词组对象《%s》,非法的打印信息\n",asctime(timenow),(int)obj,strLinshi);	

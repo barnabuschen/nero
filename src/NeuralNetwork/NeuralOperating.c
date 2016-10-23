@@ -346,7 +346,10 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = tmpObi;
-				sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中找不到该概念,kind1=%d",dataKind[i]);
+				if(dataKind[i] == 62)
+					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中找不到该概念,kind=%d,i=%d  str=%s",dataKind[i],i,DataFlow[i]);
+				else
+					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中找不到该概念,kind=%d,i=%d  ",dataKind[i],i);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif						
 				
@@ -360,7 +363,10 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = tmpObi;
-				sprintf(neroObjMsgWithStr_st.str,"<STREAM   IN   DataFlowProcess>");
+				if(dataKind[i] == 62)
+					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中find概念,kind=%d,i=%d  str=%s",dataKind[i],i,DataFlow[i]);
+				else
+					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中fidn概念,kind=%d,i=%d",dataKind[i],i);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif	
 				tmoForRecordNUm++;
@@ -398,7 +404,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 						if (conf->CreateNewBaseObjKind == 1)
 						{
 							//暂时只处理这个
-							printf("在DataFlowProcess:nero_addNeroByData\n");
+							// printf("在DataFlowProcess:nero_addNeroByData\n");
 							tmpObi=  nero_addNeroByData(DataFlow[i],dataKind[i],GodNero);						
 						}
 						else
@@ -422,13 +428,17 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*				 msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);*/
 /*				*/
 
-				printf("添加子概念,dataKind=%d,adress:%x,  upp obj=%x\n",dataKind[i],tmpObi,tmpObi->outputListHead->obj);
-				#ifdef Nero_DeBuging09_01_14_
-				printf("添加子概念成功\n\n");
+				// printf("添加子概念,dataKind=%d,adress:%x,  upp obj=%x\n",dataKind[i],tmpObi,tmpObi->outputListHead->obj);
+				#ifdef Nero_DeBuging09_01_14
+				// printf("添加子概念成功\n\n");
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = tmpObi;
-				sprintf(neroObjMsgWithStr_st.str,"msg2:在DataFlowProcess中创建对象成功:%s",DataFlow[i]);
+
+				// if(nero_GetNeroKind(tmpObi) == 62)
+				// 	sprintf(neroObjMsgWithStr_st.str,"msg2:在DataFlowProcess中创建对象成功: (%s),kind=%d ,%x\n",DataFlow[i],nero_GetNeroKind(tmpObi),tmpObi);
+				// else
+				sprintf(neroObjMsgWithStr_st.str,"DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=%d ,%x",nero_GetNeroKind(tmpObi),tmpObi);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif	
 
@@ -441,17 +451,17 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 			}
 			else 
 			{
-					printf("添加子概念失败,dataKind=%d,i=%d\n",dataKind[i],i);
+					// printf("添加子概念失败,dataKind=%d,i=%d\n",dataKind[i],i);
 
 					ifHasUnknowObj=1;
 			        #ifdef Nero_DeBuging09_01_14
 			        // printf("++++++++++++++DataFlow[i]=%s.\n",DataFlow[i]);
-					printf("添加子概念失败,dataKind=%d,i=%d\n",dataKind[i],i);
+					// printf("添加子概念失败,dataKind=%d,i=%d\n",dataKind[i],i);
 					//~ printf("添加子概念成功\n\n");
 					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 					neroObjMsgWithStr_st.fucId = 1;
 					neroObjMsgWithStr_st.Obi = NULL;
-					sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中创建对象fail:%s",DataFlow[i]);
+					sprintf(neroObjMsgWithStr_st.str,"DataFlowProcess:msg2:在DataFlowProcess中创建对象 fail :%s",DataFlow[i]);
 					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 					#endif	
 
@@ -607,17 +617,17 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	 /*这个开关打开的时间说明可以进行新基类（抽象概念）创建了*
 		it is obvious that  :  objs[0]  is the  name  of  the  new kind
 	 */  
-	 	printf("1 CreateNewBaseObjKind=%d.  ifHasUnknowObj=%d\n",conf->CreateNewBaseObjKind,ifHasUnknowObj);
+	 	// printf("1 CreateNewBaseObjKind=%d.  ifHasUnknowObj=%d\n",conf->CreateNewBaseObjKind,ifHasUnknowObj);
 
 		if(ifHasUnknowObj == 1)
 		{
 
-			printf("has  unknow obj ,so you can not  CreateNewBaseObjKind.........................\n");
+			// printf("has  unknow obj ,so you can not  CreateNewBaseObjKind.........................\n");
 		}
 		else if (conf->CreateNewBaseObjKind == 1  &&  ifHasUnknowObj == 0)
         {
              
-              #ifdef Nero_DeBuging06_02_14
+              #ifdef Nero_DeBuging06_02_14_
               int tmpi;
               for (tmpi=0;tmpi<objNum;tmpi++)
               {
@@ -670,10 +680,10 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
               else
               {
                      /*如果不需要添加新的基类，那就是修改基类了*/
-              		printf("do not create new base  kind,but  see  if need to  Modify it\n"); 
+              		// printf("do not create new base  kind,but  see  if need to  Modify it\n"); 
 					 if(res2 !=   nero_msg_unknowError )
 					 {
-					 	printf("Modify base kind\n"); 
+					 	// printf("Modify base kind\n"); 
 						newBaseObjKind_= res2;
                         nero_ModifyBaseKind(objs,objNum,GodNero,conf,res2);
 
@@ -1377,7 +1387,8 @@ nero_us32int nextAvailableNeroInPool;*/
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);	
 				}		
 	     	#endif	
-	 		#ifdef Nero_DeBuging10_01_14
+
+	 		#ifdef Nero_DeBuging10_01_14_
 				// print  all  of  the  kind  obj
 				{
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
@@ -1394,7 +1405,7 @@ nero_us32int nextAvailableNeroInPool;*/
 
 	 		#ifdef Nero_DeBuging10_01_14
 				// print all  nero used  msg
-				neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
+				neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;//Log_printAllNeroMsg
 				neroObjMsg_st.fucId = 4;
 				neroObjMsg_st.Obi = GodNero;
 				msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);		

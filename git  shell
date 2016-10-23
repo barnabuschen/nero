@@ -94,16 +94,17 @@ git push origin master
 
 
 
-
+info breakpoints
 
 gdb neroMain
 file  ./tools/Nero_Task.c
 file  ./NeuralNetwork/NeuralOperating.c
 b  Process_ObjForecast
+ b NeuralNetwork.c:3778
 
+NeuralNetwork.c
 
-
-
+ b 3815
 
 
 

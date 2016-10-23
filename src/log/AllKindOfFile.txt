@@ -1,58 +1,67 @@
-Log_printAllKindOf(default):Sat Oct 22 01:06:19 2016
-		ObjectKind=2001 add:406a3f40,所有对象num为(1):
+Log_printAllKindOf(default):Mon Oct 24 00:26:20 2016
+		ObjectKind=2013 add:406a6bc0,所有对象num为(1):
 (000)所有child对象kind为
           kind:62,getFiberPointToObjNum=0
-          kind:61,getFiberPointToObjNum=0
-		地址406a3f60  <1>,kind=2001,DataNUm=1
-Log_printAllKindOf(default):Sat Oct 22 01:06:23 2016
-		ObjectKind=62 add:4063a0e0,所有对象num为(22):
-Log_printAllKindOf(default):Sat Oct 22 01:06:23 2016
-		ObjectKind=62 add:4063a0e0,所有对象num为(22):
-  inputListHead =NULL        n		地址406a3c40  <许玉兰>,kind=62,DataNUm=3
-		地址406a3c60  <刘泵>,kind=62,DataNUm=2
-		地址406a3c80  <阿曼>,kind=62,DataNUm=2
-		地址406a3ca0  <阿拉伯数字>,kind=62,DataNUm=5
-		地址406a3cc0  <数字>,kind=62,DataNUm=2
-		地址406a3ce0  <十进制>,kind=62,DataNUm=3
-		地址406a3d00  <二进制>,kind=62,DataNUm=3
-		地址406a3d20  <数学符号>,kind=62,DataNUm=4
-		地址406a3d40  <运算符>,kind=62,DataNUm=3
-		地址406a3d60  <加法>,kind=62,DataNUm=2
-		地址406a3d80  <减法>,kind=62,DataNUm=2
-		地址406a3da0  <乘法>,kind=62,DataNUm=2
-		地址406a3dc0  <除法>,kind=62,DataNUm=2
-		地址406a3de0  <负号>,kind=62,DataNUm=2
-		地址406a3e00  <等于号>,kind=62,DataNUm=3
-		地址406a3e20  <正号>,kind=62,DataNUm=2
-		地址406a3e40  <个位数>,kind=62,DataNUm=3
-		地址406a3e60  <十位数>,kind=62,DataNUm=3
-		地址406a3e80  <千位数>,kind=62,DataNUm=3
-		地址406a3ea0  <英文字母>,kind=62,DataNUm=4
-		地址406a3ec0  <英文单词>,kind=62,DataNUm=4
-		地址406a3ee0  <整数>,kind=62,DataNUm=2
-Log_printAllKindOf(default):Sat Oct 22 01:06:31 2016
-		ObjectKind=62 add:4063a0e0,所有对象num为(22):
-Log_printAllKindOf(default):Sat Oct 22 01:06:31 2016
-		ObjectKind=62 add:4063a0e0,所有对象num为(22):
-  inputListHead =NULL        n		地址406a3c40  <许玉兰>,kind=62,DataNUm=3
-		地址406a3c60  <刘泵>,kind=62,DataNUm=2
-		地址406a3c80  <阿曼>,kind=62,DataNUm=2
-		地址406a3ca0  <阿拉伯数字>,kind=62,DataNUm=5
-		地址406a3cc0  <数字>,kind=62,DataNUm=2
-		地址406a3ce0  <十进制>,kind=62,DataNUm=3
-		地址406a3d00  <二进制>,kind=62,DataNUm=3
-		地址406a3d20  <数学符号>,kind=62,DataNUm=4
-		地址406a3d40  <运算符>,kind=62,DataNUm=3
-		地址406a3d60  <加法>,kind=62,DataNUm=2
-		地址406a3d80  <减法>,kind=62,DataNUm=2
-		地址406a3da0  <乘法>,kind=62,DataNUm=2
-		地址406a3dc0  <除法>,kind=62,DataNUm=2
-		地址406a3de0  <负号>,kind=62,DataNUm=2
-		地址406a3e00  <等于号>,kind=62,DataNUm=3
-		地址406a3e20  <正号>,kind=62,DataNUm=2
-		地址406a3e40  <个位数>,kind=62,DataNUm=3
-		地址406a3e60  <十位数>,kind=62,DataNUm=3
-		地址406a3e80  <千位数>,kind=62,DataNUm=3
-		地址406a3ea0  <英文字母>,kind=62,DataNUm=4
-		地址406a3ec0  <英文单词>,kind=62,DataNUm=4
-		地址406a3ee0  <整数>,kind=62,DataNUm=2
+          kind:2012,getFiberPointToObjNum=1
+          kind:2012,getFiberPointToObjNum=1
+          kind:2012,getFiberPointToObjNum=1
+          kind:2012,getFiberPointToObjNum=1
+		地址406a6be0  <>,kind=2013,DataNUm=4
+Log_printAllKindOf(default):Mon Oct 24 00:26:20 2016
+		ObjectKind=62 add:4063acc0,所有对象num为(25):
+Log_printAllKindOf(default):Mon Oct 24 00:26:20 2016
+		ObjectKind=62 add:4063acc0,所有对象num为(25):
+  inputListHead =NULL        n		地址406a4820  <许玉兰>,kind=62,DataNUm=3
+		地址406a4840  <刘泵>,kind=62,DataNUm=2
+		地址406a4860  <阿曼>,kind=62,DataNUm=2
+		地址406a4880  <阿拉伯数字>,kind=62,DataNUm=5
+		地址406a48a0  <数字>,kind=62,DataNUm=2
+		地址406a48c0  <十进制>,kind=62,DataNUm=3
+		地址406a48e0  <二进制>,kind=62,DataNUm=3
+		地址406a4900  <数学符号>,kind=62,DataNUm=4
+		地址406a4920  <运算符>,kind=62,DataNUm=3
+		地址406a4940  <加法>,kind=62,DataNUm=2
+		地址406a4960  <减法>,kind=62,DataNUm=2
+		地址406a4980  <乘法>,kind=62,DataNUm=2
+		地址406a49a0  <除法>,kind=62,DataNUm=2
+		地址406a49c0  <负号>,kind=62,DataNUm=2
+		地址406a49e0  <等于号>,kind=62,DataNUm=3
+		地址406a4a00  <正号>,kind=62,DataNUm=2
+		地址406a4a20  <个位数>,kind=62,DataNUm=3
+		地址406a4a40  <十位数>,kind=62,DataNUm=3
+		地址406a4a60  <千位数>,kind=62,DataNUm=3
+		地址406a4a80  <英文字母>,kind=62,DataNUm=4
+		地址406a4aa0  <英文单词>,kind=62,DataNUm=4
+		地址406a4ac0  <整数>,kind=62,DataNUm=2
+		地址406a6ae0  <setosa>,kind=62,DataNUm=6
+		地址406a6b00  <versicolor>,kind=62,DataNUm=10
+		地址406a6b20  <virginica>,kind=62,DataNUm=9
+Log_printAllKindOf(default):Mon Oct 24 00:26:55 2016
+		ObjectKind=62 add:4063acc0,所有对象num为(25):
+Log_printAllKindOf(default):Mon Oct 24 00:26:55 2016
+		ObjectKind=62 add:4063acc0,所有对象num为(25):
+  inputListHead =NULL        n		地址406a4820  <许玉兰>,kind=62,DataNUm=3
+		地址406a4840  <刘泵>,kind=62,DataNUm=2
+		地址406a4860  <阿曼>,kind=62,DataNUm=2
+		地址406a4880  <阿拉伯数字>,kind=62,DataNUm=5
+		地址406a48a0  <数字>,kind=62,DataNUm=2
+		地址406a48c0  <十进制>,kind=62,DataNUm=3
+		地址406a48e0  <二进制>,kind=62,DataNUm=3
+		地址406a4900  <数学符号>,kind=62,DataNUm=4
+		地址406a4920  <运算符>,kind=62,DataNUm=3
+		地址406a4940  <加法>,kind=62,DataNUm=2
+		地址406a4960  <减法>,kind=62,DataNUm=2
+		地址406a4980  <乘法>,kind=62,DataNUm=2
+		地址406a49a0  <除法>,kind=62,DataNUm=2
+		地址406a49c0  <负号>,kind=62,DataNUm=2
+		地址406a49e0  <等于号>,kind=62,DataNUm=3
+		地址406a4a00  <正号>,kind=62,DataNUm=2
+		地址406a4a20  <个位数>,kind=62,DataNUm=3
+		地址406a4a40  <十位数>,kind=62,DataNUm=3
+		地址406a4a60  <千位数>,kind=62,DataNUm=3
+		地址406a4a80  <英文字母>,kind=62,DataNUm=4
+		地址406a4aa0  <英文单词>,kind=62,DataNUm=4
+		地址406a4ac0  <整数>,kind=62,DataNUm=2
+		地址406a6ae0  <setosa>,kind=62,DataNUm=6
+		地址406a6b00  <versicolor>,kind=62,DataNUm=10
+		地址406a6b20  <virginica>,kind=62,DataNUm=9

@@ -1,526 +1,2176 @@
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 许玉兰,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 许玉兰,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 许玉兰,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 刘泵,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 刘泵,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 阿曼,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 阿曼,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 数字,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 数字,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 十进制,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 十进制,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 十进制,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 二进制,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 二进制,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 二进制,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 数学符号,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 数学符号,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 数学符号,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 数学符号,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 运算符,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 运算符,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 运算符,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 加法,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 加法,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 减法,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 减法,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 乘法,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 乘法,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 除法,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 除法,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 负号,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 负号,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 等于号,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 等于号,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 等于号,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 正号,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 正号,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 个位数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 个位数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 个位数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 十位数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 十位数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 十位数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 千位数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 千位数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 千位数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 英文字母,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 英文字母,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 英文字母,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 英文字母,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 英文单词,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 英文单词,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 英文单词,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 英文单词,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:15 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :许玉兰   child num : 0 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=0  str=许玉兰,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4820,打印词组对象《许玉兰》,句子长度为：3,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4820
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :刘泵   child num : 1 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=1  str=刘泵,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4840,打印词组对象《刘泵》,句子长度为：2,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4840
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :阿曼   child num : 2 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=2  str=阿曼,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4860,打印词组对象《阿曼》,句子长度为：2,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4860
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :阿拉伯数字   child num : 3 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=3  str=阿拉伯数字,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4880,打印词组对象《阿拉伯数字》,句子长度为：5,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4880
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :数字   child num : 4 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=4  str=数字,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a48a0,打印词组对象《数字》,句子长度为：2,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a48a0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :十进制   child num : 5 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=5  str=十进制,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a48c0,打印词组对象《十进制》,句子长度为：3,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a48c0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :二进制   child num : 6 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=6  str=二进制,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a48e0,打印词组对象《二进制》,句子长度为：3,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a48e0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :数学符号   child num : 7 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=7  str=数学符号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4900,打印词组对象《数学符号》,句子长度为：4,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4900
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :运算符   child num : 8 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=8  str=运算符,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4920,打印词组对象《运算符》,句子长度为：3,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4920
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :加法   child num : 9 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=9  str=加法,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4940,打印词组对象《加法》,句子长度为：2,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4940
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :减法   child num : 10 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=10  str=减法,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4960,打印词组对象《减法》,句子长度为：2,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4960
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :乘法   child num : 11 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=11  str=乘法,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4980,打印词组对象《乘法》,句子长度为：2,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4980
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :除法   child num : 12 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=12  str=除法,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a49a0,打印词组对象《除法》,句子长度为：2,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a49a0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :负号   child num : 13 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=13  str=负号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a49c0,打印词组对象《负号》,句子长度为：2,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a49c0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :等于号   child num : 14 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=14  str=等于号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a49e0,打印词组对象《等于号》,句子长度为：3,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a49e0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :正号   child num : 15 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=15  str=正号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4a00,打印词组对象《正号》,句子长度为：2,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4a00
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :个位数   child num : 16 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=16  str=个位数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4a20,打印词组对象《个位数》,句子长度为：3,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4a20
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :十位数   child num : 17 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=17  str=十位数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4a40,打印词组对象《十位数》,句子长度为：3,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4a40
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :千位数   child num : 18 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=18  str=千位数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4a60,打印词组对象《千位数》,句子长度为：3,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4a60
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 19 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=19  str=英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4a80
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文单词   child num : 20 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=20  str=英文单词,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4aa0,打印词组对象《英文单词》,句子长度为：4,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4aa0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 21 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=21  str=整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:55 2016
+		地址：406a4ac0,打印词组对象《整数》,句子长度为：2,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a4ac0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=100*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：40662760,打印字符对象(数),msg1:在DataFlowProcess中fidn概念,kind=61,i=0,数据是：《e695b0》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ae0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=100*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：40662760,打印字符对象(数),msg1:在DataFlowProcess中fidn概念,kind=61,i=0,数据是：《e695b0》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=100*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：40662760,打印字符对象(数),msg1:在DataFlowProcess中fidn概念,kind=61,i=0,数据是：《e695b0》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4bc0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=100*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：40662760,打印字符对象(数),msg1:在DataFlowProcess中fidn概念,kind=61,i=0,数据是：《e695b0》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4c20,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=100*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：40662760,打印字符对象(数),msg1:在DataFlowProcess中fidn概念,kind=61,i=0,数据是：《e695b0》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4c80,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=100*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：40662760,打印字符对象(数),msg1:在DataFlowProcess中fidn概念,kind=61,i=0,数据是：《e695b0》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ce0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=100*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：40662760,打印字符对象(数),msg1:在DataFlowProcess中fidn概念,kind=61,i=0,数据是：《e695b0》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4d40,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=100*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：40662760,打印字符对象(数),msg1:在DataFlowProcess中fidn概念,kind=61,i=0,数据是：《e695b0》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4da0,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=100*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：40662760,打印字符对象(数),msg1:在DataFlowProcess中fidn概念,kind=61,i=0,数据是：《e695b0》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4e00,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=100*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：40662760,打印字符对象(数),msg1:在DataFlowProcess中fidn概念,kind=61,i=0,数据是：《e695b0》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4e60,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=101*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :阿拉伯数字   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4880,打印词组对象《阿拉伯数字》,句子长度为：5,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=阿拉伯数字
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ae0,打印字符对象(0),数据是：《3000》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=101*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :阿拉伯数字   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4880,打印词组对象《阿拉伯数字》,句子长度为：5,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=阿拉伯数字
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=101*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :阿拉伯数字   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4880,打印词组对象《阿拉伯数字》,句子长度为：5,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=阿拉伯数字
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4bc0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=101*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :阿拉伯数字   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4880,打印词组对象《阿拉伯数字》,句子长度为：5,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=阿拉伯数字
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4c20,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=101*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :阿拉伯数字   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4880,打印词组对象《阿拉伯数字》,句子长度为：5,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=阿拉伯数字
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4c80,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=101*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :阿拉伯数字   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4880,打印词组对象《阿拉伯数字》,句子长度为：5,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=阿拉伯数字
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ce0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=101*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :阿拉伯数字   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4880,打印词组对象《阿拉伯数字》,句子长度为：5,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=阿拉伯数字
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4d40,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=101*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :阿拉伯数字   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4880,打印词组对象《阿拉伯数字》,句子长度为：5,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=阿拉伯数字
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4da0,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=101*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :阿拉伯数字   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4880,打印词组对象《阿拉伯数字》,句子长度为：5,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=阿拉伯数字
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4e00,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=101*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :阿拉伯数字   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 阿拉伯数字,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4880,打印词组对象《阿拉伯数字》,句子长度为：5,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=阿拉伯数字
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4e60,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :数学符号   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 数学符号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4900,打印词组对象《数学符号》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=数学符号
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5020,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :数学符号   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 数学符号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4900,打印词组对象《数学符号》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=数学符号
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a50a0,打印字符对象(-),数据是：《2d00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :数学符号   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 数学符号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4900,打印词组对象《数学符号》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=数学符号
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5100,打印字符对象(*),数据是：《2a00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :数学符号   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 数学符号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4900,打印词组对象《数学符号》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=数学符号
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5160,打印字符对象(/),数据是：《2f00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :数学符号   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 数学符号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4900,打印词组对象《数学符号》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=数学符号
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a51c0,打印字符对象(&),数据是：《2600》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :数学符号   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 数学符号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4900,打印词组对象《数学符号》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=数学符号
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5220,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :数学符号   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 数学符号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4900,打印词组对象《数学符号》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=数学符号
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5280,打印字符对象(<),数据是：《3c00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :数学符号   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 数学符号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4900,打印词组对象《数学符号》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=数学符号
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a52e0,打印字符对象(>),数据是：《3e00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :数学符号   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 数学符号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4900,打印词组对象《数学符号》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=数学符号
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5340,打印字符对象(|),数据是：《7c00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :数学符号   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 数学符号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4900,打印词组对象《数学符号》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=数学符号
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a53a0,打印字符对象(!),数据是：《2100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :负号   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 负号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a49c0,打印词组对象《负号》,句子长度为：2,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=负号
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a50a0,打印字符对象(-),数据是：《2d00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :等于号   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 等于号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a49e0,打印词组对象《等于号》,句子长度为：3,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=等于号
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5220,打印字符对象(=),数据是：《3d00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=201*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：4064d3e0,打印字符对象(加),msg1:在DataFlowProcess中fidn概念,kind=61,i=0,数据是：《e58aa0》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5020,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=201*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：4064dc60,打印字符对象(减),msg1:在DataFlowProcess中fidn概念,kind=61,i=0,数据是：《e5878f》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a50a0,打印字符对象(-),数据是：《2d00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=201*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：4063fe60,打印字符对象(乘),msg1:在DataFlowProcess中fidn概念,kind=61,i=0,数据是：《e4b998》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5100,打印字符对象(*),数据是：《2a00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=201*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：40640ae0,打印字符对象(除),msg1:在DataFlowProcess中fidn概念,kind=61,i=0,数据是：《e999a4》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5160,打印字符对象(/),数据是：《2f00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :正号   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 正号,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a00,打印词组对象《正号》,句子长度为：2,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=正号
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5020,打印字符对象(+),数据是：《2b00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a55c0,打印字符对象(a),数据是：《6100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5640,打印字符对象(b),数据是：《6200》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a56a0,打印字符对象(c),数据是：《6300》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5700,打印字符对象(d),数据是：《6400》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5760,打印字符对象(e),数据是：《6500》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a57c0,打印字符对象(f),数据是：《6600》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5820,打印字符对象(g),数据是：《6700》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5880,打印字符对象(h),数据是：《6800》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a58e0,打印字符对象(i),数据是：《6900》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5940,打印字符对象(j),数据是：《6a00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a59a0,打印字符对象(k),数据是：《6b00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5a00,打印字符对象(l),数据是：《6c00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5a60,打印字符对象(m),数据是：《6d00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5ac0,打印字符对象(n),数据是：《6e00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5b20,打印字符对象(o),数据是：《6f00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5b80,打印字符对象(p),数据是：《7000》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5be0,打印字符对象(q),数据是：《7100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5c40,打印字符对象(r),数据是：《7200》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5ca0,打印字符对象(s),数据是：《7300》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5d00,打印字符对象(t),数据是：《7400》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5d60,打印字符对象(u),数据是：《7500》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5dc0,打印字符对象(v),数据是：《7600》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5e20,打印字符对象(w),数据是：《7700》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5e80,打印字符对象(x),数据是：《7800》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5ee0,打印字符对象(y),数据是：《7900》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5f40,打印字符对象(z),数据是：《7a00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a5fa0,打印字符对象(A),数据是：《4100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6000,打印字符对象(B),数据是：《4200》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6060,打印字符对象(C),数据是：《4300》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a60c0,打印字符对象(D),数据是：《4400》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6120,打印字符对象(E),数据是：《4500》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6180,打印字符对象(F),数据是：《4600》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a61e0,打印字符对象(G),数据是：《4700》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6240,打印字符对象(H),数据是：《4800》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a62a0,打印字符对象(I),数据是：《4900》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6300,打印字符对象(J),数据是：《4a00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6360,打印字符对象(K),数据是：《4b00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a63c0,打印字符对象(L),数据是：《4c00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6420,打印字符对象(M),数据是：《4d00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6480,打印字符对象(N),数据是：《4e00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a64e0,打印字符对象(O),数据是：《4f00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6540,打印字符对象(P),数据是：《5000》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a65a0,打印字符对象(Q),数据是：《5100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6600,打印字符对象(R),数据是：《5200》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6660,打印字符对象(S),数据是：《5300》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a66c0,打印字符对象(T),数据是：《5400》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6720,打印字符对象(U),数据是：《5500》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6780,打印字符对象(V),数据是：《5600》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a67e0,打印字符对象(W),数据是：《5700》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6840,打印字符对象(X),数据是：《5800》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a68a0,打印字符对象(Y),数据是：《5900》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=200*********countOfWord=2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :英文字母   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 英文字母,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4a80,打印词组对象《英文字母》,句子长度为：4,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=英文字母
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6900,打印字符对象(Z),数据是：《5a00》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
 		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=220*********countOfWord=2,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ac0,打印词组对象《整数》,句子长度为：2,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=整数
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
 		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=220*********countOfWord=3,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ac0,打印词组对象《整数》,句子长度为：2,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=整数
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4bc0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
 		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=220*********countOfWord=4,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ac0,打印词组对象《整数》,句子长度为：2,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=整数
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4c20,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4bc0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
 		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=220*********countOfWord=5,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ac0,打印词组对象《整数》,句子长度为：2,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=整数
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4c80,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4c20,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4bc0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
 		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=220*********countOfWord=6,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ac0,打印词组对象《整数》,句子长度为：2,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=整数
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ce0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4c80,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4c20,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4bc0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
 		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=220*********countOfWord=7,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ac0,打印词组对象《整数》,句子长度为：2,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=整数
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ce0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ce0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
 		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=220*********countOfWord=9,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ac0,打印词组对象《整数》,句子长度为：2,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=整数
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4d40,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4d40,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:61   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=61,i=8  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
 		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=220*********countOfWord=9,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ac0,打印词组对象《整数》,句子长度为：2,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=整数
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4da0,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4da0,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
 		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=220*********countOfWord=10,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ac0,打印词组对象《整数》,句子长度为：2,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=整数
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4e60,打印字符对象(9),数据是：《3900》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4e00,打印字符对象(8),数据是：《3800》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4da0,打印字符对象(7),数据是：《3700》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4d40,打印字符对象(6),数据是：《3600》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4ce0,打印字符对象(5),数据是：《3500》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4c80,打印字符对象(4),数据是：《3400》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4c20,打印字符对象(3),数据是：《3300》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
 		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=203*********countOfWord=1,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,GodNero  add:4063a060,kind=1,4063a060
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=406a3ee0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3ee0,打印词组对象《整数》,句子长度为：2,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=61,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=406a3ee0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3ee0,打印词组对象《整数》,句子长度为：2,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=61,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=406a3ee0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3ee0,打印词组对象《整数》,句子长度为：2,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=61,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f80,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f80,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=406a3ee0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3ee0,打印词组对象《整数》,句子长度为：2,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=61,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3fe0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3fe0,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f80,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f80,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=406a3ee0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3ee0,打印词组对象《整数》,句子长度为：2,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=61,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a4040,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a4040,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3fe0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3fe0,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f80,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f80,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=406a3ee0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3ee0,打印词组对象《整数》,句子长度为：2,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a40a0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a40a0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a40a0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a40a0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=406a3ee0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3ee0,打印词组对象《整数》,句子长度为：2,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=61,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a4120,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a4120,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=61,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=406a3ee0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3ee0,打印词组对象《整数》,句子长度为：2,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=61,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a41c0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a41c0,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find 整数,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=406a3ee0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3ee0,打印词组对象《整数》,句子长度为：2,<STREAM   IN   DataFlowProcess>
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=61,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=61,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a41c0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a41c0,打印字符对象(7),数据是：《3700》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a4120,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a4120,打印字符对象(6),数据是：《3600》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a40a0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a40a0,打印字符对象(5),数据是：《3500》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a4040,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a4040,打印字符对象(4),数据是：《3400》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3fe0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3fe0,打印字符对象(3),数据是：《3300》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f80,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f80,打印字符对象(2),数据是：《3200》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:61   tmp=406a3f00,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		地址：406a3f00,打印字符对象(1),数据是：《3100》
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find setosa,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find setosa,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find setosa,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find setosa,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find setosa,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject (NeuronNode_ForChWord)  find setosa,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :in NeuronNode_ForChWord  has  unknow  str ,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在nero_IfHasNeuronObject :find obj for  kind:62   tmp=0,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind1=62,kind=0,0
-Log_printSomeMsgForObj:Sat Oct 22 01:06:19 2016
-		空对象或者为基类对象,在DataFlowProcess中创建对象fail:setosa,kind=0,0
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:50,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:51,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:61,actual num:6773 ,record  num:6773
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:62,actual num:22 ,record  num:22
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:100,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:101,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:63,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:2000,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		kind add=406a3f40,Kind:2001,actual num:9 ,record  num:9,name adress:406a3ee0  
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:50,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:51,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:61,actual num:6773 ,record  num:6773
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:62,actual num:22 ,record  num:22
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:100,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:101,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:63,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:4063a060,Kind:2000,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		kind add=406a3f40,Kind:2001,actual num:9 ,record  num:9,name adress:406a3ee0  
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4bc0,打印字符对象(2),数据是：《3200》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a4b60,打印字符对象(1),数据是：《3100》
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :setosa   child num : 22 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=0  str=setosa,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=203*********countOfWord=1,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6ae0,打印词组对象《setosa》,句子长度为：6,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a6ae0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :versicolor   child num : 23 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=0  str=versicolor,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=203*********countOfWord=1,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6b00,打印词组对象《versicolor》,句子长度为：10,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a6b00
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :virginica   child num : 24 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=219*********countOfWord=5,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:62   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=62,i=0  str=virginica,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:25:59 2016
+		地址：406a6b20,打印词组对象《virginica》,句子长度为：9,DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=62 ,406a6b20
+Log_printSomeMsgForObj:Mon Oct 24 00:26:00 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:00 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:00 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:00 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:00 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:00 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:00 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:01 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:01 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:01 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:01 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:01 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:01 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:01 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:02 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:02 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:02 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:02 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:02 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:02 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:02 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:50,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:51,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:61,actual num:6836 ,record  num:6836
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:62,actual num:25 ,record  num:25
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:100,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:101,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:63,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:2000,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		kind add=406a4b20,Kind:2001,actual num:10 ,record  num:10,name adress:40662760  
+Log_printAllNeroMsg:		kind add=406a4ec0,Kind:2002,actual num:10 ,record  num:10,name adress:406a4880  
+Log_printAllNeroMsg:		kind add=406a5060,Kind:2003,actual num:10 ,record  num:10,name adress:406a4900  
+Log_printAllNeroMsg:		kind add=406a5400,Kind:2004,actual num:1 ,record  num:1,name adress:406a49c0  
+Log_printAllNeroMsg:		kind add=406a5440,Kind:2005,actual num:1 ,record  num:1,name adress:406a49e0  
+Log_printAllNeroMsg:		kind add=406a5480,Kind:2006,actual num:1 ,record  num:1,name adress:4064d3e0  
+Log_printAllNeroMsg:		kind add=406a54c0,Kind:2007,actual num:1 ,record  num:1,name adress:4064dc60  
+Log_printAllNeroMsg:		kind add=406a5500,Kind:2008,actual num:1 ,record  num:1,name adress:4063fe60  
+Log_printAllNeroMsg:		kind add=406a5540,Kind:2009,actual num:1 ,record  num:1,name adress:40640ae0  
+Log_printAllNeroMsg:		kind add=406a5580,Kind:2010,actual num:1 ,record  num:1,name adress:406a4a00  
+Log_printAllNeroMsg:		kind add=406a5600,Kind:2011,actual num:52 ,record  num:52,name adress:406a4a80  
+Log_printAllNeroMsg:		kind add=406a6960,Kind:2012,actual num:9 ,record  num:9,name adress:406a4ac0  
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :setosa   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find setosa,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		地址：406a6ae0,打印词组对象《setosa》,句子长度为：6,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=setosa
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=2  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=3  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=4  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=219*********countOfWord=5,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:03 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:04 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:04 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:04 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:04 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:04 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:04 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:04 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:05 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:05 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:05 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:05 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:05 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:05 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:05 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:06 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:06 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:06 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:06 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:06 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:06 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:06 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :setosa   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find setosa,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		地址：406a6ae0,打印词组对象《setosa》,句子长度为：6,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=setosa
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=2  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=3  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=4  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,DataFlowProcess:msg2:在DataFlowProcess中创建对象 fail :2,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=219*********countOfWord=5,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:07 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:08 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:08 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:08 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:08 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:08 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:08 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:08 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:09 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:09 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:09 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:09 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:09 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:09 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:09 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:10 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:10 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:10 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:10 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:10 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:10 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:10 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:50,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:51,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:61,actual num:6836 ,record  num:6836
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:62,actual num:25 ,record  num:25
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:100,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:101,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:63,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:2000,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		kind add=406a4b20,Kind:2001,actual num:10 ,record  num:10,name adress:40662760  
+Log_printAllNeroMsg:		kind add=406a4ec0,Kind:2002,actual num:10 ,record  num:10,name adress:406a4880  
+Log_printAllNeroMsg:		kind add=406a5060,Kind:2003,actual num:10 ,record  num:10,name adress:406a4900  
+Log_printAllNeroMsg:		kind add=406a5400,Kind:2004,actual num:1 ,record  num:1,name adress:406a49c0  
+Log_printAllNeroMsg:		kind add=406a5440,Kind:2005,actual num:1 ,record  num:1,name adress:406a49e0  
+Log_printAllNeroMsg:		kind add=406a5480,Kind:2006,actual num:1 ,record  num:1,name adress:4064d3e0  
+Log_printAllNeroMsg:		kind add=406a54c0,Kind:2007,actual num:1 ,record  num:1,name adress:4064dc60  
+Log_printAllNeroMsg:		kind add=406a5500,Kind:2008,actual num:1 ,record  num:1,name adress:4063fe60  
+Log_printAllNeroMsg:		kind add=406a5540,Kind:2009,actual num:1 ,record  num:1,name adress:40640ae0  
+Log_printAllNeroMsg:		kind add=406a5580,Kind:2010,actual num:1 ,record  num:1,name adress:406a4a00  
+Log_printAllNeroMsg:		kind add=406a5600,Kind:2011,actual num:52 ,record  num:52,name adress:406a4a80  
+Log_printAllNeroMsg:		kind add=406a6960,Kind:2012,actual num:15 ,record  num:15,name adress:406a4ac0  
+Log_printAllNeroMsg:		kind add=406a6bc0,Kind:2013,actual num:1 ,record  num:1,name adress:406a6ae0  
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :versicolor   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find versicolor,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		地址：406a6b00,打印词组对象《versicolor》,句子长度为：10,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=versicolor
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,obtainOrderFromTFF 0: ********order=219*********countOfWord=5,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=2  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=3  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=4  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:11 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:12 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:12 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:12 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:12 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:12 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:12 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:12 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:13 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:13 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:13 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:13 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:13 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:13 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:13 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:14 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:14 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:14 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:14 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:14 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:14 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:14 2016
+		空对象或者为基类对象,obtainOrderFromTFF1:TFFDataType_unknow start find ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :整数   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find 整数,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,nero_getObjKindByName  1 : tmp=406a4ac0 godNero=4063ac40,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,nero_getObjKindByName  4, findKind=2012 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,nero_getObjKindByName  2 : find obj is406a4ac0 findKind=2012,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,obtainOrderFromTFF2: find dataKind=2012,tff->order=219,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject:start find(ForChWord) :virginica   child num : 25 
+,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find virginica,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		地址：406a6b20,打印词组对象《virginica》,句子长度为：9,msg1:在DataFlowProcess中find概念,kind=62,i=0  str=virginica
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=1  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=2  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=3  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,在nero_IfHasNeuronObject : can not find obj for  kind:2012   tmp=0,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=4  ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,nero_addNeroByData:default0  dataKind=2012,BaseObj=406a6960,godNero=4063ac40 ,kind=0,0
+Log_printSomeMsgForObj:Mon Oct 24 00:26:15 2016
+		空对象或者为基类对象,GodNero  add:4063ac40,kind=1,4063ac40
+Log_printNeroObjLink:Mon Oct 24 00:26:15 2016
+		地址：4063ac40的link对象,ObjectKind=1
+		该对象4063ac60为基类,ObjectKind=50，无需link
+		该对象4063ac80为基类,ObjectKind=51，无需link
+		该对象4063aca0为基类,ObjectKind=61，无需link
+		该对象4063acc0为基类,ObjectKind=62，无需link
+		该对象4063ace0为基类,ObjectKind=100，无需link
+		该对象4063ad00为基类,ObjectKind=101，无需link
+		该对象4063ad20为基类,ObjectKind=63，无需link
+		该对象4063ad40为基类,ObjectKind=2000，无需link
+		该对象406a4b20为基类,ObjectKind=2001，无需link
+		该对象406a4ec0为基类,ObjectKind=2002，无需link
+		该对象406a5060为基类,ObjectKind=2003，无需link
+		该对象406a5400为基类,ObjectKind=2004，无需link
+		该对象406a5440为基类,ObjectKind=2005，无需link
+		该对象406a5480为基类,ObjectKind=2006，无需link
+		该对象406a54c0为基类,ObjectKind=2007，无需link
+		该对象406a5500为基类,ObjectKind=2008，无需link
+		该对象406a5540为基类,ObjectKind=2009，无需link
+		该对象406a5580为基类,ObjectKind=2010，无需link
+		该对象406a5600为基类,ObjectKind=2011，无需link
+		该对象406a6960为基类,ObjectKind=2012，无需link
+		该对象406a6bc0为基类,ObjectKind=2013，无需link
+		该对象406a6ca0为基类,ObjectKind=2014，无需link
+		该对象406a6d40为基类,ObjectKind=2015，无需link
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:50,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:51,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:61,actual num:6836 ,record  num:6836
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:62,actual num:25 ,record  num:25
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:100,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:101,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:63,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:2000,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		kind add=406a4b20,Kind:2001,actual num:10 ,record  num:10,name adress:40662760  
+Log_printAllNeroMsg:		kind add=406a4ec0,Kind:2002,actual num:10 ,record  num:10,name adress:406a4880  
+Log_printAllNeroMsg:		kind add=406a5060,Kind:2003,actual num:10 ,record  num:10,name adress:406a4900  
+Log_printAllNeroMsg:		kind add=406a5400,Kind:2004,actual num:1 ,record  num:1,name adress:406a49c0  
+Log_printAllNeroMsg:		kind add=406a5440,Kind:2005,actual num:1 ,record  num:1,name adress:406a49e0  
+Log_printAllNeroMsg:		kind add=406a5480,Kind:2006,actual num:1 ,record  num:1,name adress:4064d3e0  
+Log_printAllNeroMsg:		kind add=406a54c0,Kind:2007,actual num:1 ,record  num:1,name adress:4064dc60  
+Log_printAllNeroMsg:		kind add=406a5500,Kind:2008,actual num:1 ,record  num:1,name adress:4063fe60  
+Log_printAllNeroMsg:		kind add=406a5540,Kind:2009,actual num:1 ,record  num:1,name adress:40640ae0  
+Log_printAllNeroMsg:		kind add=406a5580,Kind:2010,actual num:1 ,record  num:1,name adress:406a4a00  
+Log_printAllNeroMsg:		kind add=406a5600,Kind:2011,actual num:52 ,record  num:52,name adress:406a4a80  
+Log_printAllNeroMsg:		kind add=406a6960,Kind:2012,actual num:21 ,record  num:21,name adress:406a4ac0  
+Log_printAllNeroMsg:		kind add=406a6bc0,Kind:2013,actual num:1 ,record  num:1,name adress:406a6ae0  
+Log_printAllNeroMsg:		kind add=406a6ca0,Kind:2014,actual num:1 ,record  num:1,name adress:406a6b00  
+Log_printAllNeroMsg:		kind add=406a6d40,Kind:2015,actual num:1 ,record  num:1,name adress:406a6b20  
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:50,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:51,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:61,actual num:6836 ,record  num:6836
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:62,actual num:25 ,record  num:25
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:100,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:101,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:63,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:2000,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		kind add=406a4b20,Kind:2001,actual num:10 ,record  num:10,name adress:40662760  
+Log_printAllNeroMsg:		kind add=406a4ec0,Kind:2002,actual num:10 ,record  num:10,name adress:406a4880  
+Log_printAllNeroMsg:		kind add=406a5060,Kind:2003,actual num:10 ,record  num:10,name adress:406a4900  
+Log_printAllNeroMsg:		kind add=406a5400,Kind:2004,actual num:1 ,record  num:1,name adress:406a49c0  
+Log_printAllNeroMsg:		kind add=406a5440,Kind:2005,actual num:1 ,record  num:1,name adress:406a49e0  
+Log_printAllNeroMsg:		kind add=406a5480,Kind:2006,actual num:1 ,record  num:1,name adress:4064d3e0  
+Log_printAllNeroMsg:		kind add=406a54c0,Kind:2007,actual num:1 ,record  num:1,name adress:4064dc60  
+Log_printAllNeroMsg:		kind add=406a5500,Kind:2008,actual num:1 ,record  num:1,name adress:4063fe60  
+Log_printAllNeroMsg:		kind add=406a5540,Kind:2009,actual num:1 ,record  num:1,name adress:40640ae0  
+Log_printAllNeroMsg:		kind add=406a5580,Kind:2010,actual num:1 ,record  num:1,name adress:406a4a00  
+Log_printAllNeroMsg:		kind add=406a5600,Kind:2011,actual num:52 ,record  num:52,name adress:406a4a80  
+Log_printAllNeroMsg:		kind add=406a6960,Kind:2012,actual num:21 ,record  num:21,name adress:406a4ac0  
+Log_printAllNeroMsg:		kind add=406a6bc0,Kind:2013,actual num:1 ,record  num:1,name adress:406a6ae0  
+Log_printAllNeroMsg:		kind add=406a6ca0,Kind:2014,actual num:1 ,record  num:1,name adress:406a6b00  
+Log_printAllNeroMsg:		kind add=406a6d40,Kind:2015,actual num:1 ,record  num:1,name adress:406a6b20  
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:50,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:51,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:61,actual num:6836 ,record  num:6836
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:62,actual num:25 ,record  num:25
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:100,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:101,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:63,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:2000,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		kind add=406a4b20,Kind:2001,actual num:10 ,record  num:10,name adress:40662760  
+Log_printAllNeroMsg:		kind add=406a4ec0,Kind:2002,actual num:10 ,record  num:10,name adress:406a4880  
+Log_printAllNeroMsg:		kind add=406a5060,Kind:2003,actual num:10 ,record  num:10,name adress:406a4900  
+Log_printAllNeroMsg:		kind add=406a5400,Kind:2004,actual num:1 ,record  num:1,name adress:406a49c0  
+Log_printAllNeroMsg:		kind add=406a5440,Kind:2005,actual num:1 ,record  num:1,name adress:406a49e0  
+Log_printAllNeroMsg:		kind add=406a5480,Kind:2006,actual num:1 ,record  num:1,name adress:4064d3e0  
+Log_printAllNeroMsg:		kind add=406a54c0,Kind:2007,actual num:1 ,record  num:1,name adress:4064dc60  
+Log_printAllNeroMsg:		kind add=406a5500,Kind:2008,actual num:1 ,record  num:1,name adress:4063fe60  
+Log_printAllNeroMsg:		kind add=406a5540,Kind:2009,actual num:1 ,record  num:1,name adress:40640ae0  
+Log_printAllNeroMsg:		kind add=406a5580,Kind:2010,actual num:1 ,record  num:1,name adress:406a4a00  
+Log_printAllNeroMsg:		kind add=406a5600,Kind:2011,actual num:52 ,record  num:52,name adress:406a4a80  
+Log_printAllNeroMsg:		kind add=406a6960,Kind:2012,actual num:21 ,record  num:21,name adress:406a4ac0  
+Log_printAllNeroMsg:		kind add=406a6bc0,Kind:2013,actual num:1 ,record  num:1,name adress:406a6ae0  
+Log_printAllNeroMsg:		kind add=406a6ca0,Kind:2014,actual num:1 ,record  num:1,name adress:406a6b00  
+Log_printAllNeroMsg:		kind add=406a6d40,Kind:2015,actual num:1 ,record  num:1,name adress:406a6b20  
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:50,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:51,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:61,actual num:6836 ,record  num:6836
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:62,actual num:25 ,record  num:25
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:100,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:101,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:63,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:2000,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		kind add=406a4b20,Kind:2001,actual num:10 ,record  num:10,name adress:40662760  
+Log_printAllNeroMsg:		kind add=406a4ec0,Kind:2002,actual num:10 ,record  num:10,name adress:406a4880  
+Log_printAllNeroMsg:		kind add=406a5060,Kind:2003,actual num:10 ,record  num:10,name adress:406a4900  
+Log_printAllNeroMsg:		kind add=406a5400,Kind:2004,actual num:1 ,record  num:1,name adress:406a49c0  
+Log_printAllNeroMsg:		kind add=406a5440,Kind:2005,actual num:1 ,record  num:1,name adress:406a49e0  
+Log_printAllNeroMsg:		kind add=406a5480,Kind:2006,actual num:1 ,record  num:1,name adress:4064d3e0  
+Log_printAllNeroMsg:		kind add=406a54c0,Kind:2007,actual num:1 ,record  num:1,name adress:4064dc60  
+Log_printAllNeroMsg:		kind add=406a5500,Kind:2008,actual num:1 ,record  num:1,name adress:4063fe60  
+Log_printAllNeroMsg:		kind add=406a5540,Kind:2009,actual num:1 ,record  num:1,name adress:40640ae0  
+Log_printAllNeroMsg:		kind add=406a5580,Kind:2010,actual num:1 ,record  num:1,name adress:406a4a00  
+Log_printAllNeroMsg:		kind add=406a5600,Kind:2011,actual num:52 ,record  num:52,name adress:406a4a80  
+Log_printAllNeroMsg:		kind add=406a6960,Kind:2012,actual num:21 ,record  num:21,name adress:406a4ac0  
+Log_printAllNeroMsg:		kind add=406a6bc0,Kind:2013,actual num:1 ,record  num:1,name adress:406a6ae0  
+Log_printAllNeroMsg:		kind add=406a6ca0,Kind:2014,actual num:1 ,record  num:1,name adress:406a6b00  
+Log_printAllNeroMsg:		kind add=406a6d40,Kind:2015,actual num:1 ,record  num:1,name adress:406a6b20  
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:50,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:51,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:61,actual num:6836 ,record  num:6836
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:62,actual num:25 ,record  num:25
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:100,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:101,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:63,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:4063ac40,Kind:2000,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		kind add=406a4b20,Kind:2001,actual num:10 ,record  num:10,name adress:40662760  
+Log_printAllNeroMsg:		kind add=406a4ec0,Kind:2002,actual num:10 ,record  num:10,name adress:406a4880  
+Log_printAllNeroMsg:		kind add=406a5060,Kind:2003,actual num:10 ,record  num:10,name adress:406a4900  
+Log_printAllNeroMsg:		kind add=406a5400,Kind:2004,actual num:1 ,record  num:1,name adress:406a49c0  
+Log_printAllNeroMsg:		kind add=406a5440,Kind:2005,actual num:1 ,record  num:1,name adress:406a49e0  
+Log_printAllNeroMsg:		kind add=406a5480,Kind:2006,actual num:1 ,record  num:1,name adress:4064d3e0  
+Log_printAllNeroMsg:		kind add=406a54c0,Kind:2007,actual num:1 ,record  num:1,name adress:4064dc60  
+Log_printAllNeroMsg:		kind add=406a5500,Kind:2008,actual num:1 ,record  num:1,name adress:4063fe60  
+Log_printAllNeroMsg:		kind add=406a5540,Kind:2009,actual num:1 ,record  num:1,name adress:40640ae0  
+Log_printAllNeroMsg:		kind add=406a5580,Kind:2010,actual num:1 ,record  num:1,name adress:406a4a00  
+Log_printAllNeroMsg:		kind add=406a5600,Kind:2011,actual num:52 ,record  num:52,name adress:406a4a80  
+Log_printAllNeroMsg:		kind add=406a6960,Kind:2012,actual num:21 ,record  num:21,name adress:406a4ac0  
+Log_printAllNeroMsg:		kind add=406a6bc0,Kind:2013,actual num:1 ,record  num:1,name adress:406a6ae0  
+Log_printAllNeroMsg:		kind add=406a6ca0,Kind:2014,actual num:1 ,record  num:1,name adress:406a6b00  
+Log_printAllNeroMsg:		kind add=406a6d40,Kind:2015,actual num:1 ,record  num:1,name adress:406a6b20  

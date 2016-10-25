@@ -577,8 +577,18 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 		return;
 	}
 	/*现在开始转化发送命令的参数*/	
-    printf("obtainOrderFromTFF:tff->order=%d\n",tff->order);
+    // printf("obtainOrderFromTFF:tff->order=%d\n",tff->order);
     
+
+
+
+
+
+
+
+
+
+
 
     countOfWord=tff->MsgCount -1;
     if(countOfWord > 0)
@@ -610,7 +620,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
         neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
         neroObjMsgWithStr_st.Obi = NULL;
-        sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF 0: ********order=%d*********countOfWord=%d",OrderDataTypeList[orderPos][0],countOfWord);
+        sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF 0: order=%d  countOfWord=%d",OrderDataTypeList[orderPos][0],countOfWord);
         msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
     #endif
 

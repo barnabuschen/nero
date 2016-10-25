@@ -432,7 +432,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 					
 					}
 
-					sprintf(strLinshi,"%s",str);
+					sprintf(strLinshi,"%s,",str);
 					addLineToFile(AllKindOfFile,strLinshi);
 
 

@@ -3093,7 +3093,7 @@ NeuronObject *  nero_createObjFromSingleObj(NeuronObject *childObi,nero_s32int u
 				{
 	    		    // printf("nero_createObjFromSingleObj  要创建的概念已经存在在网络中,tmpFiber->obj=%x kind=%d\n",tmpFiber->obj,nero_GetNeroKind(tmpFiber->obj));
 
-					
+					newObi=tmpFiber->obj;
 					
 			 		#ifdef Nero_DeBuging10_01_14_
 						// print  all  of  the  kind  obj
@@ -3124,7 +3124,7 @@ NeuronObject *  nero_createObjFromSingleObj(NeuronObject *childObi,nero_s32int u
 	        #ifdef   createObjFromSingleObj_DeBug_Msg
 	        printf("nero_createObjFromSingleObj  要创建的概念已经存在在网络中,objNum=%d\n",objNum);
 	        #endif	
-	        return NULL;	
+	        return newObi;	
 	}
 	// else if(  res == NeroError)
 	// {
@@ -3149,7 +3149,7 @@ NeuronObject *  nero_createObjFromSingleObj(NeuronObject *childObi,nero_s32int u
 	        #ifdef   createObjFromSingleObj_DeBug_Msg
 	        printf("nero_createObjFromSingleObj  没有合适的类别\n");
 	        #endif	
-		return NULL;
+		return newObi;
 	}	
 		
 /*	printf("createObjFromMultiples :newObiKind=%d.   childKind=%d\n",newObiKind,nero_GetNeroKind(Obis[0]));*/

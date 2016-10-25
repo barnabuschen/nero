@@ -187,6 +187,8 @@ void ProInitialization()
 		i=2012;
 		{
  		#ifdef Nero_DeBuging10_01_14
+				for(i=2012;i<= 2015   ;i++)
+				{
 			// print  all  of  the  kind  obj
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId =2;/*打印某个类别下面的所有的衍生类    Log_printAllKindOf*/
@@ -194,6 +196,7 @@ void ProInitialization()
 				 xxxxxx=i;
 				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+				}
      	#endif
 
 		}		

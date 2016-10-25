@@ -621,7 +621,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 
 
-	      #ifdef Nero_DeBuging06_02_14
+	      #ifdef Nero_DeBuging06_02_14_
 	      int tmpi;
 	      printf("objNum=%d  ifHasUnknowObj=%d\n",objNum,ifHasUnknowObj);
 
@@ -634,6 +634,14 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 	      }
 	      #endif
+		#ifdef Nero_DeBuging09_01_14	
+		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+		neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
+		neroObjMsgWithStr_st.Obi = NULL;
+		sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中:its time to CreateNewBaseObj,objNum=%d,nextBaseKind=%d",objNum,conf->NewNeroClassID);
+		msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+		#endif	
+
 
 		if(ifHasUnknowObj == 1)
 		{
@@ -644,12 +652,24 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
         {
              
 
+
+
+
+
               // printf("\n");
               /*判断是否可以进行新基类（抽象概念）创建*/
               res2=Process_IfCreateNewBaseObj(objs,objNum,GodNero,conf);
               /*开始添加基类 */
               if (res2 == NeroYES)//do not create new kind
               {
+	  				#ifdef Nero_DeBuging09_01_14	
+					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+					neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
+					neroObjMsgWithStr_st.Obi = NULL;
+					sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中:start create new basekind=%d !",conf->NewNeroClassID);
+					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+					#endif	
+
               		   // printf("need  to create new kind\n"); 
 		            tmpBaseObi=nero_CreateNewBaseObj(objs,objNum,GodNero, conf);
                       // printf("NewBaseObj:%x\n",tmpBaseObi); 
@@ -660,44 +680,66 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 					{
 						// for (i=0;i<objNum;i++)
 						{
-							printf("new BaseKind =%d\n",nero_GetNeroKind(tmpBaseObi));
+							// printf("new BaseKind =%d\n",nero_GetNeroKind(tmpBaseObi));
 						}
-
-						printf("所有child对象kind为:\n");
+						// printf("所有child对象kind为:\n");
 						curFiber=tmpBaseObi->inputListHead;
-
 						if(curFiber == NULL)
 						{
-							printf("  inputListHead =NULL  \n");
-
+							// printf("  inputListHead =NULL  \n");
 						}
-						while(curFiber)
-						{
-							tmpObiForTest=curFiber->obj;
+						// while(curFiber)
+						// {
+						// 	tmpObiForTest=curFiber->obj;
+						// 	printf("          kind:%d\n",nero_GetNeroKind(tmpObiForTest));
+						// 	curFiber=curFiber->next;
+						// }
 
+		  				#ifdef Nero_DeBuging09_01_14	
+						neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+						neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
+						neroObjMsgWithStr_st.Obi = NULL;
+						sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=%d !",nero_GetNeroKind(tmpBaseObi));
+						msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+						#endif	
 
-							printf("          kind:%d\n",nero_GetNeroKind(tmpObiForTest));
-							curFiber=curFiber->next;
-						}
 					}
 					else
-						printf("nero_CreateNewBaseObj fail \n\n\n");
+					{
 
+		  				#ifdef Nero_DeBuging09_01_14	
+						neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+						neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
+						neroObjMsgWithStr_st.Obi = NULL;
+						sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中:nero_CreateNewBaseObj fail !");
+						msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+						#endif							
+						// printf("nero_CreateNewBaseObj fail \n\n\n");
+					}
 					#endif
 
 
               }
               else
               {
-                     /*如果不需要添加新的基类，那就是修改基类了*/
-              		// printf("do not create new base  kind,but  see  if need to  Modify it\n"); 
-					 if(res2 !=   nero_msg_unknowError )
-					 {
-					 	// printf("Modify base kind\n"); 
-						newBaseObjKind_= res2;
-                        nero_ModifyBaseKind(objs,objNum,GodNero,conf,res2);
 
-					 }
+
+  				#ifdef Nero_DeBuging09_01_14	
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
+				neroObjMsgWithStr_st.Obi = NULL;
+				sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中:not create newbase,but see if need to Modify it,nextBaseKind=%d",conf->NewNeroClassID);
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+				#endif	            	
+                 /*如果不需要添加新的基类，那就是修改基类了*/
+          		// printf("do not create new base  kind,but  see  if need to  Modify it\n"); 
+				if(res2 !=   nero_msg_unknowError )
+				{
+				// printf("Modify base kind\n"); 
+					newBaseObjKind_= res2;
+					nero_ModifyBaseKind(objs,objNum,GodNero,conf,res2);
+
+				}
 
               }
 

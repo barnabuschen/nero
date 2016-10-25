@@ -316,6 +316,35 @@ List of tools for static code analysis ：来自维基百科的静态代码分�
 nero_addNeroByData:default1 ,begin to check childKind  *p=35 ,kind=0,0
 
 
+在DataFlowProcess中:its time to CreateNewBaseObj,objNum=4,nextBaseKind=2013
+
+
+
+
+2214 空对象或者为基类对象,obtainOrderFromTFF 0: ********order=219*********countOfWord=5,kind=0,0
+
+2241 在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2013 !,kind=0,0
+
+
+
+
+2344 空对象或者为基类对象,obtainOrderFromTFF 0: ********order=219*********countOfWord=5,kind=0,0	
+
+
+
+
+2482 空对象或者为基类对象,obtainOrderFromTFF 0: ********order=219*********countOfWord=5,kind=0,0	4
+
+
+
+
+
+
+
+
+
+
+
 
 
 

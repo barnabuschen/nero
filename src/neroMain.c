@@ -77,7 +77,7 @@ void ProInitialization()
 {
 		/*	int res;*/
 		pthread_t a_thread;
-		Operating_ipckey="/tmp/Operating_ipckey2";
+		Operating_ipckey="/tmp/Operating_ipckey3";
 		createFile(Operating_ipckey);
 		/*	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
 		key_t ipckey = ftok(Operating_ipckey, IPCKEY);
@@ -88,7 +88,7 @@ void ProInitialization()
 		/*res =*/ pthread_create(&a_thread, NULL,thread_for_Operating_Pic, NULL);
 		
 		
-		IO_ipckey="/tmp/IO_ipckey";
+		IO_ipckey="/tmp/IO_ipckey2";
 		createFile(IO_ipckey);
 		/*	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
 		ipckey = ftok(IO_ipckey, IPCKEY);
@@ -99,7 +99,7 @@ void ProInitialization()
 		/*res =*/ pthread_create(&a_thread, NULL,thread_for_IO_Pic, NULL);
 		
 		
-		Log_ipckey="/tmp/Log_ipckey";
+		Log_ipckey="/tmp/Log_ipckey2";
 		createFile(Log_ipckey);
 		/*	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
 		ipckey = ftok(Log_ipckey, IPCKEY);
@@ -184,7 +184,7 @@ void ProInitialization()
 
 		// for(i=2001;i<2015;i++)	
 			sleep(5);
-		i=2013;
+		i=2012;
 		{
  		#ifdef Nero_DeBuging10_01_14
 			// print  all  of  the  kind  obj

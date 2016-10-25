@@ -262,9 +262,6 @@ nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 	}
 	
 	
-	
-	
-	
 /*			isZh=IO_IfIsChineseChar(zhWord)*/
 	close(fd);
 	munmap(mapped_mem, flength);
@@ -277,15 +274,28 @@ nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 {
 	nero_8int  *str=strTmp;
-	nero_s32int ObjectKind,ObjectKind2;
+	nero_s32int ObjectKind,ObjectKind2,ii,iii;
 	nero_8int  strLinshi[500];
 	NeuronObject * obj;
 	NeuronObject * tmp;
 	NeuronObject * BaseObi;
 	NerveFiber  *  curFiber;
+	NerveFiber  *  childcurFiber;
 	time(&now);//time函数读取现在的时间(国际标准时间非北京时间)，然后传值给now
 	timenow   =   localtime(&now);//localtime函数把从time取得的时间now换算成你电脑中的时间(就是你设置的地区)
 /*		printf("Local   time   is   %s/n",asctime(timenow));*/
+
+	if (str == NULL || str_==NULL)
+	{
+		return nero_msg_ParameterError;
+	}
+	if (GodNero == NULL )
+	{
+
+			printf(" Log_printAllKindOf                      GodNero=%x\n\n\n\n\n\n",GodNero);
+			exit(0);
+		return nero_msg_ParameterError;
+	}
 
 
 		ObjectKind=*((nero_s32int *)(str_));
@@ -363,16 +373,19 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 			addLineToFile(AllKindOfFile,strLinshi);
 
 			if(ObjectKind  >NeuronNode_ForComplexDerivative   &&    BaseObi->inputListHead->obj != NULL)
+			{
 				sprintf(strLinshi,"(%d%d%d)所有child对象kind为\n",BaseObi->inputListHead->obj->x,BaseObi->inputListHead->obj->y,BaseObi->inputListHead->obj->z);
+				addLineToFile(AllKindOfFile,strLinshi);
+
+			}
 			// else
 			// 	sprintf(strLinshi,"(NULL)所有child对象kind为\n");
 
-			addLineToFile(AllKindOfFile,strLinshi);
 			curFiber=BaseObi->inputListHead;
 
 			if(curFiber == NULL)
 			{
-					sprintf(strLinshi,"  inputListHead =NULL        n");
+				sprintf(strLinshi,"  inputListHead =NULL        n");
 				addLineToFile(AllKindOfFile,strLinshi);
 
 			}
@@ -390,15 +403,24 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 			{
 					//tmp  is the obj you wangt to search
 				tmp=curFiber->obj;
-
-					ObjectKind2=nero_GetNeroKind(tmp);
+				
+				sprintf(strLinshi,"		地址%x,DataNUm2=%d,[",(int)tmp,nero_getObjDataNum(tmp));
+				addLineToFile(AllKindOfFile,strLinshi);
+				childcurFiber=tmp->inputListHead;
+				iii=nero_getObjDataNum(tmp);
+				ObjectKind2=nero_GetNeroKind(childcurFiber->obj);
+				for(ii=0;ii <iii   &&   childcurFiber != NULL;ii++,childcurFiber=childcurFiber->next )
+				{
+					tmp=childcurFiber->obj;
 					switch(ObjectKind2)
 					{
 						case NeuronNode_ForChCharacter:
 							IO_getZhInNero(str,tmp);
+
 							break;
 						case NeuronNode_ForChWord:
 							IO_getWordsInNero(str,tmp);
+
 							break;		
 						default:	
 
@@ -409,15 +431,15 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 								break;
 					
 					}
-					// printf("Log_printAllKindOf kind =%d,inputListHead->obj kind=%d  \n",nero_GetNeroKind( tmp  ),nero_GetNeroKind ( tmp->inputListHead->obj));
-					
-					// if(BaseObi->inputListHead->obj)
-					// 	sprintf(strLinshi,"		地址%x  <%s>,kind=%d,name=%x\n",(int)tmp,str,ObjectKind2,BaseObi->inputListHead->obj/*,getFiberPointToObjNum(curFiber)*/);
-					
-					// else
-						sprintf(strLinshi,"		地址%x  <%s>,kind=%d,DataNUm=%d\n",(int)tmp,str,ObjectKind2,nero_getObjDataNum(tmp));
 
+					sprintf(strLinshi,"%s",str);
 					addLineToFile(AllKindOfFile,strLinshi);
+
+
+				}
+				sprintf(strLinshi,"]\n");
+
+				addLineToFile(AllKindOfFile,strLinshi);
 
 				curFiber=curFiber->next;
 			}		
@@ -633,16 +655,20 @@ nero_s32int Log_printSomeMsgForObj(void * obj_,void *str_)
 
 
 	nero_8int  *str=strTmp;
-	nero_s32int ObjectKind,linshi;
+	nero_s32int ObjectKind,linshi,tmpnum,ObjectKind2,ii;
 	nero_8int  strLinshi[500];
 	NeuronObject * obj=(NeuronObject *)obj_;
 	NeuronObject * tmp;
+	NeuronObject * tmp2222;
+
+	NerveFiber * childcurFiber;
 nero_us32int msg;/*记录该nero的种类，性质等信息*/
 nero_s32int x;/*取值范围-2147483648 ~ 2147483647*/
 nero_s32int y;
 nero_s32int z;
 struct NerveFiber_  * inputListHead;				
 struct NerveFiber_   * outputListHead; 	
+	NerveFiber  *  curFiber;
 	time(&now);//time函数读取现在的时间(国际标准时间非北京时间)，然后传值给now
 	timenow   =   localtime(&now);//localtime函数把从time取得的时间now换算成你电脑中的时间(就是你设置的地区)
 /*		printf("Local   time   is   %s/n",asctime(timenow));*/
@@ -707,9 +733,62 @@ struct NerveFiber_   * outputListHead;
 			else
 				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印词组对象《%s》,非法的打印信息\n",asctime(timenow),(int)obj,strLinshi);	
 			break;
-		default:break;
 
-		
+		default:
+			linshi=0;
+			tmpnum=nero_getObjDataNum(obj);
+
+			if(nero_GetNeroKind(obj)  >  NeuronNode_ForComplexDerivative)
+			{
+
+				sprintf(strLinshi,"Log_printSomeMsgForObj:%s,ObjectKind=%d add:%x,zi对象num为(%d):\n",(char *)str_,nero_GetNeroKind(obj),obj,tmpnum);
+				addLineToFile(logFile,strLinshi);
+
+				curFiber=obj->inputListHead;
+				tmp=curFiber->obj;
+				sprintf(strLinshi,"		地址%x,DataNUm1=%d,[",(int)tmp,nero_getObjDataNum(tmp));
+				addLineToFile(logFile,strLinshi);				
+				while(curFiber)
+				{
+						//tmp  is the obj you wangt to search
+					tmp=curFiber->obj;
+					ObjectKind2=nero_GetNeroKind(tmp);
+
+					childcurFiber=curFiber;
+					// for(ii=0;ii < tmpnum &&  childcurFiber != NULL;ii++,childcurFiber=childcurFiber->next )
+					{
+						tmp=childcurFiber->obj;
+						switch(ObjectKind2)
+						{
+							case NeuronNode_ForChCharacter:
+								IO_getZhInNero(str,tmp);
+
+								break;
+							case NeuronNode_ForChWord:
+								IO_getWordsInNero(str,tmp);
+
+								break;		
+							default:	
+
+									if( nero_GetNeroKind ( tmp->inputListHead->obj)   ==  NeuronNode_ForChCharacter )	
+										IO_getZhInNero(str,tmp->inputListHead->obj);
+									else 	
+						                str[0]=0;
+									break;				
+						}
+						tmp2222=tmp->inputListHead->obj;
+						sprintf(strLinshi,"%s[%x,kind=%d,%d*%d*%d]",str,tmp,nero_GetNeroKind(tmp),tmp2222->x,tmp2222->y,tmp2222->z);
+						addLineToFile(logFile,strLinshi);
+
+
+					}
+
+					curFiber=curFiber->next;
+				}
+				sprintf(strLinshi,"]\n");
+				addLineToFile(logFile,strLinshi);
+			}
+			break;		
 		}		
 	}
 	else

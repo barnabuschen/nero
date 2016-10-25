@@ -339,10 +339,10 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 		if (tmpObi == NULL  )
 		{
-				// ifHasUnknowObj=1;
-
+				// ifHasUnknowObj=1;  msg1:在DataFlowProcess中找不到该概念,kind=%d,i=%d  str=%s
+										// msg1:在DataFlowProcess中找不到该概念,kind=61,i=2
 				#ifdef Nero_DeBuging09_01_14
-				// printf("找不到子概念\n");
+				printf("找不到子概念  i=%d\n",i);
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = tmpObi;
@@ -358,7 +358,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		}
 		else 
 		{
-				// ifHasUnknowObj=0;
+				// ifHasUnknowObj=0;	msg1:在DataFlowProcess中找不到该概念,kind=2012,i=4
 				#ifdef Nero_DeBuging09_01_14	
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
@@ -366,7 +366,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				if(dataKind[i] == 62)
 					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中find概念,kind=%d,i=%d  str=%s",dataKind[i],i,DataFlow[i]);
 				else
-					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中fidn概念,kind=%d,i=%d",dataKind[i],i);
+					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中fidn概念,kind=%d,i=%d,dataNum=%d",dataKind[i],i,dataNum);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif	
 				tmoForRecordNUm++;
@@ -619,6 +619,22 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	 */  
 	 	// printf("1 CreateNewBaseObjKind=%d.  ifHasUnknowObj=%d\n",conf->CreateNewBaseObjKind,ifHasUnknowObj);
 
+
+
+	      #ifdef Nero_DeBuging06_02_14
+	      int tmpi;
+	      printf("objNum=%d  ifHasUnknowObj=%d\n",objNum,ifHasUnknowObj);
+
+	      for (tmpi=0;tmpi<objNum;tmpi++)
+	      {
+	      		if(nero_GetNeroKind(objs[tmpi]) !=  62)
+	              printf("list  obj(%x)  kind=%d.  nextBaseKind  May  be=%d\n",tmpi,nero_GetNeroKind(objs[tmpi]),conf->NewNeroClassID);
+	         	else
+	              printf("list  obj(%s):  kind=%d.  nextBaseKind  May  be=%d\n",DataFlow[tmpi],nero_GetNeroKind(objs[tmpi]),conf->NewNeroClassID);
+
+	      }
+	      #endif
+
 		if(ifHasUnknowObj == 1)
 		{
 
@@ -627,13 +643,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		else if (conf->CreateNewBaseObjKind == 1  &&  ifHasUnknowObj == 0)
         {
              
-              #ifdef Nero_DeBuging06_02_14_
-              int tmpi;
-              for (tmpi=0;tmpi<objNum;tmpi++)
-              {
-                      printf("list  obj(%x)  kind=%d.  nextBaseKind  May  be=%d\n",tmpi,nero_GetNeroKind(objs[tmpi]),conf->NewNeroClassID);
-              }
-              #endif
+
               // printf("\n");
               /*判断是否可以进行新基类（抽象概念）创建*/
               res2=Process_IfCreateNewBaseObj(objs,objNum,GodNero,conf);
@@ -1355,7 +1365,7 @@ nero_us32int nextAvailableNeroInPool;*/
 		flag++;
 		if (flag==8)
 		{
-			printf("已经使用的nero数量:%d,剩余:%d\n",neroConf.UsedNeroNum,MaxNeroNum-neroConf.UsedNeroNum);
+			printf("已经使用的nero数量:%d,剩余:%d,GodNero=%x   \n",neroConf.UsedNeroNum,MaxNeroNum-neroConf.UsedNeroNum,GodNero);
 
 
 			#ifdef Nero_DeBuging14_01_14_

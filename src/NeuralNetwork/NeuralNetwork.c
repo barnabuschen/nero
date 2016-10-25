@@ -64,7 +64,7 @@ nero_us32int nextAvailableNeroInStaging;//它指向StagingAreaNeroPool中当前�
 
 
 
-NeuronObject *GodNero;/*所有神经元理论上都最终与这个相通*/
+ NeuronObject *GodNero ;/*所有神经元理论上都最终与这个相通*/
 NeuronObject *SAGodNero;/*所有StagingArea神经元理论上都最终与这个相通*/
 
 
@@ -106,13 +106,16 @@ inline nero_s32int  nero_getObjDataNum(ActNero * obj)
 	NerveFiber  *  curFiber;
 
 	num=0;
+			// printf("\n" );	
 	curFiber=obj->inputListHead;
 	while(curFiber != NULL  )
 	{
 		num++;
+		// printf("num=%d",num);
+
 		curFiber=curFiber->next;
 	}
-
+// printf("\n" );	
 
 	return  num;
 }
@@ -1752,7 +1755,11 @@ nero_s32int  nero_ifMakeUpWithTheseObjsInOrder(NeuronObject *obj,NeuronObject *c
 		
 			
 		}
-		if (flag  == 1 &&  i == (objNum ))
+		// 这里有一个问题：
+		// 是否要确认obj得数据个数要和objNum一样  ，即当且仅当obj由childred[]中得数据组成时return NeroYES;
+
+
+		if (flag  == 1 &&  i == (objNum )   &&   objNum ==  nero_getObjDataNum(obj) )
 		{
 /*		        printf("i=%d. objNum=%d\n",i,objNum);*/
 		        return NeroYES;
@@ -3250,15 +3257,24 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	res = NeroError;
 	if(objNum > 1)
 		res=nero_IfHasObjFromMultiples3(Obis, objNum,&newObi);
-	// else
-	// 	res=nero_IfHasObjFromMultiples4(Obis, objNum);//objNum=1特殊处理
 
-/*	printf("判断这些个对象是不是已经有生成过新概念了=%d.\n",res);*/
+
+
+
 	if(res == NeroYES   )
 	{
 	        #ifdef   createObjFromMultiples_DeBug_Msg
 	        printf("nero_createObjFromMultiples  要创建的概念已经存在在网络中,objNum=%d\n",objNum);
 	        #endif	
+
+			#ifdef Nero_DeBuging09_01_14	
+			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+			neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
+			neroObjMsgWithStr_st.Obi = newObi;
+			sprintf(neroObjMsgWithStr_st.str,"creObjFromMulti:要创建的概念已经存在在网络中:%x",newObi);
+			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+			#endif	
+
 	        return newObi;	
 	}
 	else if(  res == NeroError)
@@ -3362,7 +3378,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	}
 /*	nero_printNeroLink("log/ObjLink.log",(void *)newObi);*/
 
-	#ifdef   Nero_DeBuging04_25_16_
+	#ifdef   Nero_DeBuging04_25_16
 	if (newObi == NULL)
 	{
 	        printf("nero_createObjFromMultiples  未知错误，newObi=%x\n",newObi);
@@ -3372,13 +3388,13 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 
 				#ifdef Nero_DeBuging09_01_14	
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-				neroObjMsgWithStr_st.fucId = 1;
+				neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
 				neroObjMsgWithStr_st.Obi = newObi;
-					sprintf(neroObjMsgWithStr_st.str,"nero_createObjFromMultiples:success to create obj ,kind=%d,add=%d ",newObiKind,newObi);
+				sprintf(neroObjMsgWithStr_st.str,"creObjFromMulti:success create,kind=%d,add=%x,baseobjAdd:%x,objNum=%d",newObiKind,newObi,getBasePointByObj(GodNero,newObi),objNum);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif	
 
-				printf("nero_createObjFromMultiples  success=%x,kind=%d,,objNum=%d\n",newObi,newObiKind,objNum);
+				// printf("nero_createObjFromMultiples  success=%x,kind=%d,,objNum=%d\n",newObi,newObiKind,objNum);
 
 
 	}
@@ -3797,7 +3813,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 	    #endif	
 
 
-	 	#ifdef Nero_DeBuging10_01_14
+	 	#ifdef Nero_DeBuging10_01_14_
 		if(dataKind == 2012)
 		{
 
@@ -3836,7 +3852,9 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
 				neroObjMsgWithStr_st.Obi = NULL;
-				sprintf(neroObjMsgWithStr_st.str,"nero_addNeroByData:default1 ,kindAllTheSame=%d ",kindAllTheSame);		
+				sprintf(neroObjMsgWithStr_st.str,"nero_addNeroByData:default1 ,kindAllTheSame=%d ",kindAllTheSame);	
+								msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+	
 			    #endif	
 
 				if(kindAllTheSame  == 1)
@@ -3846,8 +3864,16 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 					neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
 					neroObjMsgWithStr_st.Obi = NULL;
-					sprintf(neroObjMsgWithStr_st.str,"nero_addNeroByData:default1 ,begin to check childKind  *p=%x ",*p);		
+					if(tmpObiForTemporaryKind[0] !=  NeuronNode_ForChCharacter)
+						sprintf(neroObjMsgWithStr_st.str,"nero_addNeroByData:default1 ,begin to check *p=%x ",*p);	
+					else
+						sprintf(neroObjMsgWithStr_st.str,"nero_addNeroByData:default1 ,begin to check *p=%x ,%s",*p,p);	
+					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+
 				    #endif	
+
+
+
 
 
 					//这里不考虑子类类型不一致得情况
@@ -3861,6 +3887,8 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 						neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
 						neroObjMsgWithStr_st.Obi = NULL;
 						sprintf(neroObjMsgWithStr_st.str,"nero_addNeroByData:default1 , tmpObiForTemporaryKind[0]=%d,tmp2=%x ",tmpObiForTemporaryKind[0],tmp2);		
+					   				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+
 					    #endif	
 						// nero_GetNeroKind();
 						charLength=0;
@@ -3897,6 +3925,8 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 							neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
 							neroObjMsgWithStr_st.Obi = NULL;
 							sprintf(neroObjMsgWithStr_st.str,"nero_addNeroByData:default3 , error ,charLength=%d,tmp2=%x  ",charLength,tmp2);		
+						 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+
 						    #endif	
 							break;
 						}
@@ -3907,8 +3937,8 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 					}
 					if(childNun > 0)
 					{
-						// printf("nero_addNeroByData:默认处理---childNun=%d \n",childNun);
-
+						// printf("nero_addNeroByData:默认处理---childNun=%d \n",childNun); 
+						// getFiberPointToObjNum
 						neroConf.WantCreateObjKind=dataKind;
 						if(childNun > 1)
 							tmp=nero_createObjFromMultiples(tmpObiForTemporary,childNun);
@@ -3919,7 +3949,12 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 						neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 						neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
 						neroObjMsgWithStr_st.Obi = NULL;
-						sprintf(neroObjMsgWithStr_st.str,"nero_addNeroByData:default4 , createObj with childNun=%d ",childNun);		
+						if(tmp)
+							sprintf(neroObjMsgWithStr_st.str,"nero_addNeroByData:default4 , createObj with childNun=%d,tmp=%x,kind=%d,datanum:%d ",childNun,tmp,nero_GetNeroKind(tmp),nero_getObjDataNum(tmp));		
+					   	else
+							sprintf(neroObjMsgWithStr_st.str,"nero_addNeroByData:default4 , createObj with childNun=%d,tmp=%x",childNun,tmp);		
+					   	msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+
 					    #endif	
 					}
 					neroConf.WantCreateObjKind=NeuronNode_ForNone;
@@ -3936,7 +3971,10 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 						neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 						neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
 						neroObjMsgWithStr_st.Obi = NULL;
+						
 						sprintf(neroObjMsgWithStr_st.str,"nero_addNeroByData:default2 , error kindAllTheSame=%d ",kindAllTheSame);		
+					   				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+
 					    #endif	
 
 
@@ -3950,6 +3988,8 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 				neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
 				neroObjMsgWithStr_st.Obi = NULL;
 				sprintf(neroObjMsgWithStr_st.str,"nero_addNeroByData:default0 , error ,nero_getBaseObjByKind  ");		
+								msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+
 			    #endif			
 		}
 

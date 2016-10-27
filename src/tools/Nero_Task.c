@@ -48,6 +48,7 @@
 
 
 #define  Task_Order_DataInput    300      /* just  input some  data  into  sys,  its parameter  is just a  string */
+#define  Task_Order_MutiDataInput    301      /* just  input some  data  into  sys,  its parameter is several  string */
 
 
 
@@ -1086,12 +1087,6 @@ void ReadTaskFromTxtByline(nero_8int  * FileName)
             }
 
         }
-
-        // while(*p == 0x0a)
-        // {
-        //     p++;
-        // }
-        //现在开始 将Unicode编码存于unicodeInDigtial中
         
         //打印utf8编码数据：
         #ifdef Nero_DeBuging10_01_14_
@@ -1109,15 +1104,9 @@ void ReadTaskFromTxtByline(nero_8int  * FileName)
         objNUm=0;
 
     }
-    
-    
-    
     NerOkMsg;
     close(fd);
     munmap(mapped_mem, flength);
-
-    
-
 
 }
 

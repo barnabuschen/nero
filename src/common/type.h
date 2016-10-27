@@ -100,7 +100,7 @@ typedef  char  nero_8int;
 #define Nero_DeBuging06_02_14
 #define Nero_DeBuging04_25_16
 #define Nero_DeBuging10_16_16
-
+#define Nero_DeBuging10_26_16
 
 
 #define NowIdDeBug 

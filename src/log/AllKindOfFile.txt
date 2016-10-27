@@ -1,4 +1,4 @@
-Log_printAllKindOf(default):Tue Oct 25 19:19:28 2016
+Log_printAllKindOf(default):Wed Oct 26 22:50:26 2016
 		ObjectKind=2012 add:406a7940,所有对象num为(22):
 (000)所有child对象kind为
           kind:62,getFiberPointToObjNum=0
@@ -25,7 +25,7 @@ Log_printAllKindOf(default):Tue Oct 25 19:19:28 2016
 		地址406a7cc0,DataNUm2=2,[3,0,]
 		地址406a7ce0,DataNUm2=2,[5,5,]
 		地址406a7d00,DataNUm2=2,[1,8,]
-Log_printAllKindOf(default):Tue Oct 25 19:19:28 2016
+Log_printAllKindOf(default):Wed Oct 26 22:50:26 2016
 		ObjectKind=2013 add:406a7b60,所有对象num为(2):
 (000)所有child对象kind为
           kind:62,getFiberPointToObjNum=0
@@ -35,7 +35,7 @@ Log_printAllKindOf(default):Tue Oct 25 19:19:28 2016
           kind:2012,getFiberPointToObjNum=1
 		地址406a7b80,DataNUm2=4,[5,3,1,2,]
 		地址406a7be0,DataNUm2=4,[2,2,2,2,]
-Log_printAllKindOf(default):Tue Oct 25 19:19:28 2016
+Log_printAllKindOf(default):Wed Oct 26 22:50:26 2016
 		ObjectKind=2014 add:406a7c60,所有对象num为(1):
 (000)所有child对象kind为
           kind:62,getFiberPointToObjNum=0
@@ -44,7 +44,7 @@ Log_printAllKindOf(default):Tue Oct 25 19:19:28 2016
           kind:2012,getFiberPointToObjNum=1
           kind:2012,getFiberPointToObjNum=1
 		地址406a7c80,DataNUm2=4,[6,2,4,1,]
-Log_printAllKindOf(default):Tue Oct 25 19:19:28 2016
+Log_printAllKindOf(default):Wed Oct 26 22:50:26 2016
 		ObjectKind=2015 add:406a7d20,所有对象num为(1):
 (000)所有child对象kind为
           kind:62,getFiberPointToObjNum=0
@@ -53,7 +53,7 @@ Log_printAllKindOf(default):Tue Oct 25 19:19:28 2016
           kind:2012,getFiberPointToObjNum=1
           kind:2012,getFiberPointToObjNum=1
 		地址406a7d40,DataNUm2=4,[6,3,5,1,]
-Log_printAllKindOf(default):Tue Oct 25 19:19:28 2016
+Log_printAllKindOf(default):Wed Oct 26 22:50:26 2016
 		ObjectKind=62 add:4063bca0,所有对象num为(25):
   inputListHead =NULL        n		地址406a5800,DataNUm2=3,[许,<e8aeb8>,玉,<e78e89>,兰,<e585b0>,]
 		地址406a5820,DataNUm2=2,[刘,<e58898>,泵,<e6b3b5>,]

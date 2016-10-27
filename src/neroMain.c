@@ -62,13 +62,19 @@ void ProInitialization();
 void main()
 {
 
-// 		printf(" \n \n \n \n \n \nthe size of  ActivationNeuron is: %llu  \n ",  sizeof(ActNero));
+		// printf(" \n \n \n \n \n \nthe size of  ActivationNeuron is: %llu  \n ",  sizeof(ActNero));
 // struct rlimit resource_limit;
 // getrlimit(RLIMIT_STACK, &resource_limit);
 // printf("STACK: soft_limit - %ld hard_limit - %ld\n", resource_limit.rlim_cur, resource_limit.rlim_max);
 
 		// testDataIn201608();
-		ProInitialization();
+
+
+
+		 readIrisFileForData("/home/jty/nero/nero/src/data/iris/iris.data");
+
+		 // exit(0);
+		// ProInitialization();
 }
 
 

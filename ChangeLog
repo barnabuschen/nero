@@ -338,15 +338,17 @@ nero_addNeroByData:default1 ,begin to check childKind  *p=35 ,kind=0,0
 
 
 
+obtainOrderFromTFF2: find dataKind=2012,tff->order=301
+nero_IfHasNeuronObjectKindUnknow1:start serch basekind=2012,[21]
+nero_IfHasNeuronObjectKindUnknow1:start serch basekind=2012,baseObj=406a8960,[21]
 
 
+onObjectKindUnknow1:start serch basekind=2012,baseObj=406a8960,[21],
 
 
+		地址406a89a0,DataNUm2=2,[2,1,]
 
-
-
-
-
+		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=1  str=49,kind=0,0
 
 
 

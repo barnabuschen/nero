@@ -71,10 +71,10 @@ void main()
 
 
 
-		 readIrisFileForData("/home/jty/nero/nero/src/data/iris/iris.data");
+		 // readIrisFileForData("/home/jty/nero/nero/src/data/iris/iris.data");
 
 		 // exit(0);
-		// ProInitialization();
+		ProInitialization();
 }
 
 
@@ -157,9 +157,9 @@ void ProInitialization()
 		// nero_8int * fileName4="/data/dataStringCreate.sh";
 		// CreatedWordsIntoFile(fileName4);
 
-		// nero_8int * fileName3="/data/taskfileForDataStream.sh";
-		// ReadTaskFromTxtByline( fileName4  );	
-		// printf("end of  fuc ReadTaskFromTxtByline\n");
+		// nero_8int * fileName3="/data/iris/newDataFileForIris.sh";
+		// ReadTaskFromTxt( fileName3  );
+		// printf("end of  fuc ReadTaskFromTxt\n");
 
 
 		// sleep(4);	

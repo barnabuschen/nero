@@ -49,8 +49,7 @@
 
 #define  Task_Order_DataInput    300      /* just  input some  data  into  sys,  its parameter  is just a  string */
 #define  Task_Order_MutiDataInput    301      /* just  input some  data  into  sys,  its parameter is several  string */
-
-
+                                                // firat string   give out  type of  all  the  data
 
 
 #define  Task_Order_ResetConf     500  /*将conf恢复为默认配置*/
@@ -105,6 +104,8 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 {Task_Order_CreateKindWithEnglishWord,OrderListWigthMax,TFFDataType_String,TFFDataType_Character},
 /*创建"new  kind"     参数个数   第一个数据*/
 {Task_Order_CreateChWordKindObj,1,TFFDataType_String},
+/*创建"new  kind"     参数个数   第一个数据*/
+{Task_Order_MutiDataInput,OrderListWigthMax,TFFDataType_String,TFFDataType_unknow},
 {0},
 {0},
 {0},
@@ -545,7 +546,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         struct DataFlowProcessArg arg2;		
         struct { long type; char text[100]; } mymsg;        
         
-
+        NeuronObject  * tmpobj;
 
         nero_8int  kindname1[]={"整数"};
      
@@ -580,13 +581,6 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 	/*现在开始转化发送命令的参数*/	
     // printf("obtainOrderFromTFF:tff->order=%d\n",tff->order);
     
-
-
-
-
-
-
-
 
 
 
@@ -627,6 +621,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
 
     /*命令    该命令后面的数据个数，不包括1,2   第一个数据*/
+    // 219 setosa 51 35 14 2
     for (k=0;k<countOfWord;k++)
    {
 	    switch(OrderDataTypeList[orderPos][k+2])
@@ -687,7 +682,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
                 neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
                 neroObjMsgWithStr_st.Obi = NULL;
-                sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF1:TFFDataType_unknow start find ");
+                sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF1:TFFDataType_unknow start find,countOfWord=%d ",countOfWord);
                 msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
             #endif
             // dataKind[k]=NeuronNode_ForChWord;     
@@ -718,6 +713,46 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
 
                     break;
+                case  Task_Order_MutiDataInput:
+
+                    // sleep(1);
+                    // the num of data  is  countOfWord-2,
+
+                    dataKind[k]=nero_getObjKindByName((void *)( tff->data[1]),GodNero);    
+                    //now dataKind[k]  is the kind  of  all  the data together,but  you  just need  
+                    // the kind of tff->data[k+1] 
+                    if(dataKind[k]  !=  NeuronNode_ForNone) 
+                    {
+                        tmpobj=nero_getBaseObjByKind(dataKind[k],GodNero);
+                        if(dataKind[k]  > NeuronNode_ForComplexDerivative)
+                        {
+                            dataKind[k]=nero_getChildKind(tmpobj,k);
+                        }
+                        else
+                        {
+                            dataKind[k]=nero_getChildKind(tmpobj,k-1);
+                        }
+
+                    }
+                    // else
+
+
+
+                    // printf("obtainOrderFromTFF: nero_getObjKindByName=%d \n",dataKind[k]);
+ 
+                    #ifdef Nero_DeBuging14_01_14
+                        // printf  msg  by  obj
+                        neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+                        neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
+                        neroObjMsgWithStr_st.Obi = NULL;
+                        sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF22: find dataKind=%d,tff->order=%d,baseobj=%x",dataKind[k],tff->order,tmpobj);
+                    msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
+                    #endif
+
+
+                    if(dataKind[k]   <  NeuronNode_ForComplexDerivative)
+                        FailTosearchForUnknowKind=1;
+                    break;
                 default:
                      #ifdef Nero_DeBuging14_01_14
                         // printf  msg  by  obj
@@ -739,7 +774,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
     if(FailTosearchForUnknowKind ==  1)
     {
-        printf("obtainOrderFromTFF: 内存泄漏   tff->order=%d,dataKind[k]=%d,k=%d\n",tff->order,dataKind[k],k);
+        printf("obtainOrderFromTFF: 内存泄漏   tff->order=%d,dataKind[k]=%d,k=%d,countOfWord=%d \n",tff->order,dataKind[k],k,countOfWord);
         return;
     }
 
@@ -786,12 +821,25 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 dataKind[0]=NeuronNode_ForChWord;
                 flag=0;                              
                 break;
+        case    Task_Order_MutiDataInput:
+                dataKind[0]=NeuronNode_ForChWord;
+                // ((NeroConf *)DataIO_st.str)->addLevelObjAlways=1;
+                // arg2.conf->addLevelObjAlways=1;
+                DataIO_st.operateKind =Conf_Modify_addLevelObjAlways;
+                flag=2;
+                break; 
     	 default :
                 DataIO_st.operateKind =Conf_Modify_ReSet; 
                 flag=0;
                 break;
     }
-
+    if(flag  == 2)
+    {
+        memcpy(DataIO_st.str,&neroConf,sizeof(NeroConf));
+        ((NeroConf *)DataIO_st.str)->addLevelObjAlways=1;
+        // ((NeroConf *)DataIO_st.str)->CreateNewBaseObjKind=0;
+        msgsnd(Operating_mq_id, &DataIO_st, sizeof(DataIO_st), 0);          
+    }
     if(flag  == 1)
     {
         memcpy(DataIO_st.str,&neroConf,sizeof(NeroConf));
@@ -804,10 +852,21 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
      if(countOfWord > 0)
     {
 
-            coutOfRun++;
-    		memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
-    		mymsg.type =MsgId_Nero_DataFlowProcess ;
-    		msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+        #ifdef Nero_DeBuging14_01_14_
+        for(i=0;i<countOfWord;i++)
+        {
+
+            printf(" obtainOrderFromTFF:%d.%s\n",dataKind[i], DataFlow[i]);
+        }
+                    printf(" \n");
+
+
+         
+        #endif
+        coutOfRun++;
+		memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
+		mymsg.type =MsgId_Nero_DataFlowProcess ;
+		msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
     		
     }
 

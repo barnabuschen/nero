@@ -3353,7 +3353,19 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 				system(str2);
 	}
 	#endif	
-	for (i=0;i<objNum;i++)
+
+	// if(neroConf.addLevelObjAlways == 1)
+	// 	i=1;
+	// else
+	// 	i=0;
+
+	// i=nero_getObjDataNum( nero_getBaseObjByKind( newObiKind ,GodNero  ));
+	if(newObiKind >   NeuronNode_ForComplexDerivative   &&   (Obis[0]) ==   (nero_getBaseObjByKind(newObiKind,GodNero))->inputListHead->obj  )
+		i=1;
+	else
+		i=0;
+
+	for (;i<objNum;i++)
 	{
 		/*生成新概念的数据链表*/
 		tmpFiber= addNerveFiber(newObi,NerveFiber_Input,Fiber_PointToData);
@@ -3699,7 +3711,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 		p= (nero_s8int  *) Data;
 		StrEnd=p+strlenInData-1;
 
-		printf("nero_addNeroByData:%s  the child num :%d \n",Data,nero_getBaseObjChildenNum(NeuronNode_ForChWord,godNero));
+		// printf("nero_addNeroByData:%s  the child num :%d \n",Data,nero_getBaseObjChildenNum(NeuronNode_ForChWord,godNero));
 		// printf("nero_IfHasNeuronObject strlenInData =%d\n",strlenInData);
 		allFindFlag=1;
 		childNun=0;
@@ -3773,6 +3785,10 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 		printf("nero_addNeroByData，ForChSentence\n");
 		#endif			
 		break;
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////		
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 	default:
 
@@ -4307,6 +4323,12 @@ NeuronObject * nero_IfHasNeuronObjectKindUnknow(void *Data,nero_s32int basekind 
 	ChUTF8_  *wordP;
 	nero_us8int  * ttt22;
 	nero_us8int  * p;
+	nero_s32int x;						
+	nero_s32int y;										 
+	nero_s32int z,i,childNum1; 
+
+
+
 	if (Data == NULL  ||    godNero == NULL  ||   basekind <= NeuronNode_ForComplexDerivative)
 	{
 		return NULL;
@@ -4328,6 +4350,18 @@ NeuronObject * nero_IfHasNeuronObjectKindUnknow(void *Data,nero_s32int basekind 
 		return NULL;
 	flag=0;
 
+
+
+
+	#ifdef Nero_DeBuging14_01_14
+	// printf  msg  by  obj
+	neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+	neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
+	neroObjMsgWithStr_st.Obi = NULL;
+	sprintf(neroObjMsgWithStr_st.str,"nero_IfHasNeuronObjectKindUnknow1:start serch basekind=%d,baseObj=%x,[%s]",basekind,baseObj,Data);
+	msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
+	#endif 
+
 	// 从baseobj得outputListHead入手，从已有得obj查询是否能找到合适得数据
 	//只查询一层深度得数据，/////////////////////////
 	curFiber=baseObj->outputListHead;
@@ -4336,7 +4370,9 @@ NeuronObject * nero_IfHasNeuronObjectKindUnknow(void *Data,nero_s32int basekind 
 		// kindAllTheSame = 1;
 		p= (nero_us8int  *) Data;
 		tmpobj=curFiber->obj;
-		for(childtmpFiber=tmpobj->inputListHead->next,hasDataFlag=0;childtmpFiber != NULL &&  (*p) != 0;childtmpFiber=childtmpFiber->next)
+		i=0;
+		childNum1=0;
+		for(childtmpFiber=tmpobj->inputListHead,hasDataFlag=0;childtmpFiber != NULL &&  (*p) != 0;childtmpFiber=childtmpFiber->next,i++)
 		{
 			// 注意这里得data不一定只是单个数据,，may  be 是一串数据(data  stream)，意味着，需要找得对象may  not just be最基本得
 			// 基类对象（可能有多个子对象）
@@ -4345,6 +4381,15 @@ NeuronObject * nero_IfHasNeuronObjectKindUnknow(void *Data,nero_s32int basekind 
 			childKind=nero_GetNeroKind(childtmpFiber->obj);
 			charLength=0;
 			flag=0;
+			#ifdef Nero_DeBuging14_01_14
+			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+			neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
+			neroObjMsgWithStr_st.Obi = NULL;
+			sprintf(neroObjMsgWithStr_st.str,"nero_IfHasNeuronObjectKindUnknow2:childKind=%d,basechild=%x,i=%x",childKind,tmpobj,i);
+			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
+			#endif 
+
+
 			switch(childKind)
 			{
 				case NeuronNode_ForChCharacter:
@@ -4365,18 +4410,21 @@ NeuronObject * nero_IfHasNeuronObjectKindUnknow(void *Data,nero_s32int basekind 
 								charLength=3;
 							}
 						}
+						x=childtmpFiber->obj->inputListHead->obj->x;
+						y=childtmpFiber->obj->inputListHead->obj->y;
+						z=childtmpFiber->obj->inputListHead->obj->z;
 						switch(charLength)
 						{
 							case 1:
-								if(childtmpFiber->obj->x  ==  (*p))
+								if(x  ==  (*p))
 									flag=1;
 								break;
 							case 2:
-								if(childtmpFiber->obj->x  ==  (*p)  &&   childtmpFiber->obj->y  ==  (*(p+1) )  )
+								if(x  ==  (*p)  &&   y  ==  (*(p+1) )  )
 									flag=1;
 								break;
 							case 3:
-								if(childtmpFiber->obj->x  ==  (*p)  &&   childtmpFiber->obj->y  ==  (*(p+1) )  &&   childtmpFiber->obj->z  ==  (*(p+2) ) )
+								if(x  ==  (*p)  &&   y  ==  (*(p+1) )  &&   z  ==  (*(p+2) ) )
 									flag=1;
 								break;
 							default:
@@ -4389,15 +4437,49 @@ NeuronObject * nero_IfHasNeuronObjectKindUnknow(void *Data,nero_s32int basekind 
 			}
 			if(flag !=1 )
 			{
+				#ifdef Nero_DeBuging14_01_14
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
+				neroObjMsgWithStr_st.Obi = NULL;
+				sprintf(neroObjMsgWithStr_st.str,"nero_IfHasNeuronObjectKindUnknow3:error  flag !=1,charLength=%d",charLength);
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
+				#endif 				
+
 				break;
 			}
+			childNum1++;
 			if(charLength == 0 )
+			{
+
+				#ifdef Nero_DeBuging14_01_14
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
+				neroObjMsgWithStr_st.Obi = NULL;
+				sprintf(neroObjMsgWithStr_st.str,"nero_IfHasNeuronObjectKindUnknow3:error  charLength == 0");
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
+				#endif 				
 				break;
+			}
 
 			// tmpObiForTemporary[childNun++]=tmp2;
 			p=p+charLength;
 			if(  *p  ==  0)
-				return  childtmpFiber->obj;
+			{
+				#ifdef Nero_DeBuging14_01_14
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
+				neroObjMsgWithStr_st.Obi = NULL;
+				sprintf(neroObjMsgWithStr_st.str,"nero_IfHasNeuronObjectKindUnknow5:   find =%x",curFiber->obj);
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
+				#endif 	
+
+				// childNum1=nero_getObjDataNum(curFiber->obj);
+				if(  (childNum1 ) ==   nero_getObjDataNum(curFiber->obj) )
+					return  (curFiber->obj);
+				else
+					break;
+
+			}
 
 		}
 		curFiber=curFiber->next;
@@ -5058,4 +5140,34 @@ nero_s32int nero_getObjKindByName(void *name,NeuronObject  * godNero)
         msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);         
     #endif
 	return  findKind;
+}
+
+
+// 不考虑是基类还是obj
+// positoinOfChild 从0开始算
+nero_us32int  nero_getChildKind(NeuronObject  * n,nero_us32int positoinOfChild)
+{
+
+	nero_us32int i,findKind;
+	NerveFiber *  tmpFiber;
+	if(n == NULL  ||  positoinOfChild < 0 )
+		return nero_msg_ParameterError;
+
+	tmpFiber=n->inputListHead;
+	i=0;
+	// findKind=nero_GetNeroKind(tmpFiber->obj);
+
+	while(i != positoinOfChild  &&  tmpFiber != NULL )
+	{
+
+		tmpFiber=tmpFiber->next;
+		i++;
+	}
+
+	if(i == positoinOfChild  &&  tmpFiber != NULL)
+		findKind=nero_GetNeroKind(tmpFiber->obj);
+	else
+		findKind=NeuronNode_ForNone;
+
+	return findKind;
 }

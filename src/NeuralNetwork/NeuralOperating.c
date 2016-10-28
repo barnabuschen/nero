@@ -342,14 +342,18 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				// ifHasUnknowObj=1;  msg1:在DataFlowProcess中找不到该概念,kind=%d,i=%d  str=%s
 										// msg1:在DataFlowProcess中找不到该概念,kind=61,i=2
 				#ifdef Nero_DeBuging09_01_14
-				printf("找不到子概念  i=%d\n",i);
+				// printf("找不到子概念  i=%d\n",i);
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = tmpObi;
 				if(dataKind[i] == 62)
 					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中找不到该概念,kind=%d,i=%d  str=%s",dataKind[i],i,DataFlow[i]);
+				else if(dataKind[i] == 2012)
+				{
+					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中找不到该概念,kind=%d,i=%d  str=%s",dataKind[i],i,DataFlow[i]);
+				}
 				else
-					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中找不到该概念,kind=%d,i=%d  ",dataKind[i],i);
+					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中找不到该概念,kind=%d,i=%d,dataNum=%d  ",dataKind[i],i,dataNum);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif						
 				
@@ -401,7 +405,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 						// if  CreateNewBaseObjKind == 1  生成永久对象，否则生成临时对象
 						// 但是还是有问题，就是生成得不能是太复杂得东西，if 把一个
 						// 东西得子东西得结构看成一棵树，树得深度不能超过一层
-						if (conf->CreateNewBaseObjKind == 1)
+						if (conf->CreateNewBaseObjKind == 1  ||   conf->addLevelObjAlways==1)
 						{
 							//暂时只处理这个
 							// printf("在DataFlowProcess:nero_addNeroByData\n");
@@ -427,21 +431,25 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*				 neroObjMsg_st.Obi = tmpObi;*/
 /*				 msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);*/
 /*				*/
-
 				// printf("添加子概念,dataKind=%d,adress:%x,  upp obj=%x\n",dataKind[i],tmpObi,tmpObi->outputListHead->obj);
 				#ifdef Nero_DeBuging09_01_14
 				// printf("添加子概念成功\n\n");
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = tmpObi;
-
 				// if(nero_GetNeroKind(tmpObi) == 62)
 				// 	sprintf(neroObjMsgWithStr_st.str,"msg2:在DataFlowProcess中创建对象成功: (%s),kind=%d ,%x\n",DataFlow[i],nero_GetNeroKind(tmpObi),tmpObi);
 				// else
 				sprintf(neroObjMsgWithStr_st.str,"DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=%d ,%x",nero_GetNeroKind(tmpObi),tmpObi);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif	
-
+			        #ifdef Nero_DeBuging09_01_14
+					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+					neroObjMsgWithStr_st.fucId = 1;
+					neroObjMsgWithStr_st.Obi = NULL;
+					sprintf(neroObjMsgWithStr_st.str,"				CreateNewBaseObjKind=%d,addLevelObjAlways=%d",conf->CreateNewBaseObjKind,conf->addLevelObjAlways);
+					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+					#endif	
 				#ifdef Nero_DeBuging09_01_14_
 				neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
 				neroObjMsg_st.fucId = 2;
@@ -452,7 +460,6 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 			else 
 			{
 					// printf("添加子概念失败,dataKind=%d,i=%d\n",dataKind[i],i);
-
 					ifHasUnknowObj=1;
 			        #ifdef Nero_DeBuging09_01_14
 			        // printf("++++++++++++++DataFlow[i]=%s.\n",DataFlow[i]);
@@ -461,12 +468,20 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 					neroObjMsgWithStr_st.fucId = 1;
 					neroObjMsgWithStr_st.Obi = NULL;
-					sprintf(neroObjMsgWithStr_st.str,"DataFlowProcess:msg2:在DataFlowProcess中创建对象 fail :%s",DataFlow[i]);
+					// sprintf(neroObjMsgWithStr_st.str,"DataFlowProcess:msg2:在DataFlowProcess中创建对象 fail :%s,dataKind[i]=%d,addLevelObjAlways=%d",DataFlow[i],dataKind[i],conf->addLevelObjAlways);
+					sprintf(neroObjMsgWithStr_st.str,"DataFlowProcess:msg2:在DataFlowProcess中创建对象 fail :%s,dataKind[i]=%d",DataFlow[i],dataKind[i]);
 					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 					#endif	
+			        #ifdef Nero_DeBuging09_01_14
+					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+					neroObjMsgWithStr_st.fucId = 1;
+					neroObjMsgWithStr_st.Obi = NULL;
+					sprintf(neroObjMsgWithStr_st.str,"				CreateNewBaseObjKind=%d,addLevelObjAlways=%d",conf->CreateNewBaseObjKind,conf->addLevelObjAlways);
+					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+					#endif	
+			}	
 
-			}			
-			#endif	
+			#endif
 /*			createNeroNetDotGraphForWords(GodNero, "data/wordspic.dot");		*/
 /*			system("xdot data/wordspic.dot");*/
 			if (tmpObi != NULL  && conf->addNewObj ==1)
@@ -548,7 +563,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	/***************************************************************/
 	// CreateNewBaseObjKind=1将影响新类的创建，影响类型判断,所以这里需要要这个条件
 	// #define Nero_TestCount     30
-	if (  /*Nero_TestCount >= coutOferror_Msg_  && */ conf->CreateNewBaseObjKind != 1 )
+	if (  /*Nero_TestCount >= coutOferror_Msg_  && */ conf->CreateNewBaseObjKind != 1   &&  conf->addLevelObjAlways != 1 )
 	{
 	        Process_ObjForecast(&forecastInfo_st);
 	}
@@ -819,7 +834,17 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				system(str2);
 		
 				#endif			
-				// printf("nero_createObjFromMultiples  2\n");
+				// printf("conf->addLevelObjAlways == 1:nero_createObjFromMultiples  2\n");
+				#ifdef   Nero_DeBuging04_01_14
+				int  iilkjhwersd=0;
+				for(;iilkjhwersd< objNum;iilkjhwersd++)
+				{
+					printf(" addLevelObjAlways == 1===  objs[%d] =%x,kind=%d.\n",iilkjhwersd,objs[iilkjhwersd],nero_GetNeroKind(objs[iilkjhwersd]));
+				}
+				#endif		
+
+
+
 				complexObj=nero_createObjFromMultiples( objs, objNum);
 				#ifdef   Nero_DeBuging04_01_14_
 				char str[500];
@@ -932,7 +957,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   5:%d.\n",coutOferror_Msg_);
 	#endif	
-	printf("DataFlowProcess   end ......   \n\n");
+	// printf("DataFlowProcess   end ......   \n\n");
  
 	return nero_msg_ok;
 

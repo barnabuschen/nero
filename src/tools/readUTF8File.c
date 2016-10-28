@@ -291,7 +291,7 @@ nero_s32int readIrisFileForData(nero_8int * FileName )
 			    			break;			    	
 			    	case 4:
 
-							sprintf(lastlinStrRecored,"%s %s\n",LineStart+5,newlinStrRecored);
+							sprintf(lastlinStrRecored,"301 %s %s\n",LineStart+5,newlinStrRecored);
 			    			break;
 			    	default:
 			    			break;

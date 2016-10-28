@@ -157,9 +157,9 @@ void ProInitialization()
 		// nero_8int * fileName4="/data/dataStringCreate.sh";
 		// CreatedWordsIntoFile(fileName4);
 
-		// nero_8int * fileName3="/data/iris/newDataFileForIris.sh";
-		// ReadTaskFromTxt( fileName3  );
-		// printf("end of  fuc ReadTaskFromTxt\n");
+		nero_8int * fileName3="/data/iris/newDataFileForIris.sh";
+		ReadTaskFromTxt( fileName3  );
+		printf("end of  fuc ReadTaskFromTxt\n");
 
 
 		// sleep(4);	

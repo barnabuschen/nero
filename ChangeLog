@@ -286,69 +286,54 @@ List of tools for static code analysis ：来自维基百科的静态代码分�
 
 创建时间：20/10/2016 01:55:58 
 
-添加子概念失败,yuan原因在于----------没有加入kind  》  2001得情况
-		/*如果不存在则尝试将该对象加入网络*/
-		if (tmpObi == NULL  && conf->addNewObj == 1)
-		{
 
+创建时间：29/10/2016 22:08:40 
+	对于test数据得分类分俩步走：
+	1：只识别和处理所有子类都能识别得obj，进而进行分类
+	2：对于不能识别得子类进行分别处理，进而进行分类
 
-			// do  not add nero for  every  kind  of data
-			// there is  bug,where  
-			switch(dataKind[i])
-			{
-				case NeuronNode_ForChCharacter:
-				case NeuronNode_ForChWord:
-				
-						tmpObi=  nero_addNeroByData(DataFlow[i],dataKind[i],GodNero);
-						break;
-				default:
-						
-
-
-
-						break;
-
-			}
+	
+	
 
 
 
 
-nero_addNeroByData:default1 ,begin to check childKind  *p=35 ,kind=0,0
-
-
-在DataFlowProcess中:its time to CreateNewBaseObj,objNum=4,nextBaseKind=2013
 
 
 
 
-2214 空对象或者为基类对象,obtainOrderFromTFF 0: ********order=219*********countOfWord=5,kind=0,0
-
-2241 在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2013 !,kind=0,0
 
 
 
 
-2344 空对象或者为基类对象,obtainOrderFromTFF 0: ********order=219*********countOfWord=5,kind=0,0	
 
 
 
 
-2482 空对象或者为基类对象,obtainOrderFromTFF 0: ********order=219*********countOfWord=5,kind=0,0	4
 
 
 
 
-obtainOrderFromTFF2: find dataKind=2012,tff->order=301
-nero_IfHasNeuronObjectKindUnknow1:start serch basekind=2012,[21]
-nero_IfHasNeuronObjectKindUnknow1:start serch basekind=2012,baseObj=406a8960,[21]
 
 
-onObjectKindUnknow1:start serch basekind=2012,baseObj=406a8960,[21],
 
 
-		地址406a89a0,DataNUm2=2,[2,1,]
 
-		空对象或者为基类对象,msg1:在DataFlowProcess中找不到该概念,kind=2012,i=1  str=49,kind=0,0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

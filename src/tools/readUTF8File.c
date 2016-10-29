@@ -59,7 +59,8 @@ nero_s32int readIrisFileForData(nero_8int * FileName )
     struct DataFlowProcessArg arg2;     
     struct { long type; char text[100]; } mymsg;  
      nero_8int  fileName[FILEPATH_MAX];
-      nero_8int  newDataFileForIris[FILEPATH_MAX];
+      nero_8int  newDataFileForIris1[FILEPATH_MAX];
+      nero_8int  newDataFileForIris2[FILEPATH_MAX];
     struct adkfjao  testsadkfjao;
     nero_s32int fd;
     nero_s8int *mapped_mem, * p,* end,* LineEnd,* LineStart;
@@ -78,8 +79,10 @@ nero_s32int readIrisFileForData(nero_8int * FileName )
     sprintf(fileName,"%s",FileName);
 
     // sprintf(newDataFileForIris,"%s%s",file_path_getcwd,FileName);
-    sprintf(newDataFileForIris,"./data/iris/newDataFileForIris.sh",file_path_getcwd,FileName);
-	createFile(newDataFileForIris);
+    sprintf(newDataFileForIris1,"./data/iris/LearningFileForIris.sh",file_path_getcwd,FileName);
+	createFile(newDataFileForIris1);
+    sprintf(newDataFileForIris2,"./data/iris/TestingFileForIris.sh",file_path_getcwd,FileName);
+	createFile(newDataFileForIris2);
 
     void * start_addr = 0;
     fd = open(fileName, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
@@ -301,9 +304,30 @@ nero_s32int readIrisFileForData(nero_8int * FileName )
 		        LineStart = strtok( NULL, ",");
 		        k++;
 		    }
-	        printf( "%s ", lastlinStrRecored );
-			addLineToFile(newDataFileForIris,lastlinStrRecored);	
+	        // printf( "%s ", lastlinStrRecored );
 
+	        if(countOfWord  >0  &&   countOfWord <=30)
+				addLineToFile(newDataFileForIris1,lastlinStrRecored);	
+			else if(countOfWord  >30  &&   countOfWord <=50)
+			{
+				addLineToFile(newDataFileForIris2,lastlinStrRecored);	
+			}
+			else if(countOfWord  >50  &&   countOfWord <=80)
+			{
+				addLineToFile(newDataFileForIris1,lastlinStrRecored);	
+			}
+			else if(countOfWord  >80  &&  countOfWord <=100)
+			{
+				addLineToFile(newDataFileForIris2,lastlinStrRecored);	
+			}
+			else if(countOfWord  >100  &&   countOfWord <=130)
+			{
+				addLineToFile(newDataFileForIris1,lastlinStrRecored);	
+			}
+			else
+			{
+				addLineToFile(newDataFileForIris2,lastlinStrRecored);	
+			}			
             #ifdef  Nero_DeBuging10_26_16_
             if(objNUm > 0)
             {

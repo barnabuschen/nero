@@ -71,10 +71,11 @@ void main()
 
 
 
-		 // readIrisFileForData("/home/jty/nero/nero/src/data/iris/iris.data");
+		 readIrisFileForData("/home/jty/nero/nero/src/data/iris/iris.data");
 
 		 // exit(0);
-		ProInitialization();
+		 
+		// ProInitialization();
 }
 
 
@@ -157,12 +158,12 @@ void ProInitialization()
 		// nero_8int * fileName4="/data/dataStringCreate.sh";
 		// CreatedWordsIntoFile(fileName4);
 
-		nero_8int * fileName3="/data/iris/newDataFileForIris.sh";
+		nero_8int * fileName3="/data/iris/LearningFileForIris.sh";
 		ReadTaskFromTxt( fileName3  );
 		printf("end of  fuc ReadTaskFromTxt\n");
 
 
-		// sleep(4);	
+		sleep(1);	
 
 		// 在taskFile.sh中输入生成了英文字母得基类，现在需要生成英文单词得基类
 		// 为了尽快看到结果，这里用整数来替换iris中得小数

@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "updata：20161018_002"
+git commit -a -m "updata：20161231_001"
 git push origin  ver0.1802:ver0.1802
 添加文件到库，并上传
 git add readme.txt
@@ -64,8 +64,7 @@ git config --global user.name "piaoyaosuifengji"
  git clone git@github.com:jianfengye/nginx-1.0.14_comment.git
 
 
-git clone git@github.com:piaoyaosuifengji/nginxPro.git
-
+git clone git@github.com:piaoyaosuifengji/neroDateShow.git
 https://github.com/piaoyaosuifengji/nginxPro.git
 https://github.com/piaoyaosuifengji/mytest.git
 

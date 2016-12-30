@@ -311,20 +311,20 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 
 	
-				#ifdef   Nero_DeBuging04_01_14_
-				char str[500];
-				char str2[500];
+		#ifdef   Nero_DeBuging04_01_14_
+		char str[500];
+		char str2[500];
 /*				PrintUtf8 ttt;*/
 /*				printf("\n");		*/
 /*				ttt.tmp=*((ChUTF8 *)DataFlow);*/
 /*				ttt.end=0;	*/
-/*				printf("%s",(nero_s8int *)DataFlow[i]);	*/
-				sprintf(str,"data/wordspic%d.dot",i);
-				sprintf(str2,"xdot data/wordspic%d.dot",i);
-				createNeroNetDotGraphForWords(GodNero, str);
-				system(str2);
-		
-				#endif
+		printf("%s\n",(nero_s8int *)DataFlow[i]);	
+		// sprintf(str,"data/wordspic%d.dot",i);
+		// sprintf(str2,"xdot data/wordspic%d.dot",i);
+		// createNeroNetDotGraphForWords(GodNero, str);
+		// system(str2);
+
+		#endif
 
 		#ifdef DataFlowProcess_error_Msg
 		printf("coutOferror_Msg_   1121:%d.\n",coutOferror_Msg_);
@@ -1248,6 +1248,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 		//需要生成一个新得临时对象
 		ifCreateObjInSAP =  1;
 		flag  =  0;
+		printf("ifCreateObjInSAP=1,findKind=%d\n",findKind);
 	}
 	UpperObjKind=nero_GetNeroKind(  (Process_tmpObi[i]))  ;
 	for(i=0,ifCreateObjInSAP=1;i<Process_tmpObiUsed;i++)

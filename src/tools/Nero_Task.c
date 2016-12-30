@@ -49,7 +49,10 @@
 
 #define  Task_Order_DataInput    300      /* just  input some  data  into  sys,  its parameter  is just a  string */
 #define  Task_Order_MutiDataInput    301      /* just  input some  data  into  sys,  its parameter is several  string */
-                                                // firat string   give out  type of  all  the  data
+                                                // firat string   give out  type of  all  the  data(就是给出了这个数据流表表示得对象类别)
+#define  Task_Order_DataSteamInput    310      /* just  input some  data  into  sys,  its parameter  is several string */
+                                                // the kind of  all  steam  in  unknow (就是mei you 给出这数据流表示得对象类别) 
+                                                
 
 
 #define  Task_Order_ResetConf     500  /*将conf恢复为默认配置*/
@@ -106,7 +109,8 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 {Task_Order_CreateChWordKindObj,1,TFFDataType_String},
 /*创建"new  kind"     参数个数   第一个数据*/
 {Task_Order_MutiDataInput,OrderListWigthMax,TFFDataType_String,TFFDataType_unknow},
-{0},
+/*创建"new  kind"             参数个数            新类名                 第一个数据*/
+{Task_Order_DataSteamInput,OrderListWigthMax,TFFDataType_unknow,TFFDataType_unknow},
 {0},
 {0},
 };
@@ -582,9 +586,6 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
     // printf("obtainOrderFromTFF:tff->order=%d\n",tff->order);
     
 
-
-
-
     countOfWord=tff->MsgCount -1;
     if(countOfWord > 0)
     {
@@ -610,7 +611,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
     FailTosearchForUnknowKind=0;
 
 
-    #ifdef Nero_DeBuging14_01_14
+    #ifdef Nero_DeBuging14_01_14_
         // printf  msg  by  obj
         neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
         neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
@@ -677,7 +678,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
             memset(linc,0,(lenOfpar) +1);
             memcpy(linc,tff->data[k+1],(lenOfpar) +1);
 
-            #ifdef Nero_DeBuging14_01_14
+            #ifdef Nero_DeBuging14_01_14_
                 // printf  msg  by  obj
                 neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
                 neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
@@ -690,13 +691,24 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
       
             switch( tff->order)
             {
-                case  Task_Order_CreateKindWithMultipleWord:
 
+                case  Task_Order_DataSteamInput:
+                    //往往是一串单纯得data stream,不知道这些数据属于什么类型的对象实例，所以只能进行简单得data类型判断
+                    // 考虑到无论是什么数据类型，最基础得类型一定是char或者string
+                    // 如果lenOfpar》1首先就排除了char类型
+
+                    if(lenOfpar == 1)
+                        dataKind[k] = NeuronNode_ForChCharacter;
+                    else
+                        dataKind[k] = NeuronNode_ForChWord;
+
+                    break;
+                case  Task_Order_CreateKindWithMultipleWord:                   
                     sleep(1);
                     dataKind[k]=nero_getObjKindByName((void *)kindname1,GodNero);    
                     // printf("obtainOrderFromTFF: nero_getObjKindByName=%d \n",dataKind[k]);
  
-                    #ifdef Nero_DeBuging14_01_14
+                    #ifdef Nero_DeBuging14_01_14_
                         // printf  msg  by  obj
                         neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
                         neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
@@ -708,10 +720,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
                     if(dataKind[k]   <  NeuronNode_ForComplexDerivative)
                         FailTosearchForUnknowKind=1;
-                   
-                       
-
-
+                                  
                     break;
                 case  Task_Order_MutiDataInput:
 
@@ -740,7 +749,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
                     // printf("obtainOrderFromTFF: nero_getObjKindByName=%d \n",dataKind[k]);
  
-                    #ifdef Nero_DeBuging14_01_14
+                    #ifdef Nero_DeBuging14_01_14_
                         // printf  msg  by  obj
                         neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
                         neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
@@ -754,7 +763,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                         FailTosearchForUnknowKind=1;
                     break;
                 default:
-                     #ifdef Nero_DeBuging14_01_14
+                     #ifdef Nero_DeBuging14_01_14_
                         // printf  msg  by  obj
                         neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
                         neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
@@ -828,6 +837,13 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 DataIO_st.operateKind =Conf_Modify_addLevelObjAlways;
                 flag=2;
                 break; 
+         case    Task_Order_DataSteamInput:
+                // dataKind[0]=NeuronNode_ForChWord;
+                // ((NeroConf *)DataIO_st.str)->addLevelObjAlways=1;
+                // arg2.conf->addLevelObjAlways=1;
+                // DataIO_st.operateKind =Conf_Modify_addLevelObjAlways;
+                flag=0;
+                break;                
     	 default :
                 DataIO_st.operateKind =Conf_Modify_ReSet; 
                 flag=0;

@@ -1250,7 +1250,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 		flag  =  0;
 		printf("ifCreateObjInSAP=1,findKind=%d\n",findKind);
 	}
-	UpperObjKind=nero_GetNeroKind(  (Process_tmpObi[i]))  ;
+	UpperObjKind=nero_GetNeroKind(  (Process_tmpObi[0]))  ;
 	for(i=0,ifCreateObjInSAP=1;i<Process_tmpObiUsed;i++)
 	{
 		
@@ -1258,7 +1258,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 		{
 
 			// 既然a1是属于基类a，那么将所以a得衍生类
-			// 中出现子对象X1,Y1,Z1得其中一个得就将其在
+			// 中出现子对象X1,Y1,Z1得其中一个得,就将其在
 			// ///////////////////1//////////////a得outputlist列表中得位置往前移动一位///////////////////////////////////////
 			/////2////// 同时，加强x1  list中指向得所有属于a类得实例得fiber链接强度///////////
 			// //3///////////同样得，对于x1这个子对象来说，既然a1是a，那么将x1对象outputlist中属于a基类实例得对象位置都往前面移动一位
@@ -1560,7 +1560,8 @@ nero_s32int Process_UpdataForecastList(struct DataFlowForecastInfo  * forecastIn
 		#endif	
 		
 		
-        UpdataLastTimeINForecastList(forecastInfo);            
+        UpdataLastTimeINForecastList(forecastInfo);   
+        //讲newObj得输出列表得对象按指向得层次,分别加入到headOfUpperLayer  headOfSameLayer    
        AddNewObjToForecastList( forecastInfo, newObj);
        
 /*        #define  CleanForecastList_msgTest*/
@@ -1737,15 +1738,15 @@ void AddNewObjToList(struct DataFlowForecastInfo  * forecastInfo,nero_s32int Fib
 
 			if (findNodeINlist == NULL)
 			{
-			#ifdef Nero_DeBuging24_01_14_
-			printf("预测链表增长。。。。p->next=%x。。。\n",p->next);
-			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-			neroObjMsgWithStr_st.fucId = 1;
-			neroObjMsgWithStr_st.Obi = Obj;
-			sprintf(neroObjMsgWithStr_st.str,"预测链表增长 id=%d id2=%d",forecastInfo->DeBugMsg,forecastInfo->DeBugMsgTwo);
-			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
-			#endif                                         
-			AddNodeIntoForecastList(listHead,Obj);
+				#ifdef Nero_DeBuging24_01_14_
+					printf("预测链表增长。。。。p->next=%x。。。\n",p->next);
+					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+					neroObjMsgWithStr_st.fucId = 1;
+					neroObjMsgWithStr_st.Obi = Obj;
+					sprintf(neroObjMsgWithStr_st.str,"预测链表增长 id=%d id2=%d",forecastInfo->DeBugMsg,forecastInfo->DeBugMsgTwo);
+					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
+				#endif                                         
+				AddNodeIntoForecastList(listHead,Obj);
             }
             else
             {
@@ -2309,17 +2310,13 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 	 
 	nero_s32int ObjForecast_DeBug_Count=0;
 
-	 
+	 //get a  obj in  objs for  Forecast
 	while( (tmpObi=Process_IfHasNextObjToread(forecastInfo))  !=   NULL)
 	{
 	 	ObjForecast_DeBug_Count++;
 	 	forecastInfo->DeBugMsgTwo=ObjForecast_DeBug_Count;
 	 
-	        /*与预测链表进行比较，看能不能找到tmpObi
-		
-		forecastInfo_st.activateForecastObj=NULL;
-		
-		*/	
+	    /*与预测链表,just compare with headOfSameLayer  list进行比较，看能不能找到tmpObi	forecastInfo_st.activateForecastObj=NULL;				*/	
 		findObiPoint=Process_CompareWithForecastList(forecastInfo,tmpObi);	
 		if (findObiPoint != NULL)
 		{
@@ -2408,7 +2405,8 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 		#ifdef ObjForecast_DeBug_msg
 		printf("before Updata tmpObi=%x.\n",tmpObi);
                 printf("objNum=%d objPoint=%d \n\n",forecastInfo->objNum,forecastInfo->objPoint);
-                #endif     
+        #endif     
+         // newObj得输出列表得对象按指向得层次,分别加入到headOfUpperLayer  headOfSameLayer    
 		Process_UpdataForecastList(forecastInfo,tmpObi);
 	}	 
 	 

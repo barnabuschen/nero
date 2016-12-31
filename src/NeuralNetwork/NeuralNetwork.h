@@ -69,9 +69,10 @@ int next;
 	nero_us32int CreateNewBaseObjKind;/*是否创建新基类的标志，默认打开为1*/
 	
 	
-	
-	nero_us32int  neroTime;     /*系统运行时间单位，初始化为0，隔1秒钟增加1*/
-	nero_us32int  ifReCreateLogFile;     /*系统运行时是否重新生成log文件*/
+	nero_us32int	  OutPutFlag;//for fuc  Process_ObjForecast 是否将预测列表得结果进行输出得标志，为1进行输出，默认为0
+								//the result of the output is 等同于分类结果
+	nero_us32int  	  neroTime;     /*系统运行时间单位，初始化为0，隔1秒钟增加1*/
+	nero_us32int  	  ifReCreateLogFile;     /*系统运行时是否重新生成log文件*/
 	nero_us32int	  UsedNeroNum;
 	nero_us32int	  UsedSANeroNum;
 	nero_us32int	  NewNeroClassID;/*创建新类时候可以使用的编号，它从

@@ -37,6 +37,25 @@ struct NeroObjForecastList
 	                  
 };
 
+//Forecast  Control  struct
+struct NeroObjForecastControl
+{
+	nero_s32int expectedKind;//外界期望输出得对象类型
+	nero_s32int baseORDerivative;//是基类还是衍生对象得实例,
+								 // 1 ：基类，
+								 // 0 :衍生类
+	nero_s32int Refreshed;		//该信息是否在本次DataFlowProcess运行前被刷新过
+								 // 1 ：has  Refreshed
+								 // 0 :old msg  --------set 0  at the end of fuc DataFlowProcess
+
+
+
+
+};	
+
+
+
+
 struct DataFlowForecastInfo
 {
 	NeuronObject ** objs;//实际对象指针
@@ -48,7 +67,10 @@ struct DataFlowForecastInfo
 	struct NeroObjForecastList   *activateForecastObj;//在headOfUpperLayer中，当前被预测的，等待
 	                                                        //后续输入判断的节点，it is not a list
 	                                                        
-	                                                    
+	struct NeroObjForecastControl  controlMsg;
+
+
+
 	NeuronObject * waitForRecognise; /*如果没有在预测列表中的数据会先放在这里，
 	                                       看下次能不能被识别*/
 	nero_s32int waitForRecogniseObjPos;/*waitForRecognise的位置*/

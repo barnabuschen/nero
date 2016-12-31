@@ -231,12 +231,18 @@ extern NeroConf neroConf;
 			可以是指定操作的具体函数或者一个函数编号，都是可以的							
 			可是操作的参数怎么确定呢，这样吧，几个parameter就指定几个输入列表的节点，但是要不要给每个							
 			操作类给定一个名称呢，我觉得还是要有，方便与外界进行沟通和调试。其存在方式参见新类的方式							
-																			
+					
+				
+
 			这里主要是对一个操作类的参数的确定以及因该有的参数个数  持谨慎态度							
 										
 			你可能定义的操作种类：								1				   2						3
 				鼠标，键盘点击     --------- 				点击的种类             持续时间      				力度
 				字符打印			--------- 				具体那个字符 
+				层次定义 									定义一个基类a是另一个基类b得上层类，that is  mean：基类b得输出列表会指向基类a
+				/////////////////////////////////////////////////////////////////////////////////////
+				[[[[[[[[特别的：所有操作类型得obj或者说基类都看成一个普通得obj来看，只是需要单独得函数来处理]]]]]]]]]]]]]]]]
+					///////////////////////////////////////////////////////////////////////////////////////////
 
 			the question is :if you  can  definition a fuc  that can output a   char  ? 
 			does a  char  learn acquired  , not the sys get born ?
@@ -259,6 +265,9 @@ extern NeroConf neroConf;
 //kind down here is  some kind for operating
 #define  NeuronNode_ForInputWord      100     //talk to  outside  wangts to get  words (include Character or  words)  motivated  by  sys-self
 #define  NeuronNode_ForOutputWord      101   
+#define  NeuronNode_ForLayering      110   //定义一个基类a是另一个基类b得上层类，that is  mean：基类b得输出列表会指向基类a
+											// inputListHead  为俩个数据，前者是基类a 得kind值(save  in x)，后者是基类b得得kind值
+
 
 #define NeuronNode_ForComplexDerivative  2000    //高级衍生类			//never use it
 #define NeuronNode_MinNewDerivativeClassId  2001   //you can  create it  by code.

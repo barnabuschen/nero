@@ -43,9 +43,13 @@
 #define  Task_Order_CreateOutputWordKindObj    202      /*创建NeuronNode_ForOutputWord  kind  obj*/
 #define  Task_Order_CreateChWordKindObj    203          /*创建NeuronNode_ForChCharacter  kind  obj*/
 
+#define  Task_Order_CreateLayeringKindObj    204          /*创建NeuronNode_ForLayering  kind  obj*/
+                                                            //对于sys来说使用kind比较方便，但是在输入输出中使用string比较方便
+                                                            //so use basekind name  as a  string
+
 #define  Task_Order_CreateKindWithMultipleWord   219    /*创建一个新类，由多个字符串组成，新类名称为一个字符串*/
 #define  Task_Order_CreateKindWithEnglishWord   220     /*创建一个新类，由多个char   组成，新类名称为一个字符串*/
-
+            
 
 #define  Task_Order_DataInput    300      /* just  input some  data  into  sys,  its parameter  is just a  string */
 #define  Task_Order_MutiDataInput    301      /* just  input some  data  into  sys,  its parameter is several  string */
@@ -111,6 +115,8 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 {Task_Order_MutiDataInput,OrderListWigthMax,TFFDataType_String,TFFDataType_unknow},
 /*创建"new  kind"             参数个数            新类名                 第一个数据*/
 {Task_Order_DataSteamInput,OrderListWigthMax,TFFDataType_unknow,TFFDataType_unknow},
+/*创建"new    obj"             参数个数   第一个数据           */
+{Task_Order_CreateLayeringKindObj,2,TFFDataType_String,TFFDataType_String},
 {0},
 {0},
 };
@@ -649,14 +655,42 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 						dataKind[k]=NeuronNode_ForChCharacter;					
 			break;
 		case TFFDataType_String:
-/*					printf("obtainOrderFromTFF: CreateObjShu order \n");*/
-			             lenOfpar=strlen( tff->data[k+1]);
-						DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
-						 linc=(char *)DataFlow[k];
-						 memset(linc,0,(lenOfpar) +1);
-						memcpy(linc,tff->data[k+1],(lenOfpar) +1);
-						dataKind[k]=NeuronNode_ForChWord;
-			break;					
+/*				printf("obtainOrderFromTFF: CreateObjShu order \n");*/
+                switch( tff->order)
+                {
+
+                    case  Task_Order_CreateLayeringKindObj:
+                            //你在shell中把数据分开写，但是这里把他们进行合并
+                            if(k == 0 &&  countOfWord == 2)
+                            {
+                             lenOfpar=9;
+                            DataFlow[k]=(void *)malloc( lenOfpar );
+                             linc=(char *)DataFlow[k];
+                             memset(linc,0,(lenOfpar) );
+                            //把字符串转化为数字
+
+                             .........
+
+
+
+                            // memcpy(linc,tff->data[k+1],(lenOfpar) +1);
+                            dataKind[k]=NeuronNode_ForLayering; 
+
+
+                            }
+
+                            break;
+                    default:
+                             lenOfpar=strlen( tff->data[k+1]);
+                            DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
+                             linc=(char *)DataFlow[k];
+                             memset(linc,0,(lenOfpar) +1);
+                            memcpy(linc,tff->data[k+1],(lenOfpar) +1);
+                            dataKind[k]=NeuronNode_ForChWord;                    
+                            break;
+
+                }
+    			break;					
         case TFFDataType_unknow:
                 //dataKind   need  to  search
                 //一般参数个数为OrderListWigthMax，表示参数个数可变，而数据类型不指定时需要自己临时确认
@@ -843,7 +877,14 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 // arg2.conf->addLevelObjAlways=1;
                 // DataIO_st.operateKind =Conf_Modify_addLevelObjAlways;
                 flag=0;
-                break;                
+                break;   
+         case    Task_Order_CreateLayeringKindObj    :
+                dataKind[0]=NeuronNode_ForLayering;
+                // ((NeroConf *)DataIO_st.str)->addLevelObjAlways=1;
+                // arg2.conf->addLevelObjAlways=1;
+                // DataIO_st.operateKind =Conf_Modify_addLevelObjAlways;
+                // flag=0;
+                break;                          
     	 default :
                 DataIO_st.operateKind =Conf_Modify_ReSet; 
                 flag=0;

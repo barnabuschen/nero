@@ -118,13 +118,14 @@
 203 setosa
 203 versicolor
 203 virginica
+203 iris
 219 setosa 51 35 14 2
 #219 setosa 21 25 24 2
 #要想创建setosa 51 35 14 2，必须先定义大于10得整数才行    14   55  406a7a40
 #nero_IfHasNeuronObjectKindUnknow1:start serch basekind=2012,[21]
 219 versicolor 61 29 47 14
 219 virginica 65 30 55 18
-
+219 iris 65 30 55 18
 
 
 

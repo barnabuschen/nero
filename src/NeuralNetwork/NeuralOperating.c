@@ -921,6 +921,9 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 	// you should  init   neroConf  every time  you  run  this  fuc
 	resetNeroConf();
+	forecastInfo_st.controlMsg.Refreshed=0;
+
+
 
 	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   1:%d.\n",coutOferror_Msg_);

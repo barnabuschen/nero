@@ -18,6 +18,7 @@ NeuronNode_ForChCharacter,    //当一个概念节点的类型为此时表示一
 NeuronNode_ForChWord ,    //当一个概念节点的类型为此时表示一个中文词语
 NeuronNode_ForInputWord,
 NeuronNode_ForOutputWord,
+NeuronNode_ForLayering,
  NeuronNode_ForChSentence,    //当一个概念节点的类型为此时表示一个中文句子
 NeuronNode_ForComplexDerivative,     //高级衍生类,for  some can not be classify  obj
 };
@@ -32,6 +33,7 @@ NeuronNode_ForChCharacter,    //当一个概念节点的类型为此时表示一
 NeuronNode_ForChWord ,    //当一个概念节点的类型为此时表示一个中文词语
 NeuronNode_ForInputWord,
 NeuronNode_ForOutputWord,
+NeuronNode_ForLayering,
  NeuronNode_ForChSentence,    //当一个概念节点的类型为此时表示一个中文句子
 NeuronNode_ForComplexDerivative,     //高级衍生类,for  some can not be classify  obj
 };
@@ -2095,6 +2097,7 @@ nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNu
 				case NeuronNode_ForData: 
 				case NeuronNode_ForConnect: 
 
+				case NeuronNode_ForLayering: 
 				case NeuronNode_ForInputWord: 
 				case NeuronNode_ForOutputWord: 
 
@@ -3667,11 +3670,13 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 	ChUTF8  words[strLenMax];
 	NeuronObject *tmp;
 	NeuronObject *tmp2;
+		NeuronObject *tmp1;
 	nero_s32int strlenInData,i,allFindFlag,childNun,charLength,kindAllTheSame;
 	ChUTF8_  *wordP;
 	ChUTF8 * wordP2;	
 	NerveFiber *tmpFiber;
-	nero_s8int  * p,* StrEnd;		
+	nero_s8int  * p,* StrEnd;
+	nero_us32int * dataPoint_;
 	#define nero_addNeroByData_debug_msg
 	
 	if (Data == NULL  || dataKind<NeuronNode_ForNone  || dataKind>NeuronNode_Max   )
@@ -3684,6 +3689,47 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 	tmp=tmp2=NULL;
 	switch(dataKind)
 	{
+		case NeuronNode_ForLayering:
+				dataPoint_ = (nero_us32int * )Data;
+				//get the base kind obj
+				tmp1=nero_getBaseObjByKind(dataPoint_[0],GodNero);
+				tmp2=nero_getBaseObjByKind(dataPoint_[1],GodNero);
+				if(tmp1 != NULL  &&  tmp2 != NULL)
+				{
+
+					 tmp2= nero_createNeroObj(dataKind);
+					 tmp=NULL;
+					if(tmp2)
+					{
+						/* 首先申请足够多的神经元，来保存数据，这些神经元成单向连接起来，返回头节点*/
+						ActNero * dataNero=nero_GetSomeNeroForData(1);
+						/*将将概念神经元的inputListHead指向这个数据链表*/
+						if(dataNero)
+						{
+							NerveFiber * fiber=addNerveFiber(tmp2,NerveFiber_Input,Fiber_PointToData);
+							fiber->obj=dataNero;
+						
+							/*现在开始数据填充*/
+							nero_putDataIntoNero(dataNero,dataPoint_[0],0,0);
+						}
+
+						dataNero=nero_GetSomeNeroForData(1);
+						/*将将概念神经元的inputListHead指向这个数据链表*/
+						if(dataNero)
+						{
+							NerveFiber * fiber=addNerveFiber(tmp2,NerveFiber_Input,Fiber_PointToData);
+							fiber->obj=dataNero;
+						
+							/*现在开始数据填充*/
+							nero_putDataIntoNero(dataNero,dataPoint_[1],0,0);
+							tmp=tmp2;
+						}
+
+
+					}
+				}
+				break;
+
 		case NeuronNode_ForInputWord:
 		case NeuronNode_ForOutputWord:
 			wordP2=(ChUTF8  *)Data;/*实际上只是一个ChUTF8而非ChUTF8_结构的数据，但是不影响结果*/
@@ -4092,12 +4138,14 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 	NerveFiber  *  curFiber;	
 	ChUTF8  words[400];
 	NeuronObject *tmp;
+		NeuronObject *tmp1;
 	NeuronObject *tmp2;
+		NeuronObject *tmpobj;
 	nero_s32int strlenInData,i,allFindFlag,charLength,objNum;
 	ChUTF8  * wordP2;
 	ChUTF8_  *wordP;
 	nero_s8int  * p,* StrEnd;
-
+	nero_us32int * dataPoint_;
 	nero_us8int  * ttt22;
 	if (Data == NULL  || dataKind<NeuronNode_ForNone  || dataKind>NeuronNode_Max  || GodNero == NULL )
 	{
@@ -4114,6 +4162,42 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 
 	switch(dataKind)
 	{
+	case NeuronNode_ForLayering:
+			dataPoint_ = (nero_us32int * )Data;
+			//get the base kind obj
+			tmp1=nero_getBaseObjByKind(dataPoint_[0],GodNero);
+			tmp2=nero_getBaseObjByKind(dataPoint_[1],GodNero);
+			if(tmp1 != NULL  &&  tmp2 != NULL)
+			{
+
+				curFiber=GodNero->outputListHead;
+				//find the  dataKind  baseobj
+				while(    nero_GetNeroKind(curFiber->obj) ==   dataKind  )
+					curFiber=curFiber->next;
+				tmp=curFiber->obj;//baseobj
+				if(tmp )
+				{
+					tmp = NULL;
+					//是时候查询是否有相应得实例对象了
+					for(curFiber=tmp ->outputListHead;curFiber != NULL &&   curFiber->obj != NULL; curFiber=curFiber->next)
+					{
+						tmpobj= curFiber->obj;
+						if(tmpobj != NULL &&   curFiber->next != NULL  &&   curFiber->next->obj != NULL )
+						{
+							if(tmpobj->inputListHead->obj->x ==  dataPoint_[0])
+							{
+								if( curFiber->next->obj->inputListHead->obj->x ==  dataPoint_[1])
+								{
+									tmp = tmpobj;
+								}
+							}							
+						}
+
+					}
+					
+				}
+			}
+			break;
 	case NeuronNode_ForChCharacter:
 			p= (nero_s8int  *) Data;
 			i=0;

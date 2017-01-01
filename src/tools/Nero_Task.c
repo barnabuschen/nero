@@ -551,6 +551,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
  	      nero_s32int *dataKind;
         nero_us8int *linc;
         nero_s32int dataNum,k,countOfWord,m,lenOfpar,tmpCount,searchForUnknowKind,FailTosearchForUnknowKind;
+        nero_us32int * kindArray;
         void **DataFlow;
         nero_8int baseobjName[100]="阿拉伯数字";
         struct DataFlowProcessArg arg2;		
@@ -668,10 +669,11 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                              linc=(char *)DataFlow[k];
                              memset(linc,0,(lenOfpar) );
                             //把字符串转化为数字
+                             kindArray = (nero_us32int *)linc;
+                             kindArray[0] = atoi(tff->data[1]);
+                             kindArray[1] = atoi(tff->data[2]);
 
-                             .........
-
-
+                            printf("Task_Order_CreateLayeringKindObj : kind1=%d, kind2=%d\n",kindArray[0],kindArray[1]);
 
                             // memcpy(linc,tff->data[k+1],(lenOfpar) +1);
                             dataKind[k]=NeuronNode_ForLayering; 
@@ -880,6 +882,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 break;   
          case    Task_Order_CreateLayeringKindObj    :
                 dataKind[0]=NeuronNode_ForLayering;
+                 arg2.dataNum=1;
                 // ((NeroConf *)DataIO_st.str)->addLevelObjAlways=1;
                 // arg2.conf->addLevelObjAlways=1;
                 // DataIO_st.operateKind =Conf_Modify_addLevelObjAlways;

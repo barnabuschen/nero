@@ -396,7 +396,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 			{
 				case NeuronNode_ForChCharacter:
 				case NeuronNode_ForChWord:
-				
+				case NeuronNode_ForLayering:
 						tmpObi=  nero_addNeroByData(DataFlow[i],dataKind[i],GodNero);
 						break;
 				default:

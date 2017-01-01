@@ -4140,7 +4140,7 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 	NeuronObject *tmp;
 		NeuronObject *tmp1;
 	NeuronObject *tmp2;
-		NeuronObject *tmpobj;
+		NeuronObject *tmpobj,* baseobj;
 	nero_s32int strlenInData,i,allFindFlag,charLength,objNum;
 	ChUTF8  * wordP2;
 	ChUTF8_  *wordP;
@@ -4174,12 +4174,12 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 				//find the  dataKind  baseobj
 				while(    nero_GetNeroKind(curFiber->obj) ==   dataKind  )
 					curFiber=curFiber->next;
-				tmp=curFiber->obj;//baseobj
-				if(tmp )
+				baseobj=curFiber->obj;//baseobj
+				if(baseobj )
 				{
 					tmp = NULL;
 					//是时候查询是否有相应得实例对象了
-					for(curFiber=tmp ->outputListHead;curFiber != NULL &&   curFiber->obj != NULL; curFiber=curFiber->next)
+					for(curFiber=baseobj ->outputListHead;curFiber != NULL &&   curFiber->obj != NULL; curFiber=curFiber->next)
 					{
 						tmpobj= curFiber->obj;
 						if(tmpobj != NULL &&   curFiber->next != NULL  &&   curFiber->next->obj != NULL )

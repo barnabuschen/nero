@@ -457,6 +457,8 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 	// printf("Log_printAllKindOf  done\n");
 	return nero_msg_ok;
 }
+
+// 打印obj 输出列表得信息
 nero_s32int Log_printNeroObjLinkTree(void * arg)
 {
 		nero_8int  *str=strTmp;
@@ -467,38 +469,10 @@ nero_s32int Log_printNeroObjLinkTree(void * arg)
 	NerveFiber  *  curFiber;
 	
 																		
-		//~ 首先你得确定几种搜索的方式，及其具体的方案：						
-						//~ 1:by  adress
-						//~ 2:by  type name    And  data									
-	//~ 这里首先实现第二种方案
-	if(objTreeSt.obAddress     !=0)     
-	{
-		
-		}
-	else  if(objTreeSt.obTypeName   !=  NULL) 
-	{
-					
-					if(objTreeSt.choseType  ==  ChoseBaseObj )
-					{
-								//~ 已知：obTypeName
-													//~ ChoseBaseObj
-								//~ 求输出该类的子对象的信息（地址，类型或者数据，但是好像输出类型用的比较少吧）
-								//~ 实现方式是向thread_for_Log_Pic  发送消息，需要定义一个新的消息函数（把整个objTreeSt传送过去）
-								
 
-		
-								
-								
-						
-					}
-					else if(objTreeSt.choseType  ==    ChoseDerivativeObj )
-					{
-								
-					
-					}
-		}	
-	
-	
+
+
+
 	
 	
 }

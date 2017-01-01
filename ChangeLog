@@ -319,12 +319,14 @@ Task_Order_DataSteamInput
 			最终得出一个分类得结果
 
 
-		这里必须要注意：
+		那你究竟希望sys输出什么呢？
+		就是你输入一组数据，让sys判断最可能得类别，让他输出这个类别
 
 
 
 
-
+	// 打印obj 输出列表得信息
+nero_s32int Log_printNeroObjLinkTree(void * arg)
 
 
 

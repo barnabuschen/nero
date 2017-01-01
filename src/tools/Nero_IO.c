@@ -414,6 +414,11 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 					tmp=childcurFiber->obj;
 					switch(ObjectKind2)
 					{
+
+						case NeuronNode_ForData:
+							sprintf(str,"%d%d%d,",tmp->x,tmp->y,tmp->z);
+
+							break;		
 						case NeuronNode_ForChCharacter:
 							IO_getZhInNero(str,tmp);
 

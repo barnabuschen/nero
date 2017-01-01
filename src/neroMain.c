@@ -217,6 +217,7 @@ void ProInitialization()
 				neroObjMsgWithStr_st.fucId =2;//Log_printAllKindOf
 				neroObjMsgWithStr_st.Obi =NULL;
 				 xxxxxx=NeuronNode_ForChWord;
+				  // xxxxxx=NeuronNode_ForLayering;
 				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 	     		#endif	

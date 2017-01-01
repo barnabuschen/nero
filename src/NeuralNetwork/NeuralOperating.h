@@ -50,6 +50,13 @@ struct NeroObjForecastControl
 
 
 
+	nero_s32int  DurationTime;  //持续时间,就是指该expectedKind得有效期
+								// 0: Duration all the time  until changed
+								// 1: just be used  one time ,so if(Refreshed == 1  &&  DurationTime ==1),that mean ,expectedKind is Invalid 无效的
+
+
+
+
 
 };	
 
@@ -143,7 +150,7 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 
 //void nero_CreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf);
 
-void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObject *  complexObj);
+void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObject *  complexObj,NeuronObject  *godNero);
 
 
 

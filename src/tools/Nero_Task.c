@@ -61,6 +61,9 @@
 
 #define  Task_Order_ResetConf     500  /*将conf恢复为默认配置*/
 
+#define  Task_Order_ForecastCtrlMsg     510  /*set up  struct NeroObjForecastControl  */
+
+
 #define  Task_Order_Max     1000
 
 
@@ -95,6 +98,8 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 {Task_Order_CreateObjALBS,2,TFFDataType_String,	TFFDataType_Character},
 //~ 将conf恢复为默认配置   参数个数 新类名	     	新类的第一个数据
 {Task_Order_ResetConf,   0}, 
+//~ 将conf恢复为默认配置   参数个数 新类名         新类的第一个数据
+{Task_Order_ForecastCtrlMsg,4,TFFDataType_String,TFFDataType_String,TFFDataType_String,TFFDataType_String}, 
 /*创建"数学符号"	  参数个数 新类名	     	新类的第一个数据*/
 {Task_Order_MathNotation,2,TFFDataType_String,	TFFDataType_Character},
 /*创建"new  kind"	  参数个数 新类名	     	新类的第一个数据*/
@@ -554,13 +559,15 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         nero_us32int * kindArray;
         void **DataFlow;
         nero_8int baseobjName[100]="阿拉伯数字";
+        nero_us32int tmpDataArray[100];
         struct DataFlowProcessArg arg2;		
         struct { long type; char text[100]; } mymsg;        
         
         NeuronObject  * tmpobj;
 
         nero_8int  kindname1[]={"整数"};
-     
+      struct  IODataMsg_  DataIO_st; 
+    struct NeroObjForecastControl forecastCtrl_st;     
         
 	nero_s32int i,orderPos,flag;
 	/*先转化为可以发送命令的参数*/
@@ -659,6 +666,37 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 /*				printf("obtainOrderFromTFF: CreateObjShu order \n");*/
                 switch( tff->order)
                 {
+                    case  Task_Order_ForecastCtrlMsg:
+
+
+
+                            //你在shell中把数据分开写，但是这里把他们进行合并
+                            // if(k == 0 &&  countOfWord == 2)
+                            {
+                             // lenOfpar=9;
+                            // DataFlow[k]=(void *)malloc( lenOfpar );
+                             // linc=(char *)DataFlow[k];
+                             // memset(linc,0,(lenOfpar) );
+                            //把字符串转化为数字
+                             kindArray = (nero_us32int *)tmpDataArray;
+                             kindArray[0] = atoi(tff->data[1]);
+                             kindArray[1] = atoi(tff->data[2]);
+                             kindArray[2] = atoi(tff->data[3]);
+                             kindArray[3] = atoi(tff->data[4]);
+
+                            forecastCtrl_st.expectedKind= kindArray[0];
+                            forecastCtrl_st.baseORDerivative= kindArray[1];
+                            forecastCtrl_st.Refreshed= kindArray[2];
+                            forecastCtrl_st.DurationTime= kindArray[3];
+                            // printf("Task_Order_CreateLayeringKindObj : kind1=%d, kind2=%d\n",kindArray[0],kindArray[1]);
+
+                            // memcpy(linc,tff->data[k+1],(lenOfpar) +1);
+                            // dataKind[k]=NeuronNode_ForLayering; 
+
+
+                            }
+
+                            break;
 
                     case  Task_Order_CreateLayeringKindObj:
                             //你在shell中把数据分开写，但是这里把他们进行合并
@@ -831,7 +869,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
     arg2.DataFlow=DataFlow;
     
         /*必须通过发送消息来修改conf*/
-    struct  IODataMsg_  DataIO_st; 
+
     DataIO_st.MsgId = MsgId_Nero_ConfModify;
     DataIO_st.fucId = 1;
     switch( tff->order)
@@ -882,17 +920,36 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 break;   
          case    Task_Order_CreateLayeringKindObj    :
                 dataKind[0]=NeuronNode_ForLayering;
+                countOfWord=1;
                  arg2.dataNum=1;
                 // ((NeroConf *)DataIO_st.str)->addLevelObjAlways=1;
                 // arg2.conf->addLevelObjAlways=1;
                 // DataIO_st.operateKind =Conf_Modify_addLevelObjAlways;
                 // flag=0;
-                break;                          
+                break;           
+          case    Task_Order_ForecastCtrlMsg    :
+
+                countOfWord=0;
+                // dataKind[0]=NeuronNode_ForLayering;
+                //  arg2.dataNum=1;
+                // ((NeroConf *)DataIO_st.str)->addLevelObjAlways=1;
+                // arg2.conf->addLevelObjAlways=1;
+                // DataIO_st.operateKind =Conf_Modify_addLevelObjAlways;
+                DataIO_st.operateKind =Forecast_Control_Set;
+                flag=3;
+                break;                                    
     	 default :
                 DataIO_st.operateKind =Conf_Modify_ReSet; 
                 flag=0;
                 break;
     }
+     if(flag  == 3)
+    {
+        memcpy(DataIO_st.str,&forecastCtrl_st,sizeof(struct NeroObjForecastControl));
+        // ((NeroConf *)DataIO_st.str)->addLevelObjAlways=1;
+        // ((NeroConf *)DataIO_st.str)->CreateNewBaseObjKind=0;
+        msgsnd(Operating_mq_id, &DataIO_st, sizeof(DataIO_st), 0);          
+    }   
     if(flag  == 2)
     {
         memcpy(DataIO_st.str,&neroConf,sizeof(NeroConf));

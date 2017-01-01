@@ -15,6 +15,9 @@
 #define  Conf_Modify_CreateNewBaseObjKind    2   //修改CreateNewBaseObjKind
 
 #define  Conf_Modify_ReSet    100  //修改conf   为默认状态
+#define  Forecast_Control_Set    120  //修改Forecast  Control  struct
+
+
 /*****************************************************/
 
 #define  Process_Create_ForOutputWord    3  //create a   NeuronNode_ForOutputWord  kind   obj

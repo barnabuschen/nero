@@ -39,6 +39,7 @@ nero_s32int Operating_NeroConfigurationModify(void * operateKind,void *c)
 {
         NeroConf * tmpConf=c;
         nero_s32int kind=*((nero_s32int *)operateKind);
+        struct NeroObjForecastControl  * tmpcrtl;
 /*        printf("i=%d.\n",tmpConf->addLevelObjAlways);*/
         switch(kind)
         {
@@ -58,8 +59,18 @@ nero_s32int Operating_NeroConfigurationModify(void * operateKind,void *c)
                    printConfChangMsg(Conf_Modify_ReSet);
               
                 break;          
-        
-        
+           case Forecast_Control_Set:
+           		tmpcrtl=(struct NeroObjForecastControl  *) c;
+					// resetNeroConf();
+           		forecastInfo_st.controlMsg.expectedKind		=tmpcrtl->expectedKind;
+           		forecastInfo_st.controlMsg.baseORDerivative=tmpcrtl->baseORDerivative;
+           		forecastInfo_st.controlMsg.Refreshed		=tmpcrtl->Refreshed;
+           		forecastInfo_st.controlMsg.DurationTime		=tmpcrtl->DurationTime;
+
+        		// printf("Forecast_Control_Set..............(%d %d %d %d).............\n",forecastInfo_st.controlMsg.expectedKind,forecastInfo_st.controlMsg.baseORDerivative,forecastInfo_st.controlMsg.Refreshed,forecastInfo_st.controlMsg.DurationTime);
+              
+                break; 
+
         default:break;
         }
 
@@ -916,7 +927,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	printf("coutOferror_Msg_   14:%d.\n",coutOferror_Msg_);
 	#endif	
 		
-	Process_IoFuc( &forecastInfo_st,  complexObj);
+	Process_IoFuc( &forecastInfo_st,  complexObj,GodNero);
 
 
 	// you should  init   neroConf  every time  you  run  this  fuc
@@ -972,12 +983,15 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 						find if has operating neros,including input ,output
 						find if has 
 		2:  check the  retuen  of nero_createObjFromMultiples()  has operating neros or not 
-
+		3:  struct NeroObjForecastControl  give the wants of outside 
 	*/
-void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObject *  complexObj)
+void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObject *  complexObj,NeuronObject  *godNero)
 {
-
+	NerveFiber *tmpFiber;
+	NerveFiber *lowFiber;
 	NeuronObject *  tmp;
+	NeuronObject *tmp2;
+		NeuronObject *tmp1;
 	struct list_head  * listHead;       
 	// AddNewObjToList();
 	nero_s32int  i,j;
@@ -1022,6 +1036,33 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 
 
 						break;
+					case NeuronNode_ForLayering:
+			// #define  NeuronNode_ForLayering      110   //定义一个基类a是另一个基类b得上层类，that is  mean：基类b得输出列表会指向基类a
+											// inputListHead  为俩个数据，前者是基类a 得kind值(save  in x)，后者是基类b得得kind值
+
+						tmpFiber=tmp->inputListHead;
+						tmp1=nero_getBaseObjByKind(tmpFiber->obj->x,godNero);
+						tmp2=nero_getBaseObjByKind(tmpFiber->next->obj->x,godNero);
+						if(tmp1 != NULL  &&  tmp2 != NULL)
+						{
+							// 问题来了你这样在基类得输出列表中加入一个指向上层得链接是否会影响基类衍生类得搜索结果
+							//so the  way to solve this problem is : make b's  Derivative Object point to baseobj   rather than  
+							// baseobj 
+							// 这样也不行阿，这样得只是讲现有得衍生对象设置了层次关系，那以后加入得关系仍然没有阿
+							// 除非是这样，就是没隔一段时间就执行下这段代码(需要一个新得机制................)
+							lowFiber= tmp2->outputListHead;
+							while(lowFiber != NULL &&  lowFiber->obj != NULL)
+							{
+
+								PointingToObject(lowFiber->obj,tmp1,Fiber_PointToUpperLayer);
+								lowFiber=lowFiber->next;
+							}
+
+						}
+
+
+						break;
+
 					default:
 						break;
 				}
@@ -1427,7 +1468,11 @@ nero_us32int nextAvailableNeroInPool;*/
 	INIT_LIST_HEAD(&(forecastInfo_st.headOfLowerLayer.p));
 	forecastInfo_st.headOfLowerLayer.times=0;
 	
-	
+	forecastInfo_st.controlMsg.expectedKind =NeuronNode_ForNone;
+	forecastInfo_st.controlMsg.baseORDerivative =1;
+	forecastInfo_st.controlMsg.Refreshed =0;
+	forecastInfo_st.controlMsg.DurationTime =0;
+
 	while(1)
 	{
 		/*死循环*/
@@ -1591,32 +1636,32 @@ void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
 /*        #define Debug_CleanForecastList2*/
          #ifdef Debug_CleanForecastList
         printf("headOfUpperLayer-----------\n");
-	#endif	    
+		#endif	    
 	
-	#ifdef Nero_DeBuging24_01_14_
-        nero_s32int i=0;
-        p=(struct list_head  *)forecastInfo->headOfUpperLayer.p.next;
-         head=(struct list_head  *)&(forecastInfo->headOfUpperLayer.p);
-        while(p != head  &&  p != NULL)
-        {
-                p=p->next;
-                i++;
-        }	
-	if (p != head)
-	{
-	        printf("链表出错,c=%d\n",i);
-	}
-	else
-	        printf("all counts=%d\n",i);
+		#ifdef Nero_DeBuging24_01_14_
+		nero_s32int i=0;
+		p=(struct list_head  *)forecastInfo->headOfUpperLayer.p.next;
+		head=(struct list_head  *)&(forecastInfo->headOfUpperLayer.p);
+		while(p != head  &&  p != NULL)
+		{
+			p=p->next;
+			i++;
+		}	
+		if (p != head)
+		{
+			printf("链表出错,c=%d\n",i);
+		}
+		else
+			printf("all counts=%d\n",i);
 		
-	#endif      
+		#endif      
 
         p=(struct list_head  *)(forecastInfo->headOfUpperLayer.p.next);
         head=(struct list_head  *)&(forecastInfo->headOfUpperLayer.p);
         while(p != head )
         {
                 findObiPoint=(struct NeroObjForecastList   *) p;
-                if (findObiPoint->times  > NeroMaxLastTimeINForecastList)
+                if (findObiPoint->times  > NeroMaxLastTimeINForecastList  ||  forecastInfo->controlMsg.Refreshed == 1 )
                 {
                          /*移除这个节点*/
                         __list_del_entry((struct list_head *)p);
@@ -1625,13 +1670,13 @@ void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
                                  p=p->next;
                                  #ifdef Debug_CleanForecastList2
                                 printf("headOfUpperLayer-----------\n");
-	                        #endif	
+	                       		 #endif	
                                 free(findObiPoint);
                                 (forecastInfo->headOfUpperLayer.times)--;
                                  #ifdef Debug_CleanForecastList2
                                 printf("预测链表缩减。。。。。。。\n");
-		                #endif	  
-		                continue;                             
+		              			  #endif	  
+		             		   continue;                             
                         }  
                 }
 
@@ -1640,13 +1685,13 @@ void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
         }
          #ifdef Debug_CleanForecastList
         printf("headOfLowerLayer-----------\n");
-	#endif	
+		#endif	
         p=(struct list_head  *)forecastInfo->headOfLowerLayer.p.next;
          head=(struct list_head  *)&(forecastInfo->headOfLowerLayer.p);
         while(p != head) 
         {
                 findObiPoint=(struct NeroObjForecastList   *) p;
-                if (findObiPoint->times  > NeroMaxLastTimeINForecastList)
+                if (findObiPoint->times  > NeroMaxLastTimeINForecastList ||  forecastInfo->controlMsg.Refreshed == 1 ) 
                 {
                         
                          /*移除这个节点*/
@@ -1656,13 +1701,13 @@ void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
                                  p=p->next;
                                  #ifdef Debug_CleanForecastList2
                                 printf("headOfLowerLayer-----------\n");
-	                        #endif	
+	                       		 #endif	
                                 free(findObiPoint);
                                 (forecastInfo->headOfLowerLayer.times)--;
                                  #ifdef Debug_CleanForecastList2
                                 printf("预测链表缩减。。。。。。。\n");
-		                #endif	  
-		                continue;                             
+		             			   #endif	  
+		             		   continue;                             
                         }                       
                         
                         
@@ -1676,7 +1721,7 @@ void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
 	
          #ifdef Debug_CleanForecastList
         printf("headOfSameLayer-----------\n");
-	#endif	
+		#endif	
         p=(struct list_head  *)forecastInfo->headOfSameLayer.p.next;
          head=(struct list_head  *)&(forecastInfo->headOfSameLayer.p);
 /*          i=0;*/
@@ -1684,11 +1729,11 @@ void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
         {
  
                 findObiPoint=(struct NeroObjForecastList   *) p;
-	#ifdef Nero_DeBuging24_01_14_
+				#ifdef Nero_DeBuging24_01_14_
         
-        printf(" counts=%d  p=%x,prev=%x   next=%x\n",++i,p,p->prev,p->next);
-        #endif 
-                if (findObiPoint->times  > NeroMaxLastTimeINForecastList)
+      			  printf(" counts=%d  p=%x,prev=%x   next=%x\n",++i,p,p->prev,p->next);
+       			 #endif 
+                if (findObiPoint->times  > NeroMaxLastTimeINForecastList ||  forecastInfo->controlMsg.Refreshed == 1 )
                 {
                         /*移除这个节点*/
                         __list_del_entry((struct list_head *)p);
@@ -1706,11 +1751,11 @@ void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
 		                continue;                             
                         }
                 }
-  	#ifdef Nero_DeBuging24_01_14_
+  		#ifdef Nero_DeBuging24_01_14_
         
         printf(" counts=%d  p=%x,prev=%x   next=%x\n",i,p,p->prev,p->next);
         #endif               
-                p=p->next;
+        p=p->next;
         
         }        
 
@@ -2312,6 +2357,8 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 	 #define ObjForecast_DeBug_msg_
 	 
 	nero_s32int ObjForecast_DeBug_Count=0;
+
+    CleanForecastList( forecastInfo);
 
 	 //get a  obj in  objs for  Forecast
 	while( (tmpObi=Process_IfHasNextObjToread(forecastInfo))  !=   NULL)

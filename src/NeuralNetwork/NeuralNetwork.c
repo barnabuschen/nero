@@ -1184,6 +1184,8 @@ nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher,nero_s32in
 	{
 		if (curFiber->obj  == higher &&   getFiberType(curFiber)  == pointTotype)
 		{
+
+
 			return NeroOK;
 		}
 	
@@ -1645,6 +1647,7 @@ nero_s32int nero_isInNet(NeuronObject *Obi)
 	NerveFiber *tmpFiber;
 	NeuronObject *tmpObi;
 	nero_s32int IsInNet=0,isbase,isSame;
+	nero_us32int  objkind;
 	/*首先你要判断这俩个概念是不是在网络中存在，如果不存在，则报错返回*/
 	/*对于一个已经在网络中的数据一定满足系列条件*/
 	if(Obi ==NULL)
@@ -1655,12 +1658,14 @@ nero_s32int nero_isInNet(NeuronObject *Obi)
 		/*1:它指向一个基类*/
 	isbase=0;
 	tmpFiber=Obi->outputListHead;
+	objkind=nero_GetNeroKind(Obi);
+
 	while (tmpFiber)
 	{
 		tmpObi=tmpFiber->obj;
 		/*判断是不是基类*/
 		isbase=nero_isBaseObj(tmpObi);
-		if(isbase ==1)
+		if(isbase ==1  &&  objkind == nero_GetNeroKind(tmpObi))
 			break;
 		tmpFiber=tmpFiber->next;
 	}
@@ -3274,6 +3279,7 @@ NeuronObject *  nero_createObjFromSingleObj(NeuronObject *childObi,nero_s32int u
 NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum)
 {
 	NeuronObject *newObi;
+	NeuronObject *basekidobj;
 	NerveFiber *tmpFiber;
 	nero_s32int newObiKind,res,i,createNewBaseKindFlag;
         #define createObjFromMultiples_DeBug_Msg
@@ -3291,7 +3297,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 		if ( nero_isInNet(Obis[i]) !=1  )
 		{
 		        #ifdef   createObjFromMultiples_DeBug_Msg
-		        printf("nero_createObjFromMultiples  概念不在网络中\n");
+		        printf("nero_createObjFromMultiples  概念不在网络中,kind=%d\n",nero_GetNeroKind(Obis[i]));
 		        #endif	
 		        return NULL;	
 		}
@@ -3414,6 +3420,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	else
 		i=0;
 
+	basekidobj=nero_getBaseObjByKind(newObiKind,GodNero);
 	for (;i<objNum;i++)
 	{
 		/*生成新概念的数据链表*/
@@ -3423,13 +3430,19 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 		/*建立新概念已经子对象之间的关系*/
 /*		addNeuronChild(newObi,Obis[i],Relationship_ChildToFather);*/
 		PointingToObject(Obis[i],newObi,Fiber_PointToUpperLayer);// put  newObi  in  Obis[i]  's   output list
-		// 加强a得 outputlist中指向得所有 属于 UpperObjKind类得实例得fiber链接强度
-		// nero_StrengthenLinkWithK( Obis[i],newObiKind,newObi);
+		/*	在nero_createObjFromMultiples中新得衍生类对象得数据对象（子对象）只指向了新得衍生类，并没有指向抽象基类
+		假如加入指向抽象基类得fiber，且这个fiber将基类每个子对象在整个sys运行过程中该子对象指向该抽象基类得次数
+		那个这个冗余数据将加快分类中查询链接次数得操作
+		*/		
+		PointingToObject(Obis[i],basekidobj,Fiber_PointToUpperLayer);
+		nero_StrengthenLinkWithK(Obis[i],newObiKind,basekidobj);
 
 		if (i>0)
 		{
 /*			addNeuronChild(Obis[i],Obis[i-1],Relationship_ChildToFather);	*/
 			PointingToObject(Obis[i-1],Obis[i],Fiber_PointToSameLayer);
+
+
 		}
 		#ifdef   Nero_DeBuging04_01_14_
 /*		if (kind != NeuronNode_ForChCharacter)*/

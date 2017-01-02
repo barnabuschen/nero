@@ -329,16 +329,18 @@ Task_Order_DataSteamInput
 nero_s32int Log_printNeroObjLinkTree(void * arg)
 
 
+//////////////////////////////////////////////////////////////////////
+2600行的bug处理：
+		else
+		{
+		        // forecastInfo->waitForRecognise=tmpObi;
+		        /*让预测列表更新后（加入tmpObi）重新识别一遍tmpObi*/
+		        // forecastInfo->waitForRecogniseObjPos=forecastInfo->objPoint-1;
+		        // forecastInfo->objPoint=forecastInfo->waitForRecogniseObjPos;
+		
+		}	
 
-
-
-
-
-
-
-
-
-
+	如果实在处理不了，就先注释掉Process_ObjForecast重新写这部分代码
 
 
 

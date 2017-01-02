@@ -40,7 +40,7 @@ struct NeroObjForecastList
 //Forecast  Control  struct
 struct NeroObjForecastControl
 {
-	nero_s32int expectedKind;//外界期望输出得对象类型
+	nero_s32int expectedKind;//外界期望输出得对象类型,如果没有要求，或者暂时不知道就设置为NeuronNode_ForUndefined
 	nero_s32int baseORDerivative;//是基类还是衍生对象得实例,
 								 // 1 ：基类，
 								 // 0 :衍生类
@@ -110,6 +110,7 @@ void * thread_for_Sys_Pic(void *arg);
 /*从数据流中分离出俩个或者多个概念，并组合成一个新的概念，这个新的概念的类型由子概念决定*/
 nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf);
 
+NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * forecastInfo);
 
 
 
@@ -153,7 +154,7 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObject *  complexObj,NeuronObject  *godNero);
 
 
-
+int qSortCmp1(const void *a,const void *b);
 
 
 

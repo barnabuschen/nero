@@ -556,7 +556,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*	forecastInfo_st.head=NULL;//在thread_for_Sys_Pic(void *arg)中被初始化*/
 		
 
-	#ifdef DataFlowProcess_error_Msg_
+	#ifdef DataFlowProcess_error_Msg1_
 
 	//print objs  array
 	printf("before Process_ObjForecast:\n");
@@ -576,11 +576,25 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	// #define Nero_TestCount     30
 	if (  /*Nero_TestCount >= coutOferror_Msg_  && */ conf->CreateNewBaseObjKind != 1   &&  conf->addLevelObjAlways != 1 )
 	{
+
+			// 这个函数的初衷是看看数组objs能否组成一个对象，该对象在sys已经存在，并且他的部分子对象在
+			// 数组objs中
+			// 但是现在希望加入新的功能：就是根据Forecast  Control   struct NeroObjForecastControl的
+			// 信息尝试找出数组objs最可能属于那个类的对象，算法原理就是根据objs每个子对象指向的上层类
+			// 次数的多少来判断,当然这个上层类必须满足结构struct NeroObjForecastControl指定的要求
+
 	        Process_ObjForecast(&forecastInfo_st);
+
+    		Process_ObjsClassiFication(&forecastInfo_st);
 	}
         /***************************************************************/
 /*        printf("coutOferror=%d.\n",coutOferror_Msg_);*/
-        
+    // 分类的准确含义是什么？仅仅是找出来一个最相似的basekind么，还是包括find out与传入的objs最类似的上层衍生obj
+    // it doesnot mattar ,if need to find a basekind ,just return the basekind obj.
+
+
+
+
 	#ifdef DataFlowProcess_error_Msg
 	printf("coutOferror_Msg_   13:%d.\n",coutOferror_Msg_);
 	#endif	
@@ -1628,12 +1642,29 @@ nero_s32int Process_UpdataForecastList(struct DataFlowForecastInfo  * forecastIn
 }
 void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
 {
+/* struct NeroObjForecastControl
+{
+	nero_s32int expectedKind;//外界期望输出得对象类型
+	nero_s32int baseORDerivative;//是基类还是衍生对象得实例,
+								 // 1 ：基类，
+								 // 0 :衍生类
+	nero_s32int Refreshed;		//该信息是否在本次DataFlowProcess运行前被刷新过
+								 // 1 ：has  Refreshed
+								 // 0 :old msg  --------set 0  at the end of fuc DataFlowProcess
+	nero_s32int  DurationTime;  //持续时间,就是指该expectedKind得有效期
+								// 0: Duration all the time  until changed
+								// 1: just be used  one time ,so if(Refreshed == 1  &&  DurationTime ==1),that mean ,expectedKind is Invalid 无效的
+			/////////////DurationTime比Refreshed有更高的优先级，就是说，//////////////////
+			/////////////即使Refreshed为0但DurationTime为0时，该标记依旧有效/////////////////
+			//////////////但是一旦Refreshed为1，则必须在次函数中情kong list//////////////////////
+};*/
+
         struct NeroObjForecastList   * findObiPoint;
         struct list_head  * p; 
         struct list_head  * head; 
 /*        struct NeroObjForecastList * tmplistNode;*/
 /*        #define Debug_CleanForecastList*/
-/*        #define Debug_CleanForecastList2*/
+        // #define Debug_CleanForecastList2
          #ifdef Debug_CleanForecastList
         printf("headOfUpperLayer-----------\n");
 		#endif	    
@@ -1674,7 +1705,7 @@ void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
                                 free(findObiPoint);
                                 (forecastInfo->headOfUpperLayer.times)--;
                                  #ifdef Debug_CleanForecastList2
-                                printf("预测链表缩减。。。。。。。\n");
+                                printf("预测链表缩减。。。。。。。Refreshed=%d\n",forecastInfo->controlMsg.Refreshed);
 		              			  #endif	  
 		             		   continue;                             
                         }  
@@ -1684,7 +1715,7 @@ void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
         
         }
          #ifdef Debug_CleanForecastList
-        printf("headOfLowerLayer-----------\n");
+        printf("headOfLowerLayer-----------start------start------start------start------\n");
 		#endif	
         p=(struct list_head  *)forecastInfo->headOfLowerLayer.p.next;
          head=(struct list_head  *)&(forecastInfo->headOfLowerLayer.p);
@@ -1720,7 +1751,7 @@ void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
 
 	
          #ifdef Debug_CleanForecastList
-        printf("headOfSameLayer-----------\n");
+        printf("headOfSameLayer-----start------\n");
 		#endif	
         p=(struct list_head  *)forecastInfo->headOfSameLayer.p.next;
          head=(struct list_head  *)&(forecastInfo->headOfSameLayer.p);
@@ -1728,6 +1759,10 @@ void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
         while(p != head) 
         {
  
+
+                printf("xunhuan:head:%x,Refreshed=%d,nums(%d)\n",head,forecastInfo->controlMsg.Refreshed,forecastInfo->headOfSameLayer.times);
+
+
                 findObiPoint=(struct NeroObjForecastList   *) p;
 				#ifdef Nero_DeBuging24_01_14_
         
@@ -1742,22 +1777,25 @@ void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
                                  p=p->next;
                                  #ifdef Debug_CleanForecastList2
                                 printf("headOfSameLayer-----------\n");
-	                        #endif
+	                    	    #endif
                                 free(findObiPoint);
                                 (forecastInfo->headOfSameLayer.times)--;
                                  #ifdef Debug_CleanForecastList2
-                                printf("预测链表缩减。。。。。。。\n");
-		                #endif	  
-		                continue;                             
+                                // printf("预测链表缩减。。。。。。。\n");
+								// printf("Process_ObjsClassiFication:list is empty....listPoint=%x,nums(%d)",listPoint,forecastInfo->headOfUpperLayer.times);
+                                printf("预测链表缩减。。Refreshed=%d,nums(%d)\n",forecastInfo->controlMsg.Refreshed,forecastInfo->headOfSameLayer.times);
+		               			 #endif	  
+		               			 continue;                             
                         }
                 }
-  		#ifdef Nero_DeBuging24_01_14_
+  		#ifdef Nero_DeBuging24_01_14
         
-        printf(" counts=%d  p=%x,prev=%x   next=%x\n",i,p,p->prev,p->next);
+        printf(" p=%x,prev=%x   next=%x\n",p,p->prev,p->next);
         #endif               
         p=p->next;
         
         }        
+                // printf(" end of CleanForecastList...........................\n");
 
 }
 void AddNewObjToList(struct DataFlowForecastInfo  * forecastInfo,nero_s32int FiberType,NeuronObject * Obj)
@@ -2104,13 +2142,13 @@ NeuronObject * Process_IfHasNextObjToread(struct DataFlowForecastInfo  * forecas
 		#endif
 		return NULL; 
         }
-        
-        if (forecastInfo->objPoint  ==  (forecastInfo->objNum))
+         // printf("objPoint=%d,objs=%x,forecastInfo->objNum=%d\n",forecastInfo->objPoint,forecastInfo->objs,forecastInfo->objNum);
+       
+        if (forecastInfo->objPoint  >=  (forecastInfo->objNum))
         {
                 return NULL; 
         }
-        forecastInfo->objPoint=forecastInfo->objPoint +1;
-/*        printf("objPoint=%d,objs=%x\n",forecastInfo->objPoint-1,forecastInfo->objs);*/
+        forecastInfo->objPoint = forecastInfo->objPoint +1;
         return ( forecastInfo->objs)[forecastInfo->objPoint  -1]; 
 
 }
@@ -2341,6 +2379,141 @@ void Process_IsTimeToMerage(struct DataFlowForecastInfo  * forecastInfo)
                 printf("无激活对象\n");
                 #endif	
 }
+
+	// int qsortCmp1(const void *a,const void *b);
+	// 假设是对int排序的话,如果是升序,那么就是如果a比b大返回一个正值,小则负值,相等返回0,其他的依次类推
+
+	// 这里要求降序排列
+int qSortCmp1(const void *a,const void *b)
+{
+	NerveFiber * fiberA;
+	NerveFiber * fiberB;
+	int res;
+
+	nero_us32int fiberStrengthenA;
+	nero_us32int fiberStrengthenB;
+	fiberA = (NerveFiber *)a;
+	fiberB = (NerveFiber *)b;
+
+	if(a == NULL || b == NULL)
+	{
+
+		return 0;
+	}
+	fiberStrengthenA=	(fiberA->msg1 & 0x000000ff);
+	fiberStrengthenB=	(fiberB->msg1 & 0x000000ff);
+
+	if(fiberStrengthenA  >  fiberStrengthenB)
+		return  (-1);
+
+	if(fiberStrengthenA  <  fiberStrengthenB)
+		return  (1);	
+
+	return 0;
+}
+
+// 分类的准确含义是什么？仅仅是找出来一个最相似的basekind么，还是包括find out与传入的objs最类似的上层衍生obj
+// it doesnot mattar ,if need to find a basekind ,just return the basekind obj.
+NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * forecastInfo)
+{
+
+/*
+在nero_createObjFromMultiples中新得衍生类对象得数据对象（子对象）只指向了新得衍生类，并没有指向抽象基类
+假如加入指向抽象基类得fiber，且这个fiber将 record 每个子对象在整个sys运行过程中该子对象 指向该抽象基类 得 次数
+那个这个冗余数据将加快分类中查询链接次数得操作 
+但是问题是：在某一个时刻你无法保证输出列表中的顺序就是完全按照链接程度来排列的。因为这需要足够大的数据才行
+*/
+ // in fuc Process_ObjForecast  ,you has put all the upper obj into list of headOfUpperLayer,  headOfLowerLayer
+// or headOfSameLayer,so you just need to search these list
+
+
+	NeuronObject *  matchObj;
+	nero_us32int matchKind=NeuronNode_ForNone;
+	nero_us32int     Process_tmpObiUsed=0;	//record    how many objs  store  in 
+	struct list_head * listPoint;
+	struct list_head * listheadPoint;
+	matchObj=NULL;
+	nero_us32int flag;
+	if(forecastInfo == NULL  ||   ( forecastInfo->controlMsg.Refreshed == 0 && forecastInfo->controlMsg.DurationTime == 1 ) )
+	{
+
+		// Refreshed == 0 mean the msg of controlMsg is old ,and DurationTime == 1 means the msg is outdate
+    	printf("Process_ObjsClassiFication :   parameter error,Refreshed(%d),(%d)\n",forecastInfo->controlMsg.Refreshed,forecastInfo->controlMsg.DurationTime );
+		return NULL;
+
+	}
+/* struct NeroObjForecastControl
+{
+	nero_s32int expectedKind;//外界期望输出得对象类型
+	nero_s32int baseORDerivative;//是基类还是衍生对象得实例,
+								 // 1 ：基类，
+								 // 0 :衍生类
+	nero_s32int Refreshed;		//该信息是否在本次DataFlowProcess运行前被刷新过
+								 // 1 ：has  Refreshed
+								 // 0 :old msg  --------set 0  at the end of fuc DataFlowProcess
+	nero_s32int  DurationTime;  //持续时间,就是指该expectedKind得有效期
+								// 0: Duration all the time  until changed
+								// 1: just be used  one time ,so if(Refreshed == 1  &&  DurationTime ==1),that mean ,expectedKind is Invalid 无效的
+			/////////////DurationTime比Refreshed有更高的优先级，就是说，//////////////////
+			/////////////即使Refreshed为0但DurationTime为0时，该标记依旧有效/////////////////
+			//////////////但是一旦Refreshed为1，则必须在次函数中情kong list//////////////////////
+};*/
+
+
+	// 怎么进行排序呢？
+	// first:put all obj that meets the  condition  into a new list or array,
+	// second:sort list
+	// 考虑到搜索目标的性质，这里只需要搜索list headOfUpperLayer
+
+	// #define Process_TemporaryNUM   7500    //just used  in  fuc  Process_StrengthenLink
+	// static NeuronObject  * Process_tmpObi[Process_TemporaryNUM];
+
+	listPoint =  &(forecastInfo->headOfUpperLayer.p );
+	listheadPoint=listPoint;
+	listPoint = listPoint->next;
+
+	if(listPoint ==  listheadPoint)
+	{
+		printf("Process_ObjsClassiFication:list is empty....listPoint=%x,nums(%d)",listPoint,forecastInfo->headOfUpperLayer.times);
+		return NULL;
+	}
+	// printf("start  matchObj....");
+	while(listPoint != NULL  &&  Process_tmpObiUsed < Process_TemporaryNUM  &&  listPoint != listheadPoint )
+	{
+
+		matchObj =  ( (struct NeroObjForecastList *)listPoint )->obj ;
+		flag = nero_isBaseObj(matchObj);
+		matchKind = nero_GetNeroKind(matchObj);
+		//
+		if(	flag ==  forecastInfo->controlMsg.baseORDerivative  )
+		{
+			if(forecastInfo->controlMsg.expectedKind  != NeuronNode_ForUndefined)
+			{
+
+				if( matchKind == forecastInfo->controlMsg.expectedKind )
+					Process_tmpObi[Process_tmpObiUsed ] =  matchObj;
+			}
+			else
+				Process_tmpObi[Process_tmpObiUsed ] =  matchObj;
+		}
+
+		Process_tmpObiUsed++;
+		listPoint= listPoint->next;
+	}
+
+	// qsort(s,n,sizeof(s[0]),cmp);  sizeof(s[0]
+	// int qsortCmp1(const void *a,const void *b);
+	// 假设是对int排序的话,如果是升序,那么就是如果a比b大返回一个正值,小则负值,相等返回0,其他的依次类推
+	qsort(Process_tmpObi,Process_tmpObiUsed,sizeof(Process_tmpObi[0]),qSortCmp1);
+
+	//check out the result:
+    printf("the most possible  matchObj:%x,kind =%d,isbase=%d \n",Process_tmpObi[0],nero_GetNeroKind(Process_tmpObi[0]) , nero_isBaseObj(Process_tmpObi[0]));
+
+
+    return Process_tmpObi[0];
+}
+
+
 void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 {
         struct NeroObjForecastList   *findObiPoint; 
@@ -2434,11 +2607,11 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
                     #endif   
                                 //put       activateForecastObj  into  list objs  list
 		                Process_MerageObjsList(forecastInfo);
-		              /*修改过后就重新开始  循环*/
+		              /*修改过后就重新开始  循环------------bug*/
 		                forecastInfo->activateForecastObj->start=-1;
 		                forecastInfo->activateForecastObj->end=-1;
 		                forecastInfo->activateForecastObj=NULL;
-		                forecastInfo->objPoint=0;
+		                // forecastInfo->objPoint=0;
 		                forecastInfo->timeToMerage=0;
 		                continue;          
 		      }
@@ -2446,16 +2619,16 @@ void Process_ObjForecast(struct DataFlowForecastInfo  * forecastInfo)
 		}
 		else
 		{
-		        forecastInfo->waitForRecognise=tmpObi;
+		        // forecastInfo->waitForRecognise=tmpObi;
 		        /*让预测列表更新后（加入tmpObi）重新识别一遍tmpObi*/
-		        forecastInfo->waitForRecogniseObjPos=forecastInfo->objPoint-1;
-		        forecastInfo->objPoint=forecastInfo->waitForRecogniseObjPos;
+		        // forecastInfo->waitForRecogniseObjPos=forecastInfo->objPoint-1;
+		        // forecastInfo->objPoint=forecastInfo->waitForRecogniseObjPos;
 		
 		}	
-		#ifdef ObjForecast_DeBug_msg
-		printf("before Updata tmpObi=%x.\n",tmpObi);
-                printf("objNum=%d objPoint=%d \n\n",forecastInfo->objNum,forecastInfo->objPoint);
-        #endif     
+		// #ifdef ObjForecast_DeBug_msg
+		// printf("before Updata tmpObi=%x.\n",tmpObi);
+                // printf("objNum=%d objPoint=%d \n\n",forecastInfo->objNum,forecastInfo->objPoint);
+        // #endif     
          // newObj得输出列表得对象按指向得层次,分别加入到headOfUpperLayer  headOfSameLayer    
 		Process_UpdataForecastList(forecastInfo,tmpObi);
 	}	 

@@ -193,7 +193,7 @@ void ProInitialization()
 
 			sleep(4);
 			
-	 	#ifdef Nero_DeBuging10_01_14
+	 	#ifdef Nero_DeBuging10_01_14_
 				// 尝试将kind=2013的所有衍生对象都进行outputlist的msg输出
 				xxxxxx=2012;
 				tmpobj=nero_getBaseObjByKind(xxxxxx,GodNero);

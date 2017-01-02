@@ -468,13 +468,101 @@ nero_s32int Log_printNeroObjLinkTree(void * arg)
 	NeuronObject * tmp;
 	NerveFiber  *  curFiber;
 	
-																		
+	nero_us32int isbaseFlag;																		
+
+
+	if(obj)
+	{
+		curFiber = obj->inputListHead;
+
+		sprintf(str,"Log_printNeroObjLinkTree:		Kind:%d, address:%x,data=", nero_GetNeroKind(obj),obj);
+		addLineToFile(logFile,str);	
+		while(curFiber != NULL  &&  curFiber->obj != NULL)
+		{
+			ObjectKind=nero_GetNeroKind(curFiber->obj);
+			switch(ObjectKind)
+			{
+				case NeuronNode_ForChCharacter:
+					IO_getZhInNero(strLinshi,curFiber->obj);
+					sprintf(str,"%s",strLinshi);
+					addLineToFile(logFile,str);	
+					 break;	
+				// case NeuronNode_ForChWord :
+				// 	 break;		
+				default:
+					sprintf(str,"Log_printNeroObjLinkTree:		Kind:%d, address:%x", nero_GetNeroKind(obj),obj);
+					addLineToFile(logFile,str);	
+	
+					 break;				
+			}
+			curFiber=curFiber->next;
+		}
+		sprintf(str,"\n	 outputList:\n" );
+		addLineToFile(logFile,str);	
+		// sprintf(str,"Log_printNeroObjLinkTree:		Kind:%d, address:%x\n	 outputList:\n", nero_GetNeroKind(obj),obj);
+		// addLineToFile(logFile,str);	
+
+		// 尝试打印obj本身的数据,判断数据的kind是否都一样，如果都一样且都是sys自有的kind就可以打印数据
+
+		// switch(ObjectKind)
+		// {
+		// 		case NeuronNode_ForNone:					
+		// 			 break;	
+
+
+		// 		default:
+		// 			sprintf(str,"Log_printNeroObjLinkTree:		Kind:%d, address:%x\n	 outputList:\n", nero_GetNeroKind(obj),obj);
+		// 			addLineToFile(logFile,str);	
+		// 			 break;	
+		// }
+		curFiber = obj->outputListHead;
+		while(curFiber != NULL  &&  curFiber->obj != NULL)
+		{
+
+			ObjectKind=nero_GetNeroKind(curFiber->obj);
+			isbaseFlag=nero_isBaseObj(curFiber->obj);
+
+
+		
+			switch(ObjectKind)
+			{
+
+				case NeuronNode_ForNone:			
+				case NeuronNode_ForData:
+				case NeuronNode_ForConnect:
+				case NeuronNode_ForLine:
+				case NeuronNode_ForImage:
+				case NeuronNode_ForComplexDerivative:
+				case NeuronNode_ForChSentence:	
+					 // sprintf(str,"Log_printNeroObjLink:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),(int)obj,(int)ObjectKind);
+					 // addLineToFile(logFile,str);	
+					 // break;	
+				case NeuronNode_ForGodNero:
+				case NeuronNode_ForChCharacter:
+				case NeuronNode_ForChWord :
+					 break;		
+				case NeuronNode_ForLayering :		
+					 break;	
+
+
+				default:
+						//
+					 sprintf(str," 				upperKind:%d,FiberStrengthen(%d),FiberPointType(%d),isbase(%d)\n",ObjectKind,(curFiber->msg1 & 0x000000ff),getFiberType(curFiber),isbaseFlag);
+					 addLineToFile(logFile,str);	
+					 break;				
+			}
+
+
+			curFiber=curFiber->next;
+
+		}
 
 
 
+	}
 
 	
-	
+	return nero_msg_ok;
 }
 //print all  nero used  msg
 nero_s32int Log_printAllNeroMsg(void * arg)
@@ -1142,7 +1230,7 @@ void *thread_for_Log_Pic(void *arg)
 			
 			
 			 
-			#ifdef Nero_DeBugInOperating_Pic
+			#ifdef Nero_DeBugInOperating_Pic_
 			 printf("thread_for_Log_Pic:MsgId_Nero_CreateNetNet\n");
 			#endif
 			break;

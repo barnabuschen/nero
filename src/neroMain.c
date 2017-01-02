@@ -83,6 +83,8 @@ void ProInitialization()
 		/*	int res;*/
 		pthread_t a_thread;
 		Operating_ipckey="/tmp/Operating_ipckey3";
+		NeuronObject * tmpobj;
+			NerveFiber *tmpFiber;
 		createFile(Operating_ipckey);
 		/*	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
 		key_t ipckey = ftok(Operating_ipckey, IPCKEY);
@@ -170,7 +172,7 @@ void ProInitialization()
 		// sleep(10);	
 		printf("\n\n\nTime  to  Search  Msg:::\n\n\n\n");
 
-		#ifdef Nero_DeBuging14_01_14
+		#ifdef Nero_DeBuging14_01_14_
 			// printf  msg  by  obj
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 			neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
@@ -178,7 +180,7 @@ void ProInitialization()
 			sprintf(neroObjMsgWithStr_st.str,"GodNero  add:%x",GodNero);
 			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 		#endif
-		#ifdef Nero_DeBuging09_01_14
+		#ifdef Nero_DeBuging09_01_14_
 			// print  one  obj  link
 			neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
 			neroObjMsg_st.fucId = 2;
@@ -188,8 +190,34 @@ void ProInitialization()
 			msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			
 		#endif	
 
-		// for(i=2001;i<2015;i++)	
-			sleep(5);
+
+			sleep(4);
+			
+	 	#ifdef Nero_DeBuging10_01_14
+				// 尝试将kind=2013的所有衍生对象都进行outputlist的msg输出
+				xxxxxx=2012;
+				tmpobj=nero_getBaseObjByKind(xxxxxx,GodNero);
+				if(tmpobj)
+				{
+					tmpFiber=tmpobj->outputListHead;
+					while(tmpFiber != NULL  && tmpFiber->obj != NULL )
+					{
+						neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
+						neroObjMsg_st.fucId = 3;//Log_printNeroObjLinkTree
+						neroObjMsg_st.Obi = tmpFiber->obj;
+						msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);
+
+						tmpFiber=tmpFiber->next;
+					}	
+					printf("kind=2013  over...................................\n");	
+				}
+				else
+					printf("kind=2013 cannot find.......................\n");
+	    #endif	
+
+
+
+			
 		i=2012;
 		{
  		#ifdef Nero_DeBuging10_01_14

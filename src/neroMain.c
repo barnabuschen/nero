@@ -221,7 +221,7 @@ void ProInitialization()
 		i=2012;
 		{
  		#ifdef Nero_DeBuging10_01_14
-				for(i=2012;i<= 2015   ;i++)
+				for(i=62;i<= 2016   ;i++)
 				{
 			// print  all  of  the  kind  obj
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;

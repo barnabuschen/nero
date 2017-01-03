@@ -771,22 +771,22 @@ struct NerveFiber_   * outputListHead;
 				tmp=obj->inputListHead->obj;/*衍生对象的第一个数据*/
 				if (strlen(str_) <LenOfstrTmp  && tmp->x !=0 && tmp->y !=0 && tmp->z !=0)
 				{
-					sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象(%c%c%c),%s,数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(char *)str_,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+					sprintf(str,"Log_printSomeMsgForObj:%s,%s		地址：%x,打印字符对象(%c%c%c),%s,数据是：《%x%x%x》\n",str_,asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(char *)str_,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
 				}
 				else if (strlen(str_) <LenOfstrTmp)
 				{
 
 					if(tmp->x !=0   )
 					{
-						sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+						sprintf(str,"Log_printSomeMsgForObj:%s,%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",str_,asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
 					}
 					else if(tmp->y !=0   )
 					{
-						sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->y,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+						sprintf(str,"Log_printSomeMsgForObj:%s,%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",str_,asctime(timenow),(int)obj,(int)tmp->y,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
 					}
 					else if(tmp->z !=0   )
 					{
-						sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+						sprintf(str,"Log_printSomeMsgForObj:%s,%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",str_,asctime(timenow),(int)obj,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
 					}
 
 				}

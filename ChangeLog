@@ -343,6 +343,46 @@ nero_s32int Log_printNeroObjLinkTree(void * arg)
 	如果实在处理不了，就先注释掉Process_ObjForecast重新写这部分代码
 
 
+Log_printSomeMsgForObj:msg1:在DataFlowProcess中find概念,kind=62,i=0  str=55
+
+
+
+
+
+创建时间：03/01/2017 16:28:44 
+		调试发现，使用Task_Order_DataSteamInput时
+	以数据310 55 42 14 2为例，前面4个数据可以被识别为NeuronNode_ForChWord
+                    if(lenOfpar == 1)
+                        dataKind[k] = NeuronNode_ForChCharacter;
+                    else
+                        dataKind[k] = NeuronNode_ForChWord;
+	见代码task.c 773页
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

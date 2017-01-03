@@ -15,7 +15,7 @@ static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
 // #define Process_TemporaryNUM   7500    //just used  in  fuc  Process_StrengthenLink
 nero_us32int     tmpObiUsed;						//record    how many objs  store  in  
 static NeuronObject  * Process_tmpObi[Process_TemporaryNUM];
-
+static struct NeroObjForecastList   Process_forecastListNode[Process_TemporaryNUM];
 
 struct DataFlowForecastInfo  forecastInfo_st;	
 	
@@ -590,17 +590,38 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 			// printf("   		forecastInfo_st.objNum=%d.\n",forecastInfo_st.objNum);
 
-			while(pointForObjsTmp < forecastInfo_st.objNum)
+			if(forecastInfo_st.objNum  == 4)
 			{
-				// printf("   		objkind=%d.\n",nero_GetNeroKind(objs[pointForObjsTmp])  );
-				Process_UpdataForecastList(&forecastInfo_st,objs[pointForObjsTmp]);
-				pointForObjsTmp++;
-			}
 
-    		Process_ObjsClassiFication(&forecastInfo_st);
-    		//强制清除list
-    		forecastInfo_st.controlMsg.Refreshed=1;
-    		CleanForecastList( &forecastInfo_st);
+				while(pointForObjsTmp < forecastInfo_st.objNum)
+				{
+					// printf("   		objkind=%d.\n",nero_GetNeroKind(objs[pointForObjsTmp])  );
+					Process_UpdataForecastList(&forecastInfo_st,objs[pointForObjsTmp]);
+					
+
+					#ifdef Nero_DeBuging10_01_14_
+
+						neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
+						neroObjMsg_st.fucId = 3;//Log_printNeroObjLinkTree
+						neroObjMsg_st.Obi = objs[pointForObjsTmp];
+						msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);
+
+						neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+						neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg
+						neroObjMsgWithStr_st.Obi = objs[pointForObjsTmp];
+						sprintf(neroObjMsgWithStr_st.str," ouputlistOBJ:isbase=%d\n" , nero_isBaseObj(objs[pointForObjsTmp]));
+						msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);	
+					#endif	
+
+						pointForObjsTmp++;								
+				}
+
+	    		Process_ObjsClassiFication(&forecastInfo_st);
+	    		//强制清除list
+	    		forecastInfo_st.controlMsg.Refreshed=1;
+	    		CleanForecastList( &forecastInfo_st);
+
+    		}
 	}
         /***************************************************************/
 /*        printf("coutOferror=%d.\n",coutOferror_Msg_);*/
@@ -1321,7 +1342,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 		//需要生成一个新得临时对象
 		ifCreateObjInSAP =  1;
 		flag  =  0;
-		printf("ifCreateObjInSAP=1,findKind=%d\n",findKind);
+		// printf("ifCreateObjInSAP=1,findKind=%d\n",findKind);
 	}
 	UpperObjKind=nero_GetNeroKind(  (Process_tmpObi[0]))  ;
 	for(i=0,ifCreateObjInSAP=1;i<Process_tmpObiUsed;i++)
@@ -1845,7 +1866,7 @@ void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
                 // printf(" end of CleanForecastList...........................\n");
 
 }
-void AddNewObjToList(struct DataFlowForecastInfo  * forecastInfo,nero_s32int FiberType,NeuronObject * Obj)
+void AddNewObjToList(struct DataFlowForecastInfo  * forecastInfo,nero_s32int FiberType,NeuronObject * Obj,nero_us32int  FiberStrengthen)
 {
 
         struct list_head  * listHead;                
@@ -1879,7 +1900,7 @@ void AddNewObjToList(struct DataFlowForecastInfo  * forecastInfo,nero_s32int Fib
 					sprintf(neroObjMsgWithStr_st.str,"预测链表增长 id=%d id2=%d",forecastInfo->DeBugMsg,forecastInfo->DeBugMsgTwo);
 					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);								
 				#endif                                         
-				AddNodeIntoForecastList(listHead,Obj);
+				AddNodeIntoForecastList(listHead,Obj,  FiberStrengthen);
             }
             else
             {
@@ -1957,7 +1978,7 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
             FiberType=getFiberType(p);
             if (Obj != NULL /* &&  nero_isBaseObj(Obj) != 1 */&& getFiberPointToPool(p ) == Fiber_ObjInNeroPool )
             {
-                    AddNewObjToList( forecastInfo,FiberType,Obj);
+                    AddNewObjToList( forecastInfo,FiberType,Obj,(p->msg1 & 0x000000ff));
                     
             }
             
@@ -2003,18 +2024,19 @@ struct NeroObjForecastList * Process_IfHasThisObjINList(struct list_head  * list
 	 return  NULL;
 
 }
-void AddNodeIntoForecastList(struct list_head  * listHead,NeuronObject * Obj)
+void AddNodeIntoForecastList(struct list_head  * listHead,NeuronObject * Obj,nero_us32int  FiberStrengthen)
 {
 
         /*直接插入列表头部*/
         struct NeroObjForecastList *newListNode=(struct NeroObjForecastList *)malloc(sizeof(struct NeroObjForecastList));
         newListNode->obj=Obj;
-        newListNode->Strengthen=0;
+        newListNode->Strengthen=FiberStrengthen;
         newListNode->times=0;
         newListNode->start=-1;
         newListNode->end=-1;        
         
-        
+        // (newListNode->Strengthen)=FiberStrengthen;
+
         list_add((struct list_head  *)newListNode, listHead);
    	#ifdef Nero_DeBuging24_01_14_
         struct list_head  * p; 
@@ -2036,8 +2058,9 @@ void AddNodeIntoForecastList(struct list_head  * listHead,NeuronObject * Obj)
 		
 	#endif      
         newListNode=(struct NeroObjForecastList *)listHead;
-        (newListNode->times)++;
 
+
+        ////////////z这里丢了一行代码，请补上
 }
 /*更新列表预测列表中每个结构的time变量*/
 void  UpdataLastTimeINForecastList(struct DataFlowForecastInfo  * forecastInfo)
@@ -2450,27 +2473,26 @@ void Process_IsTimeToMerage(struct DataFlowForecastInfo  * forecastInfo)
 	// 这里要求降序排列
 int qSortCmp1(const void *a,const void *b)
 {
-	NerveFiber * fiberA;
-	NerveFiber * fiberB;
+	// NerveFiber * fiberA;
+	// NerveFiber * fiberB;
 	int res;
-
-	nero_us32int fiberStrengthenA;
-	nero_us32int fiberStrengthenB;
-	fiberA = (NerveFiber *)a;
-	fiberB = (NerveFiber *)b;
-
-	if(a == NULL || b == NULL)
+	struct NeroObjForecastList * A;
+	struct NeroObjForecastList * B;
+	// nero_us32int fiberStrengthenA;
+	// nero_us32int fiberStrengthenB;
+	A = (struct NeroObjForecastList *)a;
+	B = (struct NeroObjForecastList *)b;
+	printf("A->Strengthen=%d,B->Strengthen=%d\n",A->Strengthen,B->Strengthen);
+	if(A == NULL || B == NULL)
 	{
 
 		return 0;
 	}
-	fiberStrengthenA=	(fiberA->msg1 & 0x000000ff);
-	fiberStrengthenB=	(fiberB->msg1 & 0x000000ff);
 
-	if(fiberStrengthenA  >  fiberStrengthenB)
+	if(A->Strengthen  >  B->Strengthen)
 		return  (-1);
 
-	if(fiberStrengthenA  <  fiberStrengthenB)
+	if(A->Strengthen  <  B->Strengthen)
 		return  (1);	
 
 	return 0;
@@ -2497,7 +2519,7 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 	struct list_head * listPoint;
 	struct list_head * listheadPoint;
 	matchObj=NULL;
-	nero_us32int flag;
+	nero_us32int flag,i;
 	if(forecastInfo == NULL  ||   ( forecastInfo->controlMsg.Refreshed == 0 && forecastInfo->controlMsg.DurationTime == 1 ) )
 	{
 
@@ -2541,13 +2563,28 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 		printf("Process_ObjsClassiFication:list is empty....listPoint=%x,nums(%d)  \n",listPoint,forecastInfo->headOfUpperLayer.times);
 		return NULL;
 	}
-	// printf("start  matchObj....");
+	// printf("		start  matchObj....\n");
 	while(listPoint != NULL  &&  Process_tmpObiUsed < Process_TemporaryNUM  &&  listPoint != listheadPoint )
 	{
 
 		matchObj =  ( (struct NeroObjForecastList *)listPoint )->obj ;
+		if(matchObj == NULL)
+		{
+			
+			printf("Process_ObjsClassiFication:matchObj is empty.. \n");
+			exit(0);
+		}
 		flag = nero_isBaseObj(matchObj);
 		matchKind = nero_GetNeroKind(matchObj);
+
+		#ifdef Nero_DeBuging10_01_14_
+			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+			neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg
+			neroObjMsgWithStr_st.Obi = NULL;
+			sprintf(neroObjMsgWithStr_st.str,"初始列表-----matchObj:%x,kind=%d,isbase=%d\n",matchObj,matchKind,flag);
+			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);		
+		#endif	
+
 		//
 		if(	flag ==  forecastInfo->controlMsg.baseORDerivative  )
 		{
@@ -2555,23 +2592,80 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 			{
 
 				if( matchKind == forecastInfo->controlMsg.expectedKind )
-					Process_tmpObi[Process_tmpObiUsed ] =  matchObj;
+				{
+					Process_forecastListNode[Process_tmpObiUsed ] = *( (struct NeroObjForecastList *)listPoint);
+					// Process_tmpObi[Process_tmpObiUsed ] =  matchObj;
+					Process_tmpObiUsed++;
+					// printf(":matchObj:%x,kind=%d\n",matchObj,matchKind);
+
+				}
 			}
 			else
-				Process_tmpObi[Process_tmpObiUsed ] =  matchObj;
+			{
+				// Process_tmpObi[Process_tmpObiUsed ] =  matchObj;
+				Process_forecastListNode[Process_tmpObiUsed ] = *( (struct NeroObjForecastList *)listPoint);
+				Process_tmpObiUsed++;
+				// printf(":matchObj:%x,kind=%d\n",matchObj,matchKind);
+			}
 		}
 
-		Process_tmpObiUsed++;
+		
 		listPoint= listPoint->next;
 	}
+	#ifdef Nero_DeBuging10_01_14_
 
-	// qsort(s,n,sizeof(s[0]),cmp);  sizeof(s[0]
-	// int qsortCmp1(const void *a,const void *b);
+		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+		neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg
+		neroObjMsgWithStr_st.Obi = NULL;
+		sprintf(neroObjMsgWithStr_st.str,"Befor Sort:\n");
+		msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);		
+	// 打印出排序前后的所有数据
+	for(i=0;i<Process_tmpObiUsed;i++)
+	{
+		matchObj =   (Process_forecastListNode[i]).obj;
+		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+		neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg
+		neroObjMsgWithStr_st.Obi = NULL;
+		sprintf(neroObjMsgWithStr_st.str,"add:%x 	kind:%d 	isbase=%d,Strengthen=%d \n",matchObj,nero_GetNeroKind(matchObj) , nero_isBaseObj(matchObj),(Process_forecastListNode[i]).Strengthen);
+		msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);	
+	}
+	#endif	
+
 	// 假设是对int排序的话,如果是升序,那么就是如果a比b大返回一个正值,小则负值,相等返回0,其他的依次类推
-	qsort(Process_tmpObi,Process_tmpObiUsed,sizeof(Process_tmpObi[0]),qSortCmp1);
+	qsort(Process_forecastListNode,Process_tmpObiUsed,sizeof(Process_forecastListNode[0]),qSortCmp1);
+
+	#ifdef Nero_DeBuging10_01_14_
+		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+		neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg
+		neroObjMsgWithStr_st.Obi = NULL;
+		sprintf(neroObjMsgWithStr_st.str,"After Sort:\n");
+		msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);		
+	// 打印出排序前后的所有数据
+	for(i=0;i<Process_tmpObiUsed;i++)
+	{
+		matchObj=    (Process_forecastListNode[i]).obj;
+		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+		neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg
+		neroObjMsgWithStr_st.Obi = NULL;
+		sprintf(neroObjMsgWithStr_st.str,"add:%x 	kind:%d 	isbase=%d,Strengthen=%d \n",matchObj,nero_GetNeroKind(matchObj) , nero_isBaseObj(matchObj),(Process_forecastListNode[i]).Strengthen);
+		msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);	
+	}
+	#endif	
+
+
+
 
 	//check out the result:
-    printf("the most possible  matchObj:%x,kind =%d,isbase=%d \n",Process_tmpObi[0],nero_GetNeroKind(Process_tmpObi[0]) , nero_isBaseObj(Process_tmpObi[0]));
+    // printf("the most possible  matchObj:%x,kind =%d,isbase=%d,Process_tmpObiUsed=%d \n",Process_tmpObi[0],nero_GetNeroKind(Process_tmpObi[0]) , nero_isBaseObj(Process_tmpObi[0]),Process_tmpObiUsed);
+
+	#ifdef Nero_DeBuging10_01_14
+		matchObj=    (Process_forecastListNode[0]).obj;
+		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+		neroObjMsgWithStr_st.fucId = 3;//
+		neroObjMsgWithStr_st.Obi = NULL;
+		sprintf(neroObjMsgWithStr_st.str,"matchObj:%x,kind =%d,isbase=%d \n",matchObj,nero_GetNeroKind(matchObj) , nero_isBaseObj(matchObj));
+		msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+	#endif	
 
 
     return Process_tmpObi[0];

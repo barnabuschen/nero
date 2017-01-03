@@ -40,7 +40,7 @@ END_ONE_ARG_MESSAGE_MAP
 BEGIN_TWO_ARG_MESSAGE_MAP(nero_msg_WithStr_map)
     MSG_NAME(1, Log_printSomeMsgForObj)
     MSG_NAME(2, Log_printAllKindOf)
-/*    MSG_NAME(3, del_data)*/
+    MSG_NAME(3, Log_printFormattedMsg)
 /*    MSG_NAME(4, sort_data)*/
 END_TWO_ARG_MESSAGE_MAP
 
@@ -75,6 +75,11 @@ struct  tm  *timenow;         //实例化tm结构指针
 /*nero_8int  logFile[500]="../log/log.txt";*/
 nero_8int  logFile[FILEPATH_MAX]="/tmp/log.txt";
 nero_8int  AllKindOfFile[FILEPATH_MAX]="/tmp/AllKindOfFile.txt";
+nero_8int  formatLogFile[FILEPATH_MAX]="/tmp/log.txt";
+// nero_8int  AllKindOfFile[FILEPATH_MAX]="/tmp/AllKindOfFile.txt";
+
+
+
 static nero_8int  file_path_getcwd[FILEPATH_MAX]="/tmp";/*保存当前目录*/
 nero_8int  strTmp[LenOfstrTmp];
 
@@ -269,6 +274,71 @@ nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 	printf("IO_InputDataToSys  end\n");
 	return nero_msg_ok;	
 	
+}
+//仅仅用于打印某单一固定文本信息时使用，方便查看
+nero_s32int Log_printFormattedMsg(void * obj_,void *str_)
+{
+	nero_8int  *str=strTmp;
+	nero_s32int ObjectKind,ObjectKind2,ii,iii;
+	nero_8int  strLinshi[500];
+	NeuronObject * obj;
+	NeuronObject * tmp;
+	NeuronObject * BaseObi;
+	NerveFiber  *  curFiber;
+	NerveFiber  *  childcurFiber;
+	time(&now);//time函数读取现在的时间(国际标准时间非北京时间)，然后传值给now
+	timenow   =   localtime(&now);//localtime函数把从time取得的时间now换算成你电脑中的时间(就是你设置的地区)
+/*		printf("Local   time   is   %s/n",asctime(timenow));*/
+
+	if (str == NULL || str_==NULL)
+	{
+		return nero_msg_ParameterError;
+	}
+	if (GodNero == NULL )
+	{
+
+			printf(" Log_printFormattedMsg                      GodNero=%x\n\n\n\n\n\n",GodNero);
+			exit(0);
+		return nero_msg_ParameterError;
+	}
+	obj=(NeuronObject * ) obj_;
+	if(obj == NULL)
+		sprintf(strLinshi,"%s",str_);
+	else
+	{
+		curFiber = obj->inputListHead;
+		sprintf(str,"Log_printFormattedMsg:		Kind:%d, address:%x,data=", nero_GetNeroKind(obj),obj);
+		addLineToFile(formatLogFile,str);	
+		while(curFiber != NULL  &&  curFiber->obj != NULL)
+		{
+			ObjectKind=nero_GetNeroKind(curFiber->obj);
+			switch(ObjectKind)
+			{
+				case NeuronNode_ForChCharacter:
+					IO_getZhInNero(strLinshi,curFiber->obj);
+					sprintf(str,"%s",strLinshi);
+					addLineToFile(formatLogFile,str);	
+					 break;	
+				// case NeuronNode_ForChWord :
+				// 	 break;		
+				default:
+					sprintf(str,"Kind:%d,address:%x", nero_GetNeroKind(curFiber->obj),curFiber->obj);
+					addLineToFile(formatLogFile,str);	
+	
+					 break;				
+			}
+			curFiber=curFiber->next;
+		}
+
+
+		sprintf(strLinshi,"%s",str_);
+
+	}
+	addLineToFile(formatLogFile,strLinshi);
+
+
+	return nero_msg_ok;
+
 }
 /*打印某个类别下面的所有的衍生类*/
 nero_s32int Log_printAllKindOf(void * obj_,void *str_)
@@ -564,7 +634,7 @@ nero_s32int Log_printNeroObjLinkTree(void * arg)
 	
 	return nero_msg_ok;
 }
-//print all  nero used  msg
+//print all  nero outputlist  msg
 nero_s32int Log_printAllNeroMsg(void * arg)
 {
 	nero_8int  *str=strTmp;
@@ -1177,6 +1247,9 @@ void *thread_for_Log_Pic(void *arg)
 	 sprintf(AllKindOfFile,"%s/log/AllKindOfFile.txt",file_path_getcwd);
 	 createFile(AllKindOfFile);
 	
+	 sprintf(formatLogFile,"%s/log/formatLogFile.txt",file_path_getcwd);
+	 createFile(formatLogFile);
+
 
 	/* Generate the ipc key */
 

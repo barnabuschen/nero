@@ -133,7 +133,7 @@ void  UpdataLastTimeINForecastList(struct DataFlowForecastInfo  * forecastInfo);
 
 void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * newObj);
 
-void AddNodeIntoForecastList(struct list_head  * listHead,NeuronObject * Obj);
+void AddNodeIntoForecastList(struct list_head  * listHead,NeuronObject * Obj,nero_us32int  FiberStrengthen);
 
 void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo);
  struct NeroObjForecastList   * Process_IfHasThisObjINList(struct list_head  * listHead,NeuronObject * Obj);

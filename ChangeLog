@@ -342,13 +342,16 @@ nero_s32int Log_printNeroObjLinkTree(void * arg)
 
 	如果实在处理不了，就先注释掉Process_ObjForecast重新写这部分代码
 
-
+初始列表
 Log_printSomeMsgForObj:msg1:在DataFlowProcess中find概念,kind=62,i=0  str=55
 
-
-
-
-
+Log_printNeroObjLinkTree:		Kind:2012, address:406a9e20,data=32
+Log_printNeroObjLinkTree:		Kind:2012, address:406aa120
+地址406aa120,DataNUm2=2,[4,8,]
+Log_printNeroObjLinkTree:		Kind:2012, address:406aa120,data=48
+Log_printNeroObjLinkTree:		Kind:2012, address:406a9ea0
+Log_printNeroObjLinkTree:		Kind:2012, address:406aa140
+Log_printNeroObjLinkTree:		Kind:61, address:406a7c40
 创建时间：03/01/2017 16:28:44 
 		调试发现，使用Task_Order_DataSteamInput时
 	以数据310 55 42 14 2为例，前面4个数据可以被识别为NeuronNode_ForChWord
@@ -359,20 +362,12 @@ Log_printSomeMsgForObj:msg1:在DataFlowProcess中find概念,kind=62,i=0  str=55
 	见代码task.c 773页
 
 
-	
 
 
+创建时间：04/01/2017 00:36:35 
 
 
-
-
-
-
-
-
-
-
-
+	第一次的分类结果出来了，完全没有准确度啊
 
 
 

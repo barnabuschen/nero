@@ -94,7 +94,7 @@ nero_s32int IO_ForOutputWord(void * arg);
 int UTF8ToGBK(char src[],char res[]);
 int  GetToken( char * str);
 
-
+nero_s32int Log_printFormattedMsg(void * obj_,void *str_);
 
 
 

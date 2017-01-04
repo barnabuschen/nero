@@ -599,7 +599,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 					Process_UpdataForecastList(&forecastInfo_st,objs[pointForObjsTmp]);
 					
 
-					#ifdef Nero_DeBuging10_01_14_
+					#ifdef Nero_DeBuging10_01_14
 
 						neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
 						neroObjMsg_st.fucId = 3;//Log_printNeroObjLinkTree
@@ -2482,7 +2482,7 @@ int qSortCmp1(const void *a,const void *b)
 	// nero_us32int fiberStrengthenB;
 	A = (struct NeroObjForecastList *)a;
 	B = (struct NeroObjForecastList *)b;
-	printf("A->Strengthen=%d,B->Strengthen=%d\n",A->Strengthen,B->Strengthen);
+	// printf("A->Strengthen=%d,B->Strengthen=%d\n",A->Strengthen,B->Strengthen);
 	if(A == NULL || B == NULL)
 	{
 
@@ -2512,7 +2512,7 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
  // in fuc Process_ObjForecast  ,you has put all the upper obj into list of headOfUpperLayer,  headOfLowerLayer
 // or headOfSameLayer,so you just need to search these list
 
-
+					NeuronObject *tmpobj;
 	NeuronObject *  matchObj;
 	nero_us32int matchKind=NeuronNode_ForNone;
 	nero_us32int     Process_tmpObiUsed=0;	//record    how many objs  store  in 
@@ -2520,6 +2520,11 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 	struct list_head * listheadPoint;
 	matchObj=NULL;
 	nero_us32int flag,i;
+	nero_8int tmpstr[150];
+	nero_8int tmpstr2[350];
+
+					NerveFiber  *  curFiber;
+
 	if(forecastInfo == NULL  ||   ( forecastInfo->controlMsg.Refreshed == 0 && forecastInfo->controlMsg.DurationTime == 1 ) )
 	{
 
@@ -2577,11 +2582,37 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 		flag = nero_isBaseObj(matchObj);
 		matchKind = nero_GetNeroKind(matchObj);
 
-		#ifdef Nero_DeBuging10_01_14_
+		#ifdef Nero_DeBuging10_01_14
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 			neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg
 			neroObjMsgWithStr_st.Obi = NULL;
-			sprintf(neroObjMsgWithStr_st.str,"初始列表-----matchObj:%x,kind=%d,isbase=%d\n",matchObj,matchKind,flag);
+
+			switch(matchKind)
+			{
+				// (neroObjMsgWithStr_st.str)[0]=0;
+				case 2012:
+					curFiber=matchObj->inputListHead;
+					sprintf(neroObjMsgWithStr_st.str,"初始列表-----matchObj:%x,kind=%d,isbase=%d,data(%d):",matchObj,matchKind,flag,nero_getObjDataNum(matchObj));	
+					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);		
+					while( flag == 0 &&  curFiber != NULL  &&  curFiber->obj != NULL)
+					{
+
+						// printf("初始列表-----初始列表-----初始列表-----初始列表-----.. \n");
+						IO_getZhInNero(tmpstr,curFiber->obj);
+						sprintf(neroObjMsgWithStr_st.str,"%s",tmpstr);	
+						msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);		
+
+						curFiber=curFiber->next;
+					}
+
+					sprintf(neroObjMsgWithStr_st.str,",Strengthen=%d\n",neroObjMsgWithStr_st.str,( (struct NeroObjForecastList *)listPoint )->Strengthen);	
+					break;	
+
+				default:
+					sprintf(neroObjMsgWithStr_st.str,"初始列表-----matchObj:%x,kind=%d,isbase=%d,Strengthen=%d\n",matchObj,matchKind,flag,( (struct NeroObjForecastList *)listPoint )->Strengthen);	
+					break;	
+
+			}
 			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);		
 		#endif	
 
@@ -2612,7 +2643,7 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 		
 		listPoint= listPoint->next;
 	}
-	#ifdef Nero_DeBuging10_01_14_
+	#ifdef Nero_DeBuging10_01_14
 
 		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 		neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg
@@ -2634,7 +2665,7 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 	// 假设是对int排序的话,如果是升序,那么就是如果a比b大返回一个正值,小则负值,相等返回0,其他的依次类推
 	qsort(Process_forecastListNode,Process_tmpObiUsed,sizeof(Process_forecastListNode[0]),qSortCmp1);
 
-	#ifdef Nero_DeBuging10_01_14_
+	#ifdef Nero_DeBuging10_01_14
 		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 		neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg
 		neroObjMsgWithStr_st.Obi = NULL;

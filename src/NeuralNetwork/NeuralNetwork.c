@@ -3437,6 +3437,8 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 		PointingToObject(Obis[i],basekidobj,Fiber_PointToUpperLayer);
 		nero_StrengthenLinkWithK(Obis[i],newObiKind,basekidobj);
 
+
+
 		if (i>0)
 		{
 /*			addNeuronChild(Obis[i],Obis[i-1],Relationship_ChildToFather);	*/
@@ -3444,13 +3446,17 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 
 
 		}
-		#ifdef   Nero_DeBuging04_01_14_
-/*		if (kind != NeuronNode_ForChCharacter)*/
+		#ifdef   Nero_DeBuging04_01_14
+		if (nero_GetNeroKind(Obis[i]) == 2012  &&   nero_getObjDataNum(Obis[i]) == 1)
 		{
-			printf("子概念id=%d linkto %d \n",Obis[i],newObi);
-			printf("子概念id=%d linkto %d \n\n",Obis[i-1],Obis[i]);
+			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+			neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg
+			neroObjMsgWithStr_st.Obi = NULL;
+			sprintf(neroObjMsgWithStr_st.str,"Obi:%x(%d)point to  kind(%d)  %d times...\n",Obis[i],nero_GetNeroKind(Obis[i]),newObiKind,getFiberStrengthen(Obis[i],basekidobj));
+			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);				
+			// printf("Obi:%x(%d)point to  kind(%d)  %d times...\n",Obis[i],nero_GetNeroKind(Obis[i]),newObiKind,getFiberStrengthen(Obis[i],basekidobj));
 		}
-		nero_printNeroLink("log/ObjLink.log",(void *)Obis[i]);
+		// nero_printNeroLink("log/ObjLink.log",(void *)Obis[i]);
 		#endif				
 	}
 /*	nero_printNeroLink("log/ObjLink.log",(void *)newObi);*/

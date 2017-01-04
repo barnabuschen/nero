@@ -352,6 +352,7 @@ Log_printNeroObjLinkTree:		Kind:2012, address:406aa120,data=48
 Log_printNeroObjLinkTree:		Kind:2012, address:406a9ea0
 Log_printNeroObjLinkTree:		Kind:2012, address:406aa140
 Log_printNeroObjLinkTree:		Kind:61, address:406a7c40
+Log_printNeroObjLinkTree:		Kind:2012, address:406f2fe0
 创建时间：03/01/2017 16:28:44 
 		调试发现，使用Task_Order_DataSteamInput时
 	以数据310 55 42 14 2为例，前面4个数据可以被识别为NeuronNode_ForChWord

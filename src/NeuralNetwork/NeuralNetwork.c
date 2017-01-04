@@ -479,7 +479,7 @@ NeuronObject * getBasePointByObj(NeuronObject  *godNero,NeuronObject  * n)
 }
 
 /*获取low  for  upper连接强度*/
-static inline nero_s32int getFiberStrengthen(NeuronObject   * low,NeuronObject  * upper)
+ nero_s32int getFiberStrengthen(NeuronObject   * low,NeuronObject  * upper)
 {
 	NerveFiber * fiber;
 	nero_us32int Strengthen;
@@ -3452,7 +3452,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 			neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg
 			neroObjMsgWithStr_st.Obi = NULL;
-			sprintf(neroObjMsgWithStr_st.str,"Obi:%x(%d)point to  kind(%d)  %d times...\n",Obis[i],nero_GetNeroKind(Obis[i]),newObiKind,getFiberStrengthen(Obis[i],basekidobj));
+			sprintf(neroObjMsgWithStr_st.str,"Obi:%x(%d)point to  kind(%d)  times=%d \n",Obis[i],nero_GetNeroKind(Obis[i]),newObiKind,getFiberStrengthen(Obis[i],basekidobj));
 			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);				
 			// printf("Obi:%x(%d)point to  kind(%d)  %d times...\n",Obis[i],nero_GetNeroKind(Obis[i]),newObiKind,getFiberStrengthen(Obis[i],basekidobj));
 		}
@@ -3467,8 +3467,6 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	        printf("nero_createObjFromMultiples  未知错误，newObi=%x\n",newObi);
 	}
 	else{
-
-
 				#ifdef Nero_DeBuging09_01_14	
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
@@ -3476,10 +3474,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 				sprintf(neroObjMsgWithStr_st.str,"creObjFromMulti:success create,kind=%d,add=%x,baseobjAdd:%x,objNum=%d",newObiKind,newObi,getBasePointByObj(GodNero,newObi),objNum);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif	
-
 				// printf("nero_createObjFromMultiples  success=%x,kind=%d,,objNum=%d\n",newObi,newObiKind,objNum);
-
-
 	}
 	#endif	
 	return newObi;

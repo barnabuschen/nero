@@ -36,7 +36,6 @@ struct NeroObjForecastList
 	nero_s32int end;	                  
 	                  
 };
-
 //Forecast  Control  struct
 struct NeroObjForecastControl
 {
@@ -48,21 +47,12 @@ struct NeroObjForecastControl
 								 // 1 ：has  Refreshed
 								 // 0 :old msg  --------set 0  at the end of fuc DataFlowProcess
 
-
-
 	nero_s32int  DurationTime;  //持续时间,就是指该expectedKind得有效期
 								// 0: Duration all the time  until changed
 								// 1: just be used  one time ,so if(Refreshed == 1  &&  DurationTime ==1),that mean ,expectedKind is Invalid 无效的
 
 
-
-
-
 };	
-
-
-
-
 struct DataFlowForecastInfo
 {
 	NeuronObject ** objs;//实际对象指针
@@ -75,9 +65,6 @@ struct DataFlowForecastInfo
 	                                                        //后续输入判断的节点，it is not a list
 	                                                        
 	struct NeroObjForecastControl  controlMsg;
-
-
-
 	NeuronObject * waitForRecognise; /*如果没有在预测列表中的数据会先放在这里，
 	                                       看下次能不能被识别*/
 	nero_s32int waitForRecogniseObjPos;/*waitForRecognise的位置*/

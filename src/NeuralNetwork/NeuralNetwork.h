@@ -423,7 +423,7 @@ void   testDataIn201608();
 
 NeuronObject * nero_IfHasNeuronObjectKindUnknow(void *Data ,nero_s32int basekind,NeuronObject *godNero);
 NeuronObject *  nero_createObjFromSingleObj(NeuronObject *childObi,nero_s32int upkind,NeuronObject * godNero);
-
+nero_s32int getFiberStrengthen(NeuronObject   * low,NeuronObject  * upper);
 /*遍历网络的代码：*/
 
 

@@ -356,6 +356,15 @@ Log_printNeroObjLinkTree:		Kind:2012, address:406f2fe0
 
 get _Strengthen===nodeobj=406f3fe0
 AddNodeIntoForecastList:预测链表增长,kind=2012,add=406f3fe0   ,DataNUm2=1,[2,]
+
+AddNewObjToForecast:kind=2012,add=40701a40,point to add:40701b00
+
+Log_printNeroObjLinkTree:		Kind:2012, address:40701f60
+Log_printNeroObjLinkTree:		Kind:61, address:406ffa80
+
+
+
+
 创建时间：03/01/2017 16:28:44 
 		调试发现，使用Task_Order_DataSteamInput时
 	以数据310 55 42 14 2为例，前面4个数据可以被识别为NeuronNode_ForChWord
@@ -373,9 +382,9 @@ AddNodeIntoForecastList:预测链表增长,kind=2012,add=406f3fe0   ,DataNUm2=1,
 
 	第一次的分类结果出来了，完全没有准确度啊
 
+创建时间：18/02/2017 23:43:00 
 
-
-
+	尝试修改第一次分类的算法
 
 
 

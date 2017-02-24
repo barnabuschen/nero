@@ -3446,8 +3446,8 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 
 
 		}
-		#ifdef   Nero_DeBuging04_01_14
-		if (nero_GetNeroKind(Obis[i]) == 2012  &&   nero_getObjDataNum(Obis[i]) == 1)
+		#ifdef   Nero_DeBuging04_01_14_
+		if (nero_GetNeroKind(Obis[i]) == 2012  /*&&   nero_getObjDataNum(Obis[i]) == 1*/	)
 		{
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 			neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg

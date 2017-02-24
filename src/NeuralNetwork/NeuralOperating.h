@@ -29,7 +29,7 @@ struct NeroObjForecastList
 	                        //在Process_GetNewActivateForecastObj  和
 	                        //Process_IfIsChildOfActivateForecastObj被增加
 	
-	
+	nero_s32int Strengthen2;
 	nero_s32int times;//在整个预测成功中，该节点存在的时间长度,初始化为0
 	                  //头节点的times用来记录该列表中的节点个数，不包括头节点
 	nero_s32int start;//如果该节点对象是一个被识别出来的子集衍生对象，start end 是objs中这个子集的起始位置

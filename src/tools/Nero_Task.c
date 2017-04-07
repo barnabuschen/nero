@@ -772,7 +772,10 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                     // 如果lenOfpar》1首先就排除了char类型
 
                     if(lenOfpar == 1)
+                    {
+                        // exit(0);
                         dataKind[k] = NeuronNode_ForChCharacter;
+                    }
                     else
                         dataKind[k] = NeuronNode_ForChWord;
 

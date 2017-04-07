@@ -278,7 +278,7 @@ dataNum	   数据的指针数组数据的个数，就是数组的长度
 
 nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf)
 {
-	nero_s32int i,j,hasAddObj/*,hasNewObj*/,res1,objNum,OldobjNum,res2,tmoForRecordNUm,ifHasUnknowObj,newBaseObjKind_;
+	nero_s32int i,j,hasAddObj/*,hasNewObj*/,res1,objNum,OldobjNum,res2,tmoForRecordNUm,ifHasUnknowObj,newBaseObjKind_,justForTest11;
 	NeuronObject * tmpObi,* tmpBaseObi,* tmpBaseObi2,* tmpObiForTest;
 	NeuronObject ** objs=NULL;
 	NeuronObject * TmpStagingAreaNero=NULL;
@@ -358,13 +358,13 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = tmpObi;
 				if(dataKind[i] == 62)
-					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中找不到该概念,kind=%d,i=%d  str=%s",dataKind[i],i,DataFlow[i]);
+					sprintf(neroObjMsgWithStr_st.str,"msg11:在DataFlowProcess中找不到该概念,kind=%d,i=%d  str=%s",dataKind[i],i,DataFlow[i]);
 				else if(dataKind[i] == 2012)
 				{
-					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中找不到该概念,kind=%d,i=%d  str=%s",dataKind[i],i,DataFlow[i]);
+					sprintf(neroObjMsgWithStr_st.str,"msg12:在DataFlowProcess中找不到该概念,kind=%d,i=%d  str=%s",dataKind[i],i,DataFlow[i]);
 				}
 				else
-					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中找不到该概念,kind=%d,i=%d,dataNum=%d  ",dataKind[i],i,dataNum);
+					sprintf(neroObjMsgWithStr_st.str,"msg13:在DataFlowProcess中找不到该概念,kind=%d,i=%d,dataNum=%d  ",dataKind[i],i,dataNum);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif						
 				
@@ -379,9 +379,9 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
 				neroObjMsgWithStr_st.Obi = tmpObi;
 				if(dataKind[i] == 62)
-					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中find概念,kind=%d,i=%d  str=%s",dataKind[i],i,DataFlow[i]);
+					sprintf(neroObjMsgWithStr_st.str,"msg14:在DataFlowProcess中find概念,kind=%d,i=%d  str=%s",dataKind[i],i,DataFlow[i]);
 				else
-					sprintf(neroObjMsgWithStr_st.str,"msg1:在DataFlowProcess中fidn概念,kind=%d,i=%d,dataNum=%d",dataKind[i],i,dataNum);
+					sprintf(neroObjMsgWithStr_st.str,"msg15:在DataFlowProcess中fidn概念,kind=%d,i=%d,dataNum=%d",dataKind[i],i,dataNum);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif	
 				tmoForRecordNUm++;
@@ -589,6 +589,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 			// printf("   		forecastInfo_st.objNum=%d.\n",forecastInfo_st.objNum);
 
+
 			if(forecastInfo_st.objNum  == 4)
 			{
 
@@ -642,6 +643,14 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 						p = p->next;			
 					}
 				#endif	
+
+				//you should check  the 	forecastInfo_st.objs   kinds  and  forecastInfo_st.objNum;
+				printf("   		2check  the 	forecastInfo_st.objs num=%d.\n",forecastInfo_st.objNum);
+				for(justForTest11 =0 ;justForTest11 < forecastInfo_st.objNum;justForTest11++)
+				{
+					printf("   		objkind=%d\n",nero_GetNeroKind((forecastInfo_st.objs)[justForTest11])    );
+				}	
+
 
 	    		Process_ObjsClassiFication(&forecastInfo_st);
 	    		//强制清除list
@@ -753,11 +762,6 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		}
 		else if (conf->CreateNewBaseObjKind == 1  &&  ifHasUnknowObj == 0)
         {
-             
-
-
-
-
 
               // printf("\n");
               /*判断是否可以进行新基类（抽象概念）创建*/
@@ -1701,7 +1705,7 @@ nero_s32int Process_UpdataForecastList(struct DataFlowForecastInfo  * forecastIn
         // CleanForecastList( forecastInfo);
         
         
-         #ifdef CleanForecastList_msgTest
+         #ifdef CleanForecastList_msgTest11111111111
         printf("count_=%d.-------------\n",count_);
         #endif
 
@@ -2565,7 +2569,7 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 /*
 在nero_createObjFromMultiples中新得衍生类对象得数据对象（子对象）只指向了新得衍生类，并没有指向抽象基类
 假如加入指向抽象基类得fiber，且这个fiber将 record 每个子对象在整个sys运行过程中该子对象 指向该抽象基类 得 次数
-那个这个冗余数据将加快分类中查询链接次数得操作 
+那个这个冗余数据将加快分类中查询链接次数得操作 (you has add this  fiber in  fuc)
 但是问题是：在某一个时刻你无法保证输出列表中的顺序就是完全按照链接程度来排列的。因为这需要足够大的数据才行
 */
  // in fuc Process_ObjForecast  ,you has put all the upper obj into list of headOfUpperLayer,  headOfLowerLayer
@@ -2689,7 +2693,7 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 
 				}
 			}
-			else
+			else//objKInd  未知  ,so just put all objs into Process_tmpObiUsed
 			{
 				// Process_tmpObi[Process_tmpObiUsed ] =  matchObj;
 				Process_forecastListNode[Process_tmpObiUsed ] = *( (struct NeroObjForecastList *)listPoint);

@@ -413,8 +413,10 @@ Log_printNeroObjLinkTree:		Kind:61, address:406ffa80
 		1：首先修正objs[]
 		2：再次运行
 
+、
 
-
+创建时间：08/04/2017 22:49:24 
+		发现修改了objs[]后的准确率并没有提高
 
 
 

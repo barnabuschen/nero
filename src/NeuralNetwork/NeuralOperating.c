@@ -660,6 +660,14 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				// 1：首先修正objs[]
 				// 2：再次运行Process_ObjsClassiFication(&forecastInfo_st);
 
+				#ifdef Nero_DeBuging10_01_14
+					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+					neroObjMsgWithStr_st.fucId = 3;//
+					neroObjMsgWithStr_st.Obi = NULL;
+					sprintf(neroObjMsgWithStr_st.str,"matchObj1:%x,kind =%d,isbase=%d \n",tmpObiForTest,nero_GetNeroKind(tmpObiForTest) , nero_isBaseObj(tmpObiForTest));
+					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+				#endif	
+
 	    	 	if(tmpObiForTest != NULL)
 	    	 	{
 
@@ -669,7 +677,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	    	 		{
 	    	 			tmpObiForTest=Process_ObjsClassiFication(&forecastInfo_st);
 						// printf("   		Process_ModifyObjsForClassiFication222:objkind=%d.\n",nero_GetNeroKind(objs[3])  );
-						#ifdef Nero_DeBuging10_01_14_
+						#ifdef Nero_DeBuging10_01_14
 							neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 							neroObjMsgWithStr_st.fucId = 3;//
 							neroObjMsgWithStr_st.Obi = NULL;
@@ -680,13 +688,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	    	 		}
 	    	 	}
 
-				#ifdef Nero_DeBuging10_01_14
-					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-					neroObjMsgWithStr_st.fucId = 3;//
-					neroObjMsgWithStr_st.Obi = NULL;
-					sprintf(neroObjMsgWithStr_st.str,"matchObj2:%x,kind =%d,isbase=%d \n",tmpObiForTest,nero_GetNeroKind(tmpObiForTest) , nero_isBaseObj(tmpObiForTest));
-					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
-				#endif	
+
 
 	    		//强制清除list
 	    		forecastInfo_st.controlMsg.Refreshed=1;

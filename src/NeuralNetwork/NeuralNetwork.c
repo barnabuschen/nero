@@ -354,12 +354,12 @@ nero_s32int testBaseObjNum(NeuronObject * baseobj,NeuronObject * godNero)
 {
 
 	nero_s32int ObjectKind,num,i;
-	NeuronObject *Obi;
+	// NeuronObject *Obi;
 	NerveFiber  *  curFiber;
 
 	num=0;
 			// printf("\n" );	
-	curFiber=obj->inputListHead;
+	curFiber=baseobj->inputListHead;
 	while(curFiber != NULL  )
 	{
 		i=  getFiberPointToObjNum(curFiber) ;
@@ -5349,4 +5349,79 @@ nero_us32int  nero_getChildKind(NeuronObject  * n,nero_us32int positoinOfChild)
 		findKind=NeuronNode_ForNone;
 
 	return findKind;
+}
+
+
+//从n的输出列表中找到满足条件的searchKind对象,flag is limitation factor
+NeuronObject  *  nero_searchObjInOutputlistByKind(NeuronObject  * n,nero_us32int searchKind,nero_us32int ifIsBase,nero_us32int flag)
+{
+	nero_us32int i,findKind,datanum;
+	NerveFiber *  tmpFiber;
+	NeuronObject  * tmpObj;
+	NeuronObject  * fidnObj;
+/*
+	flag :
+
+		case 1:   找到的对象刚好有且只有一个数据对象，就是n
+
+*/
+	if(n == NULL  ||  searchKind < 0   ||    ifIsBase >1 ||   flag  >10)
+	{
+
+    	printf("nero_searchObjInOutputlistByKind :   parameter error\n");
+		return NULL;
+
+	}
+	tmpFiber=n->outputListHead;
+	// printf("nero_searchObjInOutputlistByKind : searchKind=%d,  ifIsBase=%d,flag=%d\n",searchKind,ifIsBase,flag);
+	fidnObj =NULL;
+	switch(flag)
+	{
+		case 1:
+			while(  tmpFiber != NULL )
+			{
+				tmpObj = tmpFiber->obj;
+				// printf("nero_searchObjInOutputlistByKind :   tmpObj kind=%d\n",nero_GetNeroKind(tmpObj));
+				if(tmpObj!= NULL  &&   nero_GetNeroKind(tmpObj) ==  searchKind    &&  nero_isBaseObj( tmpObj) ==  ifIsBase )
+				{
+					if(ifIsBase  ==  1)
+					{
+						fidnObj = tmpObj;
+						break;
+					}
+					else
+					{
+						datanum = nero_getObjDataNum(tmpObj);
+
+    					// printf("nero_searchObjInOutputlistByKind :   datanum=%d\n",datanum);
+						if(datanum == 1)
+						{
+
+							if(  n   ==   tmpObj->inputListHead->obj )
+							{
+    							// printf("nero_searchObjInOutputlistByKind :   find obj=%x\n",tmpObj->inputListHead->obj);
+								fidnObj = tmpObj;
+								break;
+
+							}
+
+						}
+					}
+
+				}
+				tmpFiber=tmpFiber->next;
+				
+			}		
+			// printf("nero_searchObjInOutputlistByKind :   can not find \n");
+
+
+			break;
+
+		default:
+			break;
+	}
+
+
+
+	return fidnObj;
 }

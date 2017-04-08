@@ -314,6 +314,7 @@ extern NeroConf neroConf;
 #define	Fiber_ObjInSAPool	1  //所指向对象所在区域为StagingAreaNeroPool	 	
 
 
+NeuronObject  *  nero_searchObjInOutputlistByKind(NeuronObject  * n,nero_us32int searchKind,nero_us32int ifIsBase,nero_us32int flag);
 
 nero_s32int testBaseObjNum(NeuronObject * baseobj,NeuronObject * godNero);
 nero_us32int  nero_getChildKind(NeuronObject  * n,nero_us32int positoinOfChild);

@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "updata：20170408_01"
+git commit -a -m "updata：20170408_02"
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt
@@ -99,8 +99,9 @@ gdb neroMain
 file  ./tools/Nero_Task.c
 file  ./NeuralNetwork/NeuralOperating.c
 b  Process_ObjForecast
- b NeuralNetwork.c:3778
-
+b NeuralNetwork.c:3778
+b NeuralOperating.c:2622
+b NeuralOperating.c:2662
 NeuralNetwork.c
 
  b 3815

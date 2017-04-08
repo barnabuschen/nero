@@ -315,7 +315,7 @@ extern NeroConf neroConf;
 
 
 
-
+nero_s32int testBaseObjNum(NeuronObject * baseobj,NeuronObject * godNero);
 nero_us32int  nero_getChildKind(NeuronObject  * n,nero_us32int positoinOfChild);
 void donother();
 // 将一个obj从基类得子类列表中删除

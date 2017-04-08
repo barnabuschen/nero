@@ -643,16 +643,32 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 						p = p->next;			
 					}
 				#endif	
-
+					/* 
 				//you should check  the 	forecastInfo_st.objs   kinds  and  forecastInfo_st.objNum;
 				printf("   		2check  the 	forecastInfo_st.objs num=%d.\n",forecastInfo_st.objNum);
 				for(justForTest11 =0 ;justForTest11 < forecastInfo_st.objNum;justForTest11++)
 				{
 					printf("   		objkind=%d\n",nero_GetNeroKind((forecastInfo_st.objs)[justForTest11])    );
 				}	
+				*/
+
+	    	 	tmpObiForTest=Process_ObjsClassiFication(&forecastInfo_st);
+	    		// after run  fuc Process_ObjsClassiFication, the variable (Process_forecastListNode[0]).obj;
+	    		//is your  found obj  which is mostest related obj  with objs[]
+	    		// but in order to improve accuracy, you can use (Process_forecastListNode[0]).obj to  modify 
+	    		// objs[]  ,for find  more suitable  objkind   
+				// 1：首先修正objs[]
+				// 2：再次运行Process_ObjsClassiFication(&forecastInfo_st);
+
+	    	 	if(tmpObiForTest != NULL)
+	    	 	{
+
+	    	 		nero_us32int Process_ModifyObjsForClassiFication(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * referenceObj);
+	    	 		tmpObiForTest=Process_ObjsClassiFication(&forecastInfo_st);
+	    	 	}
 
 
-	    		Process_ObjsClassiFication(&forecastInfo_st);
+
 	    		//强制清除list
 	    		forecastInfo_st.controlMsg.Refreshed=1;
 	    		CleanForecastList( &forecastInfo_st);
@@ -2560,6 +2576,57 @@ int qSortCmp1(const void *a,const void *b)
 
 	return 0;
 }
+/*
+
+第一次运行Process_ObjsClassiFication(&forecastInfo_st);后，利用其返回值（referenceObj）,
+修改objs的子数据的kind，来提升下次运行Process_ObjsClassiFication的准确率
+那问题来了，修改到什么程度呢？因为很可能遇到referenceObj的数据结构和objs不一样的
+情况，具体指的是其数目对不上，也可能出现objs中的对象无法转换为objs所要求的子数据kind
+的情况
+*/
+nero_us32int Process_ModifyObjsForClassiFication(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * referenceObj)
+{
+
+	
+	nero_us32int res,i,dataNum,flag;
+
+	if(forecastInfo == NULL  ||   referenceObj == NULL )
+	{
+
+		// Refreshed == 0 mean the msg of controlMsg is old ,and DurationTime == 1 means the msg is outdate
+    	printf("Process_ModifyObjsForClassiFication :   parameter error\n");
+		return nero_msg_fail;
+
+	}
+	res = nero_msg_fail;
+	//这里暂时不考虑双方数据个数不对等的情况
+	// 注意一点：有些基础类的数据个数可能是可变的，
+		// 如果referenceObj是实例，数据个数是确定的
+		// 如果referenceObj是basekind，数据个数是不确定的
+	
+	dataNum = nero_getObjDataNum(referenceObj);
+	if(nero_GetNeroKind(referenceObj)  >  NeuronNode_ForComplexDerivative )
+		dataNum = dataNum -1;
+	flag =  testBaseObjNum(referenceObj, GodNero);
+
+	if(dataNum ==  forecastInfo->objNum   ||   flag == 1 )
+	{
+		//这里暂时不考虑referenceObj是实例的情况
+		if(nero_isBaseObj(referenceObj)   ==  1 )
+		{
+			 // 根据数据的个数和结构的不同进行分类处理
+
+
+		}
+
+	}
+  
+
+
+	return res;
+}
+
+
 
 // 分类的准确含义是什么？仅仅是找出来一个最相似的basekind么，还是包括find out与传入的objs最类似的上层衍生obj
 // it doesnot mattar ,if need to find a basekind ,just return the basekind obj.
@@ -2751,7 +2818,7 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 	//check out the result:
     // printf("the most possible  matchObj:%x,kind =%d,isbase=%d,Process_tmpObiUsed=%d \n",Process_tmpObi[0],nero_GetNeroKind(Process_tmpObi[0]) , nero_isBaseObj(Process_tmpObi[0]),Process_tmpObiUsed);
 
-	#ifdef Nero_DeBuging10_01_14
+	#ifdef Nero_DeBuging10_01_14_
 		matchObj=    (Process_forecastListNode[0]).obj;
 		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 		neroObjMsgWithStr_st.fucId = 3;//
@@ -2761,7 +2828,12 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 	#endif	
 
 
-    return Process_tmpObi[0];
+    // return Process_tmpObi[0];
+	if(Process_tmpObiUsed >= 1)
+		return (Process_forecastListNode[0]).obj;
+
+	else
+	 	return NULL;
 }
 
 

@@ -349,6 +349,37 @@ static inline nero_us32int getFiberUpdataTime(NerveFiber * fiber)
 	return nero_msg_unknowError;
 
 }
+//判断基类的子数据构成数目是否是可变的
+nero_s32int testBaseObjNum(NeuronObject * baseobj,NeuronObject * godNero)
+{
+
+	nero_s32int ObjectKind,num,i;
+	NeuronObject *Obi;
+	NerveFiber  *  curFiber;
+
+	num=0;
+			// printf("\n" );	
+	curFiber=obj->inputListHead;
+	while(curFiber != NULL  )
+	{
+		i=  getFiberPointToObjNum(curFiber) ;
+	    if(  i  >  0  ) 
+	    {
+	    	num =1;
+
+	    	break;
+	    }
+		curFiber=curFiber->next;
+	}
+// printf("\n" );	
+
+	return  num;
+
+
+}
+
+
+
 NeuronObject *  getBaseObjName(NeuronObject * baseobj,NeuronObject * godNero)
 {
 	nero_s32int ObjectKind;

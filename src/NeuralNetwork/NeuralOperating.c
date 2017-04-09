@@ -595,7 +595,29 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 				while(pointForObjsTmp < forecastInfo_st.objNum)
 				{
-					// printf("   		objkind=%d.\n",nero_GetNeroKind(objs[pointForObjsTmp])  );
+
+
+					#ifdef Nero_DeBuging10_01_14
+					// 
+	    	 		// res1= Process_ModifyObjsForClassiFication(&forecastInfo_st,objs[pointForObjsTmp],GodNero);
+	    	 		res1= Process_ModifyObjsForForecastList(&forecastInfo_st,pointForObjsTmp,forecastInfo_st.controlMsg.expectedKind,GodNero);
+
+	    	 		// printf("   		Process_ModifyObjsForClassiFication1,res111=%d\n",res1);
+	    	 		if(res1 ==  nero_msg_ok)
+	    	 		{
+						printf("   		Process_ModifyObjsForForecastList:     obj[%d] objkind change to kind %d\n",pointForObjsTmp,nero_GetNeroKind(objs[pointForObjsTmp])  );
+						#ifdef Nero_DeBuging10_01_14_
+							neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+							neroObjMsgWithStr_st.fucId = 3;//
+							neroObjMsgWithStr_st.Obi = NULL;
+							sprintf(neroObjMsgWithStr_st.str,"matchObj2:%x,kind =%d,isbase=%d \n",tmpObiForTest,nero_GetNeroKind(tmpObiForTest) , nero_isBaseObj(tmpObiForTest));
+							msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+						#endif	
+
+	    	 		}		    	 	
+		    	 	#endif						
+
+					// printf("   		objkind=%d.,expectedKind=%d\n",nero_GetNeroKind(objs[pointForObjsTmp]) ,forecastInfo_st.controlMsg.expectedKind );
 					Process_UpdataForecastList(&forecastInfo_st,objs[pointForObjsTmp]);
 					
 
@@ -612,11 +634,19 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 						sprintf(neroObjMsgWithStr_st.str," ouputlistOBJ:isbase=%d\n" , nero_isBaseObj(objs[pointForObjsTmp]));
 						msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);	
 					#endif	
+					// 打印一个obj outputListHead   信息
+					#ifdef Nero_DeBuging10_01_14
+
+						neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
+						neroObjMsg_st.fucId = 2;//Log_printNeroObjLink
+						neroObjMsg_st.Obi = objs[pointForObjsTmp];
+						msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);
+					#endif						
 
 						pointForObjsTmp++;								
 				}
 
-				#ifdef Nero_DeBuging09_01_14_
+				#ifdef Nero_DeBuging09_01_14
 					NeuronObject * nodeobj;
 					struct NeroObjForecastList *listNode;
 					// struct NeroObjForecastList *listHead;
@@ -667,27 +697,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 					sprintf(neroObjMsgWithStr_st.str,"matchObj1:%x,kind =%d,isbase=%d \n",tmpObiForTest,nero_GetNeroKind(tmpObiForTest) , nero_isBaseObj(tmpObiForTest));
 					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif	
-
-	    	 	if(tmpObiForTest != NULL)
-	    	 	{
-
-	    	 		res1= Process_ModifyObjsForClassiFication(&forecastInfo_st,tmpObiForTest,GodNero);
-	    	 		// printf("   		Process_ModifyObjsForClassiFication1,res111=%d\n",res1);
-	    	 		if(res1 ==  nero_msg_ok)
-	    	 		{
-	    	 			tmpObiForTest=Process_ObjsClassiFication(&forecastInfo_st);
-						// printf("   		Process_ModifyObjsForClassiFication222:objkind=%d.\n",nero_GetNeroKind(objs[3])  );
-						#ifdef Nero_DeBuging10_01_14
-							neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-							neroObjMsgWithStr_st.fucId = 3;//
-							neroObjMsgWithStr_st.Obi = NULL;
-							sprintf(neroObjMsgWithStr_st.str,"matchObj2:%x,kind =%d,isbase=%d \n",tmpObiForTest,nero_GetNeroKind(tmpObiForTest) , nero_isBaseObj(tmpObiForTest));
-							msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
-						#endif	
-
-	    	 		}
-	    	 	}
-
+	
 
 
 	    		//强制清除list
@@ -1971,8 +1981,8 @@ void AddNewObjToList(struct DataFlowForecastInfo  * forecastInfo,nero_s32int Fib
 
 			if (findNodeINlist == NULL)
 			{
-				#ifdef Nero_DeBuging24_01_14_
-					// printf("预测链表增长。。。。p->next=%x。。。\n",p->next);
+				#ifdef Nero_DeBuging24_01_14
+					printf("预测链表增长。。。。Obj=%x,kind=%d,FiberStrengthen=[%d],isbase=%d\n",Obj,nero_GetNeroKind(Obj),FiberStrengthen,nero_isBaseObj(Obj));
 					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 					neroObjMsgWithStr_st.fucId = 1;
 					neroObjMsgWithStr_st.Obi = Obj;
@@ -1986,9 +1996,10 @@ void AddNewObjToList(struct DataFlowForecastInfo  * forecastInfo,nero_s32int Fib
                     /*对于刚被查询的概念，就是新输入的，但是列表中
                     已经有的概念延长起存在时间，已避免反复添加删除
                     */
-                    
+                    (findNodeINlist->Strengthen)  +=FiberStrengthen;
+
                     (findNodeINlist->times)--;
-/*                                        printf("findNodeINlist->times=%d.\n",findNodeINlist->times);*/
+					printf("预测链表no增长。。。Obj=%x,kind=%d,FiberStrengthen=[%d][+%d],isbase=%d\n",Obj,nero_GetNeroKind(Obj),(findNodeINlist->Strengthen),FiberStrengthen,nero_isBaseObj(Obj));
                     
             }
 
@@ -2125,7 +2136,7 @@ void AddNodeIntoForecastList(struct list_head  * listHead,NeuronObject * Obj,ner
         newListNode->start=-1;
         newListNode->end=-1;        
     
-		#ifdef Nero_DeBuging24_01_14
+		#ifdef Nero_DeBuging24_01_14_
 			// printf("预测链表增长。。。。p->next=%x。。。\n",p->next);
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 			neroObjMsgWithStr_st.fucId = 1;
@@ -2597,6 +2608,86 @@ int qSortCmp1(const void *a,const void *b)
 
 	return 0;
 }
+
+// 每次运行nero_s32int Process_UpdataForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * newObj)之前
+// 都要判断这里的newObj是否符合要求，如果不符合，则直接丢弃也不拿来影响判断结果
+//	判断的依据是根据forecastInfo_st.controlMsg.expectedKind 的值来判断newObj是否可以使用，或者需要修改类型
+//the parameter checkObjPoint gave the positon of  (forecastInfo->objs)[checkObjPoint] ,which is  need to check out
+nero_us32int  Process_ModifyObjsForForecastList(struct DataFlowForecastInfo  * forecastInfo,nero_us32int  checkObjPoint,nero_us32int expectedKind,NeuronObject * godNero)
+{
+	nero_us32int res,i,dataNum,flag,dataNum2;
+	nero_us32int originalKind,targetKind,tmpkind;
+	NeuronObject *  baseObj;
+	NeuronObject *  expectedBaseObj;
+	NeuronObject *  tmpObj;
+	if(forecastInfo == NULL    )
+	{
+
+		// Refreshed == 0 mean the msg of controlMsg is old ,and DurationTime == 1 means the msg is outdate
+    	printf("Process_ModifyObjsForForecastList :   parameter error\n");
+		return nero_msg_fail;
+
+	}
+
+	expectedBaseObj = nero_getBaseObjByKind(expectedKind,godNero);
+	res = nero_msg_fail;
+	//这里暂时不考虑双方数据个数不对等的情况
+	// 注意一点：有些基础类的数据个数可能是可变的，
+		// basekind，数据个数是不确定的
+
+	dataNum = nero_getObjDataNum(expectedBaseObj);
+	if(expectedKind  >  NeuronNode_ForComplexDerivative  )
+		dataNum = dataNum -1;
+	flag =  testBaseObjNum(expectedBaseObj, godNero);
+	// printf("1---dataNum=(%d),forecastInfo->objNum=(%d)\n",dataNum,forecastInfo->objNum);
+	if(dataNum ==  forecastInfo->objNum   ||   flag == 1 )
+	{
+
+		 // 根据数据的个数和结构的不同进行分类处理
+		//先处理最简单的情况
+		// printf("2---dataNum=(%d),forecastInfo->objNum=(%d)\n",dataNum,forecastInfo->objNum);
+		if(dataNum ==  forecastInfo->objNum)
+		{
+			i = checkObjPoint;
+			originalKind 	=nero_GetNeroKind( (forecastInfo->objs)[i] )  ;
+			if(expectedKind >  NeuronNode_ForComplexDerivative )
+				targetKind		= nero_getChildKind(expectedBaseObj,i+1 )   ;
+			else
+				targetKind		= nero_getChildKind(expectedBaseObj,i )   ;
+			// printf("originalKind(%d),targetKind(%d),i=%d\n",originalKind,targetKind, i);
+			if(   originalKind  !=  targetKind )
+			{
+
+				//现在尝试将originalKind 转化为 targetKind  obj
+				// 能成功转化的前提是targetKind  obj的数据子对象正好是originalKind obj
+				// 但是又分为两种情况：
+				// 1：originalKind 完全就是targetKind的组成子数据
+				// 2：originalKind 不是targetKind的组成子数据，但他们的组成子数据是相同的
+
+				//现在只考虑第一种情况(子数据个数刚好就是1)
+				// 实际上，targetKind应该已经有相应的以此originalKind obj为数据的实例了
+				// you just need to find it
+				// 根据nero_createObjFromMultiples的机制，新生成的对象，其子数据会指向上层对象，包括基类和实例
+
+				tmpObj=nero_searchObjInOutputlistByKind((forecastInfo->objs)[i],targetKind,0,1);
+				// printf("nero_searchObjInOutputlistByKind:tmpObj=%x,\n",tmpObj);
+				if(tmpObj != NULL  &&  nero_isBaseObj(tmpObj ) ==  0 )
+				{
+					//if find the targetKind obj 
+					(forecastInfo->objs)[i]  =  tmpObj;
+					res = nero_msg_ok;
+					// break;
+				}
+
+			}
+
+		}
+	}
+  
+	return res;
+
+}
+
 /*
 
 第一次运行Process_ObjsClassiFication(&forecastInfo_st);后，利用其返回值（referenceObj）,
@@ -2631,7 +2722,7 @@ nero_us32int Process_ModifyObjsForClassiFication(struct DataFlowForecastInfo  * 
 	if(nero_GetNeroKind(referenceObj)  >  NeuronNode_ForComplexDerivative   &&  nero_isBaseObj(referenceObj) == 1)
 		dataNum = dataNum -1;
 	flag =  testBaseObjNum(referenceObj, GodNero);
-	printf("1---dataNum=(%d),forecastInfo->objNum=(%d)\n",dataNum,forecastInfo->objNum);
+	// printf("1---dataNum=(%d),forecastInfo->objNum=(%d)\n",dataNum,forecastInfo->objNum);
 	if(dataNum ==  forecastInfo->objNum   ||   flag == 1 )
 	{
 		//这里暂时不考虑referenceObj是实例的情况
@@ -2811,10 +2902,10 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 		//
 		if(	flag ==  forecastInfo->controlMsg.baseORDerivative  )
 		{
-			if(forecastInfo->controlMsg.expectedKind  != NeuronNode_ForUndefined)
+			// if(forecastInfo->controlMsg.expectedKind  != NeuronNode_ForUndefined)
 			{
 
-				if( matchKind == forecastInfo->controlMsg.expectedKind )
+				// if( matchKind == forecastInfo->controlMsg.expectedKind )
 				{
 					Process_forecastListNode[Process_tmpObiUsed ] = *( (struct NeroObjForecastList *)listPoint);
 					// Process_tmpObi[Process_tmpObiUsed ] =  matchObj;
@@ -2823,13 +2914,13 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 
 				}
 			}
-			else//objKInd  未知  ,so just put all objs into Process_tmpObiUsed
-			{
+			// else
+			// {
 				// Process_tmpObi[Process_tmpObiUsed ] =  matchObj;
-				Process_forecastListNode[Process_tmpObiUsed ] = *( (struct NeroObjForecastList *)listPoint);
-				Process_tmpObiUsed++;
+				// Process_forecastListNode[Process_tmpObiUsed ] = *( (struct NeroObjForecastList *)listPoint);
+				// Process_tmpObiUsed++;
 				// printf(":matchObj:%x,kind=%d\n",matchObj,matchKind);
-			}
+			// }
 		}
 
 		

@@ -771,7 +771,7 @@ nero_s32int Log_printNeroObjLink(void * arg)
 			if (ObjectKind > NeuronNode_ForComplexDerivative )
 			{
 				curFiber=obj->outputListHead;
-				sprintf(str,"Log_printNeroObjLink[高级衍生类]:%s		地址：%x的link对象,ObjectKind=%d,datanum=%d\n",asctime(timenow),(int)obj,(int)ObjectKind,nero_getObjDataNum(obj));
+				sprintf(str,"Log_printNeroObjLink[高级衍生类]:%s		地址：%x  ObjectKind=%d,datanum=%d\n",asctime(timenow),(int)obj,(int)ObjectKind,nero_getObjDataNum(obj));
 				addLineToFile(logFile,str);
 				
 				if (curFiber == NULL)
@@ -799,20 +799,21 @@ nero_s32int Log_printNeroObjLink(void * arg)
 								break;
 								
 							default:
-								ObjectKind3=nero_isBaseObj(tmp);
-								if (ObjectKind3 ==1)
+								// ObjectKind3=nero_isBaseObj(tmp);
+								// if (ObjectKind3 ==1)
 								{
-									sprintf(str,"链接对象为基类");
+									sprintf(str,"链接对象为unknow");
 								}
 								break;
 						
 						}
-						sprintf(strLinshi,"		-->%x  <%s>,FiberType=%d\n",(int)tmp,str,getFiberType(curFiber));
+						// sprintf(str,"		链接对象test\n");
+						sprintf(strLinshi,"		该对象%x  <%s>,Kind=%d,FiberType=%d,Strengthen=%d\n",(int)tmp,str,ObjectKind2,(getFiberType(curFiber)),(curFiber->msg1 & 0x000000ff ));
 						addLineToFile(logFile,strLinshi);
 					}	
 					else
 					{
-						sprintf(strLinshi,"		该对象%x为基类,ObjectKind=%d，level:%d,FiberStrengthen=%d\n",tmp,nero_GetNeroKind(tmp),getFiberType(curFiber),(curFiber->msg1 & 0x000000ff ));
+						sprintf(strLinshi,"		该对象%x为基类,ObjectKind=%d，FiberType:%d,Strengthen=%d\n",tmp,nero_GetNeroKind(tmp),getFiberType(curFiber),(curFiber->msg1 & 0x000000ff ));
 						addLineToFile(logFile,strLinshi);
 					
 					}		

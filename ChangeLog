@@ -418,52 +418,6 @@ Log_printNeroObjLinkTree:		Kind:61, address:406ffa80
 创建时间：08/04/2017 22:49:24 
 		发现修改了objs[]后的准确率并没有提高
 
-这里的Strengthen用法对么？？？？？？？？？？？？？？？？？？？？？
-
-struct NeroObjForecastList
-{
-	struct list_head p;
-	NeuronObject * obj;
-	nero_s32int Strengthen;//在一次预测过程中可能一个对象被多次预测,初始化为0
-	                        //普通对象在FindObjInForecastList被增加，上层衍生概念
-	                        //在Process_GetNewActivateForecastObj  和
-	                        //Process_IfIsChildOfActivateForecastObj被增加
-	
-	nero_s32int Strengthen2;
-	nero_s32int times;//在整个预测成功中，该节点存在的时间长度,初始化为0
-	                  //头节点的times用来记录该列表中的节点个数，不包括头节点
-	nero_s32int start;//如果该节点对象是一个被识别出来的子集衍生对象，start end 是objs中这个子集的起始位置
-	nero_s32int end;	                  
-	                  
-};
-
-int qSortCmp1(const void *a,const void *b)
-{
-	// NerveFiber * fiberA;
-	// NerveFiber * fiberB;
-	int res;
-	struct NeroObjForecastList * A;
-	struct NeroObjForecastList * B;
-	// nero_us32int fiberStrengthenA;
-	// nero_us32int fiberStrengthenB;
-	A = (struct NeroObjForecastList *)a;
-	B = (struct NeroObjForecastList *)b;
-	// printf("A->Strengthen=%d,B->Strengthen=%d\n",A->Strengthen,B->Strengthen);
-	if(A == NULL || B == NULL)
-	{
-
-		return 0;
-	}
-
-	if(A->Strengthen  >  B->Strengthen)
-		return  (-1);
-
-	if(A->Strengthen  <  B->Strengthen)
-		return  (1);	
-
-	return 0;
-}
-
 
 在函数中，关于        newListNode->Strengthen=FiberStrengthen;的做法是否正确---没问题，
 void AddNodeIntoForecastList(struct list_head  * listHead,NeuronObject * Obj,nero_us32int  FiberStrengthen)
@@ -481,6 +435,90 @@ void AddNodeIntoForecastList(struct list_head  * listHead,NeuronObject * Obj,ner
 /*                                        printf("findNodeINlist->times=%d.\n",findNodeINlist->times);*/
                     
             }
+
+
+Log_printNeroObjLink[高级衍生类]:
+
+
+
+
+Log_printNeroObjLink[高级衍生类]:Sun Apr  9 16:05:24 2017
+		地址：40701da0  ObjectKind=2012,datanum=2
+		该对象40701a60为基类,ObjectKind=2013，FiberType:1,Strengthen=4
+		该对象40701820为基类,ObjectKind=2012，FiberType:1,Strengthen=0
+		该对象40701e20  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40701dc0  <链接对象为unknow>,Kind=2012,FiberType=3,Strengthen=0
+		该对象40701f40  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40701f20  <链接对象为unknow>,Kind=2012,FiberType=3,Strengthen=0
+		该对象40702100  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象407021a0  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40701e40  <链接对象为unknow>,Kind=2012,FiberType=3,Strengthen=0
+Log_printNeroObjLink[高级衍生类]:Sun Apr  9 16:05:24 2017
+		地址：40701e40  ObjectKind=2012,datanum=2
+		该对象40701a60为基类,ObjectKind=2013，FiberType:1,Strengthen=7
+		该对象40701820为基类,ObjectKind=2012，FiberType:1,Strengthen=0
+		该对象40701e80  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40701a20  <链接对象为unknow>,Kind=2012,FiberType=3,Strengthen=0
+		该对象40701ea0  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40701d00  <链接对象为unknow>,Kind=2012,FiberType=3,Strengthen=0
+		该对象40701fa0  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40701f80  <链接对象为unknow>,Kind=2012,FiberType=3,Strengthen=0
+		该对象407021a0  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40701de0  <链接对象为unknow>,Kind=2012,FiberType=3,Strengthen=0
+		该对象407022a0  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40702280  <链接对象为unknow>,Kind=2012,FiberType=3,Strengthen=0
+		该对象407022e0  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40702340  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+Log_printNeroObjLink[高级衍生类]:Sun Apr  9 16:05:24 2017
+		地址：40701d00  ObjectKind=2012,datanum=2
+		该对象40701a60为基类,ObjectKind=2013，FiberType:1,Strengthen=8
+		该对象40701820为基类,ObjectKind=2012，FiberType:1,Strengthen=0
+		该对象40701d20  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40701a40  <链接对象为unknow>,Kind=2012,FiberType=3,Strengthen=0
+		该对象40701ea0  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40701f00  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40701840  <链接对象为unknow>,Kind=2012,FiberType=3,Strengthen=0
+		该对象40701b00为基类,ObjectKind=2014，FiberType:1,Strengthen=8
+		该对象40701f40  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象407020e0  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40701e00  <链接对象为unknow>,Kind=2012,FiberType=3,Strengthen=0
+		该对象40702180  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40701e60  <链接对象为unknow>,Kind=2012,FiberType=3,Strengthen=0
+		该对象407021c0  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40702320  <链接对象为unknow>,Kind=2013,FiberType=1,Strengthen=0
+		该对象40702400  <链接对象为unknow>,Kind=2014,FiberType=1,Strengthen=0
+		该对象40702440  <链接对象为unknow>,Kind=2014,FiberType=1,Strengthen=0
+		该对象407024c0  <链接对象为unknow>,Kind=2014,FiberType=1,Strengthen=0
+		该对象40702680  <链接对象为unknow>,Kind=2014,FiberType=1,Strengthen=0
+		该对象40702780  <链接对象为unknow>,Kind=2014,FiberType=1,Strengthen=0
+		该对象40702800  <链接对象为unknow>,Kind=2014,FiberType=1,Strengthen=0
+		该对象407028a0  <链接对象为unknow>,Kind=2014,FiberType=1,Strengthen=0
+		该对象40702980  <链接对象为unknow>,Kind=2014,FiberType=1,Strengthen=0
+		该对象40701bc0为基类,ObjectKind=2015，FiberType:1,Strengthen=1
+		该对象40702ce0  <链接对象为unknow>,Kind=2015,FiberType=1,Strengthen=0
+
+
+
+
+
+
+	你发现问题的关键在于你没有一个反馈机制，或者说一个自动交互机制
+	但你现在可以先把这个机制放一放先，先找一个临时的办法解决一下，以后再说
+	现在是关键看你的这个算法能否有一定的准确率
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

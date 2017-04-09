@@ -418,19 +418,69 @@ Log_printNeroObjLinkTree:		Kind:61, address:406ffa80
 创建时间：08/04/2017 22:49:24 
 		发现修改了objs[]后的准确率并没有提高
 
+这里的Strengthen用法对么？？？？？？？？？？？？？？？？？？？？？
+
+struct NeroObjForecastList
+{
+	struct list_head p;
+	NeuronObject * obj;
+	nero_s32int Strengthen;//在一次预测过程中可能一个对象被多次预测,初始化为0
+	                        //普通对象在FindObjInForecastList被增加，上层衍生概念
+	                        //在Process_GetNewActivateForecastObj  和
+	                        //Process_IfIsChildOfActivateForecastObj被增加
+	
+	nero_s32int Strengthen2;
+	nero_s32int times;//在整个预测成功中，该节点存在的时间长度,初始化为0
+	                  //头节点的times用来记录该列表中的节点个数，不包括头节点
+	nero_s32int start;//如果该节点对象是一个被识别出来的子集衍生对象，start end 是objs中这个子集的起始位置
+	nero_s32int end;	                  
+	                  
+};
+
+int qSortCmp1(const void *a,const void *b)
+{
+	// NerveFiber * fiberA;
+	// NerveFiber * fiberB;
+	int res;
+	struct NeroObjForecastList * A;
+	struct NeroObjForecastList * B;
+	// nero_us32int fiberStrengthenA;
+	// nero_us32int fiberStrengthenB;
+	A = (struct NeroObjForecastList *)a;
+	B = (struct NeroObjForecastList *)b;
+	// printf("A->Strengthen=%d,B->Strengthen=%d\n",A->Strengthen,B->Strengthen);
+	if(A == NULL || B == NULL)
+	{
+
+		return 0;
+	}
+
+	if(A->Strengthen  >  B->Strengthen)
+		return  (-1);
+
+	if(A->Strengthen  <  B->Strengthen)
+		return  (1);	
+
+	return 0;
+}
 
 
+在函数中，关于        newListNode->Strengthen=FiberStrengthen;的做法是否正确---没问题，
+void AddNodeIntoForecastList(struct list_head  * listHead,NeuronObject * Obj,nero_us32int  FiberStrengthen)
 
 
+现在的问题是：这里是否要加入修改findNodeINlist->Strengthen
 
-
-
-
-
-
-
-
-
+            else
+            {
+                    /*对于刚被查询的概念，就是新输入的，但是列表中
+                    已经有的概念延长起存在时间，已避免反复添加删除
+                    */
+                    
+                    (findNodeINlist->times)--;
+/*                                        printf("findNodeINlist->times=%d.\n",findNodeINlist->times);*/
+                    
+            }
 
 
 

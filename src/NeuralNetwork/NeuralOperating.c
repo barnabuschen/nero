@@ -1998,9 +1998,9 @@ void AddNewObjToList(struct DataFlowForecastInfo  * forecastInfo,nero_s32int Fib
 void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * newObj)
 {
  
-        struct NeroObjForecastList   * findObiPoint;
-        NerveFiber   * p; 
-        NeuronObject * Obj;
+	struct NeroObjForecastList   * findObiPoint;
+	NerveFiber   * p; 
+	NeuronObject * Obj;
 	nero_s32int i,FiberType,kind;
 	NerveFiber * tmpFiber1;
 	
@@ -2008,7 +2008,7 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
     {
     
     
-		#ifdef Nero_DeBuging01_03_17
+		#ifdef Nero_DeBuging01_03_17_
 			// printf("AddNewObjToForecastList  ProcessERROR\n");
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 			neroObjMsgWithStr_st.fucId = 1;
@@ -2060,7 +2060,7 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
                     AddNewObjToList( forecastInfo,FiberType,Obj,/*(p->msg1 & 0x000000ff) */  getFiberStrengthen(newObj,Obj));
   
 
-				#ifdef Nero_DeBuging24_01_14
+				#ifdef Nero_DeBuging24_01_14_
 					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 					neroObjMsgWithStr_st.fucId = 1;
 					neroObjMsgWithStr_st.Obi = NULL;

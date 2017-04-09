@@ -683,6 +683,7 @@ nero_s32int Log_printAllNeroMsg(void * arg)
 		}	
 	}
 }
+// 打印一个obj outputListHead   信息
 nero_s32int Log_printNeroObjLink(void * arg)
 {
 	nero_8int  *str=strTmp;
@@ -701,9 +702,9 @@ nero_s32int Log_printNeroObjLink(void * arg)
 			
 	/*	printf("str %s  and logFile=%s",str,logFile);*/
 		switch(ObjectKind)
-		{
+		{		
 		case NeuronNode_ForNone:
-	
+		case NeuronNode_ForUndefined:
 		case NeuronNode_ForData:
 		case NeuronNode_ForConnect:
 		case NeuronNode_ForLine:
@@ -738,7 +739,7 @@ nero_s32int Log_printNeroObjLink(void * arg)
 					switch(ObjectKind2)
 					{
 						case NeuronNode_ForChCharacter:
-							IO_getZhInNero(str,tmp);
+							IO_getZhInNero (str,tmp);
 							break;
 						case NeuronNode_ForChWord:
 							IO_getWordsInNero(str,tmp);
@@ -766,9 +767,59 @@ nero_s32int Log_printNeroObjLink(void * arg)
 			}
 				
 			break;
-		default:break;
-
-		
+		default:
+			if (ObjectKind > NeuronNode_ForComplexDerivative )
+			{
+				curFiber=obj->outputListHead;
+				sprintf(str,"Log_printNeroObjLink[高级衍生类]:%s		地址：%x的link对象,ObjectKind=%d,datanum=%d\n",asctime(timenow),(int)obj,(int)ObjectKind,nero_getObjDataNum(obj));
+				addLineToFile(logFile,str);
+				
+				if (curFiber == NULL)
+				{
+				sprintf(strLinshi,"		没有链接对象，结束link寻找\n");
+				addLineToFile(logFile,strLinshi);				
+				}
+				while(curFiber)
+				{
+					tmp=curFiber->obj;
+				
+					if (nero_isBaseObj(tmp ) !=1)
+					// if (nero_isBaseObj(tmp ) !=0  /*&&   nero_isBaseObj(tmp ) !=2 */)					
+					{
+						
+					
+						ObjectKind2=nero_GetNeroKind(tmp);
+						switch(ObjectKind2)
+						{
+							case NeuronNode_ForChCharacter:
+								IO_getZhInNero (str,tmp);
+								break;
+							case NeuronNode_ForChWord:
+								IO_getWordsInNero(str,tmp);
+								break;
+								
+							default:
+								ObjectKind3=nero_isBaseObj(tmp);
+								if (ObjectKind3 ==1)
+								{
+									sprintf(str,"链接对象为基类");
+								}
+								break;
+						
+						}
+						sprintf(strLinshi,"		-->%x  <%s>,FiberType=%d\n",(int)tmp,str,getFiberType(curFiber));
+						addLineToFile(logFile,strLinshi);
+					}	
+					else
+					{
+						sprintf(strLinshi,"		该对象%x为基类,ObjectKind=%d，level:%d,FiberStrengthen=%d\n",tmp,nero_GetNeroKind(tmp),getFiberType(curFiber),(curFiber->msg1 & 0x000000ff ));
+						addLineToFile(logFile,strLinshi);
+					
+					}		
+					curFiber=curFiber->next;
+				}
+			}
+			break;		
 		}
 
 			
@@ -1019,15 +1070,15 @@ nero_s32int IO_GetNeroObjMsg(void * arg)
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:
 		case NeuronNode_ForChSentence:	
-			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),(int)obj,(int)ObjectKind);	
+			sprintf(str,"IO_GetNeroObjMsg:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),(int)obj,(int)ObjectKind);	
 			break;	
 		case NeuronNode_ForChCharacter:
 			tmp=obj->inputListHead->obj;/*衍生对象的第一个数据*/
-			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印字符对象《%c%c%c》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+			sprintf(str,"IO_GetNeroObjMsg:%s		地址：%x,打印字符对象《%c%c%c》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
 			break;
 		case NeuronNode_ForChWord :
 			IO_getWordsInNero(strLinshi,obj);
-			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印词组对象《%s》\n",asctime(timenow),(int)obj,strLinshi);	
+			sprintf(str,"IO_GetNeroObjMsg:%s		地址：%x,打印词组对象《%s》\n",asctime(timenow),(int)obj,strLinshi);	
 			break;
 		default:break;
 
@@ -1037,12 +1088,12 @@ nero_s32int IO_GetNeroObjMsg(void * arg)
 			
 	}
 	else
-		sprintf(str,"Log_printNeroObjMsg:%s		空对象\n",asctime(timenow));	
+		sprintf(str,"IO_GetNeroObjMsg:%s		空对象\n",asctime(timenow));	
 
 /*	addLineToFile(logFile,str);*/
 	return nero_msg_ok;
 }
-
+// 仅仅打印一个obj基本信息
 nero_s32int Log_printNeroObjMsg(void * arg)
 {
 	nero_8int  *str=strTmp;

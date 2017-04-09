@@ -602,7 +602,8 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	    	 		// res1= Process_ModifyObjsForClassiFication(&forecastInfo_st,objs[pointForObjsTmp],GodNero);
 	    	 		res1= Process_ModifyObjsForForecastList(&forecastInfo_st,pointForObjsTmp,forecastInfo_st.controlMsg.expectedKind,GodNero);
 
-	    	 		// printf("   		Process_ModifyObjsForClassiFication1,res111=%d\n",res1);
+	    	 		printf("   		res111=%d\n\n",res1);
+	    	 		// printf("\n");
 	    	 		if(res1 ==  nero_msg_ok)
 	    	 		{
 						printf("   		Process_ModifyObjsForForecastList:     obj[%d] objkind change to kind %d\n",pointForObjsTmp,nero_GetNeroKind(objs[pointForObjsTmp])  );

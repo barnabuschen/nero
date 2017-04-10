@@ -961,10 +961,6 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
         }
         else if (conf->addLevelObjAlways == 1    &&  ifHasUnknowObj == 0)
 		{
-				/*这里必须说明的是，这个新生成的概念究竟是什么类型的，createObjFromMultiples内部会根据子类型自动指定*/
-				/*但是这里不能用createObjFromMultiples，因为它里面有太多字符的东西，不够泛化*/
-				
-		
 				#ifdef   Nero_DeBuging04_01_14_
 				char str[500];
 				char str2[500];

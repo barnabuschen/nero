@@ -506,15 +506,16 @@ Log_printNeroObjLink[高级衍生类]:
 
 	继续做adult的分类测试  
 
+		
+		1：怎么进行basekind生成，显然你的basekind的生成需要注明你data是可以缺失的
+			在输入的输入形式上只有DataFlow【i】为NULL就表示缺失
+		2：每一个数据项，必须单独生成basekind
+		3：在正式数据输入之前，你需要先确保sys中已经有这些子数据的obj  （这样可以避免test数据输入时在sys没有该数据时需要进行数据比较了）
+		4：Kind:61,actual num:6835 ,record  num:6835
+			关于kind  61，其中的数据到底是怎么样的是否包括了英文字母
 
-
-
-
-
-
-
-
-
+		
+		
 
 
 

@@ -158,12 +158,14 @@ void ProInitialization()
 		// nero_8int * fileName4="/data/dataStringCreate.sh";
 		// CreatedWordsIntoFile(fileName4);
 
-		nero_8int * fileName3="/data/iris/LearningFileForIris.sh";
-		ReadTaskFromTxt( fileName3  );
-		printf("end of  fuc ReadTaskFromTxt\n");
+		// nero_8int * fileName3="/data/iris/LearningFileForIris.sh";
+		// ReadTaskFromTxt( fileName3  );
+		// printf("end of  fuc ReadTaskFromTxt\n");
 
-		nero_8int * fileName4="/data/iris/TestingDataForIris.sh";
-		ReadTaskFromTxt(fileName4);
+
+		
+		// nero_8int * fileName4="/data/iris/TestingDataForIris.sh";
+		// ReadTaskFromTxt(fileName4);
 		sleep(1);	
 
 		// 在taskFile.sh中输入生成了英文字母得基类，现在需要生成英文单词得基类

@@ -2324,6 +2324,7 @@ nero_s32int  nero_IfHasObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)
 
 
 /*修改已有的基类，基类名为objs第一个的第一个字符，词组概念*/
+// 目前只能修改fiber的11-12位（）：
 NeuronObject * nero_ModifyBaseKind(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf,nero_s32int newbasekind)
 {
 	#define  ChildNumMax	250

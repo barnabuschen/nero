@@ -602,7 +602,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	    	 		// res1= Process_ModifyObjsForClassiFication(&forecastInfo_st,objs[pointForObjsTmp],GodNero);
 	    	 		res1= Process_ModifyObjsForForecastList(&forecastInfo_st,pointForObjsTmp,forecastInfo_st.controlMsg.expectedKind,GodNero);
 
-	    	 		printf("   		res111=%d\n\n",res1);
+	    	 		// printf("   		res111=%d\n\n",res1);
 	    	 		// printf("\n");
 	    	 		if(res1 ==  nero_msg_ok)
 	    	 		{
@@ -636,7 +636,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 						msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);	
 					#endif	
 					// 打印一个obj outputListHead   信息
-					#ifdef Nero_DeBuging10_01_14
+					#ifdef Nero_DeBuging10_01_14_
 
 						neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
 						neroObjMsg_st.fucId = 2;//Log_printNeroObjLink
@@ -647,7 +647,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 						pointForObjsTmp++;								
 				}
 
-				#ifdef Nero_DeBuging09_01_14
+				#ifdef Nero_DeBuging09_01_14_
 					NeuronObject * nodeobj;
 					struct NeroObjForecastList *listNode;
 					// struct NeroObjForecastList *listHead;
@@ -691,7 +691,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				// 1：首先修正objs[]
 				// 2：再次运行Process_ObjsClassiFication(&forecastInfo_st);
 
-				#ifdef Nero_DeBuging10_01_14
+				#ifdef Nero_DeBuging10_01_14_
 					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 					neroObjMsgWithStr_st.fucId = 3;//
 					neroObjMsgWithStr_st.Obi = NULL;

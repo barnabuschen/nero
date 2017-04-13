@@ -48,8 +48,7 @@ nero_s32int CreatedWordsIntoFile(nero_8int * FileName);
 
 nero_s32int readIrisFileForData(nero_8int * FileName );
 
-
-
+nero_s32int readAdultFileForData(nero_8int * FileName ,nero_8int * outPutFileName );
 
 
 

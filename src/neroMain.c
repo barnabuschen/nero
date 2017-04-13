@@ -73,7 +73,12 @@ void main()
 
 		 // exit(0);
 		 
-		ProInitialization();
+
+
+ 		// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.data","/home/jty/nero/nero/src/data/adult/adultLearn.sh");
+ 		// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.test","/home/jty/nero/nero/src/data/adult/adultTest.sh");
+
+	ProInitialization();
 }
 
 

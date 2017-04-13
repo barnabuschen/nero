@@ -102,7 +102,7 @@ typedef  char  nero_8int;
 #define Nero_DeBuging10_16_16
 #define Nero_DeBuging10_26_16
 #define Nero_DeBuging01_03_17
-
+#define Nero_DeBuging13_04_17
 #define NowIdDeBug 
 #define Nero_DeBugInOperating_Pic
 #define NoIncludeG_return_if_fail  

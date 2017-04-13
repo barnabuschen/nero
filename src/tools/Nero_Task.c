@@ -57,6 +57,12 @@
 #define  Task_Order_DataSteamInput    310      /* just  input some  data  into  sys,  its parameter  is several string */
                                                 // the kind of  all  steam  in  unknow (就是mei you 给出这数据流表示得对象类别) 
                                                 
+#define  Task_Order_DataSteamInput2    311      /* just  input some  data  into  sys,  its parameter  is several string */
+                                                // the kind of  all  steam  in  already  been Specify 
+
+#define  Task_Order_DataSteamInput3    312      /* just  input some  data  into  sys,  its parameter  is several string */
+                                                // the kind of  all  steam  in  already  been Specify 
+
 
 
 #define  Task_Order_ResetConf     500  /*将conf恢复为默认配置*/

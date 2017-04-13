@@ -42,32 +42,22 @@ int    *    mystrToInt(char  *  str )
 
 void createFile(char * fileName)
 {
-
 	FILE * myfile=fopen(fileName, "w+");
 	printf("fileName: %s\n", fileName);
-/*	usleep(2000);*/
 	fclose(myfile);
-	// printf("fclose  strerror: %s\n", strerror(errno));
 }
 void emptyFile(char * fileName)
 {
-
-
-
 	FILE * myfile=fopen(fileName, "w+");
 	fclose(myfile);
-
 }
 int searchStrInFile(char * FileName,char * searchstr)
 {
-
 	g_return_if_fail( FileName != NULL);
 	g_return_if_fail( searchstr != NULL);
-
 	//char * fileName=configFile;
         int len1=0;
         int *loc= findAllLine(FileName,&len1);
-
 //get every line by turns.and check if its ID is num
         int count=0;
         char * str;
@@ -99,10 +89,7 @@ int searchStrInFile(char * FileName,char * searchstr)
 		}
 		count++;
 	}
-
 	return findLine;
-	
-
 
 }
 
@@ -146,15 +133,13 @@ void putSubStrIntoOther(char * a,char *b,int startA,int startB,int len)
 	int start=loc[(num-1)*2];
 	int len=(loc[(num)*2-1]-loc[(num-1)*2])+1;
 	//printf("start is%d \n",start);
-//printf("len is%d \n",len);
 	char * 	str;
 	if(len > 0)
-		{
+	{
 		str=(char *)getStrInFile(FileName,len,start);
       		// len=strlen(str);
-
-//		printf(" \n first len is:%d \n",len);
-		}
+		//		printf(" \n first len is:%d \n",len);
+	}
 	else 
 		str=NULL;
 

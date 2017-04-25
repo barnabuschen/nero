@@ -64,6 +64,9 @@
                                                 // the kind of  all  steam  in  already  been Specify 
 
 
+#define  Task_Order_CreateKindOfMultipleKind    401   //创建一个类，数据个数不定，类别直接指定    
+
+
 
 #define  Task_Order_ResetConf     500  /*将conf恢复为默认配置*/
 

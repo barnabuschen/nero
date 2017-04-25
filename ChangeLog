@@ -530,12 +530,21 @@ age	workclass	fnlwgt	education	education-num	marital-status	occupation	relations
 12		13		14		种类
 capital-loss	hours-per-week	native-country	…..
 
+
+可以直接用219么，应该用220才对啊：
+#define  Task_Order_CreateKindWithEnglishWord   220     /*创建一个新类，由多个char   组成，新类名称为一个字符串*/
+但是他必须排除[?],这里的？是数据为NULL的意思，但是考虑到以后这个？是需要不需要排除的
+
 		要生成16个类
 
 rich
-poor			有14个子类
-age			num		
-workclass		str
+poor			
+
+创建一个类，数据个数不定，类别直接指定
+
+有14个子类				性质
+age			num		连续数字（可进行比较）		
+workclass		str		
 fnlwgt			num
 education		str
 education-num		num
@@ -553,7 +562,7 @@ native-country		str
 >50K
 <=50K
 
-age: continuous.
+age: c7ontinuous.
 workclass: Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked.
 fnlwgt: continuous.
 education: Bachelors, Some-college, 11th, HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool.

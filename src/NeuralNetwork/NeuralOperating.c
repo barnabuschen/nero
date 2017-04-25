@@ -353,7 +353,11 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				// ifHasUnknowObj=1;  msg1:在DataFlowProcess中找不到该概念,kind=%d,i=%d  str=%s
 										// msg1:在DataFlowProcess中找不到该概念,kind=61,i=2
 				#ifdef Nero_DeBuging09_01_14
-				// printf("找不到子概念  i=%d\n",i);
+
+				if(conf->CreateNewBaseObjKind == 1   )
+				{
+					printf("CreateNewBaseObjKind = 1 :找不到子概念  i=%d,str=%s,kind=%d \n",i,DataFlow[i],dataKind[i]);				
+				}				// printf("找不到子概念  i=%d\n",i);
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = tmpObi;
@@ -454,13 +458,15 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				sprintf(neroObjMsgWithStr_st.str,"DataFlowProcess:msg2:在DataFlowProcess中创建对象成功: kind=%d ,%x",nero_GetNeroKind(tmpObi),tmpObi);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 				#endif	
-			        #ifdef Nero_DeBuging09_01_14
-					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-					neroObjMsgWithStr_st.fucId = 1;
-					neroObjMsgWithStr_st.Obi = NULL;
-					sprintf(neroObjMsgWithStr_st.str,"				CreateNewBaseObjKind=%d,addLevelObjAlways=%d",conf->CreateNewBaseObjKind,conf->addLevelObjAlways);
-					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
-					#endif	
+
+		        #ifdef Nero_DeBuging09_01_14
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;
+				neroObjMsgWithStr_st.Obi = NULL;
+				sprintf(neroObjMsgWithStr_st.str,"				CreateNewBaseObjKind=%d,addLevelObjAlways=%d",conf->CreateNewBaseObjKind,conf->addLevelObjAlways);
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+				#endif	
+				
 				#ifdef Nero_DeBuging09_01_14_
 				neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
 				neroObjMsg_st.fucId = 2;
@@ -484,6 +490,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
 					#endif	
 			        #ifdef Nero_DeBuging09_01_14
+
 					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 					neroObjMsgWithStr_st.fucId = 1;
 					neroObjMsgWithStr_st.Obi = NULL;

@@ -540,7 +540,7 @@ capital-loss	hours-per-week	native-country	…..
 rich
 poor			
 
-创建一个类，数据个数不定，类别直接指定
+
 
 有14个子类				性质
 age			num		连续数字（可进行比较）		

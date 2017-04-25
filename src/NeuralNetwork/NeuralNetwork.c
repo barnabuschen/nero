@@ -101,7 +101,7 @@ void  testDataIn201608()
 	}
 }
 /*下面是几个简单的判断函数*/
-inline nero_s32int  nero_getObjDataNum(ActNero * obj)
+ nero_s32int  nero_getObjDataNum(ActNero * obj)
 {
 	nero_s32int ObjectKind,num;
 	NeuronObject *Obi;
@@ -148,7 +148,7 @@ inline nero_s32int  nero_getBaseObjChildenNum(nero_s32int kind,ActNero * godNero
 	return  num;
 }
 /*下面是几个简单的判断函数*/
-inline NeuronObject *  nero_getBaseObjByKind(nero_s32int kind,ActNero * godNero)
+ NeuronObject *  nero_getBaseObjByKind(nero_s32int kind,ActNero * godNero)
 {
 	nero_s32int ObjectKind;
 	NeuronObject *Obi;
@@ -203,7 +203,7 @@ inline nero_s32int  nero_ifHasThisData(ActNero * n,nero_s32int x,nero_s32int y,n
  
  }
 
- inline  nero_us32int nero_GetNeroKind(ActNero * nero)
+   nero_us32int nero_GetNeroKind(ActNero * nero)
 {
 	if(nero ==NULL)
 		return  NeuronNode_ForNone;
@@ -318,7 +318,7 @@ static inline nero_us32int getFiberUpdataTime(NerveFiber * fiber)
 
 
 
- inline nero_s32int getFiberPointToObjNum(NerveFiber * fiber)
+  nero_s32int getFiberPointToObjNum(NerveFiber * fiber)
 {
 	nero_us32int kind;
 	

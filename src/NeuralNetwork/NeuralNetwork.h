@@ -313,7 +313,9 @@ extern NeroConf neroConf;
 #define	Fiber_ObjInNeroPool	0  //所指向对象所在区域为永久得NeroInPool			
 #define	Fiber_ObjInSAPool	1  //所指向对象所在区域为StagingAreaNeroPool	 	
 
-
+nero_s32int  nero_getObjDataNum(ActNero * obj);
+NeuronObject *  nero_getBaseObjByKind(nero_s32int kind,ActNero * godNero);
+nero_s32int getFiberPointToObjNum(NerveFiber * fiber);
 NeuronObject  *  nero_searchObjInOutputlistByKind(NeuronObject  * n,nero_us32int searchKind,nero_us32int ifIsBase,nero_us32int flag);
 
 nero_s32int testBaseObjNum(NeuronObject * baseobj,NeuronObject * godNero);
@@ -393,8 +395,7 @@ nero_s32int nero_addZhCharIntoNet(NeuronObject *GodNero,ChUTF8 chChar[],nero_s32
 /*判断是否有这个数据相应类型的概念*/
 NeuronObject *nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObject *GodNero);
 
-
- inline  nero_us32int nero_GetNeroKind(ActNero * nero);
+nero_us32int nero_GetNeroKind(ActNero * nero);
  inline  void  nero_putDataIntoNero(ActNero *n,nero_us32int x,nero_us32int y,nero_us32int z);
 #define  nero_printNeroMsg(n)   (printf("kind=%d,xyz=%x %x %x,\n",nero_GetNeroKind(n),n->x,n->y,n->z   )  )
 /*判断这俩个概念是不是在网络中存在，如果不存在，0，在返回1*/

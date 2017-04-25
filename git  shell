@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "updata：20170425_01"
+git commit -a -m "updata：20170425_03"
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt
@@ -21,15 +21,15 @@ push本地分支代码到远端服务器,如果没有就创建该分支
 删除分支
 	git branch -d testing
 查看本地分支
-	git branch  
-查看远程分支	
-	git branch --remote  
-获取远程分支	
+	git branch
+查看远程分支
+	git branch --remote
+获取远程分支
 	/////git pull origin master:ver0.14
 	已经克隆下来整个项目后你本地其实已经有所有分支的数据了，只是没有本地分支而已
 	git checkout -t origin/ver0.15
 查看远程和本地所有分支，用-a参数
-	git branch -a  
+	git branch -a
 删除远程分支
 	git push origin --delete testing
 提交分支数据到远程服务器
@@ -40,7 +40,7 @@ push本地分支代码到远端服务器,如果没有就创建该分支
 	git push origin  ver0.1701:ver0.1701
 	git push origin master
 列出版本库中所有已删除的文件
-	git log --diff-filter=D --summary 
+	git log --diff-filter=D --summary
 
 
 	git pull origin ver0.1701:ver0.1701

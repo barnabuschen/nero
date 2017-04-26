@@ -140,57 +140,62 @@
 220 age 7 6
 220 age 8 7
 220 age 9 8
-# # 2Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked.
-# 220 workclass P r i v a t e
-# 220 workclass S el f - e m p - n o t - i n c
-# 220 workclass S e l f - e m p - i n c
-# 220 workclass F e d e r a l - g o v
-# #3 fnlwgt 124420
-# # 问题来了，这里的数字到底是什么类型的
-# 220 fnlwgt 1 5 4 9 4 9
-# 220 fnlwgt 5 7 7 8 1
-# 220 fnlwgt 1 5 4 1 1 7
-# 220 fnlwgt 2 0 5 2 1 8
-# 220 fnlwgt 1 2 4 4 2 0
-# # 4 education: Bachelors, Some-college, 11th,
-# # HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool.
-# 220 education B a c h e l o r s
-# 220 education 1 1 t h
-# 220 education A s s o c - a c d m
-# #5 education-num
-# 220 education-num 3
-# 220 education-num 1 2
-# 220 education-num 2 2
-# #6 marital-status :Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse.
-# 220 marital-status M a r r i e d - c i v- s p o u s e
-# 220 marital-status D i v o r c e d
-# 220 marital-status S e p a r a t e d
-# # 7 occupation: Tech-support, Craft-repair, Other-service, Sales, Exec-managerial, Prof-specialty, Handlers-cleaners,
-# # Machine-op-inspct, Adm-clerical, Farming-fishing, Transport-moving, Priv-house-serv, Protective-serv, Armed-Forces.
-# 220 occupation T e c h- s u p p o r t
-# 220 occupation T r a n s p o r t- m o v i n g
-# # 8 relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried.
-# 220 relationship T e c h- s u p p o r t
-# 220 relationship T r a n s p o r t- m o v i n g
-# #9 race: White, Asian-Pac-Islander, Amer-Indian-Eskimo, Other, Black.
-# 220 race W h i t e
-# 220 race A s i a n - P a c - I s l a n d e r
-# #10 sex: Female, Male.
-# 220 sex F e m a l e
-# 220 sex M a l e
-# #11 capital-gain: Female, Male.
-# 220 capital-gain 0
-# 220 capital-gain 7 8 9
-# #12 capital-loss
-# 220 capital-loss 0
-# 220 capital-loss 7 8 9
-# #13 hours-per-week
-# 220 capital-loss 0
-# 220 capital-loss 4 0
-# #14 native-country  United-States, Cambodia, England, Puerto-Rico, Canada, Germany,
-# # Outlying-US(Guam-USVI-etc), India, Japan, Greece, South, China, Cuba, Iran, Honduras,
-# # Philippines, Italy, Poland, Jamaica, Vietnam, Mexico, Portugal, Ireland, France,
-# # Dominican-Republic, Laos, Ecuador, Taiwan, Haiti, Columbia, Hungary,
-# # Guatemala, Nicaragua, Scotland, Thailand, Yugoslavia, El-Salvador, Trinadad&Tobago, Peru, Hong, Holand-Netherlands.
-# 220 native-country S c o t l a n d
-# 220 native-country T h a i l a n d
+# 2Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked.
+220 workclass P r i v a t e
+220 workclass S el f - e m p - n o t - i n c
+220 workclass S e l f - e m p - i n c
+220 workclass F e d e r a l - g o v
+#3 fnlwgt 124420
+# 问题来了，这里的数字到底是什么类型的
+220 fnlwgt 1 5 4 9 4 9
+220 fnlwgt 5 7 7 8 1
+220 fnlwgt 1 5 4 1 1 7
+220 fnlwgt 2 0 5 2 1 8
+220 fnlwgt 1 2 4 4 2 0
+# 4 education: Bachelors, Some-college, 11th,
+# HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool.
+220 education B a c h e l o r s
+220 education 1 1 t h
+220 education A s s o c - a c d m
+#5 education-num
+220 education-num 3
+220 education-num 1 2
+220 education-num 2 2
+#6 marital-status :Married-civ-spouse, Divorced, Never-married, Separated, Widowed, Married-spouse-absent, Married-AF-spouse.
+220 marital-status M a r r i e d - c i v- s p o u s e
+220 marital-status D i v o r c e d
+220 marital-status S e p a r a t e d
+# 7 occupation: Tech-support, Craft-repair, Other-service, Sales, Exec-managerial, Prof-specialty, Handlers-cleaners,
+# Machine-op-inspct, Adm-clerical, Farming-fishing, Transport-moving, Priv-house-serv, Protective-serv, Armed-Forces.
+220 occupation T e c h- s u p p o r t
+220 occupation T r a n s p o r t- m o v i n g
+# 8 relationship: Wife, Own-child, Husband, Not-in-family, Other-relative, Unmarried.
+220 relationship T e c h- s u p p o r t
+220 relationship T r a n s p o r t- m o v i n g
+#9 race: White, Asian-Pac-Islander, Amer-Indian-Eskimo, Other, Black.
+220 race W h i t e
+220 race A s i a n - P a c - I s l a n d e r
+#10 sex: Female, Male.
+220 sex F e m a l e
+220 sex M a l e
+#11 capital-gain: Female, Male.
+220 capital-gain 0
+220 capital-gain 7 8 9
+#12 capital-loss
+220 capital-loss 0
+220 capital-loss 7 8 9
+#13 hours-per-week
+220 hours-per-week 0
+220 hours-per-week 4 0
+#14 native-country  United-States, Cambodia, England, Puerto-Rico, Canada, Germany,
+# Outlying-US(Guam-USVI-etc), India, Japan, Greece, South, China, Cuba, Iran, Honduras,
+# Philippines, Italy, Poland, Jamaica, Vietnam, Mexico, Portugal, Ireland, France,
+# Dominican-Republic, Laos, Ecuador, Taiwan, Haiti, Columbia, Hungary,
+# Guatemala, Nicaragua, Scotland, Thailand, Yugoslavia, El-Salvador, Trinadad&Tobago, Peru, Hong, Holand-Netherlands.
+220 native-country S c o t l a n d
+220 native-country T h a i l a n d
+#生成新类时，如果所有子类都已经能够确认的情况下，可以直接输入类别名生成新的高级衍生类
+230 rich age workclass fnlwgt education education-num marital-status occupation relationship race sex capital-gain capital-loss hours-per-week native-country
+
+
+

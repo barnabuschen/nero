@@ -49,6 +49,7 @@
 
 #define  Task_Order_CreateKindWithMultipleWord   219    /*创建一个新类，由多个字符串组成，新类名称为一个字符串*/
 #define  Task_Order_CreateKindWithEnglishWord   220     /*创建一个新类，由多个char   组成，新类名称为一个字符串*/
+#define  Task_Order_CreateKindOfMultipleKind    230   //创建一个类，数据个数不定，类别直接指定
 
 
 #define  Task_Order_DataInput    300      /* just  input some  data  into  sys,  its parameter  is just a  string */
@@ -64,7 +65,6 @@
                                                 // the kind of  all  steam  in  already  been Specify
 
 
-#define  Task_Order_CreateKindOfMultipleKind    401   //创建一个类，数据个数不定，类别直接指定
 
 
 
@@ -131,6 +131,8 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 {Task_Order_DataSteamInput,OrderListWigthMax,TFFDataType_unknow,TFFDataType_unknow},
 /*创建"new    obj"             参数个数   第一个数据           */
 {Task_Order_CreateLayeringKindObj,2,TFFDataType_String,TFFDataType_String},
+/*创建"new    obj"             参数个数   第一个数据           */
+{Task_Order_CreateKindOfMultipleKind,OrderListWigthMax,TFFDataType_String,TFFDataType_String},
 {0},
 {0},
 };
@@ -754,13 +756,22 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 // 那么，你在类别栏里直接填写‘整数’，让sys自动查询整数得kind
                 //             searchForUnknowKind=NeuronNode_ForNone;
 
-
-            lenOfpar=strlen( tff->data[k+1]);
-            DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
-            linc=(char *)DataFlow[k];
-            memset(linc,0,(lenOfpar) +1);
-            memcpy(linc,tff->data[k+1],(lenOfpar) +1);
-
+            if(   Task_Order_CreateKindOfMultipleKind  !=   tff->order  )
+            {
+                lenOfpar=strlen( tff->data[k+1]);
+                DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
+                linc=(char *)DataFlow[k];
+                memset(linc,0,(lenOfpar) +1);
+                memcpy(linc,tff->data[k+1],(lenOfpar) +1);
+            }
+            else
+            {
+                lenOfpar=strlen( tff->data[k+1]);
+                DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
+                linc=(char *)DataFlow[k];
+                memset(linc,0,(lenOfpar) +1);
+                memcpy(linc,tff->data[k+1],(lenOfpar) +1);
+            }
             #ifdef Nero_DeBuging14_01_14_
                 // printf  msg  by  obj
                 neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
@@ -774,7 +785,12 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
             switch( tff->order)
             {
+                case  Task_Order_CreateKindOfMultipleKind:
+                    dataKind[k]=nero_getObjKindByName((void *)( tff->data[k+1]),GodNero);
 
+                    if(dataKind[k]   <  NeuronNode_ForComplexDerivative)
+                        FailTosearchForUnknowKind=1;
+                    break;
                 case  Task_Order_DataSteamInput:
                     //往往是一串单纯得data stream,不知道这些数据属于什么类型的对象实例，所以只能进行简单得data类型判断
                     // 考虑到无论是什么数据类型，最基础得类型一定是char或者string
@@ -894,7 +910,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
     	case    Task_Order_CreateKindWithOneCharArg2:
         case    Task_Order_CreateKindWithEnglishWord:
         case    Task_Order_CreateKindWithMultipleWord:
-
+        case    Task_Order_CreateKindOfMultipleKind:
 
     	        DataIO_st.operateKind =Conf_Modify_CreateNewBaseObjKind;
                 flag=1;
@@ -988,22 +1004,25 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
             printf(" obtainOrderFromTFF:%d.%s\n",dataKind[i], DataFlow[i]);
         }
-                    printf(" \n");
-
-
-
+        printf(" \n");
         #endif
         coutOfRun++;
-		memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
-		mymsg.type =MsgId_Nero_DataFlowProcess ;
-		msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+        switch( tff->order)
+        {
+             case Task_Order_CreateKindOfMultipleKind:
+                memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
+                mymsg.type =MsgId_Nero_AddNewBaseKindByname ;
+                msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+                break;
+             default :
+
+                memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
+                mymsg.type =MsgId_Nero_DataFlowProcess ;
+                msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+                break;
+        }
 
     }
-
-
-
-
-
 
 
 }

@@ -139,7 +139,50 @@ void * thread_for_Operating_Pic(void *arg)
 
 		switch(MsgId)
 		{
+		case MsgId_Nero_AddNewBaseKindByname:
+			// 生成新类时，如果所有子类都已经能够确认的情况下，可以直接输入类别名生成新的高级衍生类
+			arg2=(struct DataFlowProcessArg *)OperatingMsg.text;
+			countRunTimes++;
+			/*判断系统到底初始化没有*/
+			if (hasSetUpNeroSys == 1)
+			{
+			 	// printf("MsgId_Nero_AddNewBaseKindByname{%d}:\n",countRunTimes);
+				//  printf("MsgId_Nero_DataFlowProcess1  arg2->dataNum={%d}:\n",arg2->dataNum);
+				// DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf)
+
+				// DataFlowProcess(arg2->DataFlow,arg2->dataKind,arg2->dataNum,  GodNero, arg2->conf);
+
+				// #ifdef Nero_DeBuging09_01_14
+				// #endif
+					 // printf("MsgId_Nero_DataFlowProcess1  arg2->dataNum={%d}:\n",arg2->dataNum);
+
+				/*show  neroNet*/
+				#ifdef  Nero_DeBuging03_12_13_
+				 createNeroNetDotGraphForWords(GodNero, "data/wordspic.dot");
+				printf("createNeroNetDotGraph   done.\n");
+				#endif
+
+				#ifdef  Nero_DeBuging03_12_13_
+				system("xdot data/wordspic.dot");
+				#endif
+				#ifdef Nero_DeBuging10_01_14_
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId =2;
+				neroObjMsgWithStr_st.Obi =NULL;
+				nero_s32int xxxxxx=NeuronNode_ForChCharacter;
+				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
+
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
+				#endif
+			}
+			else
+			{
+					printf("MsgId_Nero_DataFlowProcess:系统未初始化\n");
+					printf("Operating_ipckey key is %d\n", ipckey);
+			}
+			break;
 		case MsgId_Nero_ConfModify:
+
 	 			DataIO_st=(struct    IODataMsg_   * )&OperatingMsg;
 
 				for( i = 0; i < size_message_map2; i++)

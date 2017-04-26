@@ -28,13 +28,13 @@ struct NeroObjForecastList
 	                        //普通对象在FindObjInForecastList被增加，上层衍生概念
 	                        //在Process_GetNewActivateForecastObj  和
 	                        //Process_IfIsChildOfActivateForecastObj被增加
-	
+
 	nero_s32int Strengthen2;
 	nero_s32int times;//在整个预测成功中，该节点存在的时间长度,初始化为0
 	                  //头节点的times用来记录该列表中的节点个数，不包括头节点
 	nero_s32int start;//如果该节点对象是一个被识别出来的子集衍生对象，start end 是objs中这个子集的起始位置
-	nero_s32int end;	                  
-	                  
+	nero_s32int end;
+
 };
 //Forecast  Control  struct
 struct NeroObjForecastControl
@@ -52,23 +52,23 @@ struct NeroObjForecastControl
 								// 1: just be used  one time ,so if(Refreshed == 1  &&  DurationTime ==1),that mean ,expectedKind is Invalid 无效的
 
 
-};	
+};
 struct DataFlowForecastInfo
 {
 	NeuronObject ** objs;//实际对象指针
-	nero_s32int objNum;//实际对象个数，也是objs这个数组的有效长度，数组长度必须大于objNum，不然越界	
+	nero_s32int objNum;//实际对象个数，也是objs这个数组的有效长度，数组长度必须大于objNum，不然越界
 	nero_s32int objPoint;//指向一个objs中可以读取的位置,初始为0，最大值为objNum,  is the pos you can read to forecast
-    struct NeroObjForecastList   headOfUpperLayer;//指向第一个预测对象	
+    struct NeroObjForecastList   headOfUpperLayer;//指向第一个预测对象
 	struct NeroObjForecastList   headOfLowerLayer;//指向第一个预测对象
 	struct NeroObjForecastList   headOfSameLayer;//指向第一个预测对象
 	struct NeroObjForecastList   *activateForecastObj;//在headOfUpperLayer中，当前被预测的，等待
 	                                                        //后续输入判断的节点，it is not a list
-	                                                        
+
 	struct NeroObjForecastControl  controlMsg;
 	NeuronObject * waitForRecognise; /*如果没有在预测列表中的数据会先放在这里，
 	                                       看下次能不能被识别*/
 	nero_s32int waitForRecogniseObjPos;/*waitForRecognise的位置*/
-	                                             
+
 	nero_s32int start;//start end 是objs中某个子集的起始位置，用来指示该位置有衍生概念
 	nero_s32int end;
 	nero_s32int timeToMerage;//合并子集标志
@@ -142,6 +142,7 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 
 
 int qSortCmp1(const void *a,const void *b);
+nero_s32int  Process_AddNewBaseKindByname(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf);
 
 
 

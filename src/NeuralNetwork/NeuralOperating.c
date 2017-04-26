@@ -294,6 +294,158 @@ void * thread_for_Operating_Pic(void *arg)
 	printf("end to wait Operating msg................................\n");
 }
 
+/*
+利用传入的kind新建一个基类
+参数中dataKind是无用的，都是NeuronNode_ForChWord
+
+DataFlow中就是dataNum个数的str，除了第一个是需要新建类型的名字外其他，是基类子数据的类型的名字
+如果是下面的sys原来的基类的话就制定一个str来代替，比如干脆直接用61.62来代替
+
+#define NeuronNode_ForConnect   10    //当一个概念节点的类型为此时表示一个链接节点
+#define NeuronNode_ForImage   50    //当一个概念节点的类型为此时表示一个图像对象
+#define NeuronNode_ForLine   51    //当一个概念节点的类型为此时表示一个线条对象
+
+
+#define NeuronNode_ForChCharacter   61    //当一个概念节点的类型为此时表示一个汉字，包括中文标点符号
+#define NeuronNode_ForChWord   62    //当一个概念节点的类型为此时表示一个中文词语
+#define NeuronNode_ForChSentence   63    //当一个概念节点的类型为此时表示一个中文句子
+
+
+
+*/
+nero_s32int  Process_AddNewBaseKindByname(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf)
+{
+	nero_s32int i,j,hasAddObj,res1,objNum,res2;
+	NeuronObject * tmpObi,* tmpBaseObi,* tmpBaseObi2;
+	NeuronObject ** objs=NULL;
+	NeuronObject * complexObj;
+	NerveFiber *curFiber;
+	/*参数检查*/
+	if (DataFlow == NULL  || dataKind ==NULL  ||  dataNum <2  ||  dataKind[0]  != NeuronNode_ForChWord  ||  dataNum > Process_TemporaryNUM )
+	{
+
+
+		printf("\n\n Process_AddNewBaseKindByname:nero_msg_ParameterError\n\n");
+		return nero_msg_ParameterError;
+	}
+
+// nero_us32int     tmpObiUsed;						//record    how many objs  store  in
+// static NeuronObject  * Process_tmpObi[Process_TemporaryNUM];
+// static struct NeroObjForecastList   Process_forecastListNode[Process_TemporaryNUM];
+
+
+	// find all kinds for DataFlow
+	for(i=1;i< dataNum;i++)
+	{
+		dataKind[i]=nero_getObjKindByName(DataFlow[i],  GodNero);
+
+
+
+	}
+
+    {
+		/*判断是否可以进行新基类（抽象概念）创建*/
+		res2=Process_IfCreateNewBaseObj(objs,objNum,GodNero,conf);
+		/*开始添加基类 */
+		if (res2 == NeroYES)//do not create new kind
+		{
+			#ifdef Nero_DeBuging09_01_14_
+			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+			neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
+			neroObjMsgWithStr_st.Obi = NULL;
+			sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中:start create new basekind=%d !",conf->NewNeroClassID);
+			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
+			#endif
+
+			// printf("need  to create new kind\n");
+			tmpBaseObi=nero_CreateNewBaseObj(objs,objNum,GodNero, conf);
+			// printf("NewBaseObj:%x\n",tmpBaseObi);
+			tmpBaseObi2=nero_CreateNewBaseObjInSAP(objs,objNum,SAGodNero, conf);
+
+			#ifdef Nero_DeBuging06_02_14_
+			if(tmpBaseObi)
+			{
+				// for (i=0;i<objNum;i++)
+				{
+				// printf("new BaseKind =%d\n",nero_GetNeroKind(tmpBaseObi));
+				}
+				// printf("所有child对象kind为:\n");
+				curFiber=tmpBaseObi->inputListHead;
+				if(curFiber == NULL)
+				{
+				// printf("  inputListHead =NULL  \n");
+				}
+				// while(curFiber)
+				// {
+				// 	tmpObiForTest=curFiber->obj;
+				// 	printf("          kind:%d\n",nero_GetNeroKind(tmpObiForTest));
+				// 	curFiber=curFiber->next;
+				// }
+
+				#ifdef Nero_DeBuging09_01_14_
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
+				neroObjMsgWithStr_st.Obi = NULL;
+				sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=%d !",nero_GetNeroKind(tmpBaseObi));
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
+				#endif
+
+			}
+			else
+			{
+				#ifdef Nero_DeBuging09_01_14_
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
+				neroObjMsgWithStr_st.Obi = NULL;
+				sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中:nero_CreateNewBaseObj fail !");
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
+				#endif
+				// printf("nero_CreateNewBaseObj fail \n\n\n");
+			}
+			#endif
+		}
+		else
+		{
+			#ifdef Nero_DeBuging09_01_14_
+			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+			neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
+			neroObjMsgWithStr_st.Obi = NULL;
+			sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中:not create newbase,but see if need to Modify it,nextBaseKind=%d",conf->NewNeroClassID);
+			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
+			#endif
+			/*如果不需要添加新的基类，那就是修改基类了*/
+			// printf("do not create new base  kind,but  see  if need to  Modify it\n");
+			if(res2 !=   nero_msg_unknowError )
+			{
+				// printf("Modify base kind\n");
+				newBaseObjKind_= res2;
+				nero_ModifyBaseKind(objs,objNum,GodNero,conf,res2);
+			}
+		}
+
+    }
+
+	// you should  init   neroConf  every time  you  run  this  fuc
+	resetNeroConf();
+	// forecastInfo_st.controlMsg.Refreshed=0;
+	for (j=0;j<dataNum;j++)
+	{
+		if (DataFlow[j])
+		{
+			free(DataFlow[j]);
+		}
+	}
+	if (dataKind)
+	{
+		free(dataKind);
+	}
+
+	if (DataFlow)
+	{
+		free(DataFlow);
+	}
+	return nero_msg_ok;
+}
 
 
 /*
@@ -1282,34 +1434,34 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 		return nero_msg_ParameterError;
 	}
 
-        /*首先把第一个字符或者词组类放在objs第一个位置*/
-        mark=-1;
-        for (i=0;i<objNum;i++)
-        {
-                tmp=objs[i];
-                if (tmp == NULL)
-                {
-                        printf("IfCreateNewBaseObj 严重错误\n");
-                        return nero_msg_unknowError;
-                }
+    /*首先把第一个字符或者词组类放在objs第一个位置*/
+    mark=-1;
+    for (i=0;i<objNum;i++)
+    {
+            tmp=objs[i];
+            if (tmp == NULL)
+            {
+                    printf("IfCreateNewBaseObj 严重错误\n");
+                    return nero_msg_unknowError;
+            }
 
-                objKind=nero_GetNeroKind(tmp);
-                if (objKind == NeuronNode_ForChWord   ||  objKind == NeuronNode_ForChCharacter)
-                {
-                        mark=i;
-                      break;
-                }
-        }
-        if (mark != 0)
-        {
-               /*交换了*/
+            objKind=nero_GetNeroKind(tmp);
+            if (objKind == NeuronNode_ForChWord   ||  objKind == NeuronNode_ForChCharacter)
+            {
+                    mark=i;
+                  break;
+            }
+    }
+    if (mark != 0)
+    {
+           /*交换了*/
 /*               printf("交换了\n");*/
-               tmp=objs[0];
-               objs[0]=objs[mark];
-               objs[mark]=objs[0];
-        }
-        /*可以先判断是否已经有相应名字的抽象概念了*/
-        curFiber=godNero->outputListHead;
+           tmp=objs[0];
+           objs[0]=objs[mark];
+           objs[mark]=objs[0];
+    }
+    /*可以先判断是否已经有相应名字的抽象概念了*/
+    curFiber=godNero->outputListHead;
 	for (;curFiber !=NULL ;curFiber=curFiber->next)
 	{
 

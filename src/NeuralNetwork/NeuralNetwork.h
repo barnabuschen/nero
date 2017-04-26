@@ -14,9 +14,9 @@
 1:网络结构---就是数据保存方式
 	这里提出一个神经节的概念：神经节是功能相同的神经元细胞体在中枢以外的周围部位集合而成的结节状构造。
 	这里忽略“中枢以外的周围部位”，专指具有相似功能的神经细胞的集合
-	
+
 	之前给出的
-	
+
 typedef struct Neuron
 {
 int x;
@@ -27,11 +27,11 @@ int next;
 	只是数据在文件中的结构，这里必须给出在内存中的结构：就是Neuron Objects。它可以是一个神经元，也可以是一组
 	神经元的集合，他们共同实现一组功能或者表达一个概念。显然他们会有大量的连接，来表示他与其他概念的关系
 	就是说这里弱化神经元(在内存中为ActivationNeuron)的概念，就强调一个存储在网络中的一个个对象
-	
+
 	但是如何区别神经对象和神经元他们各自的连接的含义呢
-	
+
 	：神经对象的连接是不同对象的存在的一种相互关系，或者说逻辑上的联系，而神经元之间的连接表示了数据之间的连接关系
-	
+
 	但实际上他们是同一个东西啊啊，因为一个对象也应该是用一个神经元来表示的，不然说不过去啊。
 
 2:操作------对数据的操作方式
@@ -60,15 +60,15 @@ int next;
 					这个选项激活时会根据当前链接的活跃情况创建新概念，否则不会添加新概念
 					*/
 	nero_us32int  addLevelObjAlways; /*在DataFlowProcess中总是形成层次结构，为1添加否则不添加
-	
+
 					这个选项激活时会不管当前链接的活跃情况和addLevelObj的值
 					，总是会创建新  高层概念
 					*/
-					
-	
+
+
 	nero_us32int CreateNewBaseObjKind;/*是否创建新基类的标志，默认打开为1*/
-	
-	
+
+
 	nero_us32int	  OutPutFlag;//for fuc  Process_ObjForecast 是否将预测列表得结果进行输出得标志，为1进行输出，默认为0
 								//the result of the output is 等同于分类结果
 	nero_us32int  	  neroTime;     /*系统运行时间单位，初始化为0，隔1秒钟增加1*/
@@ -82,6 +82,7 @@ int next;
 
 
 	nero_us32int	  WantCreateObjKind;//在特殊情况下指定希望生成得obj得类型，危险，尽量别使用   NeuronNode_ForNone
+										//必须在使用后立即回复初始值NeuronNode_ForNone
  }NeroConf;
 /*ActNero只是用来保存基础数据，它对应于一个单纯的神经元*/
 
@@ -97,13 +98,13 @@ int next;
 msg：
 低位			高位
 1-------8  9-----16 17-----24  25----32
-1111 1111 1111 1111 1111 1111 1111 1111 
+1111 1111 1111 1111 1111 1111 1111 1111
 1-16位表示该节点种类,注意，17到24位尽量别用，以免节点种类用16位不够用需要扩展
 
 25-26
 	对象所在区域为永久得NeroInPool			#define	Nero_ObjInNeroPool	00
 	对象所在区域为StagingAreaNeroPool	 	#define	Nero_ObjInSAPool	01
-27:当所在区域为StagingAreaNeroPool时，此位为1(Nero_TransferToNeroPool)表示该对象已经可以被转化为永久对象了 
+27:当所在区域为StagingAreaNeroPool时，此位为1(Nero_TransferToNeroPool)表示该对象已经可以被转化为永久对象了
 28:当所在区域为StagingAreaNeroPool时，此位为1(Nero_AlreadyTransfered)表示该对象已经被转化为永久对象了 ,可以在适当时间进行回收了
 29
 30
@@ -133,11 +134,11 @@ struct NerveFiber_  * inputListHead;/*其实究竟对于一个神经元来说是
 					/*但是如果是一个NeuronObject，是指向第一个数据呢，还是*/
 					/*说inputListHead指向一个数据的链表，显然指向一个数据的神经元*/
 					/*然后让这个神经元(纤维)指向后续的数据*/
-					
+
 					/*特别的，对于一个基类来说，它的inputListHead为NULL*/
 					/*而他的outputListHead链表，则指向所有该类下的所以神经元*/
-					
-struct NerveFiber_   * outputListHead; 
+
+struct NerveFiber_   * outputListHead;
 };
 
 
@@ -157,12 +158,12 @@ msg1：
 	指向该纤维所属神经元的下层概念的神经元 	#define	Fiber_PointToLowerLayer	10
 	指向该纤维所属神经元的同层次概念的神经元	#define	Fiber_PointToSameLayer	11
 	就是说如果为Fiber_PointToUpperLayer	01，那么第9位为1，第10位为0
-	
+
 11-12位（）：
         有且必须存在一个                         #define Fiber_PointToUniqueObj	00
 	可重复，但必须存在一个	                #define	Fiber_PointToMutiObj	01
 	可有可没有 	                        #define	Fiber_PointToUnnecessaryObj	10
-	就是说如果为Fiber_PointToMutiObj	01，那么第11位为1，第12位为0       
+	就是说如果为Fiber_PointToMutiObj	01，那么第11位为1，第12位为0
 
 13-14位：用来表明该纤维结构中指针obj所指向对象得所属区域
 
@@ -173,8 +174,8 @@ msg1：
 time：
 低位			高位
 1-------8  9-----16 17-----24  25----32
-1111 1111 1111 1111 1111 1111 1111 1111 	
-1-20位存储上次被访问的时间（包括修改，被成功匹配的情况），初始化为当前系统时间	
+1111 1111 1111 1111 1111 1111 1111 1111
+1-20位存储上次被访问的时间（包括修改，被成功匹配的情况），初始化为当前系统时间
 		该信息会被修改的时间包括：
 			1:创建时候
 			2:被成功匹配的时候，相应链接被修改  Process_StrengthenLink=》gainFiberStrengthen
@@ -220,31 +221,31 @@ extern NeroConf neroConf;
 
 
 /*
-操作的实现形式：																			
-		最基础的那些动作一定是链接一些实现特定功能的函数																	
-			可以参见新基类的创建方式，建立新类，不同的动作就是一个新类别							
-			但是那种先天就有的操作和后天学习来的技能是需要区分的么	,很明显是需要区分的							
-			因为后天学习来的如果不涉及具体的操作的话，就是逻辑推理方面的东西							
-			而推理恐怕就是记忆而已吧，就是形成一些临时性质的记忆把							
-											
-		关于操作的功能的神经元的存在形式：								
-			可以是指定操作的具体函数或者一个函数编号，都是可以的							
-			可是操作的参数怎么确定呢，这样吧，几个parameter就指定几个输入列表的节点，但是要不要给每个							
-			操作类给定一个名称呢，我觉得还是要有，方便与外界进行沟通和调试。其存在方式参见新类的方式							
-					
-				
+操作的实现形式：
+		最基础的那些动作一定是链接一些实现特定功能的函数
+			可以参见新基类的创建方式，建立新类，不同的动作就是一个新类别
+			但是那种先天就有的操作和后天学习来的技能是需要区分的么	,很明显是需要区分的
+			因为后天学习来的如果不涉及具体的操作的话，就是逻辑推理方面的东西
+			而推理恐怕就是记忆而已吧，就是形成一些临时性质的记忆把
 
-			这里主要是对一个操作类的参数的确定以及因该有的参数个数  持谨慎态度							
-										
+		关于操作的功能的神经元的存在形式：
+			可以是指定操作的具体函数或者一个函数编号，都是可以的
+			可是操作的参数怎么确定呢，这样吧，几个parameter就指定几个输入列表的节点，但是要不要给每个
+			操作类给定一个名称呢，我觉得还是要有，方便与外界进行沟通和调试。其存在方式参见新类的方式
+
+
+
+			这里主要是对一个操作类的参数的确定以及因该有的参数个数  持谨慎态度
+
 			你可能定义的操作种类：								1				   2						3
 				鼠标，键盘点击     --------- 				点击的种类             持续时间      				力度
-				字符打印			--------- 				具体那个字符 
+				字符打印			--------- 				具体那个字符
 				层次定义 									定义一个基类a是另一个基类b得上层类，that is  mean：基类b得输出列表会指向基类a
 				/////////////////////////////////////////////////////////////////////////////////////
 				[[[[[[[[特别的：所有操作类型得obj或者说基类都看成一个普通得obj来看，只是需要单独得函数来处理]]]]]]]]]]]]]]]]
 					///////////////////////////////////////////////////////////////////////////////////////////
 
-			the question is :if you  can  definition a fuc  that can output a   char  ? 
+			the question is :if you  can  definition a fuc  that can output a   char  ?
 			does a  char  learn acquired  , not the sys get born ?
 			the answer is  :you  can  definition a fuc  that can output a   char  or words.
 			as  it is a  basic  ability  to  communicat with outside
@@ -252,11 +253,11 @@ extern NeroConf neroConf;
 		这样来定义一个操作类型的nero：只要该nero  kind确定就由系统指定与一个实际完成操作的函数绑定
 
 			 struct ActivationNeuron							基类          	 	 衍生类
-			{	
+			{
 			nero_us32int msg;/*记录该nero的种类，性质等信息
-			nero_s32int x;						
+			nero_s32int x;
 			nero_s32int y;										  					xyz就是操作的一些定性要求
-			nero_s32int z; 
+			nero_s32int z;
 			struct NerveFiber_  * inputListHead;				指向输出的类型		 	指向操作的数据
 			struct NerveFiber_   * outputListHead; 				指向所以衍生类
 			};
@@ -264,7 +265,7 @@ extern NeroConf neroConf;
 */
 //kind down here is  some kind for operating
 #define  NeuronNode_ForInputWord      100     //talk to  outside  wangts to get  words (include Character or  words)  motivated  by  sys-self
-#define  NeuronNode_ForOutputWord      101   
+#define  NeuronNode_ForOutputWord      101
 #define  NeuronNode_ForLayering      110   //定义一个基类a是另一个基类b得上层类，that is  mean：基类b得输出列表会指向基类a
 											// inputListHead  为俩个数据，前者是基类a 得kind值(save  in x)，后者是基类b得得kind值
 
@@ -281,8 +282,8 @@ extern NeroConf neroConf;
 #define NeuronNode_BaseObject   1  /*就是一般的概念和基类进行区别*/
 #define NeuronNode_DerivativeObject   0  /*就是一般的概念（从基类衍生的概念）和基类进行区别*/
 
-#define	Nero_ObjInNeroPool	0	//对象所在区域为永久得NeroInPool		
-#define	Nero_ObjInSAPool	1	//对象所在区域为StagingAreaNeroPool	 
+#define	Nero_ObjInNeroPool	0	//对象所在区域为永久得NeroInPool
+#define	Nero_ObjInSAPool	1	//对象所在区域为StagingAreaNeroPool
 
 
 #define	Nero_TransferToNeroPool	1	//标志临时区域对象可以转移至永久区域
@@ -310,8 +311,8 @@ extern NeroConf neroConf;
 #define	Fiber_StrengthenMax	250     //在结构体中共用了8位来记录这个值，所以最大为255
 /*你需要定义个内存池，来管理使用和未使用的神经元*/
 
-#define	Fiber_ObjInNeroPool	0  //所指向对象所在区域为永久得NeroInPool			
-#define	Fiber_ObjInSAPool	1  //所指向对象所在区域为StagingAreaNeroPool	 	
+#define	Fiber_ObjInNeroPool	0  //所指向对象所在区域为永久得NeroInPool
+#define	Fiber_ObjInSAPool	1  //所指向对象所在区域为StagingAreaNeroPool
 
 nero_s32int  nero_getObjDataNum(ActNero * obj);
 NeuronObject *  nero_getBaseObjByKind(nero_s32int kind,ActNero * godNero);

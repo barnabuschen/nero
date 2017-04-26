@@ -3,14 +3,14 @@
 
 #命令的格式一般为：
 #       命令种类    参数1 参数2  参数3  参数4  。。。。。
-#       
-# 
-# 
-# 
+#
+#
+#
+#
 # 命令种类定义见Task.h
-# 
-# 
-# 
+#
+#
+#
 
 
 
@@ -131,15 +131,15 @@
 #510 2014 1 1 1
 #1age
 220 age 1 1
-# 220 age 2 1
-# 220 age 6 1
-# 220 age 3 2
-# 220 age 4 3
-# 220 age 5 4
-# 220 age 5 5
-# 220 age 7 6
-# 220 age 8 7
-# 220 age 9 8
+220 age 2 1
+220 age 6 1
+220 age 3 2
+220 age 4 3
+220 age 5 4
+220 age 5 5
+220 age 7 6
+220 age 8 7
+220 age 9 8
 # # 2Private, Self-emp-not-inc, Self-emp-inc, Federal-gov, Local-gov, State-gov, Without-pay, Never-worked.
 # 220 workclass P r i v a t e
 # 220 workclass S el f - e m p - n o t - i n c
@@ -152,7 +152,7 @@
 # 220 fnlwgt 1 5 4 1 1 7
 # 220 fnlwgt 2 0 5 2 1 8
 # 220 fnlwgt 1 2 4 4 2 0
-# # 4 education: Bachelors, Some-college, 11th, 
+# # 4 education: Bachelors, Some-college, 11th,
 # # HS-grad, Prof-school, Assoc-acdm, Assoc-voc, 9th, 7th-8th, 12th, Masters, 1st-4th, 10th, Doctorate, 5th-6th, Preschool.
 # 220 education B a c h e l o r s
 # 220 education 1 1 t h
@@ -165,7 +165,7 @@
 # 220 marital-status M a r r i e d - c i v- s p o u s e
 # 220 marital-status D i v o r c e d
 # 220 marital-status S e p a r a t e d
-# # 7 occupation: Tech-support, Craft-repair, Other-service, Sales, Exec-managerial, Prof-specialty, Handlers-cleaners, 
+# # 7 occupation: Tech-support, Craft-repair, Other-service, Sales, Exec-managerial, Prof-specialty, Handlers-cleaners,
 # # Machine-op-inspct, Adm-clerical, Farming-fishing, Transport-moving, Priv-house-serv, Protective-serv, Armed-Forces.
 # 220 occupation T e c h- s u p p o r t
 # 220 occupation T r a n s p o r t- m o v i n g
@@ -187,10 +187,10 @@
 # #13 hours-per-week
 # 220 capital-loss 0
 # 220 capital-loss 4 0
-# #14 native-country  United-States, Cambodia, England, Puerto-Rico, Canada, Germany, 
-# # Outlying-US(Guam-USVI-etc), India, Japan, Greece, South, China, Cuba, Iran, Honduras, 
-# # Philippines, Italy, Poland, Jamaica, Vietnam, Mexico, Portugal, Ireland, France, 
-# # Dominican-Republic, Laos, Ecuador, Taiwan, Haiti, Columbia, Hungary,   
+# #14 native-country  United-States, Cambodia, England, Puerto-Rico, Canada, Germany,
+# # Outlying-US(Guam-USVI-etc), India, Japan, Greece, South, China, Cuba, Iran, Honduras,
+# # Philippines, Italy, Poland, Jamaica, Vietnam, Mexico, Portugal, Ireland, France,
+# # Dominican-Republic, Laos, Ecuador, Taiwan, Haiti, Columbia, Hungary,
 # # Guatemala, Nicaragua, Scotland, Thailand, Yugoslavia, El-Salvador, Trinadad&Tobago, Peru, Hong, Holand-Netherlands.
 # 220 native-country S c o t l a n d
 # 220 native-country T h a i l a n d

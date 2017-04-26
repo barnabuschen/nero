@@ -5,7 +5,7 @@
 
 #include <arpa/inet.h>
 #include <netinet/in.h>
-
+// #include “time.h”
 #include <pthread.h>
 #include <stdlib.h>
 #include <math.h>
@@ -15,7 +15,7 @@
 #include <sys/msg.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
-
+#include <sys/time.h>
 #include <fcntl.h>
 #include <malloc.h>
 #include <string.h>
@@ -44,10 +44,8 @@ extern nero_s32int readUTF8FileData(nero_8int * FileName);
 extern nero_s32int CreateActNeroNet();
 extern void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName);
 extern void  testDataIn201608();
-int x=50;
-int y=50;
 
-int recoverPic=0;
+
 
 
 struct    PrintNeroLInkTree_St    objTreeSt;
@@ -56,7 +54,9 @@ static struct  NeuronObjectMsg_    neroObjMsg_st;
 
 static nero_8int  file_path_getcwd[FILEPATH_MAX];/*保存当前目录*/
 
-
+	struct  timeval  start_runningTime;
+    struct  timeval  end_runningTime;
+  	unsigned long timer_runningTime;
 
 void ProInitialization();
 void main()
@@ -72,13 +72,16 @@ void main()
 		 // readIrisFileForData("/home/jty/nero/nero/src/data/iris/iris.data");
 
 		 // exit(0);
-		 
+
+		  gettimeofday(&start_runningTime,NULL);
+
+		  // sleep(2);
 
 
  		// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.data","/home/jty/nero/nero/src/data/adult/adultLearn.sh");
  		// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.test","/home/jty/nero/nero/src/data/adult/adultTest.sh");
 
-	ProInitialization();
+		ProInitialization();
 }
 
 
@@ -96,10 +99,10 @@ void ProInitialization()
 		/*	 Set up the message queue */
 		Operating_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
 			// printf("ProInitialization Operating strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
-		printf("ProInitialization :Operating_mq_id=%d\n", Operating_mq_id);	
+		printf("ProInitialization :Operating_mq_id=%d\n", Operating_mq_id);
 		/*res =*/ pthread_create(&a_thread, NULL,thread_for_Operating_Pic, NULL);
-		
-		
+
+
 		IO_ipckey="/tmp/IO_ipckey2";
 		createFile(IO_ipckey);
 		/*	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
@@ -107,10 +110,10 @@ void ProInitialization()
 		/*	 Set up the message queue */
 		IO_mq_id = msgget(ipckey,IPC_CREAT);// IPC_CREAT
 		/*	printf("ProInitialization IO strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
-		printf("ProInitialization IO_mq_id=%d\n", IO_mq_id);	
+		printf("ProInitialization IO_mq_id=%d\n", IO_mq_id);
 		/*res =*/ pthread_create(&a_thread, NULL,thread_for_IO_Pic, NULL);
-		
-		
+
+
 		Log_ipckey="/tmp/Log_ipckey2";
 		createFile(Log_ipckey);
 		/*	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
@@ -120,7 +123,7 @@ void ProInitialization()
 		/*	printf("ProInitialization Log strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
 		/*	printf("ProInitialization Log identifier is %d\n", Log_mq_id);	*/
 		/*res =*/ pthread_create(&a_thread, NULL,thread_for_Log_Pic, NULL);
-		
+
 		Sys_ipckey="/tmp/Sys_ipckey";
 		createFile(Sys_ipckey);
 		/*	printf("ProInitialization strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
@@ -130,8 +133,8 @@ void ProInitialization()
 		/*	printf("ProInitialization Sys strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息*/
 		/*	printf("ProInitialization Sys identifier is %d\n", Sys_mq_id);	*/
 		/*res =*/ pthread_create(&a_thread, NULL,thread_for_Sys_Pic, NULL);
-		
-		
+
+
 		// return;
 			// sleep(5);
 
@@ -140,10 +143,10 @@ void ProInitialization()
 		// testDebugForFileOperating();
 
 		/*建立网络*/
-		initNeroNetWork( );    
-		sleep(4);	
+		initNeroNetWork( );
+		sleep(1);
 		printf("initNeroNetWork ok\n");
-		printf("ProInitialization ok\n");	
+		printf("ProInitialization ok\n");
 
 
 		// return;
@@ -155,7 +158,7 @@ void ProInitialization()
 		printf("end of  fuc ReadTaskFromTxt\n");
 
 		// nero_8int * fileName2="/data/taskFileForCreateIO.sh";
-		// ReadTaskFromTxt( fileName2  );	
+		// ReadTaskFromTxt( fileName2  );
 		// printf("end of  fuc ReadTaskFromTxt\n");
 
 
@@ -168,15 +171,15 @@ void ProInitialization()
 		// printf("end of  fuc ReadTaskFromTxt\n");
 
 
-		
+
 		// nero_8int * fileName4="/data/iris/TestingDataForIris.sh";
 		// ReadTaskFromTxt(fileName4);
-		sleep(1);	
+		// sleep(1);
 
 		// 在taskFile.sh中输入生成了英文字母得基类，现在需要生成英文单词得基类
 		// 为了尽快看到结果，这里用整数来替换iris中得小数
 
-		// sleep(10);	
+		// sleep(10);
 		printf("\n\n\nTime  to  Search  Msg:::\n\n\n\n");
 
 		#ifdef Nero_DeBuging14_01_14_
@@ -185,7 +188,7 @@ void ProInitialization()
 			neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
 			neroObjMsgWithStr_st.Obi = GodNero;
 			sprintf(neroObjMsgWithStr_st.str,"GodNero  add:%x",GodNero);
-			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 		#endif
 		#ifdef Nero_DeBuging09_01_14_
 			// print  one  obj  link
@@ -194,12 +197,12 @@ void ProInitialization()
 			neroObjMsg_st.Obi = GodNero;
 			int  tmp2222=0;
 			// printf("nero   msg:%x,%x \n",GodNero,&tmp2222);
-			msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);			
-		#endif	
+			msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);
+		#endif
 
 
-			sleep(4);
-			
+			sleep(1);
+
 	 	#ifdef Nero_DeBuging10_01_14_
 				// 尝试将kind=2013的所有衍生对象都进行outputlist的msg输出
 				xxxxxx=2012;
@@ -215,20 +218,20 @@ void ProInitialization()
 						msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);
 
 						tmpFiber=tmpFiber->next;
-					}	
-					printf("kind=2013  over...................................\n");	
+					}
+					printf("kind=2013  over...................................\n");
 				}
 				else
 					printf("kind=2013 cannot find.......................\n");
-	    #endif	
+	    #endif
 
 
 
-			
+
 		i=2012;
 		{
  		#ifdef Nero_DeBuging10_01_14
-				for(i=62;i<= 2016   ;i++)
+				for(i=62;i<= 2017   ;i++)
 				{
 			// print  all  of  the  kind  obj
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
@@ -236,16 +239,19 @@ void ProInitialization()
 				neroObjMsgWithStr_st.Obi =NULL;
 				 xxxxxx=i;
 				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
-				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 				}
      	#endif
 
-		}		
+		}
+		  gettimeofday(&end_runningTime,NULL);
+		  timer_runningTime = 1000000 * (end_runningTime.tv_sec-start_runningTime.tv_sec)+ end_runningTime.tv_usec-start_runningTime.tv_usec;
+		  printf("\n\nrunning time  = %ld s\n\n",timer_runningTime / 1000000);
 
 		for(;;)
 		{		/*打印某个类别下面的所有的衍生类*/
-				printf("...\n");				
-				
+				printf("...\n");
+
 				#ifdef Nero_DeBuging10_01_14
 				// print  all  of  the  kind  obj
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
@@ -254,8 +260,8 @@ void ProInitialization()
 				 xxxxxx=NeuronNode_ForChWord;
 				  // xxxxxx=NeuronNode_ForLayering;
 				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
-				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);			
-	     		#endif	
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
+	     		#endif
 								// printf("\r");
 				sleep(35);
 
@@ -280,7 +286,7 @@ void initNeroNetWork( )
 
 	/*一下步就是将字符信息加入网络 */
 
-	//the msg  in  chChar  is  utf8  
+	//the msg  in  chChar  is  utf8
 	arg1.chChar=chChar;
 	arg1.charCounts=charCounts;
 	memcpy(&(mymsg.text),&arg1,sizeof(struct ZhCharArg));
@@ -352,7 +358,7 @@ void initNeroNetWork( )
 	#ifdef  Nero_DeBuging20_12_13_
 	printf("++++++++++countOfWord=%d.\n",countOfWord);
 	// printf("len=%d,%s.\n\n",sizeof(linc),linc);
-	#endif		
+	#endif
 	dataNum=countOfWord;
 	neroConf.addLevelObjAlways = 0;
 
@@ -368,7 +374,7 @@ void initNeroNetWork( )
 	#endif
 
 
-	
+
 
 	// #ifdef  Nero_DeBuging20_12_13
 	// sleep(4);
@@ -406,7 +412,7 @@ void initNeroNetWork( )
 			printf("len=%d,%s.\n\n",sizeof(linc),linc);
 			#endif
 			wP=wP->next;
-		}	
+		}
 		dataNum=countOfWord;
 		neroConf.addLevelObjAlways = 0;
 		arg2.dataNum=dataNum;
@@ -458,7 +464,7 @@ void initNeroNetWork( )
 			printf("len=%d,%s.\n\n",sizeof(linc),linc);
 			#endif
 			wP=wP->next;
-		}	
+		}
 		dataNum=countOfWord;
 		neroConf.addLevelObjAlways = 0;
 		arg2.dataNum=dataNum;

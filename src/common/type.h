@@ -9,14 +9,14 @@
 
 /*一些常量*/
 #define  ChoseBaseObj   1
-#define  ChoseDerivativeObj   2	
+#define  ChoseDerivativeObj   2
 
 #define  ChoseOutputAddress  1
-#define  ChoseOutputType   2	
+#define  ChoseOutputType   2
 #define  ChoseOutputData  3
 
 
-	
+
 #define NeroForgetCycle    10  /*10秒 超过这个时间不被更新，下次被识别时就不更新神经纤维的链接强度
 				对于一个无符号int来说，如果1表示1秒，那么一个int可以表示136年
 
@@ -25,7 +25,7 @@
 #define NeroMaxLastTimeINForecastList    20  /*对象在预测列表中最长等待时间，超时则被去除列表*/
 #define DataFlowProcessObjNum_MAX (7)
 #define FILEPATH_MAX (180)
-#define StringLen_MAX (500)			
+#define StringLen_MAX (500)
 /*8192kb  =1032KB*/
 #define ChineseCharNum  8000
 /*2的32次=	     4294967295   42亿*/
@@ -47,7 +47,7 @@
 
 #define Process_TemporaryNUM   7500    //just used  in  fuc  Process_StrengthenLink
 /*传导纤维种类*/
-#define NerveFiber_Input 1 
+#define NerveFiber_Input 1
 #define NerveFiber_Output  2
 
 
@@ -62,7 +62,7 @@
 #ifdef   Conf_Modify_Info
 				#define printConfChangMsg(a)    printf("conf has changed:%d  \n",a)
 #else
-				#define printConfChangMsg(a)    printf("  \n")
+				#define printConfChangMsg(a)    printf("  111111\n")
 #endif
 
 /*变量类型重定义*/
@@ -78,34 +78,34 @@ typedef  char  nero_8int;
 //#define  Nero_ProcessERROR_Msg
 #define  Nero_DeBuging1_cacel
 #define Nero_DeBuging0
-#define Nero_DeBuging1 
-#define Nero_DeBuging2 
+#define Nero_DeBuging1
+#define Nero_DeBuging2
 #define Nero_TestCount     30
 //#define DataFlowProcess_error_Msg
 //#define Nero_DeBuging17/11/13
-#define Nero_DeBuging18_11_13 
-#define Nero_DeBuging22_11_13 
-#define Nero_DeBuging03_12_13 
-#define Nero_DeBuging20_12_13 
-#define Nero_DeBuging21_12_13 
-#define Nero_DeBuging04_01_14
-#define Nero_DeBuging08_01_14
-#define Nero_DeBuging09_01_14
+// #define Nero_DeBuging18_11_13
+// #define Nero_DeBuging22_11_13
+// #define Nero_DeBuging03_12_13
+// #define Nero_DeBuging20_12_13
+// #define Nero_DeBuging21_12_13
+// #define Nero_DeBuging04_01_14
+// #define Nero_DeBuging08_01_14
+// #define Nero_DeBuging09_01_14
 #define Nero_DeBuging10_01_14
 
-#define Nero_DeBuging14_01_14
-#define Nero_DeBuging24_01_14
-#define Nero_DeBuging25_01_14
-#define Nero_DeBuging27_01_14
-#define Nero_DeBuging06_02_14
-#define Nero_DeBuging04_25_16
-#define Nero_DeBuging10_16_16
-#define Nero_DeBuging10_26_16
-#define Nero_DeBuging01_03_17
-#define Nero_DeBuging13_04_17
-#define NowIdDeBug 
+// #define Nero_DeBuging14_01_14
+// #define Nero_DeBuging24_01_14
+// #define Nero_DeBuging25_01_14
+// #define Nero_DeBuging27_01_14
+// #define Nero_DeBuging06_02_14
+// #define Nero_DeBuging04_25_16
+// #define Nero_DeBuging10_16_16
+// #define Nero_DeBuging10_26_16
+// #define Nero_DeBuging01_03_17
+// #define Nero_DeBuging13_04_17
+#define NowIdDeBug
 #define Nero_DeBugInOperating_Pic
-#define NoIncludeG_return_if_fail  
+#define NoIncludeG_return_if_fail
 
 
 typedef struct ChineseUtf8Code
@@ -221,7 +221,7 @@ int count;//如果是表头：记录多少条线
 //#endif
 //struct { long type; char text[100]; } mymsg;
 //nero_8int  file_path_getcwd[FILEPATH_MAX];/*保存当前目录*/
-nero_8int * Operating_ipckey; 
+nero_8int * Operating_ipckey;
 
 nero_8int * IO_ipckey ;
 nero_8int * Log_ipckey ;

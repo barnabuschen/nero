@@ -46,17 +46,17 @@ nero_s32int Operating_NeroConfigurationModify(void * operateKind,void *c)
 
          case Conf_Modify_addLevelObjAlways:
                 neroConf.addLevelObjAlways=tmpConf->addLevelObjAlways;
-                 printConfChangMsg(Conf_Modify_addLevelObjAlways);
+                 // printConfChangMsg(Conf_Modify_addLevelObjAlways);
 
                 break;
          case Conf_Modify_CreateNewBaseObjKind:
                 neroConf.CreateNewBaseObjKind=tmpConf->CreateNewBaseObjKind;
-                   printConfChangMsg(Conf_Modify_CreateNewBaseObjKind);
+                   // printConfChangMsg(Conf_Modify_CreateNewBaseObjKind);
 
                 break;
            case Conf_Modify_ReSet:
 					resetNeroConf();
-                   printConfChangMsg(Conf_Modify_ReSet);
+                   // printConfChangMsg(Conf_Modify_ReSet);
 
                 break;
            case Forecast_Control_Set:
@@ -151,6 +151,7 @@ void * thread_for_Operating_Pic(void *arg)
 				// DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf)
 
 				// DataFlowProcess(arg2->DataFlow,arg2->dataKind,arg2->dataNum,  GodNero, arg2->conf);
+				Process_AddNewBaseKindByname(arg2->DataFlow,arg2->dataKind,arg2->dataNum,  GodNero, arg2->conf);
 
 				// #ifdef Nero_DeBuging09_01_14
 				// #endif
@@ -315,7 +316,7 @@ DataFlow中就是dataNum个数的str，除了第一个是需要新建类型的�
 */
 nero_s32int  Process_AddNewBaseKindByname(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf)
 {
-	nero_s32int i,j,hasAddObj,res1,objNum,res2;
+	nero_s32int i,j,hasAddObj,res1,res2;
 	NeuronObject * tmpObi,* tmpBaseObi,* tmpBaseObi2;
 	NeuronObject ** objs=NULL;
 	NeuronObject * complexObj;
@@ -325,27 +326,40 @@ nero_s32int  Process_AddNewBaseKindByname(void *DataFlow[],nero_s32int dataKind[
 	{
 
 
-		printf("\n\n Process_AddNewBaseKindByname:nero_msg_ParameterError\n\n");
+		printf("\n\n Process_AddNewBaseKindByname1:nero_msg_ParameterError\n\n");
 		return nero_msg_ParameterError;
 	}
 
 // nero_us32int     tmpObiUsed;						//record    how many objs  store  in
 // static NeuronObject  * Process_tmpObi[Process_TemporaryNUM];
 // static struct NeroObjForecastList   Process_forecastListNode[Process_TemporaryNUM];
+	(objs)=(NeuronObject **)malloc(sizeof(NeuronObject *)*dataNum);
 
-
+	// complexObj=NULL;
+	// tmoForRecordNUm=0;
+	// ifHasUnknowObj=0;
+	printf("\n\n Process_AddNewBaseKindByname0:its here\n\n");
 	// find all kinds for DataFlow
+	i=0;
+	objs[i]=nero_IfHasNeuronObject(DataFlow[i],dataKind[i], GodNero);
+	if(objs[i] ==  NULL)
+	{
+
+		printf("\n\n Process_AddNewBaseKindByname2:nero_msg_ParameterError\n\n");
+		return nero_msg_ParameterError;
+
+	}
 	for(i=1;i< dataNum;i++)
 	{
 		dataKind[i]=nero_getObjKindByName(DataFlow[i],  GodNero);
 
-
+		objs[i] = nero_getBaseObjByKind(dataKind[i],GodNero);
 
 	}
 
     {
 		/*判断是否可以进行新基类（抽象概念）创建*/
-		res2=Process_IfCreateNewBaseObj(objs,objNum,GodNero,conf);
+		res2=Process_IfCreateNewBaseObj(objs,dataNum,GodNero,conf);
 		/*开始添加基类 */
 		if (res2 == NeroYES)//do not create new kind
 		{
@@ -357,10 +371,10 @@ nero_s32int  Process_AddNewBaseKindByname(void *DataFlow[],nero_s32int dataKind[
 			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 			#endif
 
-			// printf("need  to create new kind\n");
-			tmpBaseObi=nero_CreateNewBaseObj(objs,objNum,GodNero, conf);
+			printf("need  to create new kind\n");
+			tmpBaseObi=nero_CreateNewBaseObj(objs,dataNum,GodNero, conf);
 			// printf("NewBaseObj:%x\n",tmpBaseObi);
-			tmpBaseObi2=nero_CreateNewBaseObjInSAP(objs,objNum,SAGodNero, conf);
+			tmpBaseObi2=nero_CreateNewBaseObjInSAP(objs,dataNum,SAGodNero, conf);
 
 			#ifdef Nero_DeBuging06_02_14_
 			if(tmpBaseObi)
@@ -400,7 +414,7 @@ nero_s32int  Process_AddNewBaseKindByname(void *DataFlow[],nero_s32int dataKind[
 				sprintf(neroObjMsgWithStr_st.str,"在DataFlowProcess中:nero_CreateNewBaseObj fail !");
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 				#endif
-				// printf("nero_CreateNewBaseObj fail \n\n\n");
+				printf("nero_CreateNewBaseObj fail \n\n\n");
 			}
 			#endif
 		}
@@ -414,13 +428,13 @@ nero_s32int  Process_AddNewBaseKindByname(void *DataFlow[],nero_s32int dataKind[
 			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 			#endif
 			/*如果不需要添加新的基类，那就是修改基类了*/
-			// printf("do not create new base  kind,but  see  if need to  Modify it\n");
-			if(res2 !=   nero_msg_unknowError )
-			{
-				// printf("Modify base kind\n");
-				newBaseObjKind_= res2;
-				nero_ModifyBaseKind(objs,objNum,GodNero,conf,res2);
-			}
+			printf("do not create new base  kind,but  see  if need to  Modify it\n");
+			// if(res2 !=   nero_msg_unknowError )
+			// {
+			// 	// printf("Modify base kind\n");
+			// 	newBaseObjKind_= res2;
+			// 	nero_ModifyBaseKind(objs,objNum,GodNero,conf,res2);
+			// }
 		}
 
     }
@@ -443,6 +457,10 @@ nero_s32int  Process_AddNewBaseKindByname(void *DataFlow[],nero_s32int dataKind[
 	if (DataFlow)
 	{
 		free(DataFlow);
+	}
+	if (objs)
+	{
+		free(objs);
 	}
 	return nero_msg_ok;
 }
@@ -524,7 +542,10 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*				printf("\n");		*/
 /*				ttt.tmp=*((ChUTF8 *)DataFlow);*/
 /*				ttt.end=0;	*/
-		printf("%s\n",(nero_s8int *)DataFlow[i]);
+		if( i == (dataNum -1 ))
+			printf("%sEND\n",(nero_s8int *)DataFlow[i]);
+		else
+			printf("%s ",(nero_s8int *)DataFlow[i]);
 		// sprintf(str,"data/wordspic%d.dot",i);
 		// sprintf(str2,"xdot data/wordspic%d.dot",i);
 		// createNeroNetDotGraphForWords(GodNero, str);
@@ -547,7 +568,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		{
 				// ifHasUnknowObj=1;  msg1:在DataFlowProcess中找不到该概念,kind=%d,i=%d  str=%s
 										// msg1:在DataFlowProcess中找不到该概念,kind=61,i=2
-				#ifdef Nero_DeBuging09_01_14
+				#ifdef Nero_DeBuging09_01_14_
 
 					#ifdef Nero_DeBuging09_01_14
 					if(conf->CreateNewBaseObjKind == 1   )
@@ -576,7 +597,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		else
 		{
 				// ifHasUnknowObj=0;	msg1:在DataFlowProcess中找不到该概念,kind=2012,i=4
-				#ifdef Nero_DeBuging09_01_14
+				#ifdef Nero_DeBuging09_01_14_
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
 				neroObjMsgWithStr_st.Obi = tmpObi;
@@ -646,7 +667,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*				*/
 				// printf("添加子概念,dataKind=%d,adress:%x,  upp obj=%x\n",dataKind[i],tmpObi,tmpObi->outputListHead->obj);
 
-				#ifdef Nero_DeBuging09_01_14
+				#ifdef Nero_DeBuging09_01_14_
 				if(conf->CreateNewBaseObjKind == 1   )
 				{
 					printf("CreateNewBaseObjKind = 1 :new obj create success  i=%d,str=%s,kind=%d ,new kind =%d \n",i,DataFlow[i],dataKind[i],nero_GetNeroKind(tmpObi));
@@ -654,7 +675,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				#endif
 
 
-				#ifdef Nero_DeBuging09_01_14
+				#ifdef Nero_DeBuging09_01_14_
 				// printf("添加子概念成功\n\n");
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
@@ -666,7 +687,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 				#endif
 
-		        #ifdef Nero_DeBuging09_01_14
+		        #ifdef Nero_DeBuging09_01_14_
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;
 				neroObjMsgWithStr_st.Obi = NULL;
@@ -685,7 +706,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 			{
 					// printf("添加子概念失败,dataKind=%d,i=%d\n",dataKind[i],i);
 					ifHasUnknowObj=1;
-			        #ifdef Nero_DeBuging09_01_14
+			        #ifdef Nero_DeBuging09_01_14_
 			        // printf("++++++++++++++DataFlow[i]=%s.\n",DataFlow[i]);
 					// printf("添加子概念失败,dataKind=%d,i=%d\n",dataKind[i],i);
 					//~ printf("添加子概念成功\n\n");
@@ -696,7 +717,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 					sprintf(neroObjMsgWithStr_st.str,"DataFlowProcess:msg2:在DataFlowProcess中创建对象 fail :%s,dataKind[i]=%d",DataFlow[i],dataKind[i]);
 					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 					#endif
-			        #ifdef Nero_DeBuging09_01_14
+			        #ifdef Nero_DeBuging09_01_14_
 
 					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 					neroObjMsgWithStr_st.fucId = 1;
@@ -758,7 +779,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				sprintf(neroObjMsgWithStr_st.str,"打印识别对象obj(%d) =%x id=%d",tmpc,objs[tmpc],coutOferror_Msg_);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 			}
-			printf("\n");
+			// printf("\n");
 		}
 
         #endif
@@ -779,7 +800,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		printf("%x{%d}  ", forecastInfo_st.objs[tmpc] ,nero_GetNeroKind(forecastInfo_st.objs[tmpc]) );
 
 	}
-	printf(" \n" );
+	// printf(" \n" );
 	#endif
 
 
@@ -1031,7 +1052,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
               /*开始添加基类 */
               if (res2 == NeroYES)//do not create new kind
               {
-	  				#ifdef Nero_DeBuging09_01_14
+	  				#ifdef Nero_DeBuging09_01_14_
 					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 					neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
 					neroObjMsgWithStr_st.Obi = NULL;
@@ -1076,7 +1097,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 					else
 					{
 
-		  				#ifdef Nero_DeBuging09_01_14
+		  				#ifdef Nero_DeBuging09_01_14_
 						neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 						neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
 						neroObjMsgWithStr_st.Obi = NULL;
@@ -1093,7 +1114,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
               {
 
 
-  				#ifdef Nero_DeBuging09_01_14
+  				#ifdef Nero_DeBuging09_01_14_
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
 				neroObjMsgWithStr_st.Obi = NULL;
@@ -1431,9 +1452,11 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 	/*参数检查*/
 	if (objs == NULL  || godNero ==NULL  ||  objNum <2 || conf ==NULL)
 	{
+		printf("Process_IfCreateNewBaseObj: parm错误\n");
 		return nero_msg_ParameterError;
 	}
-
+	// printf("neroConf.NewNeroClassID==%d\n",neroConf.NewNeroClassID);
+	// nero_get
     /*首先把第一个字符或者词组类放在objs第一个位置*/
     mark=-1;
     for (i=0;i<objNum;i++)
@@ -1476,12 +1499,12 @@ nero_s32int  Process_IfCreateNewBaseObj(NeuronObject * objs[],nero_s32int objNum
 /*	                printf("getBaseObjName= %x  objs[0]=%x.\n",getBaseObjName(Obi,godNero),objs[0]);*/
 	                if (getBaseObjName(Obi,godNero) ==  objs[0])
 	                {
-	                         // printf("找到了相同名的基类%d ,objs[0]:%x\n",baseDataKind,objs[0]);
+	                         // printf("Process_IfCreateNewBaseObj:找到了相同名的基类%d ,objs[0]:%x\n",baseDataKind,objs[0]);
 	                         return baseDataKind;
 	                }
 	                else
 	                {
-	                		// printf("cant not find 相同名的基类  bjs[0]:%x\n",objs[0]);
+	                		// printf("Process_IfCreateNewBaseObj:cant not find 相同名的基类  bjs[0]:%x,objNum=%d\n",objs[0],objNum);
 
 	                }
 

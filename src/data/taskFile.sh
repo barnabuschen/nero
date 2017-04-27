@@ -47,6 +47,7 @@
 200 数学符号 >
 200 数学符号 |
 200 数学符号 !
+200 数学符号 ?
 200 负号 -
 200 等于号 =
 201 加 +
@@ -54,6 +55,16 @@
 201 乘 *
 201 除 /
 200 正号 +
+220 整数 1
+220 整数 2 1
+220 整数 6
+220 整数 3 2 1
+220 整数 4 3 2 1
+220 整数 5 4 3 2 1
+220 整数 5 5 1 1 1 1
+220 整数 7 6 5 4 3 2 1
+220 整数 8 7 1 1 1 1 1 1
+220 整数 9 8 7 6 5 4 3 2 1
 200 英文字母 a
 200 英文字母 b
 200 英文字母 c
@@ -106,20 +117,13 @@
 200 英文字母 X
 200 英文字母 Y
 200 英文字母 Z
-220 整数 1
-220 整数 2 1
-220 整数 6
-220 整数 3 2 1
-220 整数 4 3 2 1
-220 整数 5 4 3 2 1
-220 整数 5 5 1 1 1 1
-220 整数 7 6 5 4 3 2 1
-220 整数 8 7 1 1 1 1 1 1
-220 整数 9 8 7 6 5 4 3 2 1
 203 setosa
 203 versicolor
 203 virginica
 203 iris
+203 rich
+203 poor
+203 fuck
 219 setosa 51 35 14 2
 #219 setosa 21 25 24 2
 #要想创建setosa 51 35 14 2，必须先定义大于10得整数才行    14   55  406a7a40
@@ -196,6 +200,4 @@
 220 native-country T h a i l a n d
 #生成新类时，如果所有子类都已经能够确认的情况下，可以直接输入类别名生成新的高级衍生类
 230 rich age workclass fnlwgt education education-num marital-status occupation relationship race sex capital-gain capital-loss hours-per-week native-country
-
-
-
+230 poor age workclass fnlwgt education education-num marital-status occupation relationship race sex capital-gain capital-loss hours-per-week native-country

@@ -4181,8 +4181,8 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 	}
 	else
 	{
-
-		printf("addNeroByData  addNeroIntoNet fail :tmp == NULL\n");
+		// NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject  * godNero)
+		printf("addNeroByData  addNeroIntoNet fail :tmp == NULL,dataKind=%d,  str=%s\n",dataKind,Data);
 	}
 
 	return tmp;
@@ -4337,7 +4337,7 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 		// printf("nero_IfHasNeuronObject:%s    ForChWord child num : %d \n",Data,nero_getBaseObjChildenNum(NeuronNode_ForChWord,GodNero));
 		// printf("nero_IfHasNeuronObject strlenInData =%d\n",strlenInData);
 
-		#ifdef Nero_DeBuging14_01_14
+		#ifdef Nero_DeBuging14_01_14_
 		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 		neroObjMsgWithStr_st.fucId = 1;
 		neroObjMsgWithStr_st.Obi = NULL;
@@ -4400,7 +4400,7 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 		{
 			nero_IfHasObjFromMultiples3(str, objNum,NeuronNode_ForChWord,&tmp);
 
-			#ifdef Nero_DeBuging14_01_14
+			#ifdef Nero_DeBuging14_01_14_
 			if(tmp)
 			{
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
@@ -4408,16 +4408,16 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 				neroObjMsgWithStr_st.Obi = NULL;
 				sprintf(neroObjMsgWithStr_st.str,"在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find %s",(char *)Data);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
-				#endif
+
 
 			}
-
+			#endif
 
 		}
 		else
 		{
 
-			#ifdef Nero_DeBuging14_01_14
+			#ifdef Nero_DeBuging14_01_14_
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 			neroObjMsgWithStr_st.fucId = 1;
 			neroObjMsgWithStr_st.Obi = NULL;
@@ -4479,7 +4479,7 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 
 
 	}
-	#ifdef Nero_DeBuging14_01_14
+	#ifdef Nero_DeBuging14_01_14_
 	if(tmp == NULL)
 	{
 		// printf("nero_IfHasNeuronObject===can  not fint  obj of kind=%d\n",dataKind);
@@ -4545,7 +4545,7 @@ NeuronObject * nero_IfHasNeuronObjectKindUnknow(void *Data,nero_s32int basekind 
 
 
 
-	#ifdef Nero_DeBuging14_01_14
+	#ifdef Nero_DeBuging14_01_14_
 	// printf  msg  by  obj
 	neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 	neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
@@ -4573,7 +4573,7 @@ NeuronObject * nero_IfHasNeuronObjectKindUnknow(void *Data,nero_s32int basekind 
 			childKind=nero_GetNeroKind(childtmpFiber->obj);
 			charLength=0;
 			flag=0;
-			#ifdef Nero_DeBuging14_01_14
+			#ifdef Nero_DeBuging14_01_14_
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 			neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
 			neroObjMsgWithStr_st.Obi = NULL;

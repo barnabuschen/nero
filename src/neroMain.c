@@ -156,10 +156,13 @@ void ProInitialization()
 		nero_8int * fileName1="/data/taskFile.sh";
 		ReadTaskFromTxt( fileName1  );
 		printf("end of  fuc ReadTaskFromTxt\n");
+		sleep(1);
+		// nero_8int * fileName2="/data/adult/adultLearn2.sh";
+		nero_8int * fileName2="/data/adult/adultLearn.sh";
+		ReadTaskFromTxt( fileName2  );
 
-		// nero_8int * fileName2="/data/taskFileForCreateIO.sh";
-		// ReadTaskFromTxt( fileName2  );
-		// printf("end of  fuc ReadTaskFromTxt\n");
+
+		printf("\n end of  fuc ReadTaskFromTxt\n");
 
 
 
@@ -231,7 +234,7 @@ void ProInitialization()
 		i=2012;
 		{
  		#ifdef Nero_DeBuging10_01_14
-				for(i=62;i<= 2017   ;i++)
+				for(i=62;i<= 2035   ;i++)
 				{
 			// print  all  of  the  kind  obj
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
@@ -250,7 +253,7 @@ void ProInitialization()
 
 		for(;;)
 		{		/*打印某个类别下面的所有的衍生类*/
-				printf("...\n");
+				// printf("...\n");
 
 				#ifdef Nero_DeBuging10_01_14
 				// print  all  of  the  kind  obj

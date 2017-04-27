@@ -59,7 +59,8 @@
                                                 // the kind of  all  steam  in  unknow (就是mei you 给出这数据流表示得对象类别)
 
 #define  Task_Order_DataSteamInput2    311      /* just  input some  data  into  sys,  its parameter  is several string */
-                                                // the kind of  all  steam  in  already  been Specify
+                                                // the kind of  all  steam  has  already  been Specify by give the kind name
+                                                // of first 2th string
 
 #define  Task_Order_DataSteamInput3    312      /* just  input some  data  into  sys,  its parameter  is several string */
                                                 // the kind of  all  steam  in  already  been Specify
@@ -133,6 +134,8 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 {Task_Order_CreateLayeringKindObj,2,TFFDataType_String,TFFDataType_String},
 /*创建"new    obj"             参数个数   第一个数据           */
 {Task_Order_CreateKindOfMultipleKind,OrderListWigthMax,TFFDataType_String,TFFDataType_String},
+/*创建"new    obj"             参数个数   第一个数据           */
+{Task_Order_DataSteamInput2,OrderListWigthMax,TFFDataType_String,TFFDataType_unknow},
 {0},
 {0},
 };
@@ -240,13 +243,6 @@ void ReadEnglishWordsFromTxt(nero_8int  * fileNameInpt)
 
 
 }
-
-
-
-
-
-
-
 
 // static int nero_error_Id=0;
 
@@ -466,7 +462,7 @@ void ReadTaskFromTxt(nero_8int  * fileNameInpt)
 /*        nero_8int * findStr;*/
     nero_8int  fileName[FILEPATH_MAX];
 	nero_s32int fd;
-	nero_8int *mapped_mem, * p,*end;
+	nero_8int *mapped_mem, * p,*end,*end2;
         nero_8int       *linStart,*linEnd;
  	getcwd(file_path_getcwd,FILEPATH_MAX);
 
@@ -508,39 +504,40 @@ void ReadTaskFromTxt(nero_8int  * fileNameInpt)
 		}
 
 		linStart=linEnd=p;
-                while(*(p) !=tff.orderSeparator /*&& *(q) !=0x09*/)/*换行符或者tab*/
+        while(*(p) !=tff.orderSeparator /*&& *(q) !=0x09*/)/*换行符或者tab*/
 			p=p+1;
 		linEnd=p-1;
+        //排除line末尾有空格的情况
+        end2=linEnd;
+        while(*(end2) ==tff.msgSeparator  )
+            end2=end2-1;
+        linEnd=end2;
 		/*找到行末尾*/
 /*		if (linEnd  > linStart )*/
 		{
-		        memset(tff.str,0,500);
-                for(tmpII=0; tmpII<TFFDataWidth; tmpII++)
-                {
-                    memset(tff.data[tmpII], 0, sizeof(nero_us8int ) * TFFDataLength);
-                }
+            memset(tff.str,0,500);
+            for(tmpII=0; tmpII<TFFDataWidth; tmpII++)
+            {
+                memset(tff.data[tmpII], 0, sizeof(nero_us8int ) * TFFDataLength);
+            }
 
-		        memcpy(tff.str,linStart,linEnd-linStart+1);
+            memcpy(tff.str,linStart,linEnd-linStart+1);
 
-                        /*提取信息中的各个字段*/
-                        if( (tff.str)[0]  !=  '#')
-                        {
-								 // printf("ReadTaskFromTxt::%s\n",tff.str);
-                                 getMsgInToTFF(&tff);//  the data in tff.str is  l  line  in file
+            /*提取信息中的各个字段*/
+            if( (tff.str)[0]  !=  '#')
+            {
+					 // printf("ReadTaskFromTxt::%s\n",tff.str);
+                     getMsgInToTFF(&tff);//  the data in tff.str is  l  line  in file
 /*				下面将tff中的信息转化为实际的命令*/
 
-				                obtainOrderFromTFF(&tff);/*从TFF中分析得到命令后在函数里面直接发送就行了*/
+	                obtainOrderFromTFF(&tff);/*从TFF中分析得到命令后在函数里面直接发送就行了*/
 
-                        }
-
-
-
-
+            }
 		}
-        usleep(500);
+        // usleep(300);
 
 		/*寻找新一行的行开头*/
-                while( p <= end &&  (*(p) ==tff.msgSeparator || *(p) ==tff.orderSeparator)  )
+        while( p <= end &&  (*(p) ==tff.msgSeparator || *(p) ==tff.orderSeparator)  )
 			p=p+1;
 	}
 
@@ -566,7 +563,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         }
  	      nero_s32int *dataKind;
         nero_us8int *linc;
-        nero_s32int dataNum,k,countOfWord,m,lenOfpar,tmpCount,searchForUnknowKind,FailTosearchForUnknowKind;
+        nero_s32int dataNum,k,countOfWord,m,lenOfpar,tmpCount,searchForUnknowKind,FailTosearchForUnknowKind,tmpKindRecond;
         nero_us32int * kindArray;
         void **DataFlow;
         nero_8int baseobjName[100]="阿拉伯数字";
@@ -785,7 +782,36 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
             switch( tff->order)
             {
+                case  Task_Order_DataSteamInput2:
+                    // usleep(300);
+                    tmpKindRecond=nero_getObjKindByName((void *) DataFlow[0],GodNero);
+                    tmpobj =  nero_getBaseObjByKind(tmpKindRecond,GodNero);
+                    if(tmpobj != NULL)
+                    {
+
+                        dataKind[k]=nero_getChildKind(tmpobj,k);// this fuc 不考虑是基类还是obj
+                                            // positoinOfChild 从0开始算
+
+                        // nero_getBaseObjByKind(dataKind[0]);
+                        if(dataKind[k]   <  NeuronNode_ForComplexDerivative)
+                            FailTosearchForUnknowKind=1;
+
+                    }
+                    else
+                    {
+                        printf("Task_Order_DataSteamInput2: baseobj = NULL, tmpKindRecond=%d,name=%s\n",tmpKindRecond,DataFlow[0]);
+                        return ;
+                    }
+                    // if(k == (countOfWord -1 ))
+                    //     printf("%sEND\n  ",DataFlow[k]);
+                    // else
+                    //     printf("%s  ",DataFlow[k]);
+                    // return ;
+                    break;
+
+
                 case  Task_Order_CreateKindOfMultipleKind:
+                    usleep(300);
                     dataKind[k]=nero_getObjKindByName((void *)( tff->data[k+1]),GodNero);
 
                     if(dataKind[k]   <  NeuronNode_ForComplexDerivative)
@@ -806,7 +832,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
                     break;
                 case  Task_Order_CreateKindWithMultipleWord:
-                    usleep(300);
+                    // usleep(300);
                     // sleep(1);
                     dataKind[k]=nero_getObjKindByName((void *)kindname1,GodNero);
                     // printf("obtainOrderFromTFF: nero_getObjKindByName=%d \n",dataKind[k]);
@@ -822,7 +848,11 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
 
                     if(dataKind[k]   <  NeuronNode_ForComplexDerivative)
+                    {
+                        printf("Task_Order_CreateKindWithMultipleWord11: dataKind[k]=%d kindname1=%s\n",dataKind[k],kindname1);
                         FailTosearchForUnknowKind=1;
+
+                    }
 
                     break;
                 case  Task_Order_MutiDataInput:
@@ -886,7 +916,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
     if(FailTosearchForUnknowKind ==  1)
     {
-        printf("obtainOrderFromTFF: 内存泄漏   tff->order=%d,dataKind[k]=%d,k=%d,countOfWord=%d \n",tff->order,dataKind[k],k,countOfWord);
+        printf("obtainOrderFromTFF:内存泄漏order=%d,dataKind[k]=%d,k=%d,countOfWord=%d \n",tff->order,dataKind[k],k,countOfWord);
         return;
     }
 
@@ -934,6 +964,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 flag=0;
                 break;
         case    Task_Order_MutiDataInput:
+        case    Task_Order_DataSteamInput2:
                 dataKind[0]=NeuronNode_ForChWord;
                 // ((NeroConf *)DataIO_st.str)->addLevelObjAlways=1;
                 // arg2.conf->addLevelObjAlways=1;
@@ -1004,7 +1035,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
             printf(" obtainOrderFromTFF:%d.%s\n",dataKind[i], DataFlow[i]);
         }
-        printf(" \n");
+        // printf(" \n");
         #endif
         coutOfRun++;
         switch( tff->order)

@@ -92,14 +92,14 @@ nero_s32int IO_NeroConfigurationModify(void * operateKind,void *c)
 /*        printf("i=%d.\n",tmpConf->addLevelObjAlways);*/
         switch(kind)
         {
-        
+
         case Conf_Modify_addLevelObjAlways:
 /*                neroConf.addLevelObjAlways=tmpConf->addLevelObjAlways;*/
                 break;
-        
-        
-        
-        
+
+
+
+
         default:break;
         }
 
@@ -116,23 +116,23 @@ nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 	nero_us8int tmpChar;
 	nero_s32int i,charNum/*strBegin*/,over;
 	nero_s32int charLength=0;//该字节所占位数
-	
+
 	nero_s32int ObjRecognizeLen[DataFlowProcessObjNum_MAX];//记录识别出的字符长度
 	nero_s32int ObjRecognizeCount=0;//记录已经识别出的字符数量
 
 
 			int sum;
-			
+
 			void **DataFlow;
 			nero_s32int *dataKind;
 /*			Utf8Word  *wP;*/
 			char *linc;
-			nero_s32int dataNum,k,countOfWord,m;	
-			struct DataFlowProcessArg arg2;			
+			nero_s32int dataNum,k,countOfWord,m;
+			struct DataFlowProcessArg arg2;
 			struct { long type; char text[100]; } mymsg;
 
 
-	
+
 	if (operateKind==NULL || dataFilePath==NULL)
 	{
 		return nero_msg_ParameterError;
@@ -148,12 +148,12 @@ nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 	mapped_mem = mmap(start_addr, flength, PROT_READ,        //允许读
 	MAP_PRIVATE,       //不允许其它进程访问此内存区域
 	fd, 0);
-	p=mapped_mem;	
+	p=mapped_mem;
 	strEnd=mapped_mem+flength-2;/*指向最后一个字节的位置，正常就是ox0A*/
 	/*这里想系统输入信息的方式是按信息的最小单位进行，即为一个字符*/
 	/*然后吧这些信息的地址以消息的形式发送给thread_for_Operating_Pic*/
-	
-	
+
+
 	/*从文件中依次获取一个UTF8的字符，然后判断是不是汉字，是则可以传送给系统*/
 	/*DataFlowProcessObjNum_MAX*/
 	over=1;
@@ -161,14 +161,14 @@ nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 	{
 		tmpChar=*p;
 		charNum=0;
-		
-		if (p <  strEnd) 	
+
+		if (p <  strEnd)
 		{
 			/*因为可能有逗号，所以可能只有1个或者俩个字节组成一个字符*/
 			if (tmpChar < 128)
 			{
 				charNum=1;/*charNum记录utf8编码的字符数*/
-			
+
 			}else
 			if (tmpChar < 194)
 			{
@@ -195,8 +195,8 @@ nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 			if (ObjRecognizeCount == 0)
 			{
 				strBegin=p;
-			}		
-		
+			}
+
 			ObjRecognizeLen[ObjRecognizeCount]=charNum;//记录识别出的字符长度
 			ObjRecognizeCount++;
 			p=p+charNum;
@@ -206,33 +206,33 @@ nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 		{
 
 			countOfWord=ObjRecognizeCount;
-			
+
 			(DataFlow)=(void **)malloc(sizeof(void *)*countOfWord);
-			(dataKind)=(nero_s32int *)malloc(sizeof(nero_s32int 			   					*)*countOfWord);	
-					
+			(dataKind)=(nero_s32int *)malloc(sizeof(nero_s32int 			   					*)*countOfWord);
+
 			for (k=0;k<countOfWord;k++)
 			{
 				DataFlow[k]=(void *)malloc((sizeof( char)*3));
 				linc=(char *)DataFlow[k];
-			
+
 				memset(linc,0,3);
 				memcpy(linc,strBegin,ObjRecognizeLen[k]);
 
 				dataKind[k]=NeuronNode_ForChCharacter;
 				strBegin+=ObjRecognizeLen[k];
 /*				printf("%s",linc);*/
-				
+
 				#ifdef  Nero_DeBuging14_01_14_
 				char * ttmp[10];
 				memset(ttmp,0,10);
 				memcpy(ttmp,DataFlow[k],3);
 				printf("字符是：%s   len=%d\n",ttmp,ObjRecognizeLen[k]);
-				#endif				
-				
-			}			
+				#endif
+
+			}
 /*			printf("\n");*/
 			/*现在开始准备发送消息了*/
-			dataNum=countOfWord;	
+			dataNum=countOfWord;
 			arg2.dataNum=dataNum;
 			arg2.dataKind=dataKind;
 			arg2.conf=&neroConf;
@@ -243,11 +243,11 @@ nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 			msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
 
 			/*现在*/
-			
+
 			/*测试*/
 			#ifdef  Nero_DeBuging14_01_14_
 			char * str=malloc(sizeof(char)*ObjRecognizeCount*4);
-			sum=0;		
+			sum=0;
 			for (i=0;i<ObjRecognizeCount;i++)
 			{
 				sum+=ObjRecognizeLen[i];
@@ -260,20 +260,20 @@ nero_s32int IO_InputDataToSys(void * operateKind,void *dataFilePath)
 			#endif
 			/*结束*/
 			ObjRecognizeCount=0;
-		}		
-		
-		
+		}
+
+
 /*		p++;*/
 	}
-	
-	
+
+
 /*			isZh=IO_IfIsChineseChar(zhWord)*/
 	close(fd);
 	munmap(mapped_mem, flength);
-	
+
 	printf("IO_InputDataToSys  end\n");
-	return nero_msg_ok;	
-	
+	return nero_msg_ok;
+
 }
 //仅仅用于打印某单一固定文本信息时使用，方便查看
 nero_s32int Log_printFormattedMsg(void * obj_,void *str_)
@@ -308,7 +308,7 @@ nero_s32int Log_printFormattedMsg(void * obj_,void *str_)
 	{
 		curFiber = obj->inputListHead;
 		sprintf(str,"Log_printFormattedMsg:		Kind:%d, address:%x,data=", nero_GetNeroKind(obj),obj);
-		addLineToFile(formatLogFile,str);	
+		addLineToFile(formatLogFile,str);
 		while(curFiber != NULL  &&  curFiber->obj != NULL)
 		{
 			ObjectKind=nero_GetNeroKind(curFiber->obj);
@@ -317,15 +317,15 @@ nero_s32int Log_printFormattedMsg(void * obj_,void *str_)
 				case NeuronNode_ForChCharacter:
 					IO_getZhInNero(strLinshi,curFiber->obj);
 					sprintf(str,"%s",strLinshi);
-					addLineToFile(formatLogFile,str);	
-					 break;	
+					addLineToFile(formatLogFile,str);
+					 break;
 				// case NeuronNode_ForChWord :
-				// 	 break;		
+				// 	 break;
 				default:
 					sprintf(str,"Kind:%d,address:%x", nero_GetNeroKind(curFiber->obj),curFiber->obj);
-					addLineToFile(formatLogFile,str);	
-	
-					 break;				
+					addLineToFile(formatLogFile,str);
+
+					 break;
 			}
 			curFiber=curFiber->next;
 		}
@@ -378,16 +378,16 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 			{
 				break;
 			}
-		}		
+		}
 
 		if(ObjectKind2 != ObjectKind)
 		{
 			sprintf(str,"Log_printAllKindOf(undefault):%s		there is  no ObjectKind=%d的对象\n",asctime(timenow),ObjectKind);
 			addLineToFile(AllKindOfFile,str);
-			return nero_msg_ok;			
+			return nero_msg_ok;
 		}
 
-		// printf("Log_printAllKindOf  start:  Object Kind=%d,adress:%x\n",ObjectKind,BaseObi);	
+		// printf("Log_printAllKindOf  start:  Object Kind=%d,adress:%x\n",ObjectKind,BaseObi);
 	/*	printf("str %s  and logFile=%s",str,logFile);*/
 		switch(ObjectKind)
 		{
@@ -398,10 +398,10 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 		case NeuronNode_ForLine:
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:
-		case NeuronNode_ForChSentence:	
+		case NeuronNode_ForChSentence:
 /*			sprintf(str,"Log_printAllKindOf:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),obj,ObjectKind);*/
 /*			addLineToFile(logFile,str);	*/
-			break;	
+			break;
 		case NeuronNode_ForChCharacter:
 /*		case NeuronNode_ForChWord :*/
 			curFiber=BaseObi->outputListHead;
@@ -421,23 +421,23 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 							IO_getWordsInNero(str,tmp);
 							break;
 						default:
-					
+
 					                str[0]=0;
 							break;
-					
+
 					}
 					sprintf(strLinshi,"		地址 %x  <%s>\n",(int)tmp,str);
 					addLineToFile(AllKindOfFile,strLinshi);
 
 				curFiber=curFiber->next;
 			}
-				
+
 			break;
 		default:
-		
+
 			// if(BaseObi->inputListHead->obj)
 			// 	sprintf(str,"Log_printAllKindOf(default):%s		ObjectKind=%d ,name=%x的所有对象为(%d):\n",asctime(timenow),ObjectKind,BaseObi->inputListHead->obj,BaseObi->x);
-			
+
 			// else
 			sprintf(strLinshi,"Log_printAllKindOf(default):%s		ObjectKind=%d add:%x,所有对象num为(%d):\n",asctime(timenow),ObjectKind,BaseObi,BaseObi->x);
 			addLineToFile(AllKindOfFile,strLinshi);
@@ -473,7 +473,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 			{
 					//tmp  is the obj you wangt to search
 				tmp=curFiber->obj;
-				
+
 				sprintf(strLinshi,"		地址%x,DataNUm2=%d,[",(int)tmp,nero_getObjDataNum(tmp));
 				addLineToFile(AllKindOfFile,strLinshi);
 				childcurFiber=tmp->inputListHead;
@@ -488,7 +488,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 						case NeuronNode_ForData:
 							sprintf(str,"%d%d%d,",tmp->x,tmp->y,tmp->z);
 
-							break;		
+							break;
 						case NeuronNode_ForChCharacter:
 							IO_getZhInNero(str,tmp);
 
@@ -496,15 +496,15 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 						case NeuronNode_ForChWord:
 							IO_getWordsInNero(str,tmp);
 
-							break;		
-						default:	
+							break;
+						default:
 
-								if( nero_GetNeroKind ( tmp->inputListHead->obj)   ==  NeuronNode_ForChCharacter )	
+								if( nero_GetNeroKind ( tmp->inputListHead->obj)   ==  NeuronNode_ForChCharacter )
 									IO_getZhInNero(str,tmp->inputListHead->obj);
-								else 	
+								else
 					                str[0]=0;
 								break;
-					
+
 					}
 
 					sprintf(strLinshi,"%s,",str);
@@ -517,13 +517,13 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 				addLineToFile(AllKindOfFile,strLinshi);
 
 				curFiber=curFiber->next;
-			}		
-		
-		
+			}
+
+
 		        break;
 		}
 
-		
+
 	// printf("Log_printAllKindOf  done\n");
 	return nero_msg_ok;
 }
@@ -537,8 +537,8 @@ nero_s32int Log_printNeroObjLinkTree(void * arg)
 	NeuronObject * obj=(NeuronObject *)arg;
 	NeuronObject * tmp;
 	NerveFiber  *  curFiber;
-	
-	nero_us32int isbaseFlag;																		
+
+	nero_us32int isbaseFlag;
 
 
 	if(obj)
@@ -546,7 +546,7 @@ nero_s32int Log_printNeroObjLinkTree(void * arg)
 		curFiber = obj->inputListHead;
 
 		sprintf(str,"Log_printNeroObjLinkTree:		Kind:%d, address:%x,data=", nero_GetNeroKind(obj),obj);
-		addLineToFile(logFile,str);	
+		addLineToFile(logFile,str);
 		while(curFiber != NULL  &&  curFiber->obj != NULL)
 		{
 			ObjectKind=nero_GetNeroKind(curFiber->obj);
@@ -555,35 +555,35 @@ nero_s32int Log_printNeroObjLinkTree(void * arg)
 				case NeuronNode_ForChCharacter:
 					IO_getZhInNero(strLinshi,curFiber->obj);
 					sprintf(str,"%s",strLinshi);
-					addLineToFile(logFile,str);	
-					 break;	
+					addLineToFile(logFile,str);
+					 break;
 				// case NeuronNode_ForChWord :
-				// 	 break;		
+				// 	 break;
 				default:
 					sprintf(str,"Log_printNeroObjLinkTree:		Kind:%d, address:%x", nero_GetNeroKind(obj),obj);
-					addLineToFile(logFile,str);	
-	
-					 break;				
+					addLineToFile(logFile,str);
+
+					 break;
 			}
 			curFiber=curFiber->next;
 		}
 		sprintf(str,"\n	 outputList:\n" );
-		addLineToFile(logFile,str);	
+		addLineToFile(logFile,str);
 		// sprintf(str,"Log_printNeroObjLinkTree:		Kind:%d, address:%x\n	 outputList:\n", nero_GetNeroKind(obj),obj);
-		// addLineToFile(logFile,str);	
+		// addLineToFile(logFile,str);
 
 		// 尝试打印obj本身的数据,判断数据的kind是否都一样，如果都一样且都是sys自有的kind就可以打印数据
 
 		// switch(ObjectKind)
 		// {
-		// 		case NeuronNode_ForNone:					
-		// 			 break;	
+		// 		case NeuronNode_ForNone:
+		// 			 break;
 
 
 		// 		default:
 		// 			sprintf(str,"Log_printNeroObjLinkTree:		Kind:%d, address:%x\n	 outputList:\n", nero_GetNeroKind(obj),obj);
-		// 			addLineToFile(logFile,str);	
-		// 			 break;	
+		// 			addLineToFile(logFile,str);
+		// 			 break;
 		// }
 		curFiber = obj->outputListHead;
 		while(curFiber != NULL  &&  curFiber->obj != NULL)
@@ -593,33 +593,33 @@ nero_s32int Log_printNeroObjLinkTree(void * arg)
 			isbaseFlag=nero_isBaseObj(curFiber->obj);
 
 
-		
+
 			switch(ObjectKind)
 			{
 
-				case NeuronNode_ForNone:			
+				case NeuronNode_ForNone:
 				case NeuronNode_ForData:
 				case NeuronNode_ForConnect:
 				case NeuronNode_ForLine:
 				case NeuronNode_ForImage:
 				case NeuronNode_ForComplexDerivative:
-				case NeuronNode_ForChSentence:	
+				case NeuronNode_ForChSentence:
 					 // sprintf(str,"Log_printNeroObjLink:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),(int)obj,(int)ObjectKind);
-					 // addLineToFile(logFile,str);	
-					 // break;	
+					 // addLineToFile(logFile,str);
+					 // break;
 				case NeuronNode_ForGodNero:
 				case NeuronNode_ForChCharacter:
 				case NeuronNode_ForChWord :
-					 break;		
-				case NeuronNode_ForLayering :		
-					 break;	
+					 break;
+				case NeuronNode_ForLayering :
+					 break;
 
 
 				default:
 						//
 					 sprintf(str," 				upperKind:%d,FiberStrengthen(%d),FiberPointType(%d),isbase(%d)\n",ObjectKind,(curFiber->msg1 & 0x000000ff),getFiberType(curFiber),isbaseFlag);
-					 addLineToFile(logFile,str);	
-					 break;				
+					 addLineToFile(logFile,str);
+					 break;
 			}
 
 
@@ -631,7 +631,7 @@ nero_s32int Log_printNeroObjLinkTree(void * arg)
 
 	}
 
-	
+
 	return nero_msg_ok;
 }
 //print all  nero outputlist  msg
@@ -654,13 +654,13 @@ nero_s32int Log_printAllNeroMsg(void * arg)
 	}
 	else
 		return  NeroError;
-	
+
 	for(curFiberOfbase=obj->outputListHead;curFiberOfbase !=NULL; curFiberOfbase=curFiberOfbase->next)
 	{
 		obj=curFiberOfbase->obj;
 		objnums=0;
 		if(obj)
-		{	
+		{
 			ObjectKind=nero_GetNeroKind(obj);
 
 			for(curFiberOfObj=obj->outputListHead;curFiberOfObj !=NULL; curFiberOfObj=curFiberOfObj->next)
@@ -671,16 +671,16 @@ nero_s32int Log_printAllNeroMsg(void * arg)
 			if(ObjectKind <= NeuronNode_ForComplexDerivative)
 			{
 				sprintf(str,"Log_printAllNeroMsg:		nerogod:%x,Kind:%d,actual num:%d ,record  num:%d\n",(NeuronObject *)arg, ObjectKind,objnums,obj->x);
-				addLineToFile(logFile,str);	
-				printf("Kind:%d,actual num:%d ,record  num:%d\n", ObjectKind,objnums,obj->x);
+				addLineToFile(logFile,str);
+				// printf("Kind:%d,actual num:%d ,record  num:%d\n", ObjectKind,objnums,obj->x);
 			}
 			else
 			{
 				sprintf(str,"Log_printAllNeroMsg:		kind add=%x,Kind:%d,actual num:%d ,record  num:%d,name adress:%x  \n",curFiberOfbase->obj, ObjectKind,objnums,obj->x,obj->inputListHead->obj);
-				addLineToFile(logFile,str);					
-				printf("Kind:%d,actual num:%d ,record  num:%d,name adress:%x  \n", ObjectKind,objnums,obj->x,obj->inputListHead->obj);
+				addLineToFile(logFile,str);
+				// printf("Kind:%d,actual num:%d ,record  num:%d,name adress:%x  \n", ObjectKind,objnums,obj->x,obj->inputListHead->obj);
 			}
-		}	
+		}
 	}
 }
 // 打印一个obj outputListHead   信息
@@ -699,10 +699,10 @@ nero_s32int Log_printNeroObjLink(void * arg)
 	if (obj)
 	{
 		ObjectKind=nero_GetNeroKind(obj);
-			
+
 	/*	printf("str %s  and logFile=%s",str,logFile);*/
 		switch(ObjectKind)
-		{		
+		{
 		case NeuronNode_ForNone:
 		case NeuronNode_ForUndefined:
 		case NeuronNode_ForData:
@@ -710,31 +710,31 @@ nero_s32int Log_printNeroObjLink(void * arg)
 		case NeuronNode_ForLine:
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:
-		case NeuronNode_ForChSentence:	
+		case NeuronNode_ForChSentence:
 			sprintf(str,"Log_printNeroObjLink:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),(int)obj,(int)ObjectKind);
-			addLineToFile(logFile,str);	
-			break;	
+			addLineToFile(logFile,str);
+			break;
 		case NeuronNode_ForGodNero:
 		case NeuronNode_ForChCharacter:
 		case NeuronNode_ForChWord :
 			curFiber=obj->outputListHead;
 			sprintf(str,"Log_printNeroObjLink:%s		地址：%x的link对象,ObjectKind=%d\n",asctime(timenow),(int)obj,(int)ObjectKind);
 			addLineToFile(logFile,str);
-			
+
 			if (curFiber == NULL)
 			{
 			sprintf(strLinshi,"		没有链接对象，结束link寻找\n");
-			addLineToFile(logFile,strLinshi);				
+			addLineToFile(logFile,strLinshi);
 			}
 			while(curFiber)
 			{
 				tmp=curFiber->obj;
-			
+
 				if (nero_isBaseObj(tmp ) !=1)
-				// if (nero_isBaseObj(tmp ) !=0  /*&&   nero_isBaseObj(tmp ) !=2 */)					
+				// if (nero_isBaseObj(tmp ) !=0  /*&&   nero_isBaseObj(tmp ) !=2 */)
 				{
-					
-				
+
+
 					ObjectKind2=nero_GetNeroKind(tmp);
 					switch(ObjectKind2)
 					{
@@ -744,7 +744,7 @@ nero_s32int Log_printNeroObjLink(void * arg)
 						case NeuronNode_ForChWord:
 							IO_getWordsInNero(str,tmp);
 							break;
-							
+
 						default:
 							ObjectKind3=nero_isBaseObj(tmp);
 							if (ObjectKind3 ==1)
@@ -752,20 +752,20 @@ nero_s32int Log_printNeroObjLink(void * arg)
 								sprintf(str,"链接对象为基类");
 							}
 							break;
-					
+
 					}
 					sprintf(strLinshi,"		-->%x  <%s>,FiberType=%d\n",(int)tmp,str,getFiberType(curFiber));
 					addLineToFile(logFile,strLinshi);
-				}	
+				}
 				else
 				{
 					sprintf(strLinshi,"		该对象%x为基类,ObjectKind=%d，无需link\n",tmp,nero_GetNeroKind(tmp));
 					addLineToFile(logFile,strLinshi);
-				
-				}		
+
+				}
 				curFiber=curFiber->next;
 			}
-				
+
 			break;
 		default:
 			if (ObjectKind > NeuronNode_ForComplexDerivative )
@@ -773,21 +773,21 @@ nero_s32int Log_printNeroObjLink(void * arg)
 				curFiber=obj->outputListHead;
 				sprintf(str,"Log_printNeroObjLink[高级衍生类]:%s		地址：%x  ObjectKind=%d,datanum=%d\n",asctime(timenow),(int)obj,(int)ObjectKind,nero_getObjDataNum(obj));
 				addLineToFile(logFile,str);
-				
+
 				if (curFiber == NULL)
 				{
 				sprintf(strLinshi,"		没有链接对象，结束link寻找\n");
-				addLineToFile(logFile,strLinshi);				
+				addLineToFile(logFile,strLinshi);
 				}
 				while(curFiber)
 				{
 					tmp=curFiber->obj;
-				
+
 					if (nero_isBaseObj(tmp ) !=1)
-					// if (nero_isBaseObj(tmp ) !=0  /*&&   nero_isBaseObj(tmp ) !=2 */)					
+					// if (nero_isBaseObj(tmp ) !=0  /*&&   nero_isBaseObj(tmp ) !=2 */)
 					{
-						
-					
+
+
 						ObjectKind2=nero_GetNeroKind(tmp);
 						switch(ObjectKind2)
 						{
@@ -797,7 +797,7 @@ nero_s32int Log_printNeroObjLink(void * arg)
 							case NeuronNode_ForChWord:
 								IO_getWordsInNero(str,tmp);
 								break;
-								
+
 							default:
 								// ObjectKind3=nero_isBaseObj(tmp);
 								// if (ObjectKind3 ==1)
@@ -805,30 +805,30 @@ nero_s32int Log_printNeroObjLink(void * arg)
 									sprintf(str,"链接对象为unknow");
 								}
 								break;
-						
+
 						}
 						// sprintf(str,"		链接对象test\n");
 						sprintf(strLinshi,"		该对象%x  <%s>,Kind=%d,FiberType=%d,Strengthen=%d\n",(int)tmp,str,ObjectKind2,(getFiberType(curFiber)),(curFiber->msg1 & 0x000000ff ));
 						addLineToFile(logFile,strLinshi);
-					}	
+					}
 					else
 					{
 						sprintf(strLinshi,"		该对象%x为基类,ObjectKind=%d，FiberType:%d,Strengthen=%d\n",tmp,nero_GetNeroKind(tmp),getFiberType(curFiber),(curFiber->msg1 & 0x000000ff ));
 						addLineToFile(logFile,strLinshi);
-					
-					}		
+
+					}
 					curFiber=curFiber->next;
 				}
 			}
-			break;		
+			break;
 		}
 
-			
+
 	}
 	else
 	{
-		sprintf(str,"Log_printNeroObjLink:%s		空对象\n",asctime(timenow));	
-		addLineToFile(logFile,str);	
+		sprintf(str,"Log_printNeroObjLink:%s		空对象\n",asctime(timenow));
+		addLineToFile(logFile,str);
 	}
 
 	return nero_msg_ok;
@@ -855,8 +855,8 @@ nero_us32int msg;/*记录该nero的种类，性质等信息*/
 nero_s32int x;/*取值范围-2147483648 ~ 2147483647*/
 nero_s32int y;
 nero_s32int z;
-struct NerveFiber_  * inputListHead;				
-struct NerveFiber_   * outputListHead; 	
+struct NerveFiber_  * inputListHead;
+struct NerveFiber_   * outputListHead;
 	NerveFiber  *  curFiber;
 	time(&now);//time函数读取现在的时间(国际标准时间非北京时间)，然后传值给now
 	timenow   =   localtime(&now);//localtime函数把从time取得的时间now换算成你电脑中的时间(就是你设置的地区)
@@ -883,44 +883,44 @@ struct NerveFiber_   * outputListHead;
 		case NeuronNode_ForLine:
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:
-		case NeuronNode_ForChSentence:	
+		case NeuronNode_ForChSentence:
 			if (strlen(str_) <LenOfstrTmp)
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,ObjectKind=%d,%s,%d,%d,%d,%d,%x,%x\n",asctime(timenow),(int)obj,(int)ObjectKind,(char *)str_,msg,x,y,z,inputListHead,outputListHead);	
+				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,ObjectKind=%d,%s,%d,%d,%d,%d,%x,%x\n",asctime(timenow),(int)obj,(int)ObjectKind,(char *)str_,msg,x,y,z,inputListHead,outputListHead);
 			else
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,ObjectKind=%d,非法的打印信息\n",asctime(timenow),(int)obj,(int)ObjectKind);	
-			break;	
+				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,ObjectKind=%d,非法的打印信息\n",asctime(timenow),(int)obj,(int)ObjectKind);
+			break;
 		case NeuronNode_ForChCharacter:
 				tmp=obj->inputListHead->obj;/*衍生对象的第一个数据*/
 				if (strlen(str_) <LenOfstrTmp  && tmp->x !=0 && tmp->y !=0 && tmp->z !=0)
 				{
-					sprintf(str,"Log_printSomeMsgForObj:%s,%s		地址：%x,打印字符对象(%c%c%c),%s,数据是：《%x%x%x》\n",str_,asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(char *)str_,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+					sprintf(str,"Log_printSomeMsgForObj:%s,%s		地址：%x,打印字符对象(%c%c%c),%s,数据是：《%x%x%x》\n",str_,asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(char *)str_,(int)tmp->x,(int)tmp->y,(int)tmp->z);
 				}
 				else if (strlen(str_) <LenOfstrTmp)
 				{
 
 					if(tmp->x !=0   )
 					{
-						sprintf(str,"Log_printSomeMsgForObj:%s,%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",str_,asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+						sprintf(str,"Log_printSomeMsgForObj:%s,%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",str_,asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->x,(int)tmp->y,(int)tmp->z);
 					}
 					else if(tmp->y !=0   )
 					{
-						sprintf(str,"Log_printSomeMsgForObj:%s,%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",str_,asctime(timenow),(int)obj,(int)tmp->y,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+						sprintf(str,"Log_printSomeMsgForObj:%s,%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",str_,asctime(timenow),(int)obj,(int)tmp->y,(int)tmp->x,(int)tmp->y,(int)tmp->z);
 					}
 					else if(tmp->z !=0   )
 					{
-						sprintf(str,"Log_printSomeMsgForObj:%s,%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",str_,asctime(timenow),(int)obj,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+						sprintf(str,"Log_printSomeMsgForObj:%s,%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",str_,asctime(timenow),(int)obj,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);
 					}
 
 				}
 				else
-					sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象《%c%c%c》,非法的打印信息\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+					sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印字符对象《%c%c%c》,非法的打印信息\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z);
 				break;
 		case NeuronNode_ForChWord :
 			linshi=IO_getWordsInNero(strLinshi,obj);
 			if (strlen(str_) <LenOfstrTmp)
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印词组对象《%s》,句子长度为：%d,%s\n",asctime(timenow),(int)obj,strLinshi,linshi,(char *)str_);	
+				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印词组对象《%s》,句子长度为：%d,%s\n",asctime(timenow),(int)obj,strLinshi,linshi,(char *)str_);
 			else
-				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印词组对象《%s》,非法的打印信息\n",asctime(timenow),(int)obj,strLinshi);	
+				sprintf(str,"Log_printSomeMsgForObj:%s		地址：%x,打印词组对象《%s》,非法的打印信息\n",asctime(timenow),(int)obj,strLinshi);
 			break;
 
 		default:
@@ -936,7 +936,7 @@ struct NerveFiber_   * outputListHead;
 				curFiber=obj->inputListHead;
 				tmp=curFiber->obj;
 				sprintf(strLinshi,"		地址%x,DataNUm1=%d,[",(int)tmp,nero_getObjDataNum(tmp));
-				addLineToFile(logFile,strLinshi);				
+				addLineToFile(logFile,strLinshi);
 				while(curFiber)
 				{
 						//tmp  is the obj you wangt to search
@@ -956,14 +956,14 @@ struct NerveFiber_   * outputListHead;
 							case NeuronNode_ForChWord:
 								IO_getWordsInNero(str,tmp);
 
-								break;		
-							default:	
+								break;
+							default:
 
-									if( nero_GetNeroKind ( tmp->inputListHead->obj)   ==  NeuronNode_ForChCharacter )	
+									if( nero_GetNeroKind ( tmp->inputListHead->obj)   ==  NeuronNode_ForChCharacter )
 										IO_getZhInNero(str,tmp->inputListHead->obj);
-									else 	
+									else
 						                str[0]=0;
-									break;				
+									break;
 						}
 						tmp2222=tmp->inputListHead->obj;
 						sprintf(strLinshi,"%s[%x,kind=%d,%d*%d*%d]",str,tmp,nero_GetNeroKind(tmp),tmp2222->x,tmp2222->y,tmp2222->z);
@@ -977,11 +977,11 @@ struct NerveFiber_   * outputListHead;
 				sprintf(strLinshi,"]\n");
 				addLineToFile(logFile,strLinshi);
 			}
-			break;		
-		}		
+			break;
+		}
 	}
 	else
-		sprintf(str,"Log_printSomeMsgForObj:%s		空对象或者为基类对象,%s,kind=%d,%x\n",asctime(timenow),(char *)str_,nero_GetNeroKind(obj),obj);	
+		sprintf(str,"Log_printSomeMsgForObj:%s		空对象或者为基类对象,%s,kind=%d,%x\n",asctime(timenow),(char *)str_,nero_GetNeroKind(obj),obj);
 
 	addLineToFile(logFile,str);
 	return nero_msg_ok;
@@ -998,7 +998,7 @@ nero_s32int IO_ForOutputWord(void * arg)
 	nero_8int  strLinshi[500];
 	NeuronObject * obj=(NeuronObject *)arg;
 	NeuronObject * tmp;
-	
+
 	memset(strTmp,0,LenOfstrTmp);
 	time(&now);//time函数读取现在的时间(国际标准时间非北京时间)，然后传值给now
 	timenow   =   localtime(&now);//localtime函数把从time取得的时间now换算成你电脑中的时间(就是你设置的地区)
@@ -1015,30 +1015,30 @@ nero_s32int IO_ForOutputWord(void * arg)
 
 			// printf("kind of  obj=%d\n",nero_GetNeroKind(obj));
 			// printf("kind of  data=%d\n",nero_GetNeroKind(tmp));
-		    // printf("地址：%x,打印字符对象(%c%c%c),数据是：《%x %x %x》\n",(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+		    // printf("地址：%x,打印字符对象(%c%c%c),数据是：《%x %x %x》\n",(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);
 
 			if (tmp->x !=0 && tmp->y !=0 && tmp->z !=0)
 			{
-				sprintf(str,"IO_ForOutputWord:%s		地址：%x,打印字符对象(%c%c%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+				sprintf(str,"IO_ForOutputWord:%s		地址：%x,打印字符对象(%c%c%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);
 			}
 			else if(tmp->x !=0   )
 			{
-				sprintf(str,"IO_ForOutputWord1:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+				sprintf(str,"IO_ForOutputWord1:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->x,(int)tmp->y,(int)tmp->z);
 			}
 			else if(tmp->y !=0   )
 			{
-				sprintf(str,"IO_ForOutputWord2:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->y,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+				sprintf(str,"IO_ForOutputWord2:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->y,(int)tmp->x,(int)tmp->y,(int)tmp->z);
 			}
 			else if(tmp->z !=0   )
 			{
-				sprintf(str,"IO_ForOutputWord3:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+				sprintf(str,"IO_ForOutputWord3:%s		地址：%x,打印字符对象(%c),数据是：《%x%x%x》\n",asctime(timenow),(int)obj,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);
 			}
 			else
-				sprintf(str,"IO_ForOutputWord:%s		地址：%x,打印字符对象《%c%c%c》,非法的打印信息\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+				sprintf(str,"IO_ForOutputWord:%s		地址：%x,打印字符对象《%c%c%c》,非法的打印信息\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z);
 
 		}
 
-			
+
 	}
 	addLineToFile(logFile,str);
 	return nero_msg_ok;
@@ -1051,7 +1051,7 @@ nero_s32int IO_GetNeroObjMsg(void * arg)
 	nero_8int  strLinshi[500];
 	NeuronObject * obj=(NeuronObject *)arg;
 	NeuronObject * tmp;
-	
+
 	time(&now);//time函数读取现在的时间(国际标准时间非北京时间)，然后传值给now
 	timenow   =   localtime(&now);//localtime函数把从time取得的时间now换算成你电脑中的时间(就是你设置的地区)
 /*		printf("Local   time   is   %s/n",asctime(timenow));*/
@@ -1059,7 +1059,7 @@ nero_s32int IO_GetNeroObjMsg(void * arg)
 	if (obj)
 	{
 		ObjectKind=nero_GetNeroKind(obj);
-			
+
 	/*	printf("str %s  and logFile=%s",str,logFile);*/
 		switch(ObjectKind)
 		{
@@ -1070,26 +1070,26 @@ nero_s32int IO_GetNeroObjMsg(void * arg)
 		case NeuronNode_ForLine:
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:
-		case NeuronNode_ForChSentence:	
-			sprintf(str,"IO_GetNeroObjMsg:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),(int)obj,(int)ObjectKind);	
-			break;	
+		case NeuronNode_ForChSentence:
+			sprintf(str,"IO_GetNeroObjMsg:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),(int)obj,(int)ObjectKind);
+			break;
 		case NeuronNode_ForChCharacter:
 			tmp=obj->inputListHead->obj;/*衍生对象的第一个数据*/
-			sprintf(str,"IO_GetNeroObjMsg:%s		地址：%x,打印字符对象《%c%c%c》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+			sprintf(str,"IO_GetNeroObjMsg:%s		地址：%x,打印字符对象《%c%c%c》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z);
 			break;
 		case NeuronNode_ForChWord :
 			IO_getWordsInNero(strLinshi,obj);
-			sprintf(str,"IO_GetNeroObjMsg:%s		地址：%x,打印词组对象《%s》\n",asctime(timenow),(int)obj,strLinshi);	
+			sprintf(str,"IO_GetNeroObjMsg:%s		地址：%x,打印词组对象《%s》\n",asctime(timenow),(int)obj,strLinshi);
 			break;
 		default:break;
 
-		
+
 		}
 
-			
+
 	}
 	else
-		sprintf(str,"IO_GetNeroObjMsg:%s		空对象\n",asctime(timenow));	
+		sprintf(str,"IO_GetNeroObjMsg:%s		空对象\n",asctime(timenow));
 
 /*	addLineToFile(logFile,str);*/
 	return nero_msg_ok;
@@ -1102,7 +1102,7 @@ nero_s32int Log_printNeroObjMsg(void * arg)
 	nero_8int  strLinshi[500];
 	NeuronObject * obj=(NeuronObject *)arg;
 	NeuronObject * tmp;
-	
+
 	time(&now);//time函数读取现在的时间(国际标准时间非北京时间)，然后传值给now
 	timenow   =   localtime(&now);//localtime函数把从time取得的时间now换算成你电脑中的时间(就是你设置的地区)
 /*		printf("Local   time   is   %s/n",asctime(timenow));*/
@@ -1110,7 +1110,7 @@ nero_s32int Log_printNeroObjMsg(void * arg)
 	if (obj)
 	{
 		ObjectKind=nero_GetNeroKind(obj);
-			
+
 	/*	printf("str %s  and logFile=%s",str,logFile);*/
 		switch(ObjectKind)
 		{
@@ -1121,26 +1121,26 @@ nero_s32int Log_printNeroObjMsg(void * arg)
 		case NeuronNode_ForLine:
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:
-		case NeuronNode_ForChSentence:	
-			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),(int)obj,(int)ObjectKind);	
-			break;	
+		case NeuronNode_ForChSentence:
+			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,ObjectKind=%d\n",asctime(timenow),(int)obj,(int)ObjectKind);
+			break;
 		case NeuronNode_ForChCharacter:
 			tmp=obj->inputListHead->obj;/*衍生对象的第一个数据*/
-			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印字符对象《%c%c%c》数据：《%x %x %x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);	
+			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印字符对象《%c%c%c》数据：《%x %x %x》\n",asctime(timenow),(int)obj,(int)tmp->x,(int)tmp->y,(int)tmp->z,(int)tmp->x,(int)tmp->y,(int)tmp->z);
 			break;
 		case NeuronNode_ForChWord :
 			IO_getWordsInNero(strLinshi,obj);
-			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印词组对象《%s》\n",asctime(timenow),(int)obj,strLinshi);	
+			sprintf(str,"Log_printNeroObjMsg:%s		地址：%x,打印词组对象《%s》\n",asctime(timenow),(int)obj,strLinshi);
 			break;
 		default:break;
 
-		
+
 		}
 
-			
+
 	}
 	else
-		sprintf(str,"Log_printNeroObjMsg:%s		空对象\n",asctime(timenow));	
+		sprintf(str,"Log_printNeroObjMsg:%s		空对象\n",asctime(timenow));
 
 	addLineToFile(logFile,str);
 	return nero_msg_ok;
@@ -1163,10 +1163,10 @@ void *thread_for_IO_Pic(void *arg)
 
 
 
-	const nero_s32int size_message_map = 
+	const nero_s32int size_message_map =
 	      sizeof(IO_msg_print_map) / sizeof(struct one_arg_message_entry );   //求得表长
-	const nero_s32int size_message_map2 = 
-	      sizeof(IO_msg_dataIO_map) / sizeof(struct two_arg_message_entry );   //求得表长	      
+	const nero_s32int size_message_map2 =
+	      sizeof(IO_msg_dataIO_map) / sizeof(struct two_arg_message_entry );   //求得表长
 	/* Generate the ipc key */
 
 	ipckey = ftok(IO_ipckey , IPCKEY);
@@ -1200,22 +1200,22 @@ void *thread_for_IO_Pic(void *arg)
 			 printf("received  ok:\n");
 			#endif
 		MsgId=IOMsg.MsgId;
-		
+
 		switch(MsgId)
 		{
-			
+
 		case MsgId_IO_ForOutputWord:
 
 			NeroArgMsg_st=(struct  NeuronObjectMsg_  * )&IOMsg;
-			
+
 			for( i = 0; i < size_message_map; i++)
 			{
 			    if( IO_msg_print_map[i].id == NeroArgMsg_st->fucId )
 				 (*(IO_msg_print_map[i].operate) )(NeroArgMsg_st->Obi);
-			}				
-			
-			
-			
+			}
+
+
+
 			#ifdef Nero_DeBugInOperating_Pic
 			 printf("MsgId_IO_CreateNetNet:\n");
 			#endif
@@ -1224,45 +1224,45 @@ void *thread_for_IO_Pic(void *arg)
 		case MsgId_IO_GetObjMsg:
 
 			NeroArgMsg_st=(struct  NeuronObjectMsg_  * )&IOMsg;
-			
+
 			for( i = 0; i < size_message_map; i++)
 			{
 			    if( IO_msg_print_map[i].id == NeroArgMsg_st->fucId )
 				 (*(IO_msg_print_map[i].operate) )(NeroArgMsg_st->Obi);
-			}				
-			
-			
-			
+			}
+
+
+
 			#ifdef Nero_DeBugInOperating_Pic
 			 printf("MsgId_IO_CreateNetNet:\n");
 			#endif
 			break;
-			
+
 		case MsgId_IO_dataIO:
 
 			DataIO_st=(struct  IODataMsg_  * )&IOMsg;
-			
+
 			for( i = 0; i < size_message_map2; i++)
 			{
 			    if( IO_msg_dataIO_map[i].id == DataIO_st->fucId )
 				 (*(IO_msg_dataIO_map[i].operate) )(&(DataIO_st->operateKind),DataIO_st->str);
-			}				
-			
-			
-			
+			}
+
+
+
 			#ifdef Nero_DeBugInOperating_Pic
 			 printf("MsgId_IO_CreateNetNet:\n");
 			#endif
-			break;			
-	
-		default:			
+			break;
+
+		default:
 			#ifdef Nero_DeBugInOperating_Pic
 			 printf("MsgId_IO_NONE:  \n");
-			 printf("IO msg=%s (%d)\n", IOMsg.text, received);	
-			#endif	
+			 printf("IO msg=%s (%d)\n", IOMsg.text, received);
+			#endif
 			break;
 		}
-		
+
 
 	}
 	printf("end to wait IO msg................................\n");
@@ -1282,23 +1282,23 @@ void *thread_for_Log_Pic(void *arg)
 	nero_s32int received;
 	nero_s32int i = 0;
 
-	const nero_s32int size_message_map = 
+	const nero_s32int size_message_map =
 	      sizeof(nero_msg_print_map) / sizeof(struct one_arg_message_entry );   //求得表长
-	const nero_s32int size_message_map2 = 
+	const nero_s32int size_message_map2 =
 	      sizeof(nero_msg_WithStr_map) / sizeof(struct two_arg_message_entry );   //求得表长
-	
+
         printf("i=%d.\n",size_message_map);
         printf("i=%d.\n",size_message_map2);
-	 
+
 	 getcwd(file_path_getcwd,FILEPATH_MAX);
 	 /*设置日志目录*/
 	 sprintf(logFile,"%s/log/log.txt",file_path_getcwd);
 /*	 printf("file_path_getcwd: %s  and logFile=%s",file_path_getcwd,logFile);*/
 	 createFile(logFile);
-	 
+
 	 sprintf(AllKindOfFile,"%s/log/AllKindOfFile.txt",file_path_getcwd);
 	 createFile(AllKindOfFile);
-	
+
 	 sprintf(formatLogFile,"%s/log/formatLogFile.txt",file_path_getcwd);
 	 createFile(formatLogFile);
 
@@ -1324,7 +1324,7 @@ void *thread_for_Log_Pic(void *arg)
 		received = msgrcv(Log_mq_id, &LogMsg, sizeof(LogMsg), 0, MSG_NOERROR);
 		if (errno != 0)
 		{
-			printf(" Log msgrcv strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息			
+			printf(" Log msgrcv strerror: %s\n", strerror(errno)); //转换错误码为对应的错误信息
 		}
 
 		if (received<1)
@@ -1346,36 +1346,36 @@ void *thread_for_Log_Pic(void *arg)
 /*			printf("MsgId_Log_PrintObjMsg \n");*/
 /*			fucId=(nero_s32int)  (LogMsg.text[0])*/
 			NeroArgMsg_st=(struct  NeuronObjectMsg_  * )&LogMsg;
-			
+
 			for( i = 0; i < size_message_map; i++)
 			{
 			    if( nero_msg_print_map[i].id == NeroArgMsg_st->fucId )
 				 (*(nero_msg_print_map[i].operate) )(  NeroArgMsg_st->Obi  );
-			}			
-			
-			
-			 
+			}
+
+
+
 			#ifdef Nero_DeBugInOperating_Pic_
 			 printf("thread_for_Log_Pic:MsgId_Nero_CreateNetNet\n");
 			#endif
 			break;
 		case MsgId_Log_PrintObjMsgWithStr:
 			NeroWithStrArgMsg_st=(struct  NeuronObjectMsgWithStr_  * )&LogMsg;
-			
+
 			for( i = 0; i < size_message_map2; i++)
 			{
 			    if( nero_msg_WithStr_map[i].id == NeroWithStrArgMsg_st->fucId )
 				 (*(nero_msg_WithStr_map[i].operate) )(NeroWithStrArgMsg_st->Obi,NeroWithStrArgMsg_st->str);
-			}			
+			}
 			break;
-		default:			
+		default:
 			#ifdef Nero_DeBugInOperating_Pic
 			 printf("LogId_Nero_NONE:  \n");
-			 printf("Log msg=%s (%d)\n", LogMsg.text, received);	
-			#endif	
+			 printf("Log msg=%s (%d)\n", LogMsg.text, received);
+			#endif
 			break;
 		}
-		
+
 
 	}
 	printf("end to wait Log msg................................\n");
@@ -1386,7 +1386,7 @@ void *thread_for_Log_Pic(void *arg)
 nero_s32int IO_getWordsInNero(nero_8int str[],NeuronObject * obj)
 {
 	nero_s32int i,p,count,charLen;
-	nero_us32int c=1;	
+	nero_us32int c=1;
 	nero_s32int ObjectKind;
 	NeuronObject * tmp;
 	NeuronObject * tmpObi;
@@ -1399,14 +1399,14 @@ nero_s32int IO_getWordsInNero(nero_8int str[],NeuronObject * obj)
 
 	count=0;
 	tmpObi=obj;/*每一个衍生类*/
-	ObjectKind=nero_GetNeroKind(tmpObi);	
+	ObjectKind=nero_GetNeroKind(tmpObi);
 
 
 	/*只是输出这个词汇有那几个字*/
 	p=0;
 	if (ObjectKind == NeuronNode_ForChWord )
 	{
-																	
+
 		tmpFiber1=tmpObi->inputListHead;
 		c=1;
 		while(tmpFiber1)
@@ -1426,33 +1426,33 @@ nero_s32int IO_getWordsInNero(nero_8int str[],NeuronObject * obj)
 				else if(tmp->y != 0  && tmp->z == 0)
 				{
 						sprintf(str+p,"%c%c",tmp->x,tmp->y);
-						charLen=2;				
-				
+						charLen=2;
+
 				}
 				else
 				{
 				sprintf(str+p,"%c%c%c",tmp->x,tmp->y,tmp->z);
 				charLen=3;
 				}
-					
+
 				p+=charLen;
-				
+
 				tmpFiber1=tmpFiber1->next;
 				c++;
 		}
 			if (c != 1)
 			{
-						
+
 			}
 			else
 			{
-				sprintf(str,"错误的词组对象");	
+				sprintf(str,"错误的词组对象");
 			}
-	
+
 	}
 	else
 	{
-		sprintf(str,"错误的词组对象");						
+		sprintf(str,"错误的词组对象");
 	}
 
 return count;
@@ -1461,7 +1461,7 @@ return count;
 /*从一个字符对象中提取，存与str中*/
 nero_s32int IO_getZhInNero(nero_8int str[],NeuronObject * obj)
 {
-	
+
 	nero_s32int ObjectKind;
 	NeuronObject * tmp;
 	NeuronObject * tmpObi;
@@ -1473,19 +1473,19 @@ nero_s32int IO_getZhInNero(nero_8int str[],NeuronObject * obj)
 
 
 	tmpObi=obj;/*每一个衍生类*/
-	ObjectKind=nero_GetNeroKind(tmpObi);	
+	ObjectKind=nero_GetNeroKind(tmpObi);
 
 	if (ObjectKind == NeuronNode_ForChCharacter )
 	{
-																	
+
 		tmpFiber1=tmpObi->inputListHead;
 		tmp=tmpFiber1->obj;
 		sprintf(str,"%c%c%c,<%x%x%x>",tmp->x,tmp->y,tmp->z,tmp->x,tmp->y,tmp->z);
-	
+
 	}
 	else
 	{
-		sprintf(str,"错误的字符对象");						
+		sprintf(str,"错误的字符对象");
 	}
 
 return nero_msg_ok;
@@ -1505,10 +1505,10 @@ int IO_IfIsChineseChar(char src[])
 	{
 /*		printf("%s\n", dst.c_str());*/
 		is=GetToken(res);
-	}	
+	}
 	else
 		is=0;
-		
+
 	return is;
 }
 //编码转换，从UTF8转换为GBK。如果原串不空，返回空，则为转换失败
@@ -1526,7 +1526,7 @@ int UTF8ToGBK(char src[],char res[])
 	char *out = dst;
 	size_t len_in = strlen(src);
 	size_t len_out = len;
-	
+
 	iconv_t cd = iconv_open("GBK", "UTF-8");
 	if ((iconv_t)-1 == cd)
 	{
@@ -1553,7 +1553,7 @@ int UTF8ToGBK(char src[],char res[])
 /*返回1就表面是汉字*/
 int  GetToken( char * str)
 {
-	
+
 	short high, low;
 	unsigned int code;
 	 char   s[4];
@@ -1576,13 +1576,13 @@ int  GetToken( char * str)
 			high = (short)(str[i] + 256);
 			low = (short)(str[i+1]+256);
 			code = high*256 + low;
-			
+
 			//获取字符
 			s[2] = '0';
 			s[0] = str[i];
 			s[1] = str[i+1];
 			i++;
-		
+
 /*			printf("%s >> 0x%x", s, code);*/
 			if(code>=0xB0A1 && code<=0xF7FE || code>=0x8140 && code<=0xA0FE || code>=0xAA40 && code<=0xFEA0)
 			{

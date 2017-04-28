@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "updata：20170427_01"
+git commit -a -m "updata：20170427_02"
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt
@@ -105,6 +105,40 @@ b NeuralOperating.c:2662
 NeuralNetwork.c
 
  b 3815
+
+
+
+
+
+/home/jty/bin/perf   stat  ./neroMain
+
+
+/home/jty/bin/perf record
+/home/jty/bin/perf report
+/home/jty/bin/perf top ./neroMain
+/home/jty/bin/perf top  -ag ./neroMain
+
+
+
+perf record 记录单个函数级别的统计信息，并使用 perf report 来显示统计结果，以此可以找到热点：s
+/home/jty/bin/perf record –e cpu-clock ./neroMain
+/home/jty/bin/perf report
+给出函数的调用关系，以便于找到次级热点：
+/home/jty/bin/perf record -g -e cpu-clock ./neroMain
+/home/jty/bin/perf report -a -d -g
+
+
+--tui是交互式的文本显示窗口，--stdio是文本显示窗口。
+交互式显示例子，看概貌挺方便的 (常用的交互命令: E扩展，C收敛，q退出)
+perf report -g --tui
+文本显示例子，看细节挺方便
+perf report -v -n --showcpuutilization -g --stdio
+
+[ perf record: Captured and wrote 398.275 MB perf.data (5460767 samples) ]
+
+
+
+
 
 
 

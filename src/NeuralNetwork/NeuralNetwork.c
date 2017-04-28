@@ -3321,6 +3321,7 @@ NeuronObject *  nero_createObjFromSingleObj(NeuronObject *childObi,nero_s32int u
 /**/
 NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum)
 {
+	static nero_us32int theSameObjFind=0;
 	NeuronObject *newObi;
 	NeuronObject *basekidobj;
 	NerveFiber *tmpFiber;
@@ -3380,17 +3381,25 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	// printf("nero_createObjFromMultiples  要创建的概念已在网络中,res=%d,kind=%d\n",res,nero_GetNeroKind(newObi));
 	if(res == NeroYES   )
 	{
-	        #ifdef   createObjFromMultiples_DeBug_Msg
-	        printf("nero_createObjFromMultiples  要创建的概念已经存在在网络中,objNum=%d,kind=%d\n",objNum,nero_GetNeroKind(newObi));
-	        #endif
+			if(nero_GetNeroKind(newObi) == 2032   || nero_GetNeroKind(newObi) == 2031)
+			{
+				theSameObjFind++;
 
-			#ifdef Nero_DeBuging09_01_14
-			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-			neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
-			neroObjMsgWithStr_st.Obi = newObi;
-			sprintf(neroObjMsgWithStr_st.str,"creObjFromMulti:要创建的概念已经存在在网络中:%x",newObi);
-			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
-			#endif
+		        #ifdef   createObjFromMultiples_DeBug_Msg
+		        printf("nero_createObjFromMultiples  要创建的概念已经存在在网络中,objNum=%d,kind=%d,theSameObjFind =%d\n",objNum,nero_GetNeroKind(newObi),theSameObjFind);
+		        #endif
+
+				#ifdef createObjFromMultiples_DeBug_Msg
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
+				neroObjMsgWithStr_st.Obi = newObi;
+				sprintf(neroObjMsgWithStr_st.str,"creObjFromMulti:要创建的概念已经存在在网络中:%x",newObi);
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
+				#endif
+
+
+			}
+
 
 	        return newObi;
 	}

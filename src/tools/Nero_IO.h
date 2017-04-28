@@ -6,37 +6,37 @@
 
 
 struct  NeuronObjectMsg_
-{ 
-long MsgId; 
+{
+long MsgId;
 nero_8int fucId;
-void    *  Obi; 
+void    *  Obi;
 } ;
 struct  NeuronObjectMsgWithStr_
-{ 
-long MsgId; 
+{
+long MsgId;
 nero_8int fucId;
-NeuronObject * Obi; 
-nero_8int str[100];
+NeuronObject * Obi;
+nero_8int str[3000];
 } ;
 struct  IODataMsg_
-{ 
-long MsgId; 
+{
+long MsgId;
 nero_8int fucId;
-nero_s32int operateKind; 
+nero_s32int operateKind;
 nero_8int str[300];
 } ;
 
 
 
-struct one_arg_message_entry 
+struct one_arg_message_entry
 {
-    nero_us32int id; 
-    nero_s32int (*operate)(void *); 
+    nero_us32int id;
+    nero_s32int (*operate)(void *);
 };
-struct two_arg_message_entry 
+struct two_arg_message_entry
 {
-    nero_us32int id; 
-    nero_s32int (*operate)(void *,void *); 
+    nero_us32int id;
+    nero_s32int (*operate)(void *,void *);
 };
 /*消息映射宏定义*/
 #define BEGIN_ONE_ARG_MESSAGE_MAP(map_name) \

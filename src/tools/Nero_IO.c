@@ -851,16 +851,16 @@ nero_s32int Log_printSomeMsgForObj(void * obj_,void *str_)
 	NeuronObject * tmp2222;
 
 	NerveFiber * childcurFiber;
-nero_us32int msg;/*记录该nero的种类，性质等信息*/
-nero_s32int x;/*取值范围-2147483648 ~ 2147483647*/
-nero_s32int y;
-nero_s32int z;
-struct NerveFiber_  * inputListHead;
-struct NerveFiber_   * outputListHead;
+	nero_us32int msg;/*记录该nero的种类，性质等信息*/
+	nero_s32int x;/*取值范围-2147483648 ~ 2147483647*/
+	nero_s32int y;
+	nero_s32int z;
+	struct NerveFiber_  * inputListHead;
+	struct NerveFiber_   * outputListHead;
 	NerveFiber  *  curFiber;
 	time(&now);//time函数读取现在的时间(国际标准时间非北京时间)，然后传值给now
 	timenow   =   localtime(&now);//localtime函数把从time取得的时间now换算成你电脑中的时间(就是你设置的地区)
-		// printf("Local   time   is   %s/n",asctime(timenow));
+		// printf("Local   time   is   %s\n",asctime(timenow));
 
 	memset(str,0,LenOfstrTmp);
 

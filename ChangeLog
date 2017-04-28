@@ -615,44 +615,9 @@ native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, 
 
 
 	|下一步你需要继续分析下读进去的数据，到底有没有漏洞，，因为总的个数个数个文档中的有出入，然后就是进行性能分析，太慢了
-Log_printAllNeroMsg:		kind add=406fe900,Kind:2001,actual num:10 ,record  num:10,name adress:406bc540
-Log_printAllNeroMsg:		kind add=406feca0,Kind:2002,actual num:10 ,record  num:10,name adress:406fe660
-Log_printAllNeroMsg:		kind add=406fee40,Kind:2003,actual num:11 ,record  num:11,name adress:406fe6e0
-Log_printAllNeroMsg:		kind add=406ff240,Kind:2004,actual num:1 ,record  num:1,name adress:406fe7a0
-Log_printAllNeroMsg:		kind add=406ff280,Kind:2005,actual num:1 ,record  num:1,name adress:406fe7c0
-Log_printAllNeroMsg:		kind add=406ff2c0,Kind:2006,actual num:1 ,record  num:1,name adress:406a71c0
-Log_printAllNeroMsg:		kind add=406ff300,Kind:2007,actual num:1 ,record  num:1,name adress:406a7a40
-Log_printAllNeroMsg:		kind add=406ff340,Kind:2008,actual num:1 ,record  num:1,name adress:40699c40
-Log_printAllNeroMsg:		kind add=406ff380,Kind:2009,actual num:1 ,record  num:1,name adress:4069a8c0
-Log_printAllNeroMsg:		kind add=406ff3c0,Kind:2010,actual num:1 ,record  num:1,name adress:406fe7e0
-Log_printAllNeroMsg:		kind add=406ff400,Kind:2011,actual num:21 ,record  num:21,name adress:406fe8a0
-Log_printAllNeroMsg:		kind add=406ff5a0,Kind:2012,actual num:52 ,record  num:52,name adress:406fe860
-Log_printAllNeroMsg:		kind add=40700a60,Kind:2013,actual num:1 ,record  num:1,name adress:40700900
-Log_printAllNeroMsg:		kind add=40700b00,Kind:2014,actual num:1 ,record  num:1,name adress:40700920
-Log_printAllNeroMsg:		kind add=40700bc0,Kind:2015,actual num:1 ,record  num:1,name adress:40700940
-Log_printAllNeroMsg:		kind add=40700c00,Kind:2016,actual num:1 ,record  num:1,name adress:40700960
-Log_printAllNeroMsg:		kind add=40700c60,Kind:2017,actual num:75 ,record  num:75,name adress:40700c40
-Log_printAllNeroMsg:		kind add=40700de0,Kind:2018,actual num:10 ,record  num:10,name adress:40700dc0
-Log_printAllNeroMsg:		kind add=40700ea0,Kind:2019,actual num:20500 ,record  num:20500,name adress:40700e80
-Log_printAllNeroMsg:		kind add=40700f80,Kind:2020,actual num:16 ,record  num:16,name adress:40700f60
-Log_printAllNeroMsg:		kind add=40701020,Kind:2021,actual num:17 ,record  num:17,name adress:40701000
-Log_printAllNeroMsg:		kind add=407010c0,Kind:2022,actual num:8 ,record  num:8,name adress:407010a0
-Log_printAllNeroMsg:		kind add=40701160,Kind:2023,actual num:17 ,record  num:17,name adress:40701140
-Log_printAllNeroMsg:		kind add=407011e0,Kind:2024,actual num:8 ,record  num:8,name adress:407011c0
-Log_printAllNeroMsg:		kind add=40701260,Kind:2025,actual num:5 ,record  num:5,name adress:40701240
-Log_printAllNeroMsg:		kind add=407012e0,Kind:2026,actual num:2 ,record  num:2,name adress:407012c0
-Log_printAllNeroMsg:		kind add=40701360,Kind:2027,actual num:119 ,record  num:119,name adress:40701340
-Log_printAllNeroMsg:		kind add=407013e0,Kind:2028,actual num:92 ,record  num:92,name adress:407013c0
-Log_printAllNeroMsg:		kind add=40701460,Kind:2029,actual num:95 ,record  num:95,name adress:40701440
-Log_printAllNeroMsg:		kind add=407014e0,Kind:2030,actual num:42 ,record  num:42,name adress:407014c0
-Log_printAllNeroMsg:		kind add=40701540,Kind:2031,actual num:7232 ,record  num:7232,name adress:40700980
-Log_printAllNeroMsg:		kind add=40701560,Kind:2032,actual num:22890 ,record  num:22890,name adress:407009a0
 
 
-
-
-
-
+	解决下性能问题先
 
 
 

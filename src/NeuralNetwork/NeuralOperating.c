@@ -16,6 +16,7 @@ static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
 nero_us32int     tmpObiUsed;						//record    how many objs  store  in
 static NeuronObject  * Process_tmpObi[Process_TemporaryNUM];
 static struct NeroObjForecastList   Process_forecastListNode[Process_TemporaryNUM];
+ nero_8int   Process_tmpStr[500];
 
 struct DataFlowForecastInfo  forecastInfo_st;
 
@@ -749,7 +750,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 
 	}
-	#ifdef DataFlowProcess_error_Msg
+	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   12:%d.\n",coutOferror_Msg_);
 	#endif
 
@@ -950,7 +951,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 
 
-	#ifdef DataFlowProcess_error_Msg
+	#ifdef DataFlowProcess_error_Msg_
 		printf("coutOferror_Msg_   13:%d.\n",coutOferror_Msg_);
 	#endif
 
@@ -977,19 +978,18 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		        printf("DataFlowForecastInfo:\n    objNum=%d\n    objPoint=%d ",forecastInfo_st.objNum,forecastInfo_st.objPoint);
 		        printf("\n    UpperLayerobjNum=%d\n    SameLayerobjNum=%d\n    LowerLayerobjNum=%d\n    dataNum=%d\n\n ",forecastInfo_st.headOfUpperLayer.times,forecastInfo_st.headOfSameLayer.times,forecastInfo_st.headOfLowerLayer.times,dataNum);
 		}
-
-	    tmpc=0;
    		 #ifdef DataFlowProcess_error_Msg
-	    if (coutOferror_Msg_ <= Nero_TestCount )
+		tmpc=0;
+	    // if (coutOferror_Msg_ <= Nero_TestCount )
 	    {
 
 	           for (;tmpc<forecastInfo_st.objNum;tmpc++)
 	           {
 					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-				neroObjMsgWithStr_st.fucId = 1;
-				neroObjMsgWithStr_st.Obi = objs[tmpc];
-				sprintf(neroObjMsgWithStr_st.str,"after ObjForecast识打印识别对象obj =%x id=%d",objs[tmpc],coutOferror_Msg_);
-				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
+					neroObjMsgWithStr_st.fucId = 1;
+					neroObjMsgWithStr_st.Obi = objs[tmpc];
+					sprintf(neroObjMsgWithStr_st.str,"after ObjForecast识打印识别对象obj =%x id=%d",objs[tmpc],coutOferror_Msg_);
+					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 	           }
 	    }
 	    // printf("\n");
@@ -1107,13 +1107,9 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 						// printf("nero_CreateNewBaseObj fail \n\n\n");
 					}
 					#endif
-
-
               }
               else
               {
-
-
   				#ifdef Nero_DeBuging09_01_14_
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
@@ -1128,13 +1124,8 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				// printf("Modify base kind\n");
 					newBaseObjKind_= res2;
 					nero_ModifyBaseKind(objs,objNum,GodNero,conf,res2);
-
 				}
-
               }
-
-
-
               /*很显然对于那些特殊高层衍生概念的创建createObjFromMultiples会出现问题
               事实上：队伍数字这个抽象概念来说，如果输入了一个字符1，这个这个字符很可能在
               Process_ObjForecast(&forecastInfo_st);已经被替换为数字类型的概念，也可能
@@ -1208,15 +1199,35 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				// printf("conf->addLevelObjAlways == 1:nero_createObjFromMultiples  2\n");
 				#ifdef   Nero_DeBuging04_01_14_
 				int  iilkjhwersd=0;
-				for(;iilkjhwersd< objNum;iilkjhwersd++)
+				for(;iilkjhwersd< 2;iilkjhwersd++)
 				{
 					printf(" addLevelObjAlways == 1===  objs[%d] =%x,kind=%d.\n",iilkjhwersd,objs[iilkjhwersd],nero_GetNeroKind(objs[iilkjhwersd]));
 				}
 				#endif
 
-
-
 				complexObj=nero_createObjFromMultiples( objs, objNum);
+
+				#ifdef   Nero_DeBuging28_04_17_
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
+				neroObjMsgWithStr_st.Obi = NULL;
+				int  iilkjhwersd=0;
+				if( complexObj == NULL)
+				{//Process_tmpStr
+					// for(;iilkjhwersd< objNum;iilkjhwersd++)
+					// {
+						// if(iilkjhwersd == 0)
+							// if(DataFlow[0] != NULL)
+								iilkjhwersd=snprintf((char *)Process_tmpStr,sizeof(Process_tmpStr),"ssssss");
+						// else
+							// sprintf(neroObjMsgWithStr_st.str,"%s %s",neroObjMsgWithStr_st.str,DataFlow[iilkjhwersd]);
+					// }
+								printf("%s,iilkjhwersd=%d,%s\n",Process_tmpStr,iilkjhwersd,DataFlow[0]);
+				}
+				// snprintf(neroObjMsgWithStr_st.str,3000,"%s\n",neroObjMsgWithStr_st.str);
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
+				// printf("%s,iilkjhwersd=%d,%s\n",Process_tmpStr,sizeof(Process_tmpStr),DataFlow[0]);
+				#endif
 				#ifdef   Nero_DeBuging04_01_14_
 				char str[500];
 				char str2[500];
@@ -1224,7 +1235,6 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 				sprintf(str2,"xdot data/wordspic%d.dot",3);
 				createNeroNetDotGraphForWords(GodNero, str);
 				system(str2);
-
 				#endif
 
 		}
@@ -1283,7 +1293,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 		}
 
 
-	#ifdef DataFlowProcess_error_Msg
+	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   14:%d.\n",coutOferror_Msg_);
 	#endif
 

@@ -443,22 +443,22 @@ nero_s32int  Process_AddNewBaseKindByname(void *DataFlow[],nero_s32int dataKind[
 	// you should  init   neroConf  every time  you  run  this  fuc
 	resetNeroConf();
 	// forecastInfo_st.controlMsg.Refreshed=0;
-	for (j=0;j<dataNum;j++)
-	{
-		if (DataFlow[j])
-		{
-			free(DataFlow[j]);
-		}
-	}
-	if (dataKind)
-	{
-		free(dataKind);
-	}
+	// for (j=0;j<dataNum;j++)
+	// {
+	// 	if (DataFlow[j])
+	// 	{
+	// 		free(DataFlow[j]);
+	// 	}
+	// }
+	// if (dataKind)
+	// {
+	// 	free(dataKind);
+	// }
 
-	if (DataFlow)
-	{
-		free(DataFlow);
-	}
+	// if (DataFlow)
+	// {
+	// 	free(DataFlow);
+	// }
 	if (objs)
 	{
 		free(objs);
@@ -536,7 +536,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 
 
 
-		#ifdef   Nero_DeBuging04_01_14_
+		#ifdef   Nero_DeBuging04_01_14
 		char str[500];
 		char str2[500];
 /*				PrintUtf8 ttt;*/
@@ -1097,7 +1097,7 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 					else
 					{
 
-		  				#ifdef Nero_DeBuging09_01_14_
+		  				#ifdef Nero_DeBuging09_01_14
 						neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 						neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
 						neroObjMsgWithStr_st.Obi = NULL;
@@ -1316,27 +1316,27 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   2:%d.\n",coutOferror_Msg_);
 	#endif
-	for (j=0;j<dataNum;j++)
-	{
-		if (DataFlow[j])
-		{
-			free(DataFlow[j]);
-		}
-	}
+	// for (j=0;j<dataNum;j++)
+	// {
+	// 	if (DataFlow[j])
+	// 	{
+	// 		free(DataFlow[j]);
+	// 	}
+	// }
 	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   3:%d.\n",coutOferror_Msg_);
 	#endif
-	if (dataKind)
-	{
-		free(dataKind);
-	}
+	// if (dataKind)
+	// {
+	// 	free(dataKind);
+	// }
 	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   4:%d.\n",coutOferror_Msg_);
 	#endif
-	if (DataFlow)
-	{
-		free(DataFlow);
-	}
+	// if (DataFlow)
+	// {
+	// 	free(DataFlow);
+	// }
 
 	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   5:%d.\n",coutOferror_Msg_);

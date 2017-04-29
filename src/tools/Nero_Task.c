@@ -85,10 +85,8 @@
 
 
 #define OrderListLen		100  /*最多支持OrderListLen条命令*/
-#define OrderListWigth		100	/*每条命令最多100个参数*/
+#define OrderListWigth		100
 #define OrderListWigthMax      70 /*每条命令最多100个参数*/
-
-
 
 
 /*命令的格式：数组中每一行对应该类型各个数据的类型*/
@@ -148,8 +146,9 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
 
 
+void  * DataFlowPool[DataFlowPoolListNum]={NULL};
 
-
+nero_s32int DataFlowPoolDataKind[DataFlowPoolListNum]={0};
 
 static nero_8int  file_path_getcwd[FILEPATH_MAX]="/tmp";/*保存当前目录*/
 
@@ -551,12 +550,13 @@ void ReadTaskFromTxt(nero_8int  * fileNameInpt)
 void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里面直接发送就行了*/
 {
         static nero_us8int  coutOfRun=0;
+        static nero_us32int  firsstRun=0;
         if (tff == NULL  ||  tff->MsgCount <1  )
         {
                 return ;
         }
         tff->order=atoi(  (tff->data)[0]   );
-        if (tff->order <= Task_Order_Min  ||  tff->order >= Task_Order_Max  )
+        if (tff->order <= Task_Order_Min  ||  tff->order >= Task_Order_Max  || tff->MsgCount > DataFlowPoolListNum )
         {
         	printf("obtainOrderFromTFF: wrong data  tff->order=%d\n",tff->order);
                 return ;
@@ -577,7 +577,19 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
       struct  IODataMsg_  DataIO_st;
     struct NeroObjForecastControl forecastCtrl_st;
 
-	nero_s32int i,orderPos,flag;
+	nero_s32int i,orderPos,flag,j;
+
+    if(firsstRun == 0)
+    {
+        for(i=0,j=0;i < DataFlowPoolListNum ;i++)
+        {
+
+                DataFlowPool[i]= (void *)malloc((sizeof( char))*DataFlowPoolStrMaxLen);  //DataFlowPoolStrMaxLen
+                // printf("malloc\n");
+        }
+    }
+    firsstRun =1;
+
 	/*先转化为可以发送命令的参数*/
 	/*1 找到参数类型列表项*/
 	orderPos=-1;
@@ -611,12 +623,17 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
     countOfWord=tff->MsgCount -1;
     if(countOfWord > 0)
     {
-        DataFlow=(void **)malloc(sizeof(void *)*countOfWord);
-		dataKind=(nero_s32int *)malloc(sizeof(nero_s32int *) * countOfWord);
+        DataFlow=(void *)DataFlowPool;
+		dataKind=(nero_s32int *)DataFlowPoolDataKind;
 
 	}
+    else
+    {
+        printf("countOfWord <= 0" );
+        exit(0);
+    }
     // printf("obtainOrderFromTFF:  order ,num:%d,but:tff->MsgCount -1=%d\n",OrderDataTypeList[orderPos][1],(tff->MsgCount -1));
-
+    // printf("%x  %x  \n",DataFlow,dataKind);
 
     // /一般参数个数为OrderListWigthMax，表示参数个数可变
     // OrderListWigthMax
@@ -650,9 +667,10 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 	    switch(OrderDataTypeList[orderPos][k+2])
 	    {
 		case TFFDataType_Character:
+                    // sleep(1);
 /*					printf("obtainOrderFromTFF: CreateObjShu order \n");*/
 			             lenOfpar=strlen( tff->data[k+1]);
-						DataFlow[k]=(void *)malloc((sizeof( char)*3));
+						// DataFlow[k]=(void *)malloc((sizeof( char)*3));
 						linc=(char *)DataFlow[k];
 						memset(linc,0,3);
 
@@ -711,7 +729,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                             if(k == 0 &&  countOfWord == 2)
                             {
                              lenOfpar=9;
-                            DataFlow[k]=(void *)malloc( lenOfpar );
+                            // DataFlow[k]=(void *)malloc( lenOfpar );
                              linc=(char *)DataFlow[k];
                              memset(linc,0,(lenOfpar) );
                             //把字符串转化为数字
@@ -730,7 +748,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                             break;
                     default:
                              lenOfpar=strlen( tff->data[k+1]);
-                            DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
+                            // DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
                              linc=(char *)DataFlow[k];
                              memset(linc,0,(lenOfpar) +1);
                             memcpy(linc,tff->data[k+1],(lenOfpar) +1);
@@ -756,7 +774,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
             if(   Task_Order_CreateKindOfMultipleKind  !=   tff->order  )
             {
                 lenOfpar=strlen( tff->data[k+1]);
-                DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
+                // DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
                 linc=(char *)DataFlow[k];
                 memset(linc,0,(lenOfpar) +1);
                 memcpy(linc,tff->data[k+1],(lenOfpar) +1);
@@ -764,7 +782,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
             else
             {
                 lenOfpar=strlen( tff->data[k+1]);
-                DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
+                // DataFlow[k]=(void *)malloc( (lenOfpar) +1 );
                 linc=(char *)DataFlow[k];
                 memset(linc,0,(lenOfpar) +1);
                 memcpy(linc,tff->data[k+1],(lenOfpar) +1);
@@ -926,7 +944,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
     arg2.dataKind=dataKind;
     arg2.conf=&neroConf;
     arg2.DataFlow=DataFlow;
-
+    // printf("----------------%s \n",DataFlow[1]);
         /*必须通过发送消息来修改conf*/
 
     DataIO_st.MsgId = MsgId_Nero_ConfModify;

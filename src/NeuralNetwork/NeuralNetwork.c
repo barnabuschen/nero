@@ -3214,7 +3214,7 @@ NeuronObject *  nero_createObjFromSingleObj(NeuronObject *childObi,nero_s32int u
 	if(res == NeroYES   )
 	{
 	        #ifdef   createObjFromSingleObj_DeBug_Msg
-	        printf("nero_createObjFromSingleObj  要创建的概念已经存在在网络中,objNum=%d\n",objNum);
+	        printf("nero_createObjFromSingleObj  要创建的概念已经存在在网络中,objNum=%d,kind=%d,add=%x\n",objNum,nero_GetNeroKind(newObi),newObi);
 	        #endif
 	        return newObi;
 	}

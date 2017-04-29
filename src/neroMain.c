@@ -158,8 +158,8 @@ void ProInitialization()
 		printf("end of  fuc ReadTaskFromTxt\n");
 		sleep(1);
 		// nero_8int * fileName2="/data/adult/adultLearn2.sh";
-		nero_8int * fileName2="/data/adult/adultLearn.sh";
-		ReadTaskFromTxt( fileName2  );
+		// nero_8int * fileName2="/data/adult/adultLearn.sh";
+		// ReadTaskFromTxt( fileName2  );
 
 
 		printf("\n end of  fuc ReadTaskFromTxt\n");

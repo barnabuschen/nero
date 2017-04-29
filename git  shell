@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "updata：20170427_02"
+git commit -a -m "updata：20170429_01"
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt
@@ -115,9 +115,9 @@ NeuralNetwork.c
 
 /home/jty/bin/perf record
 /home/jty/bin/perf report
-/home/jty/bin/perf top ./neroMain
-/home/jty/bin/perf top  -ag ./neroMain
 
+
+/home/jty/bin/perf top  -g  
 
 
 perf record 记录单个函数级别的统计信息，并使用 perf report 来显示统计结果，以此可以找到热点：s
@@ -125,7 +125,10 @@ perf record 记录单个函数级别的统计信息，并使用 perf report 来�
 /home/jty/bin/perf report
 给出函数的调用关系，以便于找到次级热点：
 /home/jty/bin/perf record -g -e cpu-clock ./neroMain
-/home/jty/bin/perf report -a -d -g
+/home/jty/bin/perf report   -g
+
+
+/home/jty/bin/perf record -g -e cpu-clock  -w --call-graph -p  25687
 
 
 --tui是交互式的文本显示窗口，--stdio是文本显示窗口。

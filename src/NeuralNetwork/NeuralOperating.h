@@ -76,7 +76,9 @@ struct DataFlowForecastInfo
 	nero_s32int DeBugMsgTwo;
 };
 
+// extern nero_8int DataFlowPool[DataFlowPoolListNum][DataFlowPoolStrMaxLen];
 
+// extern nero_s32int DataFlowPoolDataKind[DataFlowPoolListNum];
 
 
 void *thread_for_Operating_Pic(void *arg);

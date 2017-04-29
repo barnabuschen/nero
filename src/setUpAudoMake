@@ -15,7 +15,8 @@ autoreconf -i
 ./configure
 
 最后修改makefile
-
+-fno-omit-frame-pointer  -ggdb
+CFLAGS = -g -O2 -fno-omit-frame-pointer -ggdb
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 	./$(bin_PROGRAMS)
@@ -34,7 +35,7 @@ make >filename 2>&1
 
 
 
-
+-mcmodel=medium
 
 
 

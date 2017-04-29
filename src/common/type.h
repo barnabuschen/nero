@@ -37,6 +37,9 @@
 #define StagingAreaNeroNum 33554432/*用于StagingAreaNeroPool，一个G大约能包含33554432个ActivationNeuron对象*/
 /*		     123456789	*/
 
+#define DataFlowPoolListNum      70    /* // the same as OrderListWigthMax*/
+#define DataFlowPoolStrMaxLen      1000 /*每条命令最多100个参数*/
+
 
 
 /*俩个神经元相互联系的关系，父亲概念的定义指的是上层概念，孩子是下层概念*/
@@ -88,16 +91,16 @@ typedef  char  nero_8int;
 // #define Nero_DeBuging03_12_13
 // #define Nero_DeBuging20_12_13
 // #define Nero_DeBuging21_12_13
-// #define Nero_DeBuging04_01_14
+#define Nero_DeBuging04_01_14
 // #define Nero_DeBuging08_01_14
-// #define Nero_DeBuging09_01_14
+ #define Nero_DeBuging09_01_14
 #define Nero_DeBuging10_01_14
 
 // #define Nero_DeBuging14_01_14
 // #define Nero_DeBuging24_01_14
 // #define Nero_DeBuging25_01_14
 // #define Nero_DeBuging27_01_14
-// #define Nero_DeBuging06_02_14
+ #define Nero_DeBuging06_02_14
 // #define Nero_DeBuging04_25_16
 // #define Nero_DeBuging10_16_16
 // #define Nero_DeBuging10_26_16

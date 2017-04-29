@@ -88,6 +88,9 @@ void main()
 //整个系统的启动函数
 void ProInitialization()
 {
+		// pthread_mutex_init(&mutexForDataFlowProcessInput,NULL);
+		// pthread_mutexattr_setpshared(&mutexForDataFlowProcessInput,PTHREAD_PROCESS_PRIVATE);
+		// pthread_mutexattr_settype();
 		/*	int res;*/
 		pthread_t a_thread;
 		Operating_ipckey="/tmp/Operating_ipckey3";
@@ -157,9 +160,9 @@ void ProInitialization()
 		ReadTaskFromTxt( fileName1  );
 		printf("end of  fuc ReadTaskFromTxt\n");
 		sleep(1);
-		// nero_8int * fileName2="/data/adult/adultLearn2.sh";
+		nero_8int * fileName2="/data/adult/adultLearn2.sh";
 		// nero_8int * fileName2="/data/adult/adultLearn.sh";
-		// ReadTaskFromTxt( fileName2  );
+		ReadTaskFromTxt( fileName2  );
 
 
 		printf("\n end of  fuc ReadTaskFromTxt\n");

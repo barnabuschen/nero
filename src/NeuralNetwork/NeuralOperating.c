@@ -19,7 +19,7 @@ static struct NeroObjForecastList   Process_forecastListNode[Process_TemporaryNU
  nero_8int   Process_tmpStr[500];
 
 struct DataFlowForecastInfo  forecastInfo_st;
-
+volatile sig_atomic_t atomForDataFlowProcessInput=0;
 /*************Operating函数族/**************/
 BEGIN_ONE_ARG_MESSAGE_MAP(Operating_msg_OneArg_map)
 /*    MSG_NAME(1, IO_GetNeroObjMsg)*/
@@ -439,7 +439,7 @@ nero_s32int  Process_AddNewBaseKindByname(void *DataFlow[],nero_s32int dataKind[
 		}
 
     }
-
+    atomForDataFlowProcessInput  =0;
 	// you should  init   neroConf  every time  you  run  this  fuc
 	resetNeroConf();
 	// forecastInfo_st.controlMsg.Refreshed=0;
@@ -504,6 +504,8 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	static nero_us32int coutOferror_Msg_=0;//  it recond  how many  times  the  DataFlowProcess  be  called
 	coutOferror_Msg_=coutOferror_Msg_+1;
 	/*参数检查*/
+	// pthread_mutex_lock(&mutexForDataFlowProcessInput);
+	// printf("DataFlowProcess  lock\n");
 	if (DataFlow == NULL  || dataKind ==NULL  ||  dataNum <1)
 	{
 
@@ -543,10 +545,10 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*				printf("\n");		*/
 /*				ttt.tmp=*((ChUTF8 *)DataFlow);*/
 /*				ttt.end=0;	*/
-		if( i == (dataNum -1 ))
-			printf("%sEND\n",(nero_s8int *)DataFlow[i]);
-		else
-			printf("%s ",(nero_s8int *)DataFlow[i]);
+		// if( i == (dataNum -1 ))
+		// 	printf("%sEND\n",(nero_s8int *)DataFlow[i]);
+		// else
+		// 	printf("%s ",(nero_s8int *)DataFlow[i]);
 		// sprintf(str,"data/wordspic%d.dot",i);
 		// sprintf(str2,"xdot data/wordspic%d.dot",i);
 		// createNeroNetDotGraphForWords(GodNero, str);
@@ -753,7 +755,9 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   12:%d.\n",coutOferror_Msg_);
 	#endif
-
+	// pthread_mutex_unlock(&mutexForDataFlowProcessInput);
+	// printf("DataFlowProcess  unlock\n");
+	 atomForDataFlowProcessInput  =0;
 
 /*	return 0;*/
 

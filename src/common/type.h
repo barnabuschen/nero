@@ -6,7 +6,8 @@
 #include "list.h"
 #include "NeroError.h"
 #include "NeroMsgId.h"
-
+#include <pthread.h>
+#include <signal.h>
 /*一些常量*/
 #define  ChoseBaseObj   1
 #define  ChoseDerivativeObj   2
@@ -237,9 +238,11 @@ nero_s32int Log_mq_id;
 nero_s32int Sys_mq_id;
 
 
+// pthread_mutex_t mutexForDataFlowProcessInput;
+// #ifndef   sig_atomic_t_Flag
+// #define sig_atomic_t_Flag
 
-
-
+// #endif
 
 
 

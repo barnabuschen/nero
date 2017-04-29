@@ -658,8 +658,13 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF 0: order=%d  countOfWord=%d",OrderDataTypeList[orderPos][0],countOfWord);
         msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
     #endif
-
-
+        // pthread_mutex_lock(&mutexForDataFlowProcessInput);
+        // printf("obtainOrderFromTFF  lock\n");
+    while( atomForDataFlowProcessInput  ==  1)
+    {
+        usleep(5);
+        // printf("obtainOrderFromTFF  lock\n");
+    }
     /*命令    该命令后面的数据个数，不包括1,2   第一个数据*/
     // 219 setosa 51 35 14 2
     for (k=0;k<countOfWord;k++)
@@ -938,6 +943,9 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         return;
     }
 
+    atomForDataFlowProcessInput  =  1;
+    // pthread_mutex_unlock(&mutexForDataFlowProcessInput);
+    // printf("obtainOrderFromTFF  unlock\n");
     /*现在开始准备发送消息了*/
     dataNum=countOfWord;
     arg2.dataNum=dataNum;

@@ -28,7 +28,7 @@ typedef struct TaskFileFormat
 
 
 
-
+extern volatile sig_atomic_t atomForDataFlowProcessInput;
 
 
 void obtainOrderFromTFF(TFF * tff);/*从TFF中分析得到命令后在函数里面直接发送就行了*/

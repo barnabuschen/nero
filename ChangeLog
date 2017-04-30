@@ -614,6 +614,42 @@ native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, 
 	#endif
 
 
+创建时间：2017年04月30日 星期日 22时55分15秒 
+
+
+	现在你输入test数据用的是310 命令，但是这个命令会导致生成的data的kind不是你真实想要的，
+	现在的改进策略就是，不指定或者指定kind为NeuronNode_ForUndefined，让sys在DataFlowProcess
+	自动去判断究竟用什么类型----但是你必须指定一定的方向啊？？？？
+
+
+	这样的话会出现两种情况：1:能找到相应的子类的kind-----很好
+			       2:该数据根本没有在sys中有记录，所以找不到该子类的kind
+
+
+	但是问题是，你的这个分类，现在实际上数据输入时，子类的kind是知道的啊，你干嘛非要增加难度？
+	--------------所以还是选用一个新的命令吧（指定数据的类型）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

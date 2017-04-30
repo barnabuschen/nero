@@ -3233,7 +3233,7 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 	// 假设是对int排序的话,如果是升序,那么就是如果a比b大返回一个正值,小则负值,相等返回0,其他的依次类推
 	qsort(Process_forecastListNode,Process_tmpObiUsed,sizeof(Process_forecastListNode[0]),qSortCmp1);
 
-	#ifdef Nero_DeBuging10_01_14_
+	#ifdef Nero_DeBuging10_01_14
 		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 		neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg
 		neroObjMsgWithStr_st.Obi = NULL;

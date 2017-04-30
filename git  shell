@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "updata：20170430_01"
+git commit -a -m "20170430_01：adult 分类bug修复"
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt
@@ -108,7 +108,7 @@ NeuralNetwork.c
 
 
 
-
+adb install path/to/my-app.apk
 
 /home/jty/bin/perf   stat  ./neroMain
 

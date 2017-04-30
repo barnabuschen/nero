@@ -575,13 +575,13 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 
 
 		#ifdef   Nero_DeBuging04_01_14
-		char str[500];
-		char str2[500];
+		// char str[500];
+		// char str2[500];
 /*				PrintUtf8 ttt;*/
 /*				printf("\n");		*/
 /*				ttt.tmp=*((ChUTF8 *)DataFlow);*/
 /*				ttt.end=0;	*/
-		#ifdef DataFlowProcess_error_Msg_
+		#ifdef DataFlowProcess_error_Msg
 		if( i == (dataNum -1 ))
 			printf("%s[%d]END\n",(nero_s8int *)DataFlow[i],dataKind[i]);
 		else
@@ -848,7 +848,7 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 	/***************************************************************/
 	// CreateNewBaseObjKind=1将影响新类的创建，影响类型判断,所以这里需要要这个条件
 	// #define Nero_TestCount     30
-	if (  /*Nero_TestCount >= coutOferror_Msg_  && */ conf->CreateNewBaseObjKind != 1   &&  conf->addLevelObjAlways != 1 )
+	if (  /*Nero_TestCount >= coutOferror_Msg_  && */ conf->CreateNewBaseObjKind != 1   &&  conf->addLevelObjAlways != 1  && forecastInfo_st.controlMsg.expectedKind >=  NeuronNode_ForUndefined)
 	{
 
 			// 这个函数的初衷是看看数组objs能否组成一个对象，该对象在sys已经存在，并且他的部分子对象在
@@ -856,16 +856,11 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 			// 但是现在希望加入新的功能：就是根据Forecast  Control   struct NeroObjForecastControl的
 			// 信息尝试找出数组objs最可能属于那个类的对象，算法原理就是根据objs每个子对象指向的上层类
 			// 次数的多少来判断,当然这个上层类必须满足结构struct NeroObjForecastControl指定的要求
-
-
 	        // Process_ObjForecast(&forecastInfo_st);
 
 			nero_us32int pointForObjsTmp=0;
-
 			// printf("   		forecastInfo_st.objNum=%d.\n",forecastInfo_st.objNum);
-
-
-			if(forecastInfo_st.objNum  == 4)
+			// if(forecastInfo_st.objNum  == 4)
 			{
 
 				while(pointForObjsTmp < forecastInfo_st.objNum)
@@ -873,10 +868,7 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 
 
 					#ifdef Nero_DeBuging10_01_14
-					//
-	    	 		// res1= Process_ModifyObjsForClassiFication(&forecastInfo_st,objs[pointForObjsTmp],GodNero);
 	    	 		res1= Process_ModifyObjsForForecastList(&forecastInfo_st,pointForObjsTmp,forecastInfo_st.controlMsg.expectedKind,GodNero);
-
 	    	 		// printf("   		res111=%d\n\n",res1);
 	    	 		// printf("\n");
 	    	 		if(res1 ==  nero_msg_ok)
@@ -966,12 +958,12 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 				// 1：首先修正objs[]
 				// 2：再次运行Process_ObjsClassiFication(&forecastInfo_st);
 
-				#ifdef Nero_DeBuging10_01_14_
-					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-					neroObjMsgWithStr_st.fucId = 3;//
-					neroObjMsgWithStr_st.Obi = NULL;
-					sprintf(neroObjMsgWithStr_st.str,"matchObj1:%x,kind =%d,isbase=%d \n",tmpObiForTest,nero_GetNeroKind(tmpObiForTest) , nero_isBaseObj(tmpObiForTest));
-					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
+				#ifdef Nero_DeBuging10_01_14
+				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+				neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg
+				neroObjMsgWithStr_st.Obi = NULL;
+				sprintf(neroObjMsgWithStr_st.str,"matchObj1:%x,kind =%d,isbase=%d \n",tmpObiForTest,nero_GetNeroKind(tmpObiForTest) , nero_isBaseObj(tmpObiForTest));
+				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 				#endif
 
 
@@ -1765,7 +1757,7 @@ nero_s32int Process_StrengthenLink(NeuronObject * objs[],nero_s32int objNum,Neur
 
 	}
 
-	if(ifCreateObjInSAP ==  1)
+	if(ifCreateObjInSAP ==  1  &&  UpperObjKind != NULL )
 	{
 		//需要生成一个新得临时对象
 
@@ -1978,8 +1970,6 @@ nero_us32int nextAvailableNeroInPool;*/
 /*	struct NeroObjForecastList   *headOfLowerLayer;//指向第一个预测对象*/
 /*	struct NeroObjForecastList   *headOfSameLayer;//指向第一个预测对象		*/
 /*};*/
-
-
 /*更新列表预测列表
 		关于合适的清空预测列表的方式有俩种：
 				1：设置一个DataFlowProcess运行次数变量，一旦达到一个值就清空
@@ -2282,7 +2272,7 @@ void AddNewObjToList(struct DataFlowForecastInfo  * forecastInfo,nero_s32int Fib
                     (findNodeINlist->Strengthen)  +=FiberStrengthen;
 
                     (findNodeINlist->times)--;
-					printf("预测链表no增长。。。Obj=%x,kind=%d,FiberStrengthen=[%d][+%d],isbase=%d\n",Obj,nero_GetNeroKind(Obj),(findNodeINlist->Strengthen),FiberStrengthen,nero_isBaseObj(Obj));
+					// printf("预测链表no增长。。。Obj=%x,kind=%d,FiberStrengthen=[%d][+%d],isbase=%d\n",Obj,nero_GetNeroKind(Obj),(findNodeINlist->Strengthen),FiberStrengthen,nero_isBaseObj(Obj));
 
             }
 
@@ -2907,18 +2897,30 @@ nero_us32int  Process_ModifyObjsForForecastList(struct DataFlowForecastInfo  * f
 	{
 
 		// Refreshed == 0 mean the msg of controlMsg is old ,and DurationTime == 1 means the msg is outdate
-    	printf("Process_ModifyObjsForForecastList :   parameter error\n");
+    	printf("Process_ModifyObjsForForecastList1 :   parameter error\n");
 		return nero_msg_fail;
 
 	}
+	if(    expectedKind <= NeuronNode_ForComplexDerivative )
+	{
 
+		// Refreshed == 0 mean the msg of controlMsg is old ,and DurationTime == 1 means the msg is outdate
+    	// printf("Process_ModifyObjsForForecastList1 :   parameter error\n");
+		return nero_msg_fail;
+
+	}
 	expectedBaseObj = nero_getBaseObjByKind(expectedKind,godNero);
 	res = nero_msg_fail;
 	//这里暂时不考虑双方数据个数不对等的情况
 	// 注意一点：有些基础类的数据个数可能是可变的，
 		// basekind，数据个数是不确定的
-
-	dataNum = nero_getObjDataNum(expectedBaseObj);
+	if(expectedBaseObj)
+		dataNum = nero_getObjDataNum(expectedBaseObj);
+	else
+	{
+		printf("Process_ModifyObjsForForecastList2 :   expectedKind=%d\n",expectedKind);
+		exit(0);
+	}
 	if(expectedKind  >  NeuronNode_ForComplexDerivative  )
 		dataNum = dataNum -1;
 	flag =  testBaseObjNum(expectedBaseObj, godNero);

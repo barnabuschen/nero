@@ -288,7 +288,7 @@ nero_s32int Log_printFormattedMsg(void * obj_,void *str_)
 	NerveFiber  *  childcurFiber;
 	time(&now);//time函数读取现在的时间(国际标准时间非北京时间)，然后传值给now
 	timenow   =   localtime(&now);//localtime函数把从time取得的时间now换算成你电脑中的时间(就是你设置的地区)
-/*		printf("Local   time   is   %s/n",asctime(timenow));*/
+	// printf("Log_printFormattedMsg:Local   time   is   %s/n",asctime(timenow));
 
 	if (str == NULL || str_==NULL)
 	{
@@ -672,13 +672,13 @@ nero_s32int Log_printAllNeroMsg(void * arg)
 			{
 				sprintf(str,"Log_printAllNeroMsg:		nerogod:%x,Kind:%d,actual num:%d ,record  num:%d\n",(NeuronObject *)arg, ObjectKind,objnums,obj->x);
 				addLineToFile(logFile,str);
-				printf("Kind:%d,actual num:%d ,record  num:%d\n", ObjectKind,objnums,obj->x);
+				// printf("Kind:%d,actual num:%d ,record  num:%d\n", ObjectKind,objnums,obj->x);
 			}
 			else
 			{
 				sprintf(str,"Log_printAllNeroMsg:		kind add=%x,Kind:%d,actual num:%d ,record  num:%d,name adress:%x  \n",curFiberOfbase->obj, ObjectKind,objnums,obj->x,obj->inputListHead->obj);
 				addLineToFile(logFile,str);
-				printf("Kind:%d,actual num:%d ,record  num:%d,name adress:%x  \n", ObjectKind,objnums,obj->x,obj->inputListHead->obj);
+				// printf("Kind:%d,actual num:%d ,record  num:%d,name adress:%x  \n", ObjectKind,objnums,obj->x,obj->inputListHead->obj);
 			}
 		}
 	}

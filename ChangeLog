@@ -614,19 +614,6 @@ native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, 
 	#endif
 
 
-	|下一步你需要继续分析下读进去的数据，到底有没有漏洞，，因为总的个数个数个文档中的有出入，然后就是进行性能分析，太慢了
-
-
-	解决下性能问题先
-	
-	你会发现你的主程序虽然大量的进行内存的申请和释放
-	但是有些一定要释放的是不是可以不要动态分配，采用固定内存
-
-
-nero_8int DataFlowPool[DataFlowPoolListNum][DataFlowPoolStrMaxLen];
-nero_s32int DataFlowPoolDataKind[DataFlowPoolListNum];
-
-
 
 
 

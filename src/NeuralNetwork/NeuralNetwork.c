@@ -3024,7 +3024,7 @@ NeuronObject * nero_CreateObjInSAP(NeuronObject *Obis[],nero_s32int objNum,nero_
 		}
 
 	}
-
+	newObiKind = NeuronNode_ForNone;
 	/*判断新概念的种类
 	见神经网络记录 sheet   5系统概略图
 	*/
@@ -3036,7 +3036,7 @@ NeuronObject * nero_CreateObjInSAP(NeuronObject *Obis[],nero_s32int objNum,nero_
 	if (newObiKind == NeuronNode_ForNone)
 	{
 	        #ifdef   createObjFromMultiples_DeBug_Msg
-	        printf("nero_CreateObjInSAP  没有合适的类别\n");
+	        printf("nero_CreateObjInSAP  没有合适的类别,objNum=%d,basekind=%d\n",objNum,basekind);
 	        #endif
 		return NULL;
 	}

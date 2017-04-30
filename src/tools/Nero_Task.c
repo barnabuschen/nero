@@ -943,7 +943,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         return;
     }
 
-    atomForDataFlowProcessInput  =  1;
+
     // pthread_mutex_unlock(&mutexForDataFlowProcessInput);
     // printf("obtainOrderFromTFF  unlock\n");
     /*现在开始准备发送消息了*/
@@ -967,7 +967,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         case    Task_Order_CreateKindWithEnglishWord:
         case    Task_Order_CreateKindWithMultipleWord:
         case    Task_Order_CreateKindOfMultipleKind:
-
+                atomForDataFlowProcessInput  =  1;
     	        DataIO_st.operateKind =Conf_Modify_CreateNewBaseObjKind;
                 flag=1;
                 break;
@@ -979,6 +979,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 //it  is  different form  up cases.
                 //if  you  wangt  to  created  obj  by  data,the  kind is  depending  on   tff->order  ,rather than  the  type of data
                 //
+                atomForDataFlowProcessInput  =  1;
                 dataKind[0]=NeuronNode_ForOutputWord;
                 flag=0;
     	        // DataIO_st.operateKind =Process_Create_ForOutputWord;
@@ -988,6 +989,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         case    Task_Order_CreateChWordKindObj:
                 dataKind[0]=NeuronNode_ForChWord;
                 flag=0;
+                atomForDataFlowProcessInput  =  1;
                 break;
         case    Task_Order_MutiDataInput:
         case    Task_Order_DataSteamInput2:
@@ -996,13 +998,16 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 // arg2.conf->addLevelObjAlways=1;
                 DataIO_st.operateKind =Conf_Modify_addLevelObjAlways;
                 flag=2;
+                atomForDataFlowProcessInput  =  1;
                 break;
          case    Task_Order_DataSteamInput:
+                // printf("Task_Order_DataSteamInput***************** \n" );
                 // dataKind[0]=NeuronNode_ForChWord;
                 // ((NeroConf *)DataIO_st.str)->addLevelObjAlways=1;
                 // arg2.conf->addLevelObjAlways=1;
                 // DataIO_st.operateKind =Conf_Modify_addLevelObjAlways;
                 flag=0;
+                atomForDataFlowProcessInput  =  1;
                 break;
          case    Task_Order_CreateLayeringKindObj    :
                 dataKind[0]=NeuronNode_ForLayering;
@@ -1012,6 +1017,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 // arg2.conf->addLevelObjAlways=1;
                 // DataIO_st.operateKind =Conf_Modify_addLevelObjAlways;
                 // flag=0;
+                 atomForDataFlowProcessInput  =  1;
                 break;
           case    Task_Order_ForecastCtrlMsg    :
 

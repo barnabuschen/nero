@@ -490,11 +490,11 @@ dataNum	   数据的指针数组数据的个数，就是数组的长度
 */
 
 
-nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf)
+nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf)
 {
 	nero_s32int i,j,hasAddObj/*,hasNewObj*/,res1,objNum,OldobjNum,res2,tmoForRecordNUm,ifHasUnknowObj,newBaseObjKind_,justForTest11;
 	NeuronObject * tmpObi,* tmpBaseObi,* tmpBaseObi2,* tmpObiForTest;
-	NeuronObject ** objs=NULL;
+	static 	NeuronObject ** objs=NULL;
 	NeuronObject * TmpStagingAreaNero=NULL;
 	NeuronObject * complexObj;
 /*        struct NeroObjForecastList   *findObiPoint; */
@@ -502,21 +502,57 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*        struct NeroObjForecastList   *findForecastObjPoint; 	*/
 	NerveFiber *curFiber;
 	static nero_us32int coutOferror_Msg_=0;//  it recond  how many  times  the  DataFlowProcess  be  called
-	coutOferror_Msg_=coutOferror_Msg_+1;
+	static void *DataFlow[DataFlowPoolListNum];
+	static nero_s32int dataKind[DataFlowPoolListNum]={0};
 	/*参数检查*/
 	// pthread_mutex_lock(&mutexForDataFlowProcessInput);
 	// printf("DataFlowProcess  lock\n");
-	if (DataFlow == NULL  || dataKind ==NULL  ||  dataNum <1)
+	if (DataFlow_ == NULL  || dataKind_ ==NULL  ||  dataNum <1  || dataNum > DataFlowPoolListNum)
 	{
-
-
-		printf("\n\nDataFlowProcess:nero_msg_ParameterError\n\n");
-
+		printf("\n\nDataFlowProcess:nero_msg_ParameterError1\n\n");
 		return nero_msg_ParameterError;
 	}
 /*	system("xdot data/wordspic.dot");*/
-	(objs)=(NeuronObject **)malloc(sizeof(NeuronObject *)*dataNum);
+	if(coutOferror_Msg_ == 0)
+	{
+		(objs)=(NeuronObject **)malloc(sizeof(NeuronObject *)* DataFlowPoolListNum);
+        for(i=0,j=0;i < DataFlowPoolListNum ;i++)
+        {
 
+                DataFlow[i]= (void *)malloc((sizeof( char))*DataFlowPoolStrMaxLen);  //DataFlowPoolStrMaxLen
+                // printf("malloc\n");
+
+        }
+	}
+	if(objs == NULL)
+	{
+		printf("\nDataFlowProcess:nero_msg_ParameterError2\n");
+		return nero_msg_ParameterError;
+	}
+	for(i=0;i<dataNum;i++)
+	{
+		// strcpy(DataFlow[i],DataFlow_[i]);
+		// snprintf(DataFlow[i],DataFlowPoolListNum,"",DataFlow_[i]);
+
+		switch(dataKind_[i])
+		{
+			case NeuronNode_ForChCharacter:
+				memmove(DataFlow[i],DataFlow_[i],4);
+				break;
+			case NeuronNode_ForChWord:
+				strcpy(DataFlow[i],DataFlow_[i]);
+				break;
+			default:
+				memmove(DataFlow[i],DataFlow_[i],DataFlowPoolListNum);
+				break;
+		}
+		dataKind[i]=dataKind_[i];
+	}
+	// pthread_mutex_unlock(&mutexForDataFlowProcessInput);
+	// printf("DataFlowProcess  unlock\n");
+	 atomForDataFlowProcessInput  =0;
+
+	coutOferror_Msg_=coutOferror_Msg_+1;
 	complexObj=NULL;
 	tmoForRecordNUm=0;
 	ifHasUnknowObj=0;
@@ -545,10 +581,12 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 /*				printf("\n");		*/
 /*				ttt.tmp=*((ChUTF8 *)DataFlow);*/
 /*				ttt.end=0;	*/
-		// if( i == (dataNum -1 ))
-		// 	printf("%sEND\n",(nero_s8int *)DataFlow[i]);
-		// else
-		// 	printf("%s ",(nero_s8int *)DataFlow[i]);
+		#ifdef DataFlowProcess_error_Msg_
+		if( i == (dataNum -1 ))
+			printf("%s[%d]END\n",(nero_s8int *)DataFlow[i],dataKind[i]);
+		else
+			printf("%s[%d] ",(nero_s8int *)DataFlow[i],dataKind[i]);
+		#endif
 		// sprintf(str,"data/wordspic%d.dot",i);
 		// sprintf(str2,"xdot data/wordspic%d.dot",i);
 		// createNeroNetDotGraphForWords(GodNero, str);
@@ -755,9 +793,6 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   12:%d.\n",coutOferror_Msg_);
 	#endif
-	// pthread_mutex_unlock(&mutexForDataFlowProcessInput);
-	// printf("DataFlowProcess  unlock\n");
-	 atomForDataFlowProcessInput  =0;
 
 /*	return 0;*/
 
@@ -1313,10 +1348,10 @@ nero_s32int DataFlowProcess(void *DataFlow[],nero_s32int dataKind[],nero_s32int 
 	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   1:%d.\n",coutOferror_Msg_);
 	#endif
-	if (objs)
-	{
-		free(objs);
-	}
+	// if (objs)
+	// {
+	// 	free(objs);
+	// }
 	#ifdef DataFlowProcess_error_Msg_
 	printf("coutOferror_Msg_   2:%d.\n",coutOferror_Msg_);
 	#endif

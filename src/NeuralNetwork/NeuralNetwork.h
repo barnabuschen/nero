@@ -126,23 +126,11 @@ nero_us32int msg;/*记录该nero的种类，性质等信息*/
 nero_s32int x;/*取值范围-2147483648 ~ 2147483647       use x  to  recond  how many chind has  if  its  a  baseObj */
 nero_s32int y;	/*	it use  to  recond  how many times  this obj  has been input  recently只在临时区域中使用这个变量*/
 nero_s32int z;
-struct NerveFiber_  * inputListHead;/*其实究竟对于一个神经元来说是不是需要这个输入神经元的链表，*/
-					/*好像其实不是那么必要的是吧，因为，这实际上会造成冗余数据*/
-					/*那么如果该神经元是一个NeuronObject，那么inputListHead指向该*/
-					/*对象的数据，如果该神经元表示一个存抽象概念，则没有数据*/
-					/*如果是一个ActNero，则该神经元的功能是保存数据*/
-					/*但是如果是一个NeuronObject，是指向第一个数据呢，还是*/
-					/*说inputListHead指向一个数据的链表，显然指向一个数据的神经元*/
-					/*然后让这个神经元(纤维)指向后续的数据*/
-
-					/*特别的，对于一个基类来说，它的inputListHead为NULL*/
-					/*而他的outputListHead链表，则指向所有该类下的所以神经元*/
+struct NerveFiber_  * inputListHead;
+					/*outputListHead链表，则指向所有该类下的所以神经元*/
 
 struct NerveFiber_   * outputListHead;
 };
-
-
-
 
 
 /*神经纤维---用来连接各个神经元*/
@@ -180,9 +168,6 @@ time：
 			1:创建时候
 			2:被成功匹配的时候，相应链接被修改  Process_StrengthenLink=》gainFiberStrengthen
 
-
-
-
 */
 
 struct NerveFiber_
@@ -192,7 +177,6 @@ struct NerveFiber_
 	nero_us32int msg1;/*存储额外的信息*/
 	nero_us32int time;/*有关修改时间的信息*/
 };
-
 
 
 extern NeuronObject *GodNero;
@@ -212,7 +196,10 @@ extern NeroConf neroConf;
 #define NeuronNode_ForImage   50    //当一个概念节点的类型为此时表示一个图像对象
 #define NeuronNode_ForLine   51    //当一个概念节点的类型为此时表示一个线条对象
 
-
+// 问题来了，是不是有一个基础类，它是所有高级衍生类的基础类，就是一层层找下去的话所有类都是由一种元数据构成的
+//到目前为止，NeuronNode_ForChCharacter扮演者这个角色,但是我现在无法确定，以后是否会有新的sys内部类，打破这种
+//唯一性-=-------------理论上讲，应该是有一个kind来扮演这样角色的，但是,是不是可以用NeuronNode_ForChCharacter?????
+//还是先别决定这么基础的问题吧，先放着
 #define NeuronNode_ForChCharacter   61    //当一个概念节点的类型为此时表示一个汉字，包括中文标点符号
 #define NeuronNode_ForChWord   62    //当一个概念节点的类型为此时表示一个中文词语
 #define NeuronNode_ForChSentence   63    //当一个概念节点的类型为此时表示一个中文句子

@@ -63,7 +63,7 @@
                                                 // of first 2th string
 
 #define  Task_Order_DataSteamInput3    312      /* just  input some  data  into  sys,  its parameter  is several string */
-                                                // the kind of  all  steam  in  already  been Specify
+                                                // the kind of  all  steam  unknow
 
 
 
@@ -107,7 +107,7 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 //~ 将conf恢复为默认配置   参数个数 新类名	     	新类的第一个数据
 {Task_Order_ResetConf,   0},
 //~ 将conf恢复为默认配置   参数个数 新类名         新类的第一个数据
-{Task_Order_ForecastCtrlMsg,4,TFFDataType_String,TFFDataType_String,TFFDataType_String,TFFDataType_String},
+{Task_Order_ForecastCtrlMsg,5,TFFDataType_String,TFFDataType_String,TFFDataType_String,TFFDataType_String,TFFDataType_String},
 /*创建"数学符号"	  参数个数 新类名	     	新类的第一个数据*/
 {Task_Order_MathNotation,2,TFFDataType_String,	TFFDataType_Character},
 /*创建"new  kind"	  参数个数 新类名	     	新类的第一个数据*/
@@ -134,6 +134,8 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 {Task_Order_CreateKindOfMultipleKind,OrderListWigthMax,TFFDataType_String,TFFDataType_String},
 /*创建"new    obj"             参数个数   第一个数据           */
 {Task_Order_DataSteamInput2,OrderListWigthMax,TFFDataType_String,TFFDataType_unknow},
+/*创建"new    obj"             参数个数   第一个数据           */
+{Task_Order_DataSteamInput3,OrderListWigthMax,TFFDataType_unknow,TFFDataType_unknow},
 {0},
 {0},
 };
@@ -714,17 +716,20 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                              kindArray[1] = atoi(tff->data[2]);
                              kindArray[2] = atoi(tff->data[3]);
                              kindArray[3] = atoi(tff->data[4]);
+                             kindArray[4] = atoi(tff->data[4]);
+
+
 
                             forecastCtrl_st.expectedKind= kindArray[0];
                             forecastCtrl_st.baseORDerivative= kindArray[1];
                             forecastCtrl_st.Refreshed= kindArray[2];
                             forecastCtrl_st.DurationTime= kindArray[3];
+                            forecastCtrl_st.metaData= kindArray[4];
+
                             // printf("Task_Order_CreateLayeringKindObj : kind1=%d, kind2=%d\n",kindArray[0],kindArray[1]);
 
                             // memcpy(linc,tff->data[k+1],(lenOfpar) +1);
                             // dataKind[k]=NeuronNode_ForLayering;
-
-
                             }
 
                             break;
@@ -805,6 +810,14 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
             switch( tff->order)
             {
+
+                case  Task_Order_DataSteamInput3:
+                        lenOfpar=strlen( tff->data[k+1]);
+                        linc=(char *)DataFlow[k];
+                        memset(linc,0,(lenOfpar) +1);
+                        memcpy(linc,tff->data[k+1],(lenOfpar) +1);
+                        dataKind[k]= NeuronNode_ForUndefined;
+                        break;
                 case  Task_Order_DataSteamInput2:
                     // usleep(300);
                     tmpKindRecond=nero_getObjKindByName((void *) DataFlow[0],GodNero);
@@ -1001,6 +1014,8 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 atomForDataFlowProcessInput  =  1;
                 break;
          case    Task_Order_DataSteamInput:
+         case    Task_Order_DataSteamInput3:
+
                 // printf("Task_Order_DataSteamInput***************** \n" );
                 // dataKind[0]=NeuronNode_ForChWord;
                 // ((NeroConf *)DataIO_st.str)->addLevelObjAlways=1;

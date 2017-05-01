@@ -630,10 +630,11 @@ native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, 
 	--------------所以还是选用一个新的命令吧（指定数据的类型）
 
 
+	考虑到你的void *DataFlow_[],只是一维的，所以你还是需要按字符串的方式输入，只是kind不要指定
 
 
-
-
+	这里先过滤一遍dataKind[ ]  ==  NeuronNode_ForUndefined的情况
+	一旦出现这种情况，就由sys判断该数据的kind
 
 
 

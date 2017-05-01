@@ -51,7 +51,10 @@ struct NeroObjForecastControl
 								// 0: Duration all the time  until changed
 								// 1: just be used  one time ,so if(Refreshed == 1  &&  DurationTime ==1),that mean ,expectedKind is Invalid 无效的
 
-
+	nero_s32int  metaData;  //元数据,in sys ,all  Obj is made up of child obj,for example :
+								//a obj of kind XXX  ,is made up of NeuronNode_ForChWord
+								// but NeuronNode_ForChWord is made up of  NeuronNode_ForChCharacter
+								//so NeuronNode_ForChCharacter is  the metaData of kind XXX
 };
 struct DataFlowForecastInfo
 {
@@ -64,7 +67,7 @@ struct DataFlowForecastInfo
 	struct NeroObjForecastList   *activateForecastObj;//在headOfUpperLayer中，当前被预测的，等待
 	                                                        //后续输入判断的节点，it is not a list
 
-	struct NeroObjForecastControl  controlMsg;
+	struct NeroObjForecastControl  controlMsg;//该数据是由外部指定的，你要使用时必须判断是否可以读取这个数据
 	NeuronObject * waitForRecognise; /*如果没有在预测列表中的数据会先放在这里，
 	                                       看下次能不能被识别*/
 	nero_s32int waitForRecogniseObjPos;/*waitForRecognise的位置*/
@@ -94,6 +97,7 @@ void * thread_for_Sys_Pic(void *arg);
 
 输出接口
 */
+NeuronObject *  Process_ClassiFication(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * godNero);
 nero_us32int  Process_ModifyObjsForForecastList(struct DataFlowForecastInfo  * forecastInfo,nero_us32int  checkObjPoint,nero_us32int expectedKind,NeuronObject * godNero);
 nero_us32int Process_ModifyObjsForClassiFication(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * referenceObj,NeuronObject  *godNero);
 /*从数据流中分离出俩个或者多个概念，并组合成一个新的概念，这个新的概念的类型由子概念决定*/

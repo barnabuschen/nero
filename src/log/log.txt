@@ -1,101 +1,142 @@
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2001 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2002 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2003 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2004 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2005 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2006 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2007 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2008 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2009 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2010 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2011 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2012 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2013 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2014 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2015 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2016 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2017 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2018 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2019 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2020 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2021 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2022 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2023 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2024 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2025 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2026 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2027 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2028 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2029 !,kind=0,0
-Log_printSomeMsgForObj:Mon May  1 16:14:39 2017
+Log_printSomeMsgForObj:Sat May  6 22:07:49 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2030 !,kind=0,0
-Log_printAllNeroMsg:		nerogod:406985e0,Kind:50,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:406985e0,Kind:51,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:406985e0,Kind:61,actual num:6836 ,record  num:6836
-Log_printAllNeroMsg:		nerogod:406985e0,Kind:62,actual num:43 ,record  num:43
-Log_printAllNeroMsg:		nerogod:406985e0,Kind:100,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:406985e0,Kind:101,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:406985e0,Kind:110,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:406985e0,Kind:63,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		nerogod:406985e0,Kind:2000,actual num:0 ,record  num:0
-Log_printAllNeroMsg:		kind add=407024e0,Kind:2001,actual num:10 ,record  num:10,name adress:406c0120  
-Log_printAllNeroMsg:		kind add=40702880,Kind:2002,actual num:10 ,record  num:10,name adress:40702240  
-Log_printAllNeroMsg:		kind add=40702a20,Kind:2003,actual num:11 ,record  num:11,name adress:407022c0  
-Log_printAllNeroMsg:		kind add=40702e20,Kind:2004,actual num:1 ,record  num:1,name adress:40702380  
-Log_printAllNeroMsg:		kind add=40702e60,Kind:2005,actual num:1 ,record  num:1,name adress:407023a0  
-Log_printAllNeroMsg:		kind add=40702ea0,Kind:2006,actual num:1 ,record  num:1,name adress:406aada0  
-Log_printAllNeroMsg:		kind add=40702ee0,Kind:2007,actual num:1 ,record  num:1,name adress:406ab620  
-Log_printAllNeroMsg:		kind add=40702f20,Kind:2008,actual num:1 ,record  num:1,name adress:4069d820  
-Log_printAllNeroMsg:		kind add=40702f60,Kind:2009,actual num:1 ,record  num:1,name adress:4069e4a0  
-Log_printAllNeroMsg:		kind add=40702fa0,Kind:2010,actual num:1 ,record  num:1,name adress:407023c0  
-Log_printAllNeroMsg:		kind add=40702fe0,Kind:2011,actual num:21 ,record  num:21,name adress:40702480  
-Log_printAllNeroMsg:		kind add=40703180,Kind:2012,actual num:52 ,record  num:52,name adress:40702440  
-Log_printAllNeroMsg:		kind add=40704640,Kind:2013,actual num:1 ,record  num:1,name adress:407044e0  
-Log_printAllNeroMsg:		kind add=407046e0,Kind:2014,actual num:1 ,record  num:1,name adress:40704500  
-Log_printAllNeroMsg:		kind add=407047a0,Kind:2015,actual num:1 ,record  num:1,name adress:40704520  
-Log_printAllNeroMsg:		kind add=407047e0,Kind:2016,actual num:1 ,record  num:1,name adress:40704540  
-Log_printAllNeroMsg:		kind add=40704840,Kind:2017,actual num:70 ,record  num:70,name adress:40704820  
-Log_printAllNeroMsg:		kind add=407049c0,Kind:2018,actual num:9 ,record  num:9,name adress:407049a0  
-Log_printAllNeroMsg:		kind add=40704a80,Kind:2019,actual num:2333 ,record  num:2333,name adress:40704a60  
-Log_printAllNeroMsg:		kind add=40704b60,Kind:2020,actual num:16 ,record  num:16,name adress:40704b40  
-Log_printAllNeroMsg:		kind add=40704c00,Kind:2021,actual num:17 ,record  num:17,name adress:40704be0  
-Log_printAllNeroMsg:		kind add=40704ca0,Kind:2022,actual num:8 ,record  num:8,name adress:40704c80  
-Log_printAllNeroMsg:		kind add=40704d40,Kind:2023,actual num:17 ,record  num:17,name adress:40704d20  
-Log_printAllNeroMsg:		kind add=40704dc0,Kind:2024,actual num:8 ,record  num:8,name adress:40704da0  
-Log_printAllNeroMsg:		kind add=40704e40,Kind:2025,actual num:5 ,record  num:5,name adress:40704e20  
-Log_printAllNeroMsg:		kind add=40704ec0,Kind:2026,actual num:2 ,record  num:2,name adress:40704ea0  
-Log_printAllNeroMsg:		kind add=40704f40,Kind:2027,actual num:59 ,record  num:59,name adress:40704f20  
-Log_printAllNeroMsg:		kind add=40704fc0,Kind:2028,actual num:42 ,record  num:42,name adress:40704fa0  
-Log_printAllNeroMsg:		kind add=40705040,Kind:2029,actual num:71 ,record  num:71,name adress:40705020  
-Log_printAllNeroMsg:		kind add=407050c0,Kind:2030,actual num:38 ,record  num:38,name adress:407050a0  
-Log_printAllNeroMsg:		kind add=40705140,Kind:2031,actual num:602 ,record  num:602,name adress:40704560  
-Log_printAllNeroMsg:		kind add=40705160,Kind:2032,actual num:1811 ,record  num:1811,name adress:40704580  
+Log_printAllNeroMsg:		nerogod:40721280,Kind:50,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40721280,Kind:51,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40721280,Kind:61,actual num:6836 ,record  num:6836
+Log_printAllNeroMsg:		nerogod:40721280,Kind:62,actual num:43 ,record  num:43
+Log_printAllNeroMsg:		nerogod:40721280,Kind:100,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40721280,Kind:101,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40721280,Kind:110,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40721280,Kind:63,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40721280,Kind:2000,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		kind add=4078b180,Kind:2001,actual num:10 ,record  num:10,name adress:40748dc0  
+Log_printAllNeroMsg:		kind add=4078b520,Kind:2002,actual num:10 ,record  num:10,name adress:4078aee0  
+Log_printAllNeroMsg:		kind add=4078b6c0,Kind:2003,actual num:11 ,record  num:11,name adress:4078af60  
+Log_printAllNeroMsg:		kind add=4078bac0,Kind:2004,actual num:1 ,record  num:1,name adress:4078b020  
+Log_printAllNeroMsg:		kind add=4078bb00,Kind:2005,actual num:1 ,record  num:1,name adress:4078b040  
+Log_printAllNeroMsg:		kind add=4078bb40,Kind:2006,actual num:1 ,record  num:1,name adress:40733a40  
+Log_printAllNeroMsg:		kind add=4078bb80,Kind:2007,actual num:1 ,record  num:1,name adress:407342c0  
+Log_printAllNeroMsg:		kind add=4078bbc0,Kind:2008,actual num:1 ,record  num:1,name adress:407264c0  
+Log_printAllNeroMsg:		kind add=4078bc00,Kind:2009,actual num:1 ,record  num:1,name adress:40727140  
+Log_printAllNeroMsg:		kind add=4078bc40,Kind:2010,actual num:1 ,record  num:1,name adress:4078b060  
+Log_printAllNeroMsg:		kind add=4078bc80,Kind:2011,actual num:21 ,record  num:21,name adress:4078b120  
+Log_printAllNeroMsg:		kind add=4078be20,Kind:2012,actual num:52 ,record  num:52,name adress:4078b0e0  
+Log_printAllNeroMsg:		kind add=4078d2e0,Kind:2013,actual num:1 ,record  num:1,name adress:4078d180  
+Log_printAllNeroMsg:		kind add=4078d380,Kind:2014,actual num:1 ,record  num:1,name adress:4078d1a0  
+Log_printAllNeroMsg:		kind add=4078d440,Kind:2015,actual num:1 ,record  num:1,name adress:4078d1c0  
+Log_printAllNeroMsg:		kind add=4078d480,Kind:2016,actual num:1 ,record  num:1,name adress:4078d1e0  
+Log_printAllNeroMsg:		kind add=4078d4e0,Kind:2017,actual num:70 ,record  num:70,name adress:4078d4c0  
+Log_printAllNeroMsg:		kind add=4078d660,Kind:2018,actual num:9 ,record  num:9,name adress:4078d640  
+Log_printAllNeroMsg:		kind add=4078d720,Kind:2019,actual num:2298 ,record  num:2298,name adress:4078d700  
+Log_printAllNeroMsg:		kind add=4078d800,Kind:2020,actual num:16 ,record  num:16,name adress:4078d7e0  
+Log_printAllNeroMsg:		kind add=4078d8a0,Kind:2021,actual num:17 ,record  num:17,name adress:4078d880  
+Log_printAllNeroMsg:		kind add=4078d940,Kind:2022,actual num:8 ,record  num:8,name adress:4078d920  
+Log_printAllNeroMsg:		kind add=4078d9e0,Kind:2023,actual num:17 ,record  num:17,name adress:4078d9c0  
+Log_printAllNeroMsg:		kind add=4078da60,Kind:2024,actual num:8 ,record  num:8,name adress:4078da40  
+Log_printAllNeroMsg:		kind add=4078dae0,Kind:2025,actual num:5 ,record  num:5,name adress:4078dac0  
+Log_printAllNeroMsg:		kind add=4078db60,Kind:2026,actual num:2 ,record  num:2,name adress:4078db40  
+Log_printAllNeroMsg:		kind add=4078dbe0,Kind:2027,actual num:58 ,record  num:58,name adress:4078dbc0  
+Log_printAllNeroMsg:		kind add=4078dc60,Kind:2028,actual num:42 ,record  num:42,name adress:4078dc40  
+Log_printAllNeroMsg:		kind add=4078dce0,Kind:2029,actual num:71 ,record  num:71,name adress:4078dcc0  
+Log_printAllNeroMsg:		kind add=4078dd60,Kind:2030,actual num:38 ,record  num:38,name adress:4078dd40  
+Log_printAllNeroMsg:		kind add=4078dde0,Kind:2031,actual num:596 ,record  num:596,name adress:4078d200  
+Log_printAllNeroMsg:		kind add=4078de00,Kind:2032,actual num:1782 ,record  num:1782,name adress:4078d220  
+Log_printAllNeroMsg:		nerogod:40721280,Kind:50,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40721280,Kind:51,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40721280,Kind:61,actual num:6836 ,record  num:6836
+Log_printAllNeroMsg:		nerogod:40721280,Kind:62,actual num:43 ,record  num:43
+Log_printAllNeroMsg:		nerogod:40721280,Kind:100,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40721280,Kind:101,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40721280,Kind:110,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40721280,Kind:63,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40721280,Kind:2000,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		kind add=4078b180,Kind:2001,actual num:10 ,record  num:10,name adress:40748dc0  
+Log_printAllNeroMsg:		kind add=4078b520,Kind:2002,actual num:10 ,record  num:10,name adress:4078aee0  
+Log_printAllNeroMsg:		kind add=4078b6c0,Kind:2003,actual num:11 ,record  num:11,name adress:4078af60  
+Log_printAllNeroMsg:		kind add=4078bac0,Kind:2004,actual num:1 ,record  num:1,name adress:4078b020  
+Log_printAllNeroMsg:		kind add=4078bb00,Kind:2005,actual num:1 ,record  num:1,name adress:4078b040  
+Log_printAllNeroMsg:		kind add=4078bb40,Kind:2006,actual num:1 ,record  num:1,name adress:40733a40  
+Log_printAllNeroMsg:		kind add=4078bb80,Kind:2007,actual num:1 ,record  num:1,name adress:407342c0  
+Log_printAllNeroMsg:		kind add=4078bbc0,Kind:2008,actual num:1 ,record  num:1,name adress:407264c0  
+Log_printAllNeroMsg:		kind add=4078bc00,Kind:2009,actual num:1 ,record  num:1,name adress:40727140  
+Log_printAllNeroMsg:		kind add=4078bc40,Kind:2010,actual num:1 ,record  num:1,name adress:4078b060  
+Log_printAllNeroMsg:		kind add=4078bc80,Kind:2011,actual num:21 ,record  num:21,name adress:4078b120  
+Log_printAllNeroMsg:		kind add=4078be20,Kind:2012,actual num:52 ,record  num:52,name adress:4078b0e0  
+Log_printAllNeroMsg:		kind add=4078d2e0,Kind:2013,actual num:1 ,record  num:1,name adress:4078d180  
+Log_printAllNeroMsg:		kind add=4078d380,Kind:2014,actual num:1 ,record  num:1,name adress:4078d1a0  
+Log_printAllNeroMsg:		kind add=4078d440,Kind:2015,actual num:1 ,record  num:1,name adress:4078d1c0  
+Log_printAllNeroMsg:		kind add=4078d480,Kind:2016,actual num:1 ,record  num:1,name adress:4078d1e0  
+Log_printAllNeroMsg:		kind add=4078d4e0,Kind:2017,actual num:70 ,record  num:70,name adress:4078d4c0  
+Log_printAllNeroMsg:		kind add=4078d660,Kind:2018,actual num:9 ,record  num:9,name adress:4078d640  
+Log_printAllNeroMsg:		kind add=4078d720,Kind:2019,actual num:2874 ,record  num:2874,name adress:4078d700  
+Log_printAllNeroMsg:		kind add=4078d800,Kind:2020,actual num:16 ,record  num:16,name adress:4078d7e0  
+Log_printAllNeroMsg:		kind add=4078d8a0,Kind:2021,actual num:17 ,record  num:17,name adress:4078d880  
+Log_printAllNeroMsg:		kind add=4078d940,Kind:2022,actual num:8 ,record  num:8,name adress:4078d920  
+Log_printAllNeroMsg:		kind add=4078d9e0,Kind:2023,actual num:17 ,record  num:17,name adress:4078d9c0  
+Log_printAllNeroMsg:		kind add=4078da60,Kind:2024,actual num:8 ,record  num:8,name adress:4078da40  
+Log_printAllNeroMsg:		kind add=4078dae0,Kind:2025,actual num:5 ,record  num:5,name adress:4078dac0  
+Log_printAllNeroMsg:		kind add=4078db60,Kind:2026,actual num:2 ,record  num:2,name adress:4078db40  
+Log_printAllNeroMsg:		kind add=4078dbe0,Kind:2027,actual num:67 ,record  num:67,name adress:4078dbc0  
+Log_printAllNeroMsg:		kind add=4078dc60,Kind:2028,actual num:48 ,record  num:48,name adress:4078dc40  
+Log_printAllNeroMsg:		kind add=4078dce0,Kind:2029,actual num:72 ,record  num:72,name adress:4078dcc0  
+Log_printAllNeroMsg:		kind add=4078dd60,Kind:2030,actual num:40 ,record  num:40,name adress:4078dd40  
+Log_printAllNeroMsg:		kind add=4078dde0,Kind:2031,actual num:734 ,record  num:734,name adress:4078d200  
+Log_printAllNeroMsg:		kind add=4078de00,Kind:2032,actual num:2265 ,record  num:2265,name adress:4078d220  

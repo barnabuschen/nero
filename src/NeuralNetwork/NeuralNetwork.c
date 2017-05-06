@@ -4286,7 +4286,6 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 					charLength=3;
 				}
 			}
-
 			switch(charLength)
 			{
 				case 1:
@@ -4312,20 +4311,7 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 		printf("NeuronNode_ForChCharacter-寻找字符2：%c%c%c(%x %x %x)\n",ttt22[0],ttt22[1],ttt22[2],ttt22[0],ttt22[1],ttt22[2]);
 		#endif
 		tmp=nero_IfHasZhWord( GodNero,wordP2, dataKind);
-
-		//if can not find it :add it
-		// if(tmp == NULL)
-		// {
-		// 	tmp2= nero_createNeroObj(NeuronNode_ForChCharacter);
-		// 	if(tmp2)
-		// 	{
-		// 		/*往概念填数据*/
-		// 		nero_addDataToZhNeroObj(tmp2,wordP2);
-		// 	}
-		// 	tmp=tmp2;
-		// }
 		break;
-
 	case NeuronNode_ForChWord:
 
 		/*这个时候Data就是一个由中文汉字组成的字符串*/
@@ -4395,16 +4381,9 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 
 			// 根据给定数据寻找是否网络中已经有该   字   概念了，这里只搜索一个字,找到则返回该概念的指针
 			str[i]=nero_IfHasZhWord( GodNero,&(words[i]),NeuronNode_ForChCharacter);
-
-
-
 			if(str[i]  == NULL)
 				allFindFlag=0;
-
 		}
-
-
-
 		if(allFindFlag == 1  &&  objNum > 0)
 		{
 			nero_IfHasObjFromMultiples3(str, objNum,NeuronNode_ForChWord,&tmp);
@@ -4417,15 +4396,12 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 				neroObjMsgWithStr_st.Obi = NULL;
 				sprintf(neroObjMsgWithStr_st.str,"在nero_IfHasNeuronObject(NeuronNode_ForChWord)  find %s",(char *)Data);
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
-
-
 			}
 			#endif
 
 		}
 		else
 		{
-
 			#ifdef Nero_DeBuging14_01_14_
 			neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 			neroObjMsgWithStr_st.fucId = 1;
@@ -4437,13 +4413,10 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 			printf("nero_IfHasNeuronObject  in NeuronNode_ForChWord  has  unknow  str  \n");
 			tmp =NULL;
 		}
-
-
 		break;
 	case NeuronNode_ForChSentence:
 		/*先不处理*/
 		break;
-
 	case NeuronNode_ForInputWord:
 	case NeuronNode_ForOutputWord:
 		// 1:假设数据只有一个字符
@@ -4470,37 +4443,25 @@ NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObje
 					}
 					else
 						tmp2=NULL;
-
-
-
 				}
-
-
-
 			}
 			tmp=tmp2;
 			break;
 	default:
-
 			tmp =nero_IfHasNeuronObjectKindUnknow( Data ,dataKind, GodNero);
 
 			break;
-
-
 	}
 	#ifdef Nero_DeBuging14_01_14_
 	if(tmp == NULL)
 	{
 		// printf("nero_IfHasNeuronObject===can  not fint  obj of kind=%d\n",dataKind);
-
 		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 		neroObjMsgWithStr_st.fucId = 1;
 		neroObjMsgWithStr_st.Obi = NULL;
 		sprintf(neroObjMsgWithStr_st.str,"在nero_IfHasNeuronObject : can not find obj for  kind:%d   tmp=%x",dataKind,tmp);
 		msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 	}
-
-
 	#endif
 	return tmp;
 }
@@ -5447,4 +5408,110 @@ NeuronObject  *  nero_searchObjInOutputlistByKind(NeuronObject  * n,nero_us32int
 
 
 	return fidnObj;
+}
+/*
+数据流Data中的数据表示一串metaDataKind kind obj的数据，
+这个函数就是要根据这些数据找出这些obj，存于objsStore，返回找到的obj个数
+metaDataKind = NeuronNode_ForChCharacter
+*/
+nero_s32int nero_getObjsByStr(nero_s32int metaDataKind,void * Data ,nero_s32int hang,NeuronObject * objsStore[],NeuronObject * godNero)
+{
+	nero_s32int findObjNum,lenOfData,charLength,strlenInData;
+
+	NeuronObject  * str[TFFDataLength];
+	// NerveFiber  *  curFiber;
+	ChUTF8  words[TFFDataLength];
+	// NeuronObject *tmp;
+	// 	NeuronObject *tmp1;
+	// NeuronObject *tmp2;
+	// 	NeuronObject *tmpobj,* baseobj;
+	nero_s32int i,allFindFlag,objNum;
+	// ChUTF8  * wordP2;
+	// ChUTF8_  *wordP;
+	nero_s8int  * p,* StrEnd;
+	// nero_us32int * dataPoint_;
+	// nero_us8int  * ttt22;
+	findObjNum =0;
+	if(Data == NULL  ||   objsStore == NULL   ||  godNero == NULL     ||  metaDataKind != NeuronNode_ForChCharacter )
+	{
+    	printf("nero_getObjsByStr :   parameter error\n");
+		return findObjNum;
+	}
+	lenOfData = strlen(Data);
+	if(lenOfData >   TFFDataLength)
+	{
+
+    	printf("nero_getObjsByStr :  lenOfData >=   TFFDataLength\n");
+		return findObjNum;
+
+	}
+		/*这个时候Data就是一个由中文汉字组成的字符串*/
+		/*首先找到这个字符串每个字的概念*/
+		// wordP=(ChUTF8_  *)Data;
+		strlenInData=strlen((char *)Data);
+		// strlenInData=strlenInData/3;
+		p= (nero_s8int  *) Data;
+		StrEnd=p+strlenInData-1;
+
+		#ifdef Nero_DeBuging14_01_14_
+		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+		neroObjMsgWithStr_st.fucId = 1;
+		neroObjMsgWithStr_st.Obi = NULL;
+		sprintf(neroObjMsgWithStr_st.str,"nero_getObjsByStr:start find(ForChWord) :%s   child num : %d \n",Data,nero_getBaseObjChildenNum(NeuronNode_ForChWord,GodNero));
+		msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
+		#endif
+		allFindFlag=1;
+		objNum=0;
+		for (i=0;  p <=  StrEnd ;i++)
+		{
+
+			if( (  (*p) & 0x80 ) ==0)
+			{
+	/*			printf("xx.\n");*/
+				charLength=1;
+			}
+			else
+			{	if(((*p) & 0x20 ) ==0)
+				{
+					charLength=2;
+
+				}
+				else
+				{
+					charLength=3;
+				}
+			}
+
+			switch(charLength)
+			{
+				case 1:
+					words[i].first=*p;words[i].second=0;words[i].third=0;	p++;objNum++;
+					break;
+				case 2:
+					words[i].first=*p;words[i].second=*(p+1);words[i].third=0;p++;p++;objNum++;
+					break;
+				case 3:
+					words[i].first=*p;words[i].second=*(p+1);words[i].third=*(p+2);p++;p++;p++;	objNum++;
+					break;
+				default:
+					printf(" \n\n\n\n\nerror  :nero_getObjsByStr charLength =%d\n\n\n",charLength);
+					return NULL;
+					break;
+			}
+
+			// 根据给定数据寻找是否网络中已经有该   字   概念了，这里只搜索一个字,找到则返回该概念的指针
+			objsStore[i]=nero_IfHasZhWord( godNero,&(words[i]),NeuronNode_ForChCharacter);
+			if(objsStore[i]  == NULL)
+			{
+				allFindFlag=0;
+
+			}
+			else
+			{
+				// objsStore[i]=str[i];
+				findObjNum++;
+			}
+		}
+
+		return findObjNum;
 }

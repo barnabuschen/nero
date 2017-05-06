@@ -97,6 +97,11 @@ void * thread_for_Sys_Pic(void *arg);
 
 输出接口
 */
+
+
+
+nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,struct DataFlowForecastInfo  * forecastInfo,NeuronObject * godNero);
+
 NeuronObject *  Process_ClassiFication(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * godNero);
 nero_us32int  Process_ModifyObjsForForecastList(struct DataFlowForecastInfo  * forecastInfo,nero_us32int  checkObjPoint,nero_us32int expectedKind,NeuronObject * godNero);
 nero_us32int Process_ModifyObjsForClassiFication(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * referenceObj,NeuronObject  *godNero);

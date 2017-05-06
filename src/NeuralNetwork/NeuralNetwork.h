@@ -203,10 +203,6 @@ extern NeroConf neroConf;
 #define NeuronNode_ForChCharacter   61    //当一个概念节点的类型为此时表示一个汉字，包括中文标点符号
 #define NeuronNode_ForChWord   62    //当一个概念节点的类型为此时表示一个中文词语
 #define NeuronNode_ForChSentence   63    //当一个概念节点的类型为此时表示一个中文句子
-
-
-
-
 /*
 操作的实现形式：
 		最基础的那些动作一定是链接一些实现特定功能的函数
@@ -414,41 +410,7 @@ void   testDataIn201608();
 NeuronObject * nero_IfHasNeuronObjectKindUnknow(void *Data ,nero_s32int basekind,NeuronObject *godNero);
 NeuronObject *  nero_createObjFromSingleObj(NeuronObject *childObi,nero_s32int upkind,NeuronObject * godNero);
 nero_s32int getFiberStrengthen(NeuronObject   * low,NeuronObject  * upper);
-/*遍历网络的代码：*/
-
-
-/*	nero_us8int tmp;*/
-/*	nero_s32int ObjectKind;*/
-/*	NeuronObject * BaseObi;*/
-/*	NeuronObject * tmpObi;*/
-/*	NerveFiber  *  curFiber;*/
-/*	NerveFiber  *  outputFiberOfbaseObj;*/
-/*	*/
-/*	curFiber=GodNero->outputListHead;*/
-/*	for (;curFiber !=NULL;curFiber=curFiber->next)*/
-/*	{*/
-/*		//首先遍历GodNero指向的基类*/
-/*		*/
-/*		BaseObi=curFiber->obj;*/
-/*		ObjectKind=nero_GetNeroKind(BaseObi);*/
-/*			*/
-/*		//现在遍历每个基类下面的数据：*/
-/*		*/
-/*		outputFiberOfbaseObj=BaseObi->outputListHead;*/
-/*		while(outputFiberOfbaseObj)*/
-/*		{*/
-/*			tmpObi=outputFiberOfbaseObj->obj;*/
-/*			ObjectKind=nero_GetNeroKind(tmpObi);	*/
-/*					*/
-/*			NeuronObject * tmp=tmpObi->inputListHead->obj;*/
-
-/*			outputFiberOfbaseObj=outputFiberOfbaseObj->next;*/
-/*		}*/
-/*		*/
-/*		*/
-/*		*/
-/*	}*/
-
+nero_s32int nero_getObjsByStr(nero_s32int metaDataKind,void * Data ,nero_s32int hang,NeuronObject * objsStore[],NeuronObject * godNero);
 
 
 

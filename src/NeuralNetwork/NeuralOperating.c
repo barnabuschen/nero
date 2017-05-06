@@ -67,6 +67,7 @@ nero_s32int Operating_NeroConfigurationModify(void * operateKind,void *c)
            		forecastInfo_st.controlMsg.baseORDerivative=tmpcrtl->baseORDerivative;
            		forecastInfo_st.controlMsg.Refreshed		=tmpcrtl->Refreshed;
            		forecastInfo_st.controlMsg.DurationTime		=tmpcrtl->DurationTime;
+           		forecastInfo_st.controlMsg.metaData		=tmpcrtl->metaData;
 
         		// printf("Forecast_Control_Set..............(%d %d %d %d).............\n",forecastInfo_st.controlMsg.expectedKind,forecastInfo_st.controlMsg.baseORDerivative,forecastInfo_st.controlMsg.Refreshed,forecastInfo_st.controlMsg.DurationTime);
 
@@ -861,11 +862,11 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 		// 为了加快进度，这里假设元数据就是NeuronNode_ForChCharacter
 		if(ifHasUndefinedKind ==1)
 		{
-			for (i=0,j=0;i<dataNum;i++)
+			// for (i=0,j=0;i<dataNum;i++)
 			{
-				if( dataKind[i]  ==  NeuronNode_ForUndefined)
+				// if( dataKind[i]  ==  NeuronNode_ForUndefined)
 				{
-
+					j=   Process_SearchObjForStr( DataFlow , dataKind ,  dataNum, &forecastInfo_st,GodNero);
 				}
 			}
 
@@ -873,6 +874,13 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 		}
         // Process_ObjForecast(&forescastInfo_st);
 		//forescastInfo_st是个全局变量，千万别过度使用它，宁可另设置个结构变量
+
+		#ifdef Nero_DeBuging06_05_17
+		for(i=0;i<  forecastInfo_st.objNum;i++)
+		{
+			printf("forecastInfo_st.objNum=%d,dataKind[%d]=%d ,s in :%x \n ",forecastInfo_st.objNum,i,nero_GetNeroKind(forecastInfo_st.objs[i]),&(forecastInfo_st.objs[i]));
+		}
+		#endif
 		Process_ClassiFication(&forecastInfo_st,GodNero);
 
 	}
@@ -1384,6 +1392,144 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 
 
 }
+//现在的情况是只知道数据：DataFlow[i]  不知道对应的dataKind[i],
+// 还有这些data，是由什么元数据组成的,such like :NeuronNode_ForChCharacter
+// 为了加快进度，这里假设元数据就是NeuronNode_ForChCharacter(在 forecastInfo->controlMsg.metaData 中指定)
+
+nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,struct DataFlowForecastInfo  * forecastInfo,NeuronObject * godNero)
+{
+	nero_us32int pointForObjsTmp=0;
+	NeuronObject *  tmpObiForTest;
+	nero_8int tmpstr_[3];
+	nero_s32int i,j,metaData,ii;
+	NeuronObject  * tmpboj_=NULL;//
+	static nero_s32int firstRunFlag=0;
+	static 	NeuronObject * objs [DataFlowPoolListNum][DataFlowPoolStrMaxLen];//
+	static nero_s32int objListNumCount  [DataFlowPoolListNum];//记录每个objs[i]中子数据的个数（或者说kind 61 obj的个数）
+	/*参数检查*/
+	if (forecastInfo == NULL  || godNero ==NULL || DataFlow ==NULL || dataKind ==NULL   ||  dataNum <  1)
+	{
+		printf("Process_SearchObjForStr: parm错误\n");
+		return 0;
+	}
+
+	metaData = forecastInfo->controlMsg.metaData;
+	for(i=0 ;i < DataFlowPoolListNum ;i++)
+	{
+
+	// 	(objs)=(void **)malloc(sizeof(void *)* DataFlowPoolListNum);//dataNum 极值 is DataFlowPoolListNum
+        for(j=0 ;j  < DataFlowPoolStrMaxLen ;j++)
+        {
+
+     	   objs[i][j] =NULL;
+                // printf("malloc\n");
+        }
+	}
+	j=0;
+    for(i=0 ;i < DataFlowPoolListNum ;i++)
+    {
+		objListNumCount[i]=0;
+    }
+	firstRunFlag=1;
+
+
+
+	if(metaData !=    NeuronNode_ForChCharacter)
+	{
+		printf("Process_SearchObjForStr: metaData !=    %d\n",metaData);
+			return 0;
+	}
+	// printf("222222\n");
+	for (i=0,j=0;i<dataNum;i++)
+	{
+		if( dataKind[i]  ==  NeuronNode_ForUndefined)
+		{
+			    // Process_SearchObjForStr( DataFlow , dataKind ,  dataNum, &forecastInfo_st,GodNero);
+			// printf("%s ",DataFlow[i]);
+			switch(metaData)
+			{
+				case NeuronNode_ForChCharacter:
+					objListNumCount[i]= nero_getObjsByStr(metaData,DataFlow[i] ,i , (objs[i]) ,  godNero);
+					#ifdef Nero_DeBuging03_05_17_
+					// printf("objListNumCount[i]=%d\n",objListNumCount[i]);
+					for (ii=0 ;ii<objListNumCount[i];ii++)
+					{
+						// tmpstr_[0]= (objs[i][ii]).inputListHead->obj->x;
+						tmpboj_= objs[i][ii]->inputListHead->obj;
+						if(tmpboj_ ==  NULL)
+						{
+							printf("Process_SearchObjForStr:tmpboj_ ==  NULL");
+							break;
+						}
+						if ( tmpboj_->y == 0  && tmpboj_->z == 0)
+						{
+							printf("%c",tmpboj_->x);
+						}
+						else if(tmpboj_->y != 0  && tmpboj_->z == 0)
+						{
+							printf("%c%c",tmpboj_->x,tmpboj_->y);
+
+						}
+						else
+						{
+							printf("%c%c%c",tmpboj_->x,tmpboj_->y,tmpboj_->z);
+						}
+					}
+					// printf("\n");
+					printf(" ");
+					#endif
+					break;
+				default:
+					break;
+			}
+			//现在尝试讲objs[i]数组的obj合并为一个上层对象
+			if(objListNumCount[i] >  2)
+			{
+				pointForObjsTmp =0;
+				CleanForecastList( forecastInfo);
+				while(pointForObjsTmp < objListNumCount[i])
+				{
+					Process_UpdataForecastList(forecastInfo,objs[i][pointForObjsTmp]);
+					pointForObjsTmp++;
+				}
+			    tmpObiForTest=Process_ObjsClassiFication(forecastInfo);
+			    if(tmpObiForTest  != NULL)
+			    {
+
+			    	// printf(" Process_SearchObjForStr : objListNumCount(%d)  %x,%d,store in %x ,i=%d \n ",objListNumCount[i],tmpObiForTest,nero_GetNeroKind(tmpObiForTest),&(forecastInfo->objs[i]),i);
+			    	forecastInfo->objs[forecastInfo->objNum] = tmpObiForTest;
+			    	forecastInfo->objNum = forecastInfo->objNum +1;
+			    }
+			    else
+			    {
+					forecastInfo->objNum = 0;
+					printf(" Process_SearchObjForStr : cannot find obj1111 \n ");
+					return 0;
+			    }
+			}
+
+
+		}
+		else
+		{
+			forecastInfo->objs[i] = nero_IfHasNeuronObject(DataFlow[i],dataKind[i], godNero);
+			if(forecastInfo->objs[i]  != NULL )
+				forecastInfo->objNum = forecastInfo->objNum +1;
+			else
+			{
+				forecastInfo->objNum = 0;
+				printf(" Process_SearchObjForStr : cannot find obj2222 \n ");
+				return 0;
+			}
+
+		}
+	}
+	// printf("\n");
+
+	return j;
+
+}
+
 //调用前一定要仔细确认struct DataFlowForecastInfo的数据是否需要修改
 NeuronObject *  Process_ClassiFication(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * godNero)
 {
@@ -2081,7 +2227,8 @@ nero_s32int Process_UpdataForecastList(struct DataFlowForecastInfo  * forecastIn
 
 
 }
-/*移除all节点  in  ForecastList*/
+/*移除all节点  in  ForecastList
+*/
 void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
 {
         struct NeroObjForecastList   * findObiPoint;
@@ -2093,7 +2240,6 @@ void CleanForecastList(struct DataFlowForecastInfo  * forecastInfo)
          #ifdef Debug_CleanForecastList
         printf("headOfUpperLayer-----------\n");
 		#endif
-
         forecastInfo->objPoint =0;
         forecastInfo->activateForecastObj= NULL;
         forecastInfo->waitForRecognise= NULL;
@@ -2381,12 +2527,12 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
         }
      }
     /*判断是不是要把newObj本身也加入预测列表：*/
-    if (forecastInfo->waitForRecognise  !=NULL)
-    {
+    // if (forecastInfo->waitForRecognise  !=NULL)
+    // {
 
 	    // AddNewObjToList( forecastInfo,Fiber_PointToSameLayer,forecastInfo->waitForRecognise);
 	    // forecastInfo->waitForRecognise=NULL;
-    }
+    // }
 
 }
 /*判断预测列表中是否已经有这个概念*/
@@ -3115,11 +3261,9 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 
 	if(forecastInfo == NULL  ||   ( forecastInfo->controlMsg.Refreshed == 0 && forecastInfo->controlMsg.DurationTime == 1 ) )
 	{
-
 		// Refreshed == 0 mean the msg of controlMsg is old ,and DurationTime == 1 means the msg is outdate
     	printf("Process_ObjsClassiFication :   parameter error,Refreshed(%d),(%d)\n",forecastInfo->controlMsg.Refreshed,forecastInfo->controlMsg.DurationTime );
 		return NULL;
-
 	}
 /* struct NeroObjForecastControl
 {
@@ -3137,8 +3281,6 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 			/////////////即使Refreshed为0但DurationTime为0时，该标记依旧有效/////////////////
 			//////////////但是一旦Refreshed为1，则必须在次函数中情kong list//////////////////////
 };*/
-
-
 	// 怎么进行排序呢？
 	// first:put all obj that meets the  condition  into a new list or array,
 	// second:sort list
@@ -3146,11 +3288,9 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 
 	// #define Process_TemporaryNUM   7500    //just used  in  fuc  Process_StrengthenLink
 	// static NeuronObject  * Process_tmpObi[Process_TemporaryNUM];
-
 	listPoint =  &(forecastInfo->headOfUpperLayer.p );
 	listheadPoint=listPoint;
 	listPoint = listPoint->next;
-
 	if(listPoint ==  listheadPoint)
 	{
 		printf("Process_ObjsClassiFication:list is empty....listPoint=%x,nums(%d)  \n",listPoint,forecastInfo->headOfUpperLayer.times);

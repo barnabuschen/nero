@@ -716,7 +716,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                              kindArray[1] = atoi(tff->data[2]);
                              kindArray[2] = atoi(tff->data[3]);
                              kindArray[3] = atoi(tff->data[4]);
-                             kindArray[4] = atoi(tff->data[4]);
+                             kindArray[4] = atoi(tff->data[5]);
 
 
 

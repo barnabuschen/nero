@@ -169,7 +169,8 @@ void ProInitialization()
 		// nero_8int * fileName4="/data/dataStringCreate.sh";
 		// CreatedWordsIntoFile(fileName4);
 
-		nero_8int * fileName3="/data/adult/adultTest.short.sh";
+		// nero_8int * fileName3="/data/adult/adultTest.short.sh";
+		nero_8int * fileName3="/data/adult/adultTest.short2.sh";
 		ReadTaskFromTxt( fileName3  );
 		printf("\n\n\nend of  fuc ReadTaskFromTxt2\n");
 

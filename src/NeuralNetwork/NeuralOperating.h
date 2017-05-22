@@ -43,6 +43,7 @@ struct NeroObjForecastControl
 	nero_s32int baseORDerivative;//是基类还是衍生对象得实例,
 								 // 1 ：基类，
 								 // 0 :衍生类
+								//  3  :  all kind obj is ok
 	nero_s32int Refreshed;		//该信息是否在本次DataFlowProcess运行前被刷新过
 								 // 1 ：has  Refreshed
 								 // 0 :old msg  --------set 0  at the end of fuc DataFlowProcess

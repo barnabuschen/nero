@@ -620,6 +620,7 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 		printf("coutOferror_Msg_   112:%d.\n",coutOferror_Msg_);
 		#endif
 
+		//这里有个问题，就是tmpObi ！= NULL 那么，是否需要加强相应的FiberStrengthen
 		if (tmpObi == NULL  )
 		{
 				// ifHasUnknowObj=1;  msg1:在DataFlowProcess中找不到该概念,kind=%d,i=%d  str=%s
@@ -878,7 +879,7 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 		#ifdef Nero_DeBuging06_05_17
 		for(i=0;i<  forecastInfo_st.objNum;i++)
 		{
-			printf("forecastInfo_st.objNum=%d,dataKind[%d]=%d ,s in :%x \n ",forecastInfo_st.objNum,i,nero_GetNeroKind(forecastInfo_st.objs[i]),&(forecastInfo_st.objs[i]));
+			printf("forecastInfo_st.objNum=%d,dataKind[%d]=%d, in :%x \n ",forecastInfo_st.objNum,i,nero_GetNeroKind(forecastInfo_st.objs[i]),&(forecastInfo_st.objs[i]));
 		}
 		#endif
 		Process_ClassiFication(&forecastInfo_st,GodNero);
@@ -1398,11 +1399,13 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 
 nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,struct DataFlowForecastInfo  * forecastInfo,NeuronObject * godNero)
 {
-	nero_us32int pointForObjsTmp=0;
+	nero_us32int pointForObjsTmp=0,tmpInt_;
 	NeuronObject *  tmpObiForTest;
 	nero_8int tmpstr_[3];
-	nero_s32int i,j,metaData,ii;
+	nero_s32int i,j,metaData,ii,findRes_;
+	nero_us32int searchKind;
 	NeuronObject  * tmpboj_=NULL;//
+	NeuronObject * findobj;
 	static nero_s32int firstRunFlag=0;
 	static 	NeuronObject * objs [DataFlowPoolListNum][DataFlowPoolStrMaxLen];//
 	static nero_s32int objListNumCount  [DataFlowPoolListNum];//记录每个objs[i]中子数据的个数（或者说kind 61 obj的个数）
@@ -1486,13 +1489,23 @@ nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],ne
 			if(objListNumCount[i] >  2)
 			{
 				pointForObjsTmp =0;
-				CleanForecastList( forecastInfo);
-				while(pointForObjsTmp < objListNumCount[i])
+				// CleanForecastList( forecastInfo);
+				tmpObiForTest =NULL;
+				findobj = NULL;
+				// while(pointForObjsTmp < objListNumCount[i])
+				// {
+				// 	Process_UpdataForecastList(forecastInfo,);
+				// 	pointForObjsTmp++;
+				// }
+
+				// what kind of the  upper obj of  objs[i]
+				searchKind =   ;
+				findRes_=nero_IfHasObjFromMultiples3(objs[i],objListNumCount[i],searchKind, &findobj);
+				if(findRes_  ==  NeroYES)
 				{
-					Process_UpdataForecastList(forecastInfo,objs[i][pointForObjsTmp]);
-					pointForObjsTmp++;
+
+					tmpObiForTest = findobj;
 				}
-			    tmpObiForTest=Process_ObjsClassiFication(forecastInfo);
 			    if(tmpObiForTest  != NULL)
 			    {
 
@@ -3344,7 +3357,7 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 		#endif
 
 		//
-		if(	flag ==  forecastInfo->controlMsg.baseORDerivative  )
+		if(	flag ==  forecastInfo->controlMsg.baseORDerivative   ||  3 ==  forecastInfo->controlMsg.baseORDerivative )
 		{
 			// if(forecastInfo->controlMsg.expectedKind  != NeuronNode_ForUndefined)
 			{
@@ -3370,7 +3383,14 @@ NeuronObject *  Process_ObjsClassiFication(struct DataFlowForecastInfo  * foreca
 
 		listPoint= listPoint->next;
 	}
-	#ifdef Nero_DeBuging10_01_14_
+
+
+	if( Process_tmpObiUsed  >=  Process_TemporaryNUM)
+	{
+   		 printf(" Process_ObjsClassiFication  : Process_tmpObiUsed  use out ................  \n");
+
+	}
+	#ifdef Nero_DeBuging10_01_14
 
 		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 		neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg

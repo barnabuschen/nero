@@ -638,11 +638,13 @@ native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, 
 
 
 
-`
+`		
 
+		你不能直接使用 tmpObiForTest=Process_ObjsClassiFication(forecastInfo);，因为他是给出基类的obj
 
-
-
+1 	2   3      4   5  6             7                  8       9     10   11 12  13  14
+25 Private 226802 11th 7 Never-married Machine-op-inspct Own-child Black Male 0   0  40   United-States
+17 18       19    20   21  22             23			24   25   26  27  28  29   30
 
 
 

@@ -1,10 +1,11 @@
 提交更新：
-git commit -a -m "20170522_01：adult 分类，自动判断kind"
+git commit -a -m "20170605_01：adult 分类，自动判断kind,bug寻找"
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt
 git commit   -m "give a new file"
 git push origin master
+git push origin ver0.1803:ver0.1803
 显示所有分支
 	 git branch -v
 创建一个新的分支
@@ -47,6 +48,7 @@ push本地分支代码到远端服务器,如果没有就创建该分支
 	git pull origin master:ver0.1701
 	git pull origin master:libuv-io
 
+
 Git怎么查看某次提交某个文件的修改
 
  axel -n 100
@@ -66,29 +68,25 @@ git config --global user.name "piaoyaosuifengji"
 
 git clone git@github.com:piaoyaosuifengji/neroDateShow.git
 https://github.com/piaoyaosuifengji/nginxPro.git
-https://github.com/piaoyaosuifengji/mytest.git
-
-
 git clone https://github.com/piaoyaosuifengji/nginx-1.0.14_comment.git
-git remote add nginx-1.0.14_comment https://github.com/piaoyaosuifengji/nginx-1.0.14_comment.git
-git fetch nginx-1.0.14_comment
 git clone https://github.com/piaoyaosuifengji/neroSources.git
 https://github.com/piaoyaosuifengji/mytest.git
 https://github.com/piaoyaosuifengji/neroSources.git
 https://github.com/limetext/lime.git
 git clone git@github.com:piaoyaosuifengji/nero.git
-git clone git@github.com:neovim/neovim.git
-git clone git@github.com:influxdb/influxdb.git
-git clone git@github.com:limetext/lime.git
 
-https://github.com/neovim/neovim.git
-https://github.com/influxdb/influxdb.git
+
 #添加文件脚本：
 git add *
 git commit  -a -m "begin:"
 
 git push origin master
 
+{ "keys": ["f2"], "command": "next_bookmark" },
+{ "keys": ["shift+f2"], "command": "prev_bookmark" },
+{ "keys": ["ctrl+f2"], "command": "toggle_bookmark" },
+{ "keys": ["ctrl+shift+f2"], "command": "clear_bookmarks" },
+{ "keys": ["alt+f2"], "command": "select_all_bookmarks" },
 
 
 
@@ -116,8 +114,7 @@ adb install path/to/my-app.apk
 /home/jty/bin/perf record
 /home/jty/bin/perf report
 
-
-/home/jty/bin/perf top  -g  
+/home/jty/bin/perf top  -g
 
 
 perf record 记录单个函数级别的统计信息，并使用 perf report 来显示统计结果，以此可以找到热点：s
@@ -138,16 +135,3 @@ perf report -g --tui
 perf report -v -n --showcpuutilization -g --stdio
 
 [ perf record: Captured and wrote 398.275 MB perf.data (5460767 samples) ]
-
-
-
-
-
-
-
-
-
-
-
-
-

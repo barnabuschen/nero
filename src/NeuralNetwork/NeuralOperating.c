@@ -855,12 +855,14 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 	/***************************************************************/
 	// CreateNewBaseObjKind=1将影响新类的创建，影响类型判断,所以这里需要要这个条件
 	// #define Nero_TestCount     30
+	// printf("before Process_SearchObjForStr  \n");
 	if (  /*Nero_TestCount >= coutOferror_Msg_  && */ conf->CreateNewBaseObjKind != 1   &&  conf->addLevelObjAlways != 1  && forecastInfo_st.controlMsg.expectedKind >=  NeuronNode_ForUndefined)
 	{
 		//首先将所有i UndefinedKind的DataFlow找到对应的obj
 		//现在的情况是只知道数据：DataFlow[i]  不知道对应的dataKind[i],
 		// 还有这些data，是由什么元数据组成的,such like :NeuronNode_ForChCharacter
 		// 为了加快进度，这里假设元数据就是NeuronNode_ForChCharacter
+		printf("before Process_SearchObjForStr ifHasUndefinedKind=%d \n",ifHasUndefinedKind);
 		if(ifHasUndefinedKind ==1)
 		{
 			// for (i=0,j=0;i<dataNum;i++)
@@ -1442,18 +1444,18 @@ nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],ne
 		printf("Process_SearchObjForStr: metaData !=    %d\n",metaData);
 			return 0;
 	}
-	// printf("222222\n");
+	printf("\ndataNum == %d\n",dataNum);
 	for (i=0,j=0;i<dataNum;i++)
 	{
 		if( dataKind[i]  ==  NeuronNode_ForUndefined)
 		{
 			    // Process_SearchObjForStr( DataFlow , dataKind ,  dataNum, &forecastInfo_st,GodNero);
-			// printf("%s ",DataFlow[i]);
+			// printf("i=%d,%s \n",i,DataFlow[i]);
 			switch(metaData)
 			{
 				case NeuronNode_ForChCharacter:
 					objListNumCount[i]= nero_getObjsByStr(metaData,DataFlow[i] ,i , (objs[i]) ,  godNero);
-					#ifdef Nero_DeBuging03_05_17_
+					#ifdef Nero_DeBuging03_05_17
 					// printf("objListNumCount[i]=%d\n",objListNumCount[i]);
 					for (ii=0 ;ii<objListNumCount[i];ii++)
 					{
@@ -1499,7 +1501,7 @@ nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],ne
 				// }
 
 				// what kind of the  upper obj of  objs[i]
-				searchKind =   ;
+				//searchKind =   ;
 				findRes_=nero_IfHasObjFromMultiples3(objs[i],objListNumCount[i],searchKind, &findobj);
 				if(findRes_  ==  NeroYES)
 				{
@@ -1509,14 +1511,14 @@ nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],ne
 			    if(tmpObiForTest  != NULL)
 			    {
 
-			    	// printf(" Process_SearchObjForStr : objListNumCount(%d)  %x,%d,store in %x ,i=%d \n ",objListNumCount[i],tmpObiForTest,nero_GetNeroKind(tmpObiForTest),&(forecastInfo->objs[i]),i);
+			    	printf(" Process_SearchObjForStr : objListNumCount(%d)  %x,%d,store in %x ,i=%d \n ",objListNumCount[i],tmpObiForTest,nero_GetNeroKind(tmpObiForTest),&(forecastInfo->objs[i]),i);
 			    	forecastInfo->objs[forecastInfo->objNum] = tmpObiForTest;
 			    	forecastInfo->objNum = forecastInfo->objNum +1;
 			    }
 			    else
 			    {
 					forecastInfo->objNum = 0;
-					printf(" Process_SearchObjForStr : cannot find obj1111 \n ");
+					printf(" Process_SearchObjForStr : cannot find obj,i=%d ,objListNumCount[i]=%d\n ",i,objListNumCount[i]);
 					return 0;
 			    }
 			}

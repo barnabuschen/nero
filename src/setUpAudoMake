@@ -3,6 +3,9 @@
 
 
 touch Makefile.am
+
+sudo apt install autoconf aclocal  autoconf
+sudo apt-get install libglib2.0-dev
 运行
 autoscan
 aclocal

@@ -124,13 +124,10 @@
 203 rich
 203 poor
 203 fuck
-219 setosa 51 35 14 2
-#219 setosa 21 25 24 2
-#要想创建setosa 51 35 14 2，必须先定义大于10得整数才行    14   55  406a7a40
-#nero_IfHasNeuronObjectKindUnknow1:start serch basekind=2012,[21]
-219 versicolor 61 29 47 14
-219 virginica 65 30 55 18
-219 iris 65 30 55 18
+203 sl
+203 sw
+203 pl
+203 pw
 #204 2014 2015
 #510 2014 1 1 1
 #1age
@@ -202,4 +199,17 @@
 #生成新类时，如果所有子类都已经能够确认的情况下，可以直接输入类别名生成新的高级衍生类
 230 rich age workclass fnlwgt education education-num marital-status occupation relationship race sex capital-gain capital-loss hours-per-week native-country
 230 poor age workclass fnlwgt education education-num marital-status occupation relationship race sex capital-gain capital-loss hours-per-week native-country
-
+220 sl 5 1
+220 sl 4 9
+220 sw 3 5
+220 sw 3 0
+220 pl 1 4
+220 pl 1 5
+220 pw 1
+220 pw 2
+220 pw 1 5
+#219 setosa 51 35 14 2
+#219 setosa 21 25 24 2
+#219 versicolor 61 29 47 14
+#219 virginica 65 30 55 18
+#219 iris 65 30 55 18

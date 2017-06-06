@@ -652,14 +652,27 @@ native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, 
 						你的代码需要重新设计算法来找到你的各个子类obj
 
 
+ 你需要注意的是：事实上，这个函数返回的对象并不一定是你所想要的obj，可能只是一个拥有相同子对象的其他kind  obj
 
 
 
+创建时间：2017年06月07日 星期三 00时38分55秒
 
+						是时候重新对iris数据集进行分类了，重点是提高准确率和对每一个子obj进行精确定义
 
+						7. Attribute Information:
+						   1. sepal length in cm
+						   2. sepal width in cm
+						   3. petal length in cm
+						   4. petal width in cm
+						Summary Statistics:
+							               Min  Max   Mean    SD   Class Correlation
+						   sepal length: 4.3  7.9   5.84  0.83    0.7826
+						    sepal width: 2.0  4.4   3.05  0.43   -0.4194
+						   petal length: 1.0  6.9   3.76  1.76    0.9490  (high!)
+						    petal width: 0.1  2.5   1.20  0.76    0.9565  (high!)
 
-
-
+							所以3个类别都有四个子类：sl   sw   pl  pw
 
 
 

@@ -2127,10 +2127,7 @@ nero_us32int nextAvailableNeroInPool;*/
 				memcpy(neroObjMsgWithStr_st.str,&xxxxxx,sizeof(nero_s32int));
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 						}
-
-
 	     	#endif
-
 	 		#ifdef Nero_DeBuging10_01_14
 				// print all  nero used  msg
 				neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;//Log_printAllNeroMsg
@@ -2138,12 +2135,6 @@ nero_us32int nextAvailableNeroInPool;*/
 				neroObjMsg_st.Obi = GodNero;
 				msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);
 	     	#endif
-
-
-
-
-
-
 
 			flag=0;
 		}

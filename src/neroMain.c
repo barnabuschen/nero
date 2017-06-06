@@ -161,8 +161,8 @@ void ProInitialization()
 		sleep(1);
 		// nero_8int * fileName2="/data/adult/adultLearn2.sh";
 		// nero_8int * fileName2="/data/adult/adultLearn.sh"; 
-		nero_8int * fileName2="/data/adult/adultLearn.short.sh";
-		ReadTaskFromTxt( fileName2  );
+		// nero_8int * fileName2="/data/adult/adultLearn.short.sh";
+		// ReadTaskFromTxt( fileName2  );
 
 		printf("\n\n\nend of  fuc ReadTaskFromTxt1\n");
 
@@ -170,8 +170,8 @@ void ProInitialization()
 		// CreatedWordsIntoFile(fileName4);
 
 		// nero_8int * fileName3="/data/adult/adultTest.sh";
-		nero_8int * fileName3="/data/adult/adultTest.short2.sh";
-		ReadTaskFromTxt( fileName3  );
+		// nero_8int * fileName3="/data/adult/adultTest.short2.sh";
+		// ReadTaskFromTxt( fileName3  );
 		printf("\n\n\nend of  fuc ReadTaskFromTxt2\n");
 
 
@@ -234,8 +234,8 @@ void ProInitialization()
 
 		i=2012;
 		{
- 		#ifdef Nero_DeBuging10_01_14_
-				for(i=62;i<= 2035   ;i++)
+ 		#ifdef Nero_DeBuging10_01_14
+				for(i=2001;i<= 2035   ;i++)
 				{
 			// print  all  of  the  kind  obj
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
@@ -252,11 +252,11 @@ void ProInitialization()
 		  timer_runningTime = 1000000 * (end_runningTime.tv_sec-start_runningTime.tv_sec)+ end_runningTime.tv_usec-start_runningTime.tv_usec;
 		  printf("\n\nrunning time  = %ld s\n\n",timer_runningTime / 1000000);
 
-		// for(;;)
+		for(;;)
 		{		/*打印某个类别下面的所有的衍生类*/
 				// printf("...\n");
 
-				#ifdef Nero_DeBuging10_01_14
+				#ifdef Nero_DeBuging10_01_14_
 				// print  all  of  the  kind  obj
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId =2;//Log_printAllKindOf

@@ -1,3 +1,4 @@
+510 3 1 1 0 61
 312 25 Private 226802 11th 7 Never-married Machine-op-inspct Own-child Black Male 0 0 40 United-States
 312 38 Private 89814 HS-grad 9 Married-civ-spouse Farming-fishing Husband White Male 0 0 50 United-States
 312 28 Local-gov 336951 Assoc-acdm 12 Married-civ-spouse Protective-serv Husband White Male 0 0 40 United-States
@@ -16279,3 +16280,4 @@
 312 38 Private 374983 Bachelors 13 Married-civ-spouse Prof-specialty Husband White Male 0 0 50 United-States
 312 44 Private 83891 Bachelors 13 Divorced Adm-clerical Own-child Asian-Pac-Islander Male 5455 0 40 United-States
 312 35 Self-emp-inc 182148 Bachelors 13 Married-civ-spouse Exec-managerial Husband White Male 0 0 60 United-States
+510 3 1 0 1 61

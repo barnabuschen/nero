@@ -344,8 +344,9 @@ nero_s32int Log_printFormattedMsg(void * obj_,void *str_)
 nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 {
 	nero_8int  *str=strTmp;
-	nero_s32int ObjectKind,ObjectKind2,ii,iii;
+	nero_s32int ObjectKind,ObjectKind2,ii,iii,ObjectKind3;
 	nero_8int  strLinshi[500];
+	nero_8int  strLinshi2[500];
 	NeuronObject * obj;
 	NeuronObject * tmp;
 	NeuronObject * BaseObi;
@@ -463,9 +464,36 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 			{
 				tmp=curFiber->obj;
 
-
-				sprintf(strLinshi,"          kind:%d,getFiberPointToObjNum=%d\n",nero_GetNeroKind(tmp),getFiberPointToObjNum(curFiber));
+				if(nero_isBaseObj( tmp )  != 1)
+					sprintf(strLinshi,"          kind:%d,getFiberPointToObjNum=%d",nero_GetNeroKind(tmp),getFiberPointToObjNum(curFiber));
+				else
+					sprintf(strLinshi,"          kind:%d,getFiberPointToObjNum=%d\n",nero_GetNeroKind(tmp),getFiberPointToObjNum(curFiber));
 				addLineToFile(AllKindOfFile,strLinshi);
+
+
+				if(nero_isBaseObj( tmp )  != 1)
+				{
+					ObjectKind3=nero_GetNeroKind(tmp);
+					switch(ObjectKind3)
+					{
+						case NeuronNode_ForChCharacter:
+							IO_getZhInNero(strLinshi2,tmp);
+							break;
+						case NeuronNode_ForChWord:
+							IO_getWordsInNero(strLinshi2,tmp);
+							break;
+						default:
+					                strLinshi2[0]=0;
+							break;
+					}
+					if(ObjectKind3 ==  NeuronNode_ForChCharacter  || ObjectKind3 ==  NeuronNode_ForChWord )
+					{
+						sprintf(strLinshi,"-------[%s]\n", strLinshi2);
+						addLineToFile(AllKindOfFile,strLinshi);
+					}
+				}
+
+
 				curFiber=curFiber->next;
 			}
 			curFiber=BaseObi->outputListHead;

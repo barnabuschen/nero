@@ -40,6 +40,8 @@
 #define  MsgId_Nero_DataFlowProcess    1002
 #define  MsgId_Nero_ConfModify    1003
 #define  MsgId_Nero_AddNewBaseKindByname   1004   /*生成新类时，如果所有子类都已经能够确认的情况下，可以直接输入类别名生成新的高级衍生类 */
+#define  MsgId_Nero_SetDataFlowResult    1005
+
 /*****************************************************/
 
 

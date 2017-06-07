@@ -87,6 +87,7 @@ void * thread_for_Operating_Pic(void *arg)
 	struct ZhCharArg * arg1;
 	struct DataFlowProcessArg * arg2;
 	struct  IODataMsg_ * DataIO_st;
+	struct  DataFlowDataMsg_twoNum  * dataFlowDataMsg_twoNum_;
 	key_t ipckey;
 	int Operating_mq_id;
 
@@ -141,6 +142,11 @@ void * thread_for_Operating_Pic(void *arg)
 
 		switch(MsgId)
 		{
+
+		case MsgId_Nero_SetDataFlowResult:
+			dataFlowDataMsg_twoNum_ =  (struct DataFlowDataMsg_twoNum *)OperatingMsg.text;
+			printf("MsgId_Nero_SetDataFlowResult1  kind=%d,base=%d\n",dataFlowDataMsg_twoNum_->kind,dataFlowDataMsg_twoNum_->baseORDerivative);
+			break;
 		case MsgId_Nero_AddNewBaseKindByname:
 			// 生成新类时，如果所有子类都已经能够确认的情况下，可以直接输入类别名生成新的高级衍生类
 			arg2=(struct DataFlowProcessArg *)OperatingMsg.text;
@@ -878,7 +884,7 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
         // Process_ObjForecast(&forescastInfo_st);
 		//forescastInfo_st是个全局变量，千万别过度使用它，宁可另设置个结构变量
 
-		#ifdef Nero_DeBuging06_05_17_
+		#ifdef Nero_DeBuging06_05_17
 		for(i=0;i<  forecastInfo_st.objNum;i++)
 		{
 			printf("forecastInfo_st.objNum=%d,dataKind[%d]=%d, in :%x \n ",forecastInfo_st.objNum,i,nero_GetNeroKind(forecastInfo_st.objs[i]),(forecastInfo_st.objs[i]));
@@ -1497,6 +1503,7 @@ nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],ne
 				// 在这里你可以暂时抛弃子对象数为1的情况，因为那种情况下的上层类一般不好找
 				tmpObiForTest = NULL;
 				//你需要注意的是：事实上，这个函数返回的对象并不一定是你所想要的obj，可能只是一个拥有相同子对象的其他kind  obj
+				//解决方案是加入一个期望obj的列表，由外界给出,根据列表对此出的子obj进行有条件的选择
 				findobj=nero_IfHasObjFromMultiples4(objs[i],objListNumCount[i]);
 				if(findobj  !=  NULL)
 				{
@@ -1653,23 +1660,23 @@ NeuronObject *  Process_ClassiFication(struct DataFlowForecastInfo  * forecastIn
 	neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 	neroObjMsgWithStr_st.fucId = 3;//Log_printFormattedMsg
 	neroObjMsgWithStr_st.Obi = NULL;
-	// sprintf(neroObjMsgWithStr_st.str,"matchObj1:%x,kind =%d,isbase=%d \n",tmpObiForTest,nero_GetNeroKind(tmpObiForTest) , nero_isBaseObj(tmpObiForTest));
-	if(nero_GetNeroKind(tmpObiForTest) ==  2031)
-	{	
-		rich++;
-		sprintf(neroObjMsgWithStr_st.str,"rich[%d]\n",rich );
+	sprintf(neroObjMsgWithStr_st.str,"matchObj1:%x,kind =%d,isbase=%d \n",tmpObiForTest,nero_GetNeroKind(tmpObiForTest) , nero_isBaseObj(tmpObiForTest));
+	// if(nero_GetNeroKind(tmpObiForTest) ==  2031)
+	// {	
+	// 	rich++;
+	// 	sprintf(neroObjMsgWithStr_st.str,"rich[%d]\n",rich );
 		
-	}
-	else if( nero_GetNeroKind(tmpObiForTest) ==  2032 )
-	{
-		poor++;
-		sprintf(neroObjMsgWithStr_st.str,"pool[%d]\n",poor );
-	}
-	else
-	{
-			error++;	
-		sprintf(neroObjMsgWithStr_st.str,"error[%d]\n",error);
-	}
+	// }
+	// else if( nero_GetNeroKind(tmpObiForTest) ==  2032 )
+	// {
+	// 	poor++;
+	// 	sprintf(neroObjMsgWithStr_st.str,"pool[%d]\n",poor );
+	// }
+	// else
+	// {
+	// 		error++;	
+	// 	sprintf(neroObjMsgWithStr_st.str,"error[%d]\n",error);
+	// }
 	msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 	#endif
 

@@ -18,7 +18,11 @@ nero_s32int dataNum;
 NeroConf * conf;
 
 };
-
+struct  DataFlowDataMsg_twoNum
+{
+nero_us32int  kind;
+nero_us32int  baseORDerivative;
+} ;
 
 struct NeroObjForecastList
 {
@@ -79,7 +83,13 @@ struct DataFlowForecastInfo
 	nero_s32int DeBugMsg;
 	nero_s32int DeBugMsgTwo;
 };
-
+#define DataFlow_MaxResultNUm    100
+struct DataFlowResultRecordInfo
+{
+	nero_us32int expectKinds [DataFlow_MaxResultNUm];//期望对象的kind,该值往往需在sys内部根据string  get
+	nero_us32int BaseOrObj   [DataFlow_MaxResultNUm];//期望对象is  base  or obj? == 1  means  is baseObj
+	nero_us32int actualNums;
+};
 // extern nero_8int DataFlowPool[DataFlowPoolListNum][DataFlowPoolStrMaxLen];
 
 // extern nero_s32int DataFlowPoolDataKind[DataFlowPoolListNum];

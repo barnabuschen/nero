@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "20170606_01：adult 分类，算法思路调整"
+git commit -a -m "20170606_02：adult 分类，算法思路调整"
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt

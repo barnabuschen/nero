@@ -69,7 +69,10 @@
 
 
 
-#define  Task_Order_ResetConf     500  /*将conf恢复为默认配置*/
+#define  Task_Order_ResetConf     500   /*将conf恢复为默认配置*/
+#define  Task_Order_GaveDataFlowResult    501
+                                        /*  set DataFlowResultRecordInfo  给出后面的数据流流入sys后希望sys输出的obj kind*/
+                                        //一次给出一个kind  ，给出kind的名字，和base  or  derivative的值
 
 #define  Task_Order_ForecastCtrlMsg     510  /*set up  struct NeroObjForecastControl  */
 
@@ -136,6 +139,8 @@ nero_us32int OrderDataTypeList[OrderListLen][OrderListWigth]={
 {Task_Order_DataSteamInput2,OrderListWigthMax,TFFDataType_String,TFFDataType_unknow},
 /*创建"new    obj"             参数个数   第一个数据           */
 {Task_Order_DataSteamInput3,OrderListWigthMax,TFFDataType_unknow,TFFDataType_unknow},
+/*创建"new    obj"             参数个数   第一个数据           */
+{Task_Order_GaveDataFlowResult,2,TFFDataType_String,TFFDataType_String},
 {0},
 {0},
 };
@@ -563,6 +568,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         	printf("obtainOrderFromTFF: wrong data  tff->order=%d\n",tff->order);
                 return ;
         }
+        struct  DataFlowDataMsg_twoNum   dataFlowDataMsg_twoNum_ ;
  	      nero_s32int *dataKind;
         nero_us8int *linc;
         nero_s32int dataNum,k,countOfWord,m,lenOfpar,tmpCount,searchForUnknowKind,FailTosearchForUnknowKind,tmpKindRecond;
@@ -689,20 +695,32 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                         //                                  DataFlow[k][2]=   tff->data[k+3]    =0   (if  the data is a num)
 
 						memcpy(linc,&(tff->data[k+1]),3);
-
-
-
                         // printf("code is =%c ,%d lenOfpar=%d\n",linc,linc[0],lenOfpar);
 						dataKind[k]=NeuronNode_ForChCharacter;
-			break;
+			             break;
 		case TFFDataType_String:
 /*				printf("obtainOrderFromTFF: CreateObjShu order \n");*/
                 switch( tff->order)
                 {
+                    case  Task_Order_GaveDataFlowResult:
+                            if( k ==  0 )
+                            {
+                                // lenOfpar=strlen( tff->data[k+1]);
+                                tmpKindRecond=nero_getObjKindByName((void *)( tff->data[k+1]),GodNero);
+                                dataFlowDataMsg_twoNum_.kind =  tmpKindRecond;
+                                 // printf("Task_Order_GaveDataFlowResult  kind=%d....\n",dataFlowDataMsg_twoNum_.kind);
+                            }
+                            else if( k ==  1 )
+                            {
+
+                                dataFlowDataMsg_twoNum_.baseORDerivative =  atoi(tff->data[k+1]);
+                                if(dataFlowDataMsg_twoNum_.baseORDerivative > 1  ||  dataFlowDataMsg_twoNum_.baseORDerivative <0)
+                                {
+                                    printf("Task_Order_GaveDataFlowResult  wrong....\n");
+                                }
+                            }
+                          break;
                     case  Task_Order_ForecastCtrlMsg:
-
-
-
                             //你在shell中把数据分开写，但是这里把他们进行合并
                             // if(k == 0 &&  countOfWord == 2)
                             {
@@ -717,23 +735,16 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                              kindArray[2] = atoi(tff->data[3]);
                              kindArray[3] = atoi(tff->data[4]);
                              kindArray[4] = atoi(tff->data[5]);
-
-
-
                             forecastCtrl_st.expectedKind= kindArray[0];
                             forecastCtrl_st.baseORDerivative= kindArray[1];
                             forecastCtrl_st.Refreshed= kindArray[2];
                             forecastCtrl_st.DurationTime= kindArray[3];
                             forecastCtrl_st.metaData= kindArray[4];
-
                             // printf("Task_Order_CreateLayeringKindObj : kind1=%d, kind2=%d\n",kindArray[0],kindArray[1]);
-
                             // memcpy(linc,tff->data[k+1],(lenOfpar) +1);
                             // dataKind[k]=NeuronNode_ForLayering;
                             }
-
                             break;
-
                     case  Task_Order_CreateLayeringKindObj:
                             //你在shell中把数据分开写，但是这里把他们进行合并
                             if(k == 0 &&  countOfWord == 2)
@@ -913,11 +924,7 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
                     }
                     // else
-
-
-
                     // printf("obtainOrderFromTFF: nero_getObjKindByName=%d \n",dataKind[k]);
-
                     #ifdef Nero_DeBuging14_01_14_
                         // printf  msg  by  obj
                         neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
@@ -926,7 +933,6 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                         sprintf(neroObjMsgWithStr_st.str,"obtainOrderFromTFF22: find dataKind=%d,tff->order=%d,baseobj=%x",dataKind[k],tff->order,tmpobj);
                     msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
                     #endif
-
 
                     if(dataKind[k]   <  NeuronNode_ForComplexDerivative)
                         FailTosearchForUnknowKind=1;
@@ -949,14 +955,11 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
 
 	    }
    }
-
     if(FailTosearchForUnknowKind ==  1)
     {
         printf("obtainOrderFromTFF:内存泄漏order=%d,dataKind[k]=%d,k=%d,countOfWord=%d \n",tff->order,dataKind[k],k,countOfWord);
         return;
     }
-
-
     // pthread_mutex_unlock(&mutexForDataFlowProcessInput);
     // printf("obtainOrderFromTFF  unlock\n");
     /*现在开始准备发送消息了*/
@@ -983,6 +986,10 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
                 atomForDataFlowProcessInput  =  1;
     	        DataIO_st.operateKind =Conf_Modify_CreateNewBaseObjKind;
                 flag=1;
+                break;
+        case    Task_Order_GaveDataFlowResult:
+
+                flag=0;
                 break;
     	case    Task_Order_ResetConf:
     	        DataIO_st.operateKind =Conf_Modify_ReSet;
@@ -1087,6 +1094,11 @@ void obtainOrderFromTFF(TFF * tff)/*从TFF中分析得到命令后在函数里�
         coutOfRun++;
         switch( tff->order)
         {
+             case Task_Order_GaveDataFlowResult:
+                memcpy(&(mymsg.text),&(dataFlowDataMsg_twoNum_),sizeof(struct  DataFlowDataMsg_twoNum));
+                mymsg.type =    MsgId_Nero_SetDataFlowResult      ;
+                msgsnd( Operating_mq_id, &mymsg, sizeof(mymsg), 0);
+                break;           
              case Task_Order_CreateKindOfMultipleKind:
                 memcpy(&(mymsg.text),&arg2,sizeof(struct DataFlowProcessArg));
                 mymsg.type =MsgId_Nero_AddNewBaseKindByname ;

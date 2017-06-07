@@ -208,8 +208,6 @@
 220 pw 1
 220 pw 2
 220 pw 1 5
-#219 setosa 51 35 14 2
-#219 setosa 21 25 24 2
-#219 versicolor 61 29 47 14
-#219 virginica 65 30 55 18
-#219 iris 65 30 55 18
+230 setosa sl sw pl pw
+230 versicolor sl sw pl pw
+230 virginica sl sw pl pw

@@ -19,6 +19,7 @@ static struct NeroObjForecastList   Process_forecastListNode[Process_TemporaryNU
  nero_8int   Process_tmpStr[500];
 
 struct DataFlowForecastInfo  forecastInfo_st;
+static struct DataFlowResultRecordInfo  dataFlowRstRcdInfo;
 volatile sig_atomic_t atomForDataFlowProcessInput=0;
 /*************Operating函数族/**************/
 BEGIN_ONE_ARG_MESSAGE_MAP(Operating_msg_OneArg_map)
@@ -145,7 +146,20 @@ void * thread_for_Operating_Pic(void *arg)
 
 		case MsgId_Nero_SetDataFlowResult:
 			dataFlowDataMsg_twoNum_ =  (struct DataFlowDataMsg_twoNum *)OperatingMsg.text;
-			printf("MsgId_Nero_SetDataFlowResult1  kind=%d,base=%d\n",dataFlowDataMsg_twoNum_->kind,dataFlowDataMsg_twoNum_->baseORDerivative);
+
+			if(dataFlowRstRcdInfo.actualNums   <   DataFlow_MaxResultNUm)
+			{
+			// 	struct DataFlowResultRecordInfo
+			// {
+			// 	nero_us32int expectKinds [DataFlow_MaxResultNUm];//期望对象的kind,该值往往需在sys内部根据string  get
+			// 	nero_us32int BaseOrObj   [DataFlow_MaxResultNUm];//期望对象is  base  or obj? == 1  means  is baseObj
+			// 	nero_us32int actualNums;
+			// };			
+				dataFlowRstRcdInfo.expectKinds[dataFlowRstRcdInfo.actualNums] =  dataFlowDataMsg_twoNum_->kind;
+				dataFlowRstRcdInfo.BaseOrObj[dataFlowRstRcdInfo.actualNums] =  dataFlowDataMsg_twoNum_->baseORDerivative;
+				dataFlowRstRcdInfo.actualNums++;
+			}
+			// printf("MsgId_Nero_SetDataFlowResult1  kind=%d,base=%d\n",dataFlowDataMsg_twoNum_->kind,dataFlowDataMsg_twoNum_->baseORDerivative);
 			break;
 		case MsgId_Nero_AddNewBaseKindByname:
 			// 生成新类时，如果所有子类都已经能够确认的情况下，可以直接输入类别名生成新的高级衍生类
@@ -2082,6 +2096,8 @@ nero_us32int nextAvailableNeroInPool;*/
 	forecastInfo_st.controlMsg.Refreshed =0;
 	forecastInfo_st.controlMsg.DurationTime =0;
 
+
+	dataFlowRstRcdInfo.actualNums =0;
 	while(1)
 	{
 		/*死循环*/

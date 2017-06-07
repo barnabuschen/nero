@@ -1511,6 +1511,10 @@ nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],ne
 				default:
 					break;
 			}
+
+			//test for git
+			printf("actualNums=%d\n", dataFlowRstRcdInfo.actualNums);
+
 			//现在尝试讲objs[i]数组的obj合并为一个上层对象
 			if(objListNumCount[i] >  1)// nero_IfHasObjFromMultiples4要求输入的data个数要求大于1,so  
 			{

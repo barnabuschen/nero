@@ -676,10 +676,22 @@ native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, 
 
 
 
+			你的算法出现了漏洞：赢者通吃
 
 
+			改进算法：
+			1		加入多线程机制---提取分类代码
+			-----但是你现在的分类结果需要以一定的时序进行输出，不然就很麻烦
+			也就是说，进行多线程的运算其实意义不大啊
+			2    优化算法===
+				---void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * newObj)
+				把整个输出链表中的上层对象都输入ForecastList是否有必要？？？？？？
+				举例子来说：
+				sex: Female, Male.   -------子对象的实例个数是固定的-----------每一个对象实例的上层对象非常多
+        capital-gain: continuous.---子对象的实例个数是可变的的---------每一个对象指向的上层对象非常少，甚至是一对一的
 
-
+				有这样一种情况，就是某个基类有多个属性时（多个子类时），如果出现极少数的次数，当某个数据值为x时这个基类就一定是某个特定的类别
+				这就是第二种情况的下的特殊情况了
 
 
 

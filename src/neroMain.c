@@ -159,9 +159,10 @@ void ProInitialization()
 		nero_8int * fileName1="/data/taskFile.sh";
 		ReadTaskFromTxt( fileName1  );
 		sleep(1);
-		nero_8int * fileName2="/data/iris/LearningFileForIris.sh";
 		// nero_8int * fileName2="/data/adult/adultLearn.sh"; 
-		// nero_8int * fileName2="/data/adult/adultLearn.short.sh";
+		nero_8int * fileName2="/data/adult/adultLearn.3000.sh";
+
+		// nero_8int * fileName2="/data/iris/LearningFileForIris.sh";
 		ReadTaskFromTxt( fileName2  );
 
 		printf("\n\n\nend of  fuc ReadTaskFromTxt1\n");
@@ -169,9 +170,10 @@ void ProInitialization()
 		// nero_8int * fileName4="/data/dataStringCreate.sh";
 		// CreatedWordsIntoFile(fileName4);
 
-		// nero_8int * fileName3="/data/adult/adultTest.sh";
+		nero_8int * fileName3="/data/adult/adultTest.sh";
 		// nero_8int * fileName3="/data/adult/adultTest.short2.sh";
-		nero_8int * fileName3="/data/iris/TestingDataForIris.sh";
+
+		// nero_8int * fileName3="/data/iris/TestingDataForIris.sh";
 		ReadTaskFromTxt( fileName3  );
 		printf("\n\n\nend of  fuc ReadTaskFromTxt2\n");
 

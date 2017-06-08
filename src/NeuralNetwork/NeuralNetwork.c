@@ -7,7 +7,7 @@
 /*#include "Neuron.h"*/
 #include "../tools/readUTF8File.h"
 #include "../tools/Nero_IO.h"
-
+// #include "../NeuralNetwork/NeuralOperating.h"
 
 nero_us32int neroKind[]=
 {
@@ -2232,13 +2232,109 @@ NeuronObject *   nero_IfHasObjFromMultiples4(NeuronObject *Obis[],nero_s32int ob
 			tmpFiber1=tmpFiber1->next;
 		}
 	}
-
-
 	return NULL;
-
-
-
 }
+// 从DataFlowResultRecordInfo给定的列表中选择一个最可能的Obis能构成的
+// 上层对象
+// 这里就有个问题，就是既然你知道有这个列表，你可以在这里有用，也可以在Process_ClassiFication中用，当然，在
+// Process_ClassiFication中的作用其实并不太大
+// 重点是这个Obis能构成的上层对象只是DataFlowResultRecordInfo给定的列表中对象的子类，所以你还需要一个变量指出
+// 你所寻找的上层对象是在上-上层对象的第几个数据[objPos]
+
+NeuronObject * nero_IfHasObjFromMultiples5(NeuronObject *Obis[],nero_s32int objNum,struct DataFlowResultRecordInfo * listRes,nero_s32int objPos,NeuronObject *godNero)
+{
+
+	/*根据类（对象）的定义：这个函数的目的是判断是否有一个类恰好或部分由这些子类构成*/
+	nero_s32int i,k;
+	NerveFiber *tmpFiber1;
+	NeuronObject *obj;
+	NeuronObject *findobj;
+	nero_s32int flag,kind,makeup;
+	if (Obis == NULL  || objNum <1)
+		return NULL;
+
+	flag=0;
+	/*循环首先找到所以Obis概念都指向的概念*/
+	/*考虑到数组一般不会太过庞大，所以使用最简单的暴力遍历就好了*/
+	for (i=0;i<objNum;i++)
+	{
+
+		tmpFiber1=Obis[i]->outputListHead;/*数据的神经链表，任何概念都会指向所有他的上层概念*/
+						/*你只需要在这些上层概念中找有没有需要的概念*/
+		while(tmpFiber1 )
+		{
+			obj=tmpFiber1->obj;
+			/*首先判断这个概念的类型是不是可能是要找的，有些基类类型不可能是要找的*/
+			kind=nero_GetNeroKind(obj);
+			switch(kind)
+			{
+				case NeuronNode_ForChCharacter:
+				case NeuronNode_ForNone:
+				case NeuronNode_ForGodNero:
+				case NeuronNode_ForData:
+				case NeuronNode_ForConnect:
+
+					flag=0;/*直接排除*/
+					break;
+				default:
+					flag=1;
+					break;
+
+			}
+/*			printf("flag=%d.  obj=%x\n",flag,obj);*/
+			/*判断这个对象是否包含所以子类型*/
+			if (flag == 1  &&  nero_isBaseObj(obj) !=1)
+			{
+				makeup=nero_ifMakeUpWithTheseObjs(obj, Obis,objNum);
+				// printf("makeup=%d\n",makeup);
+				if (makeup == NeroYES)/*找到了要找的对象*/
+				{
+					// 最后判断这个对象是不是列表中对象的数据
+					// 判断obj是不是列表中某个对象的第 objPos 个数据
+					for(k=0;k < listRes->actualNums  ;k++   )
+					{
+						flag =0;
+						flag =nero_ifisThisChild( listRes->expectKinds[k],  objPos ,nero_GetNeroKind(obj) ,godNero );
+						//判断basekind第 objPos 位置的数据类型是不是这个类型
+						// nero_s32int nero_ifisThisChild( nero_us32int basekind,nero_us32int  objPos , nero_us32int dataKind );
+						// printf("flag=%d\n",flag);
+						if(flag == NeroYES)
+							return obj;
+					}
+					// if(flag == 1)
+						// return obj;
+				}
+			}
+
+
+			tmpFiber1=tmpFiber1->next;
+		}
+	}
+	return NULL;
+}
+// 判断basekind第 objPos 位置的数据类型是不是这个类型
+nero_s32int nero_ifisThisChild( nero_us32int basekind,nero_us32int  objPos , nero_us32int dataKind ,NeuronObject  *godNero)
+{
+
+
+	nero_s32int ChildKind;
+	ChildKind =  NeuronNode_ForNone;
+
+	if(basekind > NeuronNode_ForComplexDerivative)
+	{
+		ChildKind =nero_getChildKind(  nero_getBaseObjByKind(basekind,godNero) , objPos +1);
+	}
+	else
+	{
+		ChildKind =nero_getChildKind(  nero_getBaseObjByKind(basekind,godNero) , objPos );
+	}
+	
+	if(ChildKind == dataKind )
+		return NeroYES;
+	else
+		return NeroNO;
+}
+
 /*判断是否已经从俩个已知道俩个概念中生成一个了新的概念,有则返回这个对象*/
 /*问题是万一不止一个共同的对象怎么办*/
 NeuronObject *  nero_findSameObjFromPair(NeuronObject *Obi1,NeuronObject *Obj2)

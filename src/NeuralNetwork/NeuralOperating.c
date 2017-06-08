@@ -583,7 +583,7 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 		if( dataKind[i]  ==  NeuronNode_ForUndefined)
 		{
 			ifHasUndefinedKind=1;
-			// printf("DataFlowProcess0: NeuronNode_ForUndefined[%d]\n",countForadfaejali);
+			// printf("DataFlowProcess0: NeuronNode_ForUndefined[%d]\n",i);
 			break;
 		}
 	}
@@ -898,17 +898,19 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
         // Process_ObjForecast(&forescastInfo_st);
 		//forescastInfo_st是个全局变量，千万别过度使用它，宁可另设置个结构变量
 
-		#ifdef Nero_DeBuging06_05_17
+		#ifdef Nero_DeBuging06_05_17_
+		// printf("forecastInfo_st.objNum  =  [%d] \n ",forecastInfo_st.objNum);
+
 		for(i=0;i<  forecastInfo_st.objNum;i++)
 		{
 			printf("forecastInfo_st.objNum=%d,dataKind[%d]=%d, in :%x \n ",forecastInfo_st.objNum,i,nero_GetNeroKind(forecastInfo_st.objs[i]),(forecastInfo_st.objs[i]));
 		}
 		#endif
 		tmpObiForTest = Process_ClassiFication(&forecastInfo_st,GodNero);
-		if(tmpObiForTest != NULL)
-		{
-			printf("Process_ClassiFication  = %x,[%d] \n ",tmpObiForTest,nero_GetNeroKind(tmpObiForTest));
-		}
+		// if(tmpObiForTest != NULL)
+		// {
+		// 	printf("Process_ClassiFication  = %x,[%d] \n ",tmpObiForTest,nero_GetNeroKind(tmpObiForTest));
+		// }
 
 	}
         /***************************************************************/
@@ -1511,10 +1513,10 @@ nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],ne
 				default:
 					break;
 			}
-
-			//test for git
-			printf("actualNums=%d\n", dataFlowRstRcdInfo.actualNums);
-
+			// for(ii=0;ii < dataFlowRstRcdInfo.actualNums;ii++)
+			// {
+			// 	printf("kind=%d,[%d]\n", dataFlowRstRcdInfo.expectKinds[ii],dataFlowRstRcdInfo.BaseOrObj[ii]);
+			// }
 			//现在尝试讲objs[i]数组的obj合并为一个上层对象
 			if(objListNumCount[i] >  1)// nero_IfHasObjFromMultiples4要求输入的data个数要求大于1,so  
 			{
@@ -1522,7 +1524,7 @@ nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],ne
 				tmpObiForTest = NULL;
 				//你需要注意的是：事实上，这个函数返回的对象并不一定是你所想要的obj，可能只是一个拥有相同子对象的其他kind  obj
 				//解决方案是加入一个期望obj的列表，由外界给出,根据列表对此出的子obj进行有条件的选择
-				findobj=nero_IfHasObjFromMultiples4(objs[i],objListNumCount[i]);
+				findobj=nero_IfHasObjFromMultiples5(objs[i],objListNumCount[i],&dataFlowRstRcdInfo,i,godNero);
 				if(findobj  !=  NULL)
 				{
 					tmpObiForTest = findobj;

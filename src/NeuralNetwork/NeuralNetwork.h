@@ -6,6 +6,7 @@
 #define NeuralNetwork_H
 #include "../common/type.h"
 #include "../tools/readUTF8File.h"
+// #include "NeuralOperating.h"
 /*
 在这个部分中，主要集中了有关神经网络部分的代码，包括网络在内存中的存放方式，
 网络节点常用操作，还有网络和数据输入模块和数据输出模块的交互代码
@@ -297,6 +298,11 @@ extern NeroConf neroConf;
 #define	Fiber_ObjInNeroPool	0  //所指向对象所在区域为永久得NeroInPool
 #define	Fiber_ObjInSAPool	1  //所指向对象所在区域为StagingAreaNeroPool
 
+
+
+
+// NeuronObject *  nero_IfHasObjFromMultiples5(NeuronObject *Obis[],nero_s32int objNum,struct DataFlowResultRecordInfo * listRes,nero_s32int objPos,NeuronObject  *godNero );
+nero_s32int nero_ifisThisChild( nero_us32int basekind,nero_us32int  objPos , nero_us32int dataKind ,NeuronObject  *godNero );
 nero_s32int  nero_getObjDataNum(ActNero * obj);
 NeuronObject *  nero_getBaseObjByKind(nero_s32int kind,ActNero * godNero);
 nero_s32int getFiberPointToObjNum(NerveFiber * fiber);
@@ -414,6 +420,7 @@ nero_s32int nero_getObjsByStr(nero_s32int metaDataKind,void * Data ,nero_s32int 
 
 
 
+NeuronObject * nero_IfHasObjFromMultiples5(NeuronObject *Obis[],nero_s32int objNum,struct DataFlowResultRecordInfo * listRes,nero_s32int objPos,NeuronObject *godNero);
 
 
 

@@ -687,11 +687,31 @@ native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, 
 				---void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronObject * newObj)
 				把整个输出链表中的上层对象都输入ForecastList是否有必要？？？？？？
 				举例子来说：
-				sex: Female, Male.   -------子对象的实例个数是固定的-----------每一个对象实例的上层对象非常多
-        capital-gain: continuous.---子对象的实例个数是可变的的---------每一个对象指向的上层对象非常少，甚至是一对一的
+				sex: Female, Male.   -------子对象的实例个数是固定的-----------每一个对象实例的上层对象非常多----------------------是否可以优化？？？？
+						考虑到函数nero_StrengthenLinkWithK会在nero_createObjFromMultiples被调用，那意味着，一个子对象的输出链表的前面几个basekind
+						是该对象最多指向的基类
+        capital-gain: continuous.---子对象的实例个数是可变的的---------每一个对象指向的上层对象非常少，甚至是一对一的---------不可优化
 
 				有这样一种情况，就是某个基类有多个属性时（多个子类时），如果出现极少数的次数，当某个数据值为x时这个基类就一定是某个特定的类别
 				这就是第二种情况的下的特殊情况了
+
+
+				现在可以再测试下分类的速度了--------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

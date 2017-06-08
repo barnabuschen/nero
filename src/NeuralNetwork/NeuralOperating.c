@@ -2555,11 +2555,12 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
 /*                printf("                p=%x,Obj=%x.\n", p,p->obj);*/
             Obj=p->obj;
             FiberType=getFiberType(p);
-            if (Obj != NULL /* &&  nero_isBaseObj(Obj) != 1 */&& getFiberPointToPool(p ) == Fiber_ObjInNeroPool )
+            // add  (forecastInfo->controlMsg).baseORDerivative 
+            if (Obj != NULL  &&  nero_isBaseObj(Obj) != (forecastInfo->controlMsg).baseORDerivative  && getFiberPointToPool(p ) == Fiber_ObjInNeroPool )
             {
-                    AddNewObjToList( forecastInfo,FiberType,Obj,/*(p->msg1 & 0x000000ff) */  getFiberStrengthen(newObj,Obj));
 
 
+                AddNewObjToList( forecastInfo,FiberType,Obj,/*(p->msg1 & 0x000000ff) */  getFiberStrengthen(newObj,Obj));
 				#ifdef Nero_DeBuging24_01_14_
 					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 					neroObjMsgWithStr_st.fucId = 1;

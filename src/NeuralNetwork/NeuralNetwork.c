@@ -3582,6 +3582,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 		那个这个冗余数据将加快分类中查询链接次数得操作
 		*/
 		PointingToObject(Obis[i],basekidobj,Fiber_PointToUpperLayer);
+		//该函数同时会讲 Obis[i]的输出列表中 指向basekidobj的位置往前移动一位
 		nero_StrengthenLinkWithK(Obis[i],newObiKind,basekidobj);
 
 

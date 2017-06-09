@@ -571,10 +571,8 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 		}
 		dataKind[i]=dataKind_[i];
 	}
-	// pthread_mutex_unlock(&mutexForDataFlowProcessInput);
-	// printf("DataFlowProcess  unlock\n");
+
 	 atomForDataFlowProcessInput  =0;
-	 // static   nero_s32int  countForadfaejali=0;
 	 ifHasUndefinedKind=0;
 	 //check if has  Undefined kind[有不知道类别的数据]
 	 // 暂时这么设定，一旦有Undefined kind就绕过所有操作，只去判断这个数据流最可能指向什么哪个上层obj
@@ -592,23 +590,10 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 	tmoForRecordNUm=0;
 	ifHasUnknowObj=0;
 
-	#ifdef DataFlowProcess_error_Msg
-	printf("coutOferror_Msg_   11:%d.\n",coutOferror_Msg_);
-	#endif
-
-
 	/*先不比对DataFlow  dataKind  dataNum*/
 	/*断DataFlow中的数据是否在系统中已经存在该数据*/
 	for (i=0,j=0,hasAddObj=0;i<dataNum  &&  ifHasUndefinedKind != 1;i++)
 	{
-
-
-		#ifdef DataFlowProcess_error_Msg
-		printf("coutOferror_Msg_   111:%d.\n",coutOferror_Msg_);
-		#endif
-
-
-
 		#ifdef   Nero_DeBuging04_01_14
 		// char str[500];
 		// char str2[500];
@@ -616,29 +601,18 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 /*				printf("\n");		*/
 /*				ttt.tmp=*((ChUTF8 *)DataFlow);*/
 /*				ttt.end=0;	*/
-		#ifdef DataFlowProcess_error_Msg
-		if( i == (dataNum -1 ))
-			printf("%s[%d]END\n",(nero_s8int *)DataFlow[i],dataKind[i]);
-		else
-			printf("%s[%d] ",(nero_s8int *)DataFlow[i],dataKind[i]);
-		#endif
-		// sprintf(str,"data/wordspic%d.dot",i);
-		// sprintf(str2,"xdot data/wordspic%d.dot",i);
-		// createNeroNetDotGraphForWords(GodNero, str);
-		// system(str2);
+			// #ifdef DataFlowProcess_error_Msg
+			if( i == (dataNum -1 ))
+				printf("%s[%d]END\n",(nero_s8int *)DataFlow[i],dataKind[i]);
+			else
+				printf("%s[%d] ",(nero_s8int *)DataFlow[i],dataKind[i]);
+			// #endif
 
-		#endif
-
-		#ifdef DataFlowProcess_error_Msg
-		printf("coutOferror_Msg_   1121:%d.\n",coutOferror_Msg_);
 		#endif
 		// printf("processed  data:kind=%d ,%s\n",dataKind[i],DataFlow[i]);
 		/*先不管有句子的情况*/
 		/*通过objs[j]里面的值就可以知道有没有在网络中找到这个对象*/
 		tmpObi =nero_IfHasNeuronObject(DataFlow[i],dataKind[i], GodNero);
-		#ifdef DataFlowProcess_error_Msg
-		printf("coutOferror_Msg_   112:%d.\n",coutOferror_Msg_);
-		#endif
 
 		//这里有个问题，就是tmpObi ！= NULL 那么，是否需要加强相应的FiberStrengthen
 		if (tmpObi == NULL  )
@@ -648,7 +622,7 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 				#ifdef Nero_DeBuging09_01_14_
 
 					#ifdef Nero_DeBuging09_01_14
-					if(conf->CreateNewBaseObjKind == 1   )
+					// if(conf->CreateNewBaseObjKind == 1   )
 					{
 						printf("CreateNewBaseObjKind = 1 :找不到子概念  i=%d,str=%s,kind=%d \n",i,DataFlow[i],dataKind[i]);
 					}
@@ -721,6 +695,7 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 							//暂时只处理这个
 							// printf("在DataFlowProcess:nero_addNeroByData\n");
 							tmpObi=  nero_addNeroByData(DataFlow[i],dataKind[i],GodNero);
+							// printf("在DataFlowProcess:%x\n",tmpObi);
 						}
 						else
 						{
@@ -1481,8 +1456,9 @@ nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],ne
 			{
 				case NeuronNode_ForChCharacter:
 					objListNumCount[i]= nero_getObjsByStr(metaData,DataFlow[i] ,i , (objs[i]) ,  godNero);
-					#ifdef Nero_DeBuging03_05_17_
 					// printf("objListNumCount[i]=%d\n",objListNumCount[i]);
+					#ifdef Nero_DeBuging03_05_17_
+					
 					for (ii=0 ;ii<objListNumCount[i];ii++)
 					{
 						// tmpstr_[0]= (objs[i][ii]).inputListHead->obj->x;
@@ -1533,7 +1509,7 @@ nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],ne
 				}
 				else
 				{
-					// printf("i=%d ,objListNumCount[i]=%d, \n ",i,objListNumCount[i] );
+					// printf("findobj   =  NULL  i=%d ,objListNumCount[i]=%d, \n ",i,objListNumCount[i] );
 				}
 			    if(tmpObiForTest  != NULL)
 			    {
@@ -2556,7 +2532,7 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
             Obj=p->obj;
             FiberType=getFiberType(p);
             // add  (forecastInfo->controlMsg).baseORDerivative 
-            if (Obj != NULL  &&  nero_isBaseObj(Obj) != (forecastInfo->controlMsg).baseORDerivative  && getFiberPointToPool(p ) == Fiber_ObjInNeroPool )
+            if (Obj != NULL  &&  nero_isBaseObj(Obj) == (forecastInfo->controlMsg).baseORDerivative  && getFiberPointToPool(p ) == Fiber_ObjInNeroPool )
             {
 
 

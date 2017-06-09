@@ -3833,7 +3833,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 	NeuronObject *tmp;
 	NeuronObject *tmp2;
 		NeuronObject *tmp1;
-	nero_s32int strlenInData,i,allFindFlag,childNun,charLength,kindAllTheSame;
+	nero_s32int strlenInData,i,allFindFlag,childNun,charLength,kindAllTheSame,hasKnowChar;
 	ChUTF8_  *wordP;
 	ChUTF8 * wordP2;
 	NerveFiber *tmpFiber;
@@ -3848,6 +3848,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 	        #endif
 		return NULL;
 	}
+	hasKnowChar =0;
 	tmp=tmp2=NULL;
 	switch(dataKind)
 	{
@@ -4063,7 +4064,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 
 		// first  ,chech  which kinds  will be need.
 		// printf("nero_addNeroBy	Data:默认处理---1\n");
-
+		tmp =NULL;
 		p=(nero_s8int *)Data;
 		if(dataKind  <  NeuronNode_MinNewDerivativeClassId )
 			break;
@@ -4071,7 +4072,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 		// printf("nero_addNeroByData:默认处理---2  dataKind=%d,tmp2=%x,godNero=%x\n",dataKind,tmp2,godNero);
 		// sleep(1);
 
-		#ifdef Nero_DeBuging14_01_14
+		#ifdef Nero_DeBuging14_01_14_
 		// printf  msg  by  obj
 		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 		neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
@@ -4125,7 +4126,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 				}
 				childNun=0;
 
-			 	#ifdef Nero_DeBuging14_01_14
+			 	#ifdef Nero_DeBuging14_01_14_
 				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 				neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
 				neroObjMsgWithStr_st.Obi = NULL;
@@ -4137,7 +4138,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 				if(kindAllTheSame  == 1)
 				{
 
-				 	#ifdef Nero_DeBuging14_01_14
+				 	#ifdef Nero_DeBuging14_01_14_
 					neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
 					neroObjMsgWithStr_st.fucId = 1;//打印某个具体obj得信息  Log_printSomeMsgForObj
 					neroObjMsgWithStr_st.Obi = NULL;
@@ -4205,14 +4206,24 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 						 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 
 						    #endif
+							/////////////////
+							// if  tmp2 == NULL ,that means this string has unknow str for sys
+							///////////////////////
+							if(  tmp2 == NULL)
+							{
+									hasKnowChar =1;
+
+							}						 				
 							break;
 						}
 
+
+						
 						tmpObiForTemporary[childNun++]=tmp2;
 						p=p+charLength;
 
 					}
-					if(childNun > 0)
+					if(childNun > 0  &&  hasKnowChar == 0 )
 					{
 						// printf("nero_addNeroByData:默认处理---childNun=%d \n",childNun);
 						// getFiberPointToObjNum
@@ -5597,8 +5608,8 @@ nero_s32int nero_getObjsByStr(nero_s32int metaDataKind,void * Data ,nero_s32int 
 			}
 
 			// 根据给定数据寻找是否网络中已经有该   字   概念了，这里只搜索一个字,找到则返回该概念的指针
-			objsStore[i]=nero_IfHasZhWord( godNero,&(words[i]),NeuronNode_ForChCharacter);
-			if(objsStore[i]  == NULL)
+			objsStore[findObjNum]=nero_IfHasZhWord( godNero,&(words[i]),NeuronNode_ForChCharacter);
+			if(objsStore[findObjNum]  == NULL)
 			{
 				allFindFlag=0;
 

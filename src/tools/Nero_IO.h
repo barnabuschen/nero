@@ -67,8 +67,8 @@ void *thread_for_IO_Pic(void *arg);
 
 
 void *thread_for_Log_Pic(void *arg);
-
-
+void doTest_();
+void IO_SaveSysIntoDatabase(NeuronObject  *godNero);
 //~ 打印某对象的子对象树
 nero_s32int Log_printNeroObjLinkTree(void * arg);
 

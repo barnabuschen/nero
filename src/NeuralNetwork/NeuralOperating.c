@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <stdio.h>
+#include <hiredis/hiredis.h>
 #include "NeuralNetwork.h"
 #include "NeuralOperating.h"
 #include "../tools/readUTF8File.h"
@@ -360,7 +361,7 @@ nero_s32int  Process_AddNewBaseKindByname(void *DataFlow[],nero_s32int dataKind[
 	// complexObj=NULL;
 	// tmoForRecordNUm=0;
 	// ifHasUnknowObj=0;
-	printf("\n\n Process_AddNewBaseKindByname0:its here\n\n");
+	// printf("\n\n Process_AddNewBaseKindByname0:its here\n\n");
 	// find all kinds for DataFlow
 	i=0;
 	objs[i]=nero_IfHasNeuronObject(DataFlow[i],dataKind[i], GodNero);
@@ -393,7 +394,7 @@ nero_s32int  Process_AddNewBaseKindByname(void *DataFlow[],nero_s32int dataKind[
 			msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 			#endif
 
-			printf("need  to create new kind\n");
+			// printf("need  to create new kind\n");
 			tmpBaseObi=nero_CreateNewBaseObj(objs,dataNum,GodNero, conf);
 			// printf("NewBaseObj:%x\n",tmpBaseObi);
 			tmpBaseObi2=nero_CreateNewBaseObjInSAP(objs,dataNum,SAGodNero, conf);
@@ -594,7 +595,7 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 	/*断DataFlow中的数据是否在系统中已经存在该数据*/
 	for (i=0,j=0,hasAddObj=0;i<dataNum  &&  ifHasUndefinedKind != 1;i++)
 	{
-		#ifdef   Nero_DeBuging04_01_14
+		#ifdef   Nero_DeBuging04_01_14_
 		// char str[500];
 		// char str2[500];
 /*				PrintUtf8 ttt;*/

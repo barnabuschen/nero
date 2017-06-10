@@ -18,6 +18,9 @@ autoreconf -i
 ./configure
 
 最后修改makefile
+LIBS = -lpthread  -lhiredis    //  for  hiredis lib
+
+
 -fno-omit-frame-pointer  -ggdb
 CFLAGS = -g -O2 -fno-omit-frame-pointer -ggdb
 all: config.h

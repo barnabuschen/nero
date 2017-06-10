@@ -699,11 +699,12 @@ native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, 
 				现在可以再测试下分类的速度了--------------
 
 
+创建时间：2017年06月10日 星期六 20时29分06秒
+
+	  现在可以尝试讲sys数据存入数据库中
 
 
-
-
-
+除了基类其他obj都需要以链表或者集合方式保存，不然一个个搜索太慢了
 
 
 

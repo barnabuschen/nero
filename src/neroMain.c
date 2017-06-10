@@ -26,7 +26,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <sys/resource.h>
-
+#include <hiredis/hiredis.h>
 #include "NeuralNetwork/NeuralNetwork.h"
 #include "common/Neuron.h"
 #include "neroMain.h"
@@ -153,12 +153,18 @@ void ProInitialization()
 
 
 		// return;
-
-
 		/*do   more  */
 		nero_8int * fileName1="/data/taskFile.sh";
 		ReadTaskFromTxt( fileName1  );
 		sleep(1);
+
+		//
+	    IO_SaveSysIntoDatabase( GodNero);
+
+
+
+
+		return;
 		// nero_8int * fileName2="/data/adult/adultLearn.sh"; 
 		nero_8int * fileName2="/data/adult/adultLearn.test.sh"; 
 		// nero_8int * fileName2="/data/adult/adultLearn.3000.sh";
@@ -178,6 +184,19 @@ void ProInitialization()
 		ReadTaskFromTxt( fileName3  );
 		printf("\n\n\nend of  fuc ReadTaskFromTxt2\n");
 
+
+		// doTest_();
+		// redisContext *c = redisConnect("127.0.0.1", 6379);
+		// if (c == NULL || c->err) {
+		//     if (c) {
+		//         printf("Error: %s\n", c->errstr);
+		//         // handle error
+		//     } else {
+		//         printf("Can't allocate redis context\n");
+		//     }
+		// }
+		// redisReply* r = (redisReply*)redisCommand(c,"SET foo bar");
+		// redisFree( c);
 
 
 		// nero_8int * fileName4="/data/iris/TestingDataForIris.sh";

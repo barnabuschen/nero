@@ -1,68 +1,68 @@
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b620,打印词组对象《许玉兰》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4078b620,baseobjAdd:40721aa0,objNum=3
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b640,打印词组对象《刘泵》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4078b640,baseobjAdd:40721aa0,objNum=2
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b660,打印词组对象《阿曼》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4078b660,baseobjAdd:40721aa0,objNum=2
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b680,打印词组对象《阿拉伯数字》,句子长度为：5,creObjFromMulti:success create,kind=62,add=4078b680,baseobjAdd:40721aa0,objNum=5
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b6a0,打印词组对象《数字》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4078b6a0,baseobjAdd:40721aa0,objNum=2
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b6c0,打印词组对象《十进制》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4078b6c0,baseobjAdd:40721aa0,objNum=3
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b6e0,打印词组对象《二进制》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4078b6e0,baseobjAdd:40721aa0,objNum=3
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b700,打印词组对象《数学符号》,句子长度为：4,creObjFromMulti:success create,kind=62,add=4078b700,baseobjAdd:40721aa0,objNum=4
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b720,打印词组对象《运算符》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4078b720,baseobjAdd:40721aa0,objNum=3
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b740,打印词组对象《加法》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4078b740,baseobjAdd:40721aa0,objNum=2
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b760,打印词组对象《减法》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4078b760,baseobjAdd:40721aa0,objNum=2
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b780,打印词组对象《乘法》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4078b780,baseobjAdd:40721aa0,objNum=2
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b7a0,打印词组对象《除法》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4078b7a0,baseobjAdd:40721aa0,objNum=2
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b7c0,打印词组对象《负号》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4078b7c0,baseobjAdd:40721aa0,objNum=2
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b7e0,打印词组对象《等于号》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4078b7e0,baseobjAdd:40721aa0,objNum=3
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b800,打印词组对象《正号》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4078b800,baseobjAdd:40721aa0,objNum=2
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b820,打印词组对象《个位数》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4078b820,baseobjAdd:40721aa0,objNum=3
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b840,打印词组对象《十位数》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4078b840,baseobjAdd:40721aa0,objNum=3
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b860,打印词组对象《千位数》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4078b860,baseobjAdd:40721aa0,objNum=3
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b880,打印词组对象《英文字母》,句子长度为：4,creObjFromMulti:success create,kind=62,add=4078b880,baseobjAdd:40721aa0,objNum=4
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b8a0,打印词组对象《英文单词》,句子长度为：4,creObjFromMulti:success create,kind=62,add=4078b8a0,baseobjAdd:40721aa0,objNum=4
-Log_printSomeMsgForObj:Sat Jun 10 23:50:23 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:13 2017
 		地址：4078b8c0,打印词组对象《整数》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4078b8c0,baseobjAdd:40721aa0,objNum=2
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2001 !,kind=0,0
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2002 !,kind=0,0
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2003 !,kind=0,0
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2004 !,kind=0,0
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2005 !,kind=0,0
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2006 !,kind=0,0
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2007 !,kind=0,0
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2008 !,kind=0,0
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2009 !,kind=0,0
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2010 !,kind=0,0
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2011 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2011,add=4078c460,baseobjAdd:4078c420,objNum=2,ObjectKind=2011 add:4078c460,zi对象num为(2):
 		地址4078b9c0,DataNUm1=1,[2[4078b9c0,kind=61,50*0*0]1[4078b960,kind=61,49*0*0]]
@@ -80,33 +80,33 @@ Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2011,add=4078c460,bas
 		地址4078bc00,DataNUm1=1,[8[4078bc00,kind=61,56*0*0]7[4078bba0,kind=61,55*0*0]1[4078b960,kind=61,49*0*0]1[4078b960,kind=61,49*0*0]1[4078b960,kind=61,49*0*0]1[4078b960,kind=61,49*0*0]1[4078b960,kind=61,49*0*0]1[4078b960,kind=61,49*0*0]]
 1Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2011,add=4078c560,baseobjAdd:4078c420,objNum=9,ObjectKind=2011 add:4078c560,zi对象num为(9):
 		地址4078bc60,DataNUm1=1,[9[4078bc60,kind=61,57*0*0]8[4078bc00,kind=61,56*0*0]7[4078bba0,kind=61,55*0*0]6[4078bb40,kind=61,54*0*0]5[4078bae0,kind=61,53*0*0]4[4078ba80,kind=61,52*0*0]3[4078ba20,kind=61,51*0*0]2[4078b9c0,kind=61,50*0*0]1[4078b960,kind=61,49*0*0]]
-1Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+1Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2012 !,kind=0,0
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078d920,打印词组对象《setosa》,句子长度为：6,creObjFromMulti:success create,kind=62,add=4078d920,baseobjAdd:40721aa0,objNum=6
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078d940,打印词组对象《versicolor》,句子长度为：10,creObjFromMulti:success create,kind=62,add=4078d940,baseobjAdd:40721aa0,objNum=10
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078d960,打印词组对象《virginica》,句子长度为：9,creObjFromMulti:success create,kind=62,add=4078d960,baseobjAdd:40721aa0,objNum=9
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078d980,打印词组对象《iris》,句子长度为：4,creObjFromMulti:success create,kind=62,add=4078d980,baseobjAdd:40721aa0,objNum=4
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078d9a0,打印词组对象《rich》,句子长度为：4,creObjFromMulti:success create,kind=62,add=4078d9a0,baseobjAdd:40721aa0,objNum=4
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078d9c0,打印词组对象《poor》,句子长度为：4,creObjFromMulti:success create,kind=62,add=4078d9c0,baseobjAdd:40721aa0,objNum=4
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078d9e0,打印词组对象《fuck》,句子长度为：4,creObjFromMulti:success create,kind=62,add=4078d9e0,baseobjAdd:40721aa0,objNum=4
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078da00,打印词组对象《sl》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4078da00,baseobjAdd:40721aa0,objNum=2
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078da20,打印词组对象《sw》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4078da20,baseobjAdd:40721aa0,objNum=2
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078da40,打印词组对象《pl》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4078da40,baseobjAdd:40721aa0,objNum=2
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078da60,打印词组对象《pw》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4078da60,baseobjAdd:40721aa0,objNum=2
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078da80,打印词组对象《age》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4078da80,baseobjAdd:40721aa0,objNum=3
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2013 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2013,add=4078dac0,baseobjAdd:4078daa0,objNum=2,ObjectKind=2013 add:4078dac0,zi对象num为(2):
 		地址4078b960,DataNUm1=1,[1[4078b960,kind=61,49*0*0]1[4078b960,kind=61,49*0*0]]
@@ -128,9 +128,9 @@ Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2013,add=4078dac0,bas
 		地址4078bc00,DataNUm1=1,[8[4078bc00,kind=61,56*0*0]7[4078bba0,kind=61,55*0*0]]
 7Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2013,add=4078dbe0,baseobjAdd:4078daa0,objNum=2,ObjectKind=2013 add:4078dbe0,zi对象num为(2):
 		地址4078bc60,DataNUm1=1,[9[4078bc60,kind=61,57*0*0]8[4078bc00,kind=61,56*0*0]]
-8Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+8Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078dc00,打印词组对象《workclass》,句子长度为：9,creObjFromMulti:success create,kind=62,add=4078dc00,baseobjAdd:40721aa0,objNum=9
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2014 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2014,add=4078dc40,baseobjAdd:4078dc20,objNum=7,ObjectKind=2014 add:4078dc40,zi对象num为(7):
 		地址4078d500,DataNUm1=1,[P[4078d500,kind=61,80*0*0]r[4078cc00,kind=61,114*0*0]i[4078c8a0,kind=61,105*0*0]v[4078cd80,kind=61,118*0*0]a[4078c580,kind=61,97*0*0]t[4078ccc0,kind=61,116*0*0]e[4078c720,kind=61,101*0*0]]
@@ -140,9 +140,9 @@ cLog_printSomeMsgForObj:creObjFromMulti:success create,kind=2014,add=4078dc80,ba
 		地址4078d620,DataNUm1=1,[S[4078d620,kind=61,83*0*0]e[4078c720,kind=61,101*0*0]l[4078c9c0,kind=61,108*0*0]f[4078c780,kind=61,102*0*0]-[4078bea0,kind=61,45*0*0]e[4078c720,kind=61,101*0*0]m[4078ca20,kind=61,109*0*0]p[4078cb40,kind=61,112*0*0]-[4078bea0,kind=61,45*0*0]i[4078c8a0,kind=61,105*0*0]n[4078ca80,kind=61,110*0*0]c[4078c660,kind=61,99*0*0]]
 cLog_printSomeMsgForObj:creObjFromMulti:success create,kind=2014,add=4078dca0,baseobjAdd:4078dc20,objNum=11,ObjectKind=2014 add:4078dca0,zi对象num为(11):
 		地址4078d140,DataNUm1=1,[F[4078d140,kind=61,70*0*0]e[4078c720,kind=61,101*0*0]d[4078c6c0,kind=61,100*0*0]e[4078c720,kind=61,101*0*0]r[4078cc00,kind=61,114*0*0]a[4078c580,kind=61,97*0*0]l[4078c9c0,kind=61,108*0*0]-[4078bea0,kind=61,45*0*0]g[4078c7e0,kind=61,103*0*0]o[4078cae0,kind=61,111*0*0]v[4078cd80,kind=61,118*0*0]]
-vLog_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+vLog_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078dcc0,打印词组对象《fnlwgt》,句子长度为：6,creObjFromMulti:success create,kind=62,add=4078dcc0,baseobjAdd:40721aa0,objNum=6
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2015 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2015,add=4078dd00,baseobjAdd:4078dce0,objNum=6,ObjectKind=2015 add:4078dd00,zi对象num为(6):
 		地址4078b960,DataNUm1=1,[1[4078b960,kind=61,49*0*0]5[4078bae0,kind=61,53*0*0]4[4078ba80,kind=61,52*0*0]9[4078bc60,kind=61,57*0*0]4[4078ba80,kind=61,52*0*0]9[4078bc60,kind=61,57*0*0]]
@@ -154,9 +154,9 @@ Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2015,add=4078dd00,bas
 		地址4078b9c0,DataNUm1=1,[2[4078b9c0,kind=61,50*0*0]0[4078b8e0,kind=61,48*0*0]5[4078bae0,kind=61,53*0*0]2[4078b9c0,kind=61,50*0*0]1[4078b960,kind=61,49*0*0]8[4078bc00,kind=61,56*0*0]]
 8Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2015,add=4078dd80,baseobjAdd:4078dce0,objNum=6,ObjectKind=2015 add:4078dd80,zi对象num为(6):
 		地址4078b960,DataNUm1=1,[1[4078b960,kind=61,49*0*0]2[4078b9c0,kind=61,50*0*0]4[4078ba80,kind=61,52*0*0]4[4078ba80,kind=61,52*0*0]2[4078b9c0,kind=61,50*0*0]0[4078b8e0,kind=61,48*0*0]]
-0Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+0Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078dda0,打印词组对象《education》,句子长度为：9,creObjFromMulti:success create,kind=62,add=4078dda0,baseobjAdd:40721aa0,objNum=9
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2016 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2016,add=4078dde0,baseobjAdd:4078ddc0,objNum=9,ObjectKind=2016 add:4078dde0,zi对象num为(9):
 		地址4078cfc0,DataNUm1=1,[B[4078cfc0,kind=61,66*0*0]a[4078c580,kind=61,97*0*0]c[4078c660,kind=61,99*0*0]h[4078c840,kind=61,104*0*0]e[4078c720,kind=61,101*0*0]l[4078c9c0,kind=61,108*0*0]o[4078cae0,kind=61,111*0*0]r[4078cc00,kind=61,114*0*0]s[4078cc60,kind=61,115*0*0]]
@@ -164,17 +164,17 @@ sLog_printSomeMsgForObj:creObjFromMulti:success create,kind=2016,add=4078de00,ba
 		地址4078b960,DataNUm1=1,[1[4078b960,kind=61,49*0*0]1[4078b960,kind=61,49*0*0]t[4078ccc0,kind=61,116*0*0]h[4078c840,kind=61,104*0*0]]
 hLog_printSomeMsgForObj:creObjFromMulti:success create,kind=2016,add=4078de20,baseobjAdd:4078ddc0,objNum=10,ObjectKind=2016 add:4078de20,zi对象num为(10):
 		地址4078cf60,DataNUm1=1,[A[4078cf60,kind=61,65*0*0]s[4078cc60,kind=61,115*0*0]s[4078cc60,kind=61,115*0*0]o[4078cae0,kind=61,111*0*0]c[4078c660,kind=61,99*0*0]-[4078bea0,kind=61,45*0*0]a[4078c580,kind=61,97*0*0]c[4078c660,kind=61,99*0*0]d[4078c6c0,kind=61,100*0*0]m[4078ca20,kind=61,109*0*0]]
-mLog_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+mLog_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078de40,打印词组对象《education-num》,句子长度为：13,creObjFromMulti:success create,kind=62,add=4078de40,baseobjAdd:40721aa0,objNum=13
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2017 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2017,add=4078dea0,baseobjAdd:4078de60,objNum=2,ObjectKind=2017 add:4078dea0,zi对象num为(2):
 		地址4078b960,DataNUm1=1,[1[4078b960,kind=61,49*0*0]2[4078b9c0,kind=61,50*0*0]]
 2Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2017,add=4078dec0,baseobjAdd:4078de60,objNum=2,ObjectKind=2017 add:4078dec0,zi对象num为(2):
 		地址4078b9c0,DataNUm1=1,[2[4078b9c0,kind=61,50*0*0]2[4078b9c0,kind=61,50*0*0]]
-2Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+2Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078dee0,打印词组对象《marital-status》,句子长度为：14,creObjFromMulti:success create,kind=62,add=4078dee0,baseobjAdd:40721aa0,objNum=14
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2018 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2018,add=4078df20,baseobjAdd:4078df00,objNum=17,ObjectKind=2018 add:4078df20,zi对象num为(17):
 		地址4078d3e0,DataNUm1=1,[M[4078d3e0,kind=61,77*0*0]a[4078c580,kind=61,97*0*0]r[4078cc00,kind=61,114*0*0]r[4078cc00,kind=61,114*0*0]i[4078c8a0,kind=61,105*0*0]e[4078c720,kind=61,101*0*0]d[4078c6c0,kind=61,100*0*0]-[4078bea0,kind=61,45*0*0]c[4078c660,kind=61,99*0*0]i[4078c8a0,kind=61,105*0*0]v[4078cd80,kind=61,118*0*0]s[4078cc60,kind=61,115*0*0]p[4078cb40,kind=61,112*0*0]o[4078cae0,kind=61,111*0*0]u[4078cd20,kind=61,117*0*0]s[4078cc60,kind=61,115*0*0]e[4078c720,kind=61,101*0*0]]
@@ -182,59 +182,59 @@ eLog_printSomeMsgForObj:creObjFromMulti:success create,kind=2018,add=4078df40,ba
 		地址4078d080,DataNUm1=1,[D[4078d080,kind=61,68*0*0]i[4078c8a0,kind=61,105*0*0]v[4078cd80,kind=61,118*0*0]o[4078cae0,kind=61,111*0*0]r[4078cc00,kind=61,114*0*0]c[4078c660,kind=61,99*0*0]e[4078c720,kind=61,101*0*0]d[4078c6c0,kind=61,100*0*0]]
 dLog_printSomeMsgForObj:creObjFromMulti:success create,kind=2018,add=4078df60,baseobjAdd:4078df00,objNum=9,ObjectKind=2018 add:4078df60,zi对象num为(9):
 		地址4078d620,DataNUm1=1,[S[4078d620,kind=61,83*0*0]e[4078c720,kind=61,101*0*0]p[4078cb40,kind=61,112*0*0]a[4078c580,kind=61,97*0*0]r[4078cc00,kind=61,114*0*0]a[4078c580,kind=61,97*0*0]t[4078ccc0,kind=61,116*0*0]e[4078c720,kind=61,101*0*0]d[4078c6c0,kind=61,100*0*0]]
-dLog_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+dLog_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078df80,打印词组对象《occupation》,句子长度为：10,creObjFromMulti:success create,kind=62,add=4078df80,baseobjAdd:40721aa0,objNum=10
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2019 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2019,add=4078dfc0,baseobjAdd:4078dfa0,objNum=11,ObjectKind=2019 add:4078dfc0,zi对象num为(11):
 		地址4078d680,DataNUm1=1,[T[4078d680,kind=61,84*0*0]e[4078c720,kind=61,101*0*0]c[4078c660,kind=61,99*0*0]h[4078c840,kind=61,104*0*0]s[4078cc60,kind=61,115*0*0]u[4078cd20,kind=61,117*0*0]p[4078cb40,kind=61,112*0*0]p[4078cb40,kind=61,112*0*0]o[4078cae0,kind=61,111*0*0]r[4078cc00,kind=61,114*0*0]t[4078ccc0,kind=61,116*0*0]]
 tLog_printSomeMsgForObj:creObjFromMulti:success create,kind=2019,add=4078dfe0,baseobjAdd:4078dfa0,objNum=15,ObjectKind=2019 add:4078dfe0,zi对象num为(15):
 		地址4078d680,DataNUm1=1,[T[4078d680,kind=61,84*0*0]r[4078cc00,kind=61,114*0*0]a[4078c580,kind=61,97*0*0]n[4078ca80,kind=61,110*0*0]s[4078cc60,kind=61,115*0*0]p[4078cb40,kind=61,112*0*0]o[4078cae0,kind=61,111*0*0]r[4078cc00,kind=61,114*0*0]t[4078ccc0,kind=61,116*0*0]m[4078ca20,kind=61,109*0*0]o[4078cae0,kind=61,111*0*0]v[4078cd80,kind=61,118*0*0]i[4078c8a0,kind=61,105*0*0]n[4078ca80,kind=61,110*0*0]g[4078c7e0,kind=61,103*0*0]]
-gLog_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+gLog_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078e000,打印词组对象《relationship》,句子长度为：12,creObjFromMulti:success create,kind=62,add=4078e000,baseobjAdd:40721aa0,objNum=12
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2020 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2020,add=4078e040,baseobjAdd:4078e020,objNum=11,ObjectKind=2020 add:4078e040,zi对象num为(11):
 		地址4078d680,DataNUm1=1,[T[4078d680,kind=61,84*0*0]e[4078c720,kind=61,101*0*0]c[4078c660,kind=61,99*0*0]h[4078c840,kind=61,104*0*0]s[4078cc60,kind=61,115*0*0]u[4078cd20,kind=61,117*0*0]p[4078cb40,kind=61,112*0*0]p[4078cb40,kind=61,112*0*0]o[4078cae0,kind=61,111*0*0]r[4078cc00,kind=61,114*0*0]t[4078ccc0,kind=61,116*0*0]]
 tLog_printSomeMsgForObj:creObjFromMulti:success create,kind=2020,add=4078e060,baseobjAdd:4078e020,objNum=15,ObjectKind=2020 add:4078e060,zi对象num为(15):
 		地址4078d680,DataNUm1=1,[T[4078d680,kind=61,84*0*0]r[4078cc00,kind=61,114*0*0]a[4078c580,kind=61,97*0*0]n[4078ca80,kind=61,110*0*0]s[4078cc60,kind=61,115*0*0]p[4078cb40,kind=61,112*0*0]o[4078cae0,kind=61,111*0*0]r[4078cc00,kind=61,114*0*0]t[4078ccc0,kind=61,116*0*0]m[4078ca20,kind=61,109*0*0]o[4078cae0,kind=61,111*0*0]v[4078cd80,kind=61,118*0*0]i[4078c8a0,kind=61,105*0*0]n[4078ca80,kind=61,110*0*0]g[4078c7e0,kind=61,103*0*0]]
-gLog_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+gLog_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078e080,打印词组对象《race》,句子长度为：4,creObjFromMulti:success create,kind=62,add=4078e080,baseobjAdd:40721aa0,objNum=4
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2021 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2021,add=4078e0c0,baseobjAdd:4078e0a0,objNum=5,ObjectKind=2021 add:4078e0c0,zi对象num为(5):
 		地址4078d7a0,DataNUm1=1,[W[4078d7a0,kind=61,87*0*0]h[4078c840,kind=61,104*0*0]i[4078c8a0,kind=61,105*0*0]t[4078ccc0,kind=61,116*0*0]e[4078c720,kind=61,101*0*0]]
 eLog_printSomeMsgForObj:creObjFromMulti:success create,kind=2021,add=4078e0e0,baseobjAdd:4078e0a0,objNum=18,ObjectKind=2021 add:4078e0e0,zi对象num为(18):
 		地址4078cf60,DataNUm1=1,[A[4078cf60,kind=61,65*0*0]s[4078cc60,kind=61,115*0*0]i[4078c8a0,kind=61,105*0*0]a[4078c580,kind=61,97*0*0]n[4078ca80,kind=61,110*0*0]-[4078bea0,kind=61,45*0*0]P[4078d500,kind=61,80*0*0]a[4078c580,kind=61,97*0*0]c[4078c660,kind=61,99*0*0]-[4078bea0,kind=61,45*0*0]I[4078d260,kind=61,73*0*0]s[4078cc60,kind=61,115*0*0]l[4078c9c0,kind=61,108*0*0]a[4078c580,kind=61,97*0*0]n[4078ca80,kind=61,110*0*0]d[4078c6c0,kind=61,100*0*0]e[4078c720,kind=61,101*0*0]r[4078cc00,kind=61,114*0*0]]
-rLog_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+rLog_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078e100,打印词组对象《sex》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4078e100,baseobjAdd:40721aa0,objNum=3
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2022 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2022,add=4078e140,baseobjAdd:4078e120,objNum=6,ObjectKind=2022 add:4078e140,zi对象num为(6):
 		地址4078d140,DataNUm1=1,[F[4078d140,kind=61,70*0*0]e[4078c720,kind=61,101*0*0]m[4078ca20,kind=61,109*0*0]a[4078c580,kind=61,97*0*0]l[4078c9c0,kind=61,108*0*0]e[4078c720,kind=61,101*0*0]]
 eLog_printSomeMsgForObj:creObjFromMulti:success create,kind=2022,add=4078e160,baseobjAdd:4078e120,objNum=4,ObjectKind=2022 add:4078e160,zi对象num为(4):
 		地址4078d3e0,DataNUm1=1,[M[4078d3e0,kind=61,77*0*0]a[4078c580,kind=61,97*0*0]l[4078c9c0,kind=61,108*0*0]e[4078c720,kind=61,101*0*0]]
-eLog_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+eLog_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078e180,打印词组对象《capital-gain》,句子长度为：12,creObjFromMulti:success create,kind=62,add=4078e180,baseobjAdd:40721aa0,objNum=12
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2023 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2023,add=4078e1e0,baseobjAdd:4078e1a0,objNum=3,ObjectKind=2023 add:4078e1e0,zi对象num为(3):
 		地址4078bba0,DataNUm1=1,[7[4078bba0,kind=61,55*0*0]8[4078bc00,kind=61,56*0*0]9[4078bc60,kind=61,57*0*0]]
-9Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+9Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078e200,打印词组对象《capital-loss》,句子长度为：12,creObjFromMulti:success create,kind=62,add=4078e200,baseobjAdd:40721aa0,objNum=12
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2024 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2024,add=4078e260,baseobjAdd:4078e220,objNum=3,ObjectKind=2024 add:4078e260,zi对象num为(3):
 		地址4078bba0,DataNUm1=1,[7[4078bba0,kind=61,55*0*0]8[4078bc00,kind=61,56*0*0]9[4078bc60,kind=61,57*0*0]]
-9Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+9Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078e280,打印词组对象《hours-per-week》,句子长度为：14,creObjFromMulti:success create,kind=62,add=4078e280,baseobjAdd:40721aa0,objNum=14
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2025 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2025,add=4078e2e0,baseobjAdd:4078e2a0,objNum=2,ObjectKind=2025 add:4078e2e0,zi对象num为(2):
 		地址4078ba80,DataNUm1=1,[4[4078ba80,kind=61,52*0*0]0[4078b8e0,kind=61,48*0*0]]
-0Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+0Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		地址：4078e300,打印词组对象《native-country》,句子长度为：14,creObjFromMulti:success create,kind=62,add=4078e300,baseobjAdd:40721aa0,objNum=14
-Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2026 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2026,add=4078e340,baseobjAdd:4078e320,objNum=8,ObjectKind=2026 add:4078e340,zi对象num为(8):
 		地址4078d620,DataNUm1=1,[S[4078d620,kind=61,83*0*0]c[4078c660,kind=61,99*0*0]o[4078cae0,kind=61,111*0*0]t[4078ccc0,kind=61,116*0*0]l[4078c9c0,kind=61,108*0*0]a[4078c580,kind=61,97*0*0]n[4078ca80,kind=61,110*0*0]d[4078c6c0,kind=61,100*0*0]]
@@ -242,25 +242,25 @@ dLog_printSomeMsgForObj:creObjFromMulti:success create,kind=2026,add=4078e360,ba
 		地址4078d680,DataNUm1=1,[T[4078d680,kind=61,84*0*0]h[4078c840,kind=61,104*0*0]a[4078c580,kind=61,97*0*0]i[4078c8a0,kind=61,105*0*0]l[4078c9c0,kind=61,108*0*0]a[4078c580,kind=61,97*0*0]n[4078ca80,kind=61,110*0*0]d[4078c6c0,kind=61,100*0*0]]
 dLog_printSomeMsgForObj:creObjFromMulti:success create,kind=2026,add=4078e380,baseobjAdd:4078e320,objNum=6,ObjectKind=2026 add:4078e380,zi对象num为(6):
 		地址4078d3e0,DataNUm1=1,[M[4078d3e0,kind=61,77*0*0]e[4078c720,kind=61,101*0*0]x[4078ce40,kind=61,120*0*0]i[4078c8a0,kind=61,105*0*0]c[4078c660,kind=61,99*0*0]o[4078cae0,kind=61,111*0*0]]
-oLog_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+oLog_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2029 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2029,add=4078e400,baseobjAdd:4078e3e0,objNum=2,ObjectKind=2029 add:4078e400,zi对象num为(2):
 		地址4078bae0,DataNUm1=1,[5[4078bae0,kind=61,53*0*0]1[4078b960,kind=61,49*0*0]]
 1Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2029,add=4078e420,baseobjAdd:4078e3e0,objNum=2,ObjectKind=2029 add:4078e420,zi对象num为(2):
 		地址4078ba80,DataNUm1=1,[4[4078ba80,kind=61,52*0*0]9[4078bc60,kind=61,57*0*0]]
-9Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+9Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2030 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2030,add=4078e460,baseobjAdd:4078e440,objNum=2,ObjectKind=2030 add:4078e460,zi对象num为(2):
 		地址4078ba20,DataNUm1=1,[3[4078ba20,kind=61,51*0*0]5[4078bae0,kind=61,53*0*0]]
 5Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2030,add=4078e480,baseobjAdd:4078e440,objNum=2,ObjectKind=2030 add:4078e480,zi对象num为(2):
 		地址4078ba20,DataNUm1=1,[3[4078ba20,kind=61,51*0*0]0[4078b8e0,kind=61,48*0*0]]
-0Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+0Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2031 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2031,add=4078e4c0,baseobjAdd:4078e4a0,objNum=2,ObjectKind=2031 add:4078e4c0,zi对象num为(2):
 		地址4078b960,DataNUm1=1,[1[4078b960,kind=61,49*0*0]4[4078ba80,kind=61,52*0*0]]
 4Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2031,add=4078e4e0,baseobjAdd:4078e4a0,objNum=2,ObjectKind=2031 add:4078e4e0,zi对象num为(2):
 		地址4078b960,DataNUm1=1,[1[4078b960,kind=61,49*0*0]5[4078bae0,kind=61,53*0*0]]
-5Log_printSomeMsgForObj:Sat Jun 10 23:50:24 2017
+5Log_printSomeMsgForObj:Mon Jun 19 15:31:14 2017
 		空对象或者为基类对象,在DataFlowProcess中:nero_CreateNewBaseObj success,new basekind=2032 !,kind=0,0
 Log_printSomeMsgForObj:creObjFromMulti:success create,kind=2032,add=4078e560,baseobjAdd:4078e500,objNum=2,ObjectKind=2032 add:4078e560,zi对象num为(2):
 		地址4078b960,DataNUm1=1,[1[4078b960,kind=61,49*0*0]5[4078bae0,kind=61,53*0*0]]

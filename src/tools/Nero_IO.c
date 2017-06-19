@@ -93,6 +93,7 @@ void IO_SaveSysIntoDatabase(NeuronObject  *godNero)
 	nero_8int  strLinshi2[500];
 	NeuronObject * obj;
 	NeuronObject * tmp;
+	NeuronObject * base1;
 	NeuronObject * BaseObi;
 	NerveFiber  *  curFiber;
 	NerveFiber  *  inputListHead;
@@ -139,6 +140,7 @@ void IO_SaveSysIntoDatabase(NeuronObject  *godNero)
 	r = redisCommand(c, "HMSET GodNero msg %x x %x y %x z %x inputListHead %x outputListHead %x", godNero->msg,godNero->x,godNero->y,godNero->z,godNero->inputListHead,godNero->outputListHead);
 	freeReplyObject(r);
 
+	printf("%x  %x  %x\n",godNero,godNero->outputListHead->obj,godNero->outputListHead);
 	// ObjectKind=*((nero_s32int *)(str_));
 	curFiber=godNero->outputListHead;
 	for (;curFiber !=NULL;curFiber=curFiber->next)

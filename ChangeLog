@@ -704,31 +704,39 @@ native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, 
 	  现在可以尝试讲sys数据存入数据库中
 
 
-数据化方案
-				存储过程------------
-1：考虑到nero和fiber不同的分配方式，动态分配的fiber地址总会比nero高
-2：就nero来说，他的地址最低，可以作为基准，给他一个编号1或者0
-			这样，所以的nero就可以作成一个list，进行存储，这个编号也是fiber-》obj的存储内容
-			HMSET GodNero msg %x x %x y %x z %x inputListHead %x outputListHead %x
-3：那怎么存储fiber的呢？
-	考虑到fiber都动态的，所以可以忽略地址，只需要保存值就好了，就是说，将每个obj无论他是基类还是衍生类的obj都可以将
-	inputListHead和outputListHead分别生成一个列表，列表名可以是nero的编号，列表的值是一个哈希表的名字，该哈希表示一个NerveFiber_对象（只需要存储obj，msg，time）
-			struct NerveFiber_
-		{
-			struct ActivationNeuron   *obj;
-			struct NerveFiber_ * next;
-			nero_us32int msg1;/*存储额外的信息*/
-			nero_us32int time;/*有关修改时间的信息*/
-		};
+		数据化方案
+						存储过程------------
+		1：考虑到nero和fiber不同的分配方式，动态分配的fiber地址总会比nero高
+		2：就nero来说，他的地址最低，可以作为基准，给他一个编号1或者0
+					这样，所以的nero就可以作成一个list，进行存储，这个编号也是fiber-》obj的存储内容
+					HMSET GodNero msg %x x %x y %x z %x inputListHead %x outputListHead %x
 
+					同时创建一个哈希表：保存一个nero的old地址和编号的数组
+		3：那怎么存储fiber的呢？
+			考虑到fiber都动态的，所以可以忽略地址，只需要保存值就好了，就是说，将每个obj无论他是基类还是衍生类的obj都可以将
+			inputListHead和outputListHead分别生成一个列表，列表名可以是nero的编号，列表的值是一个哈希表的名字，该哈希表示一个NerveFiber_对象
+			（只需要存储obj，msg，time）
+					struct NerveFiber_
+				{
+					struct ActivationNeuron   *obj;
+					struct NerveFiber_ * next;
+					nero_us32int msg1;
+					nero_us32int time;
+				};
+				生成filer时，为了能找到实际的nero，还需要在第二步中保存一个nero的新地址和编号的数组【在第二步骤中就需要这么列表了】-----
+				假设有1亿个nero那么【100 000 000】 *  2 *  【一个指针的大小，一般是64位，就是8  B】  =  1.49GB
+				------------考虑未来的大小，还是使用Redis Hashes  可以存储多达40亿个键-值对
 
+		step 1:  根据ActNero NeroPool[MaxNeroNum]; 创建一个哈希表1，保存所有nero的old地址和编号的数组
+									编号为key{字符串}  ，valve为地址
+							创建一个哈希表2，保存一个nero的数据
+							方案1：把所有nero的数据存于一个哈希表2中--------key为nero编号，filed为各个数据 【暂时用这个方案】
+							方案2：每个nero都设置一个哈希表
+		step 2:  遍历数组或者sys的链表，存储fiber数据
+							inputListHead和outputListHead   生成同一个列表3，当然也可以是一个哈希表，和上面的方案1类似
 
-
-
-
-
-
-
+		step 3:  通过哈希表1恢复nero数组，先更新哈希表1的地址，再恢复数据
+		step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 
 
 

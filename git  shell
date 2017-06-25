@@ -1,5 +1,5 @@
 提交更新：
-sudo git commit -a -m "20170623_01：sys数据化"
+sudo git commit -a -m "20170626_01：sys数据化"
 sudo git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt

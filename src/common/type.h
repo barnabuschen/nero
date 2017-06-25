@@ -118,6 +118,11 @@ typedef  char  nero_8int;
 #define NoIncludeG_return_if_fail
 
 
+
+#define RunningTime_MaxCount   150
+
+
+
 typedef struct ChineseUtf8Code
 {
 nero_us8int first;
@@ -254,9 +259,6 @@ nero_s32int Sys_mq_id;
 // #define sig_atomic_t_Flag
 
 // #endif
-
-
-
 
 
 

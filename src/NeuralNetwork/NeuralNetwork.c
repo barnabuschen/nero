@@ -54,7 +54,7 @@ static struct  NeuronObjectMsgWithStr_    neroObjMsgWithStr_st;
 
 
 NeroConf neroConf;
-ActNero NeroPool[MaxNeroNum];
+ActNero NeroPool[MaxNeroNum];   //极度危险，在此文件外只允许读，不允许写
 ActNero StagingAreaNeroPool[StagingAreaNeroNum];
 // ActNero NeroPool2[MaxNeroNum];
 // ActNero NeroPool3[MaxNeroNum];

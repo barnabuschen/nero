@@ -84,17 +84,20 @@ static nero_8int  file_path_getcwd[FILEPATH_MAX]="/tmp";/*保存当前目录*/
 nero_8int  strTmp[LenOfstrTmp];
 
  extern struct    PrintNeroLInkTree_St    objTreeSt;
-
-void IO_SaveSysIntoDatabase(NeuronObject  *godNero)
+extern ActNero NeroPool[MaxNeroNum]; 
+void IO_SaveSysIntoDatabase(NeuronObject  *godNero,NeroConf * conf)
 {
 	nero_8int  *str=strTmp;
 	nero_s32int ObjectKind,ObjectKind2,ii,iii,ObjectKind3;
-	nero_8int  strLinshi[500];
-	nero_8int  strLinshi2[500];
+	// nero_8int  strLinshi[500];
+	// nero_8int  strLinshi2[500];
+	nero_us32int neroNumbers;
+	nero_us32int neroNumberCount;
 	NeuronObject * obj;
 	NeuronObject * tmp;
 	NeuronObject * base1;
 	NeuronObject * BaseObi;
+	NeuronObject * neroPoolPoint;
 	NerveFiber  *  curFiber;
 	NerveFiber  *  inputListHead;
 	NerveFiber  *  outputListHead;
@@ -137,8 +140,8 @@ void IO_SaveSysIntoDatabase(NeuronObject  *godNero)
 	//save  GodNero obj
 	// printf("HMSET GodNero %x %x %x %x %x %x\n", godNero->msg,godNero->x,godNero->y,godNero->z,godNero->inputListHead,godNero->outputListHead);
 	// r = redisCommand(c, "HMSET GodNero xx %x  ",0x000000ff);
-	r = redisCommand(c, "HMSET GodNero msg %x x %x y %x z %x inputListHead %x outputListHead %x", godNero->msg,godNero->x,godNero->y,godNero->z,godNero->inputListHead,godNero->outputListHead);
-	freeReplyObject(r);
+	// r = redisCommand(c, "HMSET GodNero msg %x x %x y %x z %x inputListHead %x outputListHead %x", godNero->msg,godNero->x,godNero->y,godNero->z,godNero->inputListHead,godNero->outputListHead);
+	// freeReplyObject(r);
 
 
 	/*/////////////////sys数据化方案////////////////////
@@ -170,11 +173,29 @@ step 3:  通过哈希表1恢复nero数组，先更新哈希表1的地址，再�
 step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 
 	*/
+	// step 1:
+	neroNumbers = conf->UsedNeroNum;
+	neroNumberCount =0;
+	neroPoolPoint = NeroPool;
+	//生成哈希表1-------neroAddressTable
+	const char* neroAddressTable = "neroAddressTable";
+	printf("neroNumbers= [%d].\n",neroNumbers);
+	for(;neroNumberCount < neroNumbers;neroNumberCount++)
+	{
 
+		r = redisCommand(c, "HMSET %s %x %x",neroAddressTable,neroNumberCount,neroPoolPoint[neroNumberCount]);
+		if (!(r->type == REDIS_REPLY_STATUS && strcasecmp(r->str,"OK") == 0)) 
+		{
+			printf("Failed to execute [%d].\n",neroNumberCount);
+			freeReplyObject(r);
+		}		
+		else
+			freeReplyObject(r);		
+	}
 
-
-	printf("%x  %x  %x\n",godNero,godNero->outputListHead->obj,godNero->outputListHead);
+	// printf("%x  %x  %x\n",godNero,godNero->outputListHead->obj,godNero->outputListHead);
 	// ObjectKind=*((nero_s32int *)(str_));
+	/*
 	curFiber=godNero->outputListHead;
 	for (;curFiber !=NULL;curFiber=curFiber->next)
 	{
@@ -193,7 +214,7 @@ step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 
 		// }		
 	}
-
+*/
 
 
 	r = (redisReply*)redisCommand(c,"set ub sublime2000");
@@ -202,7 +223,7 @@ step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 	r = (redisReply*)redisCommand(c,"save");
 	if ( strcasecmp(r->str,"OK") == 0)
 	{
-	printf("save  success.\n",command1);
+		printf("save  success.\n",command1);
 	}
 	freeReplyObject(r);
 	redisFree(c);

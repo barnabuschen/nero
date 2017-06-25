@@ -54,13 +54,19 @@ static struct  NeuronObjectMsg_    neroObjMsg_st;
 
 static nero_8int  file_path_getcwd[FILEPATH_MAX];/*保存当前目录*/
 
-	struct  timeval  start_runningTime;
-    struct  timeval  end_runningTime;
-  	unsigned long timer_runningTime;
+struct  timeval  start_runningTime;
+struct  timeval  end_runningTime;
+unsigned long timer_runningTime;
+// 计算函数运行时间的几个变量
+nero_us32int runningTime_counts;
+struct  timeval  start_runningTime_arry[RunningTime_MaxCount];
+struct  timeval  end_runningTime_arry[RunningTime_MaxCount];
+
 
 void ProInitialization();
 void main()
 {
+	runningTime_counts = 0 ;
 
 		// printf(" \n \n \n \n \n \nthe size of  ActivationNeuron is: %llu  \n ",  sizeof(ActNero));
 // struct rlimit resource_limit;
@@ -159,8 +165,17 @@ void ProInitialization()
 		sleep(1);
 
 		//
-	    IO_SaveSysIntoDatabase( GodNero);
 
+		// nero_us32int runningTime_counts;
+		// struct  timeval  start_runningTime_arry[RunningTime_MaxCount];
+		// struct  timeval  end_runningTime_arry[RunningTime_MaxCount];
+		nero_us32int i_for_r;
+		i_for_r = runningTime_counts++ ;
+		gettimeofday(&(start_runningTime_arry[i_for_r]),NULL);
+	    IO_SaveSysIntoDatabase( GodNero,&neroConf);
+		gettimeofday(&(end_runningTime_arry[i_for_r]),NULL);
+	    timer_runningTime = 1000000 * (end_runningTime_arry[i_for_r].tv_sec-start_runningTime_arry[i_for_r].tv_sec)+ end_runningTime_arry[i_for_r].tv_usec-start_runningTime_arry[i_for_r].tv_usec;
+	    printf("\n\nIO_SaveSysIntoDatabase running time  = %ld s\n\n",timer_runningTime / 1000000);
 
 
 

@@ -741,8 +741,8 @@ native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, 
 
 
 计算函数运行时间的几个变量
-
-
+因为你已经保存了旧地址在table1中，你可以不断读取它来进行nero地址的获取
+但好像没有必要的啊
 
 
 

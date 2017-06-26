@@ -88,6 +88,10 @@ extern ActNero NeroPool[MaxNeroNum];
 void IO_SaveSysIntoDatabase(NeuronObject  *godNero,NeroConf * conf)
 {
 	nero_8int  *str=strTmp;
+	nero_8int  *id;
+	nero_8int  *data;
+	nero_us64int longTmpInt;
+	// void *      v_p;
 	nero_s32int ObjectKind,ObjectKind2,ii,iii,ObjectKind3;
 	// nero_8int  strLinshi[500];
 	// nero_8int  strLinshi2[500];
@@ -102,7 +106,20 @@ void IO_SaveSysIntoDatabase(NeuronObject  *godNero,NeroConf * conf)
 	NerveFiber  *  inputListHead;
 	NerveFiber  *  outputListHead;
 	NerveFiber  *  childcurFiber;
+	redisContext* c;
+	redisReply* r_tmp1;
+	redisReply* r;
+	// typedef struct redisReply {
+	//     int type; /* REDIS_REPLY_* */
+	//     long long integer; /* The integer when type is REDIS_REPLY_INTEGER */
+	//     size_t len; /* Length of string */
+	//     char *str;  Used for both REDIS_REPLY_ERROR and REDIS_REPLY_STRING 
+	//     size_t elements; /* number of elements, for REDIS_REPLY_ARRAY */
+	//     struct redisReply **element; /* elements vector for REDIS_REPLY_ARRAY */
+	// } redisReply;
 
+
+	printf(" sizeof =%d\n",sizeof(long int ) );
 
 	if (godNero == NULL )
 	{
@@ -112,7 +129,7 @@ void IO_SaveSysIntoDatabase(NeuronObject  *godNero,NeroConf * conf)
 		return  ;
 	}
 
-	redisContext* c = redisConnect("127.0.0.1", 6379);
+	 c = redisConnect("127.0.0.1", 6379);
 	if (c->err) 
 	{
 		printf("Failed to redisConnect \n");
@@ -120,7 +137,7 @@ void IO_SaveSysIntoDatabase(NeuronObject  *godNero,NeroConf * conf)
 		return;
 	}
 	const char* command1 = "select 0";
-	redisReply* r = (redisReply*)redisCommand(c,command1);
+	 r = (redisReply*)redisCommand(c,command1);
 	if (NULL == r) 
 	{
 		redisFree(c);
@@ -173,17 +190,20 @@ step 3:  通过哈希表1恢复nero数组，先更新哈希表1的地址，再�
 step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 
 	*/
-	// step 1:
+	// step 1:生成哈希表1-------neroAddressTable
 	neroNumbers = conf->UsedNeroNum;
 	neroNumberCount =0;
 	neroPoolPoint = NeroPool;
-	//生成哈希表1-------neroAddressTable
 	const char* neroAddressTable = "neroAddressTable";
 	printf("neroNumbers= [%d].\n",neroNumbers);
+	// printf("neroPoolPoint= %x   \n",neroPoolPoint);
+	// printf("size= [%d].nero_us32int=%d, nero_s32int=%d   \n",sizeof(struct ActivationNeuron),sizeof(nero_us32int),sizeof(nero_s32int));
+
+	printf("godNero=%x  %x  %x\n",godNero,godNero->outputListHead->obj,godNero->outputListHead);
 	for(;neroNumberCount < neroNumbers;neroNumberCount++)
 	{
 
-		r = redisCommand(c, "HMSET %s %x %x",neroAddressTable,neroNumberCount,neroPoolPoint[neroNumberCount]);
+		r = redisCommand(c, "HMSET %s %d %x",neroAddressTable,neroNumberCount,&(neroPoolPoint[neroNumberCount]));
 		if (!(r->type == REDIS_REPLY_STATUS && strcasecmp(r->str,"OK") == 0)) 
 		{
 			printf("Failed to execute [%d].\n",neroNumberCount);
@@ -192,8 +212,68 @@ step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 		else
 			freeReplyObject(r);		
 	}
+	// 生成哈希表2-------neroDataTable
+	// 因为你已经保存了旧地址在哈希表1中，你可以不断读取它来进行nero地址的获取,但好像没有必要的啊
+	const char* neroDataTable = "neroDataTable";
 
-	// printf("%x  %x  %x\n",godNero,godNero->outputListHead->obj,godNero->outputListHead);
+	//get all nero编号
+	r_tmp1 = redisCommand(c, "HGETALL %s",neroAddressTable);
+	if (!(r_tmp1->type == REDIS_REPLY_ARRAY &&  (r_tmp1->elements ) == (neroNumbers*2)   ))
+	{
+		printf("Failed to get all nero编号  elements =%d\n" ,r_tmp1->elements );
+		freeReplyObject(r_tmp1);
+	}		
+	else
+	{
+		printf(" elements =%d\n" ,r_tmp1->elements );
+		for(neroNumberCount =0;neroNumberCount < 100 ;neroNumberCount++)//neroNumbers
+		// for(neroNumberCount =0;neroNumberCount < neroNumbers ;neroNumberCount++)//neroNumbers
+		{
+			// key为nero编号，filed为各个数据
+			//  struct ActivationNeuron
+			// {
+			// nero_us32int msg;/*记录该nero的种类，性质等信息*/
+			// nero_s32int x;/*取值范围-2147483648 ~ 2147483647       use x  to  recond  how many chind has  if  its  a  baseObj */
+			// nero_s32int y;	/*	it use  to  recond  how many times  this obj  has been input  recently只在临时区域中使用这个变量*/
+			// nero_s32int z;
+			// struct NerveFiber_  * inputListHead;
+			// struct NerveFiber_   * outputListHead;
+			// };
+			// printf("ID:%s   data:%s\n",r_tmp1->element[neroNumberCount * 2]->str,r_tmp1->element[neroNumberCount * 2 +1]->str);
+			id = r_tmp1->element[neroNumberCount * 2]->str;
+			// data = r_tmp1->element[neroNumberCount * 2 +1]->str;
+			// obj = 
+			strcpy(str,r_tmp1->element[neroNumberCount * 2 +1]->str);
+
+			// long int strtol(const char *nptr,char **endptr,int base)
+			obj =(NeuronObject * ) strtol(str,NULL,16);
+			// printf("ID:%s   data:%s\n",id,str);
+			// printf("ID:%s   data:%x\n",id,obj);
+			if(obj != NULL)
+			{
+				r = redisCommand(c, "HMSET %s %s_msg %d %s_x %d %s_y %d %s_z %d",neroDataTable,id,obj->msg,id,obj->x,id,obj->y,id,obj->z);
+				if (!(r->type == REDIS_REPLY_STATUS && strcasecmp(r->str,"OK") == 0)) 
+				{
+					printf("Failed to ...\n");
+					freeReplyObject(r);
+				}		
+				else
+					freeReplyObject(r);		
+			}
+			else
+			{
+				printf("id=%d is NULL\n",id);
+			}
+
+
+			//now you can creat  列表3
+
+		}	
+	}
+	freeReplyObject(r_tmp1);
+
+
+
 	// ObjectKind=*((nero_s32int *)(str_));
 	/*
 	curFiber=godNero->outputListHead;

@@ -79,6 +79,7 @@ typedef unsigned int  nero_us32int;
 typedef unsigned char  nero_us8int;
 typedef signed char  nero_s8int;
 typedef  char  nero_8int;
+typedef unsigned long long nero_us64int;
 // typedef  int  gint;
 // typedef  char  gchar;
 /*调试开关*/

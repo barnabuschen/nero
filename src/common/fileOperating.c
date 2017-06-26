@@ -19,23 +19,18 @@
 void  testDebugForFileOperating()
 {
 
-	
 
 }
-
-
-
-
 int    *    mystrToInt(char  *  str )
 {
-	
+
 	if(str  == NULL)
 		return  NULL;
-    //~ char   szValue[]  =   "0x11";     
-    int    nValude    =   0;         
+    //~ char   szValue[]  =   "0x11";
+    int    nValude    =   0;
     int   *   res;
-    sscanf(str,"%x",&nValude);  
-	
+    sscanf(str,"%x",&nValude);
+
 	res  =    (int  *)nValude;
 	return  res;
 	}
@@ -95,28 +90,28 @@ int searchStrInFile(char * FileName,char * searchstr)
 
 char *myitoa(int value,char *string,int radix)
 {
-   int rt=0;   
-   if(string==NULL)   
-      return NULL;   
-   if(radix<=0||radix>30)   
-      return NULL;   
-   rt=snprintf(string,radix,"%d",value);   
-   if(rt>radix)   
-      return NULL;   
-   string[rt]='\0';   
-   return string;   
+   int rt=0;
+   if(string==NULL)
+      return NULL;
+   if(radix<=0||radix>30)
+      return NULL;
+   rt=snprintf(string,radix,"%d",value);
+   if(rt>radix)
+      return NULL;
+   string[rt]='\0';
+   return string;
 }
 void putSubStrIntoOther(char * a,char *b,int startA,int startB,int len)
 {
 	if(a && b)
 	{
-		
+
 		int i=0;
 		while(i <len)
 		{
 			if(a[i+startA] != '\0')
 				b[i+startB]=a[i+startA];
-			else 
+			else
 				break;
 			i++;
 		}
@@ -140,7 +135,7 @@ void putSubStrIntoOther(char * a,char *b,int startA,int startB,int len)
       		// len=strlen(str);
 		//		printf(" \n first len is:%d \n",len);
 	}
-	else 
+	else
 		str=NULL;
 
 	return str;
@@ -148,8 +143,8 @@ void putSubStrIntoOther(char * a,char *b,int startA,int startB,int len)
 
 
 int * findAllLine(char * FileName,int * countline)
-{	
-	
+{
+
 
 	FILE * myfile=fopen(FileName, "r+");
 	//to count how many lines in this file
@@ -170,7 +165,7 @@ int * findAllLine(char * FileName,int * countline)
 		if( c == EOF)
 		{
 			count++;break;
-		}	
+		}
 
 	       }
 	}
@@ -217,7 +212,7 @@ int * findAllLine(char * FileName,int * countline)
 				lastC=c;
 				continue;
 			}
-			
+
 			//printf("%d  count=%d \n",location[count],count);
 		count++;
 		if( countHuanHang<(* countline))
@@ -232,8 +227,8 @@ int * findAllLine(char * FileName,int * countline)
 			break;
 		}
 		count++;
-		
-	     }      
+
+	     }
 	 lastC=c;
         }
 
@@ -257,7 +252,7 @@ int     delStrInFile(char * FileName,int len,int point)//note:the point means th
 {
 //check the filename first
 
-//make sure that the' len' is not large than the whole file from point to end,but if it is,just del all char from 
+//make sure that the' len' is not large than the whole file from point to end,but if it is,just del all char from
 //'point' to the end
 	FILE * myfile=fopen(FileName, "r+");
 	int res3;
@@ -274,7 +269,7 @@ int     delStrInFile(char * FileName,int len,int point)//note:the point means th
 	res3 = ftruncate(fd,point-1);
 	return 2;
 	}
-	//now is normal case:	
+	//now is normal case:
           fseek(myfile,point+len, SEEK_SET);
           char chr;
           while((chr=fgetc(myfile))!=EOF)
@@ -310,7 +305,7 @@ void updataLine(char * FileName,char * newStr,int line)
 	if(line == (len1-1))
 	{
 		int fd = open(FileName,O_RDWR);
-		
+
 		res3=ftruncate(fd,loc[(line)*2]);
 		close(fd);
 		addLineToFile(FileName,newStr);
@@ -323,7 +318,7 @@ void updataLine(char * FileName,char * newStr,int line)
 	int len=(loc[(len1)*2-1]-loc[(line+1)*2])+1;
 	printf("len1 is  \n%d\n",len1);
 	//printf("len is  \n%d\n",len);
-	
+
 	char * laststr=getStrInFile(FileName,len,loc[(line+1)*2]);
 	printf("laststr is  \n%s\n",laststr);
 
@@ -360,7 +355,7 @@ int delLine(char * FileName,int line)
 
 	char * fileName=FileName;
         int len1=0;
-        int *loc= findAllLine(fileName,&len1);	
+        int *loc= findAllLine(fileName,&len1);
 	int start;
 	int len;
 	if(line == 0)
@@ -368,7 +363,7 @@ int delLine(char * FileName,int line)
 		start=loc[(line)*2];//注意start是该行前面的那个换行符
 		len=(loc[(line+1)*2-1]-start)+1+1;
 	}
-	else    
+	else
 	{
 		start=loc[(line)*2]-1;
        		len=(loc[(line+1)*2-1]-start)+1;
@@ -391,14 +386,14 @@ int delLine(char * FileName,int line)
 
 //try to open the file    sizeof(str)/sizeof(char)
         FILE * myfile=fopen(FileName, "r+");
-	
+
 	//if len <=0  or point <0 .just get the whole file
 	if(len <=0 ||  point <0 )
 	{
 		fseek(myfile,0, SEEK_END);
 		len= ftell(myfile);
 		fseek(myfile,0, SEEK_SET);
-	
+
 	}
 	else
         	fseek(myfile,point, SEEK_SET);
@@ -422,7 +417,7 @@ char * getStrInFile2(char * FileName,int len,int point)//返回获取的字符�
 
 //try to open the file    sizeof(str)/sizeof(char)
         FILE * myfile=fopen(FileName, "r+");
-	
+
 	//if len <=0  or point <0 .just get the whole file
 	if(len >0 &&  point <0 )//从文件末尾倒数取len个字符
 	{
@@ -458,14 +453,14 @@ char * getStrInFile2(char * FileName,int len,int point)//返回获取的字符�
 	fclose(myfile);
 
         return str;
-	
+
 
 
 
 
 
 }
-int putStrInFile(char * FileName,char * str,int len,int point)//在文件特定位置插入一个字符串,point 												//is the  location of the str,if 
+int putStrInFile(char * FileName,char * str,int len,int point)//在文件特定位置插入一个字符串,point 												//is the  location of the str,if
 					// it is zero ,that means put the str at the start of file
 {
 
@@ -505,7 +500,7 @@ void otput()
 //        //gint32 haveRead=read(file,buffer,128);
 //        buffer[haveRead]='\0';
 //        g_print ("%s,\n",buffer);
-//        close(file); 
+//        close(file);
 ////
 //
 //
@@ -526,7 +521,7 @@ void otput()
 
 
 //	int res=putStrInFile("data","=",1,0);
-	
+
 	//delStrInFile("data",4,3);
 
 //	addLineToFile("data","\nim pig\n");
@@ -568,18 +563,3 @@ void otput()
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

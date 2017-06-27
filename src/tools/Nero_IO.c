@@ -65,7 +65,7 @@ END_TWO_ARG_MESSAGE_MAP
 
 
 
-#define  LenOfstrTmp   5000
+#define  LenOfstrTmp   8000
 
 
 
@@ -92,7 +92,7 @@ void IO_SaveSysIntoDatabase(NeuronObject  *godNero,NeroConf * conf)
 	nero_8int  *data;
 	nero_us64int longTmpInt;
 	// void *      v_p;
-	nero_s32int ObjectKind,ObjectKind2,ii,iii,ObjectKind3;
+	nero_s32int ObjectKind,ObjectKind2,ii,lenOfTable,ObjectKind3,dataNum,flag;
 	// nero_8int  strLinshi[500];
 	// nero_8int  strLinshi2[500];
 	nero_us32int neroNumbers;
@@ -100,7 +100,8 @@ void IO_SaveSysIntoDatabase(NeuronObject  *godNero,NeroConf * conf)
 	NeuronObject * obj;
 	NeuronObject * tmp;
 	NeuronObject * base1;
-	NeuronObject * BaseObi;
+	NeuronObject * childObj;
+	NeuronObject * fiberPintObj;
 	NeuronObject * neroPoolPoint;
 	NerveFiber  *  curFiber;
 	NerveFiber  *  inputListHead;
@@ -191,7 +192,7 @@ step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 
 	*/
 	// step 1:生成哈希表1-------neroAddressTable
-	neroNumbers = conf->UsedNeroNum;
+	neroNumbers = conf->UsedNeroNum +1;
 	neroNumberCount =0;
 	neroPoolPoint = NeroPool;
 	const char* neroAddressTable = "neroAddressTable";
@@ -216,6 +217,10 @@ step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 	// 因为你已经保存了旧地址在哈希表1中，你可以不断读取它来进行nero地址的获取,但好像没有必要的啊
 	const char* neroDataTable = "neroDataTable";
 
+
+/*************************************/
+//NOTE : hash 表取出内容时的顺序和存入顺序是不一样的
+/******************************************/
 	//get all nero编号
 	r_tmp1 = redisCommand(c, "HGETALL %s",neroAddressTable);
 	if (!(r_tmp1->type == REDIS_REPLY_ARRAY &&  (r_tmp1->elements ) == (neroNumbers*2)   ))
@@ -226,19 +231,10 @@ step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 	else
 	{
 		printf(" elements =%d\n" ,r_tmp1->elements );
-		for(neroNumberCount =0;neroNumberCount < 100 ;neroNumberCount++)//neroNumbers
-		// for(neroNumberCount =0;neroNumberCount < neroNumbers ;neroNumberCount++)//neroNumbers
+		// for(neroNumberCount =0;neroNumberCount < 50 ;neroNumberCount++)//neroNumbers
+		for(neroNumberCount =0;neroNumberCount < neroNumbers ;neroNumberCount++)//neroNumbers
 		{
 			// key为nero编号，filed为各个数据
-			//  struct ActivationNeuron
-			// {
-			// nero_us32int msg;/*记录该nero的种类，性质等信息*/
-			// nero_s32int x;/*取值范围-2147483648 ~ 2147483647       use x  to  recond  how many chind has  if  its  a  baseObj */
-			// nero_s32int y;	/*	it use  to  recond  how many times  this obj  has been input  recently只在临时区域中使用这个变量*/
-			// nero_s32int z;
-			// struct NerveFiber_  * inputListHead;
-			// struct NerveFiber_   * outputListHead;
-			// };
 			// printf("ID:%s   data:%s\n",r_tmp1->element[neroNumberCount * 2]->str,r_tmp1->element[neroNumberCount * 2 +1]->str);
 			id = r_tmp1->element[neroNumberCount * 2]->str;
 			// data = r_tmp1->element[neroNumberCount * 2 +1]->str;
@@ -264,10 +260,106 @@ step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 			{
 				printf("id=%d is NULL\n",id);
 			}
+			//now you can creat  列表3----
+			if( obj != NULL   )
+			{
+				lenOfTable = r_tmp1->elements /2  ;
+				if(( NeuronNode_ForData  !=  nero_GetNeroKind(obj) )   ||    nero_isBaseObj( obj) ==  1)
+				{
+					 // dataNum =  nero_getObjDataNum( obj);//inputList  node num
+					// 考虑到列表是有顺序的所以不能用哈希表了，必须有list，并且把数据都转换为字符串后存入							 
+
+					curFiber = obj->inputListHead;
+					while(curFiber != NULL  &&  curFiber->obj != NULL )
+					{
+						fiberPintObj = curFiber->obj;
+						flag = -1;
+						// search nero id  by address
+						 for(ii =0; ii < lenOfTable ;ii ++ )
+						 {
+						 	// r_tmp1->element[neroNumberCount * 2]->str
+						 	// strcasecmp(r->str,"OK") == 0)
+							strcpy(str,r_tmp1->element[ii * 2 +1]->str);
+							tmp =(NeuronObject * ) strtol(str,NULL,16);
+							if(tmp  ==  fiberPintObj )
+							{
+								flag = ii * 2;// r_tmp1->element[ii * 2]->str  is the id
+								break;
+							}
+						 }	
+						 if(flag > 0)		
+						 {
+						 	// save all fibers data in str,i means its  in inputlist
+						 	sprintf(str,"%s_%x_%x_%x",r_tmp1->element[flag]->str,curFiber->msg1,curFiber->time);
+							r = redisCommand(c, "LPUSH %s_input %s",id, str);
+							if (!(r->type == REDIS_REPLY_INTEGER && (r->integer) > 0)) 
+							{
+								printf("Failed to execute LPUSH_input id=[%s].neroNumberCount=%d\n",id,neroNumberCount);
+							 	printf("%s,r->type=%d,r->str=%s\n",str,r->type,r->str);
+								freeReplyObject(r);
+							}		
+							else
+							{
+								freeReplyObject(r);	
+							}
+						 }	
+						 else
+						 {
+						 	printf("cannot find obj[%x] in neroDataTable 1 \n",fiberPintObj);
+						 	freeReplyObject(r_tmp1);
+						 	redisFree(c);
+						 	return;
+						 }		
+						curFiber =  curFiber->next;
+					}
+					curFiber = obj->outputListHead;
+					while(curFiber != NULL  &&  curFiber->obj != NULL )
+					{
+						fiberPintObj = curFiber->obj;
+						flag = -1;
+						// search nero id  by address
+						 for(ii =0; ii < lenOfTable ;ii ++ )
+						 {
+							strcpy(str,r_tmp1->element[ii * 2 +1]->str);
+							tmp =(NeuronObject * ) strtol(str,NULL,16);
+							if(tmp  ==  fiberPintObj )
+							{
+								flag = ii * 2;// r_tmp1->element[ii * 2]->str  is the id
+								break;
+							}
+						 }	
+						 if(flag > 0)		
+						 {
+						 	// save all fibers data in str
+						 	sprintf(str,"%s_%x_%x_%x",r_tmp1->element[flag]->str,curFiber->msg1,curFiber->time);
+							r = redisCommand(c, "LPUSH %s_output %s",id, str);
+							if (!(r->type == REDIS_REPLY_INTEGER && (r->integer) > 0)) 
+							{
+								printf("Failed to execute LPUSH_output id=[%s].neroNumberCount=%d\n",id,neroNumberCount);
+								printf("%s\n\n",str);
+								freeReplyObject(r);
+							}		
+							else
+							{
+								// printf("LPUSH %s_output %s\n",id, str);
+								freeReplyObject(r);	
+							}
+						 }	
+						 else
+						 {
+						 	printf("cannot find obj[%x] in neroDataTable 2 ,flag=%d,ii=%d\n",fiberPintObj,flag ,ii);
+						 	printf("%s%d\n",str);
+						 	printf("kind[%d],isbase[%d],outListNUm=%d\n",nero_GetNeroKind(fiberPintObj),nero_isBaseObj(fiberPintObj));
+						 	freeReplyObject(r_tmp1);
+						 	redisFree(c);
+						 	return;
+						 }		
+						curFiber =  curFiber->next;
+					}
 
 
-			//now you can creat  列表3
-
+				}
+			}
 		}	
 	}
 	freeReplyObject(r_tmp1);

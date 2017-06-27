@@ -179,13 +179,13 @@ void ProInitialization()
 
 
 
-		return;
+		// return;
 		// nero_8int * fileName2="/data/adult/adultLearn.sh"; 
 		nero_8int * fileName2="/data/adult/adultLearn.test.sh"; 
 		// nero_8int * fileName2="/data/adult/adultLearn.3000.sh";
 
 		// nero_8int * fileName2="/data/iris/LearningFileForIris.sh";
-		ReadTaskFromTxt( fileName2  );
+		// ReadTaskFromTxt( fileName2  );
 
 		printf("\n\n\nend of  fuc ReadTaskFromTxt1\n");
 
@@ -196,7 +196,7 @@ void ProInitialization()
 		nero_8int * fileName3="/data/adult/adultTest.short3.sh";
 
 		// nero_8int * fileName3="/data/iris/TestingDataForIris.sh";
-		ReadTaskFromTxt( fileName3  );
+		// ReadTaskFromTxt( fileName3  );
 		printf("\n\n\nend of  fuc ReadTaskFromTxt2\n");
 
 

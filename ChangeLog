@@ -745,17 +745,23 @@ native-country: United-States, Cambodia, England, Puerto-Rico, Canada, Germany, 
 但好像没有必要的啊
 
 
+首先存储inputlist 的node数量
 
 
 
+/*************************************/
+hash 表取出内容时的顺序和存入顺序是不一样的
+/******************************************/
+#define REDIS_REPLY_STRING 1
+#define REDIS_REPLY_ARRAY 2
+#define REDIS_REPLY_INTEGER 3
+#define REDIS_REPLY_NIL 4
+#define REDIS_REPLY_STATUS 5
+#define REDIS_REPLY_ERROR 6
 
+考虑到列表是有顺序的所以不能用哈希表了，必须有list，并且把数据都转换为字符串后存入
 
-
-
-
-
-
-
+尝试把neroAddressTable的数据都打印出来，看看到底是哪里出问题了
 
 
 

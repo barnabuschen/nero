@@ -1,0 +1,439 @@
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2001 add:4078f3a0,所有对象num为(10):
+(000)所有child对象kind为
+          kind:61,getFiberPointToObjNum=0-------[数,<e695b0>]
+          kind:61,getFiberPointToObjNum=0
+		地址4078f3c0,DataNUm2=1,[0,]
+		地址4078f420,DataNUm2=1,[1,]
+		地址4078f480,DataNUm2=1,[2,]
+		地址4078f4e0,DataNUm2=1,[3,]
+		地址4078f540,DataNUm2=1,[4,]
+		地址4078f5a0,DataNUm2=1,[5,]
+		地址4078f600,DataNUm2=1,[6,]
+		地址4078f660,DataNUm2=1,[7,]
+		地址4078f6c0,DataNUm2=1,[8,]
+		地址4078f720,DataNUm2=1,[9,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2002 add:4078f740,所有对象num为(10):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[阿拉伯数字]
+          kind:61,getFiberPointToObjNum=0
+		地址4078f760,DataNUm2=1,[0,]
+		地址4078f780,DataNUm2=1,[1,]
+		地址4078f7a0,DataNUm2=1,[2,]
+		地址4078f7c0,DataNUm2=1,[3,]
+		地址4078f7e0,DataNUm2=1,[4,]
+		地址4078f800,DataNUm2=1,[5,]
+		地址4078f820,DataNUm2=1,[6,]
+		地址4078f840,DataNUm2=1,[7,]
+		地址4078f860,DataNUm2=1,[8,]
+		地址4078f880,DataNUm2=1,[9,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2003 add:4078f8e0,所有对象num为(11):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[数学符号]
+          kind:61,getFiberPointToObjNum=0
+		地址4078f900,DataNUm2=1,[+,]
+		地址4078f960,DataNUm2=1,[-,]
+		地址4078f9c0,DataNUm2=1,[*,]
+		地址4078fa20,DataNUm2=1,[/,]
+		地址4078fa80,DataNUm2=1,[&,]
+		地址4078fae0,DataNUm2=1,[=,]
+		地址4078fb40,DataNUm2=1,[<,]
+		地址4078fba0,DataNUm2=1,[>,]
+		地址4078fc00,DataNUm2=1,[|,]
+		地址4078fc60,DataNUm2=1,[!,]
+		地址4078fcc0,DataNUm2=1,[?,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2004 add:4078fce0,所有对象num为(1):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[负号]
+          kind:61,getFiberPointToObjNum=0
+		地址4078fd00,DataNUm2=1,[-,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2005 add:4078fd20,所有对象num为(1):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[等于号]
+          kind:61,getFiberPointToObjNum=0
+		地址4078fd40,DataNUm2=1,[=,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2006 add:4078fd60,所有对象num为(1):
+(000)所有child对象kind为
+          kind:61,getFiberPointToObjNum=0-------[加,<e58aa0>]
+          kind:61,getFiberPointToObjNum=0
+		地址4078fd80,DataNUm2=1,[+,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2007 add:4078fda0,所有对象num为(1):
+(000)所有child对象kind为
+          kind:61,getFiberPointToObjNum=0-------[减,<e5878f>]
+          kind:61,getFiberPointToObjNum=0
+		地址4078fdc0,DataNUm2=1,[-,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2008 add:4078fde0,所有对象num为(1):
+(000)所有child对象kind为
+          kind:61,getFiberPointToObjNum=0-------[乘,<e4b998>]
+          kind:61,getFiberPointToObjNum=0
+		地址4078fe00,DataNUm2=1,[*,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2009 add:4078fe20,所有对象num为(1):
+(000)所有child对象kind为
+          kind:61,getFiberPointToObjNum=0-------[除,<e999a4>]
+          kind:61,getFiberPointToObjNum=0
+		地址4078fe40,DataNUm2=1,[/,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2010 add:4078fe60,所有对象num为(1):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[正号]
+          kind:61,getFiberPointToObjNum=0
+		地址4078fe80,DataNUm2=1,[+,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2011 add:4078fea0,所有对象num为(10):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[整数]
+          kind:61,getFiberPointToObjNum=1
+		地址4078fec0,DataNUm2=1,[1,]
+		地址4078fee0,DataNUm2=2,[2,1,]
+		地址4078ff00,DataNUm2=1,[6,]
+		地址4078ff20,DataNUm2=3,[3,2,1,]
+		地址4078ff40,DataNUm2=4,[4,3,2,1,]
+		地址4078ff60,DataNUm2=5,[5,4,3,2,1,]
+		地址4078ff80,DataNUm2=6,[5,5,1,1,1,1,]
+		地址4078ffa0,DataNUm2=7,[7,6,5,4,3,2,1,]
+		地址4078ffc0,DataNUm2=8,[8,7,1,1,1,1,1,1,]
+		地址4078ffe0,DataNUm2=9,[9,8,7,6,5,4,3,2,1,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2012 add:40790040,所有对象num为(52):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[英文字母]
+          kind:61,getFiberPointToObjNum=0
+		地址40790060,DataNUm2=1,[a,]
+		地址407900c0,DataNUm2=1,[b,]
+		地址40790120,DataNUm2=1,[c,]
+		地址40790180,DataNUm2=1,[d,]
+		地址407901e0,DataNUm2=1,[e,]
+		地址40790240,DataNUm2=1,[f,]
+		地址407902a0,DataNUm2=1,[g,]
+		地址40790300,DataNUm2=1,[h,]
+		地址40790360,DataNUm2=1,[i,]
+		地址407903c0,DataNUm2=1,[j,]
+		地址40790420,DataNUm2=1,[k,]
+		地址40790480,DataNUm2=1,[l,]
+		地址407904e0,DataNUm2=1,[m,]
+		地址40790540,DataNUm2=1,[n,]
+		地址407905a0,DataNUm2=1,[o,]
+		地址40790600,DataNUm2=1,[p,]
+		地址40790660,DataNUm2=1,[q,]
+		地址407906c0,DataNUm2=1,[r,]
+		地址40790720,DataNUm2=1,[s,]
+		地址40790780,DataNUm2=1,[t,]
+		地址407907e0,DataNUm2=1,[u,]
+		地址40790840,DataNUm2=1,[v,]
+		地址407908a0,DataNUm2=1,[w,]
+		地址40790900,DataNUm2=1,[x,]
+		地址40790960,DataNUm2=1,[y,]
+		地址407909c0,DataNUm2=1,[z,]
+		地址40790a20,DataNUm2=1,[A,]
+		地址40790a80,DataNUm2=1,[B,]
+		地址40790ae0,DataNUm2=1,[C,]
+		地址40790b40,DataNUm2=1,[D,]
+		地址40790ba0,DataNUm2=1,[E,]
+		地址40790c00,DataNUm2=1,[F,]
+		地址40790c60,DataNUm2=1,[G,]
+		地址40790cc0,DataNUm2=1,[H,]
+		地址40790d20,DataNUm2=1,[I,]
+		地址40790d80,DataNUm2=1,[J,]
+		地址40790de0,DataNUm2=1,[K,]
+		地址40790e40,DataNUm2=1,[L,]
+		地址40790ea0,DataNUm2=1,[M,]
+		地址40790f00,DataNUm2=1,[N,]
+		地址40790f60,DataNUm2=1,[O,]
+		地址40790fc0,DataNUm2=1,[P,]
+		地址40791020,DataNUm2=1,[Q,]
+		地址40791080,DataNUm2=1,[R,]
+		地址407910e0,DataNUm2=1,[S,]
+		地址40791140,DataNUm2=1,[T,]
+		地址407911a0,DataNUm2=1,[U,]
+		地址40791200,DataNUm2=1,[V,]
+		地址40791260,DataNUm2=1,[W,]
+		地址407912c0,DataNUm2=1,[X,]
+		地址40791320,DataNUm2=1,[Y,]
+		地址40791380,DataNUm2=1,[Z,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2013 add:40791520,所有对象num为(10):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[age]
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+		地址40791540,DataNUm2=2,[1,1,]
+		地址40791560,DataNUm2=2,[2,1,]
+		地址40791580,DataNUm2=2,[6,1,]
+		地址407915a0,DataNUm2=2,[3,2,]
+		地址407915c0,DataNUm2=2,[4,3,]
+		地址407915e0,DataNUm2=2,[5,4,]
+		地址40791600,DataNUm2=2,[5,5,]
+		地址40791620,DataNUm2=2,[7,6,]
+		地址40791640,DataNUm2=2,[8,7,]
+		地址40791660,DataNUm2=2,[9,8,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2014 add:407916a0,所有对象num为(4):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[workclass]
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+		地址407916c0,DataNUm2=7,[P,r,i,v,a,t,e,]
+		地址407916e0,DataNUm2=15,[S,e,f,-,e,m,p,-,n,o,t,-,i,n,c,]
+		地址40791700,DataNUm2=12,[S,e,l,f,-,e,m,p,-,i,n,c,]
+		地址40791720,DataNUm2=11,[F,e,d,e,r,a,l,-,g,o,v,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2015 add:40791760,所有对象num为(5):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[fnlwgt]
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+		地址40791780,DataNUm2=6,[1,5,4,9,4,9,]
+		地址407917a0,DataNUm2=5,[5,7,7,8,1,]
+		地址407917c0,DataNUm2=6,[1,5,4,1,1,7,]
+		地址407917e0,DataNUm2=6,[2,0,5,2,1,8,]
+		地址40791800,DataNUm2=6,[1,2,4,4,2,0,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2016 add:40791840,所有对象num为(3):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[education]
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+		地址40791860,DataNUm2=9,[B,a,c,h,e,l,o,r,s,]
+		地址40791880,DataNUm2=4,[1,1,t,h,]
+		地址407918a0,DataNUm2=10,[A,s,s,o,c,-,a,c,d,m,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2017 add:407918e0,所有对象num为(3):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[education-num]
+          kind:61,getFiberPointToObjNum=1
+		地址40791900,DataNUm2=1,[3,]
+		地址40791920,DataNUm2=2,[1,2,]
+		地址40791940,DataNUm2=2,[2,2,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2018 add:40791980,所有对象num为(3):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[marital-status]
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+		地址407919a0,DataNUm2=17,[M,a,r,r,i,e,d,-,c,i,v,s,p,o,u,s,e,]
+		地址407919c0,DataNUm2=8,[D,i,v,o,r,c,e,d,]
+		地址407919e0,DataNUm2=9,[S,e,p,a,r,a,t,e,d,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2019 add:40791a20,所有对象num为(2):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[occupation]
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+		地址40791a40,DataNUm2=11,[T,e,c,h,s,u,p,p,o,r,t,]
+		地址40791a60,DataNUm2=15,[T,r,a,n,s,p,o,r,t,m,o,v,i,n,g,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2020 add:40791aa0,所有对象num为(2):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[relationship]
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+		地址40791ac0,DataNUm2=11,[T,e,c,h,s,u,p,p,o,r,t,]
+		地址40791ae0,DataNUm2=15,[T,r,a,n,s,p,o,r,t,m,o,v,i,n,g,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2021 add:40791b20,所有对象num为(2):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[race]
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+		地址40791b40,DataNUm2=5,[W,h,i,t,e,]
+		地址40791b60,DataNUm2=18,[A,s,i,a,n,-,P,a,c,-,I,s,l,a,n,d,e,r,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2022 add:40791ba0,所有对象num为(2):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[sex]
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+		地址40791bc0,DataNUm2=6,[F,e,m,a,l,e,]
+		地址40791be0,DataNUm2=4,[M,a,l,e,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2023 add:40791c20,所有对象num为(2):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[capital-gain]
+          kind:61,getFiberPointToObjNum=1
+		地址40791c40,DataNUm2=1,[0,]
+		地址40791c60,DataNUm2=3,[7,8,9,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2024 add:40791ca0,所有对象num为(2):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[capital-loss]
+          kind:61,getFiberPointToObjNum=1
+		地址40791cc0,DataNUm2=1,[0,]
+		地址40791ce0,DataNUm2=3,[7,8,9,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2025 add:40791d20,所有对象num为(2):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[hours-per-week]
+          kind:61,getFiberPointToObjNum=1
+		地址40791d40,DataNUm2=1,[0,]
+		地址40791d60,DataNUm2=2,[4,0,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2026 add:40791da0,所有对象num为(3):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[native-country]
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+		地址40791dc0,DataNUm2=8,[S,c,o,t,l,a,n,d,]
+		地址40791de0,DataNUm2=8,[T,h,a,i,l,a,n,d,]
+		地址40791e00,DataNUm2=6,[M,e,x,i,c,o,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2027 add:40791e20,所有对象num为(0):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[rich]
+          kind:2013,getFiberPointToObjNum=0
+          kind:2014,getFiberPointToObjNum=0
+          kind:2015,getFiberPointToObjNum=0
+          kind:2016,getFiberPointToObjNum=0
+          kind:2017,getFiberPointToObjNum=0
+          kind:2018,getFiberPointToObjNum=0
+          kind:2019,getFiberPointToObjNum=0
+          kind:2020,getFiberPointToObjNum=0
+          kind:2021,getFiberPointToObjNum=0
+          kind:2022,getFiberPointToObjNum=0
+          kind:2023,getFiberPointToObjNum=0
+          kind:2024,getFiberPointToObjNum=0
+          kind:2025,getFiberPointToObjNum=0
+          kind:2026,getFiberPointToObjNum=0
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2028 add:40791e40,所有对象num为(0):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[poor]
+          kind:2013,getFiberPointToObjNum=0
+          kind:2014,getFiberPointToObjNum=0
+          kind:2015,getFiberPointToObjNum=0
+          kind:2016,getFiberPointToObjNum=0
+          kind:2017,getFiberPointToObjNum=0
+          kind:2018,getFiberPointToObjNum=0
+          kind:2019,getFiberPointToObjNum=0
+          kind:2020,getFiberPointToObjNum=0
+          kind:2021,getFiberPointToObjNum=0
+          kind:2022,getFiberPointToObjNum=0
+          kind:2023,getFiberPointToObjNum=0
+          kind:2024,getFiberPointToObjNum=0
+          kind:2025,getFiberPointToObjNum=0
+          kind:2026,getFiberPointToObjNum=0
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2029 add:40791e60,所有对象num为(2):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[sl]
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+		地址40791e80,DataNUm2=2,[5,1,]
+		地址40791ea0,DataNUm2=2,[4,9,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2030 add:40791ec0,所有对象num为(2):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[sw]
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+		地址40791ee0,DataNUm2=2,[3,5,]
+		地址40791f00,DataNUm2=2,[3,0,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2031 add:40791f20,所有对象num为(2):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[pl]
+          kind:61,getFiberPointToObjNum=1
+          kind:61,getFiberPointToObjNum=1
+		地址40791f40,DataNUm2=2,[1,4,]
+		地址40791f60,DataNUm2=2,[1,5,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2032 add:40791f80,所有对象num为(3):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[pw]
+          kind:61,getFiberPointToObjNum=1
+		地址40791fa0,DataNUm2=1,[1,]
+		地址40791fc0,DataNUm2=1,[2,]
+		地址40791fe0,DataNUm2=2,[1,5,]
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2033 add:40792000,所有对象num为(0):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[setosa]
+          kind:2029,getFiberPointToObjNum=0
+          kind:2030,getFiberPointToObjNum=0
+          kind:2031,getFiberPointToObjNum=0
+          kind:2032,getFiberPointToObjNum=0
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2034 add:40792020,所有对象num为(0):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[versicolor]
+          kind:2029,getFiberPointToObjNum=0
+          kind:2030,getFiberPointToObjNum=0
+          kind:2031,getFiberPointToObjNum=0
+          kind:2032,getFiberPointToObjNum=0
+Log_printAllKindOf(default):Wed Jun 28 00:36:39 2017
+		ObjectKind=2035 add:40792040,所有对象num为(0):
+(000)所有child对象kind为
+          kind:62,getFiberPointToObjNum=0-------[virginica]
+          kind:2029,getFiberPointToObjNum=0
+          kind:2030,getFiberPointToObjNum=0
+          kind:2031,getFiberPointToObjNum=0
+          kind:2032,getFiberPointToObjNum=0

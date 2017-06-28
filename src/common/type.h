@@ -114,6 +114,8 @@ typedef unsigned long long nero_us64int;
  #define Nero_DeBuging28_04_17
  #define Nero_DeBuging03_05_17
  #define Nero_DeBuging06_05_17
+ #define Nero_DeBuging06_28_17
+
 #define NowIdDeBug
 #define Nero_DeBugInOperating_Pic
 #define NoIncludeG_return_if_fail

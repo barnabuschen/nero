@@ -169,6 +169,8 @@ void ProInitialization()
 		// nero_us32int runningTime_counts;
 		// struct  timeval  start_runningTime_arry[RunningTime_MaxCount];
 		// struct  timeval  end_runningTime_arry[RunningTime_MaxCount];
+
+		#ifdef Nero_DeBuging06_28_17
 		nero_us32int i_for_r;
 		i_for_r = runningTime_counts++ ;
 		gettimeofday(&(start_runningTime_arry[i_for_r]),NULL);
@@ -176,7 +178,7 @@ void ProInitialization()
 		gettimeofday(&(end_runningTime_arry[i_for_r]),NULL);
 	    timer_runningTime = 1000000 * (end_runningTime_arry[i_for_r].tv_sec-start_runningTime_arry[i_for_r].tv_sec)+ end_runningTime_arry[i_for_r].tv_usec-start_runningTime_arry[i_for_r].tv_usec;
 	    printf("\n\nIO_SaveSysIntoDatabase running time  = %ld s\n\n",timer_runningTime / 1000000);
-
+	    #endif
 
 
 		// return;

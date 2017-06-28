@@ -3585,14 +3585,10 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 		//该函数同时会讲 Obis[i]的输出列表中 指向basekidobj的位置往前移动一位
 		nero_StrengthenLinkWithK(Obis[i],newObiKind,basekidobj);
 
-
-
 		if (i>0)
 		{
 /*			addNeuronChild(Obis[i],Obis[i-1],Relationship_ChildToFather);	*/
 			PointingToObject(Obis[i-1],Obis[i],Fiber_PointToSameLayer);
-
-
 		}
 		#ifdef   Nero_DeBuging04_01_14_
 		if (nero_GetNeroKind(Obis[i]) == 2012  /*&&   nero_getObjDataNum(Obis[i]) == 1*/	)
@@ -3608,26 +3604,24 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 		#endif
 	}
 /*	nero_printNeroLink("log/ObjLink.log",(void *)newObi);*/
-
 	#ifdef   Nero_DeBuging04_25_16
 	if (newObi == NULL)
 	{
-	        printf("nero_createObjFromMultiples  未知错误，newObi=%x\n",newObi);
+        printf("nero_createObjFromMultiples  未知错误，newObi=%x\n",newObi);
 	}
-	else{
-				#ifdef Nero_DeBuging09_01_14
-				neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
-				neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
-				neroObjMsgWithStr_st.Obi = newObi;
-				sprintf(neroObjMsgWithStr_st.str,"creObjFromMulti:success create,kind=%d,add=%x,baseobjAdd:%x,objNum=%d",newObiKind,newObi,getBasePointByObj(GodNero,newObi),objNum);
-				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
-				#endif
-				// printf("nero_createObjFromMultiples  success=%x,kind=%d,,objNum=%d\n",newObi,newObiKind,objNum);
+	else
+	{
+		#ifdef Nero_DeBuging09_01_14
+		neroObjMsgWithStr_st.MsgId = MsgId_Log_PrintObjMsgWithStr;
+		neroObjMsgWithStr_st.fucId = 1;//Log_printSomeMsgForObj
+		neroObjMsgWithStr_st.Obi = newObi;
+		sprintf(neroObjMsgWithStr_st.str,"creObjFromMulti:success create,kind=%d,add=%x,baseobjAdd:%x,objNum=%d",newObiKind,newObi,getBasePointByObj(GodNero,newObi),objNum);
+		msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
+		#endif
+		// printf("nero_createObjFromMultiples  success=%x,kind=%d,,objNum=%d\n",newObi,newObiKind,objNum);
 	}
 	#endif
 	return newObi;
-
-
 }
 /*从俩个已知道俩个概念中生成一个新的概念，新概念的种类在函数内部自动判断，最后返回新对象指针*/
 /**/

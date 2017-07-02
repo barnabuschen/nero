@@ -1,6 +1,6 @@
 提交更新：
 sudo git commit -a -m "20170702_01：wave格式熟悉"
-sudo git push origin  ver0.1803:ver0.1803
+git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt
 git commit   -m "give a new file"

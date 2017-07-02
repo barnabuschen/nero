@@ -38,12 +38,14 @@
 #include "NeuralNetwork/NeuralOperating.h"
 #include "tools/Nero_IO.h"
 #include "tools/Nero_Task.h"
+#include "common/sounds.h"  
 // #include <cairo.h>
 #include "neroMain.h"
 extern nero_s32int readUTF8FileData(nero_8int * FileName);
 extern nero_s32int CreateActNeroNet();
 extern void createNeroNetDotGraph(NeuronObject *GodNero,  char *fileName);
 extern void  testDataIn201608();
+// extern int test_wav( char * fileName);
 
 
 
@@ -68,26 +70,26 @@ void main()
 {
 	runningTime_counts = 0 ;
 
-		// printf(" \n \n \n \n \n \nthe size of  ActivationNeuron is: %llu  \n ",  sizeof(ActNero));
-// struct rlimit resource_limit;
-// getrlimit(RLIMIT_STACK, &resource_limit);
-// printf("STACK: soft_limit - %ld hard_limit - %ld\n", resource_limit.rlim_cur, resource_limit.rlim_max);
+	// printf(" \n \n \n \n \n \nthe size of  ActivationNeuron is: %llu  \n ",  sizeof(ActNero));
+	// struct rlimit resource_limit;
+	// getrlimit(RLIMIT_STACK, &resource_limit);
+	// printf("STACK: soft_limit - %ld hard_limit - %ld\n", resource_limit.rlim_cur, resource_limit.rlim_max);
 
-		// testDataIn201608();
+	// testDataIn201608();
 
-		 // readIrisFileForData("/home/jty/nero/nero/src/data/iris/iris.data");
+	// readIrisFileForData("/home/jty/nero/nero/src/data/iris/iris.data");
 
-		 // exit(0);
+	// exit(0);
 
-		  gettimeofday(&start_runningTime,NULL);
+	gettimeofday(&start_runningTime,NULL);
 
-		  // sleep(2);
+	// sleep(2);
+	nero_8int * fileName3="/data/cafe.wav";
+	test_wav(fileName3);
+	// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.data","/home/jty/nero/nero/src/data/adult/adultLearn.sh");
+	// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.test","/home/jty/nero/nero/src/data/adult/adultTest.sh");
 
-
- 		// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.data","/home/jty/nero/nero/src/data/adult/adultLearn.sh");
- 		// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.test","/home/jty/nero/nero/src/data/adult/adultTest.sh");
-
-		ProInitialization();
+	// ProInitialization();
 }
 
 
@@ -160,7 +162,7 @@ void ProInitialization()
 
 		// return;
 		/*do   more  */
-		nero_8int * fileName1="/data/taskFile.sh";
+		nero_8int * fileName1="./data/taskFile.sh";
 		ReadTaskFromTxt( fileName1  );
 		sleep(1);
 

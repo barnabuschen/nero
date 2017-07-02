@@ -20,8 +20,7 @@ autoreconf -i
 最后修改makefile
 LIBS = -lpthread  -lhiredis    //  for  hiredis lib
 
-
--fno-omit-frame-pointer  -ggdb
+#####  CFLAGS = -g -O2 -fno-omit-frame-pointer -ggdb    这个现在不需要加，用perf做性能分析才需要
 CFLAGS = -g -O2 -fno-omit-frame-pointer -ggdb
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am

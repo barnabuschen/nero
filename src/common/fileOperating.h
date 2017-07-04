@@ -58,7 +58,7 @@ void otput();
 
 
 
-
+int copyFileTo_(char * src,char * dst);
 
 
 

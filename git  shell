@@ -1,5 +1,5 @@
 提交更新：
-sudo git commit -a -m "20170702_01：wave格式熟悉"
+sudo git commit -a -m "20170704_01：wave格式熟悉"
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt
@@ -56,6 +56,11 @@ aria2c -j 100 -s 10 -x 15
 
 git config --global user.email "piaoyaosuifengji@sina.com"
 git config --global user.name "piaoyaosuifengji"
+
+
+////////////cairo
+pkg-config --cflags --libs cairo
+
 
 
 重新配置git：

@@ -84,7 +84,7 @@ void main()
 	gettimeofday(&start_runningTime,NULL);
 
 	// sleep(2);
-	nero_8int * fileName3="/data/cafe.wav";
+	nero_8int * fileName3="/data/sound/cafe.wav";
 	test_wav(fileName3);
 	// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.data","/home/jty/nero/nero/src/data/adult/adultLearn.sh");
 	// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.test","/home/jty/nero/nero/src/data/adult/adultTest.sh");

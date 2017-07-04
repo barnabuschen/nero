@@ -4231,7 +4231,7 @@ $as_echo "no" >&6; }
 		PKG_CONFIG=""
 	fi
 fi
-
+#pthread为链接库名字， pthread_create为库中的一个函数
 
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for pthread_create in -lpthread" >&5
 $as_echo_n "checking for pthread_create in -lpthread... " >&6; }
@@ -4277,7 +4277,7 @@ _ACEOF
   LIBS="-lpthread $LIBS"
 
 fi
-  //pthread为链接库名字， pthread_create为库中的一个函数
+
 
 # Checks for header files.
 ac_ext=c

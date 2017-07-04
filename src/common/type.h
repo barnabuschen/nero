@@ -28,7 +28,7 @@
 #define NeroActivateMaxTimes   200
 #define NeroMaxLastTimeINForecastList    20  /*对象在预测列表中最长等待时间，超时则被去除列表*/
 #define DataFlowProcessObjNum_MAX (7)
-#define FILEPATH_MAX (180)
+#define FILEPATH_MAX (1024)
 #define StringLen_MAX (500)
 /*8192kb  =1032KB*/
 #define ChineseCharNum  8000

@@ -14,8 +14,8 @@ PKG_CHECK_MODULES([neroMain],[
     glib-2.0
 ])
 PKG_PROG_PKG_CONFIG
-
-AC_CHECK_LIB(pthread, pthread_create)  //pthread为链接库名字， pthread_create为库中的一个函数
+#pthread为链接库名字， pthread_create为库中的一个函数
+AC_CHECK_LIB(pthread, pthread_create)  
 
 # Checks for header files.
 AC_CHECK_HEADERS([arpa/inet.h fcntl.h malloc.h netinet/in.h stdlib.h string.h unistd.h])

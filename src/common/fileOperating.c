@@ -12,9 +12,10 @@
 #include <malloc.h>
 #include <errno.h>
 #include <glib.h>
+#include <dirent.h>  
+
 // #include <gtk/gtk.h>
 #include "fileOperating.h"
-
 
 void  testDebugForFileOperating()
 {
@@ -38,13 +39,48 @@ int    *    mystrToInt(char  *  str )
 void createFile(char * fileName)
 {
 	FILE * myfile=fopen(fileName, "w+");
-	printf("fileName: %s\n", fileName);
+	printf("createFile:fileName: %s\n", fileName);
 	fclose(myfile);
+
+	chmod(fileName,S_IROTH | S_IWOTH);
 }
 void emptyFile(char * fileName)
 {
 	FILE * myfile=fopen(fileName, "w+");
 	fclose(myfile);
+}
+int copyFileTo_(char * src,char * dst)
+{
+	int fd,fd2,len;
+	char buff[1024];  
+	if(src == NULL ||  dst == NULL )
+	{
+
+		printf("null fileName: %s,%s\n", src,dst);
+		return 0;
+	}
+	//不管dst存不存在，直接创建新文件
+	createFile(dst);
+
+    fd  = open(src,O_RDWR|O_RDONLY);  
+    fd2 = open(dst,O_RDWR);  //|O_CREAT
+    if(fd == -1)
+    {
+		printf("can not open file: %s\n", src);return 0;
+
+    }
+     if(fd2 == -1)
+    {
+		printf("can not open file2: %s\n", dst);return 0;
+
+    }   
+    while(len = read(fd,buff,1024))  
+    {  
+        write(fd2,buff,len);  
+    }
+    close(fd);
+    close(fd2);
+    return 1;
 }
 int searchStrInFile(char * FileName,char * searchstr)
 {

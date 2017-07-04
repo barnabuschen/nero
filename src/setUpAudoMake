@@ -18,8 +18,9 @@ autoreconf -i
 ./configure
 
 最后修改makefile
-LIBS = -lpthread  -lhiredis    //  for  hiredis lib
-
+LIBS = -lpthread  -lhiredis    //  for  hiredis lib  libcairo
+LIBS = -lpthread  -lhiredis -L /usr/lib/x86_64-linux-gnu -lcairo
+neroMain_CFLAGS = -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include   -I/usr/include/cairo
 #####  CFLAGS = -g -O2 -fno-omit-frame-pointer -ggdb    这个现在不需要加，用perf做性能分析才需要
 CFLAGS = -g -O2 -fno-omit-frame-pointer -ggdb
 all: config.h

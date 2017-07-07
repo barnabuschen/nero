@@ -463,7 +463,7 @@ void JustDoTask()
 void ReadTaskFromTxt(nero_8int  * fileNameInpt)
 {
 
-        nero_us32int strlenMax,flength,strlenMin,strLen,pos,tmpII,tmpJJ;
+    nero_us32int strlenMax,flength,strlenMin,strLen,pos,tmpII,tmpJJ;
 /*        nero_8int s[strlenMax+1];*/
 /*        nero_8int * findStr;*/
     nero_8int  fileName[FILEPATH_MAX];

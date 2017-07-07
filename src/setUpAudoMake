@@ -26,12 +26,9 @@ CFLAGS = -g -O2 -fno-omit-frame-pointer -ggdb
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-am
 	./$(bin_PROGRAMS)
-	
-	
-d: 
+d:
 	gdb $(bin_PROGRAMS)
-
-c: 
+c:
 	rm *.o ./common/*.o ./NeuralNetwork/*.o ./tools/*.o   neroMain
 
 make >filename 2>&1
@@ -42,7 +39,3 @@ make >filename 2>&1
 
 
 -mcmodel=medium
-
-
-
-

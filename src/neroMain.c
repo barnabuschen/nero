@@ -84,8 +84,10 @@ void main()
 	gettimeofday(&start_runningTime,NULL);
 
 	// sleep(2);
-	nero_8int * fileName3="/data/sound/cafe.wav";
-	test_wav(fileName3);
+	nero_8int * fileName3="/data/sound/buzui.wav";
+	// test_wav(fileName3);
+	putDataInDB_wav(fileName3);
+
 	// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.data","/home/jty/nero/nero/src/data/adult/adultLearn.sh");
 	// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.test","/home/jty/nero/nero/src/data/adult/adultTest.sh");
 
@@ -172,7 +174,7 @@ void ProInitialization()
 		// struct  timeval  start_runningTime_arry[RunningTime_MaxCount];
 		// struct  timeval  end_runningTime_arry[RunningTime_MaxCount];
 
-		#ifdef Nero_DeBuging06_28_17
+		#ifdef Nero_DeBuging06_28_17_
 		nero_us32int i_for_r;
 		i_for_r = runningTime_counts++ ;
 		gettimeofday(&(start_runningTime_arry[i_for_r]),NULL);

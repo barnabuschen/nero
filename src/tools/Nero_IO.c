@@ -226,7 +226,7 @@ step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 	if (!(r_tmp1->type == REDIS_REPLY_ARRAY &&  (r_tmp1->elements ) == (neroNumbers*2)   ))
 	{
 		printf("Failed to get all nero编号  elements =%d\n" ,r_tmp1->elements );
-		freeReplyObject(r_tmp1);
+		// freeReplyObject(r_tmp1);
 	}		
 	else
 	{
@@ -362,6 +362,7 @@ step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 			}
 		}	
 	}
+	//重复释放会不会有问题
 	freeReplyObject(r_tmp1);
 
 

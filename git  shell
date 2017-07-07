@@ -1,5 +1,5 @@
 提交更新：
-sudo git commit -a -m "20170704_01：assistant add "
+sudo git commit -a -m "20170707_01：assistant add "
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt

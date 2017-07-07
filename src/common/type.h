@@ -176,6 +176,7 @@ int y;
 
 }POS;
 
+
 //这个结构用来生成一个以坐标表示的像素的集合，显然在函数getLineFromBMP
 //中，生成similarityAroundOnePoint矩阵中的链表和，根据S点，可以将这个
 //链表最终生成BMP结构的实际位置的链表

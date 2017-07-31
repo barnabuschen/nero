@@ -1,5 +1,5 @@
 提交更新：
-sudo git commit -a -m "20170707_01：assistant add "
+sudo git commit -a -m "20170707_31：new start"
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt
@@ -87,11 +87,28 @@ git commit  -a -m "begin:"
 
 git push origin master
 
-{ "keys": ["f2"], "command": "next_bookmark" },
-{ "keys": ["shift+f2"], "command": "prev_bookmark" },
-{ "keys": ["ctrl+f2"], "command": "toggle_bookmark" },
-{ "keys": ["ctrl+shift+f2"], "command": "clear_bookmarks" },
-{ "keys": ["alt+f2"], "command": "select_all_bookmarks" },
+    [
+        // 代码提示
+        { "keys": ["alt+space"], "command": "auto_complete" },
+        { "keys": ["alt+space"], "command": "replace_completion_with_auto_complete", "context":
+        [
+        { "key": "last_command", "operator": "equal", "operand": "insert_best_completion" },
+        { "key": "auto_complete_visible", "operator": "equal", "operand": false },
+        { "key": "setting.tab_completion", "operator": "equal", "operand": true }
+        ]
+        },
+        // 跳转到函数定义
+        { "keys": ["f1"], "command": "goto_definition" },
+        { "keys": ["f2"], "command": "next_bookmark" },
+        { "keys": ["shift+f2"], "command": "prev_bookmark" },
+        { "keys": ["ctrl+f2"], "command": "toggle_bookmark" },
+        { "keys": ["ctrl+shift+f2"], "command": "clear_bookmarks" },
+        { "keys": ["alt+f2"], "command": "select_all_bookmarks" }, 
+
+         { "keys": ["alt+x"], "command": "toggle_comment", "args": { "block": false } },
+         //kuai  zhu  shi
+        // { "keys": ["alt+x"], "command": "toggle_comment", "args": { "block": true } },
+    ]
 
 
 
@@ -140,3 +157,21 @@ perf report -g --tui
 perf report -v -n --showcpuutilization -g --stdio
 
 [ perf record: Captured and wrote 398.275 MB perf.data (5460767 samples) ]
+
+
+
+
+
+vm12 密钥
+5A02H-AU243-TZJ49-GTC7K-3C61N 
+
+
+
+
+
+
+
+
+
+
+

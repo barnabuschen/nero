@@ -69,7 +69,7 @@ void ProInitialization();
 void main()
 {
 	runningTime_counts = 0 ;
-
+	
 	// printf(" \n \n \n \n \n \nthe size of  ActivationNeuron is: %llu  \n ",  sizeof(ActNero));
 	// struct rlimit resource_limit;
 	// getrlimit(RLIMIT_STACK, &resource_limit);
@@ -174,7 +174,7 @@ void ProInitialization()
 		// struct  timeval  start_runningTime_arry[RunningTime_MaxCount];
 		// struct  timeval  end_runningTime_arry[RunningTime_MaxCount];
 
-		#ifdef Nero_DeBuging06_28_17_
+		#ifdef Nero_DeBuging06_28_17
 		nero_us32int i_for_r;
 		i_for_r = runningTime_counts++ ;
 		gettimeofday(&(start_runningTime_arry[i_for_r]),NULL);

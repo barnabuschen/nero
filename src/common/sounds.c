@@ -249,7 +249,7 @@ int putDataInDB_wav(char * fileName)
     nero_8int  fileName_[FILEPATH_MAX];
     nero_8int RedisListName[FILEPATH_MAX];   
 
-    nero_s32int res,dataNum,blockAlign,bytesPerSecond;
+    nero_s32int res,dataNum,blockAlign,bytesPerSecond,bitsPerSample;
 
     nero_us32int strlenMax,flength,strlenMin,strLen,pos,frames ;
     nero_s32int fd;
@@ -334,6 +334,8 @@ int putDataInDB_wav(char * fileName)
     dataNum = 0;
     blockAlign = wavInfo.header.blockAlign;//每个样本数据的字节数
     bitsPerSample = wavInfo.header.bitsPerSample;//采样精度   PCM位宽
+    
+    bytesPerSecond = wavInfo.header.bytesPerSecond;
     // printf(" blockAlign:%d  ,  bitsPerSample:%d, IS_LITTLE_ENDIAN =%d,short int;%d\n", blockAlign,bitsPerSample,IS_LITTLE_ENDIAN() ,sizeof(short int) );
 
     sprintf(RedisListName,"%s",fileName);

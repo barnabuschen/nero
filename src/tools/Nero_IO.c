@@ -186,7 +186,7 @@ step 1:  根据ActNero NeroPool[MaxNeroNum]; 创建一个哈希表1，保存所�
 					方案2：每个nero都设置一个哈希表
 step 2:  遍历数组或者sys的链表，存储fiber数据
 					inputListHead和outputListHead   生成同一个列表3，当然也可以是一个哈希表，和上面的方案1类似
-
+													这里分别由俩个列表来保存两个list
 step 3:  通过哈希表1恢复nero数组，先更新哈希表1的地址，再恢复数据
 step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 
@@ -196,7 +196,7 @@ step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 	neroNumberCount =0;
 	neroPoolPoint = NeroPool;
 	const char* neroAddressTable = "neroAddressTable";
-	printf("neroNumbers= [%d].\n",neroNumbers);
+	
 	// printf("neroPoolPoint= %x   \n",neroPoolPoint);
 	// printf("size= [%d].nero_us32int=%d, nero_s32int=%d   \n",sizeof(struct ActivationNeuron),sizeof(nero_us32int),sizeof(nero_s32int));
 
@@ -212,7 +212,11 @@ step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 		}		
 		else
 			freeReplyObject(r);		
+
+		// printf("  %x .\n",&(neroPoolPoint[neroNumberCount]));
 	}
+	printf("neroNumbers= [%d].\n",neroNumbers);
+	printf("neroAddressTable  address from  %x to  %x\n",&(neroPoolPoint[0]),&(neroPoolPoint[neroNumbers-1]));
 	// 生成哈希表2-------neroDataTable
 	// 因为你已经保存了旧地址在哈希表1中，你可以不断读取它来进行nero地址的获取,但好像没有必要的啊
 	const char* neroDataTable = "neroDataTable";
@@ -287,7 +291,7 @@ step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 								break;
 							}
 						 }	
-						 if(flag > 0)		
+						 if(flag >= 0)		
 						 {
 						 	// save all fibers data in str,i means its  in inputlist
 						 	sprintf(str,"%s_%x_%x_%x",r_tmp1->element[flag]->str,curFiber->msg1,curFiber->time);
@@ -328,7 +332,7 @@ step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 								break;
 							}
 						 }	
-						 if(flag > 0)		
+						 if(flag >= 0)		
 						 {
 						 	// save all fibers data in str
 						 	sprintf(str,"%s_%x_%x_%x",r_tmp1->element[flag]->str,curFiber->msg1,curFiber->time);
@@ -348,8 +352,8 @@ step 4:  通过列表3  恢复nero数组的inputListHead和outputListHead
 						 else
 						 {
 						 	printf("cannot find obj[%x] in neroDataTable 2 ,flag=%d,ii=%d\n",fiberPintObj,flag ,ii);
-						 	printf("%s%d\n",str);
-						 	printf("kind[%d],isbase[%d],outListNUm=%d\n",nero_GetNeroKind(fiberPintObj),nero_isBaseObj(fiberPintObj));
+						 	// printf("%s\n",str);
+						 	printf("kind[%d],isbase[%d] \n",nero_GetNeroKind(fiberPintObj),nero_isBaseObj(fiberPintObj));
 						 	freeReplyObject(r_tmp1);
 						 	redisFree(c);
 						 	return;

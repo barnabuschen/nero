@@ -90,14 +90,15 @@ void drawCoordinateInSurface(cairo_t *cr , struct PicLayoutParameter *  layoutPa
     width  =  (layoutPara-> width) ;
     length  =  (layoutPara-> length) ;
     XPositiveAxis = (layoutPara-> XPositiveAxis) ;
-    YPositiveAxis =(layoutPara-> YPositiveAxis) ;;
+    YPositiveAxis =(layoutPara-> YPositiveAxis) ;
+    printf("dbListName  = %s \n",dbListName  );
     printf("originX  = %d, originY  =%d,  width  =%d,  length  =  %d\n",originX,originY,width,length );
     start = 0;
     stop =  -1;
     // num = stop - start +1;
     r_tmp1= (redisReply*)redisCommand(c,"LRANGE %s %d %d",dbListName,start,stop);
     // r_tmp1 = redisCommand(c, "HGETALL %s",neroAddressTable);
-    if (!(r_tmp1->type == REDIS_REPLY_ARRAY /*&&  (r_tmp1->elements ) == (neroNumbers*2)  */ ))
+    if (!(r_tmp1->type == REDIS_REPLY_ARRAY &&  (r_tmp1->elements ) > 0    ))
     {
         printf("Failed to LRANGE  elements =%d\n" ,r_tmp1->elements );
         freeReplyObject(r_tmp1);

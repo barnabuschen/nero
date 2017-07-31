@@ -18,7 +18,6 @@ neroMain_LDADD = $(neroMain_LIBS) \
 #neroMain_LDADD = $(top_builddir)/sx/libsession.la
 AM_CPPFLAGS = -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include  
 
-
 #
 AM_LDFLAGS =$(neroMain_CFLAGS)
 #SUBDIRS		= common data log NeroConfig NeuralNetwork NeuronData tools

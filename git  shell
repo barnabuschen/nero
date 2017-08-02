@@ -1,5 +1,5 @@
 提交更新：
-sudo git commit -a -m "20170707_31：new start"
+sudo git commit -a -m "20170708_02：play sounds"
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt

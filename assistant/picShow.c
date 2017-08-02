@@ -117,7 +117,7 @@ void drawCoordinateInSurface(cairo_t *cr , struct PicLayoutParameter *  layoutPa
         // cairo_stroke (cr);
         cairo_fill (cr);
 
-        //x  zhou 
+        //x Y zhou 
         cairo_set_source_rgb (cr,  0,  0,  0);//black
         cairo_move_to (cr, originX,originY);
         cairo_rel_line_to (cr,layoutPara->XPositiveAxis + originX, 0);

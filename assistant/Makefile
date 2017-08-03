@@ -10,7 +10,7 @@ cc = gcc    -
 endif
 
 $(obj) :$(obj).c
-	$(cc) $(obj).c   -o $(obj)  -L /usr/lib/x86_64-linux-gnu  -lcairo  -lhiredis -I /usr/include/cairo 
+	$(cc) $(obj).c   -o $(obj)  -L /usr/lib/x86_64-linux-gnu  -lcairo  -lhiredis -lasound -I /usr/include/cairo 
 	# gcc -o  hiredisTest hiredisTest.c  -lhiredis 
 	./$(obj)
 

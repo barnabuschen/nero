@@ -422,7 +422,7 @@ int copy_wav( char * fileName)
     res = wavInputOpen(&wavInfo, fileName_);  
     //print msg
     dumpWavInfo( wavInfo);
-
+    return 0;  
     strcpy(newfileName,fileName_);
     len = strlen(newfileName);
      // printf(" len of %s=%d \n",newfileName, len);

@@ -3,6 +3,7 @@
 #include <hiredis/hiredis.h>
 #include <alsa/asoundlib.h>  
 #include <alsa/pcm.h>
+#include  "fftw3.h"  
 #include "../src/common/type.h"
 
 // #include <alsa/asoundlib.h>  
@@ -315,6 +316,103 @@ int main_pic(int argc, char *argv[])
 }
 
 
+void mixerTest()
+{
+/*
+long alsa_min_vol, alsa_max_vol;
+long int a, b;
+
+snd_mixer_t * mixer;
+snd_mixer_elem_t *pcm_element;
+long ll, lr;
+
+
+//初始化
+snd_mixer_open(&mixer, 0);
+snd_mixer_attach(mixer, "default");
+snd_mixer_selem_register(mixer, NULL, NULL);
+snd_mixer_load(mixer);
+//找到Pcm对应的element,方法比较笨拙
+pcm_element = snd_mixer_first_elem(mixer);
+pcm_element = snd_mixer_elem_next(pcm_element);
+pcm_element = snd_mixer_elem_next(pcm_element);
+
+ 
+///处理alsa1.0之前的bug，之后的可略去该部分代码
+snd_mixer_selem_get_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_LEFT, &a);
+snd_mixer_selem_get_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_RIGHT, &b);
+snd_mixer_selem_get_playback_volume_range(pcm_element, &alsa_min_vol, &alsa_max_vol);
+///设定音量范围
+snd_mixer_selem_set_playback_volume_range(pcm_element, 0, 100);
+
+
+
+//读音量值-
+//处理事件
+snd_mixer_handle_events(mixer);
+//左声道
+snd_mixer_selem_get_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_LEFT, &ll);
+//右声道
+snd_mixer_selem_get_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_RIGHT, &lr);
+
+
+// //写入音量-----------------------------------------------------
+// //左音量
+// snd_mixer_selem_set_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_LEFT, leftright);
+// //右音量
+// snd_mixer_selem_set_playback_volume(pcm_element, SND_MIXER_SCHN_FRONT_RIGHT, leftright);
+*/
+
+    int unmute, chn;
+    int al, ar;
+    snd_mixer_t *mixer;
+    snd_mixer_elem_t *master_element;
+     
+    snd_mixer_open(&mixer, 0);
+    snd_mixer_attach(mixer, "default");
+    snd_mixer_selem_register(mixer, NULL, NULL);
+    snd_mixer_load(mixer);  
+    /* 取得第一個 element，也就是 Master */
+    master_element = snd_mixer_first_elem(mixer);  
+    /* 設定音量的範圍 0 ~ 100 */  
+    snd_mixer_selem_set_playback_volume_range(master_element, 0, 100);  
+    /* 取得 Master 是否靜音 */  
+    snd_mixer_selem_get_playback_switch(master_element, 0, &unmute);  
+    if (unmute)   
+    {
+      printf("Master is Unmute.\n");  
+
+          /* 將 Master 切換為靜音 */  
+        for (chn=0;chn<=SND_MIXER_SCHN_LAST;chn++) 
+        {      
+          snd_mixer_selem_set_playback_switch(master_element, chn, 0);  
+        }        
+    }   
+    else     
+    {
+         printf("Master is Mute.\n"); 
+
+         /* 將 Master 切換為非靜音 */  
+        for (chn=0;chn<=SND_MIXER_SCHN_LAST;chn++) 
+        {      
+          snd_mixer_selem_set_playback_switch(master_element, chn, 1);  
+        }       
+    } 
+
+    //   /* 取得左右聲道的音量 */  
+    // snd_mixer_selem_get_playback_volume(master_element, SND_MIXER_SCHN_FRONT_LEFT, &al);  
+    // snd_mixer_selem_get_playback_volume(master_element, SND_MIXER_SCHN_FRONT_RIGHT, &ar);  
+    // /* 兩聲道相加除以二求平均音量 */  
+    // printf("Master volume is %d\n", (al + ar) >> 1);  /* 設定 Master 音量 */  
+    // snd_mixer_selem_set_playback_volume(master_element, SND_MIXER_SCHN_FRONT_LEFT, 99);  
+    // snd_mixer_selem_set_playback_volume(master_element, SND_MIXER_SCHN_FRONT_RIGHT, 99);  
+
+
+
+
+
+}
+
 int main( )  
 {  
     nero_8int * fileName3="/home/jty/nero/nero/src/data/sound/buzui.wav";
@@ -329,6 +427,11 @@ int main( )
     char *buffer;  
     FILE *fp;  
       
+
+    mixerTest();
+    return 0;
+
+
     fp = fopen(fileName3, "rb");  
     if (!fp) {  
         fprintf(stderr, "can't open sound file\n");

@@ -17,8 +17,9 @@ PKG_PROG_PKG_CONFIG
 #pthread为链接库名字， pthread_create为库中的一个函数
 AC_CHECK_LIB(pthread, pthread_create)  
 AC_CHECK_LIB(hiredis, redisCommand)  
+AC_CHECK_LIB(m, sin)  
 # Checks for header files.
-AC_CHECK_HEADERS([arpa/inet.h fcntl.h malloc.h netinet/in.h stdlib.h string.h unistd.h sys/time.h])
+AC_CHECK_HEADERS([arpa/inet.h fcntl.h malloc.h math.h netinet/in.h stdlib.h string.h unistd.h sys/time.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_INLINE

@@ -6,16 +6,15 @@ touch Makefile.am
 
 sudo apt install autoconf aclocal  autoconf
 sudo apt-get install libglib2.0-dev
+
 运行
-autoscan
+ #autoscan
 aclocal
+automake --add-missing 
 autoconf
-
-
-设置Makefile.am
-
-autoreconf -i
 ./configure
+
+
 
 最后修改makefile
 LIBS = -lpthread  -lhiredis    //  for  hiredis lib  libcairo

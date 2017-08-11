@@ -18,6 +18,7 @@ PKG_PROG_PKG_CONFIG
 AC_CHECK_LIB(pthread, pthread_create)  
 AC_CHECK_LIB(hiredis, redisCommand)  
 AC_CHECK_LIB(m, sin)  
+#AC_CHECK_LIB(asound, snd_mixer_selem_set_playback_switch)
 # Checks for header files.
 AC_CHECK_HEADERS([arpa/inet.h fcntl.h malloc.h math.h netinet/in.h stdlib.h string.h unistd.h sys/time.h])
 

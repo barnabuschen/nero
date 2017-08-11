@@ -4356,6 +4356,7 @@ _ACEOF
 
 fi
 
+#AC_CHECK_LIB(asound, snd_mixer_selem_set_playback_switch)
 # Checks for header files.
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'

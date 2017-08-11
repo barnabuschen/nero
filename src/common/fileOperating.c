@@ -160,7 +160,7 @@ void putSubStrIntoOther(char * a,char *b,int startA,int startB,int len)
 	//findAllLine(FileName,num);
         int line=0;
         int *loc= (int *)findAllLine(FileName,&line);
-        printf("line is%d \n",line);
+        // printf("line is%d \n",line);
 	int start=loc[(num-1)*2];
 	int len=(loc[(num)*2-1]-loc[(num-1)*2])+1;
 	//printf("start is%d \n",start);
@@ -173,7 +173,8 @@ void putSubStrIntoOther(char * a,char *b,int startA,int startB,int len)
 	}
 	else
 		str=NULL;
-
+	if(loc != NULL)
+		free(loc);
 	return str;
 }
 

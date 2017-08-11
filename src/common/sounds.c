@@ -40,7 +40,7 @@ static nero_8int  TmpDataArea[1024];
 
 #define PI   3.14159265358979
 #define TPI  6.28318530717959     /* PI*2 */
-#define NUMCHANS 40   //在MEL刻度下等分成   个频带，滤波器组的组数
+#define NUMCHANS 24   //在MEL刻度下等分成   个频带，滤波器组的组数
 #define MaxDataNum 160000
 
 
@@ -256,6 +256,41 @@ error:
     }  
     return -1;   
 }  
+// 将文件WaveFileCSV 中列出的wave都分别写入db中
+int putWaveDataInDB(char * WaveFileCSV)
+{
+    int i;
+    // nero_8int * fileName3="/home/jty/nero/nero/src/data/sound/wave.csv";
+    char *fName;
+        char  tmpFName[1024];
+
+    for(i=1; ;i++)
+    {
+        fName = getLineInFile( WaveFileCSV,i);//返回获取的字符串
+        if(fName != NULL  &&  strlen(fName) > 2)
+        {
+            sprintf(tmpFName,"/data/sound/%s",fName);
+            // printf(" fName:%s\n",fName );
+            // printf(" tmpFName:%s\n",file_path_getcwd );
+              putDataInDB_wav(tmpFName);
+
+        }
+        else
+        {
+            break;
+
+        }
+    }
+    if(fName)
+    {
+        free(fName);
+    }
+
+
+    return 0;
+}
+
+
 // 将wav文件的数据部分输入一个redis的列表中去，列表名就是wav文件名
 //如果已经有该列表了，就先清空数据
 int putDataInDB_wav(char * fileName)
@@ -301,9 +336,26 @@ int putDataInDB_wav(char * fileName)
         redisFree(c);
         return;
     }
-    r = (redisReply*)redisCommand(c,"flushdb");
+    sprintf(RedisListName,"%s",fileName);
+    printf(" RedisListName: %s  \n",RedisListName );  
+    // r = (redisReply*)redisCommand(c,"flushdb");
+    // freeReplyObject(r);
+    // printf("flushdb.\n");
+
+    r = (redisReply*)redisCommand(c,"EXISTS %s",RedisListName);
+    if ( r->type == REDIS_REPLY_INTEGER && r->integer == 1)
+    {
+        // printf("Failed to execute EXISTS.\n");
+        freeReplyObject(r);
+        r = (redisReply*)redisCommand(c,"del %s",RedisListName);
+
+    }
     freeReplyObject(r);
-    printf("flushdb.\n");
+    // printf("r->type =%d.  r->integer=%d\n",r->type,r->integer);
+    
+    // printf("flushdb.\n");
+
+
 // open wav file  
     getcwd(file_path_getcwd,FILEPATH_MAX);
     sprintf(fileName_,"%s%s",file_path_getcwd,fileName);
@@ -357,7 +409,8 @@ int putDataInDB_wav(char * fileName)
     bytesPerSecond = wavInfo.header.bytesPerSecond;
     // printf(" blockAlign:%d  ,  bitsPerSample:%d, IS_LITTLE_ENDIAN =%d,short int;%d\n", blockAlign,bitsPerSample,IS_LITTLE_ENDIAN() ,sizeof(short int) );
 
-    sprintf(RedisListName,"%s",fileName);
+
+
     //注意，list是先入后出的，注意数据的位置
     r = (redisReply*)redisCommand(c,"LPUSH %s %x",RedisListName,wavInfo.header.sampleRate);
     freeReplyObject(r);
@@ -466,7 +519,7 @@ void LoadFile(char *s, struct Wave *w)
     fp = fopen(s, "rb");
     if (!fp)
     {
-        printf("can not open this file\n");
+        printf("can not open this file:%s\n",s);
         exit(0);
     }
     unsigned char ch1, ch2, ch3, ch4;
@@ -477,13 +530,19 @@ void LoadFile(char *s, struct Wave *w)
     {
         ch1 = fgetc(fp);
     }
-    MaxDataNum_= w->nSample;
+    MaxDataNum_= w->nSample;//不管文件的实际数据个数，只读取MaxDataNum_个数据
     ch1 = fgetc(fp); ch2 = fgetc(fp); ch3 = fgetc(fp); ch4 = fgetc(fp);
     //get total data bytes
     w->nSample = (ch2 * 16 * 16 + ch1) + (ch4 * 16 * 16 + ch3) * 16 * 16 * 16 * 16;
-    w->nSample /= 2;
+    // w->nSample /= 2;
     printf("nSample nums is %ld  \n", w->nSample);
+    if(w->nSample < MaxDataNum_)
+    {
 
+         printf("LoadFile:nSample nums is error %ld  \n", w->nSample);
+         fclose(fp);
+         return;
+    }
     // w->nRow = (w->nSample - w->frSize) / w->frRate + 1;
     
     for (i = 0; i<MaxDataNum_; i++)
@@ -522,14 +581,14 @@ void GetWave(float *buf, struct Wave *w)
 //     float *Rdata;
 // };
     //w->frSize = 400;
-    if (w->frIdx + w->frSize > MaxDataNum  &&  (w->frIdx - MaxDataNum <  w->frSize))
+    if ((w->frIdx + w->frSize > w->nSample ) &&  (w->frIdx - w->nSample <  w->frSize))
     {
-        printf("GetWave: attempt to read past end of buffer\n");
+        // printf("GetWave: attempt to read past end of buffer\n");
         for (k = 0; k < w->frSize; k++)//不足的补零
         {
             buf[k] = 0;
         }
-        for (k = 0; w->frIdx + k < MaxDataNum; k++)
+        for (k = 0; w->frIdx + k < w->nSample; k++)
         {
             buf[k] = w->wavdata[w->frIdx + k];
         }
@@ -620,10 +679,10 @@ float WarpFreq(float fcl, float fcu, float freq, float minFreq, float maxFreq, f
 }
 struct FBankInfo InitFBank(struct IOConfig *cf)
 {
-    int numChans = 40; 
+    int numChans = NUMCHANS; 
     int usePower = 0; 
     int takeLogs = 1; 
-    int sampPeriod = 625;//sampPeriod要考虑一下
+    int sampPeriod = SOURCERATE_MFCC;//sampPeriod要change by  wav  hz
     float alpha = 1; 
     int warpLowCut = 0; 
     int warpUpCut = 0;
@@ -635,8 +694,8 @@ struct FBankInfo InitFBank(struct IOConfig *cf)
 
     /* Save sizes to cross-check subsequent usage */
     fb.frameSize = cf->frSize;
-    fb.numChans = numChans;
-    fb.sampPeriod = sampPeriod;
+    fb.numChans = numChans;//现在高不清楚这里到底对不对
+    fb.sampPeriod = sampPeriod;//
     fb.usePower = usePower;
     fb.takeLogs = takeLogs;
     /* Calculate required FFT size */
@@ -842,6 +901,8 @@ void ConvertFrame(struct IOConfig *cf, struct Wave *w)
     PreEmphasise(cf->s, cf->preEmph);//预加重处理
     Ham(cf->s);//加窗 此处可以优化，创建ham窗多次十分耗费时间,可以用全局申请ham的内存
     cf->fbInfo = InitFBank(cf);
+            // printf("test 8 \n" );
+
     cf->fbank = (float*)malloc(sizeof(float)* NUMCHANS);
     cf->fbank[0] = NUMCHANS;
     Wave2FBank(cf->s, cf->fbank, cf->fbInfo);//提取NUMCHANS为40的fbank
@@ -874,28 +935,46 @@ void zeromean(struct Wave *w)
         *(w->Rdata + i) -= sum[i%NUMCHANS];
     }
 }
-
-struct Wave filter_bank(char *s)
+//return data in RdataArray :NUMCHANS * w->nRow  ,return  w->nRow   ,w->nRow =  ..
+int  filter_bank(char *s,int waveSampleRate,int  SampleNums  , float * RdataArray )
 {
     /*初始化*/
     /*采样个数为16028*/
-    /*由HTK，采样率为25ms，则帧长为400，默认帧移为160
+    /*由HTK，采样率为25ms，if ,则帧长为400，默认帧移为160
+    如果wave文件的hz为44100hz，那么帧长=【25ms *  44100  】/  1000 ms = 1102.5
 
     由于语音信号在10-30ms认为是稳定的，则可设置帧长为80~240点。帧移可以设置为帧长的1/2.
 
-
+分帧
+先将N个采样点集合成一个观测单位，称为帧。
+通常情况下N的值为256或512，涵盖的时间约为20~30ms左右。
+为了避免相邻两帧的变化过大，因此会让两相邻帧之间有一段重叠区域，此重叠区域包含了M个取样点，
+通常M的值约为N的1/2或1/3。通常语音识别所采用语音信号的采样频率为8KHz或16KHz，以8KHz来说，
+若帧长度为256个采样点，则对应的时间长度是256/8000 1000=32ms。
     */
     int j, m, e, x;
     struct Wave *w;
+    //waveSampleRate  = 16000
+    if(SampleNums <  (2*WINDOWSIZE_MFCC  * waveSampleRate/1000)  &&   RdataArray != NULL)
+    {
+
+        printf("Too little   SampleNums :%d\n",SampleNums);
+        return 0;
+    }
+
     w = (struct Wave*)malloc(sizeof(struct Wave));
-    w->frIdx = 0; w->frRate = 160; w->frSize = 400;
-    w->nSample = MaxDataNum;
+    w->frIdx = 0; 
+    w->frRate =   TARGETRATE_MFCC  * waveSampleRate/1000 ;
+    w->frSize =   WINDOWSIZE_MFCC  * waveSampleRate/1000 ;
+    w->nSample = SampleNums;
     w->nRow = (w->nSample - w->frSize) / w->frRate + 1;//=996
     // printf("w->nRow =%d\n",w->nRow);
-    w->wavdata = (float*)malloc(sizeof(float) * MaxDataNum);
+    // printf("  test 1 \n");
+    w->wavdata = (float*)malloc(sizeof(float) * w->nSample);
     LoadFile(s, w);
-    w->Rdata = (float*)malloc(sizeof(float)*NUMCHANS*w->nRow);//#define NUMCHANS 40
-
+    // w->Rdata = (float*)malloc(sizeof(float)*NUMCHANS*w->nRow);//#define NUMCHANS 40
+    w->Rdata = RdataArray;
+    // printf("w->Rdata address =%x\n",w->Rdata);
     struct IOConfig *cf;
     cf = (struct IOConfig*)malloc(sizeof(struct IOConfig));
     cf->s = (float*)malloc(sizeof(float) * w->frSize + 1);
@@ -903,7 +982,7 @@ struct Wave filter_bank(char *s)
 
     //used in void Ham(float *frame)
     hamWin_ = (float*)malloc(sizeof(float) * w->frSize );
-    
+    // printf("  test 2\n");
     // for (int k = 0; k < w->nRow + 1; k++)//这个加一是否需要值得考虑以下,如果不加，很大可能会丢弃最后面的一部分数据
     for (int k = 0; k < w->nRow  ; k++)   
     {
@@ -930,8 +1009,10 @@ struct Wave filter_bank(char *s)
         */
         /*处理*/
         ConvertFrame(cf, w);
+        // printf("  test 3 \n");
         linkdata(cf, w, k);
     }
+    // printf("  test 4 \n");
     zeromean(w);
     // for (int i = 0; i < NUMCHANS*w->nRow; i++)
     // {
@@ -975,13 +1056,25 @@ struct Wave filter_bank(char *s)
 
           free(cf );
     }
+
+
+    // if(w->Rdata  != NULL)
+    // {
+
+    //      free(w->Rdata);
+    // }
+    if(w->wavdata  != NULL)
+    {
+
+          free(w->wavdata );
+    }  
     //     free(cf->fbInfo.cf);
     // free(cf->fbInfo.loChan);
     // free(cf->fbInfo.loWt);
     // free(cf->fbInfo.x);
     // free(cf->fbank);
     // free(cf->s);
-    // free(cf);
+    free(w);
 
     if(hamWin_ != NULL)
     {
@@ -989,15 +1082,87 @@ struct Wave filter_bank(char *s)
           free(hamWin_ );
     }
     // free(hamWin_);
-    return *w;
+    return w->nRow;
 }
 
 
-int main_test()
+int frank_test()
 {
-    struct Wave w = filter_bank("/home/jty/nero/nero/src/data/sound/buzui.wav");
+    char * filename = "/data/sound/001101_L2.wav";
+                        // /home/jty/nero/nero/src/data/sound
+    float   * RdataArray ;
+    int SampleNums ,i,j ;
+
+
+
+    WAV_INFO wavInfo;  
+    nero_8int  fileName_[FILEPATH_MAX];
+    nero_us32int res;
+
+    getcwd(file_path_getcwd,FILEPATH_MAX);
+    sprintf(fileName_,"%s%s",file_path_getcwd,filename);
+    res = wavInputOpen(&wavInfo, fileName_);  
+    dumpWavInfo( wavInfo);
+    // return 0;
+
+    SampleNums = wavInfo.header.dataSize;   //这是数据的总量，区别单双通道
+    int waveSampleRate = wavInfo.header.sampleRate; 
+    int frRate =   TARGETRATE_MFCC  * waveSampleRate/1000 ;
+    int frSize =   WINDOWSIZE_MFCC  * waveSampleRate/1000 ;
+
+    if(wavInfo.header.numChannels != 1)
+        SampleNums = SampleNums /wavInfo.header.numChannels ;
+
+    int nRow = (SampleNums -  frSize) /  frRate + 1; 
+    if(wavInfo.header.numChannels != 1  ||   wavInfo.header.sampleRate != 16000)
+    {
+         printf("wrong wave file:%s  %d  %d\n",fileName_,wavInfo.header.numChannels,wavInfo.header.sampleRate);
+        return 0;
+
+    }
+    printf("nRow = %d  ,SampleNums =%d\n",nRow,SampleNums);
+
+    RdataArray =(float*)malloc(sizeof(float) * NUMCHANS *  nRow);
+    // return 0;
+    // printf("RdataArray:%x \n",RdataArray);
+    if(RdataArray == NULL)
+    {
+         printf("\n\n\nRdataArray is NULL \n");
+        return 0;
+    }
+
+    int row  = filter_bank(fileName_,waveSampleRate, SampleNums ,   RdataArray );
+    // for(i=0,j=0 ;i < nRow; i++ )
+
+    // printf("nRow = %d  ,SampleNums =%d\n",nRow,SampleNums);
+    for(i=0,j=0 ;i < nRow; i++ )
+    {
+        for( j=0; j < NUMCHANS; j++)
+        {
+             printf(" %f ",RdataArray[i*NUMCHANS +j]);
+
+        }
+         printf("\n\n\n\n");
+
+    }
+    free(RdataArray);
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

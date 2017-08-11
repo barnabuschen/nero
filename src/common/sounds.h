@@ -49,7 +49,10 @@ struct Wave
 {
     int frameSize;       /* speech frameSize */
     int numChans;        /* number of channels */
-    long sampPeriod;     /* sample period */
+    long sampPeriod;     /* sample period 一个样本持续的时间
+
+
+    */
     int fftN;            /* fft size */
     int klo, khi;         /* lopass to hipass cut-off fft indices */
     int usePower;    /* use power rather than magnitude *///boolen
@@ -89,11 +92,28 @@ void Wave2FBank(float *s, float *fbank, struct FBankInfo info);
 void ConvertFrame(struct IOConfig *cf, struct Wave *w);
 void linkdata(struct IOConfig *cf, struct Wave *w, int k);
 void zeromean(struct Wave *w);
-struct Wave filter_bank(char *s);
+int filter_bank(char *s,int waveSampleRate,int  SampleNums   , float * RdataArray );
+int frank_test();
+int putWaveDataInDB(char * WaveFileCSV);
 
 
 
+#define WINDOWSIZE_MFCC    25  //单位ms
+#define TARGETRATE_MFCC    10    //单位ms
+#define SOURCERATE_MFCC    625    //一个样本持续的时间,16k hz  ---62500 ns 
 
+                                //                  44.1 hz  ---22675.73 ns 
+
+
+// #define INPUT_DIMEN 1640
+// #define LAYER_DIMEN 128
+// #define OUTPUT_DIMEN 3
+// #define LAYER 4
+
+// #define PI   3.14159265358979
+// #define TPI  6.28318530717959     /* PI*2 */
+// #define NUMCHANS 40   //在MEL刻度下等分成   个频带，滤波器组的组数
+// #define MaxDataNum 160000
 
 
 
@@ -103,13 +123,8 @@ struct Wave filter_bank(char *s);
 
 int copy_wav( char * fileName);
 int putDataInDB_wav(char * fileName);
-
-
-
-
-
-
-
+int wavInputOpen(WAV_INFO *pWav, const char *filename);
+void dumpWavInfo(WAV_INFO wavInfo);
 
 
 

@@ -88,7 +88,7 @@ void main()
 
 	// copy_wav(fileName3);
 	// putDataInDB_wav(fileName3);
-	  frank_test();
+	  // frank_test();
 	   // putWaveDataInDB("/home/jty/nero/nero/src/data/sound/wave.csv");
 	// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.data","/home/jty/nero/nero/src/data/adult/adultLearn.sh");
 	// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.test","/home/jty/nero/nero/src/data/adult/adultTest.sh");
@@ -176,7 +176,7 @@ void ProInitialization()
 		// struct  timeval  start_runningTime_arry[RunningTime_MaxCount];
 		// struct  timeval  end_runningTime_arry[RunningTime_MaxCount];
 
-		#ifdef Nero_DeBuging06_28_17
+		#ifdef Nero_DeBuging06_28_17_
 		nero_us32int i_for_r;
 		i_for_r = runningTime_counts++ ;
 		gettimeofday(&(start_runningTime_arry[i_for_r]),NULL);
@@ -195,7 +195,7 @@ void ProInitialization()
 		// nero_8int * fileName2="/data/iris/LearningFileForIris.sh";
 		// ReadTaskFromTxt( fileName2  );
 
-		printf("\n\n\nend of  fuc ReadTaskFromTxt1\n");
+		// printf("\n\n\nend of  fuc ReadTaskFromTxt1\n");
 
 		// nero_8int * fileName4="/data/dataStringCreate.sh";
 		// CreatedWordsIntoFile(fileName4);
@@ -205,7 +205,7 @@ void ProInitialization()
 
 		// nero_8int * fileName3="/data/iris/TestingDataForIris.sh";
 		// ReadTaskFromTxt( fileName3  );
-		printf("\n\n\nend of  fuc ReadTaskFromTxt2\n");
+		// printf("\n\n\nend of  fuc ReadTaskFromTxt2\n");
 
 
 		// doTest_();

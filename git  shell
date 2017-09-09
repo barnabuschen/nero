@@ -1,5 +1,5 @@
 提交更新：
-sudo git commit -a -m "20170910：set up loop kind"
+sudo git commit -a -m "20170910：set up loop kind2"
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt
@@ -33,6 +33,7 @@ push本地分支代码到远端服务器,如果没有就创建该分支
 	git branch -a
 删除远程分支
 	git push origin --delete testing
+	git push origin :ver0.1702
 提交分支数据到远程服务器
 	git push origin <local_branch_name>:<remote_branch_name>
 	git push origin ver0.1701:ver0.1701

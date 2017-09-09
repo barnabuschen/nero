@@ -19,6 +19,7 @@ NeuronNode_ForChWord ,    //当一个概念节点的类型为此时表示一个�
 NeuronNode_ForInputWord,
 NeuronNode_ForOutputWord,
 NeuronNode_ForLayering,
+NeuronNode_ForLoop,
  NeuronNode_ForChSentence,    //当一个概念节点的类型为此时表示一个中文句子
 NeuronNode_ForComplexDerivative,     //高级衍生类,for  some can not be classify  obj
 };
@@ -34,6 +35,7 @@ NeuronNode_ForChWord ,    //当一个概念节点的类型为此时表示一个�
 NeuronNode_ForInputWord,
 NeuronNode_ForOutputWord,
 NeuronNode_ForLayering,
+NeuronNode_ForLoop,
  NeuronNode_ForChSentence,    //当一个概念节点的类型为此时表示一个中文句子
 NeuronNode_ForComplexDerivative,     //高级衍生类,for  some can not be classify  obj
 };
@@ -2932,6 +2934,7 @@ nero_s32int nero_judgeNewObjKind(NeuronObject *Obis[],nero_s32int objNum)
 
 			case NeuronNode_ForInputWord:
 			case NeuronNode_ForOutputWord:
+			case NeuronNode_ForLoop:	//会不会有例外阿
 				// kind=kind;
 				break;
 			default:
@@ -3846,6 +3849,13 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 	tmp=tmp2=NULL;
 	switch(dataKind)
 	{
+		// case NeuronNode_ForLoop:
+
+			
+
+
+
+		// 	break;
 		case NeuronNode_ForLayering:
 				dataPoint_ = (nero_us32int * )Data;
 				//get the base kind obj
@@ -3887,7 +3897,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 				}
 				break;
 
-		case NeuronNode_ForInputWord:
+		case NeuronNode_ForInputWord://默认只有一个参数：字符
 		case NeuronNode_ForOutputWord:
 			wordP2=(ChUTF8  *)Data;/*实际上只是一个ChUTF8而非ChUTF8_结构的数据，但是不影响结果*/
 // exit(0);

@@ -34,20 +34,12 @@ int next;
 	：神经对象的连接是不同对象的存在的一种相互关系，或者说逻辑上的联系，而神经元之间的连接表示了数据之间的连接关系
 
 	但实际上他们是同一个东西啊啊，因为一个对象也应该是用一个神经元来表示的，不然说不过去啊。
-
-2:操作------对数据的操作方式
-
-
-
 */
-
 
 /*系统配置结构
 对一些全局配置进行统一管理
 
 */
-
-
  typedef struct NeroConfiguration
  {
 	nero_us32int  addNewObj; /*是否在DataFlowProcess中添加在网络中的没有的数据为一个新概念，
@@ -65,10 +57,7 @@ int next;
 					这个选项激活时会不管当前链接的活跃情况和addLevelObj的值
 					，总是会创建新  高层概念
 					*/
-
-
 	nero_us32int CreateNewBaseObjKind;/*是否创建新基类的标志，默认打开为1*/
-
 
 	nero_us32int	  OutPutFlag;//for fuc  Process_ObjForecast 是否将预测列表得结果进行输出得标志，为1进行输出，默认为0
 								//the result of the output is 等同于分类结果
@@ -107,8 +96,11 @@ msg：
 	对象所在区域为StagingAreaNeroPool	 	#define	Nero_ObjInSAPool	01
 27:当所在区域为StagingAreaNeroPool时，此位为1(Nero_TransferToNeroPool)表示该对象已经可以被转化为永久对象了
 28:当所在区域为StagingAreaNeroPool时，此位为1(Nero_AlreadyTransfered)表示该对象已经被转化为永久对象了 ,可以在适当时间进行回收了
+
 29
+
 30
+
 31：在一些基类中，用来表示该种类别的子类的排列顺序是否固定，1表示顺序固定，0表示顺序无所谓
 32位：区别一般的概念和基类，1表示基类，0表示衍生类(网络中真正的数据)
 */
@@ -123,14 +115,14 @@ typedef struct ActivationNeuron ActNero;
 
  struct ActivationNeuron
 {
-nero_us32int msg;/*记录该nero的种类，性质等信息*/
-nero_s32int x;/*取值范围-2147483648 ~ 2147483647       use x  to  recond  how many chind has  if  its  a  baseObj */
-nero_s32int y;	/*	it use  to  recond  how many times  this obj  has been input  recently只在临时区域中使用这个变量*/
-nero_s32int z;
-struct NerveFiber_  * inputListHead;
-					/*outputListHead链表，则指向所有该类下的所以神经元*/
+	nero_us32int msg;/*记录该nero的种类，性质等信息*/
+	nero_s32int x;/*取值范围-2147483648 ~ 2147483647       use x  to  recond  how many chind has  if  its  a  baseObj */
+	nero_s32int y;	/*	it use  to  recond  how many times  this obj  has been input  recently只在临时区域中使用这个变量*/
+	nero_s32int z;
+	struct NerveFiber_  * inputListHead;
+						/*outputListHead链表，则指向所有该类下的所以神经元*/
 
-struct NerveFiber_   * outputListHead;
+	struct NerveFiber_   * outputListHead;
 };
 
 
@@ -193,7 +185,7 @@ extern NeroConf neroConf;
 任何信息在输入大脑之前一定是通过一定加工和处理的
 
 */
-#define NeuronNode_ForConnect   10    //当一个概念节点的类型为此时表示一个链接节点
+// #define NeuronNode_ForConnect   10    //当一个概念节点的类型为此时表示一个链接节点
 #define NeuronNode_ForImage   50    //当一个概念节点的类型为此时表示一个图像对象
 #define NeuronNode_ForLine   51    //当一个概念节点的类型为此时表示一个线条对象
 
@@ -217,10 +209,7 @@ extern NeroConf neroConf;
 			可是操作的参数怎么确定呢，这样吧，几个parameter就指定几个输入列表的节点，但是要不要给每个
 			操作类给定一个名称呢，我觉得还是要有，方便与外界进行沟通和调试。其存在方式参见新类的方式
 
-
-
 			这里主要是对一个操作类的参数的确定以及因该有的参数个数  持谨慎态度
-
 			你可能定义的操作种类：								1				   2						3
 				鼠标，键盘点击     --------- 				点击的种类             持续时间      				力度
 				字符打印			--------- 				具体那个字符
@@ -228,30 +217,26 @@ extern NeroConf neroConf;
 				/////////////////////////////////////////////////////////////////////////////////////
 				[[[[[[[[特别的：所有操作类型得obj或者说基类都看成一个普通得obj来看，只是需要单独得函数来处理]]]]]]]]]]]]]]]]
 					///////////////////////////////////////////////////////////////////////////////////////////
-
-			the question is :if you  can  definition a fuc  that can output a   char  ?
-			does a  char  learn acquired  , not the sys get born ?
-			the answer is  :you  can  definition a fuc  that can output a   char  or words.
-			as  it is a  basic  ability  to  communicat with outside
-
 		这样来定义一个操作类型的nero：只要该nero  kind确定就由系统指定与一个实际完成操作的函数绑定
 
-			 struct ActivationNeuron							基类          	 	 衍生类
+			 struct ActivationNeuron							基类          	 				    衍生类
 			{
-			nero_us32int msg;/*记录该nero的种类，性质等信息
-			nero_s32int x;
-			nero_s32int y;										  					xyz就是操作的一些定性要求
-			nero_s32int z;
-			struct NerveFiber_  * inputListHead;				指向输出的类型		 	指向操作的数据
-			struct NerveFiber_   * outputListHead; 				指向所以衍生类
+			nero_us32int msg;									/*记录该nero的种类，性质等信息
+			nero_s32int x;      								recond  how many chindren			x指向实际执行操作的函数的地址或者ID 
+			nero_s32int y;																			y该操作的持续时间,默认为0表示无该项数据
+			nero_s32int z;																			z该操作的执行次数.默认为0表示无该项数据
+			struct NerveFiber_  * inputListHead;				指向输出的类型		 					指向操作的数据
+			struct NerveFiber_   * outputListHead; 				指向所以衍生类	
 			};
 
 */
 //kind down here is  some kind for operating
-#define  NeuronNode_ForInputWord      100     //talk to  outside  wangts to get  words (include Character or  words)  motivated  by  sys-self
-#define  NeuronNode_ForOutputWord      101
+#define  NeuronNode_ForInputWord      100     //talk to  outside  wangts to get  words (just include one Character  )  motivated  by  sys-self
+#define  NeuronNode_ForOutputWord      101     //(just include one Character  )
 #define  NeuronNode_ForLayering      110   //定义一个基类a是另一个基类b得上层类，that is  mean：基类b得输出列表会指向基类a
 											// inputListHead  为俩个数据，前者是基类a 得kind值(save  in x)，后者是基类b得得kind值
+
+#define  NeuronNode_ForLoop      150		//循环类:
 
 
 #define NeuronNode_ForComplexDerivative  2000    //高级衍生类			//never use it

@@ -5093,7 +5093,7 @@ $as_echo "#define HAVE_MMAP 1" >>confdefs.h
 fi
 rm -f conftest.mmap conftest.txt
 
-for ac_func in ftruncate getcwd memset munmap strerror strstr gettimeofday memmove strcasecmp strtol
+for ac_func in ftruncate getcwd memset munmap strerror strstr gettimeofday memmove strcasecmp strtol sqrt
 do :
   as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
 ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"

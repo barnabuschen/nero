@@ -29,7 +29,7 @@ AC_TYPE_SIZE_T
 # Checks for library functions.
 AC_FUNC_MALLOC
 AC_FUNC_MMAP
-AC_CHECK_FUNCS([ftruncate getcwd memset munmap strerror strstr gettimeofday memmove strcasecmp strtol ])
+AC_CHECK_FUNCS([ftruncate getcwd memset munmap strerror strstr gettimeofday memmove strcasecmp strtol sqrt ])
 
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

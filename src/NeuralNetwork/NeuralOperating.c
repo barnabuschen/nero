@@ -1338,11 +1338,12 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 
 						break;
 					case NeuronNode_ForOutputWord:
+						//x指向实际执行操作的函数的地址或者ID ,但是这里考虑到现在时间有限暂时简化处理
 
 						#ifdef Nero_DeBuging09_01_14
-							// print  one  obj  link
+							// print  one  obj  link: 
 							neroObjMsg_st.MsgId = MsgId_IO_ForOutputWord;
-							neroObjMsg_st.fucId = 2;
+							neroObjMsg_st.fucId = 2;//IO_ForOutputWord
 							neroObjMsg_st.Obi = tmp;
 							// int  tmp2222=0;
 							// printf("nero   msg:%x,%x \n",GodNero,&tmp2222);

@@ -102,6 +102,38 @@ void  testDataIn201608()
 		StagingAreaNeroPool[i].x=1;
 	}
 }
+ /*该标志位为1时表示该obj为操作类*/
+void setNeroOperateFlag(ActNero *nero,nero_us32int flag)
+{
+
+	if(nero ==NULL || rule <0 || rule >1)
+		return ;
+
+
+	if (rule == 1)
+	{	/*把末第k位变成1           */
+		nero->msg =nero->msg | (1<<(32-3));
+	}
+	else
+		nero->msg =nero->msg & 0xdfffffff;// 1101  第30位清零
+}
+
+
+nero_s32int getNeroOperateFlag(ActNero *nero)
+{
+	nero_s32int rule;
+	if(nero ==NULL)
+		return nero_msg_ParameterError;
+
+
+		/*最后看30位是不是1*/
+		rule=nero->msg   & 0x20000000;//0010
+		if(rule != 0)
+			return 1;
+
+		return 0;
+
+}
 /*下面是几个简单的判断函数*/
  nero_s32int  nero_getObjDataNum(ActNero * obj)
 {
@@ -768,7 +800,7 @@ static inline void setChildrenOrderRule(ActNero *nero,nero_us32int rule)
 
 
 	if (rule == 1)
-	{	/*把末k位变成1          | (101001->101111,k=4)      | x | (1 < < k-1) */
+	{	/*把末k位变成1         | x | (1 < < k-1) */
 		nero->msg =nero->msg | (1<<(32-2));
 	}
 	else
@@ -1033,9 +1065,13 @@ nero_s32int CreateActNeroNet()
 				case   NeuronNode_ForChCharacter:
 						setChildrenOrderRule(BaseNeuronObject,1);
 						break;
-		/*		*/
-		/*		case   :*/
-		/*		        break;		*/
+				case   NeuronNode_ForInputWord:
+				case   NeuronNode_ForOutputWord:
+				case   NeuronNode_ForLoop:
+				// case   NeuronNode_ForLayering:
+						//设置操作类的标志位
+						setNeroOperateFlag(BaseNeuronObject,1);
+				        break;		
 		/*		case   :*/
 		/*		        break;*/
 				default:

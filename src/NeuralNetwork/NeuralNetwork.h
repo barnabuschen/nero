@@ -99,7 +99,7 @@ msg：
 
 29
 
-30
+30:该标志位为1时表示该obj为操作类
 
 31：在一些基类中，用来表示该种类别的子类的排列顺序是否固定，1表示顺序固定，0表示顺序无所谓
 32位：区别一般的概念和基类，1表示基类，0表示衍生类(网络中真正的数据)
@@ -235,6 +235,14 @@ extern NeroConf neroConf;
 #define  NeuronNode_ForOutputWord      101     //(just include one Character  )
 #define  NeuronNode_ForLayering      110   //定义一个基类a是另一个基类b得上层类，that is  mean：基类b得输出列表会指向基类a
 											// inputListHead  为俩个数据，前者是基类a 得kind值(save  in x)，后者是基类b得得kind值
+
+#define  NeuronNode_ValueCompare      120		//数据的大小比较
+#define  NeuronNode_GainValue      121		//数据值加1
+#define  NeuronNode_DecreaseValue      122		//数据值减1
+
+
+#define  NeuronNode_ForLoop      131		//链接的解除与增加
+
 
 #define  NeuronNode_ForLoop      150		//循环类:
 
@@ -406,7 +414,8 @@ nero_s32int nero_getObjsByStr(nero_s32int metaDataKind,void * Data ,nero_s32int 
 
 
 NeuronObject * nero_IfHasObjFromMultiples5(NeuronObject *Obis[],nero_s32int objNum,struct DataFlowResultRecordInfo * listRes,nero_s32int objPos,NeuronObject *godNero);
-
+void setNeroOperateFlag(ActNero *nero,nero_us32int flag);
+nero_s32int getNeroOperateFlag(ActNero *nero);
 
 
 

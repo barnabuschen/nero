@@ -1,5 +1,5 @@
 提交更新：
-sudo git commit -a -m "20170910：set up loop kind2"
+git commit -a -m "20170911：set new kind ID for op"
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt

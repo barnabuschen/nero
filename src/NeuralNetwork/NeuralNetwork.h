@@ -236,12 +236,10 @@ extern NeroConf neroConf;
 #define  NeuronNode_ForLayering      110   //定义一个基类a是另一个基类b得上层类，that is  mean：基类b得输出列表会指向基类a
 											// inputListHead  为俩个数据，前者是基类a 得kind值(save  in x)，后者是基类b得得kind值
 
-#define  NeuronNode_ValueCompare      120		//数据的大小比较
-#define  NeuronNode_GainValue      121		//数据值加1
-#define  NeuronNode_DecreaseValue      122		//数据值减1
-
-
-#define  NeuronNode_ForLoop      131		//链接的解除与增加
+#define  NeuronNode_ValueCompare      120			//数据的大小比较
+#define  NeuronNode_GainValue      121				//数据值加1
+#define  NeuronNode_DecreaseValue      122			//数据值减1
+#define  NeuronNode_FiberConnect      131			//链接的解除与增加
 
 
 #define  NeuronNode_ForLoop      150		//循环类:

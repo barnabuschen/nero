@@ -19,6 +19,10 @@ NeuronNode_ForChWord ,    //当一个概念节点的类型为此时表示一个�
 NeuronNode_ForInputWord,
 NeuronNode_ForOutputWord,
 NeuronNode_ForLayering,
+NeuronNode_ValueCompare,
+NeuronNode_GainValue,
+NeuronNode_DecreaseValue,
+NeuronNode_FiberConnect,
 NeuronNode_ForLoop,
  NeuronNode_ForChSentence,    //当一个概念节点的类型为此时表示一个中文句子
 NeuronNode_ForComplexDerivative,     //高级衍生类,for  some can not be classify  obj
@@ -34,6 +38,10 @@ NeuronNode_ForChCharacter,    //当一个概念节点的类型为此时表示一
 NeuronNode_ForChWord ,    //当一个概念节点的类型为此时表示一个中文词语
 NeuronNode_ForInputWord,
 NeuronNode_ForOutputWord,
+NeuronNode_ValueCompare,
+NeuronNode_GainValue,
+NeuronNode_DecreaseValue,
+NeuronNode_FiberConnect,
 NeuronNode_ForLayering,
 NeuronNode_ForLoop,
  NeuronNode_ForChSentence,    //当一个概念节点的类型为此时表示一个中文句子
@@ -1068,6 +1076,11 @@ nero_s32int CreateActNeroNet()
 				case   NeuronNode_ForInputWord:
 				case   NeuronNode_ForOutputWord:
 				case   NeuronNode_ForLoop:
+				case   NeuronNode_ValueCompare:
+				case   NeuronNode_GainValue:
+				case   NeuronNode_DecreaseValue:
+				case   NeuronNode_FiberConnect:
+
 				// case   NeuronNode_ForLayering:
 						//设置操作类的标志位
 						setNeroOperateFlag(BaseNeuronObject,1);
@@ -2967,9 +2980,9 @@ nero_s32int nero_judgeNewObjKind(NeuronObject *Obis[],nero_s32int objNum)
 			case NeuronNode_ForData:
 				kind=NeuronNode_ForNone;
 				break;
-
-			case NeuronNode_ForInputWord:
-			case NeuronNode_ForOutputWord:
+				//对于操作类的数据类型往往是不固定的，这里好像无法处理啊,wait for handle it
+			case NeuronNode_ForInputWord://objNum  =1
+			case NeuronNode_ForOutputWord://objNum  =1
 			case NeuronNode_ForLoop:	//会不会有例外阿
 				// kind=kind;
 				break;
@@ -3886,12 +3899,13 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 	switch(dataKind)
 	{
 		// case NeuronNode_ForLoop:
+		// case NeuronNode_ValueCompare:
 
 			
 
 
 
-		// 	break;
+			// break;
 		case NeuronNode_ForLayering:
 				dataPoint_ = (nero_us32int * )Data;
 				//get the base kind obj
@@ -4094,7 +4108,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 	default:
 
-		// 必须保证date得对象可以直接组成dataKind得对象
+		// 必须保证date得对象可以直接组成dataKind得对象, and  end by  0
 		// 既然已经知道datakind了，那就按照其基类得inputlisthead来确认
 		// 会需要哪些obj把
 // #define tmpObiForTemporaryNUM   2500
@@ -4189,12 +4203,12 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 					msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 
 				    #endif
-
-
-
-
-
-					//这里不考虑子类类型不一致得情况
+					///////////////////////////////////
+					///////////////////////////////////
+					//这里不考虑子类类型不一致得情况//////////
+					////////////////////////////////
+					////////////////////////////////
+					////////////////////////////////
 					while(  (*p)  !=  0)
 					{
 						tmp2 =nero_IfHasNeuronObject(p,tmpObiForTemporaryKind[0], godNero);
@@ -4654,7 +4668,7 @@ NeuronObject * nero_IfHasNeuronObjectKindUnknow(void *Data,nero_s32int basekind 
 
 		curFiber=curFiber->next;
 	}
-	if(nero_GetNeroKind(curFiber->obj) ==   basekind)
+	if(curFiber != NULL  &&     nero_GetNeroKind(curFiber->obj) ==   basekind)
 		baseObj=curFiber->obj;
 	else
 		return NULL;

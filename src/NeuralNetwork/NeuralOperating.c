@@ -882,7 +882,11 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 			printf("forecastInfo_st.objNum=%d,dataKind[%d]=%d, in :%x \n ",forecastInfo_st.objNum,i,nero_GetNeroKind(forecastInfo_st.objs[i]),(forecastInfo_st.objs[i]));
 		}
 		#endif
+
+		/*********************************************************************/
 		tmpObiForTest = Process_ClassiFication(&forecastInfo_st,GodNero);
+		/*********************************************************************/
+
 		// if(tmpObiForTest != NULL)
 		// {
 		// 	printf("Process_ClassiFication  = %x,[%d] \n ",tmpObiForTest,nero_GetNeroKind(tmpObiForTest));
@@ -1174,6 +1178,7 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 				msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
 				// printf("%s,iilkjhwersd=%d,%s\n",Process_tmpStr,sizeof(Process_tmpStr),DataFlow[0]);
 				#endif
+
 				#ifdef   Nero_DeBuging04_01_14_
 				char str[500];
 				char str2[500];
@@ -1300,17 +1305,35 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 						find if has
 		2:  check the  retuen  of nero_createObjFromMultiples()  has operating neros or not
 		3:  struct NeroObjForecastControl  give the wants of outside
+
+
+
+	一个操作类对象的输出对象是会链接入outputlist的，而且有时可能不止一个，那么在函数Process_IoFuc中输出哪一个呢，如果不zhi一个输出的话
+	有可能outputlist中已经有输出了
+
+	:first:首先有些操作一般是只有一个输出的，这种情况就可以先不考虑了,只yao inpulist中已经有输出了就直接输出就行了
+
+	second:如果有多个输出的情况下怎办？先不处理，先输出第一个，以后再考虑
+
+
+
+
+
 	*/
 void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObject *  complexObj,NeuronObject  *godNero)
 {
 	NerveFiber *tmpFiber;
 	NerveFiber *lowFiber;
 	NeuronObject *  tmp;
+	NeuronObject *  outputNode;
 	NeuronObject *tmp2;
-		NeuronObject *tmp1;
+	NeuronObject *tmp1;	
+	NeuronObject *data;	
+	NeuronObject *tmp1;	
 	struct list_head  * listHead;
 	nero_s32int  i,j;
 	nero_us32int kind;
+	nero_us32int outputNodeNum;
 	// if(forecastInfo_st == NULL  ||  complexObj == NULL  || orecastInfo_st->headOfUpperLayer == NULL  ||   forecastInfo_st->objNum <= 0 || orecastInfo_st->objs == NULL)
 	// {
 	// 	return ;
@@ -1331,59 +1354,107 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 			// tmp =
 			for(i=0,tmp=(forecastInfo_st->objs)[i];i < forecastInfo_st->objNum  ; tmp=(forecastInfo_st->objs)[i++]  )
 			{
-				kind = nero_GetNeroKind(tmp);
-				switch(kind)
+				if(i == -1)
 				{
-					case NeuronNode_ForInputWord:
+					kind = nero_GetNeroKind(complexObj);
+					tmp=complexObj;
+				}
+				else
+				{
+					kind = nero_GetNeroKind(tmp);
+				}
+				outputNode =NULL;
+				if (getNeroOperateFlag(tmp)  ==   1)
+				{
+					//find the output node :kind of none is not sure in differret case.
+					//return the first  output in var 
+					//return the number of  output nodes
+					outputNodeNum =  nero_s32int nero_getOutputNodeInObj(NeuronObject **  outputNodePoint );
+					if (outputNodeNum >= 1  &&   outputNode != NULL)
+					{
+						//blank
+					}
+					else
+					{
 
-						break;
-					case NeuronNode_ForOutputWord:
-						//x指向实际执行操作的函数的地址或者ID ,但是这里考虑到现在时间有限暂时简化处理
-
-						#ifdef Nero_DeBuging09_01_14
-							// print  one  obj  link: 
-							neroObjMsg_st.MsgId = MsgId_IO_ForOutputWord;
-							neroObjMsg_st.fucId = 2;//IO_ForOutputWord
-							neroObjMsg_st.Obi = tmp;
-							// int  tmp2222=0;
-							// printf("nero   msg:%x,%x \n",GodNero,&tmp2222);
-							msgsnd( IO_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);
-						#endif
-
-
-						break;
-					case NeuronNode_ForLayering:
-			// #define  NeuronNode_ForLayering      110   //定义一个基类a是另一个基类b得上层类，that is  mean：基类b得输出列表会指向基类a
-											// inputListHead  为俩个数据，前者是基类a 得kind值(save  in x)，后者是基类b得得kind值
-
-						tmpFiber=tmp->inputListHead;
-						tmp1=nero_getBaseObjByKind(tmpFiber->obj->x,godNero);
-						tmp2=nero_getBaseObjByKind(tmpFiber->next->obj->x,godNero);
-						if(tmp1 != NULL  &&  tmp2 != NULL)
+						switch(kind)
 						{
-							// 问题来了你这样在基类得输出列表中加入一个指向上层得链接是否会影响基类衍生类得搜索结果
-							//so the  way to solve this problem is : make b's  Derivative Object point to baseobj   rather than
-							// baseobj
-							// 这样也不行阿，这样得只是讲现有得衍生对象设置了层次关系，那以后加入得关系仍然没有阿
-							// 除非是这样，就是没隔一段时间就执行下这段代码(需要一个新得机制................)
-							lowFiber= tmp2->outputListHead;
-							while(lowFiber != NULL &&  lowFiber->obj != NULL)
-							{
+							//输出一个操作的输出的基本流程是，先判断是不是已经有输出了，有就输出它，没有的话，就通过fuc在outputlist中设置一个输出，再输出
+							//每个case后的操作的实现，本质上已经跟sys没有关系了，而是直接由自己写出来的功能代码,但是将来要实现的推理，有必须有这些东西构成，这些是推理的元操作
+							//关于各个sys内置类的详细情况参见  3系统运行逻辑初步/313页
 
-								PointingToObject(lowFiber->obj,tmp1,Fiber_PointToUpperLayer);
-								lowFiber=lowFiber->next;
-							}
+							case NeuronNode_GainValue:
+								outputNode=   Operating_GainValue(tmp,1);
+								// NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val);
+								break;
 
+							case NeuronNode_DecreaseValue:
+								outputNode=   Operating_ValueCompare(tmp,-1);
+								break;
+							case NeuronNode_ValueCompare://数据的大小比较
+								//执行后的结果：tmp的outputlist多了较大的那个obj,如果x相同就输出第一个,
+								outputNode=   Operating_ValueCompare(tmp);
+								break;
+							case NeuronNode_ForInputWord:
+
+								break;
+							case NeuronNode_ForOutputWord:
+								//x指向实际执行操作的函数的地址或者ID ,但是这里考虑到现在时间有限暂时简化处理
+
+								#ifdef Nero_DeBuging09_01_14
+									// print  one  obj  link: 
+									neroObjMsg_st.MsgId = MsgId_IO_ForOutputWord;
+									neroObjMsg_st.fucId = 2;//IO_ForOutputWord
+									neroObjMsg_st.Obi = tmp;
+									// int  tmp2222=0;
+									// printf("nero   msg:%x,%x \n",GodNero,&tmp2222);
+									msgsnd( IO_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);
+								#endif
+
+
+								break;
+							case NeuronNode_ForLayering:
+									// #define  NeuronNode_ForLayering      110   //定义一个基类a是另一个基类b得上层类，that is  mean：基类b得输出列表会指向基类a
+									// inputListHead  为俩个数据，前者是基类a 得kind值(save  in x)，后者是基类b得得kind值
+
+									tmpFiber=tmp->inputListHead;
+									tmp1=nero_getBaseObjByKind(tmpFiber->obj->x,godNero);
+									tmp2=nero_getBaseObjByKind(tmpFiber->next->obj->x,godNero);
+									if(tmp1 != NULL  &&  tmp2 != NULL)
+									{
+										// 问题来了你这样在基类得输出列表中加入一个指向上层得链接是否会影响基类衍生类得搜索结果
+										//so the  way to solve this problem is : make b's  Derivative Object point to baseobj   rather than
+										// baseobj
+										// 这样也不行阿，这样得只是讲现有得衍生对象设置了层次关系，那以后加入得关系仍然没有阿
+										// 除非是这样，就是没隔一段时间就执行下这段代码(需要一个新得机制................)
+										lowFiber= tmp2->outputListHead;
+										while(lowFiber != NULL &&  lowFiber->obj != NULL)
+										{
+
+											PointingToObject(lowFiber->obj,tmp1,Fiber_PointToUpperLayer);
+											lowFiber=lowFiber->next;
+										}
+
+									}
+
+
+									break;
+
+							default:
+									break;
 						}
 
+					}
 
-						break;
+					// 输出数据 放在最后
+					if (outputNode != NULL)
+					{
+						printf("Process_IoFuc:outputNode kind=d\n", nero_GetNeroKind(outputNode));
+					}
 
-					default:
-						break;
+
+
 				}
-
-
 
 			}
 
@@ -1398,6 +1469,166 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 
 
 }
+//对obj的整个inputlist中的nero的数据值都加1
+//obj的数据对象只有一个，加的是这个数据对象的数据列表的x值
+//不考虑溢出的问题
+//问题来了，加减之后实际上是另外一个对象了，那么原来的对象显然还需要保存，不能动，所以实际上你很可能
+// 需要重新创建一个对象
+// 关键是这里还有一个问题，即使obj的data对象的数据也是某个类型的复杂对象，那么还能进行操作么？那就复杂了
+//换句话说，这个data对象的数据链表中的obj必须是NeuronNode_ForData类型的才能进行加减
+
+
+NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val)
+{
+	nero_s32int ObjectKind,num,i,fiberT,allForDataFlag;
+	NeuronObject *data1;
+	NeuronObject *tmpobj;
+	NeuronObject *res;
+	NerveFiber  *  curFiber;
+	NerveFiber  *  tmpFiber;
+	if (obj == NULL  ||   (val > 1)  ||  val < -1)
+	{
+		return NULL;
+	}
+	//obj的数据对象只有一个
+	data1 = obj->inputListHead->obj;
+	num= nero_getObjDataNum(data1);
+
+
+	allForDataFlag =1;
+	if (data1 != NULL &&  num >= 1)
+	{
+		//首先判断这个对象是否符合能够进行操作的要求
+		curFiber=data1->inputListHead;
+		while(curFiber != NULL    )
+		{
+			// tmpobj = curFiber->obj;
+			fiberT =   getFiberType(curFiber);
+			if (fiberT != Fiber_PointToData)
+			{
+				allForDataFlag = 0;
+				break;
+			}
+			curFiber=curFiber->next;
+
+		}
+	}
+	if (allForDataFlag != 1 ||  num < 1)
+	{
+		return NULL;
+	}
+
+
+
+// NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject  * godNero)
+	// 中的data都是以0结尾表示数据已经结束的
+
+
+////////////////////////////////////////
+	i=0;
+ 
+	res=NULL;
+	curFiber=obj->inputListHead;
+	while(curFiber != NULL &&  i < 2  )
+	{
+		i++;
+		// printf("num=%d",num);
+		switch(i)
+		{
+			case 1:
+				data1 = curFiber->obj;
+				break;
+			case 2:
+				data2 = curFiber->obj;
+				break;
+			default:
+				break;
+		}
+		curFiber=curFiber->next;
+	}
+// printf("\n" );
+	if (data2 != NULL && data1 != NULL)
+	{
+		if (data1->inputListHead->obj->x   >=   data2->inputListHead->obj->x)
+		{
+			res = data1;
+		}
+		else
+			res = data2;
+
+		//set up a new fiber  to obj
+		/*生成新概念的数据链表*/
+		tmpFiber= addNerveFiber(obj,NerveFiber_Output,Fiber_PointToLowerLayer);
+		tmpFiber->obj=res;
+	}
+	return  res;
+}
+NeuronObject * obj Operating_ValueCompare(NeuronObject * obj)
+{
+
+	nero_s32int ObjectKind,num,i;
+	NeuronObject *data1;
+	NeuronObject *data2;
+	NeuronObject *res;
+	NerveFiber  *  curFiber;
+	NerveFiber  *  tmpFiber;
+	if (obj == NULL)
+	{
+		return NULL;
+	}
+
+	num= nero_getObjDataNum(obj);
+			// pntf("\n" );
+
+	if (num < 2)
+	{
+		return NULL;
+	}
+	i=0;
+	data1 =NULL;
+	data2 =NULL;
+	res=NULL;
+	curFiber=obj->inputListHead;
+	while(curFiber != NULL &&  i < 2  )
+	{
+		i++;
+		// printf("num=%d",num);
+		switch(i)
+		{
+			case 1:
+				data1 = curFiber->obj;
+				break;
+			case 2:
+				data2 = curFiber->obj;
+				break;
+			default:
+				break;
+		}
+		curFiber=curFiber->next;
+	}
+// printf("\n" );
+	if (data2 != NULL && data1 != NULL)
+	{
+		if (data1->inputListHead->obj->x   >=   data2->inputListHead->obj->x)
+		{
+			res = data1;
+		}
+		else
+			res = data2;
+
+		//set up a new fiber  to obj
+		/*生成新概念的数据链表*/
+		tmpFiber= addNerveFiber(obj,NerveFiber_Output,Fiber_PointToLowerLayer);
+		tmpFiber->obj=res;
+	}
+	return  res;
+
+}
+
+
+
+
+
 //现在的情况是只知道数据：DataFlow[i]  不知道对应的dataKind[i],
 // 还有这些data，是由什么元数据组成的,such like :NeuronNode_ForChCharacter
 // 为了加快进度，这里假设元数据就是NeuronNode_ForChCharacter(在 forecastInfo->controlMsg.metaData 中指定)

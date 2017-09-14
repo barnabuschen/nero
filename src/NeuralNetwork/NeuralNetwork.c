@@ -1421,6 +1421,26 @@ NeuronObject * getSANeuronObject()
 // ActNero StagingAreaNeroPool[StagingAreaNeroNum];
 
 }
+
+//指定在哪个pool中createNeroObj
+//  NeuronObject *GodNero ;/*所有神经元理论上都最终与这个相通*/
+// NeuronObject *SAGodNero;/*所有StagingArea神经元理论上都最终与这个相通*/
+NeuronObject *  nero_createNeroObjInSpecifyPool(nero_s32int kind,NeuronObject * godNero)
+{
+
+	NeuronObject *res;
+	res =NULL;
+	if (godNero ==  GodNero)
+	{
+		res=nero_createNeroObj( kind,  godNero);
+	}
+	else if (godNero ==  SAGodNero)
+	{
+		res=nero_createNeroObjSAP( kind,  godNero);
+	}
+
+	return res;
+}
 NeuronObject *  nero_createNeroObjSAP(nero_s32int kind,NeuronObject * godNero)
 {
 	nero_s32int res;
@@ -1442,17 +1462,8 @@ NeuronObject *  nero_createNeroObjSAP(nero_s32int kind,NeuronObject * godNero)
 		sprintf(str,"新建概念id=%d ，kind=%d data:<%x%x%x><%x %x %x>\n",newObj,kind,tmpObj->x,tmpObj->y,tmpObj->z,tmpObj->x,tmpObj->y,tmpObj->z);
 		nero_log("log/createNewObj.log",str);
 	}
-
-
-
 	#endif
-
 	return newObj;
-
-
-
-
-
 }
 
 
@@ -1506,64 +1517,90 @@ ActNero * nero_createDataNero()
 	return newObj;
 
 }
+/*创建一个数据存储 神经元,并初始化*/
+ActNero * nero_getOneDataNero(NeuronObject *godNero)
+{
+
+	nero_s32int res;
+	ActNero * newObj ;
+
+	if(godNero == GodNero)
+		newObj=(NeuronObject *)getNeuronObject();
+	else if (godNero == SAGodNero)
+	{
+		newObj=(NeuronObject *)getSANeuronObject();
+	}
+	if (newObj == NULL)
+	 {
+	 	printf("nero_getOneDataNero: wrong 1\n");
+	 	return NULL;
+	 } 
+ 
+
+	res=initActNero(newObj,NeuronNode_ForData,NULL,NULL);
+	if(res == NeroOK)
+	{
+
+/*		setActNeroAsBaseObject(newObj,NeuronNode_DerivativeObject);*/
+	}
+	else
+		NeroErrorMsg;
+
+	return newObj;
+
+}
+
+
+
 /*ActNero * nero_createNeroForData(nero_s32int  num)*/
-/*{*/
-
-
-
-
-
-/*}*/
 /* 首先申请足够多的神经元，来保存数据，这些神经元成单向连接起来，返回头节点
 注意这行中的fiber指向类型
 
 fiber=addNerveFiber(lasttail,NerveFiber_Output,Fiber_PointToSameLayer);
+
+这个函数对多个数据obj是怎么链接起来的和想象的不一致啊
+
+
+//代码有问题，num只能为1,不然是错误的
+
 */
-ActNero * nero_GetSomeNeroForData(nero_s32int  num)
+ActNero * nero_GetSomeNeroForData(nero_s32int  num )
 {
 	ActNero * head;
 	ActNero * tail;
 	ActNero * lasttail;
 	nero_s32int i;
 	NerveFiber * fiber;
-	if (num<1)
+	if (num<1    &&  num > 1)
 	{
 		return NULL;
 	}
 	for (i=1;i<=num;i++)
 	{
-
 		tail=nero_createDataNero();
-
-
-
 		if (i==1)
 		{
 			head=tail;
 		}
-
 		else
 		{
 			/*将上一个tail指向这个新的tail*/
-			fiber=addNerveFiber(lasttail,NerveFiber_Output,Fiber_PointToData);
+			// fiber=addNerveFiber(lasttail,NerveFiber_Output,Fiber_PointToData);
+			fiber=addNerveFiber(lasttail,NerveFiber_Input,Fiber_PointToData);
 			fiber->next=NULL;
 			fiber->obj=tail;
-
-
 		}
 		lasttail=tail;
 	}
-
-	return head;
-
+	return head
 }
 /*往NeuronObject添加数据，使这个细胞存储一个字的数据，这个字保存在chChar中*/
-nero_s32int nero_addDataToZhNeroObj(NeuronObject * n,ChUTF8 *chChar)
+nero_s32int nero_addDataToZhNeroObj(NeuronObject * n,ChUTF8 *chChar,NeuronObject *godNero)
 {
 
 
 	/* 首先申请足够多的神经元，来保存数据，这些神经元成单向连接起来，返回头节点*/
-	ActNero * dataNero=nero_GetSomeNeroForData(1);//只要一个神经元就好了，因为，这里只需要chChar的前3个数据
+	ActNero * dataNero=nero_getOneDataNero(godNero);//只要一个神经元就好了，因为，这里只需要chChar的前3个数据
 	/*将将概念神经元的inputListHead指向这个数据链表*/
 	if(dataNero)
 	{
@@ -1600,7 +1637,7 @@ nero_s32int nero_addZhCharIntoNet(NeuronObject *GodNero,ChUTF8 chChar[],nero_s32
 		if(newObj)
 		{
 			/*往概念填数据*/
-			nero_addDataToZhNeroObj(newObj,&chChar[i]);
+			nero_addDataToZhNeroObj(newObj,&chChar[i],GodNero);
 
 			#ifdef  Nero_DeBuging18_11_13_
 /*			printf("new nero:   kind=%d.\n",nero_GetNeroKind(newObj));*/
@@ -2064,12 +2101,7 @@ nero_s32int   nero_IfHasObjFromMultiples(NeuronObject *Obis[],nero_s32int objNum
 			tmpFiber1=tmpFiber1->next;
 		}
 	}
-
-
 	return 0;
-
-
-
 }
 NeuronObject *   nero_IfHasObjFromMultiples2(NeuronObject *Obis[],nero_s32int objNum)
 {
@@ -3118,16 +3150,12 @@ nero_s32int nero_IfIsThisKind(NeuronObject *Obis[],nero_s32int objNum,NeuronObje
 	                 }
 	         }
 
-
 	       }
 /*	       printf("FLAG=%d.\n",FLAG);     */
                 if ( FLAG ==0)
                 {
                        res=NeroYES;
                 }
-
-
-
         }
         else/*顺序无所谓*/
         {
@@ -3135,15 +3163,7 @@ nero_s32int nero_IfIsThisKind(NeuronObject *Obis[],nero_s32int objNum,NeuronObje
                 /*等待实现*/
                 printf(" nero_IfIsThisKind 顺序无所谓 \n");
         }
-
-
-
-
-
-
         return  res;
-
-
 }
 NeuronObject * nero_CreateObjInSAP(NeuronObject *Obis[],nero_s32int objNum,nero_s32int basekind,NeuronObject *godNero)
 {
@@ -3356,8 +3376,6 @@ NeuronObject *  nero_createObjFromSingleObj(NeuronObject *childObi,nero_s32int u
 
 		tmpFiber=tmpFiber->next;
 	}
-
-
 /*	printf("判断这些个对象是不是已经有生成过新概念了=%d.\n",res);*/
 	if(res == NeroYES   )
 	{
@@ -3366,23 +3384,9 @@ NeuronObject *  nero_createObjFromSingleObj(NeuronObject *childObi,nero_s32int u
 	        #endif
 	        return newObi;
 	}
-	// else if(  res == NeroError)
-	// {
-
- //        #ifdef   createObjFromSingleObj_DeBug_Msg
- //        printf("nero_createObjFromSingleObj  msg error  ,objNum=%d\n",objNum);
- //        #endif
- //        return NULL;
-
-	// }
-
-
-
-
 	/*判断新概念的种类
 	见神经网络记录 sheet   5系统概略图
 	*/
-
 	newObiKind= upkind;
 	if (newObiKind == NeuronNode_ForNone)
 	{
@@ -3396,7 +3400,8 @@ NeuronObject *  nero_createObjFromSingleObj(NeuronObject *childObi,nero_s32int u
 
 
 	/*生成新概念，并加入网络*/
-	newObi= nero_createNeroObj (newObiKind);
+	// newObi= nero_createNeroObj (newObiKind);
+	newObi= NeuronObject *  nero_createNeroObjInSpecifyPool(newObiKind,  godNero);
 	// printf("newObi=%x\n",newObi);
 	res= nero_addNeroIntoNet( godNero,newObi);
 	if(nero_msg_ok != res)
@@ -3902,6 +3907,7 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 		// case NeuronNode_ValueCompare:
 
 			
+		// NeuronObject *  nero_createNeroObjInSpecifyPool(nero_s32int kind,NeuronObject * godNero)
 
 
 
@@ -3909,17 +3915,18 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 		case NeuronNode_ForLayering:
 				dataPoint_ = (nero_us32int * )Data;
 				//get the base kind obj
-				tmp1=nero_getBaseObjByKind(dataPoint_[0],GodNero);
-				tmp2=nero_getBaseObjByKind(dataPoint_[1],GodNero);
+				tmp1=nero_getBaseObjByKind(dataPoint_[0],godNero);
+				tmp2=nero_getBaseObjByKind(dataPoint_[1],godNero);
 				if(tmp1 != NULL  &&  tmp2 != NULL)
 				{
 
-					 tmp2= nero_createNeroObj(dataKind);
+					 // tmp2= nero_createNeroObj(dataKind);
+					 tmp2= nero_createNeroObjInSpecifyPool(dataKind,godNero);
 					 tmp=NULL;
 					if(tmp2)
 					{
 						/* 首先申请足够多的神经元，来保存数据，这些神经元成单向连接起来，返回头节点*/
-						ActNero * dataNero=nero_GetSomeNeroForData(1);
+						ActNero * dataNero=nero_getOneDataNero(godNero);
 						/*将将概念神经元的inputListHead指向这个数据链表*/
 						if(dataNero)
 						{
@@ -3930,7 +3937,8 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 							nero_putDataIntoNero(dataNero,dataPoint_[0],0,0);
 						}
 
-						dataNero=nero_GetSomeNeroForData(1);
+						dataNero=nero_getOneDataNero(godNero);
+						// getSANeuronObject
 						/*将将概念神经元的inputListHead指向这个数据链表*/
 						if(dataNero)
 						{
@@ -3956,7 +3964,8 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 			{
 				// printf("nero_addNeroByData: find ZhWord  in case  NeuronNode_ForOutputWord\n");
 				// exit(0);
-				 tmp2= nero_createNeroObj(dataKind);
+				 // tmp2= nero_createNeroObj(dataKind);
+				 tmp2= nero_createNeroObjInSpecifyPool(dataKind,godNero);
 				if(tmp2)
 				{
 					/*往概念填数据*/
@@ -3987,15 +3996,16 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 		then  you  store it  in  wordP2{48,0,0}  (see fuc :obtainOrderFromTFF() ,line 460)
 		thas is  ok ,when you  want to outpu is ,you just need  48.
 		*/
-		tmp=nero_IfHasZhWord( GodNero,wordP2, dataKind);/*多余的*/
+		tmp=nero_IfHasZhWord( godNero,wordP2, dataKind);/*多余的*/
 
 		if (tmp  == NULL)
 		{
-			 tmp= nero_createNeroObj(NeuronNode_ForChCharacter);
+			 // tmp= nero_createNeroObj(NeuronNode_ForChCharacter);
+			 tmp= nero_createNeroObjInSpecifyPool(NeuronNode_ForChCharacter,godNero);
 			if(tmp)
 			{
 				/*往概念填数据*/
-				nero_addDataToZhNeroObj(tmp,wordP2);
+				nero_addDataToZhNeroObj(tmp,wordP2,godNero);
 
 				#ifdef  Nero_DeBuging18_11_13_
 				printf("new nero:   kind=%d.data:%x %x %x \n",nero_GetNeroKind(tmp),wordP2->first,wordP2->second,wordP2->third);
@@ -4283,7 +4293,19 @@ NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject 
 						// getFiberPointToObjNum
 						neroConf.WantCreateObjKind=dataKind;
 						if(childNun > 1)
-							tmp=nero_createObjFromMultiples(tmpObiForTemporary,childNun);
+						{
+
+							if (godNero == GodNero)
+							{
+								tmp=nero_createObjFromMultiples(tmpObiForTemporary,childNun);
+							}else if (godNero == SAGodNero)
+							{
+								tmp=nero_CreateObjInSAP( tmpObiForTemporary,childNun,dataKind,godNero);
+
+							}
+
+							// tmp=nero_createObjFromMultiples(tmpObiForTemporary,childNun);
+						}
 						else
 							tmp=nero_createObjFromSingleObj(tmpObiForTemporary[0],dataKind, godNero);
 
@@ -5188,25 +5210,6 @@ void nero_MovingForwardOneStep( NeuronObject * obj, NeuronObject  *godNero,nero_
 	}
 }
 // 将SAP中的临时对象needTransferNero转化为NP中得永久对象
-/*
-	 struct ActivationNeuron
-	{
-	nero_us32int msg; 记录该nero的种类，性质等信息*
-	nero_s32int x;//取值范围-2147483648 ~ 2147483647       use x  to  recond  how many chind has  if  its  a  baseObj
-	nero_s32int y;	//	it use  to  recond  how many times  this obj  has been input  recently只在临时区域中使用这个变量
-	nero_s32int z;
-	struct NerveFiber_  * inputListHead;
-	struct NerveFiber_   * outputListHead;
-	};
-
-	struct NerveFiber_
-	{
-		struct ActivationNeuron   *obj;
-		struct NerveFiber_ * next;
-		nero_us32int msg1;
-		nero_us32int time;
-	};
-*/
 // 需要做得工作：
 // 1：在NP申请一个新得obj
 // 2：将必要得信息复制到obj，而inputListHead，outputListHead可以直接复制就行了，但是要过滤掉指向SAP得链接（动态分配得需要释放）

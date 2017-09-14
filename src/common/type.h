@@ -43,6 +43,7 @@
 
 #define DataFlowPoolListNum      70    /* // the same as OrderListWigthMax*/
 #define DataFlowPoolStrMaxLen      1000 /*每条命令最多100个参数*/
+#define DataOperatingNUms      3000 /*能被处理的数据个数*/
 
 
 

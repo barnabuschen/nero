@@ -414,10 +414,10 @@ nero_s32int nero_getObjsByStr(nero_s32int metaDataKind,void * Data ,nero_s32int 
 NeuronObject * nero_IfHasObjFromMultiples5(NeuronObject *Obis[],nero_s32int objNum,struct DataFlowResultRecordInfo * listRes,nero_s32int objPos,NeuronObject *godNero);
 void setNeroOperateFlag(ActNero *nero,nero_us32int flag);
 nero_s32int getNeroOperateFlag(ActNero *nero);
+NeuronObject *  nero_createNeroObjInSpecifyPool(nero_s32int kind,NeuronObject * godNero);
 
-
-
-
+ActNero * nero_getOneDataNero(NeuronObject *godNero);
+nero_s32int nero_addDataToZhNeroObj(NeuronObject * n,ChUTF8 *chChar,NeuronObject *godNero);
 
 
 

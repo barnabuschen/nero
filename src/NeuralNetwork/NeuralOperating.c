@@ -1382,7 +1382,16 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 							//输出一个操作的输出的基本流程是，先判断是不是已经有输出了，有就输出它，没有的话，就通过fuc在outputlist中设置一个输出，再输出
 							//每个case后的操作的实现，本质上已经跟sys没有关系了，而是直接由自己写出来的功能代码,但是将来要实现的推理，有必须有这些东西构成，这些是推理的元操作
 							//关于各个sys内置类的详细情况参见  3系统运行逻辑初步/313页
+							
+							case NeuronNode_FiberConnect:
 
+								
+
+
+
+								// outputNode=   Operating_GainValue(tmp,1);
+								// NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val);
+								break;							
 							case NeuronNode_GainValue:
 								outputNode=   Operating_GainValue(tmp,1);
 								// NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val);
@@ -1480,12 +1489,17 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 
 NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val)
 {
-	nero_s32int ObjectKind,num,i,fiberT,allForDataFlag;
+	nero_s32int ObjectKind,num,i,j,fiberT,allForDataFlag,UpperObjKind;
 	NeuronObject *data1;
 	NeuronObject *tmpobj;
 	NeuronObject *res;
+	static NeuronObject * objs[DataOperatingNUms];
 	NerveFiber  *  curFiber;
 	NerveFiber  *  tmpFiber;
+	static nero_8int dataStream[Process_TemporaryNUM];
+	static void *DataFlow[DataOperatingNUms];
+	void * p;
+
 	if (obj == NULL  ||   (val > 1)  ||  val < -1)
 	{
 		return NULL;
@@ -1494,7 +1508,11 @@ NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val)
 	data1 = obj->inputListHead->obj;
 	num= nero_getObjDataNum(data1);
 
-
+	if (DataOperatingNUms < num)
+	{
+		printf("Operating_GainValue:too many data num\n");
+		return NULL;
+	}
 	allForDataFlag =1;
 	if (data1 != NULL &&  num >= 1)
 	{
@@ -1517,50 +1535,55 @@ NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val)
 	{
 		return NULL;
 	}
+	//考虑到能进行NeuronNode_GainValue 的obj的数据都是元数据（都是纯粹的数据对象）操作后的对象应该是另一个对象了，假如存在的话
+	// 那只能这样了，先将操作后的对象在临时区域中生成，在与永久区域进行搜索，看能不能找到相同数据的对象
 
 
-
-// NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject  * godNero)
-	// 中的data都是以0结尾表示数据已经结束的
-
-
-////////////////////////////////////////
-	i=0;
- 
-	res=NULL;
-	curFiber=obj->inputListHead;
-	while(curFiber != NULL &&  i < 2  )
+	UpperObjKind = nero_GetNeroKind(data1);
+	p =dataStream;
+	curFiber=data1->inputListHead;
+	for (  i = 0; i < Process_TemporaryNUM && curFiber != NULL ;  curFiber=curFiber->next)
 	{
-		i++;
-		// printf("num=%d",num);
-		switch(i)
+		// NeuronObject * nero_IfHasNeuronObject(void *Data,nero_s32int dataKind,NeuronObject *GodNero)
+		tmpobj = curFiber->obj;
+		if (tmpobj != NULL)
 		{
-			case 1:
-				data1 = curFiber->obj;
-				break;
-			case 2:
-				data2 = curFiber->obj;
-				break;
-			default:
-				break;
-		}
-		curFiber=curFiber->next;
-	}
-// printf("\n" );
-	if (data2 != NULL && data1 != NULL)
-	{
-		if (data1->inputListHead->obj->x   >=   data2->inputListHead->obj->x)
-		{
-			res = data1;
+			p[i++] = tmpobj->x + val;
+			p[(i++)+1]= tmpobj->y;
+			p[(i++)+2]= tmpobj->z;
 		}
 		else
-			res = data2;
+		{
+			break;
+		}
+	}
+	p[i]=0;
+	res = NULL;
+	if(i >= 3)
+		res = nero_IfHasNeuronObject(dataStream,nero_GetNeroKind(data1), GodNero);
+	if (i >= 3 && res == NULL)
+	{
+		res = nero_IfHasNeuronObject(dataStream,nero_GetNeroKind(data1), SAGodNero);
+	}
+    // NeuronObject * nero_CreateObjInSAP(NeuronObject *Obis[],nero_s32int objNum,nero_s32int basekind,NeuronObject *godNero);
+	// nero_CreateObjInSAP( objs,objNum,UpperObjKind,SAGodNero);
+	if (res == NULL)
+	{
+		res = nero_addNeroByData(dataStream,nero_GetNeroKind(data1),SAGodNero);
+ 		
+	}
 
+
+	if (res != NULL)
+	{
 		//set up a new fiber  to obj
 		/*生成新概念的数据链表*/
 		tmpFiber= addNerveFiber(obj,NerveFiber_Output,Fiber_PointToLowerLayer);
 		tmpFiber->obj=res;
 	}
+
+
+// NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject  * godNero)
 	return  res;
 }
 NeuronObject * obj Operating_ValueCompare(NeuronObject * obj)

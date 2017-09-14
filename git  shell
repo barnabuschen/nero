@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "20170911：Operating_GainValue"
+git commit -a -m "20170911： FiberConnect"
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt

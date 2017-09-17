@@ -159,10 +159,10 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 
 int qSortCmp1(const void *a,const void *b);
 nero_s32int  Process_AddNewBaseKindByname(void *DataFlow[],nero_s32int dataKind[],nero_s32int dataNum,NeuronObject  *GodNero,NeroConf * conf);
-NeuronObject * obj Operating_ValueCompare(NeuronObject * obj);
+NeuronObject *   Operating_ValueCompare(NeuronObject * obj);
 
 NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val);
-
+nero_s32int nero_getOutputNodeInObj(NeuronObject **  outputNodePoint );
 
 
 

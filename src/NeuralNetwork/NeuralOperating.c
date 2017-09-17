@@ -155,7 +155,7 @@ void * thread_for_Operating_Pic(void *arg)
 			// 	nero_us32int expectKinds [DataFlow_MaxResultNUm];//期望对象的kind,该值往往需在sys内部根据string  get
 			// 	nero_us32int BaseOrObj   [DataFlow_MaxResultNUm];//期望对象is  base  or obj? == 1  means  is baseObj
 			// 	nero_us32int actualNums;
-			// };			
+			// };
 				dataFlowRstRcdInfo.expectKinds[dataFlowRstRcdInfo.actualNums] =  dataFlowDataMsg_twoNum_->kind;
 				dataFlowRstRcdInfo.BaseOrObj[dataFlowRstRcdInfo.actualNums] =  dataFlowDataMsg_twoNum_->baseORDerivative;
 				dataFlowRstRcdInfo.actualNums++;
@@ -1327,9 +1327,9 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 	NeuronObject *  tmp;
 	NeuronObject *  outputNode;
 	NeuronObject *tmp2;
-	NeuronObject *tmp1;	
-	NeuronObject *data;	
-	NeuronObject *tmp1;	
+	NeuronObject *tmp1;
+	NeuronObject *data;
+	// NeuronObject *tmp1;
 	struct list_head  * listHead;
 	nero_s32int  i,j;
 	nero_us32int kind;
@@ -1366,10 +1366,14 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 				outputNode =NULL;
 				if (getNeroOperateFlag(tmp)  ==   1)
 				{
-					//find the output node :kind of none is not sure in differret case.
-					//return the first  output in var 
+					//find the output node :kind of node is not sure in differret case.
+					//return the first  output in var
 					//return the number of  output nodes
-					outputNodeNum =  nero_s32int nero_getOutputNodeInObj(NeuronObject **  outputNodePoint );
+					// outputNodeNum =  nero_s32int nero_getOutputNodeInObj(NeuronObject **  outputNodePoint );
+					outputNodeNum =    nero_getOutputNodeInObj(   &outputNode );
+
+					printf("Process_IoFuc:outputNodeNum:%d,outputNode:%x\n",outputNodeNum,outputNode );
+
 					if (outputNodeNum >= 1  &&   outputNode != NULL)
 					{
 						//blank
@@ -1382,23 +1386,23 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 							//输出一个操作的输出的基本流程是，先判断是不是已经有输出了，有就输出它，没有的话，就通过fuc在outputlist中设置一个输出，再输出
 							//每个case后的操作的实现，本质上已经跟sys没有关系了，而是直接由自己写出来的功能代码,但是将来要实现的推理，有必须有这些东西构成，这些是推理的元操作
 							//关于各个sys内置类的详细情况参见  3系统运行逻辑初步/313页
-							
+
 							case NeuronNode_FiberConnect:
 
-								
+
 
 
 
 								// outputNode=   Operating_GainValue(tmp,1);
 								// NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val);
-								break;							
+								break;
 							case NeuronNode_GainValue:
 								outputNode=   Operating_GainValue(tmp,1);
 								// NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val);
 								break;
 
 							case NeuronNode_DecreaseValue:
-								outputNode=   Operating_ValueCompare(tmp,-1);
+								outputNode=   Operating_GainValue(tmp,-1);
 								break;
 							case NeuronNode_ValueCompare://数据的大小比较
 								//执行后的结果：tmp的outputlist多了较大的那个obj,如果x相同就输出第一个,
@@ -1411,7 +1415,7 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 								//x指向实际执行操作的函数的地址或者ID ,但是这里考虑到现在时间有限暂时简化处理
 
 								#ifdef Nero_DeBuging09_01_14
-									// print  one  obj  link: 
+									// print  one  obj  link:
 									neroObjMsg_st.MsgId = MsgId_IO_ForOutputWord;
 									neroObjMsg_st.fucId = 2;//IO_ForOutputWord
 									neroObjMsg_st.Obi = tmp;
@@ -1478,6 +1482,24 @@ void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObje
 
 
 }
+
+nero_s32int nero_getOutputNodeInObj(NeuronObject **  outputNodePoint )
+{
+
+
+
+
+
+
+
+
+	*outputNodePoint = NULL;
+
+
+
+
+	return 0;
+}
 //对obj的整个inputlist中的nero的数据值都加1
 //obj的数据对象只有一个，加的是这个数据对象的数据列表的x值
 //不考虑溢出的问题
@@ -1498,7 +1520,7 @@ NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val)
 	NerveFiber  *  tmpFiber;
 	static nero_8int dataStream[Process_TemporaryNUM];
 	static void *DataFlow[DataOperatingNUms];
-	void * p;
+	nero_8int * p;
 
 	if (obj == NULL  ||   (val > 1)  ||  val < -1)
 	{
@@ -1570,7 +1592,7 @@ NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val)
 	if (res == NULL)
 	{
 		res = nero_addNeroByData(dataStream,nero_GetNeroKind(data1),SAGodNero);
- 		
+
 	}
 
 
@@ -1586,7 +1608,8 @@ NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val)
 // NeuronObject *  nero_addNeroByData(void *Data,nero_s32int dataKind,NeuronObject  * godNero)
 	return  res;
 }
-NeuronObject * obj Operating_ValueCompare(NeuronObject * obj)
+//输出俩个数据对象中x值较大的那个对象
+NeuronObject *   Operating_ValueCompare(NeuronObject * obj)
 {
 
 	nero_s32int ObjectKind,num,i;
@@ -1714,7 +1737,7 @@ nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],ne
 					objListNumCount[i]= nero_getObjsByStr(metaData,DataFlow[i] ,i , (objs[i]) ,  godNero);
 					// printf("objListNumCount[i]=%d\n",objListNumCount[i]);
 					#ifdef Nero_DeBuging03_05_17_
-					
+
 					for (ii=0 ;ii<objListNumCount[i];ii++)
 					{
 						// tmpstr_[0]= (objs[i][ii]).inputListHead->obj->x;
@@ -1750,7 +1773,7 @@ nero_s32int   Process_SearchObjForStr(void *DataFlow[],nero_s32int dataKind[],ne
 			// 	printf("kind=%d,[%d]\n", dataFlowRstRcdInfo.expectKinds[ii],dataFlowRstRcdInfo.BaseOrObj[ii]);
 			// }
 			//现在尝试讲objs[i]数组的obj合并为一个上层对象
-			if(objListNumCount[i] >  1)// nero_IfHasObjFromMultiples4要求输入的data个数要求大于1,so  
+			if(objListNumCount[i] >  1)// nero_IfHasObjFromMultiples4要求输入的data个数要求大于1,so
 			{
 				// 在这里你可以暂时抛弃子对象数为1的情况，因为那种情况下的上层类一般不好找
 				tmpObiForTest = NULL;
@@ -1914,10 +1937,10 @@ NeuronObject *  Process_ClassiFication(struct DataFlowForecastInfo  * forecastIn
 	neroObjMsgWithStr_st.Obi = NULL;
 	sprintf(neroObjMsgWithStr_st.str,"matchObj1:%x,kind =%d,isbase=%d \n",tmpObiForTest,nero_GetNeroKind(tmpObiForTest) , nero_isBaseObj(tmpObiForTest));
 	// if(nero_GetNeroKind(tmpObiForTest) ==  2031)
-	// {	
+	// {
 	// 	rich++;
 	// 	sprintf(neroObjMsgWithStr_st.str,"rich[%d]\n",rich );
-		
+
 	// }
 	// else if( nero_GetNeroKind(tmpObiForTest) ==  2032 )
 	// {
@@ -1926,7 +1949,7 @@ NeuronObject *  Process_ClassiFication(struct DataFlowForecastInfo  * forecastIn
 	// }
 	// else
 	// {
-	// 		error++;	
+	// 		error++;
 	// 	sprintf(neroObjMsgWithStr_st.str,"error[%d]\n",error);
 	// }
 	msgsnd( Log_mq_id, &neroObjMsgWithStr_st, sizeof(neroObjMsgWithStr_st), 0);
@@ -2787,7 +2810,7 @@ void AddNewObjToForecastList(struct DataFlowForecastInfo  * forecastInfo,NeuronO
 /*                printf("                p=%x,Obj=%x.\n", p,p->obj);*/
             Obj=p->obj;
             FiberType=getFiberType(p);
-            // add  (forecastInfo->controlMsg).baseORDerivative 
+            // add  (forecastInfo->controlMsg).baseORDerivative
             if (Obj != NULL  &&  nero_isBaseObj(Obj) == (forecastInfo->controlMsg).baseORDerivative  && getFiberPointToPool(p ) == Fiber_ObjInNeroPool )
             {
 
@@ -4054,12 +4077,3 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 		Process_UpdataForecastList(forecastInfo,tmpObi);
 	}
 }
-
-
-
-
-
-
-
-
-

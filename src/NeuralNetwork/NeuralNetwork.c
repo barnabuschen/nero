@@ -111,10 +111,10 @@ void  testDataIn201608()
 	}
 }
  /*该标志位为1时表示该obj为操作类*/
-void setNeroOperateFlag(ActNero *nero,nero_us32int flag)
+void setNeroOperateFlag(ActNero *nero,nero_us32int rule )
 {
 
-	if(nero ==NULL || rule <0 || rule >1)
+	if(nero ==NULL || rule <0 || rule >1 )
 		return ;
 
 
@@ -961,7 +961,7 @@ void  cleanObjFiberListFromSAPool(NeuronObject  *newObi)
 
 
 /*pointTotype指的是该纤维指向的概念与原来的概念的关系*/
-static inline NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type,nero_s32int pointTotype)
+    NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type,nero_s32int pointTotype)
 {
 /*
 #define NerveFiber_Input 1
@@ -1432,7 +1432,7 @@ NeuronObject *  nero_createNeroObjInSpecifyPool(nero_s32int kind,NeuronObject * 
 	res =NULL;
 	if (godNero ==  GodNero)
 	{
-		res=nero_createNeroObj( kind,  godNero);
+		res=nero_createNeroObj( kind);
 	}
 	else if (godNero ==  SAGodNero)
 	{
@@ -1592,7 +1592,7 @@ ActNero * nero_GetSomeNeroForData(nero_s32int  num )
 		}
 		lasttail=tail;
 	}
-	return head
+	return head;
 }
 /*往NeuronObject添加数据，使这个细胞存储一个字的数据，这个字保存在chChar中*/
 nero_s32int nero_addDataToZhNeroObj(NeuronObject * n,ChUTF8 *chChar,NeuronObject *godNero)
@@ -2214,7 +2214,7 @@ nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNu
 				case NeuronNode_ForNone:
 				case NeuronNode_ForGodNero:
 				case NeuronNode_ForData:
-				case NeuronNode_ForConnect:
+				// case NeuronNode_ForConnect:
 
 				case NeuronNode_ForLayering:
 				case NeuronNode_ForInputWord:
@@ -2290,7 +2290,7 @@ NeuronObject *   nero_IfHasObjFromMultiples4(NeuronObject *Obis[],nero_s32int ob
 				case NeuronNode_ForNone:
 				case NeuronNode_ForGodNero:
 				case NeuronNode_ForData:
-				case NeuronNode_ForConnect:
+				// case NeuronNode_ForConnect:
 
 					flag=0;/*直接排除*/
 					break;
@@ -2355,7 +2355,7 @@ NeuronObject * nero_IfHasObjFromMultiples5(NeuronObject *Obis[],nero_s32int objN
 				case NeuronNode_ForNone:
 				case NeuronNode_ForGodNero:
 				case NeuronNode_ForData:
-				case NeuronNode_ForConnect:
+				// case NeuronNode_ForConnect:
 
 					flag=0;/*直接排除*/
 					break;
@@ -3401,7 +3401,7 @@ NeuronObject *  nero_createObjFromSingleObj(NeuronObject *childObi,nero_s32int u
 
 	/*生成新概念，并加入网络*/
 	// newObi= nero_createNeroObj (newObiKind);
-	newObi= NeuronObject *  nero_createNeroObjInSpecifyPool(newObiKind,  godNero);
+	newObi=   nero_createNeroObjInSpecifyPool(newObiKind,  godNero);
 	// printf("newObi=%x\n",newObi);
 	res= nero_addNeroIntoNet( godNero,newObi);
 	if(nero_msg_ok != res)

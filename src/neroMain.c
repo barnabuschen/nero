@@ -87,13 +87,13 @@ void main()
 	nero_8int * fileName3="/data/sound/buzui.wav";
 
 	// copy_wav(fileName3);
-	putDataInDB_wav(fileName3);
+	// putDataInDB_wav(fileName3);
 	  // frank_test();
 	   // putWaveDataInDB("/home/jty/nero/nero/src/data/sound/wave.csv");
 	// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.data","/home/jty/nero/nero/src/data/adult/adultLearn.sh");
 	// readAdultFileForData("/home/jty/nero/nero/src/data/adult/adult.test","/home/jty/nero/nero/src/data/adult/adultTest.sh");
 
-	// ProInitialization();
+	ProInitialization();
 }
 
 

@@ -882,7 +882,7 @@ nero_s32int Log_printAllKindOf(void * obj_,void *str_)
 		case NeuronNode_ForNone:
 		case NeuronNode_ForGodNero:
 		case NeuronNode_ForData:
-		case NeuronNode_ForConnect:
+		// case NeuronNode_ForConnect:
 		case NeuronNode_ForLine:
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:
@@ -1114,7 +1114,7 @@ nero_s32int Log_printNeroObjLinkTree(void * arg)
 
 				case NeuronNode_ForNone:
 				case NeuronNode_ForData:
-				case NeuronNode_ForConnect:
+				// case NeuronNode_ForConnect:
 				case NeuronNode_ForLine:
 				case NeuronNode_ForImage:
 				case NeuronNode_ForComplexDerivative:
@@ -1221,7 +1221,7 @@ nero_s32int Log_printNeroObjLink(void * arg)
 		case NeuronNode_ForNone:
 		case NeuronNode_ForUndefined:
 		case NeuronNode_ForData:
-		case NeuronNode_ForConnect:
+		// case NeuronNode_ForConnect:
 		case NeuronNode_ForLine:
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:
@@ -1394,7 +1394,7 @@ nero_s32int Log_printSomeMsgForObj(void * obj_,void *str_)
 		case NeuronNode_ForNone:
 		case NeuronNode_ForGodNero:
 		case NeuronNode_ForData:
-		case NeuronNode_ForConnect:
+		// case NeuronNode_ForConnect:
 		case NeuronNode_ForLine:
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:
@@ -1581,7 +1581,7 @@ nero_s32int IO_GetNeroObjMsg(void * arg)
 		case NeuronNode_ForNone:
 		case NeuronNode_ForGodNero:
 		case NeuronNode_ForData:
-		case NeuronNode_ForConnect:
+		// case NeuronNode_ForConnect:
 		case NeuronNode_ForLine:
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:
@@ -1632,7 +1632,7 @@ nero_s32int Log_printNeroObjMsg(void * arg)
 		case NeuronNode_ForNone:
 		case NeuronNode_ForGodNero:
 		case NeuronNode_ForData:
-		case NeuronNode_ForConnect:
+		// case NeuronNode_ForConnect:
 		case NeuronNode_ForLine:
 		case NeuronNode_ForImage:
 		case NeuronNode_ForComplexDerivative:

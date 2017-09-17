@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "20170911： 关于推理的一些想法"
+git commit -a -m "20170911： op think"
 git push origin  ver0.1803:ver0.1803
 添加文件到库，并上传
 git add readme.txt
@@ -104,7 +104,7 @@ git push origin master
         { "keys": ["shift+f2"], "command": "prev_bookmark" },
         { "keys": ["ctrl+f2"], "command": "toggle_bookmark" },
         { "keys": ["ctrl+shift+f2"], "command": "clear_bookmarks" },
-        { "keys": ["alt+f2"], "command": "select_all_bookmarks" }, 
+        { "keys": ["alt+f2"], "command": "select_all_bookmarks" },
 
          { "keys": ["alt+x"], "command": "toggle_comment", "args": { "block": false } },
          //kuai  zhu  shi
@@ -164,15 +164,10 @@ perf report -v -n --showcpuutilization -g --stdio
 
 
 vm12 密钥
-5A02H-AU243-TZJ49-GTC7K-3C61N 
+5A02H-AU243-TZJ49-GTC7K-3C61N
 
 
 
 
 
 grep -rn "Create vector of fbank centre frequencies" *
-
-
-
-
-

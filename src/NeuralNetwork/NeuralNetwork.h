@@ -240,7 +240,7 @@ extern NeroConf neroConf;
 #define  NeuronNode_GainValue      121				//数据值加1
 #define  NeuronNode_DecreaseValue      122			//数据值减1
 #define  NeuronNode_FiberConnect      131			//链接的解除与增加
-
+		 // NeuronNode_ForConnect
 
 #define  NeuronNode_ForLoop      150		//循环类:
 
@@ -418,7 +418,7 @@ NeuronObject *  nero_createNeroObjInSpecifyPool(nero_s32int kind,NeuronObject * 
 
 ActNero * nero_getOneDataNero(NeuronObject *godNero);
 nero_s32int nero_addDataToZhNeroObj(NeuronObject * n,ChUTF8 *chChar,NeuronObject *godNero);
-
+    NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type,nero_s32int pointTotype);
 
 
 

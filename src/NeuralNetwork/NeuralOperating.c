@@ -4077,3 +4077,73 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 		Process_UpdataForecastList(forecastInfo,tmpObi);
 	}
 }
+/*
+struct DataNode
+{
+	void *Data;//一维指针，指向一个动态分配内存快的数据，数据快末尾一定是0，如果末尾不是0,则只能读取固定大小的内存快，这里容易产生bug啊
+	nero_us32int Kind;//dataKind不为0时指明了该数据的类型，
+	nero_s32int dataLen;//为0时表明Data为NULL 
+						//不为0时表明Data不为NULL，其值为data长度，不包括末尾的0 
+};
+//用于输入操作类对象的结构
+struct OPInput
+{
+	// struct list_head p;//考虑到一次只处理一个cp的话不需要这个
+	nero_us32int Kind;
+	struct  OPInputNode * inputNodeHead;
+	struct  OPInputNode * outputNodeHead;
+};
+struct  OPInputNode 
+{
+	struct list_head dataP;									
+	struct OPInputNode  *op;
+	struct DataNode		*d;
+};
+考虑到可扩展性，这个函数一次只能输入一个op
+这个函数不能生成新的操作类或者操作obj，如果有需要发消息给 thread_for_Operating_Pic
+
+那这个函数的功能是什么？
+	   首先对涉及到操作的数据流进行分类
+          1：新类的生成
+          2：新操作obj的生成
+          3：操作的识别，能识别才能谈及如何对应进行输出
+          4：
+知道一个数据的状态的意思是知道他的kind和实际的obj
+	数据初态		数据终态			操作中间过程		总的操作类型
+
+  1   知道		知道 			求？						求？
+ 	2	知道		知道 			知道						建立新的kind
+ 	3	知道		只知道数据的类型	求？						求？
+
+先解决第二项
+
+
+
+
+*/
+
+
+// 尽可能的保持可扩展性和独立性  为多线程和以后的功能扩增准准备
+ nero_s32int OperatFlowProcess(struct OPInput *inputSteam,NeuronObject  *godNero,NeroConf * conf)
+ {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	return nero_msg_ok;
+ }

@@ -83,6 +83,51 @@ struct DataFlowForecastInfo
 	nero_s32int DeBugMsg;
 	nero_s32int DeBugMsgTwo;
 };
+struct DataNode
+{
+	void *Data;//一维指针，指向一个动态分配内存快的数据，数据快末尾一定是0，如果末尾不是0,则只能读取固定大小的内存快，这里容易产生bug啊
+	nero_us32int Kind;//dataKind不为0时指明了该数据的类型，
+	nero_s32int dataLen;//为0时表明Data为NULL 
+						//不为0时表明Data不为NULL，其值为data长度，不包括末尾的0 
+};
+//用于输入操作类对象的结构
+struct OPInput
+{
+	// struct list_head p;//考虑到一次只处理一个cp的话不需要这个
+	nero_us32int Kind;
+	struct  OPInputNode * inputNodeHead;
+	struct  OPInputNode * outputNodeHead;
+};
+struct  OPInputNode 
+{
+	struct list_head dataP;									
+	struct OPInputNode  *op;
+	struct DataNode		*d;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // extern nero_8int DataFlowPool[DataFlowPoolListNum][DataFlowPoolStrMaxLen];
 
@@ -163,8 +208,8 @@ NeuronObject *   Operating_ValueCompare(NeuronObject * obj);
 
 NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val);
 nero_s32int nero_getOutputNodeInObj(NeuronObject **  outputNodePoint );
-
-
+ // nero_s32int OperatFlowProcess(struct OPInputNode *input,NeuronObject  *godNero,NeroConf * conf);
+ nero_s32int OperatFlowProcess(struct OPInput *inputSteam,NeuronObject  *godNero,NeroConf * conf);
 
 
 

@@ -1582,16 +1582,16 @@ NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val)
 	p[i]=0;
 	res = NULL;
 	if(i >= 3)
-		res = nero_IfHasNeuronObject(dataStream,nero_GetNeroKind(data1), GodNero);
+		res = nero_IfHasNeuronObject(dataStream,nero_GetNeroKind(obj), GodNero);
 	if (i >= 3 && res == NULL)
 	{
-		res = nero_IfHasNeuronObject(dataStream,nero_GetNeroKind(data1), SAGodNero);
+		res = nero_IfHasNeuronObject(dataStream,nero_GetNeroKind(obj), SAGodNero);
 	}
     // NeuronObject * nero_CreateObjInSAP(NeuronObject *Obis[],nero_s32int objNum,nero_s32int basekind,NeuronObject *godNero);
 	// nero_CreateObjInSAP( objs,objNum,UpperObjKind,SAGodNero);
 	if (res == NULL)
 	{
-		res = nero_addNeroByData(dataStream,nero_GetNeroKind(data1),SAGodNero);
+		res = nero_addNeroByData(dataStream,nero_GetNeroKind(obj),SAGodNero);
 
 	}
 
@@ -4096,13 +4096,19 @@ struct OPInput
 struct  OPInputNode 
 {
 	struct list_head dataP;									
-	struct OPInputNode  *op;
-	struct DataNode		*d;
+	struct DataNode		d;
 };
-考虑到可扩展性，这个函数一次只能输入一个op
-这个函数不能生成新的操作类或者操作obj，如果有需要发消息给 thread_for_Operating_Pic
+//考虑到可扩展性，这个函数一次只能输入一个op
+//这个函数不能生成新的基础操作类或者操作obj，如果有需要发消息给 thread_for_Operating_Pic
+//换句话说，就是吧生成新操作类或者操作obj的功能单独提出来
 
-那这个函数的功能是什么？
+输入的数据究竟是什么？
+	:struct OPInput 表示一个操作类对象x的输入输出的数据：inputNodeHead指向输入的数据列表
+               									  outputNodeHead指向输出的数据列表
+									              也就是说列表inputNodeHead是对象x的数据
+									              列表outputNodeHead是对象x的输出
+									               									  
+那这个函数的功能是什么？---------最主要的功能是将输入的操作类的数据流转化为sys中的对象,最后将obj输入到DataFlowProcess
 	   首先对涉及到操作的数据流进行分类
           1：新类的生成
           2：新操作obj的生成
@@ -4111,7 +4117,7 @@ struct  OPInputNode
 知道一个数据的状态的意思是知道他的kind和实际的obj
 	数据初态		数据终态			操作中间过程		总的操作类型
 
-  1   知道		知道 			求？						求？
+  	1   知道		知道 			求？						求？
  	2	知道		知道 			知道						建立新的kind
  	3	知道		只知道数据的类型	求？						求？
 
@@ -4121,23 +4127,27 @@ struct  OPInputNode
 
 
 */
-
-
 // 尽可能的保持可扩展性和独立性  为多线程和以后的功能扩增准准备
+//		里面调用的函数也需要满足这个要求
  nero_s32int OperatFlowProcess(struct OPInput *inputSteam,NeuronObject  *godNero,NeroConf * conf)
  {
 
+	if (inputSteam == NULL   ||    godNero == NULL   ||  inputSteam->inputNodeHead == NULL ||  inputSteam->outputNodeHead == NULL)
+	{
+		return nero_msg_ParameterError;
+	}
+
+
+//暂时先不考虑如何生成复杂的操作类，先考虑如何处理sys内部的最基本的操作类的obj
+//而且你的结构体也只能支持简单的情况
+
+                                       
+// 这里假设输入的OPInput都是对ying的sys中已经有的操作类的输入输出数据
+	//
 
 
 
-
-
-
-
-
-
-
-
+	// 操作的识别
 
 
 

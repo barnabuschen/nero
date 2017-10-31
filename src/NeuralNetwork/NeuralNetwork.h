@@ -179,8 +179,8 @@ extern NeroConf neroConf;
 #define NeuronNode_ForGodNero   1    //GodNero
 #define NeuronNode_ForData   2    //表示是一个数据存储的神经元，不是一个概念
 #define NeuronNode_ForUndefined   3   //表示是一个未定义类型的神经元，是一个概念,表示这个对象实际存在，但是没有一个类型去给他进行分类
-
-
+// #define NeuronNode_Unassigned   4   //表示是一个未赋值的神经元，是一个概念,表示这个对象实际存在，但是dui他的数据空间进行过赋值
+ 
 /*强调一点，人的大脑所以的输入信息都是通过各种感觉器官输入的，也就是说
 任何信息在输入大脑之前一定是通过一定加工和处理的
 

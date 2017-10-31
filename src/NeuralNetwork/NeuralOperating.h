@@ -101,8 +101,8 @@ struct OPInput
 struct  OPInputNode 
 {
 	struct list_head dataP;									
-	struct OPInputNode  *op;
-	struct DataNode		*d;
+	// struct OPInputNode  *op;
+	struct DataNode		d;
 };
 
 

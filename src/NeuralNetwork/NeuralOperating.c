@@ -4078,26 +4078,6 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 	}
 }
 /*
-struct DataNode
-{
-	void *Data;//一维指针，指向一个动态分配内存快的数据，数据快末尾一定是0，如果末尾不是0,则只能读取固定大小的内存快，这里容易产生bug啊
-	nero_us32int Kind;//dataKind不为0时指明了该数据的类型，
-	nero_s32int dataLen;//为0时表明Data为NULL 
-						//不为0时表明Data不为NULL，其值为data长度，不包括末尾的0 
-};
-//用于输入操作类对象的结构
-struct OPInput
-{
-	// struct list_head p;//考虑到一次只处理一个cp的话不需要这个
-	nero_us32int Kind;
-	struct  OPInputNode * inputNodeHead;
-	struct  OPInputNode * outputNodeHead;
-};
-struct  OPInputNode 
-{
-	struct list_head dataP;									
-	struct DataNode		d;
-};
 //考虑到可扩展性，这个函数一次只能输入一个op
 //这个函数不能生成新的基础操作类或者操作obj，如果有需要发消息给 thread_for_Operating_Pic
 //换句话说，就是吧生成新操作类或者操作obj的功能单独提出来
@@ -4131,11 +4111,85 @@ struct  OPInputNode
 //		里面调用的函数也需要满足这个要求
  nero_s32int OperatFlowProcess(struct OPInput *inputSteam,NeuronObject  *godNero,NeroConf * conf)
  {
+ 	nero_us32int inputNodeNum,outputNodeNum,i,j,inputNullFlag,outputNullFlag;
+ 	NeuronObject * operateObj;
+ 	NeuronObject ** inputNodeObjs=NULL;
+ 	NeuronObject ** outputNodeObjs=NULL;
 
-	if (inputSteam == NULL   ||    godNero == NULL   ||  inputSteam->inputNodeHead == NULL ||  inputSteam->outputNodeHead == NULL)
+ 	struct list_head * inputNodehead;
+ 	struct list_head * outputNodehead;
+ 	struct  OPInputNode  * tmplistNode;
+ 	struct  OPInputNode  * currlistNode;
+
+	if (inputSteam == NULL   ||    godNero == NULL   ||  inputSteam->inputNodeHead == NULL ||  inputSteam->outputNodeHead == NULL  ||  conf == NULL )
 	{
 		return nero_msg_ParameterError;
 	}
+	if (conf != NULL   &&   conf->OperatFlowTarget == 0 )
+	{
+		return nero_msg_ok;
+	}
+
+	//先处理inputSteam中的数据，尝试寻找对应的obj
+	inputNodehead = (struct list_head *) &(inputSteam->inputNodeHead->dataP);
+	outputNodehead =  (struct list_head *)&(inputSteam->outputNodeHead->dataP);
+
+	inputNodeNum =list_GetListLen( inputNodehead );
+	outputNodeNum =list_GetListLen(  outputNodehead);
+	if(inputNodeNum > 0 &&  inputNodeNum <= DataFlowPoolListNum &&   outputNodeNum > 0 &&  outputNodeNum <= DataFlowPoolListNum)
+	{
+		(inputNodeObjs)=(NeuronObject **)malloc(sizeof(NeuronObject *)* inputNodeNum);
+		(outputNodeObjs)=(NeuronObject **)malloc(sizeof(NeuronObject *)* outputNodeNum);
+        // for(i=0,j=0;i < DataFlowPoolListNum ;i++)
+        // {
+        //         DataFlow[i]= (void *)malloc((sizeof( char))*DataFlowPoolStrMaxLen);  //DataFlowPoolStrMaxLen
+        // }
+	}
+	else
+		return nero_msg_fail;
+	inputNullFlag = 0;
+	outputNullFlag = 0;
+	if(inputNodeObjs != NULL)
+	{
+
+		for(i=0;i< inputNodeNum;i++)
+		{
+			currlistNode = (struct  OPInputNode  * )list_GetNUMn(inputNodehead,i);
+			if(currlistNode->d.dataLen > 0)
+			{
+				inputNodeObjs[i] = nero_IfHasNeuronObject(currlistNode->d.data, currlistNode->d.kind, GodNero);
+			}
+			else{
+				inputNullFlag =1;
+				inputNodeObjs[i] = NULL;
+			}
+		}
+	}
+	if(outputNodeObjs != NULL)
+	{
+
+		for(i=0;i< outputNodeNum;i++)
+		{
+			currlistNode = (struct  OPInputNode  * )list_GetNUMn(outputNodehead,i);
+			if (currlistNode -> d.dataLen > 0)
+			{
+				outputNodeObjs[i] = nero_IfHasNeuronObject(currlistNode->d.data, currlistNode->d.kind, GodNero);
+			}
+			else{
+				outputNullFlag =1;
+				outputNodeObjs[i] = NULL;
+			}
+		}
+	}
+
+	//暂时不考虑inputNodeObjs[i]=NULL的情况
+	if(inputNullFlag ==1)
+	{
+		printf("OperatFlowProcess:NullFlag==1\n");
+		return nero_msg_fail;
+	}
+
+	nero_us32int 223qqw;
 
 
 //暂时先不考虑如何生成复杂的操作类，先考虑如何处理sys内部的最基本的操作类的obj
@@ -4147,11 +4201,13 @@ struct  OPInputNode
 
 
 
-	// 操作的识别
+	// 操作的识别-----  知道   数据初态  	和   数据终态  求  操作类型
+	// 用NeuronNode_GainValue  对NeuronNode_ForChCharacter 进行操作为例进行代码书写
 
-
-
-
+	// 1：这个以该输入输出数据为基础的这个操作实例以前可能没有过，所以很可能基类的输出列表中没有这个实例
+	// 2：这样就衍生出两种方案，一是直接在基类中搜索有没有这样的例子
+	//                      二是没有先例的情况下如何利用基类来推理出这个实例
+	//                      显然与其同时使用两种方法，不如直接只用方案2
 
 
 

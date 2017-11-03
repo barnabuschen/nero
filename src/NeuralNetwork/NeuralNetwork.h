@@ -73,6 +73,17 @@ int next;
 
 	nero_us32int	  WantCreateObjKind;//在特殊情况下指定希望生成得obj得类型，危险，尽量别使用   NeuronNode_ForNone
 										//必须在使用后立即回复初始值NeuronNode_ForNone
+
+
+	//some flags  for  OperatFlowProcess  fuc
+	nero_us32int	OperatFlowTarget;//该次数据流的目标,默认 为0 ,do nothing
+						// 						数据初态		数据终态			操作中间过程		总的操作类型
+
+						// OperatFlow_FindKind	    1   知道		知道 			求？						求？
+						// OperatFlow_SetNewKind    2	知道		知道 			知道						建立新的kind
+						// 					 	    3	知道		只知道数据的类型	求？						求？
+
+
  }NeroConf;
 /*ActNero只是用来保存基础数据，它对应于一个单纯的神经元*/
 
@@ -289,6 +300,9 @@ extern NeroConf neroConf;
 #define	Fiber_ObjInNeroPool	0  //所指向对象所在区域为永久得NeroInPool
 #define	Fiber_ObjInSAPool	1  //所指向对象所在区域为StagingAreaNeroPool
 
+
+#define OperatFlow_FindKind  1		
+#define OperatFlow_SetNewKind  2
 
 
 

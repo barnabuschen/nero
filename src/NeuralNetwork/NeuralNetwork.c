@@ -1020,6 +1020,7 @@ void resetNeroConf()
 	// neroConf.
 	neroConf.CreateNewBaseObjKind=0;
 	neroConf.OutPutFlag=0;
+	neroConf.OperatFlowTarget=0;
 	if(flag   == 0)
 	{
 		neroConf.NewNeroClassID=NeuronNode_MinNewDerivativeClassId;

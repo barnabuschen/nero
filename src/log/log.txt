@@ -1,44 +1,58 @@
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e6e0,打印词组对象《许玉兰》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4079e6e0,baseobjAdd:40734ac0,objNum=3
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e700,打印词组对象《刘泵》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4079e700,baseobjAdd:40734ac0,objNum=2
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e720,打印词组对象《阿曼》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4079e720,baseobjAdd:40734ac0,objNum=2
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e740,打印词组对象《阿拉伯数字》,句子长度为：5,creObjFromMulti:success create,kind=62,add=4079e740,baseobjAdd:40734ac0,objNum=5
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e760,打印词组对象《数字》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4079e760,baseobjAdd:40734ac0,objNum=2
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e780,打印词组对象《十进制》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4079e780,baseobjAdd:40734ac0,objNum=3
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e7a0,打印词组对象《二进制》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4079e7a0,baseobjAdd:40734ac0,objNum=3
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e7c0,打印词组对象《数学符号》,句子长度为：4,creObjFromMulti:success create,kind=62,add=4079e7c0,baseobjAdd:40734ac0,objNum=4
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e7e0,打印词组对象《运算符》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4079e7e0,baseobjAdd:40734ac0,objNum=3
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e800,打印词组对象《加法》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4079e800,baseobjAdd:40734ac0,objNum=2
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e820,打印词组对象《减法》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4079e820,baseobjAdd:40734ac0,objNum=2
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e840,打印词组对象《乘法》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4079e840,baseobjAdd:40734ac0,objNum=2
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e860,打印词组对象《除法》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4079e860,baseobjAdd:40734ac0,objNum=2
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e880,打印词组对象《负号》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4079e880,baseobjAdd:40734ac0,objNum=2
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e8a0,打印词组对象《等于号》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4079e8a0,baseobjAdd:40734ac0,objNum=3
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e8c0,打印词组对象《正号》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4079e8c0,baseobjAdd:40734ac0,objNum=2
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e8e0,打印词组对象《个位数》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4079e8e0,baseobjAdd:40734ac0,objNum=3
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e900,打印词组对象《十位数》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4079e900,baseobjAdd:40734ac0,objNum=3
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e920,打印词组对象《千位数》,句子长度为：3,creObjFromMulti:success create,kind=62,add=4079e920,baseobjAdd:40734ac0,objNum=3
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e940,打印词组对象《英文字母》,句子长度为：4,creObjFromMulti:success create,kind=62,add=4079e940,baseobjAdd:40734ac0,objNum=4
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e960,打印词组对象《英文单词》,句子长度为：4,creObjFromMulti:success create,kind=62,add=4079e960,baseobjAdd:40734ac0,objNum=4
-Log_printSomeMsgForObj:Mon Sep 18 21:46:09 2017
+Log_printSomeMsgForObj:Fri Nov  3 21:47:50 2017
 		地址：4079e980,打印词组对象《整数》,句子长度为：2,creObjFromMulti:success create,kind=62,add=4079e980,baseobjAdd:40734ac0,objNum=2
+Log_printAllNeroMsg:		nerogod:40734a40,Kind:50,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40734a40,Kind:51,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40734a40,Kind:61,actual num:6763 ,record  num:6763
+Log_printAllNeroMsg:		nerogod:40734a40,Kind:62,actual num:22 ,record  num:22
+Log_printAllNeroMsg:		nerogod:40734a40,Kind:100,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40734a40,Kind:101,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40734a40,Kind:110,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40734a40,Kind:120,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40734a40,Kind:121,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40734a40,Kind:122,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40734a40,Kind:131,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40734a40,Kind:150,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40734a40,Kind:63,actual num:0 ,record  num:0
+Log_printAllNeroMsg:		nerogod:40734a40,Kind:2000,actual num:0 ,record  num:0

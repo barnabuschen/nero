@@ -96,7 +96,7 @@ static inline int list_ISempty(struct list_head * head)
 static inline struct list_head * list_GetNUMn(struct list_head * head,int n)
 {
 	struct list_head * res=NULL;
-	if(head == NULL || head->prev == head  || head->next == head)
+	if(head == NULL  )
 		return NULL;
 	if(n<=0)
 		return head;
@@ -109,7 +109,24 @@ static inline struct list_head * list_GetNUMn(struct list_head * head,int n)
 		if(i==n)
 			return res;
 	}
-	return NULL;
+	return res;
+}
+//返回list 节点数,head为第0个节点,只有head时，节点数为1个
+static inline int list_GetListLen(struct list_head * head)
+{
+	struct list_head * res=NULL;
+	int i=1;
+
+	if(head == NULL || head->prev == head  || head->next == head)
+		return 1;
+
+	res=head;
+	while( res->next  != head)
+	{
+		res=res->next;
+		i++;
+	}
+	return i;
 }
 
 

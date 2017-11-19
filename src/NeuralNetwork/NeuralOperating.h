@@ -210,8 +210,6 @@ NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val);
 nero_s32int nero_getOutputNodeInObj(NeuronObject **  outputNodePoint );
  // nero_s32int OperatFlowProcess(struct OPInputNode *input,NeuronObject  *godNero,NeroConf * conf);
  nero_s32int OperatFlowProcess(struct OPInput *inputSteam,NeuronObject  *godNero,NeroConf * conf);
-
-
-
+ NeuronObject *Operating_FindObjWithDataChange(NeuronObject **inputNodeObjs, nero_us32int inputNodeNum, NeuronObject **outputNodeObjs, nero_us32int outputNodeNum, NeuronObject *godNero);
 
 #endif

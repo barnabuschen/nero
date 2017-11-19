@@ -1314,11 +1314,6 @@ nero_s32int DataFlowProcess(void *DataFlow_[],nero_s32int dataKind_[],nero_s32in
 	:first:首先有些操作一般是只有一个输出的，这种情况就可以先不考虑了,只yao inpulist中已经有输出了就直接输出就行了
 
 	second:如果有多个输出的情况下怎办？先不处理，先输出第一个，以后再考虑
-
-
-
-
-
 	*/
 void  Process_IoFuc(struct DataFlowForecastInfo   * forecastInfo_st,  NeuronObject *  complexObj,NeuronObject  *godNero)
 {
@@ -1501,14 +1496,13 @@ nero_s32int nero_getOutputNodeInObj(NeuronObject **  outputNodePoint )
 	return 0;
 }
 //对obj的整个inputlist中的nero的数据值都加1
-//obj的数据对象只有一个，加的是这个数据对象的数据列表的x值
 //不考虑溢出的问题
 //问题来了，加减之后实际上是另外一个对象了，那么原来的对象显然还需要保存，不能动，所以实际上你很可能
 // 需要重新创建一个对象
 // 关键是这里还有一个问题，即使obj的data对象的数据也是某个类型的复杂对象，那么还能进行操作么？那就复杂了
 //换句话说，这个data对象的数据链表中的obj必须是NeuronNode_ForData类型的才能进行加减
 
-
+//如果没有生成后的对象，则会在临时区域中生成一个新的对象
 NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val)
 {
 	nero_s32int ObjectKind,num,i,j,fiberT,allForDataFlag,UpperObjKind;
@@ -4108,7 +4102,7 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 
 */
 // 尽可能的保持可扩展性和独立性  为多线程和以后的功能扩增准准备
-//		里面调用的函数也需要满足这个要求
+//		里面调用的函数也需要满足这个要求：这里唯一需要注意的就是conf这个全局变量
  nero_s32int OperatFlowProcess(struct OPInput *inputSteam,NeuronObject  *godNero,NeroConf * conf)
  {
  	nero_us32int inputNodeNum,outputNodeNum,i,j,inputNullFlag,outputNullFlag;
@@ -4189,27 +4183,200 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 		return nero_msg_fail;
 	}
 
-	nero_us32int 223qqw;
+	switch (conf->OperatFlowTarget)
+	{
 
+		case OperatFlow_FindKind:
+			// 操作的识别-----  知道   数据初态  	和   数据终态  求  操作类型
+			// 用NeuronNode_GainValue  对NeuronNode_ForChCharacter 进行操作为例进行代码书写
+			// 1：这个以该输入输出数据为基础的这个操作实例以前可能没有过，所以很可能基类的输出列表中没有这个实例
+			// 2：这样就衍生出两种方案，一是直接在基类中搜索有没有这样的例子
+			//                      二是没有先例的情况下如何利用基类来推理出这个实例
+			//                      显然与其同时使用两种方法，不如直接只用方案2
 
-//暂时先不考虑如何生成复杂的操作类，先考虑如何处理sys内部的最基本的操作类的obj
-//而且你的结构体也只能支持简单的情况
+			//在前面已经排除了inputNodeObjs[i]=NULL的情况的情况,但是输出列表的obj是否有null未知，
 
-                                       
-// 这里假设输入的OPInput都是对ying的sys中已经有的操作类的输入输出数据
-	//
+			//给出一个输入obj列表，和输出obj列表，找到能实现这种转变的操作类obj
+			NeuronObject *Operating_FindObjWithDataChange(NeuronObject * *inputNodeObjs, nero_us32int inputNodeNum, NeuronObject * *outputNodeObjs, nero_us32int outputNodeNum, NeuronObject * godNero);
 
+			break;
+		case OperatFlow_SetNewKind:
 
+			break;
+		default:
+			printf("OperatFlowProcess:nothing to do\n");
 
-	// 操作的识别-----  知道   数据初态  	和   数据终态  求  操作类型
-	// 用NeuronNode_GainValue  对NeuronNode_ForChCharacter 进行操作为例进行代码书写
-
-	// 1：这个以该输入输出数据为基础的这个操作实例以前可能没有过，所以很可能基类的输出列表中没有这个实例
-	// 2：这样就衍生出两种方案，一是直接在基类中搜索有没有这样的例子
-	//                      二是没有先例的情况下如何利用基类来推理出这个实例
-	//                      显然与其同时使用两种方法，不如直接只用方案2
-
-
+			break;
+	 }
 
 	return nero_msg_ok;
+ }
+ //给出一个输入obj列表，和输出obj列表，找到能实现这种转变的操作类obj,返回这个操作的kind
+//  利用操作类基类来推理出这个实例
+//假设数据都是一一对应的
+ nero_us32int Operating_FindObjWithDataChange(NeuronObject **inputNodeObjs, nero_us32int inputNodeNum, NeuronObject **outputNodeObjs, nero_us32int outputNodeNum, NeuronObject *godNero)
+ {
+	 nero_us32int   i, j/*, inputNullFlag, outputNullFlag*/,inputKindAllTheSame,inputKind,ifIsOperateKind;
+	 NeuronObject *operateObj;
+	 nero_s32int ObjectKind, ObjectKind2, ObjectKind3, childNum, CouldMakeUpThisObj;
+
+	 NeuronObject *obj;
+	 NeuronObject *tmp;
+	 NeuronObject *BaseObi;
+	 NerveFiber *curFiber;
+	 NerveFiber *childcurFiber;
+	 NeuronObject  **outPutObisForTest;
+	 if (inputNodeObjs == NULL || godNero == NULL || outputNodeObjs == NULL || inputNodeNum <= 0)
+	 {
+		 return NULL;
+	 }
+	 outPutObisForTest = (NeuronObject **)malloc(sizeof(NeuronObject *) * outputNodeNum);
+	 if (outPutObisForTest  == NULL)
+	 {
+		 return NULL;
+	 }
+	 //显然，这个过程和就是实践一遍以inputNodeObjs为输入数据的某个操作类的功能
+
+	 //  所以衍生操作类都是sys内部类的组合
+	 //  推论：如果一个操作是sys内部操作，一般情况下将没有子操作类，只有子数据类
+	 // 	     如果一个操作是衍生操作类，一般情况下它只有子操作类而没有子数据类
+	 //  先根据这推论处理两种情况
+
+	 inputKind = nero_GetNeroKind(inputNodeObjs[0]);
+	 inputKindAllTheSame = 1;
+	 for (i = 1; i < inputNodeNum; i++)
+	 {
+		 j = nero_GetNeroKind(inputNodeObjs[i]);
+		 if (j != inputKind)
+		 {
+			 inputKindAllTheSame =0;
+		 }
+	 }
+	 if (inputKindAllTheSame == 1)
+	 {
+		 ifIsOperateKind = getNeroOperateFlag(inputNodeObjs[0]);
+		 if (ifIsOperateKind == 1) //它只有子操作类而没有子数据类
+		{
+
+		}
+		else if (ifIsOperateKind == 0) //没有子操作类，只有子数据类
+		{
+			//基本的思路是，一个个基类去尝试，只要能输入数据满足要求的就操作一遍，看能不能输出
+			// 符合outputNodeObjs的对象
+			curFiber = godNero->outputListHead;
+			for (; curFiber != NULL; curFiber = curFiber->next)
+			{
+				BaseObi = curFiber->obj;
+				ObjectKind2 = nero_GetNeroKind(BaseObi);
+				// childNum = nero_getObjDataNum(BaseObi); //依然默认kind 》 NeuronNode_ForComplexDerivative的基类的第一个数据子obj是他的名字
+
+				ifIsOperateKind = getNeroOperateFlag(BaseObi);
+				if (ifIsOperateKind == 1)
+				{
+					//这里必须假设基类的outputlist中没有符合条件的对象实例
+					 //先判断是否符合类型要求
+					CouldMakeUpThisObj= nero_IfCouldMakeUpOneObj(inputNodeObjs, inputNodeNum, BaseObi,godNero);
+					if (CouldMakeUpThisObj == 1)
+					{
+						//这个函数和Process_IoFuc功能类似，都是输出op类的对象
+						i = Operating_tryToOutputByData(ObjectKind2,inputNodeObjs, inputNodeNum, outPutObisForTest, outputNodeNum, godNero);
+
+						//判断是否已经找到了
+					}
+				}
+			}
+		}
+
+	 }
+	 if (outPutObisForTest)
+	 {
+		 free(outPutObisForTest);
+	 }
+	 return opKind;
+ }
+ //这个函数和Process_IoFuc功能类似，都是输出op类的对象
+ //输入操作的kind，指定操作的输入数据，给出操作的输出
+ //如果返回值大于等于0,则输出成功，则将结果写入指定的数组中，返回值为输出的数据个数
+
+
+ //对于所有sys内部类来说，因为实现了对应的函数，仅仅是把参数输入函数罢了，
+//  但是对于一个复杂的衍生类来说，因为涉及到多个子操作，加上参数的匹配就会复杂多了
+ nero_s32int Operating_tryToOutputByData(nero_us32int OpKind, NeuronObject **inputNodeObjs, nero_us32int inputNodeNum, NeuronObject **outPutObisForTest, nero_us32int MaxOutpuNodeNum, NeuronObject *godNero)
+ {
+	 nero_us32int i, j /*, inputNullFlag, outputNullFlag*/, inputKind, ifIsOperateKind,outputObjNums;
+	 if (inputNodeObjs == NULL || godNero == NULL || inputNodeObjs == NULL || inputNodeNum <= 0)
+	 {
+		 return -1;
+	 }
+	 outputObjNums = -1;
+	  switch (OpKind)
+	 {
+		case NeuronNode_FiberConnect:
+
+			break;
+		case NeuronNode_GainValue:
+			if (inputNodeNum == 1)
+			{
+
+				//outputNode可能是在临时区域中的对象，但是话说回来了，如果是Operating_FindObjWithDataChange函数调用并进入的此处
+				//则一般输出obj是已经存在的了，关键是看你怎么处理和定义“输出相同这个概念了”
+				outputNode = Operating_GainValue(tmp, 1);
+				if (outputNode != NULL )
+				{
+					outputObjNums = 1;
+					outPutObisForTest[0] = outputNode;
+				}
+				
+			}
+			break;
+		case NeuronNode_DecreaseValue:
+			outputNode = Operating_GainValue(tmp, -1);
+			break;
+		case NeuronNode_ValueCompare: //数据的大小比较
+			//执行后的结果：tmp的outputlist多了较大的那个obj,如果x相同就输出第一个,
+			outputNode = Operating_ValueCompare(tmp);
+			break;
+		case NeuronNode_ForInputWord:
+			break;
+		case NeuronNode_ForOutputWord:
+			//x指向实际执行操作的函数的地址或者ID ,但是这里考虑到现在时间有限暂时简化处理
+			#ifdef Nero_DeBuging09_01_14
+					// print  one  obj  link:
+					neroObjMsg_st.MsgId = MsgId_IO_ForOutputWord;
+					neroObjMsg_st.fucId = 2; //IO_ForOutputWord
+					neroObjMsg_st.Obi = tmp;
+					msgsnd(IO_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);
+			#endif
+			break;
+		case NeuronNode_ForLayering:
+			// #define  NeuronNode_ForLayering      110   //定义一个基类a是另一个基类b得上层类，that is  mean：基类b得输出列表会指向基类a
+			// inputListHead  为俩个数据，前者是基类a 得kind值(save  in x)，后者是基类b得得kind值
+			tmpFiber = tmp->inputListHead;
+			tmp1 = nero_getBaseObjByKind(tmpFiber->obj->x, godNero);
+			tmp2 = nero_getBaseObjByKind(tmpFiber->next->obj->x, godNero);
+			if (tmp1 != NULL && tmp2 != NULL)
+			{
+				// 问题来了你这样在基类得输出列表中加入一个指向上层得链接是否会影响基类衍生类得搜索结果
+				//so the  way to solve this problem is : make b's  Derivative Object point to baseobj   rather than
+				// baseobj
+				// 这样也不行阿，这样得只是讲现有得衍生对象设置了层次关系，那以后加入得关系仍然没有阿
+				// 除非是这样，就是没隔一段时间就执行下这段代码(需要一个新得机制................)
+				lowFiber = tmp2->outputListHead;
+				while (lowFiber != NULL && lowFiber->obj != NULL)
+				{
+
+					PointingToObject(lowFiber->obj, tmp1, Fiber_PointToUpperLayer);
+					lowFiber = lowFiber->next;
+				}
+			}
+			break;
+		default:
+			//这里处理复杂额情况：
+			// 1：有且只有多个子数据对象-------不会出现在这里，因为前面会先处理
+			// 2：有且只有多个子操作类对象------让人头晕的复杂，需要有嵌套的操作了
+			//如果是第二种情况，意味着inputNodeObjs这个数组中的对象都是子op 对象了，那么真实的数据已经包含在op 对象中了么？？？？
+			//而且基本上的情况是，前面操作之间会有输入输出的联系，关键就是如何处理这种关系
+			break;
+	 }
+	 return outputObjNums;
  }

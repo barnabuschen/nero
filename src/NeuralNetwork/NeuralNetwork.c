@@ -5681,3 +5681,23 @@ nero_s32int nero_getObjsByStr(nero_s32int metaDataKind,void * Data ,nero_s32int 
 
 		return findObjNum;
 }
+//判断一组对象是否符合某个基类的数据构成
+//换句话说就是这些对象能否组成该基类的对象
+//问题1：这个基类的数据对象是否是复杂类呢？不用考虑，因为输入的对象数组已经是对象了，不需要考虑多层的情况
+nero_us32int nero_IfCouldMakeUpOneObj(NeuronObject *Obis[], nero_s32int objNum, nero_s32int basekind , NeuronObject *godNero)
+{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

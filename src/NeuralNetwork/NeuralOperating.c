@@ -4214,7 +4214,11 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
  //给出一个输入obj列表，和输出obj列表，找到能实现这种转变的操作类obj,返回这个操作的kind
 //  利用操作类基类来推理出这个实例
 //假设数据都是一一对应的
- nero_us32int Operating_FindObjWithDataChange(NeuronObject **inputNodeObjs, nero_us32int inputNodeNum, NeuronObject **outputNodeObjs, nero_us32int outputNodeNum, NeuronObject *godNero)
+ nero_us32int Operating_FindObjWithDataChange(	NeuronObject **inputNodeObjs, 
+												nero_us32int inputNodeNum, 
+												NeuronObject **outputNodeObjs, 
+												nero_us32int outputNodeNum, 
+												NeuronObject *godNero)
  {
 	 nero_us32int   i, j/*, inputNullFlag, outputNullFlag*/,inputKindAllTheSame,inputKind,ifIsOperateKind;
 	 NeuronObject *operateObj;
@@ -4223,7 +4227,7 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 	 NeuronObject *obj;
 	 NeuronObject *tmp;
 	 NeuronObject *BaseObi;
-	 NerveFiber *curFiber;
+	 NerveFiber *curFiber; 
 	 NerveFiber *childcurFiber;
 	 NeuronObject  **outPutObisForTest;
 	 if (inputNodeObjs == NULL || godNero == NULL || outputNodeObjs == NULL || inputNodeNum <= 0)
@@ -4239,7 +4243,7 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 
 	 //  所以衍生操作类都是sys内部类的组合
 	 //  推论：如果一个操作是sys内部操作，一般情况下将没有子操作类，只有子数据类
-	 // 	     如果一个操作是衍生操作类，一般情况下它只有子操作类而没有子数据类
+	 // 	  如果一个操作是衍生操作类，一般情况下它只有子操作类而没有子数据类
 	 //  先根据这推论处理两种情况
 
 	 inputKind = nero_GetNeroKind(inputNodeObjs[0]);
@@ -4301,7 +4305,12 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 
  //对于所有sys内部类来说，因为实现了对应的函数，仅仅是把参数输入函数罢了，
 //  但是对于一个复杂的衍生类来说，因为涉及到多个子操作，加上参数的匹配就会复杂多了
- nero_s32int Operating_tryToOutputByData(nero_us32int OpKind, NeuronObject **inputNodeObjs, nero_us32int inputNodeNum, NeuronObject **outPutObisForTest, nero_us32int MaxOutpuNodeNum, NeuronObject *godNero)
+ nero_s32int Operating_tryToOutputByData(	nero_us32int OpKind, 
+											NeuronObject **inputNodeObjs, 
+											nero_us32int inputNodeNum, 
+											NeuronObject **outPutObisForTest, 
+											nero_us32int MaxOutpuNodeNum, 
+											NeuronObject *godNero)
  {
 	 nero_us32int i, j /*, inputNullFlag, outputNullFlag*/, inputKind, ifIsOperateKind,outputObjNums;
 	 if (inputNodeObjs == NULL || godNero == NULL || inputNodeObjs == NULL || inputNodeNum <= 0)

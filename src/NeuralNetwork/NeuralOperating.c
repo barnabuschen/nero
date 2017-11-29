@@ -4230,7 +4230,7 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 	 NerveFiber *curFiber; 
 	 NerveFiber *childcurFiber;
 	 NeuronObject  **outPutObisForTest;
-	 if (inputNodeObjs == NULL || godNero == NULL || outputNodeObjs == NULL || inputNodeNum <= 0)
+	 if (inputNodeObjs == NULL || godNero == NULL || outputNodeObjs == NULL || inputNodeNum <= 0 || outputNodeNum <=0)
 	 {
 		 return NULL;
 	 }
@@ -4283,9 +4283,10 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 					if (CouldMakeUpThisObj == 1)
 					{
 						//这个函数和Process_IoFuc功能类似，都是输出op类的对象
-						i = Operating_tryToOutputByData(ObjectKind2,inputNodeObjs, inputNodeNum, outPutObisForTest, outputNodeNum, godNero);
+						i = Operating_tryToOutputByData(BaseObi, inputNodeObjs, inputNodeNum, outPutObisForTest, outputNodeNum, godNero);
 
 						//判断是否已经找到了
+						// ............
 					}
 				}
 			}
@@ -4298,27 +4299,33 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 	 }
 	 return opKind;
  }
- //这个函数和Process_IoFuc功能类似，都是输出op类的对象
+ //这个函数和Process_IoFuc功能类似，都是输出op类对象输出
  //输入操作的kind，指定操作的输入数据，给出操作的输出
- //如果返回值大于等于0,则输出成功，则将结果写入指定的数组中，返回值为输出的数据个数
-
+ //如果返回值大于等于0,则输出成功，则将结果写入指定的数组outPutObisForTest中，
+ //  最大的输出个数为MaxOutpuNodeNum，返回值为输出的数据个数
 
  //对于所有sys内部类来说，因为实现了对应的函数，仅仅是把参数输入函数罢了，
 //  但是对于一个复杂的衍生类来说，因为涉及到多个子操作，加上参数的匹配就会复杂多了
- nero_s32int Operating_tryToOutputByData(	nero_us32int OpKind, 
-											NeuronObject **inputNodeObjs, 
-											nero_us32int inputNodeNum, 
-											NeuronObject **outPutObisForTest, 
-											nero_us32int MaxOutpuNodeNum, 
-											NeuronObject *godNero)
+ nero_s32int Operating_tryToOutputByData(NeuronObject *OpBaseObj,
+										 NeuronObject **inputNodeObjs,
+										 nero_us32int inputNodeNum,
+										 NeuronObject **outPutObisForTest,
+										 nero_us32int MaxOutpuNodeNum,
+										 NeuronObject *godNero)
  {
-	 nero_us32int i, j /*, inputNullFlag, outputNullFlag*/, inputKind, ifIsOperateKind,outputObjNums;
-	 if (inputNodeObjs == NULL || godNero == NULL || inputNodeObjs == NULL || inputNodeNum <= 0)
+	nero_us32int i, j /*, inputNullFlag, outputNullFlag*/, inputKind, ifIsOperateKind, outputObjNums，OpKind;
+	nero_us32int countInputDataNum, dataSuitable;
+	NeuronObject *outputNode,
+	*tmp1, *tmp2;
+	 NerveFiber *tmpFiber;
+	 NerveFiber *lowFiber;
+	 if (OpBaseObj ==NULL || inputNodeObjs == NULL || godNero == NULL || inputNodeObjs == NULL || inputNodeNum <= 0)
 	 {
 		 return -1;
 	 }
 	 outputObjNums = -1;
-	  switch (OpKind)
+	 OpKind = nero_GetNeroKind(OpBaseObj);
+	 switch (OpKind)
 	 {
 		case NeuronNode_FiberConnect:
 
@@ -4329,21 +4336,28 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 
 				//outputNode可能是在临时区域中的对象，但是话说回来了，如果是Operating_FindObjWithDataChange函数调用并进入的此处
 				//则一般输出obj是已经存在的了，关键是看你怎么处理和定义“输出相同这个概念了”
-				outputNode = Operating_GainValue(tmp, 1);
+				outputNode = Operating_GainValue(inputNodeObjs[0], 1);
 				if (outputNode != NULL )
 				{
 					outputObjNums = 1;
-					outPutObisForTest[0] = outputNode;
+					if (outputObjNums <= MaxOutpuNodeNum)
+					{
+						outPutObisForTest[0] = outputNode;
+					}
+					else
+					{
+						outputObjNums = -1;
+					}
 				}
 				
 			}
 			break;
 		case NeuronNode_DecreaseValue:
-			outputNode = Operating_GainValue(tmp, -1);
+			outputNode = Operating_GainValue(inputNodeObjs[0], -1);
 			break;
 		case NeuronNode_ValueCompare: //数据的大小比较
 			//执行后的结果：tmp的outputlist多了较大的那个obj,如果x相同就输出第一个,
-			outputNode = Operating_ValueCompare(tmp);
+			outputNode = Operating_ValueCompare(inputNodeObjs[0]);
 			break;
 		case NeuronNode_ForInputWord:
 			break;
@@ -4381,11 +4395,56 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 			break;
 		default:
 			//这里处理复杂额情况：
-			// 1：有且只有多个子数据对象-------不会出现在这里，因为前面会先处理
+			// 1：有且只有多个子数据对象-------不会出现在这里，因为前面[指的是case中的选项]会先处理
 			// 2：有且只有多个子操作类对象------让人头晕的复杂，需要有嵌套的操作了
 			//如果是第二种情况，意味着inputNodeObjs这个数组中的对象都是子op 对象了，那么真实的数据已经包含在op 对象中了么？？？？
 			//而且基本上的情况是，前面操作之间会有输入输出的联系，关键就是如何处理这种关系
+			//这里有一个问题必须明确：inputNodeObjs存储的到底是什么数据，对于简单的op来说，就是数据类的对象
+			//		但是对于复杂op来说，inputNodeObjs有可能是op类的对象，那么如果这里的inputNodeObjs可以是op类对象
+			//		这个从原始数据到这个op类对象的映射是在哪里完成的呢？
+			// 		所以这里的inputNodeObjs不是op类对象，假设所求的OpKind是个复杂类，那么这里的inputNodeObjs仅仅是
+			//		该复杂类中inputListHead中的子对象的数据，你需要在这个函数中完成映射
+			//先处理简单的情况，就是这里的每个inputNodeObjs 中的对象的kind是一样的，参见，Operating_FindObjWithDataChange函数
+			// 中inputKindAllTheSame == 1的情况
+			//首先这会涉及到复杂op类是怎么保存的：最简单的方式是按照子op执行的顺序一个个排列着存储在基类的inputListHead中，
+			//				1：细节包含：op基类的inputListHead中的对象并不一定都是基类
+			//				2：细节包含：op基类的inputListHead中的对象，要么有且只有多个子数据对象，要么有且只有多个子操作类对象
+
+			// 至于如何根据op基类来输出一个op对象的输出，大致思路只能如下了：
+			// 		首先根据op基类在临时区域中生成一个op实例，将数据inputNodeObjs填入当中，然后将实例传入指定的函数中（该函数可以输出任意op的实例的输出）
+			// 			1:判断传入的OpKind类型是否符合要求
+			// 			2：如果符合要求则构造一个实例，用数据inputNodeObjs填入
+			// 			3：通过指定的函数输出该实例的输出，保存在outPutObisForTest中
+			//
+			// 第一步：断传入的OpKind类型是否符合要求
+			// 		根据基类的输入列表动态生成一个输入数据的列表----里面的节点可能指向的是数据型的基类或者实例（由op基类定义决定）
+			// 		比较inputNodeObjs和这个列表中的数据，看看是否一致，一致说明符合，但是好像无法排除不同opkind 但数据一样的情况
+			// 			无所谓的，只要满足输入的要求，不同的op kind输出应该是不一样的，这样后面的代码就可以排除了
+
+			//遍历一遍c操作类基类OpBaseObj的输入列表，判断输入的个数
+			countInputDataNum = nero_getOpObjDataNum(OpBaseObj);//这个调用有点多余
+			//判断输入的数据类型是否一致
+			if (countInputDataNum == inputNodeNum)
+			{
+				// 如果非要一个个比对的话，也必须像nero_getOpObjDataNum那样递归比较啊
+				//但是反过来考虑，利用inputNodeObjs来反向，通过其上层对象应该也能找到一个大概率可能性的对象，但是这里的调用函数
+				// 的算法是一个个op kind去尝试，所以不考虑这个
+				//判断op类OpBaseObj的输入数据是否可以是 inputNodeObjs（可能是某个实例的输入），inputNodeNum是其数据的个数
+				dataSuitable = nero_checkOpObjDataSuitable(OpBaseObj, inputNodeObjs, inputNodeNum);
+				// 如果符合要求则构造一个实例，用数据inputNodeObjs填入
+				if (dataSuitable == 1)
+				{
+					//先构造一个op对象实例,
+					NeuronObject *nero_createObjFromMultiples(NeuronObject * Obis[], nero_s32int objNum);
+					
+					//输出一个op对象的实例
+
+					/////set up outputObjNums
+					outputObjNums = -1;
+				}
+			}  
+			//
 			break;
-	 }
+	 }                                                                                                                                                                                                                                                               
 	 return outputObjNums;
- }
+ }                                                                                                                                                  

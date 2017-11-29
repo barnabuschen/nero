@@ -142,6 +142,56 @@ nero_s32int getNeroOperateFlag(ActNero *nero)
 		return 0;
 
 }
+//遍历一遍操作类基类OpBaseObj的输入列表，判断输入的个数
+// 考虑到子数据obj也可能是op类，所以这个函数可以写成一个递归函数，既然是递归，那么参数就不一定是基类了
+
+//问题来了，假如某个参数的数据个数是可变的怎么办
+// 	1：如果是数据型的obj，没关系，把它看成整个就是了
+//  2：如果是某个op型的obj的输入数据是可变的？
+nero_s32int nero_getOpObjDataNum(ActNero *OpBaseObj)
+{
+	nero_s32int dataNUm_i,sum,flag,kind,isbaseFlag;
+	if (OpBaseObj == NULL)
+	{
+		return 0;
+	}
+	sum =0;
+	NeuronObject *Obi;
+	NerveFiber *curFiber;
+	kind = nero_GetNeroKind(OpBaseObj);
+	curFiber = OpBaseObj->inputListHead;
+	isbaseFlag = nero_isBaseObj(OpBaseObj);
+	//考虑到第一个数据可能是类型名字
+	if (kind > NeuronNode_ForComplexDerivative && isbaseFlag ==1)
+	{
+		curFiber = curFiber->next;
+	}
+	while (curFiber != NULL)
+	{
+		// num++;
+		// printf("num=%d",num);
+		//如果子对象是op类的，就需要递归
+		Obi = curFiber->obj;
+		flag = getNeroOperateFlag(Obi);
+		if (flag == 1)
+		{
+			dataNUm_i = nero_getOpObjDataNum(Obi);
+		}
+		else if (flag == 0)
+		{
+			dataNUm_i = 1;
+		}
+		else
+		{
+			printf("***************nero_getOpObjDataNum: error  /n");
+			return nero_msg_unknowError;
+		}
+		sum += dataNUm_i;
+		curFiber = curFiber->next;
+	}
+
+	return sum;
+}
 /*下面是几个简单的判断函数*/
  nero_s32int  nero_getObjDataNum(ActNero * obj)
 {
@@ -5700,4 +5750,24 @@ nero_us32int nero_IfCouldMakeUpOneObj(NeuronObject *Obis[], nero_s32int objNum, 
 
 
 
+}
+
+//判断op类OpBaseObj的输入数据是否可以是 inputNodeObjs（可能是某个实例的输入），inputNodeNum是其数据的个数
+nero_s32int nero_checkOpObjDataSuitable(NeuronObject *OpBaseObj, NeuronObject **inputNodeObjs, nero_us32int inputNodeNum)
+{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 }

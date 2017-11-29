@@ -433,10 +433,6 @@ NeuronObject *  nero_createNeroObjInSpecifyPool(nero_s32int kind,NeuronObject * 
 ActNero * nero_getOneDataNero(NeuronObject *godNero);
 nero_s32int nero_addDataToZhNeroObj(NeuronObject * n,ChUTF8 *chChar,NeuronObject *godNero);
     NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type,nero_s32int pointTotype);
-
-
-
-
-
-
+nero_s32int nero_getOpObjDataNum(ActNero *OpBaseObj);
+nero_s32int nero_checkOpObjDataSuitable(NeuronObject *OpBaseObj, NeuronObject **inputNodeObjs, nero_us32int inputNodeNum);
 #endif

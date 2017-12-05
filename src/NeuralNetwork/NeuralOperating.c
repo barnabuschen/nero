@@ -4299,8 +4299,8 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 	 }
 	 return opKind;
  }
- //这个函数和Process_IoFuc功能类似，都是输出op类对象输出
- //输入操作的kind，指定操作的输入数据，给出操作的输出
+ //这个函数和Process_IoFuc功能类似，都是tryTo 输出op类对象输出
+ //输入操作的baseObj，指定操作的输入数据，给出操作的输出
  //如果返回值大于等于0,则输出成功，则将结果写入指定的数组outPutObisForTest中，
  //  最大的输出个数为MaxOutpuNodeNum，返回值为输出的数据个数
 
@@ -4402,14 +4402,13 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 			//这里有一个问题必须明确：inputNodeObjs存储的到底是什么数据，对于简单的op来说，就是数据类的对象
 			//		但是对于复杂op来说，inputNodeObjs有可能是op类的对象，那么如果这里的inputNodeObjs可以是op类对象
 			//		这个从原始数据到这个op类对象的映射是在哪里完成的呢？
-			// 		所以这里的inputNodeObjs不是op类对象，假设所求的OpKind是个复杂类，那么这里的inputNodeObjs仅仅是
+			// 		所以这个函数里的inputNodeObjs不是op类对象，假设所求的OpKind是个复杂类，那么这里的inputNodeObjs仅仅是
 			//		该复杂类中inputListHead中的子对象的数据，你需要在这个函数中完成映射
 			//先处理简单的情况，就是这里的每个inputNodeObjs 中的对象的kind是一样的，参见，Operating_FindObjWithDataChange函数
 			// 中inputKindAllTheSame == 1的情况
 			//首先这会涉及到复杂op类是怎么保存的：最简单的方式是按照子op执行的顺序一个个排列着存储在基类的inputListHead中，
 			//				1：细节包含：op基类的inputListHead中的对象并不一定都是基类
 			//				2：细节包含：op基类的inputListHead中的对象，要么有且只有多个子数据对象，要么有且只有多个子操作类对象
-
 			// 至于如何根据op基类来输出一个op对象的输出，大致思路只能如下了：
 			// 		首先根据op基类在临时区域中生成一个op实例，将数据inputNodeObjs填入当中，然后将实例传入指定的函数中（该函数可以输出任意op的实例的输出）
 			// 			1:判断传入的OpKind类型是否符合要求
@@ -4434,8 +4433,10 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 				// 如果符合要求则构造一个实例，用数据inputNodeObjs填入
 				if (dataSuitable == 1)
 				{
-					//先构造一个op对象实例,
-					NeuronObject *nero_createObjFromMultiples(NeuronObject * Obis[], nero_s32int objNum);
+					//在临时区域中先构造一个op对象实例,目前关于NeroPool和StagingAreaNeroPool内存的使用是没有回收机制的
+					// ，意味着你一旦废弃某个obj的使用则会导致该内存无法重新利用，但是你页可以加入这个机制
+					// 就目前来说你可以先不考虑内存泄漏的问题，只要完成函数功能就好，以后详细考虑
+					NeuronObject *nero_createOpByBaseKindInInSAP(nero_s32int baseKind, NeuronObject * Obis[], nero_s32int objNum,NeuronObject  *godNero);
 					
 					//输出一个op对象的实例
 
@@ -4445,6 +4446,6 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 			}  
 			//
 			break;
-	 }                                                                                                                                                                                                                                                               
+			 }                                                                                                                                                                                                                                                               
 	 return outputObjNums;
  }                                                                                                                                                  

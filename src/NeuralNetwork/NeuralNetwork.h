@@ -214,7 +214,6 @@ extern NeroConf neroConf;
 			但是那种先天就有的操作和后天学习来的技能是需要区分的么	,很明显是需要区分的
 			因为后天学习来的如果不涉及具体的操作的话，就是逻辑推理方面的东西
 			而推理恐怕就是记忆而已吧，就是形成一些临时性质的记忆把
-
 		关于操作的功能的神经元的存在形式：
 			可以是指定操作的具体函数或者一个函数编号 
 			 几个parameter就指定几个输入列表的节点， 给每个
@@ -229,7 +228,6 @@ extern NeroConf neroConf;
 				[[[[[[[[特别的：所有操作类型得obj或者说基类都看成一个普通得obj来看，只是需要单独得函数来处理]]]]]]]]]]]]]]]]
 					///////////////////////////////////////////////////////////////////////////////////////////
 		这样来定义一个操作类型的nero：只要该nero  kind确定就由系统指定与一个实际完成操作的函数绑定
-
 			 struct ActivationNeuron							基类          	 				    衍生类
 			{
 			nero_us32int msg;									/*记录该nero的种类，性质等信息
@@ -449,4 +447,14 @@ nero_s32int nero_addDataToZhNeroObj(NeuronObject * n,ChUTF8 *chChar,NeuronObject
     NerveFiber * addNerveFiber(ActNero *  n,nero_s32int type,nero_s32int pointTotype);
 nero_s32int nero_getOpObjDataNum(ActNero *OpBaseObj);
 nero_s32int nero_checkOpObjDataSuitable(NeuronObject *OpBaseObj, NeuronObject **inputNodeObjs, nero_us32int inputNodeNum);
+NeuronObject *nero_createOpByBaseKindInInSAP(nero_s32int baseKind, NeuronObject * Obis[], nero_s32int objNum,NeuronObject  *godNero);
+NeuronObject *   nero_IfHasOpObjFrMulti(ActNero *Obis[], nero_s32int objNum,nero_s32int basekind ,NeuronObject  *godNero);
+
+
+
+
+
+
+
+
 #endif

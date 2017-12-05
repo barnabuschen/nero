@@ -142,6 +142,106 @@ nero_s32int getNeroOperateFlag(ActNero *nero)
 		return 0;
 
 }
+//查询godNero下有没有一个baseobjKind类型的实例的数据为列表Obis中的对象
+// baseobjKind为操作类型，且一开始，baseobjKind类型的子数据为操作类型，所以Obis实际上是这些子操作的数据
+//如果找到符合的对象就返回该对象的指针
+// 递归结束的时候就是basekind不是操作类obj的时候
+NeuronObject *   nero_IfHasOpObjFrMulti(ActNero *Obis[], nero_s32int objNum,nero_s32int basekind ,NeuronObject  *godNero)
+{
+	//凡是递归都可能无限循环，所以需要设置检测标记
+	// ............
+	// 
+
+	if (basekind  <= NeuronNode_ForUndefined  || Obis == NULL  || objNum <1 ||  godNero==NULL /*||  conf==NULL*/)
+	{
+	        printf("nero_IfHasOpObjFrMulti  参数错误\n");
+	        return NULL;
+	}
+	nero_us32int remainingNum,countInputDataNum,isOpObj,pointToCurrtObi,childKind,childOpNum,cycleTimes,childOpFind;;
+	NeuronObject * baseObj;
+	NeuronObject * childObj;
+	NeuronObject * tmpobj;
+	NerveFiber  *  curFiber;
+	NeuronObject  *  res;
+ 	NeuronObject ** chlidObjs=NULL;
+
+	baseObj =nero_getBaseObjByKind(basekind,godNero);
+	if (baseObj == NULL)
+	{
+		printf("nero_IfHasOpObjFrMulti  baseObj  = NULL\n");
+		return NULL;		
+	} 
+	//
+	childOpNum = nero_getOpObjDataNum(baseObj); 
+
+	res =NULL;
+	childOpFind =0;//找到的子操作数
+	remainingNum = objNum;
+	curFiber = baseObj->inputListHead;
+	pointToCurrtObi =0;
+	if (basekind > NeuronNode_ForComplexDerivative)
+	{
+		childOpNum = childOpNum -1;//实际的子操作数
+		curFiber =curFiber->next;
+		(chlidObjs)=(NeuronObject **)malloc(sizeof(NeuronObject *)* childOpNum);
+
+	}
+	//递归，求得每个子操作需要的数据个数之后递归调用此函数，并保存每个子操作的对象，最后通过这些子操作找到最终结果
+	while (remainingNum > 0)
+	{
+		cycleTimes++;//记录循环次数，理论上循环次数应该和childOpNum相同，不然就有错误
+		childObj = curFiber->obj;
+		isOpObj = getNeroOperateFlag(childObj);
+		if (isOpObj == 1)
+		{
+			countInputDataNum = nero_getOpObjDataNum(childObj); 
+			pointToCurrtObi  = pointToCurrtObi +countInputDataNum;
+
+			if (countInputDataNum <= remainingNum )
+			{
+				remainingNum = remainingNum - countInputDataNum;
+				childKind = nero_GetNeroKind(childObj);
+				tmpobj = nero_IfHasOpObjFrMulti(  Obis[pointToCurrtObi] , countInputDataNum,childKind, godNero);
+				if (tmpobj == NULL)
+				{
+					break;
+				}
+				else if( childOpFind < childOpNum)
+				{
+					chlidObjs[childOpFind] = tmpobj;
+					childOpFind++;
+				}
+				else
+				{
+					break;
+				}
+			}
+		}
+		else if(isOpObj == 0)
+		{
+			 break;
+		}
+		else
+		{
+			printf("nero_IfHasOpObjFrMulti isOpObj == error\n");
+			break;
+		}
+
+
+		curFiber = curFiber->next;
+	}
+	//遍历成功，可以寻找了
+	if (remainingNum  == 0 &&  cycleTimes == childOpNum && childOpFind == childOpNum )
+	{
+		nero_IfHasObjFromMultiples3(chlidObjs, childOpNum,basekind,&res);
+
+	}
+	if (chlidObjs != NULL)
+	{
+		free(chlidObjs);
+	}
+	return res;	
+}
 //遍历一遍操作类基类OpBaseObj的输入列表，判断输入的个数
 // 考虑到子数据obj也可能是op类，所以这个函数可以写成一个递归函数，既然是递归，那么参数就不一定是基类了
 
@@ -2734,9 +2834,173 @@ NeuronObject * nero_ModifyBaseKind(NeuronObject * objs[],nero_s32int objNum,Neur
 
     return nero_msg_ok;
 }
+//在临时区域中先构造一个op对象实例,目前关于NeroPool和StagingAreaNeroPool内存的使用是没有回收机制的
+// ，意味着你一旦废弃某个obj的使用则会导致该内存无法重新利用，但是你页可以加入这个机制
+// 就目前来说你可以先不考虑内存泄漏的问题，只要完成函数功能就好，以后详细考虑
+
+// 注意点：这里的Obis可能不是basekind类实例的直接数据，如果basekind类的数据是op子操作，那么这里的Obis是这些子操作的数据
+NeuronObject *nero_createOpByBaseKindInInSAP(nero_s32int basekind, NeuronObject * Obis[], nero_s32int objNum,NeuronObject  *godNero)
+{
+// NeuronObject *Obis[],nero_s32int objNum,nero_s32int basekind,NeuronObject *godNero
+	if (basekind  <= NeuronNode_ForUndefined  || Obis == NULL  || objNum <1 ||  godNero==NULL /*||  conf==NULL*/)
+	{
+	        printf("nero_createOpByBaseKindInInSAP  参数错误\n");
+	        return NULL;
+	}
+	NeuronObject *newObi;
+	NerveFiber *tmpFiber;
+	nero_s32int newObiKind,res,i,createNewBaseKindFlag,forRe,allKindIsSame;
+
+    #define nero_createOpByBaseKindInInSAP_DeBug_Msg
+ 
+	createNewBaseKindFlag =  neroConf.CreateNewBaseObjKind;
+	/*首先你要判断这些个概念是不是在网络中存在，如果不存在，则报错返回*/
+	allKindIsSame=1;
+	forRe = nero_GetNeroKind(Obis[0]);
+	for (i=0;i<objNum;i++)
+	{
+
+		if ( nero_isInNet(Obis[i]) !=1  )
+		{
+		        #ifdef   nero_createOpByBaseKindInInSAP_DeBug_Msg
+		        printf("nero_createOpByBaseKindInInSAP  概念不在网络中\n");
+		        #endif
+		        return NULL;
+		}
+		if (nero_GetNeroKind(Obis[0]) != forRe)
+		{
+			allKindIsSame =0;
+		}
+	}
+	/*判断新概念的种类 */
+	newObiKind = basekind;
+
+	//判断这些数据对象是否能构成基类basekind，但是在此之前一般会调用nero_checkOpObjDataSuitable
+	//所以这里就不检查了
+
+	/*判断这些个对象是不是已经有生成过新概念了*/
+	// 显然这里判断是否已经有合适的对象的方法和普通数据obj的方式是不一样的
+	//而且只需要在临时区域中检查是否已经存在而不需要在永久区域中检查
+	forRe = getNeroOperateFlag(Obis[i]);
+	if(allKindIsSame == 1 && forRe == 1  )//子数据都是操作类的情况下
+	{
+		//需要递归
+		res=nero_IfHasOpObjFrMulti(Obis, objNum,newObiKind,&newObi, godNero);
+		// nero_s32int   nero_IfHasOpObjFrMulti(Obis, objNum,newObiKind,&newObi,NeuronObject  *godNero);
+	}
+	else if(allKindIsSame == 1 && forRe == 0  )
+	{
+		res=nero_IfHasObjFromMultiples3(Obis, objNum,newObiKind,&newObi);
+	}	
+	else
+	{
+		#ifdef   nero_createOpByBaseKindInInSAP_DeBug_Msg
+		printf("nero_createOpByBaseKindInInSAP  OperateFlag error\n");
+		#endif
+		return NULL;	
+	}
+	
+
+/*	printf("判断这些个对象是不是已经有生成过新概念了=%d.\n",res);*/
+	if(res == NeroYES)
+	{
+	        #ifdef   nero_createOpByBaseKindInInSAP_DeBug_Msg
+	        printf("nero_createOpByBaseKindInInSAP  要创建的概念已经存在在网络中,objNum=%d\n",objNum);
+	        #endif
+	        return newObi;
+	}
+
+
+/*	printf("createObjFromMultiples :newObiKind=%d.   childKind=%d\n",newObiKind,nero_GetNeroKind(Obis[0]));*/
+
+	/*生成新概念，并加入网络*/
+	newObi= nero_createNeroObjSAP (newObiKind,godNero);
+	// printf("newObi=%x\n",newObi);
+	res= nero_addNeroIntoNet( godNero,newObi);
+	if(nero_msg_ok != res)
+	{
+	        #ifdef   createObjFromMultiples_DeBug_Msg
+		printf("概念加入SAP网络失败id=%x Kind %d ,objNum=%d\n",newObi,newObiKind,objNum);
 
 
 
+		// neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
+		// neroObjMsg_st.fucId = 1;
+		// nero_us32int tmpi=0;
+
+		// for (;tmpi < objNum;tmpi++)
+		// {
+		// 	neroObjMsg_st.Obi = Obis[tmpi];
+		// 	msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);
+
+		// }
+		 #endif
+		return NULL;
+
+	}
+
+	/*将新概念与旧概念生成联系,此外俩个旧概念，这里仅仅第一个指向第二个*/
+
+	/*将新概念的数据指向这俩个对象*/
+	#ifdef   Nero_DeBuging04_01_14_
+	if (NeuronNode_ForComplexDerivative  == newObiKind)
+	{
+				char str[500];
+				char str2[500];
+				sprintf(str,"data/wordspic%d.dot",5);
+				sprintf(str2,"xdot data/wordspic%d.dot",5);
+				createNeroNetDotGraphForWords(GodNero, str);
+				system(str2);
+	}
+	#endif
+	for (i=0;i<objNum;i++)
+	{
+		/*生成新概念的数据链表*/
+		tmpFiber= addNerveFiber(newObi,NerveFiber_Input,Fiber_PointToData);
+		tmpFiber->obj=Obis[i];
+
+		/*建立新概念已经子对象之间的关系*/
+/*		addNeuronChild(newObi,Obis[i],Relationship_ChildToFather);*/
+		PointingToObject(Obis[i],newObi,Fiber_PointToUpperLayer);// put  newObi  in  Obis[i]  's   output list
+		if (i>0)
+		{
+/*			addNeuronChild(Obis[i],Obis[i-1],Relationship_ChildToFather);	*/
+			PointingToObject(Obis[i-1],Obis[i],Fiber_PointToSameLayer);
+		}
+		#ifdef   Nero_DeBuging04_01_14_
+/*		if (kind != NeuronNode_ForChCharacter)*/
+		{
+			printf("子概念id=%d linkto %d \n",Obis[i],newObi);
+			printf("子概念id=%d linkto %d \n\n",Obis[i-1],Obis[i]);
+		}
+		nero_printNeroLink("log/ObjLink.log",(void *)Obis[i]);
+		#endif
+	}
+/*	nero_printNeroLink("log/ObjLink.log",(void *)newObi);*/
+
+	#ifdef   Nero_DeBuging04_25_16_
+	if (newObi == NULL)
+	{
+	        printf("nero_createObjFromMultiples  未知错误，newObi=%x\n",newObi);
+	}
+	else
+			printf("nero_createObjFromMultiples  success=%x,kind=%d,,objNum=%d\n",newObi,newObiKind,objNum);
+	#endif
+	return newObi;
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 //你需要同时在永久区域和临时区域都生成新得基类
 NeuronObject * nero_CreateNewBaseObjInSAP(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
 {

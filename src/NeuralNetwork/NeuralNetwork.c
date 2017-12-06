@@ -1398,15 +1398,11 @@ nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher,nero_s32in
 	NerveFiber  *  curFiber;
 	NerveFiber * newfiber;
 	nero_s32int actNeroPoolKind_  ;
-
 	if(lower ==NULL || higher ==NULL )
 	{
 		NeroErrorMsg;
 		return NeroError;
 	}
-
-
-
 	/*需要判断是不是已经有联系了*/
 	// if(  nero_isBaseObj(lower ) == 1 &&  nero_isBaseObj(higher ) !=1    &&     (nero_GetNeroKind(lower) !=  nero_GetNeroKind(higher) )  )
 	// 	curFiber=lower->inputListHead;
@@ -1417,12 +1413,8 @@ nero_s32int PointingToObject(NeuronObject *lower,NeuronObject *higher,nero_s32in
 	{
 		if (curFiber->obj  == higher &&   getFiberType(curFiber)  == pointTotype)
 		{
-
-
 			return NeroOK;
 		}
-
-
 	}
 
 	//there is a bug here :if  lower  is a  baseobj  and  higher is not ,
@@ -2848,12 +2840,22 @@ NeuronObject *nero_createOpByBaseKindInInSAP(nero_s32int basekind, NeuronObject 
 	        return NULL;
 	}
 	NeuronObject *newObi;
+	NeuronObject *resObj;
 	NerveFiber *tmpFiber;
 	nero_s32int newObiKind,res,i,createNewBaseKindFlag,forRe,allKindIsSame;
 
+	nero_s32int cycleTimes,remainingNum,countInputDataNum,isOpObj,pointToCurrtObi,childKind,childOpCreate,childOpNum,newObjNUm;
+
+	NeuronObject * childObj;
+	NeuronObject * tmpobj;
+	NeuronObject * baseObj;
+	NerveFiber * curFiber;
+	NeuronObject ** chlidObjs=NULL;
+// childOpFind
+
     #define nero_createOpByBaseKindInInSAP_DeBug_Msg
  
-	createNewBaseKindFlag =  neroConf.CreateNewBaseObjKind;
+	// createNewBaseKindFlag =  neroConf.CreateNewBaseObjKind;
 	/*首先你要判断这些个概念是不是在网络中存在，如果不存在，则报错返回*/
 	allKindIsSame=1;
 	forRe = nero_GetNeroKind(Obis[0]);
@@ -2885,8 +2887,11 @@ NeuronObject *nero_createOpByBaseKindInInSAP(nero_s32int basekind, NeuronObject 
 	if(allKindIsSame == 1 && forRe == 1  )//子数据都是操作类的情况下
 	{
 		//需要递归
-		res=nero_IfHasOpObjFrMulti(Obis, objNum,newObiKind,&newObi, godNero);
-		// nero_s32int   nero_IfHasOpObjFrMulti(Obis, objNum,newObiKind,&newObi,NeuronObject  *godNero);
+		resObj=nero_IfHasOpObjFrMulti(Obis, objNum,newObiKind, godNero);
+		if (resObj != NULL )
+		{
+			res= NeroYES;
+		}		
 	}
 	else if(allKindIsSame == 1 && forRe == 0  )
 	{
@@ -2914,70 +2919,141 @@ NeuronObject *nero_createOpByBaseKindInInSAP(nero_s32int basekind, NeuronObject 
 /*	printf("createObjFromMultiples :newObiKind=%d.   childKind=%d\n",newObiKind,nero_GetNeroKind(Obis[0]));*/
 
 	/*生成新概念，并加入网络*/
+	/*到这里意味着可以生成新的op操作了， 关于（forRe = 1 ：子数据都是操作类）或者不等于0 是否需要区别对待呢？
+	forRe = 0 子数据都是数据类
+		 按照常规就行
+	forRe = 1 子数据都是操作类
+		先创建子操作类的obj，生成一组新的 NeuronObject * Obis[], nero_s32int objNum
+	*/
 	newObi= nero_createNeroObjSAP (newObiKind,godNero);
 	// printf("newObi=%x\n",newObi);
 	res= nero_addNeroIntoNet( godNero,newObi);
+
 	if(nero_msg_ok != res)
 	{
-	        #ifdef   createObjFromMultiples_DeBug_Msg
-		printf("概念加入SAP网络失败id=%x Kind %d ,objNum=%d\n",newObi,newObiKind,objNum);
-
-
-
+		setNeroOperateFlag(newObi,1);
+		#ifdef   nero_createOpByBaseKindInInSAP_DeBug_Msg
+		printf("nero_createOpByBaseKindInInSAP：概念加入SAP网络失败id=%x Kind %d ,objNum=%d\n",newObi,newObiKind,objNum);
 		// neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
 		// neroObjMsg_st.fucId = 1;
 		// nero_us32int tmpi=0;
-
 		// for (;tmpi < objNum;tmpi++)
 		// {
 		// 	neroObjMsg_st.Obi = Obis[tmpi];
 		// 	msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);
-
 		// }
 		 #endif
 		return NULL;
-
 	}
-
-	/*将新概念与旧概念生成联系,此外俩个旧概念，这里仅仅第一个指向第二个*/
-
-	/*将新概念的数据指向这俩个对象*/
-	#ifdef   Nero_DeBuging04_01_14_
-	if (NeuronNode_ForComplexDerivative  == newObiKind)
+	if (forRe == 0)//子数据都是数据类
 	{
-				char str[500];
-				char str2[500];
-				sprintf(str,"data/wordspic%d.dot",5);
-				sprintf(str2,"xdot data/wordspic%d.dot",5);
-				createNeroNetDotGraphForWords(GodNero, str);
-				system(str2);
+		for (i=0;i<objNum;i++)
+		{
+			/*生成新概念的数据链表*/
+			tmpFiber= addNerveFiber(newObi,NerveFiber_Input,Fiber_PointToData);
+			tmpFiber->obj=Obis[i];
+			/*建立新概念已经子对象之间的关系*/
+			PointingToObject(Obis[i],newObi,Fiber_PointToUpperLayer);// put  newObi  in  Obis[i]  's   output list
+			if (i>0)
+			{
+				PointingToObject(Obis[i-1],Obis[i],Fiber_PointToSameLayer);
+			}
+			#ifdef   Nero_DeBuging04_01_14_
+	/*		if (kind != NeuronNode_ForChCharacter)*/
+			{
+				printf("子概念id=%d linkto %d \n",Obis[i],newObi);
+				printf("子概念id=%d linkto %d \n\n",Obis[i-1],Obis[i]);
+			}
+			nero_printNeroLink("log/ObjLink.log",(void *)Obis[i]);
+			#endif
+		}
 	}
-	#endif
-	for (i=0;i<objNum;i++)
+	else if (forRe == 1)//子数据都是操作类
 	{
-		/*生成新概念的数据链表*/
-		tmpFiber= addNerveFiber(newObi,NerveFiber_Input,Fiber_PointToData);
-		tmpFiber->obj=Obis[i];
+		//需要先生成子操作类的各个obj2222
+		childOpNum = nero_getOpObjDataNum(newObiKind); 
 
-		/*建立新概念已经子对象之间的关系*/
-/*		addNeuronChild(newObi,Obis[i],Relationship_ChildToFather);*/
-		PointingToObject(Obis[i],newObi,Fiber_PointToUpperLayer);// put  newObi  in  Obis[i]  's   output list
-		if (i>0)
+		// res =NULL;
+		newObjNUm =0;
+		cycleTimes =0;
+		childOpCreate =0;//找到的子操作数
+		remainingNum = objNum;
+		baseObj = nero_getBaseObjByKind(newObiKind,godNero);
+		curFiber = baseObj->inputListHead;
+		pointToCurrtObi =0;
+		if (newObiKind > NeuronNode_ForComplexDerivative)
 		{
-/*			addNeuronChild(Obis[i],Obis[i-1],Relationship_ChildToFather);	*/
-			PointingToObject(Obis[i-1],Obis[i],Fiber_PointToSameLayer);
+			childOpNum = childOpNum -1;//实际的子操作数
+			curFiber =curFiber->next;
+			(chlidObjs)=(NeuronObject **)malloc(sizeof(NeuronObject *)* childOpNum);
+
 		}
-		#ifdef   Nero_DeBuging04_01_14_
-/*		if (kind != NeuronNode_ForChCharacter)*/
+		while (remainingNum > 0 && childOpCreate < childOpNum)
 		{
-			printf("子概念id=%d linkto %d \n",Obis[i],newObi);
-			printf("子概念id=%d linkto %d \n\n",Obis[i-1],Obis[i]);
+			cycleTimes++;//记录循环次数，理论上循环次数应该和childOpNum相同，不然就有错误
+			childObj = curFiber->obj;
+ 
+			
+			countInputDataNum = nero_getOpObjDataNum(childObj); 
+			pointToCurrtObi  = pointToCurrtObi +countInputDataNum;
+
+			if (countInputDataNum <= remainingNum )
+			{
+				remainingNum = remainingNum - countInputDataNum;
+				childKind = nero_GetNeroKind(childObj);
+				tmpobj = nero_createOpByBaseKindInInSAP(childKind, &(Obis[pointToCurrtObi]),countInputDataNum,godNero);
+				if (tmpobj == NULL)
+				{
+					printf("nero_createOpByBaseKindInInSAP：生成子操作失败1\n" );
+					break;
+				}
+				else if( childOpCreate < childOpNum && tmpobj != NULL)
+				{
+					chlidObjs[childOpCreate] = tmpobj;
+					childOpCreate++;
+				}
+				else
+				{
+					printf("nero_createOpByBaseKindInInSAP：生成子操作失败2\n" );
+					break;
+				}
+			}
+			curFiber = curFiber->next;
 		}
-		nero_printNeroLink("log/ObjLink.log",(void *)Obis[i]);
-		#endif
+		//
+		//遍历成功，可以建立链接了
+		if (remainingNum  == 0 &&  cycleTimes == childOpNum && childOpCreate == childOpNum )
+		{
+			for (i=0;i<childOpCreate;i++)
+			{
+				/*生成新概念的数据链表*/
+				tmpFiber= addNerveFiber(newObi,NerveFiber_Input,Fiber_PointToData);
+				tmpFiber->obj=chlidObjs[i];
+				/*建立新概念已经子对象之间的关系*/
+				PointingToObject(chlidObjs[i],newObi,Fiber_PointToUpperLayer);// put  newObi  in  Obis[i]  's   output list
+				if (i>0)
+				{
+					PointingToObject(chlidObjs[i-1],chlidObjs[i],Fiber_PointToSameLayer);
+				}
+			}
+		}
+		else
+		{
+			newObi = NULL;
+		}
+		if (chlidObjs != NULL)
+		{
+			free(chlidObjs);
+		}
 	}
+	else
+	{
+		return NULL;
+	}
+
+
+	
 /*	nero_printNeroLink("log/ObjLink.log",(void *)newObi);*/
-
 	#ifdef   Nero_DeBuging04_25_16_
 	if (newObi == NULL)
 	{
@@ -2987,19 +3063,6 @@ NeuronObject *nero_createOpByBaseKindInInSAP(nero_s32int basekind, NeuronObject 
 			printf("nero_createObjFromMultiples  success=%x,kind=%d,,objNum=%d\n",newObi,newObiKind,objNum);
 	#endif
 	return newObi;
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 //你需要同时在永久区域和临时区域都生成新得基类
 NeuronObject * nero_CreateNewBaseObjInSAP(NeuronObject * objs[],nero_s32int objNum,NeuronObject  *godNero,NeroConf * conf)
@@ -3535,15 +3598,7 @@ NeuronObject * nero_CreateObjInSAP(NeuronObject *Obis[],nero_s32int objNum,nero_
 	        return newObi;
 	}
 
-
-
-
-
-
-
 /*	printf("createObjFromMultiples :newObiKind=%d.   childKind=%d\n",newObiKind,nero_GetNeroKind(Obis[0]));*/
-
-
 
 
 	/*生成新概念，并加入网络*/
@@ -3880,13 +3935,7 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
         return NULL;
 
 	}
-
 	// printf("create ObjFromMultiples :newObiKind=%d.   childKind=%d\n",newObiKind,nero_GetNeroKind(Obis[0]));
-
-
-
-
-
 	/*生成新概念，并加入网络*/
 	newObi= nero_createNeroObj (newObiKind);
 	// printf("newObi=%x\n",newObi);
@@ -3895,26 +3944,18 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 	{
 	        #ifdef   createObjFromMultiples_DeBug_Msg
 		printf("概念加入网络失败id=%x Kind %d ,objNum=%d\n",newObi,newObiKind,objNum);
-
-
-
 		// neroObjMsg_st.MsgId = MsgId_Log_PrintObjMsg;
 		// neroObjMsg_st.fucId = 1;
 		// nero_us32int tmpi=0;
-
 		// for (;tmpi < objNum;tmpi++)
 		// {
 		// 	neroObjMsg_st.Obi = Obis[tmpi];
 		// 	msgsnd( Log_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);
-
 		// }
 		 #endif
 		return NULL;
-
 	}
-
 	/*将新概念与旧概念生成联系,此外俩个旧概念，这里仅仅第一个指向第二个*/
-
 	/*将新概念的数据指向这俩个对象*/
 	#ifdef   Nero_DeBuging04_01_14_
 	if (NeuronNode_ForComplexDerivative  == newObiKind)
@@ -3927,7 +3968,6 @@ NeuronObject * nero_createObjFromMultiples(NeuronObject *Obis[],nero_s32int objN
 				system(str2);
 	}
 	#endif
-
 	// if(neroConf.addLevelObjAlways == 1)
 	// 	i=1;
 	// else

@@ -4220,24 +4220,24 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 												nero_us32int outputNodeNum, 
 												NeuronObject *godNero)
  {
-	 nero_us32int   i, j/*, inputNullFlag, outputNullFlag*/,inputKindAllTheSame,inputKind,ifIsOperateKind;
+	 nero_us32int   i, j/*, inputNullFlag, outputNullFlag*/,inputKindAllTheSame,inputKind,ifIsOperateKind,opKind;
 	 NeuronObject *operateObj;
 	 nero_s32int ObjectKind, ObjectKind2, ObjectKind3, childNum, CouldMakeUpThisObj;
 
 	 NeuronObject *obj;
-	 NeuronObject *tmp;
+	 NeuronObject *tmp,*tmp2,*tmp1;
 	 NeuronObject *BaseObi;
 	 NerveFiber *curFiber; 
 	 NerveFiber *childcurFiber;
 	 NeuronObject  **outPutObisForTest;
 	 if (inputNodeObjs == NULL || godNero == NULL || outputNodeObjs == NULL || inputNodeNum <= 0 || outputNodeNum <=0)
 	 {
-		 return NULL;
+		 return nero_msg_ParameterError;
 	 }
 	 outPutObisForTest = (NeuronObject **)malloc(sizeof(NeuronObject *) * outputNodeNum);
 	 if (outPutObisForTest  == NULL)
 	 {
-		 return NULL;
+		 return nero_msg_fail;
 	 }
 	 //显然，这个过程和就是实践一遍以inputNodeObjs为输入数据的某个操作类的功能
 
@@ -4313,10 +4313,11 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 										 nero_us32int MaxOutpuNodeNum,
 										 NeuronObject *godNero)
  {
-	nero_us32int i, j /*, inputNullFlag, outputNullFlag*/, inputKind, ifIsOperateKind, outputObjNums，OpKind;
+	nero_us32int i, j /*, inputNullFlag, outputNullFlag*/, inputKind, ifIsOperateKind,outputObjNums,OpKind;
 	nero_us32int countInputDataNum, dataSuitable;
-	NeuronObject *outputNode,
-	*tmp1, *tmp2;
+	NeuronObject * outputNode;
+	NeuronObject * objMakeup;
+	NeuronObject * tmp,*tmp1, *tmp2;
 	 NerveFiber *tmpFiber;
 	 NerveFiber *lowFiber;
 	 if (OpBaseObj ==NULL || inputNodeObjs == NULL || godNero == NULL || inputNodeObjs == NULL || inputNodeNum <= 0)
@@ -4328,12 +4329,10 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 	 switch (OpKind)
 	 {
 		case NeuronNode_FiberConnect:
-
 			break;
 		case NeuronNode_GainValue:
 			if (inputNodeNum == 1)
 			{
-
 				//outputNode可能是在临时区域中的对象，但是话说回来了，如果是Operating_FindObjWithDataChange函数调用并进入的此处
 				//则一般输出obj是已经存在的了，关键是看你怎么处理和定义“输出相同这个概念了”
 				outputNode = Operating_GainValue(inputNodeObjs[0], 1);
@@ -4349,7 +4348,6 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 						outputObjNums = -1;
 					}
 				}
-				
 			}
 			break;
 		case NeuronNode_DecreaseValue:
@@ -4363,7 +4361,7 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 			break;
 		case NeuronNode_ForOutputWord:
 			//x指向实际执行操作的函数的地址或者ID ,但是这里考虑到现在时间有限暂时简化处理
-			#ifdef Nero_DeBuging09_01_14
+			#ifdef Nero_DeBuging09_01_14_
 					// print  one  obj  link:
 					neroObjMsg_st.MsgId = MsgId_IO_ForOutputWord;
 					neroObjMsg_st.fucId = 2; //IO_ForOutputWord
@@ -4387,7 +4385,6 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 				lowFiber = tmp2->outputListHead;
 				while (lowFiber != NULL && lowFiber->obj != NULL)
 				{
-
 					PointingToObject(lowFiber->obj, tmp1, Fiber_PointToUpperLayer);
 					lowFiber = lowFiber->next;
 				}
@@ -4433,19 +4430,97 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 				// 如果符合要求则构造一个实例，用数据inputNodeObjs填入
 				if (dataSuitable == 1)
 				{
-					//在临时区域中先构造一个op对象实例,目前关于NeroPool和StagingAreaNeroPool内存的使用是没有回收机制的
-					// ，意味着你一旦废弃某个obj的使用则会导致该内存无法重新利用，但是你页可以加入这个机制
-					// 就目前来说你可以先不考虑内存泄漏的问题，只要完成函数功能就好，以后详细考虑
-					NeuronObject *nero_createOpByBaseKindInInSAP(nero_s32int baseKind, NeuronObject * Obis[], nero_s32int objNum,NeuronObject  *godNero);
+					objMakeup = nero_createOpByBaseKindInInSAP(OpKind, inputNodeObjs, inputNodeNum, godNero);
 					
-					//输出一个op对象的实例
 
-					/////set up outputObjNums
-					outputObjNums = -1;
+					if (objMakeup != NULL)
+					{
+						outputObjNums =  Operating_CarryOutOpObj(objMakeup);
+					}
+					 
+
+				
+					// OpBaseObj->outputListHead
 				}
-			}  
+			} 
 			//
 			break;
-			 }                                                                                                                                                                                                                                                               
+	}                                                                                                                                                                                                                                                           
 	 return outputObjNums;
- }                                                                                                                                                  
+ }
+//输出一个op对象的实例,这是个非常重要的函数，对兼容性，重复利用率以及并行的可能性有较高的要求
+//功能是输入一个op类的obj，输出一个输出列表，关于输出列表中的对象是否可以是另一个op对象的问题，再考虑
+//而因为这个输出列表是直接链接在OpObj的  outputListHead中的，所以并不需要显式的返回一个参数
+//返回值，可以返回输出数据的个数
+
+//既然要考虑并行性，就要加入原子操作，防止对一个操作obj的同时写
+// 考虑到对一个int型的读写一般都是原子的，但如果你要读写一个int型中的某一位时的操作貌似不是原子的
+// volatile sig_atomic_t含义：
+// volatile：volatile 变量是随时可能发生变化的，每次使用时都需要去内存里重新读取它的值
+// sig_atomic_t:当把变量声明为该类型是，则会保证该变量在使用或赋值时， 无论是在32位还是64位的机器上都能保证操作是原子的， 它会根据机器的类型自动适应。
+// 		This is an integer data type. Objects of this type are always accessed atomically.
+// 		测试代码发现该类型是32位的int型		
+// 问题是这样的，如果两个线程短间隔内分别读取一个变量x，如果当前x的状态是未加锁的，那么两个线程是不是同时获取了该共享变量的
+// 读写权限？？？
+/*
+总线锁就是使用处理器提供的一个LOCK＃信号，当一个处理器在总线上输出此信号时，其他处理器的请求将被阻塞住,那么该处理器可以独占使用共享内存。
+ 		总线锁定的开销比较大
+“缓存锁定”就是如果缓存在处理器缓存行中的内存区域在LOCK操作期间被锁定，当它执行锁操作回写内存时，处理器不在总线上声言LOCK＃信号，
+而是修改内部的内存地址，并允许它的缓存一致性机制来保证操作的原子性，
+因为缓存一致性机制会阻止同时修改被两个以上处理器缓存的内存区域数据，当其他处理器回写已被锁定的缓存行的数据时会起缓存行无效
+ 	这样的话，如果两个线程短间隔内分别读取一个变量x，且当前x的状态是未加锁的，如果两个线程分别对一个共享变量进行写操作时，后一个操作将不被允许，直到前一个线程释放锁
+	 后一个线程的操作才会被允许
+	 、
+写了这么多是说你可以将NeuronObject 中的msg添加volatile修饰副或者改为sig_atomic_t类型么？？？
+好像也不应该，添加volatile虽然能减少出现读写冲突的可能性，但毕竟牺牲了性能
+这里最终决定只是在msg中添加一个是否有函数在执行该op操作的动作
+*/
+ nero_s32int Operating_CarryOutOpObj(NeuronObject *OpObj)
+ {
+
+	//输入的参数OpObj是一个op类的实例，并且输入数据是完备的，你只需要在次输出输出列表
+	//如果已经有输出的输出只要直接返回输出的数据个数就行了，
+	// 只有需要重新写输入数据的情况下才需要
+	NerveFiber * fiber;
+	NeuronObject * outputObj;
+	nero_s32int findOutoutObjNUm,ReCarryOutOpFlag;
+	if (OpObj == NULL ||  getNeroOperateFlag(OpObj) != 1  ||  nero_isBaseObj(OpObj) == 1   )
+	{
+		printf("Operating_CarryOutOpObj : parameter error  \n    ");
+		return nero_msg_fail;
+	}
+	fiber = OpObj->outputListHead;
+	findOutoutObjNUm =0 ;
+	ReCarryOutOpFlag = 0;//是否重新生成输出对象标记
+	//判断是否已经有输出对象了
+	// 只要找到outputListHead中所有的输出就行了，不管是多少个	
+	while (fiber != NULL)
+	{
+		if(getFiberOpOutputFlag(fiber) == 1   &&   getFiberType(fiber) ==  Fiber_PointToLowerLayer )
+		{
+			findOutoutObjNUm++;
+		}
+
+		fiber = fiber->next;
+	}
+	if (findOutoutObjNUm   <= 0)//没有既有的输出obj，重新生成
+	{
+		ReCarryOutOpFlag =1 ;
+		//显然需要递归完成
+		// 这个函数第一次调用的例子是在函数Operating_tryToOutputByData中，该函数将是否有子操作的情况进行了分离，将有子操作的
+		// 情况传入此函数进行处理，但是并不意味着这里仅仅需要处理都是子操作的情况，因为要考虑次函数的重复利用率，加入完整的流程处理
+
+
+		
+
+
+	}
+	if (ReCarryOutOpFlag == 1 && findOutoutObjNUm > 0 )
+	{
+		//将重新生成输出对象加入OpObj的输出链表中，就是将OpObj的子操作的输出加入到其输出列表中，
+		// 如果该对象有多层的子操作，只需要链接第一层的子操作
+	}
+
+	// 理论上如果正常情况下，findOutoutObjNUm不应该为0
+	return findOutoutObjNUm;
+ }                                                                                                                                             

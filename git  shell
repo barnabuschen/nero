@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "20171129： 完成nero_createOpByBaseKindInInSAP"
+git commit -a -m "20171129： start Operating_CarryOutOpObj"
 git push origin  ver0.1804:ver0.1804
 添加文件到库，并上传
 git add readme.txt

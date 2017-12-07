@@ -69,12 +69,8 @@ int next;
 	                                #define NeuronNode_MinNewDerivativeClassId  2001
 	                                开始
 	                                */
-
-
 	nero_us32int	  WantCreateObjKind;//在特殊情况下指定希望生成得obj得类型，危险，尽量别使用   NeuronNode_ForNone
 										//必须在使用后立即回复初始值NeuronNode_ForNone
-
-
 	//some flags  for  OperatFlowProcess  fuc
 	nero_us32int	OperatFlowTarget;//该次数据流的目标,默认 为0 ,do nothing
 						// 						数据初态		数据终态			操作中间过程		总的操作类型
@@ -86,16 +82,7 @@ int next;
 
  }NeroConf;
 /*ActNero只是用来保存基础数据，它对应于一个单纯的神经元*/
-
-
 /*
-将指定位置的位设置为特定的值：
-1111
-	&
-0101
-
-
-
 msg：
 低位			高位
 1-------8  9-----16 17-----24  25----32
@@ -108,10 +95,8 @@ msg：
 27:当所在区域为StagingAreaNeroPool时，此位为1(Nero_TransferToNeroPool)表示该对象已经可以被转化为永久对象了
 28:当所在区域为StagingAreaNeroPool时，此位为1(Nero_AlreadyTransfered)表示该对象已经被转化为永久对象了 ,可以在适当时间进行回收了
 
-29
-
+29：该标志位为1时表示该obj为操作类时，正在进行输出列表的生成(在修改obj)，一旦有其他线程进行同一操作时可以暂停
 30:该标志位为1时表示该obj为操作类
-
 31：在一些基类中，用来表示该种类别的子类的排列顺序是否固定，1表示顺序固定，0表示顺序无所谓
 32位：区别一般的概念和基类，1表示基类，0表示衍生类(网络中真正的数据)
 */
@@ -120,9 +105,6 @@ msg：
 typedef struct ActivationNeuron  NeuronObject;
 typedef struct ActivationNeuron ActNero;
  typedef struct NerveFiber_ NerveFiber;
-
-
-
 
  struct ActivationNeuron
 {
@@ -135,8 +117,6 @@ typedef struct ActivationNeuron ActNero;
 
 	struct NerveFiber_   * outputListHead;
 };
-
-
 /*神经纤维---用来连接各个神经元*/
 /*
 msg1：
@@ -161,7 +141,7 @@ msg1：
 
 	所指向对象所在区域为永久得NeroInPool			#define	Fiber_ObjInNeroPool	00
 	所指向对象所在区域为StagingAreaNeroPool	 	#define	Fiber_ObjInSAPool	01
-
+15位：	当该fiber所有者是一个OP obj的实例时，该位为1,用来标识该fiber指向的是该op的输出对象{且，9-10位为  Fiber_PointToLowerLayer  }，普通对象为0
 
 time：
 低位			高位
@@ -449,10 +429,10 @@ nero_s32int nero_getOpObjDataNum(ActNero *OpBaseObj);
 nero_s32int nero_checkOpObjDataSuitable(NeuronObject *OpBaseObj, NeuronObject **inputNodeObjs, nero_us32int inputNodeNum);
 NeuronObject *nero_createOpByBaseKindInInSAP(nero_s32int baseKind, NeuronObject * Obis[], nero_s32int objNum,NeuronObject  *godNero);
 NeuronObject *   nero_IfHasOpObjFrMulti(ActNero *Obis[], nero_s32int objNum,nero_s32int basekind ,NeuronObject  *godNero);
-
-
-
-
+nero_s32int getNeroOpOpCreateOutputFlag(ActNero *nero);
+void setNeroOpOpCreateOutputFlag(ActNero *nero,nero_us32int rule );
+void setFiberOpOutputFlag(NerveFiber * fiber,nero_us32int rule );
+void getFiberOpOutputFlag(NerveFiber * fiber  );
 
 
 

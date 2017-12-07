@@ -125,8 +125,37 @@ void setNeroOperateFlag(ActNero *nero,nero_us32int rule )
 	else
 		nero->msg =nero->msg & 0xdfffffff;// 1101  第30位清零
 }
+ /*该标志位为1时表示该obj为操作类时，正在进行输出列表的生成，一旦有其他线程进行同一操作时可以暂停*/
+void setNeroOpOpCreateOutputFlag(ActNero *nero,nero_us32int rule )
+{
+
+	if(nero ==NULL || rule <0 || rule >1 )
+		return ;
 
 
+	if (rule == 1)
+	{	/*把末第k位变成1           */
+		nero->msg =nero->msg | (1<<(32-4));
+	}
+	else
+		// nero->msg =nero->msg & 0xdfffffff;// 1101  第30位清零
+		nero->msg =nero->msg & 0xefffffff;// 1110  第29位清零
+}
+nero_s32int getNeroOpOpCreateOutputFlag(ActNero *nero)
+{
+	nero_s32int rule;
+	if(nero ==NULL)
+		return nero_msg_ParameterError;
+
+
+		/*看29位是不是1*/
+		rule=nero->msg   & 0x10000000;//0001
+		if(rule != 0)
+			return 1;
+
+		return 0;
+
+}
 nero_s32int getNeroOperateFlag(ActNero *nero)
 {
 	nero_s32int rule;
@@ -142,6 +171,40 @@ nero_s32int getNeroOperateFlag(ActNero *nero)
 		return 0;
 
 }
+
+
+ /*当该fiber所有者是一个OP obj的实例时，该位为1,用来标识该fiber指向的是该op的输出对象{且，9-10位为  Fiber_PointToLowerLayer  }，普通对象为0*/
+void setFiberOpOutputFlag(NerveFiber * fiber,nero_us32int rule )
+{
+
+	if(fiber ==NULL || rule <0 || rule >1 )
+		return ;
+
+
+	if (rule == 1)
+	{	/*把末第k位变成1           */
+		fiber->msg1 =fiber->msg1 | (1<<(32-18));
+	}
+	else
+		fiber->msg1 =fiber->msg1 & 0xffffbfff;// 1011  第15位清零
+}
+void getFiberOpOutputFlag(NerveFiber * fiber  )
+{
+
+	nero_s32int rule;
+	if(fiber ==NULL)
+		return nero_msg_ParameterError;
+
+
+		/*最后看15位是不是1*/
+		rule=fiber->msg1   & 0x00004000;//0100
+		if(rule != 0)
+			return 1;
+
+		return 0;
+}
+
+
 //查询godNero下有没有一个baseobjKind类型的实例的数据为列表Obis中的对象
 // baseobjKind为操作类型，且一开始，baseobjKind类型的子数据为操作类型，所以Obis实际上是这些子操作的数据
 //如果找到符合的对象就返回该对象的指针
@@ -600,7 +663,7 @@ NeuronObject *  getBaseObjName(NeuronObject * baseobj,NeuronObject * godNero)
         return NULL;
 
 }
-/**/
+/*get该神经纤维的类型*/
  inline nero_s32int getFiberType(NerveFiber * fiber)
 {
 	nero_us32int kind;
@@ -2990,6 +3053,11 @@ NeuronObject *nero_createOpByBaseKindInInSAP(nero_s32int basekind, NeuronObject 
 		}
 		while (remainingNum > 0 && childOpCreate < childOpNum)
 		{
+			//BUG：这里没有考虑数据共享的情况*********************************************************************
+
+
+
+			// ******************************************
 			cycleTimes++;//记录循环次数，理论上循环次数应该和childOpNum相同，不然就有错误
 			childObj = curFiber->obj;
  

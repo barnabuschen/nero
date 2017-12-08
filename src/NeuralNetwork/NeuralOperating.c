@@ -1595,6 +1595,7 @@ NeuronObject * Operating_GainValue(NeuronObject * obj,nero_s32int val)
 		//set up a new fiber  to obj
 		/*生成新概念的数据链表*/
 		tmpFiber= addNerveFiber(obj,NerveFiber_Output,Fiber_PointToLowerLayer);
+		setFiberOpOutputFlag(tmpFiber,1);
 		tmpFiber->obj=res;
 	}
 
@@ -4482,8 +4483,12 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 	//如果已经有输出的输出只要直接返回输出的数据个数就行了，
 	// 只有需要重新写输入数据的情况下才需要
 	NerveFiber * fiber;
+	NerveFiber * fiber_tmp;
+	NerveFiber * tmpFiber;
 	NeuronObject * outputObj;
-	nero_s32int findOutoutObjNUm,ReCarryOutOpFlag;
+	NeuronObject * outputObj_tmp;
+	NeuronObject * childObj;
+	nero_s32int findOutoutObjNUm,ReCarryOutOpFlag,opObjKind ,outputObjNums,tmpi;
 	if (OpObj == NULL ||  getNeroOperateFlag(OpObj) != 1  ||  nero_isBaseObj(OpObj) == 1   )
 	{
 		printf("Operating_CarryOutOpObj : parameter error  \n    ");
@@ -4491,7 +4496,9 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 	}
 	fiber = OpObj->outputListHead;
 	findOutoutObjNUm =0 ;
+	outputObjNums =0;
 	ReCarryOutOpFlag = 0;//是否重新生成输出对象标记
+	opObjKind = nero_GetNeroKind(OpObj);
 	//判断是否已经有输出对象了
 	// 只要找到outputListHead中所有的输出就行了，不管是多少个	
 	while (fiber != NULL)
@@ -4509,18 +4516,106 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 		//显然需要递归完成
 		// 这个函数第一次调用的例子是在函数Operating_tryToOutputByData中，该函数将是否有子操作的情况进行了分离，将有子操作的
 		// 情况传入此函数进行处理，但是并不意味着这里仅仅需要处理都是子操作的情况，因为要考虑次函数的重复利用率，加入完整的流程处理
+		switch (opObjKind)
+		 {
+			case NeuronNode_FiberConnect:
+				break;
+			case NeuronNode_GainValue:
+				// outputNode可能是在临时区域中的对象，但是话说回来了，如果是Operating_FindObjWithDataChange函数调用并进入的此处
+				// 则一般输出obj是已经存在的了，关键是看你怎么处理和定义“输出相同这个概念了”
 
+				//在函数Operating_GainValue内部已经添加  Fiber_PointToLowerLayer 的链接
+				outputObj = Operating_GainValue(OpObj, 1);
+				if (outputObj != NULL )
+				{
+					outputObjNums = 1;
+				}
+				
+				break;
+			case NeuronNode_DecreaseValue:
+				// outputNode = Operating_GainValue(inputNodeObjs[0], -1);
+				break;
+			case NeuronNode_ValueCompare: //数据的大小比较
+				//执行后的结果：tmp的outputlist多了较大的那个obj,如果x相同就输出第一个,
+				// outputNode = Operating_ValueCompare(inputNodeObjs[0]);
+				break;
+			case NeuronNode_ForInputWord:
+				break;
+			case NeuronNode_ForOutputWord:
+				//x指向实际执行操作的函数的地址或者ID ,但是这里考虑到现在时间有限暂时简化处理
+				#ifdef Nero_DeBuging09_01_14_
+						// print  one  obj  link:
+						neroObjMsg_st.MsgId = MsgId_IO_ForOutputWord;
+						neroObjMsg_st.fucId = 2; //IO_ForOutputWord
+						neroObjMsg_st.Obi = tmp;
+						msgsnd(IO_mq_id, &neroObjMsg_st, sizeof(neroObjMsg_st), 0);
+				#endif
+				break;
+			case NeuronNode_ForLayering:
+				// #define  NeuronNode_ForLayering      110   //定义一个基类a是另一个基类b得上层类，that is  mean：基类b得输出列表会指向基类a
+				// inputListHead  为俩个数据，前者是基类a 得kind值(save  in x)，后者是基类b得得kind值
+				// tmpFiber = tmp->inputListHead;
+				// tmp1 = nero_getBaseObjByKind(tmpFiber->obj->x, godNero);
+				// tmp2 = nero_getBaseObjByKind(tmpFiber->next->obj->x, godNero);
+				// if (tmp1 != NULL && tmp2 != NULL)
+				// {
+				// 	// 问题来了你这样在基类得输出列表中加入一个指向上层得链接是否会影响基类衍生类得搜索结果
+				// 	//so the  way to solve this problem is : make b's  Derivative Object point to baseobj   rather than
+				// 	// baseobj
+				// 	// 这样也不行阿，这样得只是讲现有得衍生对象设置了层次关系，那以后加入得关系仍然没有阿
+				// 	// 除非是这样，就是没隔一段时间就执行下这段代码(需要一个新得机制................)
+				// 	lowFiber = tmp2->outputListHead;
+				// 	while (lowFiber != NULL && lowFiber->obj != NULL)
+				// 	{
+				// 		PointingToObject(lowFiber->obj, tmp1, Fiber_PointToUpperLayer);
+				// 		lowFiber = lowFiber->next;
+				// 	}
+				// }
+					break;
+			default:
+				//显然这里只能处理都是子操作的情况，因为所以都是数据子对象的情况必须单独处理，不然无法同一处理，
+				//首先判断是否可以在这里进行处理,只需要判断一个子操作对象就可以了
+				fiber = OpObj->inputListHead;//fiber_tmp  outputObj_tmp
+				// childObj = fiber->obj;
+				while (fiber != NULL     )
+				{
+					if (getNeroOperateFlag(fiber->obj) ==1)
+					{
+						childObj = fiber->obj;
+						tmpi = Operating_CarryOutOpObj(childObj)
+						fiber = fiber->next;	
+						if (tmpi >0)
+						{
+							outputObjNums += tmpi;		
+							//将重新生成输出对象加入OpObj的输出链表中，就是将OpObj的子操作的输出加入到其输出列表中，
+							// 如果该对象有多层的子操作，只需要链接第一层的子操作
+							fiber_tmp = childObj->outputListHead
+							while (fiber_tmp != NULL)
+							{
+								outputObj_tmp = fiber_tmp->obj;
+								if (getFiberOpOutputFlag(fiber_tmp) == 1 &&  getFiberType(fiber_tmp ) ==  Fiber_PointToLowerLayer  )
+								{
+									//set up a new fiber  to obj
+									/*生成新概念的数据链表*/
+									tmpFiber= addNerveFiber(OpObj,NerveFiber_Output,Fiber_PointToLowerLayer);
+									setFiberOpOutputFlag(tmpFiber,1);
+									tmpFiber->obj=fiber_tmp->obj;								
+								}
+								fiber_tmp = fiber_tmp->next;
+							}
 
-		
-
-
+						}	
+					}
+					else
+					{
+						printf("Operating_CarryOutOpObj : 子操作不符合规定1 \n");
+						outputObjNums =0;
+						break;
+					}
+				}
+				break;
+	 	}
 	}
-	if (ReCarryOutOpFlag == 1 && findOutoutObjNUm > 0 )
-	{
-		//将重新生成输出对象加入OpObj的输出链表中，就是将OpObj的子操作的输出加入到其输出列表中，
-		// 如果该对象有多层的子操作，只需要链接第一层的子操作
-	}
-
 	// 理论上如果正常情况下，findOutoutObjNUm不应该为0
 	return findOutoutObjNUm;
  }                                                                                                                                             

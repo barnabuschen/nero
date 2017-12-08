@@ -663,7 +663,9 @@ NeuronObject *  getBaseObjName(NeuronObject * baseobj,NeuronObject * godNero)
         return NULL;
 
 }
-/*get该神经纤维的类型*/
+/*get该神经纤维的类型
+Fiber_PointToData
+......*/
  inline nero_s32int getFiberType(NerveFiber * fiber)
 {
 	nero_us32int kind;

@@ -4106,7 +4106,7 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 //		里面调用的函数也需要满足这个要求：这里唯一需要注意的就是conf这个全局变量
  nero_s32int OperatFlowProcess(struct OPInput *inputSteam,NeuronObject  *godNero,NeroConf * conf)
  {
- 	nero_us32int inputNodeNum,outputNodeNum,i,j,inputNullFlag,outputNullFlag;
+ 	nero_us32int inputNodeNum,outputNodeNum,i,j,inputNullFlag,outputNullFlag,findOpKind;
  	NeuronObject * operateObj;
  	NeuronObject ** inputNodeObjs=NULL;
  	NeuronObject ** outputNodeObjs=NULL;
@@ -4198,7 +4198,10 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 			//在前面已经排除了inputNodeObjs[i]=NULL的情况的情况,但是输出列表的obj是否有null未知，
 
 			//给出一个输入obj列表，和输出obj列表，找到能实现这种转变的操作类obj
-			NeuronObject *Operating_FindObjWithDataChange(NeuronObject * *inputNodeObjs, nero_us32int inputNodeNum, NeuronObject * *outputNodeObjs, nero_us32int outputNodeNum, NeuronObject * godNero);
+			findOpKind =Operating_FindObjWithDataChange( inputNodeObjs,inputNodeNum,outputNodeObjs,outputNodeNum,godNero);
+
+
+			//识别出这个op kind干什么呢？？？？？
 
 			break;
 		case OperatFlow_SetNewKind:
@@ -4287,7 +4290,21 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 						i = Operating_tryToOutputByData(BaseObi, inputNodeObjs, inputNodeNum, outPutObisForTest, outputNodeNum, godNero);
 
 						//判断是否已经找到了
-						// ............
+						if (i == outputNodeNum)
+						{
+							for ( j= 0; j < i;j++)
+							{
+								if (outPutObisForTest[j] != outputNodeObjs[j] )
+								{
+									break;
+								}
+							}
+							if (j == i)//找到了符合的op kind
+							{
+								opKind = ObjectKind2;
+								break;
+							}
+						}
 					}
 				}
 			}
@@ -4321,6 +4338,9 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 	NeuronObject * tmp,*tmp1, *tmp2;
 	 NerveFiber *tmpFiber;
 	 NerveFiber *lowFiber;
+
+	// NerveFiber * tmpFiber;
+	NeuronObject * outputObj;
 	 if (OpBaseObj ==NULL || inputNodeObjs == NULL || godNero == NULL || inputNodeObjs == NULL || inputNodeNum <= 0)
 	 {
 		 return -1;
@@ -4437,11 +4457,22 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 					if (objMakeup != NULL)
 					{
 						outputObjNums =  Operating_CarryOutOpObj(objMakeup);
-					}
-					 
+						if (MaxOutpuNodeNum >= outputObjNums)
+						{
+							tmpFiber = objMakeup->outputListHead;
+							 i = 0; 
+							while (tmpFiber != NULL)
+							{
+								outputObj = tmpFiber->obj;
+								if (getFiberOpOutputFlag(tmpFiber) == 1 &&  getFiberType(tmpFiber ) ==  Fiber_PointToLowerLayer)
+								{
+									outPutObisForTest[i++] = tmpFiber->outputObj;
+								}
+								tmpFiber = tmpFiber->next;
+							}
 
-				
-					// OpBaseObj->outputListHead
+						}
+					}
 				}
 			} 
 			//

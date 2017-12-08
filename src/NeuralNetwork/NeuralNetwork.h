@@ -135,6 +135,7 @@ msg1：
         有且必须存在一个                         #define Fiber_PointToUniqueObj	00
 	可重复，但必须存在一个	                #define	Fiber_PointToMutiObj	01
 	可有可没有 	                        #define	Fiber_PointToUnnecessaryObj	10
+	有且只能存在一个						
 	就是说如果为Fiber_PointToMutiObj	01，那么第11位为1，第12位为0
 
 13-14位：用来表明该纤维结构中指针obj所指向对象得所属区域

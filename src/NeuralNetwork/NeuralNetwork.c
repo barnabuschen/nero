@@ -24,10 +24,14 @@ NeuronNode_GainValue,
 NeuronNode_DecreaseValue,
 NeuronNode_FiberConnect,
 NeuronNode_ForLoop,
+NeuronNode_Addition,
+NeuronNode_Subtraction,
+NeuronNode_Multiplication,
+NeuronNode_Division,
  NeuronNode_ForChSentence,    //当一个概念节点的类型为此时表示一个中文句子
 NeuronNode_ForComplexDerivative,     //高级衍生类,for  some can not be classify  obj
 };
-
+ 
 nero_us32int SAPoolneroKind[]=
 {
 NeuronNode_ForUndefined,	//表示是一个未定义类型的神经元，是一个概念,表示这个对象实际存在，但是没有一个类型去给他进行分类
@@ -44,7 +48,11 @@ NeuronNode_DecreaseValue,
 NeuronNode_FiberConnect,
 NeuronNode_ForLayering,
 NeuronNode_ForLoop,
- NeuronNode_ForChSentence,    //当一个概念节点的类型为此时表示一个中文句子
+NeuronNode_Addition,
+NeuronNode_Subtraction,
+NeuronNode_Multiplication,
+NeuronNode_Division,
+NeuronNode_ForChSentence,    //当一个概念节点的类型为此时表示一个中文句子
 NeuronNode_ForComplexDerivative,     //高级衍生类,for  some can not be classify  obj
 };
 
@@ -202,6 +210,86 @@ void getFiberOpOutputFlag(NerveFiber * fiber  )
 			return 1;
 
 		return 0;
+}
+//当进行一些比较类的操作时，用这个函数来返回一些表示比较的结果的obj
+NeuronObject *   nero_getCompareResValue(nero_s32int  val)
+{
+
+	NeuronObject *  res;
+	NerveFiber  *  curFiber;
+	NeuronObject * baseObj;
+	NeuronObject * tmpObj;
+	NeuronObject * dataObj;
+	curFiber = GodNero->outputListHead;
+	baseObj = NULL;
+
+	static NeuronObject * value1 = NULL;
+	static NeuronObject * value0 = NULL;
+
+	while (curFiber)
+	{
+		baseObj = curFiber->obj;
+		if (nero_GetNeroKind(baseObj)  ==   NeuronNode_ForChCharacter)
+		{
+			break;
+		}
+	}
+	res = NULL;
+	if (baseObj == NULL)
+	{
+		return NULL;
+	}
+	switch (val)
+	{
+		
+		case 1:
+			//找到x =0x31    y=0  z=0的NeuronNode_ForChCharacter实例
+			if (value1 != NULL )
+			{
+				res = value1;
+			}
+			else
+			{
+				curFiber = baseObj->outputListHead;
+				while (curFiber != NULL)
+				{
+					tmpObj = curFiber->obj;
+					dataObj = tmpObj->inputListHead->obj;
+					if (dataObj->x == 0x31   &&  dataObj->y == 0  &&  dataObj->z == 0 )
+					{
+						res = tmpObj;
+						value1 = tmpObj;
+						break;
+					}
+				}
+			}
+			break;
+		case 0:
+			//找到x =0x30    y=0  z=0的NeuronNode_ForChCharacter实例
+			if (value0 != NULL )
+			{
+				res = value0;
+			}
+			else
+			{
+				curFiber = baseObj->outputListHead;
+				while (curFiber != NULL)
+				{
+					tmpObj = curFiber->obj;
+					dataObj = tmpObj->inputListHead->obj;
+					if (dataObj->x == 0x30   &&  dataObj->y == 0  &&  dataObj->z == 0 )
+					{
+						res = tmpObj;
+						value0 = tmpObj;
+						break;
+					}
+				}				
+			}
+			break;
+		default:
+			break;
+	}
+	return res;
 }
 
 
@@ -1291,12 +1379,15 @@ nero_s32int CreateActNeroNet()
 						break;
 				case   NeuronNode_ForInputWord:
 				case   NeuronNode_ForOutputWord:
-				case   NeuronNode_ForLoop:
+				// case   NeuronNode_ForLoop:
 				case   NeuronNode_ValueCompare:
 				case   NeuronNode_GainValue:
 				case   NeuronNode_DecreaseValue:
 				case   NeuronNode_FiberConnect:
-
+				case   NeuronNode_Addition:
+				case   NeuronNode_Subtraction:
+				case   NeuronNode_Multiplication:
+				case   NeuronNode_Division:
 				// case   NeuronNode_ForLayering:
 						//设置操作类的标志位
 						setNeroOperateFlag(BaseNeuronObject,1);
@@ -1379,9 +1470,21 @@ nero_s32int CreateStagingAreaNeroNet()
 				case   NeuronNode_ForChCharacter:
 						setChildrenOrderRule(BaseNeuronObject,1);
 						break;
-		/*		*/
-		/*		case   :*/
-		/*		        break;		*/
+				case   NeuronNode_ForInputWord:
+				case   NeuronNode_ForOutputWord:
+				// case   NeuronNode_ForLoop:
+				case   NeuronNode_ValueCompare:
+				case   NeuronNode_GainValue:
+				case   NeuronNode_DecreaseValue:
+				case   NeuronNode_FiberConnect:
+				case   NeuronNode_Addition:
+				case   NeuronNode_Subtraction:
+				case   NeuronNode_Multiplication:
+				case   NeuronNode_Division:
+				// case   NeuronNode_ForLayering:
+						//设置操作类的标志位
+						setNeroOperateFlag(BaseNeuronObject,1);
+				        break;	
 		/*		case   :*/
 		/*		        break;*/
 				default:
@@ -2414,7 +2517,7 @@ nero_s32int   nero_IfHasObjFromMultiples3(NeuronObject *Obis[],nero_s32int objNu
 		while(tmpFiber1 )
 		{
 			obj=tmpFiber1->obj;
-			/*首先判断这个概念的类型是不是可能是要找的，有些基类类型不可能是要找的*/
+			/*首先判断这个概念的类型是不是可能是要找的，有些基类类型数据个数小于2,不可能是要找的*/
 			kind=nero_GetNeroKind(obj);
 			switch(kind)
 			{
@@ -3463,7 +3566,7 @@ nero_s32int nero_judgeNewObjKind(NeuronObject *Obis[],nero_s32int objNum)
 				//对于操作类的数据类型往往是不固定的，这里好像无法处理啊,wait for handle it
 			case NeuronNode_ForInputWord://objNum  =1
 			case NeuronNode_ForOutputWord://objNum  =1
-			case NeuronNode_ForLoop:	//会不会有例外阿
+			// case NeuronNode_ForLoop:	//会不会有例外阿
 				// kind=kind;
 				break;
 			default:
@@ -6144,4 +6247,53 @@ nero_s32int nero_checkOpObjDataSuitable(NeuronObject *OpBaseObj, NeuronObject **
 
 
 	
+}
+// 判断OpObj的基类是否在基类NeuronNode_ForLoop的输出列表中
+// 是，则表明该类是循环操作类，需要特殊处理，返回NeroYES
+nero_s32int  nero_ifIsLoopKindObj(NeuronObject *OpObj)
+{
+	nero_s32int res,kind,basekind;
+	NerveFiber * fiber;
+	static NeuronObject *loopBaseObj= NULL;
+
+
+	res = NeroNO;
+	if (OpObj  == NULL)
+	{
+		return nero_msg_ParameterError;
+	}
+
+	kind = nero_GetNeroKind(OpObj);
+	
+	if ( loopBaseObj == NULL)
+	{
+		fiber = GodNero->outputListHead;
+		while (fiber !=  NULL)
+		{
+			if (fiber->obj != NULL &&  nero_GetNeroKind(fiber->obj) == NeuronNode_ForLoop)
+			{
+				loopBaseObj = fiber->obj;
+				break;
+			}
+			fiber = fiber->next;
+		}
+	}
+	if ( loopBaseObj != NULL)
+	{
+		fiber = loopBaseObj->outputListHead;
+		while (fiber !=  NULL)
+		{
+			if (fiber->obj != NULL &&  nero_GetNeroKind(fiber->obj) == kind)
+			{
+				res = NeroYES;
+								break;
+
+			}
+			fiber = fiber->next;
+		}		
+	}
+
+
+
+		return res;
 }

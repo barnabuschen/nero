@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "20171129： Operating_CarryOutOpObj over 2"
+git commit -a -m "20171129： Operating_GetNextLoopOpObj"
 git push origin  ver0.1804:ver0.1804
 添加文件到库，并上传
 git add readme.txt
@@ -51,6 +51,13 @@ push本地分支代码到远端服务器,如果没有就创建该分支
 
 
 Git怎么查看某次提交某个文件的修改
+git 看某次commit改了哪些文件
+git log 查看commit的历史
+git show <commit-hash-id>查看某次commit的修改内容
+git log -p <filename>查看某个文件的修改历史
+git log -p -2查看最近2次的更新内容
+
+
 
  axel -n 100
 aria2c -j 100 -s 10 -x 15

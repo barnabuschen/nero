@@ -1530,8 +1530,11 @@ nero_s32int  Operating_IfCouldStopLoop(NeuronObject * testObj,NeuronObject * loo
 	// }
 	NeuronObject *pointToloopStopObjData;
 	NeuronObject *stopFlagChildObj;
+	NeuronObject *tmpobj;
 	nero_s32int   loopStopObjDataCount,fiberType;
+	
 	NerveFiber  *  loopStopObjFiber;
+	NerveFiber  *  tmpFiber;
 
 
 	loopStopObjDataCount =0;
@@ -1552,12 +1555,6 @@ nero_s32int  Operating_IfCouldStopLoop(NeuronObject * testObj,NeuronObject * loo
 		}
 		tmpFiber = tmpFiber->next;
 	}
-
-
-
-
-
-
 	return NeroYES;//NeroNO
 }
 //废弃
@@ -4564,7 +4561,7 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 								outputObj = tmpFiber->obj;
 								if (getFiberOpOutputFlag(tmpFiber) == 1 &&  getFiberType(tmpFiber ) ==  Fiber_PointToLowerLayer)
 								{
-									outPutObisForTest[i++] = tmpFiber->outputObj;
+									outPutObisForTest[i++] = tmpFiber->obj;
 								}
 								tmpFiber = tmpFiber->next;
 							}
@@ -4752,7 +4749,7 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 					//  但是为了防止无限嵌套，这个输出列表中的obj 的outputlist是没有fiber为Fiber_PointToData的对象的
 					//  所以Operating_GetNextLoopOpObj除了提取出这个obj的指针外，也需要给这个obj加上新的fiber为Fiber_PointToData
 					// 对象
-					Operating_GetNextLoopOpObj(newOpObj);
+					newOpObj = Operating_GetNextLoopOpObj(newOpObj);
 
 				}
 				// 最后将输出写入OpObj
@@ -4805,7 +4802,7 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 					if (getNeroOperateFlag(fiber->obj) ==1)
 					{
 						childObj = fiber->obj;
-						tmpi = Operating_CarryOutOpObj(childObj)
+						tmpi = Operating_CarryOutOpObj(childObj) ;
 						fiber = fiber->next;	
 						// if (tmpi >0)
 						// {
@@ -4846,6 +4843,7 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 	return findOutoutObjNUm;
  }  
 //  循环可以停止时返回NeroYES
+// /判断是否可以技术循环：条件是查看输出flag中是否有1
  nero_s32int Operating_CheckIfCouldStopLoop( NeuronObject *OpObj )
  {
 	nero_s32int res,kind,basekind;
@@ -4890,23 +4888,38 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 
  } 
 //1：确定下一次循环的newOpObj 
-//2：给这个newOpObj 加上新的fiber为Fiber_PointToData对象
+//2：给这个newOpObj 加上新的fiber为Fiber_PointToData对象和预设的输出
 // 			：需要加入网络么？？？加入吧
  NeuronObject * Operating_GetNextLoopOpObj( NeuronObject * OpObj)
  {
-	nero_s32int res,kind,basekind;
+	nero_s32int res,kind,basekind,flag;
 	NerveFiber * fiber;
 	NerveFiber * fiber2;
 	  NeuronObject * Obj ;
 	  NeuronObject * newOpObj ;
 	  NeuronObject * baseOpObj ;
 	  NeuronObject * outputObj ;
+	  NeuronObject * godNero ;
+	//   NeuronObject * nextLoopObj ;
 
 	newOpObj = NULL;
 	// res = NeroNO;
 	if (OpObj  == NULL)
 	{
-		return nero_msg_ParameterError;
+		return NULL;
+	}
+	flag = getActNeroPoolKind(OpObj);
+	if(flag == Nero_ObjInSAPool)
+	{
+		godNero = SAGodNero;
+	}
+	else if (flag == Nero_ObjInNeroPool)
+	{
+		godNero = GodNero;
+	}
+	else  
+	{
+		return NULL;
 	}
 	fiber = OpObj->outputListHead;
 	basekind = nero_GetNeroKind(OpObj);
@@ -4918,11 +4931,10 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 			break;
 		}
 		fiber  =fiber->next;
-		
 	}
 	//首先要明确的是：
-	// newOpObj：有完整的 inputListHead
-	// 		  	outputListHead有一个fiber类型为Fiber_PointToData的对象，它是以后成为下一个循环obj的基础
+	// newOpObj：已经有完整的 inputListHead
+	// 		  	OpObj的outputListHead有一个fiber类型为Fiber_PointToData的对象（就是这里的newOpObj），它是以后成为下一个循环obj的基础
 	// 				但是它只有输入列表，输出列表为空 
 	// 			另外，newOpObjoutputListHead还有预定义的输出对象（其实就是指向的inputListHead中的某个输出对象）
 
@@ -4935,30 +4947,42 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 		// tmpFiber= addNerveFiber(OpObj,NerveFiber_Output,Fiber_PointToLowerLayer);
 		// setFiberOpOutputFlag(tmpFiber,1);
 		// tmpFiber->obj=fiber_tmp->obj;
-
-
-		// 先添加这个预定义的输出对象（是不是必须要求是数据类，不能是op类），直接从基类获取就行了
-		// 输出可能不止一个
-		baseOpObj = nero_getBaseObjByKind( basekind);
-		fiber = baseOpObj->outputListHead;
-		// basekind = nero_GetNeroKind(OpObj);
-		while (fiber != NULL)
+		res = Operating_SetUpNextLoopObjForOpObj(   OpObj, newOpObj,godNero);
+		if(res !=  nero_msg_ok)
 		{
-			if (   getFiberOpOutputFlag(fiber) == 1  &&   getFiberType(fiber) ==  Fiber_PointToLowerLayer )
-			{
-				// 找到一个：
-				outputObj = fiber->obj;
-
-
-			}
-			fiber  =fiber->next;
-			
+			newOpObj = NULL;
 		}
+	}
+	return newOpObj;
+ }
+//设置循环类实例OpObj的下一个循环对象，参见文档：操作内容530页
+nero_s32int Operating_SetUpNextLoopObjForOpObj( NeuronObject * OpObj,NeuronObject * nextLoopObj,NeuronObject * godNero)
+{
+	nero_s32int res,kind,basekind,flag;
+	//   NeuronObject * newOpObj ;
+	  NeuronObject * baseOpObj ;
+	//   NeuronObject * outputObj ;
+	//   NeuronObject * godNero ;
+	NerveFiber * fiber;
 
 
+	// 先添加这个预定义的输出对象（是不是必须要求是数据类，不能是op类），直接从基类获取就行了
+	// 输出可能不止一个
+	basekind = nero_GetNeroKind(OpObj);
+	baseOpObj = nero_getBaseObjByKind( basekind,godNero);
+	fiber = baseOpObj->outputListHead;
+	// basekind = nero_GetNeroKind(OpObj);
+	while (fiber != NULL)
+	{
+		if (   getFiberOpOutputFlag(fiber) == 1  &&   getFiberType(fiber) ==  Fiber_PointToLowerLayer )
+		{
+			// 找到一个：
+			outputObj = fiber->obj;
+		}
+		fiber  =fiber->next;
 	}
 
 
-	return newOpObj;
 
- }
+
+}

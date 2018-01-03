@@ -450,9 +450,9 @@ NeuronObject *   nero_IfHasOpObjFrMulti(ActNero *Obis[], nero_s32int objNum,nero
 nero_s32int getNeroOpOpCreateOutputFlag(ActNero *nero);
 void setNeroOpOpCreateOutputFlag(ActNero *nero,nero_us32int rule );
 void setFiberOpOutputFlag(NerveFiber * fiber,nero_us32int rule );
-void getFiberOpOutputFlag(NerveFiber * fiber  );
+nero_s32int getFiberOpOutputFlag(NerveFiber * fiber  );
 NeuronObject *   nero_getCompareResValue(nero_s32int  val);
 nero_s32int  nero_ifIsLoopKindObj(NeuronObject *OpObj);
-
+nero_s32int getActNeroPoolKind(ActNero *nero);
 
 #endif

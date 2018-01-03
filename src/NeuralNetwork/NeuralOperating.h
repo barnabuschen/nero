@@ -212,8 +212,8 @@ nero_s32int nero_getOutputNodeInObj(NeuronObject **  outputNodePoint );
  nero_s32int OperatFlowProcess(struct OPInput *inputSteam,NeuronObject  *godNero,NeroConf * conf);
  nero_us32int Operating_FindObjWithDataChange(NeuronObject **inputNodeObjs, nero_us32int inputNodeNum, NeuronObject **outputNodeObjs, nero_us32int outputNodeNum, NeuronObject *godNero);
 nero_s32int Operating_CarryOutOpObj(NeuronObject *OpObj);
-
-
-
+NeuronObject * Operating_Addition(NeuronObject * obj1,NeuronObject * obj2);
+ NeuronObject * Operating_GetNextLoopOpObj(NeuronObject * OpObj);
+nero_s32int Operating_SetUpNextLoopObjForOpObj( NeuronObject * OpObj,NeuronObject * nextLoopObj,NeuronObject * godNero);
 
 #endif

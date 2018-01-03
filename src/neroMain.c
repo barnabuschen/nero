@@ -84,7 +84,7 @@ void main()
 	gettimeofday(&start_runningTime,NULL);
 
 	// sleep(2);
-	nero_8int * fileName3="/data/sound/buzui.wav";
+	// nero_8int * fileName3="/data/sound/buzui.wav";
 
 	// copy_wav(fileName3);
 	// putDataInDB_wav(fileName3);
@@ -186,45 +186,7 @@ void ProInitialization()
 	    printf("\n\nIO_SaveSysIntoDatabase running time  = %ld s\n\n",timer_runningTime / 1000000);
 	    #endif
 
-
-		// return;
-		// nero_8int * fileName2="/data/adult/adultLearn.sh"; 
-		nero_8int * fileName2="/data/adult/adultLearn.test.sh"; 
-		// nero_8int * fileName2="/data/adult/adultLearn.3000.sh";
-
-		// nero_8int * fileName2="/data/iris/LearningFileForIris.sh";
-		// ReadTaskFromTxt( fileName2  );
-
-		// printf("\n\n\nend of  fuc ReadTaskFromTxt1\n");
-
-		// nero_8int * fileName4="/data/dataStringCreate.sh";
-		// CreatedWordsIntoFile(fileName4);
-
-		// nero_8int * fileName3="/data/adult/adultTest.sh";
-		nero_8int * fileName3="/data/adult/adultTest.short3.sh";
-
-		// nero_8int * fileName3="/data/iris/TestingDataForIris.sh";
-		// ReadTaskFromTxt( fileName3  );
-		// printf("\n\n\nend of  fuc ReadTaskFromTxt2\n");
-
-
-		// doTest_();
-		// redisContext *c = redisConnect("127.0.0.1", 6379);
-		// if (c == NULL || c->err) {
-		//     if (c) {
-		//         printf("Error: %s\n", c->errstr);
-		//         // handle error
-		//     } else {
-		//         printf("Can't allocate redis context\n");
-		//     }
-		// }
-		// redisReply* r = (redisReply*)redisCommand(c,"SET foo bar");
-		// redisFree( c);
-
-
-		// nero_8int * fileName4="/data/iris/TestingDataForIris.sh";
-		// ReadTaskFromTxt(fileName4);
-		// sleep(1);
+ 
 
 		// 在taskFile.sh中输入生成了英文字母得基类，现在需要生成英文单词得基类
 		// 为了尽快看到结果，这里用整数来替换iris中得小数

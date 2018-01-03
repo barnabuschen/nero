@@ -196,7 +196,7 @@ void setFiberOpOutputFlag(NerveFiber * fiber,nero_us32int rule )
 	else
 		fiber->msg1 =fiber->msg1 & 0xffffbfff;// 1011  第15位清零
 }
-void getFiberOpOutputFlag(NerveFiber * fiber  )
+nero_s32int getFiberOpOutputFlag(NerveFiber * fiber  )
 {
 
 	nero_s32int rule;
@@ -497,6 +497,13 @@ inline nero_s32int  nero_getBaseObjChildenNum(nero_s32int kind,ActNero * godNero
 	NeuronObject *Obi;
 	NerveFiber  *  curFiber;
 
+	if(godNero == NULL)
+	{
+
+		//如果godNero为null，则根据
+		return NULL;
+
+	}
 	curFiber=godNero->outputListHead;
 	Obi =NULL;
 
@@ -1145,7 +1152,7 @@ static inline void setActNeroPoolKind(ActNero *nero,nero_us32int poolkind)
 
 	}
 }
- inline nero_s32int getActNeroPoolKind(ActNero *nero)
+   nero_s32int getActNeroPoolKind(ActNero *nero)
 {
 	nero_us32int  kind=0;
 

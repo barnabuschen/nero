@@ -4956,32 +4956,41 @@ void Process_ObjForecast_old(struct DataFlowForecastInfo  * forecastInfo)
 	return newOpObj;
  }
 //设置循环类实例OpObj的下一个循环对象，参见文档：操作内容530页
+//任务包括：
+// 		1：SetUp NextLoopObj For OpObj  ----------即：nextLoopObj， 这个nextLoopObj 已经存在于OpObj的输出列表中，且已经在基类的输出列表中，
+// 		2：具体来说，就是设置这个nextLoopObj的outputListHead中的 nextLoopObj，以及，预设的输出（Default output）
+// 		3：更新nextLoopObj中的输入列表中的数据
 nero_s32int Operating_SetUpNextLoopObjForOpObj( NeuronObject * OpObj,NeuronObject * nextLoopObj,NeuronObject * godNero)
 {
 	nero_s32int res,kind,basekind,flag;
 	//   NeuronObject * newOpObj ;
 	  NeuronObject * baseOpObj ;
-	  NeuronObject * outputObj ;
+	  NeuronObject * defaultOutput;
 	//   NeuronObject * godNero ;
 	NerveFiber * fiber;
-
+	if(OpObj == NULL ||   OpObj == NULL )
+	{
+		return nero_msg_ParameterError ;
+	}
 
 	// 先添加这个预定义的输出对象（是不是必须要求是数据类，不能是op类），直接从基类获取就行了
 	// 输出可能不止一个
 	basekind = nero_GetNeroKind(OpObj);
+	if(basekind != nero_GetNeroKind(nextLoopObj)      )
+	{
+		return nero_msg_ParameterError ;
+	}
 	baseOpObj = nero_getBaseObjByKind( basekind,godNero);
 	fiber = baseOpObj->outputListHead;
 	while (fiber != NULL)
 	{
 		if (   getFiberOpOutputFlag(fiber) == 1  &&   getFiberType(fiber) ==  Fiber_PointToLowerLayer )
 		{
-			// 找到一个：
-			outputObj = fiber->obj;
+			// 找到一个：现任找到的对象有可能是基类，也可能是一个实例，不同的循环类可能不同
+			//现在的问题是怎么进行不同位置之间的输入输出对象的配对
+			defaultOutput = fiber->obj;
 		}
 		fiber  =fiber->next;
 	}
-
-
-
 
 }

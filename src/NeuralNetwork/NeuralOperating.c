@@ -4961,7 +4961,7 @@ nero_s32int Operating_SetUpNextLoopObjForOpObj( NeuronObject * OpObj,NeuronObjec
 	nero_s32int res,kind,basekind,flag;
 	//   NeuronObject * newOpObj ;
 	  NeuronObject * baseOpObj ;
-	//   NeuronObject * outputObj ;
+	  NeuronObject * outputObj ;
 	//   NeuronObject * godNero ;
 	NerveFiber * fiber;
 
@@ -4971,7 +4971,6 @@ nero_s32int Operating_SetUpNextLoopObjForOpObj( NeuronObject * OpObj,NeuronObjec
 	basekind = nero_GetNeroKind(OpObj);
 	baseOpObj = nero_getBaseObjByKind( basekind,godNero);
 	fiber = baseOpObj->outputListHead;
-	// basekind = nero_GetNeroKind(OpObj);
 	while (fiber != NULL)
 	{
 		if (   getFiberOpOutputFlag(fiber) == 1  &&   getFiberType(fiber) ==  Fiber_PointToLowerLayer )

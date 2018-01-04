@@ -1,5 +1,5 @@
 提交更新：
-git commit -a -m "20180103： Operating_SetUpNextLoopObjForOpObj"
+sudo git commit -a -m "20180103： Operating_SetUpNextLoopObjForOpObj2"
 git push origin  ver0.1804:ver0.1804
 添加文件到库，并上传
 git add readme.txt
